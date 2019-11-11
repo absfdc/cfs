@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Response_can_not_be_empty</fullName>
+    <active>true</active>
+    <description>Response is a required field at certain key status changes of an Action Plan lifecycle - e.g. when the status changes to Awaiting Advice Request Approval, Action Plan in Review, or Completed.</description>
+    <errorConditionFormula>ISCHANGED(Status__c) &amp;&amp;
+OR( ISPICKVAL(Status__c, &quot;Completed&quot;),  ISPICKVAL(Status__c, &quot;Awaiting Action Plan Approval&quot;), ISPICKVAL(Status__c, &quot;Action Plan in Review&quot;)) &amp;&amp;
+OR( RecordType.DeveloperName = &quot;MCWS_Agency&quot;,  RecordType.DeveloperName = &quot;MCWS_Child_Action_Plan&quot;) &amp;&amp;
+NOT( LEN(Response__c) &gt; 0) &amp;&amp;
+ ISPICKVAL( Type__c , &#39;Advice Request&#39;)</errorConditionFormula>
+    <errorDisplayField>Response__c</errorDisplayField>
+    <errorMessage>Response is required when progressing an Advice Request to Awaiting Action Plan Approval, Action Plan in Review, or Completed.</errorMessage>
+</ValidationRule>

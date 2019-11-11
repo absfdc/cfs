@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <description>Would contain &quot;Location&quot; for Location taxonomy data. Would contain &quot;Case Categorisation&quot; for Issue taxonomy data.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Would contain &quot;Location&quot; for Location taxonomy data. Would contain &quot;Case Categorisation&quot; for Issue taxonomy data.</inlineHelpText>
+    <label>Type</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

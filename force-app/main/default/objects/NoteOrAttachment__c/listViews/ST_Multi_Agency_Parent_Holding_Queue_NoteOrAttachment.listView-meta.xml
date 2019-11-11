@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ST_Multi_Agency_Parent_Holding_Queue_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>ST Multi Agency Parent Holding Queue</label>
+    <queue>ST_Multi_Agency_Parent_Holding_Queue</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

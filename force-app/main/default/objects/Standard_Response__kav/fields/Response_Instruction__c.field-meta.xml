@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Response_Instruction__c</fullName>
+    <description>The purpose of this field is to provide the reader some instruction and guideline on how to use the response.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Instruction on when to use or not to use this response</inlineHelpText>
+    <label>Response Instruction</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

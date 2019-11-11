@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MAGS_Officer_Queue_MC_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Senior MAGS Allocation Queue</label>
+    <queue>Senior_MAGS_Officer_Queue_MC</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

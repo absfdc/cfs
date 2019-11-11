@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_Customer_Services_Concessions_MC_Action_Plan</fullName>
+    <columns>Case_Creation_Date__c</columns>
+    <columns>NAME</columns>
+    <columns>Divisions__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <filterScope>Queue</filterScope>
+    <filters>
+        <field>Branch__c</field>
+        <operation>equals</operation>
+        <value>Information and Ticketing Services - Concessions</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Rejected-Incorrect Assignment,Completed</value>
+    </filters>
+    <label>TfNSW CTS - Concessions Triage</label>
+    <queue>TfNSW_Customer_Services_Concessions_MC</queue>
+    <sharedTo>
+        <role>TfNSW_Customer_Services</role>
+        <role>TfNSW_Customer_Services_Liaison_Officer</role>
+        <role>TfNSW_Customer_Services_SME</role>
+        <role>TfNSW_I_S_Ticketing_Concessions</role>
+        <role>TfNSW_I_S_Ticketing_Concessions_Liaison_Officer</role>
+        <role>TfNSW_I_S_Ticketing_Concessions_SME</role>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Action_Plans_CFM</fullName>
+    <columns>Action_Plan_Type__c</columns>
+    <columns>NAME</columns>
+    <columns>Divisions__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Location_Level_3__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Days_Until_Due__c</columns>
+    <columns>Status__c</columns>
+    <columns>Case_Subject__c</columns>
+    <columns>Customer__c</columns>
+    <columns>OBO__c</columns>
+    <columns>Parent_Action_Plan__c</columns>
+    <columns>Type__c</columns>
+    <columns>Case_Number__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Action_Plan__c.CFM_Action_Plan</value>
+    </filters>
+    <label>My Action Plans (CFM)</label>
+    <sharedTo>
+        <roleAndSubordinates>RMS</roleAndSubordinates>
+    </sharedTo>
+</ListView>

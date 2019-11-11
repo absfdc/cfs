@@ -1,0 +1,55 @@
+<apex:component id="attachmentComponent">
+    <apex:attribute access="public" description="List of attachments to be added" id="attachmentList" name="attachments" required="true" type="Attachment[]"/>
+    <apex:attribute access="public" description="JSON string representation of list of allowed files" id="allowedAttachments" name="allowedFileAttachments" required="true" type="String"/>
+    <apex:variable var="rowCount" value="0"/>
+    <div class="col-md-12 formLabel" style="margin-top:10px">
+        <h1 style="display:none">&nbsp;</h1><h2  class="fieldBottomMargin heading" >Attachments</h2>
+    </div>
+    <div class="col-md-12 formLabel">
+        <hr style="border-top: dotted 1px;margin-top:-2px;margin-bottom: 0px;" />
+    </div>
+    <div class="col-md-12">
+    <p role="heading" style="margin-bottom: 0px;text-align: justify;">A photo or screenshot helps us to investigate your feedback</p>
+    </div>
+    <div class="col-md-12" >
+        <table class="table-responsive" style="border: 0px none !important;" >
+            <apex:repeat id="attachments" value="{!attachments}" var="attach">
+                <!--
+                <tr id="attachmentRow{!rowCount}" style="display:none">
+                    <td  id="filename{!rowCount}"></td>                    
+                </tr>
+                <tr>
+                    <td >
+                    <label style="display:none" for="sitePageId:caseFormId:pblockId:attachments2:{!rowCount}:filename" aria-label="name of file to upload">FileName</label>                                 
+                    <apex:inputText id="filename" style="display:none" label="file name" value="{!attach.Name}" />
+                    <label style="display:none"  for="sitePageId:caseFormId:pblockId:attachments2:{!rowCount}:file" aria-label="file to upload">File to upload</label>
+                    <apex:inputFile accept="application/pdf,image/gif,image/pjpg,image/jpeg,image/png,image/bmp,text/plain,text/rtf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" accessKey="{!rowCount}" styleClass="attachment{!rowCount} fileattachments" style="height:1px;width:1px;margin-left: -500px;" id="file" onchange="getFileName(this, '{!rowCount}', '{!allowedFileAttachments}', '{!URLFOR($Resource.icons, 'img_trans.gif')}')" value="{!attach.Body}" ></apex:inputFile>                                    
+                    </td>
+                </tr>
+                -->
+                <div id="attachmentRow{!rowCount}" style="display:none">
+                    <table width="100%">
+                    <tr><td><div  id="filename{!rowCount}" style="width:100%"></div></td></tr>
+                    </table>                    
+                </div>
+                
+                    <label style="display:none" for="sitePageId:caseFormId:pblockId:attachments2:{!rowCount}:filename" aria-label="name of file to upload">FileName</label>                                 
+                    <apex:inputText id="filename" style="display:none" label="file name" value="{!attach.Name}" />
+                    <label style="display:none"  for="sitePageId:caseFormId:pblockId:attachments2:{!rowCount}:file" aria-label="file to upload">File to upload</label>
+                    <apex:inputFile accept="application/pdf,image/gif,image/pjpg,image/jpeg,image/png,image/bmp,text/plain,text/rtf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" accessKey="{!rowCount}" styleClass="attachment{!rowCount} fileattachments" style="height:1px;width:1px;margin-left: -500px;" id="file" onchange="getFileName(this, '{!rowCount}', '{!allowedFileAttachments}', '{!URLFOR($Resource.icons, 'img_trans.gif')}')" value="{!attach.Body}" ></apex:inputFile>                                    
+                
+                <apex:variable var="rowCount" value="{!VALUE(rowCount) + 1}"/>
+            </apex:repeat>                          
+        </table>   
+    </div>
+    <div class="col-md-12 formLabel" id="addAttachmentBtn" style="margin-top:-10px">
+        <input type="button" id="addAttachments"  onclick="addAttachment()" style="height:23px" value="Add attachment"></input>
+    </div>
+    <style>
+    .sprite-remove {
+        width: 8px;
+        height: 8px;
+        background-position: -33px -115px;
+    }
+    </style>
+</apex:component>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_Corporate_Services_Open</fullName>
+    <columns>NAME</columns>
+    <columns>Divisions__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Type__c</columns>
+    <columns>Case_Number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Rejected-Incorrect Assignment,Completed</value>
+    </filters>
+    <filters>
+        <field>Divisions__c</field>
+        <operation>equals</operation>
+        <value>Corporate Services</value>
+    </filters>
+    <label>TfNSW Corporate Services Open</label>
+    <sharedTo>
+        <role>People_and_corporate_services</role>
+        <role>People_and_corporate_services_Liaison_Officer</role>
+        <role>People_and_corporate_services_SME</role>
+    </sharedTo>
+</ListView>

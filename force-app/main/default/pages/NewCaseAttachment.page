@@ -1,0 +1,43 @@
+<apex:page controller="NewCaseAttachment_CC" action="{!init}" id="newCaseAttachmentPage"> 
+    <apex:sectionHeader id="sectionHeader" title="New Attachment"/>
+    <apex:includeScript value="/support/console/33.0/integration.js"/>
+    <apex:form id="mainForm">
+        <apex:pageBlock id="containerBlock">
+            <!-- PAGE ERRORS-->
+            <apex:pageMessages escape="false" id="errors"/>
+            <apex:pageBlockSection title="Attachment details" columns="1" collapsible="false" rendered="{!NOT(errorOnPage)}">
+                <apex:outputField value="{!customAttachment.Case__c}"/>
+                <apex:inputText value="{!customAttachment.Name}"/>
+                <apex:inputField value="{!customAttachment.Privacy__c}"/>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="" for="file"/>
+                    <apex:outputPanel >
+                        <b>1. Select the File</b><br/>
+                        Click the Browse button to find the file. <br/><br/>
+                        <apex:inputFile value="{!sfattachment.Body}" filename="{!sfattachment.Name}"  contentType="{!sfattachment.ContentType}" id="file"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value=""/>
+                    <apex:outputPanel >
+                       <b>2. Click the "Attach File" button.</b><br/>
+                        When the upload is complete you will be redirected to attachment details page<br/><br/>
+                      <apex:commandButton value="Attach File" action="{!saveAttachment}" immediate="false"/>&nbsp;
+                      <input type="button" class="btn" value="Cancel" onClick="closeSubTab()"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form> 
+    <script>
+        function closeSubTab() {   
+            if (sforce.console.isInConsole()) {
+                sforce.console.getEnclosingTabId(function(response) { 
+                    sforce.console.closeTab(response.id);
+                });
+            } else {
+                window.location.href = "/{!JSENCODE($CurrentPage.parameters.cid)}";
+            }
+        }
+    </script>
+</apex:page>

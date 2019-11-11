@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PBO_Forest_Coach_Lines_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>PBO - Forest Coach Lines</label>
+    <queue>PBO_Forest_Coach_Lines</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

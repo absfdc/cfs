@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Maximum number of rows which will be getting triaged in 1 transaction.</description>
+    <label>Maximum Triage Rows</label>
+    <pluralLabel>Maximum Triage Rows</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

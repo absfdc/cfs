@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CFS_Case_Status__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>CFS Case Status</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advice Received</fullName>
+                <default>false</default>
+                <label>Advice Received</label>
+            </value>
+            <value>
+                <fullName>Awaiting Advice</fullName>
+                <default>false</default>
+                <label>Awaiting Advice</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <default>true</default>
+                <label>Closed</label>
+            </value>
+            <value>
+                <fullName>Closed with customer</fullName>
+                <default>false</default>
+                <label>Closed with customer</label>
+            </value>
+            <value>
+                <fullName>Finalised</fullName>
+                <default>false</default>
+                <label>Finalised</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <label>Received</label>
+            </value>
+            <value>
+                <fullName>Reopened</fullName>
+                <default>false</default>
+                <label>Reopened</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

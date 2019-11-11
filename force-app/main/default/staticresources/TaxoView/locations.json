@@ -1,0 +1,2689 @@
+{
+ "name" : "locations",
+ "children": [
+  {
+   "name": "Light Rail",
+   "children": [
+    {
+     "name": "Light Rail",
+     "children": [
+      {
+       "name": "Light Rail",
+       "children": [
+        {"name": "Dulwich Hill Line", "agency": "LRO", "size": "50"}
+                   ]
+      }
+                 ]
+    }
+               ]
+  },
+  {
+   "name": "Train",
+   "children": [
+    {
+     "name": "ARTC or Country Regional Network",
+     "children": [
+      {
+       "name": "ARTC or Country Regional Network",
+       "children": [
+        {"name": "ARTC or Country Regional Network", "agency": "", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "NSW TrainLink Regional Trains",
+     "children": [
+      {
+       "name": "North Coast",
+       "children": [
+        {"name": "032 Brisbane to Sydney XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "031 Sydney to Brisbane XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "036 Grafton to Sydney XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "033 Sydney to Casino XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "035 Sydney to Grafton XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "034 Casino to Sydney XPT", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Train Unspecified",
+       "children": [
+        {"name": "Service Unknown", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "North West",
+       "children": [
+        {"name": "223 Sydney to Armidale XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "224 Armidale to Sydney XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "243 Sydney to Moree XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "244 Moree to Sydney XPL", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "West",
+       "children": [
+        {"name": "428 Dubbo to Sydney XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "446 Broken Hill to Sydney XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "427 Sydney to Dubbo XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "445 Sydney to Broken Hill XPL", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "South",
+       "children": [
+        {"name": "621 Sydney to Melbourne Overnight XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "635 Sydney to Canberra XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "633 Sydney to Canberra XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "642 Griffith to Sydney XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "632 Canberra to Sydney XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "641 Sydney to Griffith XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "622 Melbourne to Sydney Overnight XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "636 Canberra to Sydney XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "624 Melbourne to Sydney Daylight XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "634 Canberra to Sydney XPL", "agency": "NSW Trains", "size": "50"},
+        {"name": "623 Sydney to Melbourne Daylight XPT", "agency": "NSW Trains", "size": "50"},
+        {"name": "631 Sydney to Canberra XPL", "agency": "NSW Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "NSW TrainLink Regional Stations",
+     "children": [
+      {
+       "name": "North Coast",
+       "children": [
+        {"name": "Brisbane (QLD)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wingham", "agency": "NSW Trains", "size": "50"},
+        {"name": "Urunga", "agency": "NSW Trains", "size": "50"},
+        {"name": "Sawtell", "agency": "NSW Trains", "size": "50"},
+        {"name": "Grafton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coffs Harbour", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kyogle", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wauchope", "agency": "NSW Trains", "size": "50"},
+        {"name": "Nambucca Heads", "agency": "NSW Trains", "size": "50"},
+        {"name": "Casino", "agency": "NSW Trains", "size": "50"},
+        {"name": "Macksville", "agency": "NSW Trains", "size": "50"},
+        {"name": "Eungai", "agency": "NSW Trains", "size": "50"},
+        {"name": "Taree", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gloucester", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kendall", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kempsey", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Line Unspecified",
+       "children": [
+        {"name": "Station Unknown", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "South",
+       "children": [
+        {"name": "Broadmeadows (VIC)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Griffith", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gunning", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yass Junction", "agency": "NSW Trains", "size": "50"},
+        {"name": "The Rock", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tarago", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cootamundra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coolamon", "agency": "NSW Trains", "size": "50"},
+        {"name": "Queanbeyan", "agency": "NSW Trains", "size": "50"},
+        {"name": "Canberra (Kingston)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Condobolin", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bungendore", "agency": "NSW Trains", "size": "50"},
+        {"name": "Junee", "agency": "NSW Trains", "size": "50"},
+        {"name": "Benalla (VIC)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wangaratta (VIC)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Narrandera", "agency": "NSW Trains", "size": "50"},
+        {"name": "Albury", "agency": "NSW Trains", "size": "50"},
+        {"name": "Henty", "agency": "NSW Trains", "size": "50"},
+        {"name": "Culcairn", "agency": "NSW Trains", "size": "50"},
+        {"name": "Leeton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Harden", "agency": "NSW Trains", "size": "50"},
+        {"name": "Southern Cross Station (VIC)", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "West",
+       "children": [
+        {"name": "Rydal", "agency": "NSW Trains", "size": "50"},
+        {"name": "Broken Hill", "agency": "NSW Trains", "size": "50"},
+        {"name": "Geurie", "agency": "NSW Trains", "size": "50"},
+        {"name": "Stuart Town", "agency": "NSW Trains", "size": "50"},
+        {"name": "Parkes", "agency": "NSW Trains", "size": "50"},
+        {"name": "Darnick", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bathurst", "agency": "NSW Trains", "size": "50"},
+        {"name": "Blayney", "agency": "NSW Trains", "size": "50"},
+        {"name": "Menindee", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wellington", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tarana", "agency": "NSW Trains", "size": "50"},
+        {"name": "Dubbo", "agency": "NSW Trains", "size": "50"},
+        {"name": "Euabalong West", "agency": "NSW Trains", "size": "50"},
+        {"name": "Orange", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "North West",
+       "children": [
+        {"name": "Walcha Road", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gunnedah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bellata", "agency": "NSW Trains", "size": "50"},
+        {"name": "Boggabri", "agency": "NSW Trains", "size": "50"},
+        {"name": "Quirindi", "agency": "NSW Trains", "size": "50"},
+        {"name": "Armidale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Moree", "agency": "NSW Trains", "size": "50"},
+        {"name": "Willow Tree", "agency": "NSW Trains", "size": "50"},
+        {"name": "Uralla", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tamworth", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kootingal", "agency": "NSW Trains", "size": "50"},
+        {"name": "Narrabri", "agency": "NSW Trains", "size": "50"},
+        {"name": "Werris Creek", "agency": "NSW Trains", "size": "50"},
+        {"name": "Murrurundi", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Metro",
+       "children": [
+        {"name": "Strathfield Travel Centre", "agency": "NSW Trains", "size": "50"},
+        {"name": "Sydney Travel Centre", "agency": "NSW Trains", "size": "50"},
+        {"name": "Strathfield Luggage Room", "agency": "NSW Trains", "size": "50"},
+        {"name": "Sydney Luggage Room", "agency": "NSW Trains", "size": "50"},
+        {"name": "Parramatta Travel Centre", "agency": "NSW Trains", "size": "50"},
+        {"name": "Central Platform 1-15", "agency": "NSW Trains", "size": "50"},
+        {"name": "NSW TrainLink Reservation Centre", "agency": "NSW Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "NSW TrainLink Intercity Train Lines",
+     "children": [
+      {
+       "name": "Train Line",
+       "children": [
+        {"name": "South Coast Line", "agency": "NSW Trains", "size": "50"},
+        {"name": "Southern Highlands Line", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hunter Line", "agency": "NSW Trains", "size": "50"},
+        {"name": "Blue Mountains Line", "agency": "NSW Trains", "size": "50"},
+        {"name": "Line Unspecified", "agency": "NSW Trains", "size": "50"},
+        {"name": "Central Coast & Newcastle Line", "agency": "NSW Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "NSW TrainLink Regional Coach Services",
+     "children": [
+      {
+       "name": "South",
+       "children": [
+        {"name": "754 WOL-MSV Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "742 ECA-ABX Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "755 MSV-WOL Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "751 BWL-WOL Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "741 ABX-ECA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "726 MQL-CMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "782 CMD-JOC Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "781 JOC-CMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "725 CMD-MQL Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "771 JOC-QDN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "736 GFF-WGA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "774 BOL-JOC Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "722 CBX-CMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "731 WGA-GFF Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "792 DBO-CMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "734 ECA-WGA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "791 CMD-DBO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "752 WOL-BWL Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "723 CMD-TUB Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "724 TUB-CMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "761 JOC-YAS Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "760 YAS-JOC Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "728 TUB-WGA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "794 BHS-CMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "735 WGA-GFF Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "793 CMD-BHS Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "772 QDN-JOC Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "721 CMD-CBX Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "749 BUN-WOL Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "756 WOL-BUN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "776 QDN-JOC Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "773 JOC-QDN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "732 GFF-WGA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "727 WGA-TUB Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "733 WGA-ECA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "753 MSV-WOL Coach", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Service Unspecified",
+       "children": [
+        {"name": "Service Unknown", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "West",
+       "children": [
+        {"name": "512 BRK-DBO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "540 COJ-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "567 LTH-OAG Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "511 DBO-BRK Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "555 MVR-OBR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "573 LTH-BAD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "546 COJ-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "520 PKE-OAG Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "592 DBO-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "589 DBO-BHT Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "516 BHL-DBO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "572 PKE-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "523 PKE-CND Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "563 LTH-OAG Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "524 CND-PKE Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "539 LTH-COJ Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "515 DBO-BHL Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "570 NYN-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "568 OAG-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "554 OBR-MVR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "569 LTH-NYN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "521 OAG-PKE Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "556 OBR-MVR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "550 GEF-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "553 MVR-OBR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "517 DBO-BWQ Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "514 LHG-DBO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "547 LTH-COJ Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "575 LTH-GGN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "591 LTH-DBO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "576 GGN-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "561 LTH-OAG Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "571 LTH-PKE Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "544 GGN-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "513 DBO-LHG Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "590 BHT-DBO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "551 LTH-GEF Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "519 OAG-PKE Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "562 OAG-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "518 BWQ-DBO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "557 MVR-OBR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "552 OBR-MVR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "545 LTH-COJ Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "532 GEF-BHS Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "580 BHS-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "558 OBR-MVR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "566 OAG-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "574 BAD-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "542 GGN-LTH Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "541 LTH-GGN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "522 PKE-OAG Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "549 LTH-COJ Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "531 BHS-GEF Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "565 LTH-OAG Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "582 LHQ-DBO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "543 LTH-GGN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "564 OAG-LTH Coach", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "North West",
+       "children": [
+        {"name": "327 ARM-TEN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "336 BJT-NAA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "334 WEW-NAA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "335 NAA-BJT Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "312 IVR-TMW Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "330 BJT-NAA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "814 WLD-WLC Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "328 TEN-ARM Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "331 NAA-WEW Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "333 NAA-WEW Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "332 WEW-NAA Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "311 TMW-IVR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "338 IVR-ARM Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "329 NAA-BJT Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "337 ARM-IVR Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "813 WLC-WLD Coach", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "North Coast",
+       "children": [
+        {"name": "143 GFN-BOY Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "815 LSY-ANV Taxi", "agency": "NSW Trains", "size": "50"},
+        {"name": "138 TCY-NTL Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "133 BMD-TRO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "136 TRO-BMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "161 CSI-TWS Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "144 BOY-GFN Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "163 CSI-SFP Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "176 BNE-CSI Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "173 CSI-SHQ Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "816 LXH-LSY Taxi", "agency": "NSW Trains", "size": "50"},
+        {"name": "134 TRO-BMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "165 CSI-TWS Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "132 TRO-BMD Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "174 ROB-CSI Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "135 BMD-TRO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "167 CSI-TWS Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "183 WAU-PQQ Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "175 CSI-BNE Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "141 GFN-MRZ Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "168 TWS-CSI Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "162 TWS-CSI Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "182 PQQ-WAU Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "171 CSI-ROB Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "166 TWS-CSI Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "131 BMD-TRO Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "172 SHQ-CSI Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "164 SFP-CSI Coach", "agency": "NSW Trains", "size": "50"},
+        {"name": "142 MRZ-GFN Coach", "agency": "NSW Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "NSW TrainLink Intercity Stations",
+     "children": [
+      {
+       "name": "Metro",
+       "children": [
+        {"name": "Central Platform 1-15", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Blue Mountains",
+       "children": [
+        {"name": "Lapstone", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bathurst", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mount Victoria", "agency": "NSW Trains", "size": "50"},
+        {"name": "Blackheath", "agency": "NSW Trains", "size": "50"},
+        {"name": "Katoomba", "agency": "NSW Trains", "size": "50"},
+        {"name": "Medlow Bath", "agency": "NSW Trains", "size": "50"},
+        {"name": "Valley Heights", "agency": "NSW Trains", "size": "50"},
+        {"name": "Linden", "agency": "NSW Trains", "size": "50"},
+        {"name": "Glenbrook", "agency": "NSW Trains", "size": "50"},
+        {"name": "Warrimoo", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hazelbrook", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lawson", "agency": "NSW Trains", "size": "50"},
+        {"name": "Emu Plains", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lithgow", "agency": "NSW Trains", "size": "50"},
+        {"name": "Leura", "agency": "NSW Trains", "size": "50"},
+        {"name": "Blaxland", "agency": "NSW Trains", "size": "50"},
+        {"name": "Zig Zag", "agency": "NSW Trains", "size": "50"},
+        {"name": "Faulconbridge", "agency": "NSW Trains", "size": "50"},
+        {"name": "Station Unknown", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bell", "agency": "NSW Trains", "size": "50"},
+        {"name": "Woodford", "agency": "NSW Trains", "size": "50"},
+        {"name": "Springwood", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bullaburra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wentworth Falls", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Line Unspecified",
+       "children": [
+        {"name": "Station Unknown", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Newcastle Central Coast & Hunter",
+       "children": [
+        {"name": "Wondabyne", "agency": "NSW Trains", "size": "50"},
+        {"name": "Adamstown", "agency": "NSW Trains", "size": "50"},
+        {"name": "Morisset", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wyee", "agency": "NSW Trains", "size": "50"},
+        {"name": "Dungog", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gosford", "agency": "NSW Trains", "size": "50"},
+        {"name": "Aberdeen", "agency": "NSW Trains", "size": "50"},
+        {"name": "Metford", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hexham", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wyong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mindaribba", "agency": "NSW Trains", "size": "50"},
+        {"name": "Niagara Park", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tarro", "agency": "NSW Trains", "size": "50"},
+        {"name": "Woy Woy", "agency": "NSW Trains", "size": "50"},
+        {"name": "Civic", "agency": "NSW Trains", "size": "50"},
+        {"name": "Telarah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hawkesbury River", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cowan", "agency": "NSW Trains", "size": "50"},
+        {"name": "Narara", "agency": "NSW Trains", "size": "50"},
+        {"name": "Sandgate", "agency": "NSW Trains", "size": "50"},
+        {"name": "East Maitland", "agency": "NSW Trains", "size": "50"},
+        {"name": "Victoria Street", "agency": "NSW Trains", "size": "50"},
+        {"name": "Teralba", "agency": "NSW Trains", "size": "50"},
+        {"name": "Dora Creek", "agency": "NSW Trains", "size": "50"},
+        {"name": "Newcastle", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lisarow", "agency": "NSW Trains", "size": "50"},
+        {"name": "Broadmeadow", "agency": "NSW Trains", "size": "50"},
+        {"name": "Branxton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Muswellbrook", "agency": "NSW Trains", "size": "50"},
+        {"name": "Fassifern", "agency": "NSW Trains", "size": "50"},
+        {"name": "Scone", "agency": "NSW Trains", "size": "50"},
+        {"name": "Booragul", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kotara", "agency": "NSW Trains", "size": "50"},
+        {"name": "Thornton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Station Unknown", "agency": "NSW Trains", "size": "50"},
+        {"name": "Martins Creek", "agency": "NSW Trains", "size": "50"},
+        {"name": "Greta", "agency": "NSW Trains", "size": "50"},
+        {"name": "Warnervale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Warabrook", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cardiff", "agency": "NSW Trains", "size": "50"},
+        {"name": "Maitland", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ourimbah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wallarobba", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wirragulla", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hamilton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Awaba", "agency": "NSW Trains", "size": "50"},
+        {"name": "Singleton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wickham", "agency": "NSW Trains", "size": "50"},
+        {"name": "Waratah", "agency": "NSW Trains", "size": "50"},
+        {"name": "High Street", "agency": "NSW Trains", "size": "50"},
+        {"name": "Paterson", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tascott", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lochinvar", "agency": "NSW Trains", "size": "50"},
+        {"name": "Koolewong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tuggerah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Point Clare", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cockle Creek", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hilldale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Beresfield", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Southern Highlands",
+       "children": [
+        {"name": "Wingello", "agency": "NSW Trains", "size": "50"},
+        {"name": "Menangle Park", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yerrinbool", "agency": "NSW Trains", "size": "50"},
+        {"name": "Exeter", "agency": "NSW Trains", "size": "50"},
+        {"name": "Douglas Park", "agency": "NSW Trains", "size": "50"},
+        {"name": "Burradoo", "agency": "NSW Trains", "size": "50"},
+        {"name": "Picton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tallong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bowral", "agency": "NSW Trains", "size": "50"},
+        {"name": "Marulan", "agency": "NSW Trains", "size": "50"},
+        {"name": "Goulburn", "agency": "NSW Trains", "size": "50"},
+        {"name": "Station Unknown", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bundanoon", "agency": "NSW Trains", "size": "50"},
+        {"name": "Penrose", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bargo", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mittagong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Moss Vale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Menangle", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tahmoor", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "South Coast",
+       "children": [
+        {"name": "Helensburgh", "agency": "NSW Trains", "size": "50"},
+        {"name": "Dapto", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bulli", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bomaderry (Nowra)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Otford", "agency": "NSW Trains", "size": "50"},
+        {"name": "Station Unknown", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lysaght's", "agency": "NSW Trains", "size": "50"},
+        {"name": "Corrimal", "agency": "NSW Trains", "size": "50"},
+        {"name": "Scarborough", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bellambi", "agency": "NSW Trains", "size": "50"},
+        {"name": "Port Kembla North", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wollongong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Oak Flats", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coledale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Port Kembla", "agency": "NSW Trains", "size": "50"},
+        {"name": "North Wollongong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cringila", "agency": "NSW Trains", "size": "50"},
+        {"name": "Austinmer", "agency": "NSW Trains", "size": "50"},
+        {"name": "Minnamurra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wombarra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Woonona", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gerringong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Shellharbour Junction", "agency": "NSW Trains", "size": "50"},
+        {"name": "Thirroul", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kembla Grange", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coalcliff", "agency": "NSW Trains", "size": "50"},
+        {"name": "Towradgi", "agency": "NSW Trains", "size": "50"},
+        {"name": "Albion Park", "agency": "NSW Trains", "size": "50"},
+        {"name": "Stanwell Park", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kiama", "agency": "NSW Trains", "size": "50"},
+        {"name": "Unanderra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Fairy Meadow", "agency": "NSW Trains", "size": "50"},
+        {"name": "Berry", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coniston", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bombo", "agency": "NSW Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Train Facility",
+     "children": [
+      {
+       "name": "Maintenance Centres",
+       "children": [
+        {"name": "Maintenance Centre - Flemington", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Maintenance Centre - Sydenham XPT", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Maintenance Centre - Broadmeadow Endeavour", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Maintenance Centre - Mortdale", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Maintenance Centre - Eveleigh Xplorer", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Maintenance Centre - Hornsby", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Maintenance Centre - Eveleigh Oscars", "agency": "Sydney Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Stabling Location",
+       "children": [
+        {"name": "Stabling Yard - Moss Vale", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - North Sydney", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Waterfall", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Penrith", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Blacktown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Campbelltown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Lavender Bay", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Leppington", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Cronulla", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Macdonaldtown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stabling Yard - Gosford", "agency": "Sydney Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Privately Operated Stations",
+     "children": [
+      {
+       "name": "AirportLink",
+       "children": [
+        {"name": "International Airport", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Domestic Airport", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Mascot", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Green Square", "agency": "Sydney Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Sydney Trains - Train Lines",
+     "children": [
+      {
+       "name": "Train Line",
+       "children": [
+        {"name": "T7 Olympic Park Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T3 Bankstown Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "South West Rail Link", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T1 Western Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T6 Carlingford Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T1 Northern Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T2 Inner West & South Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T5 Cumberland Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T1 North Shore & Northern Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T4 Eastern Suburbs & Illawarra Line", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Line Unspecified", "agency": "Sydney Trains", "size": "50"},
+        {"name": "T2 Airport Line", "agency": "Sydney Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "NSW TrainLink Regional Coach Stops",
+     "children": [
+      {
+       "name": "Coach Stop Unspecified",
+       "children": [
+        {"name": "Coach Stop Unknown", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "South",
+       "children": [
+        {"name": "Bowning", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tumbarumba", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yass Town", "agency": "NSW Trains", "size": "50"},
+        {"name": "Young", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hay", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yarrawonga", "agency": "NSW Trains", "size": "50"},
+        {"name": "Koorawatha", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tocumwal", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wallendbeen", "agency": "NSW Trains", "size": "50"},
+        {"name": "Merimbula", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lake Cargelligo", "agency": "NSW Trains", "size": "50"},
+        {"name": "Binalong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Leeton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Harden", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cooma", "agency": "NSW Trains", "size": "50"},
+        {"name": "Whitton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tullibigeal", "agency": "NSW Trains", "size": "50"},
+        {"name": "Alectown", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bemboka", "agency": "NSW Trains", "size": "50"},
+        {"name": "Matong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wolumla", "agency": "NSW Trains", "size": "50"},
+        {"name": "West Wyalong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bombala", "agency": "NSW Trains", "size": "50"},
+        {"name": "Robertson", "agency": "NSW Trains", "size": "50"},
+        {"name": "Condobolin", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gundagai", "agency": "NSW Trains", "size": "50"},
+        {"name": "Griffith", "agency": "NSW Trains", "size": "50"},
+        {"name": "Stockinbingal", "agency": "NSW Trains", "size": "50"},
+        {"name": "Moama", "agency": "NSW Trains", "size": "50"},
+        {"name": "Batlow", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mathoura", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bega", "agency": "NSW Trains", "size": "50"},
+        {"name": "Canowindra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bendick Murrell", "agency": "NSW Trains", "size": "50"},
+        {"name": "Binya", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wyalong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wagga Wagga", "agency": "NSW Trains", "size": "50"},
+        {"name": "Euston", "agency": "NSW Trains", "size": "50"},
+        {"name": "Deniliquin", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bredbo", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yenda", "agency": "NSW Trains", "size": "50"},
+        {"name": "Nimmitabel", "agency": "NSW Trains", "size": "50"},
+        {"name": "Michelago", "agency": "NSW Trains", "size": "50"},
+        {"name": "Narrandera", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cudal", "agency": "NSW Trains", "size": "50"},
+        {"name": "Darlington Point", "agency": "NSW Trains", "size": "50"},
+        {"name": "Burrawang", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ardlethan", "agency": "NSW Trains", "size": "50"},
+        {"name": "Urana", "agency": "NSW Trains", "size": "50"},
+        {"name": "Adelong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cootamundra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coolamon", "agency": "NSW Trains", "size": "50"},
+        {"name": "Canberra (Kingston)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Pambula", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yanco", "agency": "NSW Trains", "size": "50"},
+        {"name": "Grong Grong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Peak Hill", "agency": "NSW Trains", "size": "50"},
+        {"name": "Eden", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cobram (VIC)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Jerilderie", "agency": "NSW Trains", "size": "50"},
+        {"name": "Muttama", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yass Junction", "agency": "NSW Trains", "size": "50"},
+        {"name": "Temora", "agency": "NSW Trains", "size": "50"},
+        {"name": "Barellan", "agency": "NSW Trains", "size": "50"},
+        {"name": "Finley", "agency": "NSW Trains", "size": "50"},
+        {"name": "Howlong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Barmedman", "agency": "NSW Trains", "size": "50"},
+        {"name": "Robinvale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Junee", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ungarie", "agency": "NSW Trains", "size": "50"},
+        {"name": "Echuca (VIC)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tumut", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tomingley", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mulwala", "agency": "NSW Trains", "size": "50"},
+        {"name": "Blighty", "agency": "NSW Trains", "size": "50"},
+        {"name": "Barooga", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mildura", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ariah Park", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lockhart", "agency": "NSW Trains", "size": "50"},
+        {"name": "Albury", "agency": "NSW Trains", "size": "50"},
+        {"name": "Carrathool", "agency": "NSW Trains", "size": "50"},
+        {"name": "Corowa", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wondalga", "agency": "NSW Trains", "size": "50"},
+        {"name": "Canberra Jolimont", "agency": "NSW Trains", "size": "50"},
+        {"name": "Berrigan", "agency": "NSW Trains", "size": "50"},
+        {"name": "Beckom", "agency": "NSW Trains", "size": "50"},
+        {"name": "Balranald", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coolac", "agency": "NSW Trains", "size": "50"},
+        {"name": "Buronga", "agency": "NSW Trains", "size": "50"},
+        {"name": "Galong", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "West",
+       "children": [
+        {"name": "Yarrabandai", "agency": "NSW Trains", "size": "50"},
+        {"name": "Nyngan", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lyndhurst", "agency": "NSW Trains", "size": "50"},
+        {"name": "Molong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Narromine", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bumbaldry", "agency": "NSW Trains", "size": "50"},
+        {"name": "Dubbo", "agency": "NSW Trains", "size": "50"},
+        {"name": "Rylstone Hospital", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lue", "agency": "NSW Trains", "size": "50"},
+        {"name": "Raglan", "agency": "NSW Trains", "size": "50"},
+        {"name": "Portland", "agency": "NSW Trains", "size": "50"},
+        {"name": "Broken Hill", "agency": "NSW Trains", "size": "50"},
+        {"name": "Warren", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ivanhoe", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cowra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Boppy Mountain", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ootha", "agency": "NSW Trains", "size": "50"},
+        {"name": "Trangie", "agency": "NSW Trains", "size": "50"},
+        {"name": "Baradine", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cullen Bullen", "agency": "NSW Trains", "size": "50"},
+        {"name": "Geurie", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bogan Gate", "agency": "NSW Trains", "size": "50"},
+        {"name": "Portland East", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coolah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Woodstock", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wilcannia", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mudgee", "agency": "NSW Trains", "size": "50"},
+        {"name": "Byrock", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yetholme", "agency": "NSW Trains", "size": "50"},
+        {"name": "Orange", "agency": "NSW Trains", "size": "50"},
+        {"name": "Oberon", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coolabah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mudgee Rail", "agency": "NSW Trains", "size": "50"},
+        {"name": "Little Hartley", "agency": "NSW Trains", "size": "50"},
+        {"name": "Emmdale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mandurama", "agency": "NSW Trains", "size": "50"},
+        {"name": "Eugowra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Girilambone", "agency": "NSW Trains", "size": "50"},
+        {"name": "Craboon Junction", "agency": "NSW Trains", "size": "50"},
+        {"name": "Millthorpe", "agency": "NSW Trains", "size": "50"},
+        {"name": "Meadow Flat", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cobar", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lucknow", "agency": "NSW Trains", "size": "50"},
+        {"name": "Newbridge (Closed)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Derriwong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wallerawang", "agency": "NSW Trains", "size": "50"},
+        {"name": "Spring Hill", "agency": "NSW Trains", "size": "50"},
+        {"name": "Brewarrina", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wellington", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coonamble", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gongolon", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lightning Ridge", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bathurst", "agency": "NSW Trains", "size": "50"},
+        {"name": "Forbes", "agency": "NSW Trains", "size": "50"},
+        {"name": "Parkes", "agency": "NSW Trains", "size": "50"},
+        {"name": "Manildra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kelso", "agency": "NSW Trains", "size": "50"},
+        {"name": "Running Stream", "agency": "NSW Trains", "size": "50"},
+        {"name": "Charbon", "agency": "NSW Trains", "size": "50"},
+        {"name": "Capertee", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hampton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Kandos", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hartley", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bourke", "agency": "NSW Trains", "size": "50"},
+        {"name": "Walgett", "agency": "NSW Trains", "size": "50"},
+        {"name": "Dunedoo", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gilgandra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mount Lambie", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gulargambone", "agency": "NSW Trains", "size": "50"},
+        {"name": "Carcoar", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ilford", "agency": "NSW Trains", "size": "50"},
+        {"name": "Clandulla", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gulgong", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ben Bullen", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cudal", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mendooran", "agency": "NSW Trains", "size": "50"},
+        {"name": "Nevertire", "agency": "NSW Trains", "size": "50"},
+        {"name": "Coonabarabran", "agency": "NSW Trains", "size": "50"},
+        {"name": "Good Forest", "agency": "NSW Trains", "size": "50"},
+        {"name": "Rylstone", "agency": "NSW Trains", "size": "50"},
+        {"name": "Binnaway", "agency": "NSW Trains", "size": "50"},
+        {"name": "Blayney", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hermidale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Canowindra", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "North West",
+       "children": [
+        {"name": "Guyra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Narrabri", "agency": "NSW Trains", "size": "50"},
+        {"name": "Edgeroi", "agency": "NSW Trains", "size": "50"},
+        {"name": "Deepwater", "agency": "NSW Trains", "size": "50"},
+        {"name": "Jackadgery", "agency": "NSW Trains", "size": "50"},
+        {"name": "Llangothlin", "agency": "NSW Trains", "size": "50"},
+        {"name": "Delungra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Manilla", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bolivia", "agency": "NSW Trains", "size": "50"},
+        {"name": "Walcha Road", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gibraltar Range", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tenterfield", "agency": "NSW Trains", "size": "50"},
+        {"name": "Moree", "agency": "NSW Trains", "size": "50"},
+        {"name": "Barraba", "agency": "NSW Trains", "size": "50"},
+        {"name": "Burren Junction", "agency": "NSW Trains", "size": "50"},
+        {"name": "Upper Manilla", "agency": "NSW Trains", "size": "50"},
+        {"name": "Walcha", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tamworth", "agency": "NSW Trains", "size": "50"},
+        {"name": "Glen Innes", "agency": "NSW Trains", "size": "50"},
+        {"name": "Warialda", "agency": "NSW Trains", "size": "50"},
+        {"name": "Glencoe", "agency": "NSW Trains", "size": "50"},
+        {"name": "Inverell", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cobbadah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Warialda Rail", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wee Waa", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bingara", "agency": "NSW Trains", "size": "50"},
+        {"name": "Dundee", "agency": "NSW Trains", "size": "50"},
+        {"name": "Attunga", "agency": "NSW Trains", "size": "50"},
+        {"name": "Baan Baa", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mount Russell Turnoff", "agency": "NSW Trains", "size": "50"},
+        {"name": "Armidale", "agency": "NSW Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "North Coast",
+       "children": [
+        {"name": "Forster Keys", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tea Gardens Turnoff", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ballina West", "agency": "NSW Trains", "size": "50"},
+        {"name": "Alstonville", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mount George Turnoff", "agency": "NSW Trains", "size": "50"},
+        {"name": "Grafton", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wauchope", "agency": "NSW Trains", "size": "50"},
+        {"name": "Surfers Paradise (QLD)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lismore", "agency": "NSW Trains", "size": "50"},
+        {"name": "Chinderah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tea Gardens", "agency": "NSW Trains", "size": "50"},
+        {"name": "Port Macquarie", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yamba", "agency": "NSW Trains", "size": "50"},
+        {"name": "Yamba West", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bungwahl", "agency": "NSW Trains", "size": "50"},
+        {"name": "Allworth", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bulahdelah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Broadwater", "agency": "NSW Trains", "size": "50"},
+        {"name": "Maclean", "agency": "NSW Trains", "size": "50"},
+        {"name": "Biniguy", "agency": "NSW Trains", "size": "50"},
+        {"name": "Suffolk Park", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bogangar", "agency": "NSW Trains", "size": "50"},
+        {"name": "Palm Beach (QLD)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Burringbar", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ocean Shores", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wingham", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hastings Point", "agency": "NSW Trains", "size": "50"},
+        {"name": "South Tweed Heads", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wollongbar", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hawks Nest", "agency": "NSW Trains", "size": "50"},
+        {"name": "Karuah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Burleigh Heads (QLD)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Stratford", "agency": "NSW Trains", "size": "50"},
+        {"name": "Pottsville", "agency": "NSW Trains", "size": "50"},
+        {"name": "Krambach", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ballina", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wardell", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mooball", "agency": "NSW Trains", "size": "50"},
+        {"name": "Wards River", "agency": "NSW Trains", "size": "50"},
+        {"name": "Pacific Palms", "agency": "NSW Trains", "size": "50"},
+        {"name": "Chatsworth Island", "agency": "NSW Trains", "size": "50"},
+        {"name": "Woodburn", "agency": "NSW Trains", "size": "50"},
+        {"name": "Lennox Head", "agency": "NSW Trains", "size": "50"},
+        {"name": "Clunes", "agency": "NSW Trains", "size": "50"},
+        {"name": "Brisbane (QLD)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Evans Head", "agency": "NSW Trains", "size": "50"},
+        {"name": "Southport (QLD)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tweed Heads", "agency": "NSW Trains", "size": "50"},
+        {"name": "Goonellabah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Forster", "agency": "NSW Trains", "size": "50"},
+        {"name": "Mullumbimby", "agency": "NSW Trains", "size": "50"},
+        {"name": "Cowper", "agency": "NSW Trains", "size": "50"},
+        {"name": "Casino", "agency": "NSW Trains", "size": "50"},
+        {"name": "Billinudgel", "agency": "NSW Trains", "size": "50"},
+        {"name": "Smith Lake Turnoff", "agency": "NSW Trains", "size": "50"},
+        {"name": "Taree", "agency": "NSW Trains", "size": "50"},
+        {"name": "Gloucester", "agency": "NSW Trains", "size": "50"},
+        {"name": "Ulmarra", "agency": "NSW Trains", "size": "50"},
+        {"name": "Belbora", "agency": "NSW Trains", "size": "50"},
+        {"name": "Robina (QLD)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Limeburners Creek", "agency": "NSW Trains", "size": "50"},
+        {"name": "Bangalow", "agency": "NSW Trains", "size": "50"},
+        {"name": "Brunswick Heads", "agency": "NSW Trains", "size": "50"},
+        {"name": "Stroud Road", "agency": "NSW Trains", "size": "50"},
+        {"name": "Iluka", "agency": "NSW Trains", "size": "50"},
+        {"name": "Beenleigh (QLD)", "agency": "NSW Trains", "size": "50"},
+        {"name": "Craven", "agency": "NSW Trains", "size": "50"},
+        {"name": "Booral", "agency": "NSW Trains", "size": "50"},
+        {"name": "Murwillumbah", "agency": "NSW Trains", "size": "50"},
+        {"name": "Burrell Creek", "agency": "NSW Trains", "size": "50"},
+        {"name": "Stroud", "agency": "NSW Trains", "size": "50"},
+        {"name": "Palmers Island", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tyndale", "agency": "NSW Trains", "size": "50"},
+        {"name": "Byron Bay", "agency": "NSW Trains", "size": "50"},
+        {"name": "Tuncurry", "agency": "NSW Trains", "size": "50"},
+        {"name": "Hallidays Point Turnoff", "agency": "NSW Trains", "size": "50"},
+        {"name": "Raymond Terrace", "agency": "NSW Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Sydney Trains Stations",
+     "children": [
+      {
+       "name": "CBD Inner West",
+       "children": [
+        {"name": "Olympic Park", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Museum", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Milsons Point", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Flemington", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Station Unknown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Martin Place", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Town Hall", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Stanmore", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Bondi Junction", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Newtown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Summer Hill", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Wynyard", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Petersham", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Redfern", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Lidcombe", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Homebush", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Kings Cross", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Ashfield", "agency": "Sydney Trains", "size": "50"},
+        {"name": "St James", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Edgecliff", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Macdonaldtown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Lewisham", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Burwood", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Central", "agency": "Sydney Trains", "size": "50"},
+        {"name": "North Sydney", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Strathfield", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Circular Quay", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Croydon", "agency": "Sydney Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Unspecified",
+       "children": [
+        {"name": "Station Unknown", "agency": "Sydney Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "South Illawarra",
+       "children": [
+        {"name": "Fairfield", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Carramar", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Warwick Farm", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Waterfall", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Canley Vale", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Macarthur", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Guildford", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Marrickville", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Liverpool", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Kirrawee", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Bardwell Park", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Berala", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Erskineville", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Cabramatta", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Holsworthy", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Station Unknown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Canterbury", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Edmondson Park", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Engadine", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Minto", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Como", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Penshurst", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Dulwich Hill", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Padstow", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Hurlstone Park", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Bankstown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "St Peters", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Merrylands", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Cronulla", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Loftus", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Sutherland", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Turrella", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Revesby", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Wolli Creek", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Wiley Park", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Glenfield", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Jannali", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Leightonfield", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Arncliffe", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Yagoona", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Leppington", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Birrong", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Mortdale", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Leumeah", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Sefton", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Chester Hill", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Belmore", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Tempe", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Banksia", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Carlton", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Casula", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Miranda", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Bexley North", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Punchbowl", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Beverly Hills", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Ingleburn", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Oatley", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Kogarah", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Hurstville", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Lakemba", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Gymea", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Villawood", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Regents Park", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Sydenham", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Woolooware", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Narwee", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Campbelltown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Campsie", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Macquarie Fields", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Kingsgrove", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Caringbah", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Panania", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Rockdale", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Riverwood", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Heathcote", "agency": "Sydney Trains", "size": "50"},
+        {"name": "East Hills", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Yennora", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Allawah", "agency": "Sydney Trains", "size": "50"}
+                   ]
+      },
+      {
+       "name": "North West",
+       "children": [
+        {"name": "Rhodes", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Wahroonga", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Gordon", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Clarendon", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Wentworthville", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Pendle Hill", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Kingswood", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Penrith", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Parramatta", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Station Unknown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Lindfield", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Richmond", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Turramurra", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Waverton", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Quakers Hill", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Asquith", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Blacktown", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Killara", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Mount Druitt", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Warrawee", "agency": "Sydney Trains", "size": "50"},
+        {"name": "St Leonards", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Hornsby", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Telopea", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Riverstone", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Pennant Hills", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Emu Plains", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Mount Kuring-gai", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Meadowbank", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Westmead", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Denistone", "agency": "Sydney Trains", "size": "50"},
+        {"name": "East Richmond", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Cheltenham", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Rydalmere", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Epping", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Doonside", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Beecroft", "agency": "Sydney Trains", "size": "50"},
+        {"name": "West Ryde", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Marayong", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Normanhurst", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Artarmon", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Clyde", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Seven Hills", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Pymble", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Dundas", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Rooty Hill", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Mulgrave", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Windsor", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Berowra", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Roseville", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Auburn", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Waitara", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Toongabbie", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Wollstonecraft", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Mount Colah", "agency": "Sydney Trains", "size": "50"},
+        {"name": "North Ryde", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Vineyard", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Macquarie University", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Chatswood", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Harris Park", "agency": "Sydney Trains", "size": "50"},
+        {"name": "North Strathfield", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Camellia", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Schofields", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Werrington", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Rosehill", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Carlingford", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Thornleigh", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Macquarie Park", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Eastwood", "agency": "Sydney Trains", "size": "50"},
+        {"name": "St Marys", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Granville", "agency": "Sydney Trains", "size": "50"},
+        {"name": "Concord West", "agency": "Sydney Trains", "size": "50"}
+                   ]
+      }
+                 ]
+    }
+               ]
+  },
+  {
+   "name": "Bus",
+   "children": [
+    {
+     "name": "Picton Coaches",
+     "children": [
+      {
+       "name": "Picton",
+       "children": [
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "912", "agency": "PBO", "size": "50"},
+        {"name": "901", "agency": "PBO", "size": "50"},
+        {"name": "913", "agency": "PBO", "size": "50"},
+        {"name": "914", "agency": "PBO", "size": "50"},
+        {"name": "900", "agency": "PBO", "size": "50"},
+        {"name": "911", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Kennedys",
+     "children": [
+      {
+       "name": "South Nowra",
+       "children": [
+        {"name": "729", "agency": "PBO", "size": "50"},
+        {"name": "728", "agency": "PBO", "size": "50"},
+        {"name": "809", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Stuarts Coaches",
+     "children": [
+      {
+       "name": "Nowra",
+       "children": [
+        {"name": "730", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Forest",
+     "children": [
+      {
+       "name": "SMBSC 14",
+       "children": [
+        {"name": "194", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "L70", "agency": "PBO", "size": "50"},
+        {"name": "197", "agency": "PBO", "size": "50"},
+        {"name": "270", "agency": "PBO", "size": "50"},
+        {"name": "282", "agency": "PBO", "size": "50"},
+        {"name": "280", "agency": "PBO", "size": "50"},
+        {"name": "284", "agency": "PBO", "size": "50"},
+        {"name": "195/6", "agency": "PBO", "size": "50"},
+        {"name": "278", "agency": "PBO", "size": "50"},
+        {"name": "274", "agency": "PBO", "size": "50"},
+        {"name": "277", "agency": "PBO", "size": "50"},
+        {"name": "281", "agency": "PBO", "size": "50"},
+        {"name": "276", "agency": "PBO", "size": "50"},
+        {"name": "271", "agency": "PBO", "size": "50"},
+        {"name": "279", "agency": "PBO", "size": "50"},
+        {"name": "195", "agency": "PBO", "size": "50"},
+        {"name": "283", "agency": "PBO", "size": "50"},
+        {"name": "260", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Nowra Coaches",
+     "children": [
+      {
+       "name": "Nowra",
+       "children": [
+        {"name": "733", "agency": "PBO", "size": "50"},
+        {"name": "724", "agency": "PBO", "size": "50"},
+        {"name": "732", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Caringbah Bus Services",
+     "children": [
+      {
+       "name": "Caringbah",
+       "children": [
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Blue Mountains Transit",
+     "children": [
+      {
+       "name": "OSMBSC 8",
+       "children": [
+        {"name": "688", "agency": "PBO", "size": "50"},
+        {"name": "692", "agency": "PBO", "size": "50"},
+        {"name": "693", "agency": "PBO", "size": "50"},
+        {"name": "695", "agency": "PBO", "size": "50"},
+        {"name": "686", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "691", "agency": "PBO", "size": "50"},
+        {"name": "685", "agency": "PBO", "size": "50"},
+        {"name": "694", "agency": "PBO", "size": "50"},
+        {"name": "696", "agency": "PBO", "size": "50"},
+        {"name": "1688", "agency": "PBO", "size": "50"},
+        {"name": "697", "agency": "PBO", "size": "50"},
+        {"name": "698", "agency": "PBO", "size": "50"},
+        {"name": "690", "agency": "PBO", "size": "50"},
+        {"name": "689", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Hunter Valley Buses",
+     "children": [
+      {
+       "name": "OSMBSC 2",
+       "children": [
+        {"name": "140", "agency": "PBO", "size": "50"},
+        {"name": "269", "agency": "PBO", "size": "50"},
+        {"name": "270", "agency": "PBO", "size": "50"},
+        {"name": "141", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "186", "agency": "PBO", "size": "50"},
+        {"name": "185", "agency": "PBO", "size": "50"},
+        {"name": "180", "agency": "PBO", "size": "50"},
+        {"name": "179", "agency": "PBO", "size": "50"},
+        {"name": "146", "agency": "PBO", "size": "50"},
+        {"name": "280", "agency": "PBO", "size": "50"},
+        {"name": "274", "agency": "PBO", "size": "50"},
+        {"name": "260", "agency": "PBO", "size": "50"},
+        {"name": "267", "agency": "PBO", "size": "50"},
+        {"name": "184", "agency": "PBO", "size": "50"},
+        {"name": "189", "agency": "PBO", "size": "50"},
+        {"name": "192", "agency": "PBO", "size": "50"},
+        {"name": "402", "agency": "PBO", "size": "50"},
+        {"name": "281", "agency": "PBO", "size": "50"},
+        {"name": "268", "agency": "PBO", "size": "50"},
+        {"name": "262", "agency": "PBO", "size": "50"},
+        {"name": "182", "agency": "PBO", "size": "50"},
+        {"name": "136", "agency": "PBO", "size": "50"},
+        {"name": "275", "agency": "PBO", "size": "50"},
+        {"name": "278", "agency": "PBO", "size": "50"},
+        {"name": "263", "agency": "PBO", "size": "50"},
+        {"name": "273", "agency": "PBO", "size": "50"},
+        {"name": "181", "agency": "PBO", "size": "50"},
+        {"name": "137", "agency": "PBO", "size": "50"},
+        {"name": "403", "agency": "PBO", "size": "50"},
+        {"name": "401", "agency": "PBO", "size": "50"},
+        {"name": "187", "agency": "PBO", "size": "50"},
+        {"name": "261", "agency": "PBO", "size": "50"},
+        {"name": "279", "agency": "PBO", "size": "50"},
+        {"name": "271", "agency": "PBO", "size": "50"},
+        {"name": "183", "agency": "PBO", "size": "50"},
+        {"name": "276", "agency": "PBO", "size": "50"},
+        {"name": "138", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Punchbowl Bus Co",
+     "children": [
+      {
+       "name": "SMBC 5",
+       "children": [
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "446", "agency": "PBO", "size": "50"},
+        {"name": "450", "agency": "PBO", "size": "50"},
+        {"name": "945", "agency": "PBO", "size": "50"},
+        {"name": "N20", "agency": "PBO", "size": "50"},
+        {"name": "946", "agency": "PBO", "size": "50"},
+        {"name": "N30", "agency": "PBO", "size": "50"},
+        {"name": "N10", "agency": "PBO", "size": "50"},
+        {"name": "942", "agency": "PBO", "size": "50"},
+        {"name": "953", "agency": "PBO", "size": "50"},
+        {"name": "N50", "agency": "PBO", "size": "50"},
+        {"name": "939", "agency": "PBO", "size": "50"},
+        {"name": "944", "agency": "PBO", "size": "50"},
+        {"name": "941", "agency": "PBO", "size": "50"},
+        {"name": "943", "agency": "PBO", "size": "50"},
+        {"name": "N40", "agency": "PBO", "size": "50"},
+        {"name": "940", "agency": "PBO", "size": "50"},
+        {"name": "S14", "agency": "PBO", "size": "50"},
+        {"name": "954", "agency": "PBO", "size": "50"},
+        {"name": "955", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Newcastle Buses",
+     "children": [
+      {
+       "name": "Newcastle",
+       "children": [
+        {"name": "320", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "352", "agency": "STA", "size": "50"},
+        {"name": "339", "agency": "STA", "size": "50"},
+        {"name": "313", "agency": "STA", "size": "50"},
+        {"name": "317", "agency": "STA", "size": "50"},
+        {"name": "363", "agency": "STA", "size": "50"},
+        {"name": "350", "agency": "STA", "size": "50"},
+        {"name": "201", "agency": "STA", "size": "50"},
+        {"name": "230", "agency": "STA", "size": "50"},
+        {"name": "310", "agency": "STA", "size": "50"},
+        {"name": "226", "agency": "STA", "size": "50"},
+        {"name": "322", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "334", "agency": "STA", "size": "50"},
+        {"name": "318", "agency": "STA", "size": "50"},
+        {"name": "224", "agency": "STA", "size": "50"},
+        {"name": "235", "agency": "STA", "size": "50"},
+        {"name": "107", "agency": "STA", "size": "50"},
+        {"name": "231", "agency": "STA", "size": "50"},
+        {"name": "225", "agency": "STA", "size": "50"},
+        {"name": "249", "agency": "STA", "size": "50"},
+        {"name": "222", "agency": "STA", "size": "50"},
+        {"name": "118", "agency": "STA", "size": "50"},
+        {"name": "111", "agency": "STA", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Bathurst Buslines",
+     "children": [
+      {
+       "name": "Bathurst",
+       "children": [
+        {"name": "524", "agency": "PBO", "size": "50"},
+        {"name": "523", "agency": "PBO", "size": "50"},
+        {"name": "525", "agency": "PBO", "size": "50"},
+        {"name": "520", "agency": "PBO", "size": "50"},
+        {"name": "521", "agency": "PBO", "size": "50"},
+        {"name": "526", "agency": "PBO", "size": "50"},
+        {"name": "522", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Port Stephens Buses",
+     "children": [
+      {
+       "name": "OSMBC 3",
+       "children": [
+        {"name": "130", "agency": "PBO", "size": "50"},
+        {"name": "133", "agency": "PBO", "size": "50"},
+        {"name": "132", "agency": "PBO", "size": "50"},
+        {"name": "134", "agency": "PBO", "size": "50"},
+        {"name": "135", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "100", "agency": "PBO", "size": "50"},
+        {"name": "131", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Lithgow Buslines",
+     "children": [
+      {
+       "name": "Lithgow",
+       "children": [
+        {"name": "500", "agency": "PBO", "size": "50"},
+        {"name": "100", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "200", "agency": "PBO", "size": "50"},
+        {"name": "304", "agency": "PBO", "size": "50"},
+        {"name": "636", "agency": "PBO", "size": "50"},
+        {"name": "600", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "The Entrance Red Bus",
+     "children": [
+      {
+       "name": "OSMBC 7",
+       "children": [
+        {"name": "16", "agency": "PBO", "size": "50"},
+        {"name": "15", "agency": "PBO", "size": "50"},
+        {"name": "17", "agency": "PBO", "size": "50"},
+        {"name": "43", "agency": "PBO", "size": "50"},
+        {"name": "29", "agency": "PBO", "size": "50"},
+        {"name": "22", "agency": "PBO", "size": "50"},
+        {"name": "24", "agency": "PBO", "size": "50"},
+        {"name": "20A", "agency": "PBO", "size": "50"},
+        {"name": "45", "agency": "PBO", "size": "50"},
+        {"name": "30", "agency": "PBO", "size": "50"},
+        {"name": "26", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "28", "agency": "PBO", "size": "50"},
+        {"name": "47", "agency": "PBO", "size": "50"},
+        {"name": "44", "agency": "PBO", "size": "50"},
+        {"name": "19", "agency": "PBO", "size": "50"},
+        {"name": "21", "agency": "PBO", "size": "50"},
+        {"name": "20", "agency": "PBO", "size": "50"},
+        {"name": "42", "agency": "PBO", "size": "50"},
+        {"name": "23", "agency": "PBO", "size": "50"},
+        {"name": "25", "agency": "PBO", "size": "50"},
+        {"name": "45A", "agency": "PBO", "size": "50"},
+        {"name": "18", "agency": "PBO", "size": "50"},
+        {"name": "48", "agency": "PBO", "size": "50"},
+        {"name": "40", "agency": "PBO", "size": "50"},
+        {"name": "41", "agency": "PBO", "size": "50"},
+        {"name": "27", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Sydney Buses",
+     "children": [
+      {
+       "name": "Waverley",
+       "children": [
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "BJI TVM", "agency": "STA", "size": "50"},
+        {"name": "200", "agency": "STA", "size": "50"},
+        {"name": "361", "agency": "STA", "size": "50"},
+        {"name": "316", "agency": "STA", "size": "50"},
+        {"name": "380", "agency": "STA", "size": "50"},
+        {"name": "323", "agency": "STA", "size": "50"},
+        {"name": "333", "agency": "STA", "size": "50"},
+        {"name": "378", "agency": "STA", "size": "50"},
+        {"name": "325", "agency": "STA", "size": "50"},
+        {"name": "381", "agency": "STA", "size": "50"},
+        {"name": "X84", "agency": "STA", "size": "50"},
+        {"name": "326", "agency": "STA", "size": "50"},
+        {"name": "324/L24", "agency": "STA", "size": "50"},
+        {"name": "313", "agency": "STA", "size": "50"},
+        {"name": "L24", "agency": "STA", "size": "50"},
+        {"name": "387", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "355", "agency": "STA", "size": "50"},
+        {"name": "352", "agency": "STA", "size": "50"},
+        {"name": "327", "agency": "STA", "size": "50"},
+        {"name": "890", "agency": "STA", "size": "50"},
+        {"name": "389", "agency": "STA", "size": "50"},
+        {"name": "360", "agency": "STA", "size": "50"},
+        {"name": "Edgecliff Interchange", "agency": "STA", "size": "50"},
+        {"name": "314", "agency": "STA", "size": "50"},
+        {"name": "382", "agency": "STA", "size": "50"},
+        {"name": "Bondi Junction Interchange", "agency": "STA", "size": "50"},
+        {"name": "386", "agency": "STA", "size": "50"},
+        {"name": "Feedback", "agency": "STA", "size": "50"},
+        {"name": "315", "agency": "STA", "size": "50"},
+        {"name": "312", "agency": "STA", "size": "50"},
+        {"name": "400", "agency": "STA", "size": "50"},
+        {"name": "300", "agency": "STA", "size": "50"},
+        {"name": "317", "agency": "STA", "size": "50"},
+        {"name": "X89", "agency": "STA", "size": "50"},
+        {"name": "410", "agency": "STA", "size": "50"},
+        {"name": "311", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "No Service Details",
+       "children": [
+        {"name": "No Service Details", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Tempe",
+       "children": [
+        {"name": "348", "agency": "STA", "size": "50"},
+        {"name": "478", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "430", "agency": "STA", "size": "50"},
+        {"name": "479", "agency": "STA", "size": "50"},
+        {"name": "418", "agency": "STA", "size": "50"},
+        {"name": "422", "agency": "STA", "size": "50"},
+        {"name": "477", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "M30", "agency": "STA", "size": "50"},
+        {"name": "M50", "agency": "STA", "size": "50"},
+        {"name": "476", "agency": "STA", "size": "50"},
+        {"name": "308", "agency": "STA", "size": "50"},
+        {"name": "M20", "agency": "STA", "size": "50"},
+        {"name": "M40", "agency": "STA", "size": "50"},
+        {"name": "425", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Port Botany",
+       "children": [
+        {"name": "353", "agency": "STA", "size": "50"},
+        {"name": "394", "agency": "STA", "size": "50"},
+        {"name": "L94", "agency": "STA", "size": "50"},
+        {"name": "M10", "agency": "STA", "size": "50"},
+        {"name": "X10", "agency": "STA", "size": "50"},
+        {"name": "310", "agency": "STA", "size": "50"},
+        {"name": "399", "agency": "STA", "size": "50"},
+        {"name": "X96", "agency": "STA", "size": "50"},
+        {"name": "M20", "agency": "STA", "size": "50"},
+        {"name": "395", "agency": "STA", "size": "50"},
+        {"name": "X92", "agency": "STA", "size": "50"},
+        {"name": "342", "agency": "STA", "size": "50"},
+        {"name": "X77", "agency": "STA", "size": "50"},
+        {"name": "X99", "agency": "STA", "size": "50"},
+        {"name": "L09", "agency": "STA", "size": "50"},
+        {"name": "X09", "agency": "STA", "size": "50"},
+        {"name": "303", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "391", "agency": "STA", "size": "50"},
+        {"name": "X94", "agency": "STA", "size": "50"},
+        {"name": "359", "agency": "STA", "size": "50"},
+        {"name": "305", "agency": "STA", "size": "50"},
+        {"name": "397", "agency": "STA", "size": "50"},
+        {"name": "357", "agency": "STA", "size": "50"},
+        {"name": "396", "agency": "STA", "size": "50"},
+        {"name": "X97", "agency": "STA", "size": "50"},
+        {"name": "301", "agency": "STA", "size": "50"},
+        {"name": "393", "agency": "STA", "size": "50"},
+        {"name": "309", "agency": "STA", "size": "50"},
+        {"name": "392", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "X03", "agency": "STA", "size": "50"},
+        {"name": "302", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Leichhardt",
+       "children": [
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "442", "agency": "STA", "size": "50"},
+        {"name": "L37", "agency": "STA", "size": "50"},
+        {"name": "504", "agency": "STA", "size": "50"},
+        {"name": "448", "agency": "STA", "size": "50"},
+        {"name": "438", "agency": "STA", "size": "50"},
+        {"name": "370", "agency": "STA", "size": "50"},
+        {"name": "470", "agency": "STA", "size": "50"},
+        {"name": "444", "agency": "STA", "size": "50"},
+        {"name": "436", "agency": "STA", "size": "50"},
+        {"name": "431", "agency": "STA", "size": "50"},
+        {"name": "432", "agency": "STA", "size": "50"},
+        {"name": "440", "agency": "STA", "size": "50"},
+        {"name": "441", "agency": "STA", "size": "50"},
+        {"name": "443", "agency": "STA", "size": "50"},
+        {"name": "433", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "502", "agency": "STA", "size": "50"},
+        {"name": "X04", "agency": "STA", "size": "50"},
+        {"name": "406", "agency": "STA", "size": "50"},
+        {"name": "445", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Mona Vale",
+       "children": [
+        {"name": "E86", "agency": "STA", "size": "50"},
+        {"name": "L87", "agency": "STA", "size": "50"},
+        {"name": "E83", "agency": "STA", "size": "50"},
+        {"name": "E84", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "155", "agency": "STA", "size": "50"},
+        {"name": "L88", "agency": "STA", "size": "50"},
+        {"name": "192", "agency": "STA", "size": "50"},
+        {"name": "156", "agency": "STA", "size": "50"},
+        {"name": "E85", "agency": "STA", "size": "50"},
+        {"name": "190", "agency": "STA", "size": "50"},
+        {"name": "187", "agency": "STA", "size": "50"},
+        {"name": "L85", "agency": "STA", "size": "50"},
+        {"name": "182", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "E87", "agency": "STA", "size": "50"},
+        {"name": "185", "agency": "STA", "size": "50"},
+        {"name": "188", "agency": "STA", "size": "50"},
+        {"name": "L84", "agency": "STA", "size": "50"},
+        {"name": "E88", "agency": "STA", "size": "50"},
+        {"name": "L90", "agency": "STA", "size": "50"},
+        {"name": "191", "agency": "STA", "size": "50"},
+        {"name": "E89", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Line Unspecified",
+       "children": [
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Randwick",
+       "children": [
+        {"name": "890", "agency": "STA", "size": "50"},
+        {"name": "M50", "agency": "STA", "size": "50"},
+        {"name": "308", "agency": "STA", "size": "50"},
+        {"name": "377", "agency": "STA", "size": "50"},
+        {"name": "891", "agency": "STA", "size": "50"},
+        {"name": "X77", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "343", "agency": "STA", "size": "50"},
+        {"name": "Moore Park Specials", "agency": "STA", "size": "50"},
+        {"name": "339", "agency": "STA", "size": "50"},
+        {"name": "345", "agency": "STA", "size": "50"},
+        {"name": "371", "agency": "STA", "size": "50"},
+        {"name": "342", "agency": "STA", "size": "50"},
+        {"name": "892", "agency": "STA", "size": "50"},
+        {"name": "376", "agency": "STA", "size": "50"},
+        {"name": "111", "agency": "STA", "size": "50"},
+        {"name": "X39", "agency": "STA", "size": "50"},
+        {"name": "374", "agency": "STA", "size": "50"},
+        {"name": "X74", "agency": "STA", "size": "50"},
+        {"name": "X73", "agency": "STA", "size": "50"},
+        {"name": "370", "agency": "STA", "size": "50"},
+        {"name": "448", "agency": "STA", "size": "50"},
+        {"name": "373", "agency": "STA", "size": "50"},
+        {"name": "348", "agency": "STA", "size": "50"},
+        {"name": "895", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "362", "agency": "STA", "size": "50"},
+        {"name": "X76", "agency": "STA", "size": "50"},
+        {"name": "X40", "agency": "STA", "size": "50"},
+        {"name": "372", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Brookvale",
+       "children": [
+        {"name": "E83", "agency": "STA", "size": "50"},
+        {"name": "E68", "agency": "STA", "size": "50"},
+        {"name": "145", "agency": "STA", "size": "50"},
+        {"name": "Manly Bus Interchange", "agency": "TfNSN", "size": "50"},
+        {"name": "E32", "agency": "STA", "size": "50"},
+        {"name": "155", "agency": "STA", "size": "50"},
+        {"name": "L78", "agency": "STA", "size": "50"},
+        {"name": "E71", "agency": "STA", "size": "50"},
+        {"name": "E50", "agency": "STA", "size": "50"},
+        {"name": "144", "agency": "STA", "size": "50"},
+        {"name": "139", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "E41", "agency": "STA", "size": "50"},
+        {"name": "E69", "agency": "STA", "size": "50"},
+        {"name": "E80", "agency": "STA", "size": "50"},
+        {"name": "E77", "agency": "STA", "size": "50"},
+        {"name": "184", "agency": "STA", "size": "50"},
+        {"name": "130", "agency": "STA", "size": "50"},
+        {"name": "141", "agency": "STA", "size": "50"},
+        {"name": "143", "agency": "STA", "size": "50"},
+        {"name": "179", "agency": "STA", "size": "50"},
+        {"name": "131", "agency": "STA", "size": "50"},
+        {"name": "180", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "175", "agency": "STA", "size": "50"},
+        {"name": "140", "agency": "STA", "size": "50"},
+        {"name": "135", "agency": "STA", "size": "50"},
+        {"name": "E76", "agency": "STA", "size": "50"},
+        {"name": "L60", "agency": "STA", "size": "50"},
+        {"name": "E74", "agency": "STA", "size": "50"},
+        {"name": "142", "agency": "STA", "size": "50"},
+        {"name": "176", "agency": "STA", "size": "50"},
+        {"name": "169", "agency": "STA", "size": "50"},
+        {"name": "L80", "agency": "STA", "size": "50"},
+        {"name": "E79", "agency": "STA", "size": "50"},
+        {"name": "152", "agency": "STA", "size": "50"},
+        {"name": "158", "agency": "STA", "size": "50"},
+        {"name": "E78", "agency": "STA", "size": "50"},
+        {"name": "159", "agency": "STA", "size": "50"},
+        {"name": "E84", "agency": "STA", "size": "50"},
+        {"name": "173", "agency": "STA", "size": "50"},
+        {"name": "183", "agency": "STA", "size": "50"},
+        {"name": "151", "agency": "STA", "size": "50"},
+        {"name": "E66", "agency": "STA", "size": "50"},
+        {"name": "171", "agency": "STA", "size": "50"},
+        {"name": "E35", "agency": "STA", "size": "50"},
+        {"name": "137", "agency": "STA", "size": "50"},
+        {"name": "E70", "agency": "STA", "size": "50"},
+        {"name": "E65", "agency": "STA", "size": "50"},
+        {"name": "L84", "agency": "STA", "size": "50"},
+        {"name": "136", "agency": "STA", "size": "50"},
+        {"name": "E36", "agency": "STA", "size": "50"},
+        {"name": "132", "agency": "STA", "size": "50"},
+        {"name": "168", "agency": "STA", "size": "50"},
+        {"name": "178", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Burwood",
+       "children": [
+        {"name": "L38", "agency": "STA", "size": "50"},
+        {"name": "502", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "466", "agency": "STA", "size": "50"},
+        {"name": "461", "agency": "STA", "size": "50"},
+        {"name": "460", "agency": "STA", "size": "50"},
+        {"name": "439", "agency": "STA", "size": "50"},
+        {"name": "526", "agency": "STA", "size": "50"},
+        {"name": "480", "agency": "STA", "size": "50"},
+        {"name": "408", "agency": "STA", "size": "50"},
+        {"name": "X26", "agency": "STA", "size": "50"},
+        {"name": "401", "agency": "STA", "size": "50"},
+        {"name": "483", "agency": "STA", "size": "50"},
+        {"name": "M41", "agency": "STA", "size": "50"},
+        {"name": "464", "agency": "STA", "size": "50"},
+        {"name": "L39", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "407", "agency": "STA", "size": "50"},
+        {"name": "462", "agency": "STA", "size": "50"},
+        {"name": "463", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Willoughby",
+       "children": [
+        {"name": "255", "agency": "STA", "size": "50"},
+        {"name": "673", "agency": "STA", "size": "50"},
+        {"name": "294", "agency": "STA", "size": "50"},
+        {"name": "208", "agency": "STA", "size": "50"},
+        {"name": "254", "agency": "STA", "size": "50"},
+        {"name": "265", "agency": "STA", "size": "50"},
+        {"name": "275", "agency": "STA", "size": "50"},
+        {"name": "290", "agency": "STA", "size": "50"},
+        {"name": "258", "agency": "STA", "size": "50"},
+        {"name": "291", "agency": "STA", "size": "50"},
+        {"name": "202", "agency": "STA", "size": "50"},
+        {"name": "273", "agency": "STA", "size": "50"},
+        {"name": "251", "agency": "STA", "size": "50"},
+        {"name": "253", "agency": "STA", "size": "50"},
+        {"name": "261", "agency": "STA", "size": "50"},
+        {"name": "M40", "agency": "STA", "size": "50"},
+        {"name": "140", "agency": "STA", "size": "50"},
+        {"name": "269", "agency": "STA", "size": "50"},
+        {"name": "256", "agency": "STA", "size": "50"},
+        {"name": "257", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "288", "agency": "STA", "size": "50"},
+        {"name": "210", "agency": "STA", "size": "50"},
+        {"name": "555", "agency": "STA", "size": "50"},
+        {"name": "274", "agency": "STA", "size": "50"},
+        {"name": "209", "agency": "STA", "size": "50"},
+        {"name": "293", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "203", "agency": "STA", "size": "50"},
+        {"name": "204", "agency": "STA", "size": "50"},
+        {"name": "272", "agency": "STA", "size": "50"},
+        {"name": "267", "agency": "STA", "size": "50"},
+        {"name": "201", "agency": "STA", "size": "50"},
+        {"name": "205", "agency": "STA", "size": "50"},
+        {"name": "207", "agency": "STA", "size": "50"},
+        {"name": "252", "agency": "STA", "size": "50"},
+        {"name": "292", "agency": "STA", "size": "50"},
+        {"name": "206", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "North Sydney",
+       "children": [
+        {"name": "243", "agency": "STA", "size": "50"},
+        {"name": "230", "agency": "STA", "size": "50"},
+        {"name": "247", "agency": "STA", "size": "50"},
+        {"name": "201", "agency": "STA", "size": "50"},
+        {"name": "233", "agency": "STA", "size": "50"},
+        {"name": "263", "agency": "STA", "size": "50"},
+        {"name": "246", "agency": "STA", "size": "50"},
+        {"name": "244", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "236", "agency": "STA", "size": "50"},
+        {"name": "227", "agency": "STA", "size": "50"},
+        {"name": "229", "agency": "STA", "size": "50"},
+        {"name": "249", "agency": "STA", "size": "50"},
+        {"name": "228", "agency": "STA", "size": "50"},
+        {"name": "225", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "248", "agency": "STA", "size": "50"},
+        {"name": "245", "agency": "STA", "size": "50"},
+        {"name": "238", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Ryde",
+       "children": [
+        {"name": "545", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "287", "agency": "STA", "size": "50"},
+        {"name": "542", "agency": "STA", "size": "50"},
+        {"name": "458", "agency": "STA", "size": "50"},
+        {"name": "544", "agency": "STA", "size": "50"},
+        {"name": "521", "agency": "STA", "size": "50"},
+        {"name": "506", "agency": "STA", "size": "50"},
+        {"name": "552", "agency": "STA", "size": "50"},
+        {"name": "547", "agency": "STA", "size": "50"},
+        {"name": "295", "agency": "STA", "size": "50"},
+        {"name": "X00", "agency": "STA", "size": "50"},
+        {"name": "510", "agency": "STA", "size": "50"},
+        {"name": "536", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "525", "agency": "STA", "size": "50"},
+        {"name": "541", "agency": "STA", "size": "50"},
+        {"name": "297", "agency": "STA", "size": "50"},
+        {"name": "550", "agency": "STA", "size": "50"},
+        {"name": "QVB TransitShop", "agency": "TfNSN", "size": "50"},
+        {"name": "X06", "agency": "STA", "size": "50"},
+        {"name": "538", "agency": "STA", "size": "50"},
+        {"name": "X18", "agency": "STA", "size": "50"},
+        {"name": "508", "agency": "STA", "size": "50"},
+        {"name": "500", "agency": "STA", "size": "50"},
+        {"name": "523", "agency": "STA", "size": "50"},
+        {"name": "553", "agency": "STA", "size": "50"},
+        {"name": "515", "agency": "STA", "size": "50"},
+        {"name": "543", "agency": "STA", "size": "50"},
+        {"name": "520", "agency": "STA", "size": "50"},
+        {"name": "505", "agency": "STA", "size": "50"},
+        {"name": "513", "agency": "STA", "size": "50"},
+        {"name": "501", "agency": "STA", "size": "50"},
+        {"name": "285", "agency": "STA", "size": "50"},
+        {"name": "294", "agency": "STA", "size": "50"},
+        {"name": "459", "agency": "STA", "size": "50"},
+        {"name": "512", "agency": "STA", "size": "50"},
+        {"name": "M52/L20", "agency": "STA", "size": "50"},
+        {"name": "540", "agency": "STA", "size": "50"},
+        {"name": "534", "agency": "STA", "size": "50"},
+        {"name": "258", "agency": "STA", "size": "50"},
+        {"name": "M54/548", "agency": "STA", "size": "50"},
+        {"name": "549", "agency": "STA", "size": "50"},
+        {"name": "533", "agency": "STA", "size": "50"},
+        {"name": "518", "agency": "STA", "size": "50"},
+        {"name": "286", "agency": "STA", "size": "50"},
+        {"name": "539", "agency": "STA", "size": "50"},
+        {"name": "406", "agency": "STA", "size": "50"},
+        {"name": "551", "agency": "STA", "size": "50"},
+        {"name": "546", "agency": "STA", "size": "50"},
+        {"name": "524", "agency": "STA", "size": "50"},
+        {"name": "531", "agency": "STA", "size": "50"},
+        {"name": "507", "agency": "STA", "size": "50"},
+        {"name": "X15", "agency": "STA", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Kingsgrove",
+       "children": [
+        {"name": "425", "agency": "STA", "size": "50"},
+        {"name": "426", "agency": "STA", "size": "50"},
+        {"name": "415", "agency": "STA", "size": "50"},
+        {"name": "412", "agency": "STA", "size": "50"},
+        {"name": "487", "agency": "STA", "size": "50"},
+        {"name": "476", "agency": "STA", "size": "50"},
+        {"name": "492", "agency": "STA", "size": "50"},
+        {"name": "472", "agency": "STA", "size": "50"},
+        {"name": "Circular Quay TransitShop", "agency": "STA", "size": "50"},
+        {"name": "413", "agency": "STA", "size": "50"},
+        {"name": "L23", "agency": "STA", "size": "50"},
+        {"name": "490", "agency": "STA", "size": "50"},
+        {"name": "494", "agency": "STA", "size": "50"},
+        {"name": "School Specials", "agency": "STA", "size": "50"},
+        {"name": "421", "agency": "STA", "size": "50"},
+        {"name": "477", "agency": "STA", "size": "50"},
+        {"name": "418", "agency": "STA", "size": "50"},
+        {"name": "422", "agency": "STA", "size": "50"},
+        {"name": "423", "agency": "STA", "size": "50"},
+        {"name": "471", "agency": "STA", "size": "50"},
+        {"name": "499", "agency": "STA", "size": "50"},
+        {"name": "479", "agency": "STA", "size": "50"},
+        {"name": "491", "agency": "STA", "size": "50"},
+        {"name": "428", "agency": "STA", "size": "50"},
+        {"name": "430", "agency": "STA", "size": "50"},
+        {"name": "Unspecified Route", "agency": "STA", "size": "50"},
+        {"name": "493", "agency": "STA", "size": "50"},
+        {"name": "478", "agency": "STA", "size": "50"},
+        {"name": "473", "agency": "STA", "size": "50"},
+        {"name": "L28", "agency": "STA", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Berrima Buslines",
+     "children": [
+      {
+       "name": "Berrima",
+       "children": [
+        {"name": "812", "agency": "PBO", "size": "50"},
+        {"name": "815", "agency": "PBO", "size": "50"},
+        {"name": "808", "agency": "PBO", "size": "50"},
+        {"name": "814", "agency": "PBO", "size": "50"},
+        {"name": "816", "agency": "PBO", "size": "50"},
+        {"name": "805", "agency": "PBO", "size": "50"},
+        {"name": "813", "agency": "PBO", "size": "50"},
+        {"name": "800RR", "agency": "PBO", "size": "50"},
+        {"name": "806", "agency": "PBO", "size": "50"},
+        {"name": "810", "agency": "PBO", "size": "50"},
+        {"name": "817", "agency": "PBO", "size": "50"},
+        {"name": "811", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Interline",
+     "children": [
+      {
+       "name": "SMBSC 2",
+       "children": [
+        {"name": "869", "agency": "PBO", "size": "50"},
+        {"name": "854", "agency": "PBO", "size": "50"},
+        {"name": "871", "agency": "PBO", "size": "50"},
+        {"name": "858", "agency": "PBO", "size": "50"},
+        {"name": "852", "agency": "PBO", "size": "50"},
+        {"name": "876", "agency": "PBO", "size": "50"},
+        {"name": "875", "agency": "PBO", "size": "50"},
+        {"name": "855", "agency": "PBO", "size": "50"},
+        {"name": "850", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "872", "agency": "PBO", "size": "50"},
+        {"name": "870", "agency": "PBO", "size": "50"},
+        {"name": "873", "agency": "PBO", "size": "50"},
+        {"name": "857", "agency": "PBO", "size": "50"},
+        {"name": "866", "agency": "PBO", "size": "50"},
+        {"name": "851", "agency": "PBO", "size": "50"},
+        {"name": "853", "agency": "PBO", "size": "50"},
+        {"name": "867", "agency": "PBO", "size": "50"},
+        {"name": "S9", "agency": "PBO", "size": "50"},
+        {"name": "864", "agency": "PBO", "size": "50"},
+        {"name": "856", "agency": "PBO", "size": "50"},
+        {"name": "874", "agency": "PBO", "size": "50"},
+        {"name": "865", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Premier Illawarra",
+     "children": [
+      {
+       "name": "OSMBC 10",
+       "children": [
+        {"name": "24", "agency": "PBO", "size": "50"},
+        {"name": "36", "agency": "PBO", "size": "50"},
+        {"name": "7", "agency": "PBO", "size": "50"},
+        {"name": "10", "agency": "PBO", "size": "50"},
+        {"name": "43", "agency": "PBO", "size": "50"},
+        {"name": "34", "agency": "PBO", "size": "50"},
+        {"name": "8", "agency": "PBO", "size": "50"},
+        {"name": "76", "agency": "PBO", "size": "50"},
+        {"name": "11", "agency": "PBO", "size": "50"},
+        {"name": "72", "agency": "PBO", "size": "50"},
+        {"name": "53", "agency": "PBO", "size": "50"},
+        {"name": "31", "agency": "PBO", "size": "50"},
+        {"name": "57", "agency": "PBO", "size": "50"},
+        {"name": "77", "agency": "PBO", "size": "50"},
+        {"name": "65", "agency": "PBO", "size": "50"},
+        {"name": "6", "agency": "PBO", "size": "50"},
+        {"name": "38", "agency": "PBO", "size": "50"},
+        {"name": "71", "agency": "PBO", "size": "50"},
+        {"name": "55A", "agency": "PBO", "size": "50"},
+        {"name": "3", "agency": "PBO", "size": "50"},
+        {"name": "39", "agency": "PBO", "size": "50"},
+        {"name": "51", "agency": "PBO", "size": "50"},
+        {"name": "41", "agency": "PBO", "size": "50"},
+        {"name": "32", "agency": "PBO", "size": "50"},
+        {"name": "37", "agency": "PBO", "size": "50"},
+        {"name": "55C", "agency": "PBO", "size": "50"},
+        {"name": "52", "agency": "PBO", "size": "50"},
+        {"name": "33", "agency": "PBO", "size": "50"},
+        {"name": "35", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Transit Systems",
+     "children": [
+      {
+       "name": "SMBSC 3",
+       "children": [
+        {"name": "804", "agency": "PBO", "size": "50"},
+        {"name": "T80", "agency": "PBO", "size": "50"},
+        {"name": "822", "agency": "PBO", "size": "50"},
+        {"name": "School Specials", "agency": "PBO", "size": "50"},
+        {"name": "805", "agency": "PBO", "size": "50"},
+        {"name": "819", "agency": "PBO", "size": "50"},
+        {"name": "821", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "806X", "agency": "PBO", "size": "50"},
+        {"name": "810X", "agency": "PBO", "size": "50"},
+        {"name": "802", "agency": "PBO", "size": "50"},
+        {"name": "820", "agency": "PBO", "size": "50"},
+        {"name": "814", "agency": "PBO", "size": "50"},
+        {"name": "801", "agency": "PBO", "size": "50"},
+        {"name": "807", "agency": "PBO", "size": "50"},
+        {"name": "815", "agency": "PBO", "size": "50"},
+        {"name": "811X", "agency": "PBO", "size": "50"},
+        {"name": "817", "agency": "PBO", "size": "50"},
+        {"name": "818", "agency": "PBO", "size": "50"},
+        {"name": "806", "agency": "PBO", "size": "50"},
+        {"name": "810", "agency": "PBO", "size": "50"},
+        {"name": "835", "agency": "PBO", "size": "50"},
+        {"name": "803", "agency": "PBO", "size": "50"},
+        {"name": "811", "agency": "PBO", "size": "50"},
+        {"name": "827", "agency": "PBO", "size": "50"},
+        {"name": "829", "agency": "PBO", "size": "50"},
+        {"name": "823", "agency": "PBO", "size": "50"},
+        {"name": "813", "agency": "PBO", "size": "50"},
+        {"name": "S10", "agency": "PBO", "size": "50"},
+        {"name": "816", "agency": "PBO", "size": "50"},
+        {"name": "800", "agency": "PBO", "size": "50"},
+        {"name": "809", "agency": "PBO", "size": "50"},
+        {"name": "808", "agency": "PBO", "size": "50"},
+        {"name": "812", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Rover Coaches",
+     "children": [
+      {
+       "name": "OSMBC 1",
+       "children": [
+        {"name": "166", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "162", "agency": "PBO", "size": "50"},
+        {"name": "172", "agency": "PBO", "size": "50"},
+        {"name": "165", "agency": "PBO", "size": "50"},
+        {"name": "164", "agency": "PBO", "size": "50"},
+        {"name": "163", "agency": "PBO", "size": "50"},
+        {"name": "160", "agency": "PBO", "size": "50"},
+        {"name": "167", "agency": "PBO", "size": "50"},
+        {"name": "168", "agency": "PBO", "size": "50"},
+        {"name": "171", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Busways Central Coast",
+     "children": [
+      {
+       "name": "OSMBSC 6",
+       "children": [
+        {"name": "64", "agency": "PBO", "size": "50"},
+        {"name": "59", "agency": "PBO", "size": "50"},
+        {"name": "32", "agency": "PBO", "size": "50"},
+        {"name": "95", "agency": "PBO", "size": "50"},
+        {"name": "33", "agency": "PBO", "size": "50"},
+        {"name": "70", "agency": "PBO", "size": "50"},
+        {"name": "66", "agency": "PBO", "size": "50"},
+        {"name": "65", "agency": "PBO", "size": "50"},
+        {"name": "53/64", "agency": "PBO", "size": "50"},
+        {"name": "82", "agency": "PBO", "size": "50"},
+        {"name": "93", "agency": "PBO", "size": "50"},
+        {"name": "94", "agency": "PBO", "size": "50"},
+        {"name": "90", "agency": "PBO", "size": "50"},
+        {"name": "54", "agency": "PBO", "size": "50"},
+        {"name": "96", "agency": "PBO", "size": "50"},
+        {"name": "36", "agency": "PBO", "size": "50"},
+        {"name": "97", "agency": "PBO", "size": "50"},
+        {"name": "58", "agency": "PBO", "size": "50"},
+        {"name": "50", "agency": "PBO", "size": "50"},
+        {"name": "12", "agency": "PBO", "size": "50"},
+        {"name": "13", "agency": "PBO", "size": "50"},
+        {"name": "98", "agency": "PBO", "size": "50"},
+        {"name": "37", "agency": "PBO", "size": "50"},
+        {"name": "School Specials", "agency": "PBO", "size": "50"},
+        {"name": "99", "agency": "PBO", "size": "50"},
+        {"name": "91", "agency": "PBO", "size": "50"},
+        {"name": "80", "agency": "PBO", "size": "50"},
+        {"name": "68", "agency": "PBO", "size": "50"},
+        {"name": "78", "agency": "PBO", "size": "50"},
+        {"name": "63", "agency": "PBO", "size": "50"},
+        {"name": "38", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "11", "agency": "PBO", "size": "50"},
+        {"name": "81", "agency": "PBO", "size": "50"},
+        {"name": "53", "agency": "PBO", "size": "50"},
+        {"name": "92", "agency": "PBO", "size": "50"},
+        {"name": "79", "agency": "PBO", "size": "50"},
+        {"name": "57", "agency": "PBO", "size": "50"},
+        {"name": "10", "agency": "PBO", "size": "50"},
+        {"name": "55", "agency": "PBO", "size": "50"},
+        {"name": "34", "agency": "PBO", "size": "50"},
+        {"name": "67", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Dions Bus Service",
+     "children": [
+      {
+       "name": "OSMBSC 12",
+       "children": [
+        {"name": "1", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "4", "agency": "PBO", "size": "50"},
+        {"name": "9", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Busabout/Coachways",
+     "children": [
+      {
+       "name": "SMBSC 15",
+       "children": [
+        {"name": "898", "agency": "PBO", "size": "50"},
+        {"name": "886", "agency": "PBO", "size": "50"},
+        {"name": "892", "agency": "PBO", "size": "50"},
+        {"name": "883", "agency": "PBO", "size": "50"},
+        {"name": "891", "agency": "PBO", "size": "50"},
+        {"name": "888", "agency": "PBO", "size": "50"},
+        {"name": "890", "agency": "PBO", "size": "50"},
+        {"name": "38", "agency": "PBO", "size": "50"},
+        {"name": "39", "agency": "PBO", "size": "50"},
+        {"name": "885", "agency": "PBO", "size": "50"},
+        {"name": "895", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "880", "agency": "PBO", "size": "50"},
+        {"name": "31", "agency": "PBO", "size": "50"},
+        {"name": "882", "agency": "PBO", "size": "50"},
+        {"name": "884", "agency": "PBO", "size": "50"},
+        {"name": "899", "agency": "PBO", "size": "50"},
+        {"name": "890C", "agency": "PBO", "size": "50"},
+        {"name": "32", "agency": "PBO", "size": "50"},
+        {"name": "40", "agency": "PBO", "size": "50"},
+        {"name": "894", "agency": "PBO", "size": "50"},
+        {"name": "896", "agency": "PBO", "size": "50"},
+        {"name": "879", "agency": "PBO", "size": "50"},
+        {"name": "884W", "agency": "PBO", "size": "50"},
+        {"name": "47", "agency": "PBO", "size": "50"},
+        {"name": "889", "agency": "PBO", "size": "50"},
+        {"name": "893", "agency": "PBO", "size": "50"},
+        {"name": "878", "agency": "PBO", "size": "50"},
+        {"name": "881", "agency": "PBO", "size": "50"},
+        {"name": "49", "agency": "PBO", "size": "50"},
+        {"name": "883K", "agency": "PBO", "size": "50"},
+        {"name": "S17", "agency": "PBO", "size": "50"},
+        {"name": "887", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "CDC",
+     "children": [
+      {
+       "name": "SMBSC 4",
+       "children": [
+        {"name": "618", "agency": "PBO", "size": "50"},
+        {"name": "N71", "agency": "PBO", "size": "50"},
+        {"name": "705", "agency": "PBO", "size": "50"},
+        {"name": "640", "agency": "PBO", "size": "50"},
+        {"name": "601", "agency": "PBO", "size": "50"},
+        {"name": "603", "agency": "PBO", "size": "50"},
+        {"name": "633", "agency": "PBO", "size": "50"},
+        {"name": "630", "agency": "PBO", "size": "50"},
+        {"name": "637", "agency": "PBO", "size": "50"},
+        {"name": "642", "agency": "PBO", "size": "50"},
+        {"name": "T63", "agency": "PBO", "size": "50"},
+        {"name": "650X", "agency": "PBO", "size": "50"},
+        {"name": "708", "agency": "PBO", "size": "50"},
+        {"name": "608", "agency": "PBO", "size": "50"},
+        {"name": "700", "agency": "PBO", "size": "50"},
+        {"name": "612", "agency": "PBO", "size": "50"},
+        {"name": "644", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "641", "agency": "PBO", "size": "50"},
+        {"name": "T66", "agency": "PBO", "size": "50"},
+        {"name": "615", "agency": "PBO", "size": "50"},
+        {"name": "604", "agency": "PBO", "size": "50"},
+        {"name": "S8", "agency": "PBO", "size": "50"},
+        {"name": "631", "agency": "PBO", "size": "50"},
+        {"name": "School Specials", "agency": "PBO", "size": "50"},
+        {"name": "627", "agency": "PBO", "size": "50"},
+        {"name": "652X", "agency": "PBO", "size": "50"},
+        {"name": "620", "agency": "PBO", "size": "50"},
+        {"name": "622", "agency": "PBO", "size": "50"},
+        {"name": "N60", "agency": "PBO", "size": "50"},
+        {"name": "606", "agency": "PBO", "size": "50"},
+        {"name": "T60", "agency": "PBO", "size": "50"},
+        {"name": "632", "agency": "PBO", "size": "50"},
+        {"name": "628", "agency": "PBO", "size": "50"},
+        {"name": "715", "agency": "PBO", "size": "50"},
+        {"name": "T61", "agency": "PBO", "size": "50"},
+        {"name": "651", "agency": "PBO", "size": "50"},
+        {"name": "T65", "agency": "PBO", "size": "50"},
+        {"name": "613", "agency": "PBO", "size": "50"},
+        {"name": "639", "agency": "PBO", "size": "50"},
+        {"name": "611", "agency": "PBO", "size": "50"},
+        {"name": "N70", "agency": "PBO", "size": "50"},
+        {"name": "619", "agency": "PBO", "size": "50"},
+        {"name": "N61", "agency": "PBO", "size": "50"},
+        {"name": "M61", "agency": "PBO", "size": "50"},
+        {"name": "609", "agency": "PBO", "size": "50"},
+        {"name": "614", "agency": "PBO", "size": "50"},
+        {"name": "621", "agency": "PBO", "size": "50"},
+        {"name": "607", "agency": "PBO", "size": "50"},
+        {"name": "642X", "agency": "PBO", "size": "50"},
+        {"name": "653", "agency": "PBO", "size": "50"},
+        {"name": "617X", "agency": "PBO", "size": "50"},
+        {"name": "625", "agency": "PBO", "size": "50"},
+        {"name": "626", "agency": "PBO", "size": "50"},
+        {"name": "602", "agency": "PBO", "size": "50"},
+        {"name": "714", "agency": "PBO", "size": "50"},
+        {"name": "635", "agency": "PBO", "size": "50"},
+        {"name": "711", "agency": "PBO", "size": "50"},
+        {"name": "620X", "agency": "PBO", "size": "50"},
+        {"name": "610", "agency": "PBO", "size": "50"},
+        {"name": "T64", "agency": "PBO", "size": "50"},
+        {"name": "616X", "agency": "PBO", "size": "50"},
+        {"name": "650", "agency": "PBO", "size": "50"},
+        {"name": "T62", "agency": "PBO", "size": "50"},
+        {"name": "600", "agency": "PBO", "size": "50"},
+        {"name": "638", "agency": "PBO", "size": "50"},
+        {"name": "702", "agency": "PBO", "size": "50"},
+        {"name": "M60", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Nightride Buses",
+     "children": [
+      {
+       "name": "Rockdale to Riverwood",
+       "children": [
+        {"name": "N20", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Cronulla",
+       "children": [
+        {"name": "N11", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Macarthur",
+       "children": [
+        {"name": "N30", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Fairfield",
+       "children": [
+        {"name": "N60", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Richmond",
+       "children": [
+        {"name": "N71", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Liverpool",
+       "children": [
+        {"name": "N50", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Carlingford",
+       "children": [
+        {"name": "N61", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Hornsby via Chatswood",
+       "children": [
+        {"name": "N90", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "East Hills",
+       "children": [
+        {"name": "N40", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Hornsby via Strathfield",
+       "children": [
+        {"name": "N80", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Penrith",
+       "children": [
+        {"name": "N70", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Sutherland",
+       "children": [
+        {"name": "N10", "agency": "TfNSW", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Bondi Junction",
+       "children": [
+        {"name": "N100", "agency": "TfNSW", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Busways Blacktown",
+     "children": [
+      {
+       "name": "SMBSC 1",
+       "children": [
+        {"name": "S13", "agency": "PBO", "size": "50"},
+        {"name": "725", "agency": "PBO", "size": "50"},
+        {"name": "781", "agency": "PBO", "size": "50"},
+        {"name": "770", "agency": "PBO", "size": "50"},
+        {"name": "745", "agency": "PBO", "size": "50"},
+        {"name": "797", "agency": "PBO", "size": "50"},
+        {"name": "771", "agency": "PBO", "size": "50"},
+        {"name": "727", "agency": "PBO", "size": "50"},
+        {"name": "795", "agency": "PBO", "size": "50"},
+        {"name": "782", "agency": "PBO", "size": "50"},
+        {"name": "S11", "agency": "PBO", "size": "50"},
+        {"name": "793", "agency": "PBO", "size": "50"},
+        {"name": "780", "agency": "PBO", "size": "50"},
+        {"name": "750", "agency": "PBO", "size": "50"},
+        {"name": "School Specials", "agency": "PBO", "size": "50"},
+        {"name": "S12", "agency": "PBO", "size": "50"},
+        {"name": "662", "agency": "PBO", "size": "50"},
+        {"name": "754", "agency": "PBO", "size": "50"},
+        {"name": "794", "agency": "PBO", "size": "50"},
+        {"name": "791", "agency": "PBO", "size": "50"},
+        {"name": "785", "agency": "PBO", "size": "50"},
+        {"name": "T72", "agency": "PBO", "size": "50"},
+        {"name": "661", "agency": "PBO", "size": "50"},
+        {"name": "746", "agency": "PBO", "size": "50"},
+        {"name": "775", "agency": "PBO", "size": "50"},
+        {"name": "T70", "agency": "PBO", "size": "50"},
+        {"name": "T75", "agency": "PBO", "size": "50"},
+        {"name": "663/4", "agency": "PBO", "size": "50"},
+        {"name": "740", "agency": "PBO", "size": "50"},
+        {"name": "776", "agency": "PBO", "size": "50"},
+        {"name": "682", "agency": "PBO", "size": "50"},
+        {"name": "T71", "agency": "PBO", "size": "50"},
+        {"name": "739/7", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "743", "agency": "PBO", "size": "50"},
+        {"name": "756", "agency": "PBO", "size": "50"},
+        {"name": "WPSB", "agency": "PBO", "size": "50"},
+        {"name": "722/4", "agency": "PBO", "size": "50"},
+        {"name": "759", "agency": "PBO", "size": "50"},
+        {"name": "676", "agency": "PBO", "size": "50"},
+        {"name": "786", "agency": "PBO", "size": "50"},
+        {"name": "668", "agency": "PBO", "size": "50"},
+        {"name": "669", "agency": "PBO", "size": "50"},
+        {"name": "677", "agency": "PBO", "size": "50"},
+        {"name": "678", "agency": "PBO", "size": "50"},
+        {"name": "761", "agency": "PBO", "size": "50"},
+        {"name": "783", "agency": "PBO", "size": "50"},
+        {"name": "737", "agency": "PBO", "size": "50"},
+        {"name": "784", "agency": "PBO", "size": "50"},
+        {"name": "753", "agency": "PBO", "size": "50"},
+        {"name": "758", "agency": "PBO", "size": "50"},
+        {"name": "744", "agency": "PBO", "size": "50"},
+        {"name": "673", "agency": "PBO", "size": "50"},
+        {"name": "789", "agency": "PBO", "size": "50"},
+        {"name": "778", "agency": "PBO", "size": "50"},
+        {"name": "739V", "agency": "PBO", "size": "50"},
+        {"name": "674", "agency": "PBO", "size": "50"},
+        {"name": "675A", "agency": "PBO", "size": "50"},
+        {"name": "755", "agency": "PBO", "size": "50"},
+        {"name": "799", "agency": "PBO", "size": "50"},
+        {"name": "751", "agency": "PBO", "size": "50"},
+        {"name": "739", "agency": "PBO", "size": "50"},
+        {"name": "680", "agency": "PBO", "size": "50"},
+        {"name": "723", "agency": "PBO", "size": "50"},
+        {"name": "774", "agency": "PBO", "size": "50"},
+        {"name": "737/9", "agency": "PBO", "size": "50"},
+        {"name": "718", "agency": "PBO", "size": "50"},
+        {"name": "721", "agency": "PBO", "size": "50"},
+        {"name": "752", "agency": "PBO", "size": "50"},
+        {"name": "722", "agency": "PBO", "size": "50"},
+        {"name": "S7", "agency": "PBO", "size": "50"},
+        {"name": "724", "agency": "PBO", "size": "50"},
+        {"name": "738", "agency": "PBO", "size": "50"},
+        {"name": "726", "agency": "PBO", "size": "50"},
+        {"name": "779", "agency": "PBO", "size": "50"},
+        {"name": "T74", "agency": "PBO", "size": "50"},
+        {"name": "757", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Transdev",
+     "children": [
+      {
+       "name": "SMBSC 10",
+       "children": [
+        {"name": " 12", "agency": " 13", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Shoalbus",
+     "children": [
+      {
+       "name": "Shoalhaven",
+       "children": [
+        {"name": "709", "agency": "PBO", "size": "50"},
+        {"name": "705", "agency": "PBO", "size": "50"},
+        {"name": "721", "agency": "PBO", "size": "50"},
+        {"name": "722", "agency": "PBO", "size": "50"},
+        {"name": "735", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Premier Charters",
+     "children": [
+      {
+       "name": "Wollongong",
+       "children": [
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"},
+        {"name": "2", "agency": "PBO", "size": "50"},
+        {"name": "15", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Kiama Coachlines",
+     "children": [
+      {
+       "name": "Kiama",
+       "children": [
+        {"name": "702", "agency": "PBO", "size": "50"},
+        {"name": "701", "agency": "PBO", "size": "50"},
+        {"name": "Unspecified Route", "agency": "PBO", "size": "50"}
+                   ]
+      }
+                 ]
+    }
+               ]
+  },
+  {
+   "name": "Active",
+   "children": [
+    {
+     "name": "?",
+     "children": [
+      {
+       "name": "?",
+       "children": [
+        {"name": "?", "agency": "TfNSW", "size": "50"}
+                   ]
+      }
+                 ]
+    }
+               ]
+  },
+  {
+   "name": "Maritime",
+   "children": [
+    {
+     "name": "South",
+     "children": [
+      {
+       "name": "South",
+       "children": [
+        {"name": "South", "agency": "RMS", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "North",
+     "children": [
+      {
+       "name": "North",
+       "children": [
+        {"name": "North", "agency": "RMS", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Sydney",
+     "children": [
+      {
+       "name": "Sydney",
+       "children": [
+        {"name": "Sydney", "agency": "RMS", "size": "50"}
+                   ]
+      }
+                 ]
+    }
+               ]
+  },
+  {
+   "name": "Non Mode",
+   "children": [
+    {
+     "name": "Unknown",
+     "children": [
+      {
+       "name": "Unknown",
+       "children": [
+        {"name": "Unknown", "agency": "TfNSW", "size": "50"}
+                   ]
+      }
+                 ]
+    }
+               ]
+  },
+  {
+   "name": "Road",
+   "children": [
+    {
+     "name": "Roads",
+     "children": [
+      {
+       "name": "Region",
+       "children": [
+        {"name": "Sydney", "agency": "RMS", "size": "50"},
+        {"name": "Hunter", "agency": "RMS", "size": "50"},
+        {"name": "Northern", "agency": "RMS", "size": "50"},
+        {"name": "South West", "agency": "RMS", "size": "50"},
+        {"name": "Southern", "agency": "RMS", "size": "50"},
+        {"name": "Western", "agency": "RMS", "size": "50"}
+                   ]
+      }
+                 ]
+    }
+               ]
+  },
+  {
+   "name": "Ferry",
+   "children": [
+    {
+     "name": "Newcastle Ferry",
+     "children": [
+      {
+       "name": "Newcastle Ferry",
+       "children": [
+        {"name": "Stockton Ferry", "agency": "STA", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Captain Hook Cruises",
+     "children": [
+      {
+       "name": "?",
+       "children": [
+        {"name": "?", "agency": "", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Others?",
+     "children": [
+      {
+       "name": "?",
+       "children": [
+        {"name": "?", "agency": "", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Sydney Ferries - Ferry",
+     "children": [
+      {
+       "name": "Manly",
+       "children": [
+        {"name": "F1 - Manly Ferry", "agency": "HCF", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Outer Harbour",
+       "children": [
+        {"name": "F2 - xyz", "agency": "HCF", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Inner Harbour",
+       "children": [
+        {"name": "F4 - Eastern Suburbs", "agency": "HCF", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Sydney Ferries - Wharf",
+     "children": [
+      {
+       "name": "Inner Harbour",
+       "children": [
+        {"name": "Kirribilli", "agency": "HCF", "size": "50"},
+        {"name": "Circular Quay", "agency": "HCF", "size": "50"},
+        {"name": "Milsons Point / Luna Park", "agency": "HCF", "size": "50"}
+                   ]
+      },
+      {
+       "name": "River",
+       "children": [
+        {"name": "", "agency": "HCF", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Outer Harbour",
+       "children": [
+        {"name": "", "agency": "HCF", "size": "50"}
+                   ]
+      },
+      {
+       "name": "Manly",
+       "children": [
+        {"name": "Manly", "agency": "HCF", "size": "50"}
+                   ]
+      }
+                 ]
+    },
+    {
+     "name": "Manly Fast Ferries",
+     "children": [
+      {
+       "name": "?",
+       "children": [
+        {"name": "?", "agency": "", "size": "50"}
+                   ]
+      }
+                 ]
+    }
+               ]
+  }
+             ]
+}

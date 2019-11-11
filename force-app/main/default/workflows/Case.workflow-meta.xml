@@ -1,0 +1,3706 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Approved_email_response_for_customer</fullName>
+        <description>Approved email response for customer</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Sydney_Trains_Customer_facing/SydneyTrains_ApprovedCustomerResponse</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Alert_Notify_Case_Owner</fullName>
+        <description>Case Alert: Notify Case Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Created_Templates/Generic_Case_Email_Alert</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Customer_CFM_API_to_Case_email_response</fullName>
+        <description>Email Customer - CFM API-to-Case email response</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>response@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/Case_CFM_API_email_response</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Customer_E2C_Feedback_Passthrough_email_response</fullName>
+        <description>Email Customer - E2C Feedback Passthrough email response</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>response@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/Case_E2C_Feedback_Passthrough_email_response</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Customer_Web_to_Case_email_response</fullName>
+        <description>Email Customer - Web-to-Case email response</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>response@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/Web_to_Case_email_response</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Customer_Web_to_Case_email_response_for_SNSW_cases</fullName>
+        <description>Email Customer - Web-to-Case email response for SNSW cases</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>customer@rms.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/Web_to_Case_email_response_for_SNSW</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_To_PBO_LRO_New_Case_Comment</fullName>
+        <description>Email Notification To PBO/LRO New Case Comment</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PBLROperator_Email_Address__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Notification_Templates/Light_Rail_Private_Bus_Case_Comment_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Sydney_Metro_Case_Owner</fullName>
+        <description>Email Sydney Metro Case Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/New_CFS_Case_Notificaiton</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_to_Customer_TMC_Web_to_Case_email_response</fullName>
+        <description>Email to Customer - TMC Web-to-Case email response</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>TMC_Customer_facing/Customer_acknowledgement_for_TMC_html</template>
+    </alerts>
+    <alerts>
+        <fullName>Excused_Performance_Incidents_Email_Alert_To_Corporate_Customer_Relations</fullName>
+        <ccEmails>customer_relations@sta.nsw.gov.au</ccEmails>
+        <description>Excused Performance Incidents - Email Alert To Corporate Customer Relations</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>STA/Excused_Performance_Incidents_Notification_To_Depot_Manager</template>
+    </alerts>
+    <alerts>
+        <fullName>HCF_contact_made_violation</fullName>
+        <description>HCF contact made violation</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Syd_Trains_Senior_Case_Mgr</recipient>
+            <type>role</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Sri_View/SUPPORTCaseescalationnotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>HCF_contact_made_warning</fullName>
+        <description>HCF contact made warning</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Sri_View/SUPPORTCaseescalationnotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>HCF_milestone_warning</fullName>
+        <description>HCF milestone warning</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>TfNSW_Internal/Milestone_Target_Warning</template>
+    </alerts>
+    <alerts>
+        <fullName>NRR_case_notification_email_to_case_owner</fullName>
+        <description>NRR case notification email to case owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Ministerial_Correspondence/Closed_Case_NRR_Notification_To_Case_Owner</template>
+    </alerts>
+    <alerts>
+        <fullName>NSW_Train_Warning</fullName>
+        <description>NSW Train attempted contact Warning</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Sri_View/SUPPORTCaseescalationnotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>NSW_Train_attempted_contact_Warning</fullName>
+        <description>NSW Train attempted contact Warning</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Sri_View/SUPPORTCaseescalationnotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>NSW_Trains_Approved_email_response_for_customer</fullName>
+        <description>NSW Trains Approved email response for customer</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>NSW_Trains_Customer_facing/NSWTrains_ApprovedCustomerResponse</template>
+    </alerts>
+    <alerts>
+        <fullName>Newcastle_milestone_violated</fullName>
+        <description>Newcastle milestone violated</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>TfNSW_Internal/Milestone_Violated</template>
+    </alerts>
+    <alerts>
+        <fullName>Newcastle_milestone_warning</fullName>
+        <description>Newcastle milestone warning</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>TfNSW_Internal/Milestone_Target_Warning</template>
+    </alerts>
+    <alerts>
+        <fullName>Notification_Email_To_LRO</fullName>
+        <description>Notification Email To LRO</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PBLROperator_Email_Address__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Notification_Templates/Light_Rail_Private_Bus_Case_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Notification_Email_To_PBO</fullName>
+        <description>Notification Email To PBO</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PBLROperator_Email_Address__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Notification_Templates/Light_Rail_Private_Bus_Case_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Case_Assignment</fullName>
+        <description>Notify Case Assignment</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>lucas.taylor@transport.nsw.gov.au</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>polly.lawton@transport.nsw.gov.au</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Ministerial_Correspondence/New_Case_Assignment_Office_of_Secretary</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Case_Assignment_to_Sydney_Metro_Case_Owner</fullName>
+        <description>Notify Case Assignment to Sydney Metro Case Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/New_CFS_Case_Notificaiton</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_case_owner_on_new_case_comment_from_SNSW</fullName>
+        <description>Notify case owner on new case comment from SNSW</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>RMS_Internal/Case_comment_notification</template>
+    </alerts>
+    <alerts>
+        <fullName>RMS_milestone_warning</fullName>
+        <description>RMS milestone warning</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>RMS_Admin_Templates/RMS_Milestone_Target_Warning</template>
+    </alerts>
+    <alerts>
+        <fullName>STA_milestone_violated</fullName>
+        <description>STA milestone violated</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Last_Queue_Assigned_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>TfNSW_Internal/Milestone_Violated</template>
+    </alerts>
+    <alerts>
+        <fullName>STA_milestone_warning</fullName>
+        <description>STA milestone warning</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Last_Queue_Assigned_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>TfNSW_Internal/Milestone_Target_Warning</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_HCF_acknowledgement_email_to_customer</fullName>
+        <description>Send HCF acknowledgement email to customer</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/HCF_Web_to_Case_email_response</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Live_Traffic_acknowledgement_email_to_customer</fullName>
+        <description>Send Live Traffic acknowledgement email to customer</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>TMC_Customer_facing/Customer_acknowledgement_for_TMC_html</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_alert_to_Syd_Trains_Managers_for_new_cases_created_from_closed</fullName>
+        <description>Send alert to Syd Trains Managers for new cases created from closed</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Sydney_Trains_Internal/New_Case_from_Closed</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_email_to_portal_users_regarding_outstanding_cases</fullName>
+        <description>Send email to portal users regarding outstanding cases</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Created_Templates/Private_Operator_Portal_outstanding_case_reminder</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_email_to_portal_users_regarding_re_opened_cases</fullName>
+        <description>Send email to portal users regarding re-opened cases</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/Private_Operator_Portal_reopened_case_alert</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_referral_email_to_SNSW</fullName>
+        <description>Send referral email to SNSW with case details</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SNSW_Referral_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>RMS_Internal/SNSW_referral</template>
+    </alerts>
+    <alerts>
+        <fullName>Trains_High_Priority_Email</fullName>
+        <description>Trains - High Priority Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>High_Priority_Train_Recepient__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>sydneytrainsfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Sydney_Trains_Internal/Trains_High_Priority_Email_System_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Unsubstantiated_Case_Notification_To_Depot_Manager</fullName>
+        <description>Unsubstantiated Case Notification To Depot Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>STA/Unsubstantiated_Case_Notification_To_Depot_Manager</template>
+    </alerts>
+    <alerts>
+        <fullName>Vexatious_Customer_Email_Alert_To_Corporate_Customer_Relations</fullName>
+        <ccEmails>customer_relations@sta.nsw.gov.au</ccEmails>
+        <description>Vexatious Customer - Email Alert To Corporate Customer Relations</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>STA/Vexatious_Customer_Email_Alert</template>
+    </alerts>
+    <alerts>
+        <fullName>milestone_violated</fullName>
+        <description>TfNSW milestone violated</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>TfNSW_Senior_case_managers</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>TfNSW_Internal/Milestone_Violated</template>
+    </alerts>
+    <alerts>
+        <fullName>milestone_warning</fullName>
+        <description>TfNSW milestone warning</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>TfNSW_Internal/Milestone_Target_Warning</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Append_Carriage_Number_to_description</fullName>
+        <description>Append Carriage Number to description field</description>
+        <field>Description</field>
+        <formula>Description  &amp; BR() &amp; &quot;Carriage Number: &quot; &amp; Carriage_Number__c</formula>
+        <name>Append Carriage Number to description</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Case_Set_Initial_Type_Submitted</fullName>
+        <description>On case insert, Copy value of &#39;Issue Type&#39; to &#39;Initial Type Submitted&#39;</description>
+        <field>Initial_Type_Submitted__c</field>
+        <formula>TEXT(Type)</formula>
+        <name>Case - Set Initial Type Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Case_Status_To_Closed_NRR</fullName>
+        <description>Update the case status to Closed - NRR when response type is NRR</description>
+        <field>Status</field>
+        <literalValue>Closed - NRR</literalValue>
+        <name>Case Status To Closed - NRR</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Case_Owner_To_GIS_Admin_Queue</fullName>
+        <description>Change Case Owner To GIS Admin Queue When Signatory is RMS Chief Executive</description>
+        <field>OwnerId</field>
+        <lookupValue>GIS_Admin_RMS_MC</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Change Case Owner To GIS Admin Queue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Owner_to_CRGS</fullName>
+        <field>OwnerId</field>
+        <lookupValue>CRGS_Admins_MC</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Change Owner to CRGS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Record_Type_To_RMS_CE</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>RMS_CE_Signatory</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change Record Type To RMS CE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Record_Type_to_Metro</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Metro</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change Record Type to Metro</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Check_Serco_Handled_checkbox</fullName>
+        <description>Check the checkbox field &quot;Serco Handled&quot;</description>
+        <field>Serco_handled__c</field>
+        <literalValue>1</literalValue>
+        <name>Check Serco Handled checkbox</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Customer_Response_Waiting_Approval</fullName>
+        <description>Customer Response Waiting Approval</description>
+        <field>Status</field>
+        <literalValue>Awaiting Approval</literalValue>
+        <name>Customer Response Waiting Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Customer_response_Approved</fullName>
+        <description>Customer response Approved</description>
+        <field>Status</field>
+        <literalValue>Received Approval</literalValue>
+        <name>Customer response Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Increment_Returned_to_Queue_Count</fullName>
+        <field>Returned_to_Queue_Count__c</field>
+        <formula>Returned_to_Queue_Count__c + 1</formula>
+        <name>Increment Returned to Queue Count</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Mark_Case_as_Completed</fullName>
+        <field>Status</field>
+        <literalValue>Completed</literalValue>
+        <name>Mark Case as Completed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Mark_Case_status_Referral_Completed</fullName>
+        <description>Mark Case status Referral Completed</description>
+        <field>Status</field>
+        <literalValue>Referral Completed</literalValue>
+        <name>Mark Case status Referral Completed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Number_of_categorisation_changes</fullName>
+        <description>Number of categorisation changes</description>
+        <field>categorisation_count__c</field>
+        <formula>IF(ISNULL(categorisation_count__c),1,categorisation_count__c + 1)</formula>
+        <name>Number of categorisation changes</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Origin_Details_131500</fullName>
+        <description>If Origin = Phone and User Role starts with Serco -  Origin Details = 131500</description>
+        <field>Origin_Details__c</field>
+        <literalValue>131500</literalValue>
+        <name>Origin Details = 131500</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Recepient</fullName>
+        <field>High_Priority_Train_Recepient__c</field>
+        <formula>&quot;ROCCustinfo@transport.nsw.gov.au.spdev&quot;</formula>
+        <name>Populate Recepient</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reassign_to_TfNSW_CLT_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>TfNSW_Customer_Liaison_Team_CFM</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Reassign to TfNSW CLT Queue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Received_Rejection</fullName>
+        <description>Received Rejection</description>
+        <field>Status</field>
+        <literalValue>Received Rejection</literalValue>
+        <name>Received Rejection</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Remove_values_in_Other_Signatory_if_a_Si</fullName>
+        <field>Other_Signatory__c</field>
+        <name>Remove values in Other Signatory if a Si</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reset_Skip_Validation_field</fullName>
+        <description>resets the skip validation field</description>
+        <field>SkipValidation__c</field>
+        <name>Reset Skip Validation field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reset_Trigger_RMS_CE_WF_Flag</fullName>
+        <field>Trigger_RMS_CE_WF__c</field>
+        <literalValue>0</literalValue>
+        <name>Reset Trigger RMS CE WF Flag</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reset_case_comment_added_flag</fullName>
+        <field>Case_comment_added_by_SNSW__c</field>
+        <literalValue>0</literalValue>
+        <name>Reset case comment added flag</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Secretary_Notified_Flag</fullName>
+        <field>Is_Secretary_Notified__c</field>
+        <literalValue>1</literalValue>
+        <name>Secretary Notified Flag</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Agency_To_NSW_Trains</fullName>
+        <description>Set Agency To NSW Trains</description>
+        <field>Agency__c</field>
+        <literalValue>NSW Trains</literalValue>
+        <name>Set Agency To NSW Trains</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Agency_To_Serco</fullName>
+        <description>Set Agency To Serco</description>
+        <field>Agency__c</field>
+        <literalValue>Serco</literalValue>
+        <name>Set Agency To Serco</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Agency_To_Sydney_Trains</fullName>
+        <description>Set Agency To Sydney Trains</description>
+        <field>Agency__c</field>
+        <literalValue>Sydney Trains</literalValue>
+        <name>Set Agency To Sydney Trains</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Amendment_Checkbox_to_false</fullName>
+        <description>Set Amendment Checkbox to false</description>
+        <field>Amendment__c</field>
+        <literalValue>0</literalValue>
+        <name>Set Amendment Checkbox to false</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Comment_Added_Checkbox_To_False</fullName>
+        <description>Set Comment Added Checkbox To False</description>
+        <field>CommentAdded__c</field>
+        <literalValue>0</literalValue>
+        <name>Set Comment Added Checkbox To False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Date_First_Awaiting_MO_Approval</fullName>
+        <field>Date_First_Awaiting_MO_Contact_Approval__c</field>
+        <formula>IF (ISBLANK( Date_First_Awaiting_MO_Contact_Approval__c ), NOW(), Date_First_Awaiting_MO_Contact_Approval__c)</formula>
+        <name>Set Date First Awaiting MO Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Date_First_Awaiting_MO_Contact_App</fullName>
+        <description>Set Date First Awaiting MO Contact Approval timestamp</description>
+        <field>Date_First_Awaiting_MO_Contact_Approval__c</field>
+        <formula>NOW()</formula>
+        <name>Set Date First Awaiting MO Contact App</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Date_First_Awaiting_Signature</fullName>
+        <field>Date_First_Awaiting_Signature__c</field>
+        <formula>IF (ISBLANK( Date_First_Awaiting_Signature__c ), NOW(), Date_First_Awaiting_Signature__c)</formula>
+        <name>Set Date First Awaiting Signature</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Date_First_Date_First_Awaiting_Sig</fullName>
+        <field>Date_First_Awaiting_Signature__c</field>
+        <formula>NOW()</formula>
+        <name>Set Date First Awaiting Signature</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Date_First_Ready_for_Printing</fullName>
+        <field>Date_First_Ready_for_Printing__c</field>
+        <formula>NOW()</formula>
+        <name>Set Date First Ready for Printing</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Last_Reopen_Date_to_Today</fullName>
+        <field>Last_Reopen_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Set Last Reopen Date to Today</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Priority_to_high</fullName>
+        <field>Priority</field>
+        <literalValue>High</literalValue>
+        <name>Set Priority to high</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Reassigned_False</fullName>
+        <field>Is_Reassigned__c</field>
+        <literalValue>0</literalValue>
+        <name>Set Reassigned False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Reassigned_True</fullName>
+        <field>Is_Reassigned__c</field>
+        <literalValue>1</literalValue>
+        <name>Set Reassigned True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Bus</fullName>
+        <description>Sets the record type to Bus</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Bus</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Bus</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Ferry</fullName>
+        <description>Sets the record type to Ferry</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Ferry</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Ferry</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Light_Rail</fullName>
+        <description>Sets Record Type to  Light Rail</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Light_Rail</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Light Rail</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Maritime</fullName>
+        <description>Sets record type to maritime</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Maritime</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Maritime</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Multi_Issue</fullName>
+        <description>Sets the record type to Multi-Issue</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Multi_Issue</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Multi Issue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Non_Mode</fullName>
+        <description>sets record type to Non Mode</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Non_Mode</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Non Mode</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Road</fullName>
+        <description>Sets record type to Road</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Road</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Road</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Train</fullName>
+        <description>Sets record type to Train</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Train</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Train</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Record_Type_Walking_Cycling</fullName>
+        <description>sets record type to Set_Record_Type_Walking_Cycling</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Walking_Cycling</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Set Record Type = Walking &amp; Cycling</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Submit_For_MO_Approval_To_False</fullName>
+        <field>Submitted_For_MO_Approval__c</field>
+        <literalValue>0</literalValue>
+        <name>Set Submit For MO Approval To False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Submit_For_MO_Approval_To_True</fullName>
+        <field>Submitted_For_MO_Approval__c</field>
+        <literalValue>1</literalValue>
+        <name>Set Submit For MO Approval To True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_isAssigned_as_True</fullName>
+        <field>isAssigned__c</field>
+        <literalValue>1</literalValue>
+        <name>Set isAssigned as True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Case_Reference_Number</fullName>
+        <description>Add Prefix plus CaseNumber to Case_Reference_Number__c field</description>
+        <field>Case_Reference_Number__c</field>
+        <formula>IF(RecordType.Name = &quot;Ministerial Correspondence&quot;, &quot;MC&quot; + CaseNumber, &quot;CFM&quot; + CaseNumber)</formula>
+        <name>Stamp Case Reference Number</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Allocation</fullName>
+        <field>Date_Allocation__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Allocation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Awaiting_Advice</fullName>
+        <field>Date_Awaiting_Advice__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Awaiting Advice</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Awaiting_MO_Contact_Approval</fullName>
+        <field>Date_Awaiting_MO_Contact_Approval__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Awaiting MO Contact Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Awaiting_Signature</fullName>
+        <field>Date_Awaiting_Signature__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Awaiting Signature</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Closed</fullName>
+        <field>Date_Closed__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Closed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Complete</fullName>
+        <field>Date_Complete__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Complete</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Draft_Response_in_Progress</fullName>
+        <field>Date_Draft_Response_in_Progress__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Draft Response in Progress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Editor_Review</fullName>
+        <field>Date_Editor_Review__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Editor Review</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_First_Allocation</fullName>
+        <description>SFCOE-2089: Capturing the date the status changes to Allocation for the first time</description>
+        <field>Date_First_Allocation__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date First Allocation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Manager_Review</fullName>
+        <field>Date_Manager_Review__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Manager Review</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Ready_For_Printing</fullName>
+        <field>Date_Ready_For_Printing__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Ready For Printing</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Registration</fullName>
+        <field>Date_Registration__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Registration</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Reopened</fullName>
+        <field>Date_Reopened__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Reopened</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Research</fullName>
+        <field>Date_Research__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Research</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Resolved</fullName>
+        <field>Date_Resolved__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Resolved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Senior_Review</fullName>
+        <field>Date_Senior_Review__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Senior Review</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Triage</fullName>
+        <field>Date_Triage__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Triage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_to_Received</fullName>
+        <field>Status</field>
+        <literalValue>Received</literalValue>
+        <name>Status to Received</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Unset_Case_Comment_Added</fullName>
+        <field>CommentAdded__c</field>
+        <literalValue>0</literalValue>
+        <name>Unset Case Comment Added</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Unset_Is_Secretory_Contacted</fullName>
+        <field>Is_Secretary_Notified__c</field>
+        <literalValue>0</literalValue>
+        <name>Unset - Is Secretory Contacted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Manager_Role_field</fullName>
+        <field>Case_Manager_Role_at_Case_Closure__c</field>
+        <formula>Owner:User.UserRole.Name</formula>
+        <name>Update Case Manager Role field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Owner</fullName>
+        <field>OwnerId</field>
+        <lookupValue>Senior_MAGS_Officer_Queue_MC</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Update Case Owner</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status</fullName>
+        <field>Status</field>
+        <literalValue>Allocation</literalValue>
+        <name>Update Case Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status_MAGS_Approved</fullName>
+        <field>Status</field>
+        <literalValue>MAGS Approved</literalValue>
+        <name>Update Case Status - MAGS Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status_MO_Amend</fullName>
+        <field>Status</field>
+        <literalValue>MO Amend</literalValue>
+        <name>Update Case Status - MO Amend</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status_MO_Signatory_Reject</fullName>
+        <field>Status</field>
+        <literalValue>Signatory Rejected</literalValue>
+        <name>Update Case Status - MO Signatory Reject</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status_MO_User_Approval</fullName>
+        <field>Status</field>
+        <literalValue>Awaiting MO Contact Approval</literalValue>
+        <name>Update Case Status - MO User Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status_Signatory_Approval</fullName>
+        <field>Status</field>
+        <literalValue>Awaiting Signature</literalValue>
+        <name>Update Case Status - Signatory Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status_Signed</fullName>
+        <field>Status</field>
+        <literalValue>Signed</literalValue>
+        <name>Update Case Status - Signed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status_To_Closed</fullName>
+        <description>Update the status to closed</description>
+        <field>Status</field>
+        <literalValue>Finalised</literalValue>
+        <name>Update Case Status To Closed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Status_To_Registration</fullName>
+        <field>Status</field>
+        <literalValue>Registration</literalValue>
+        <name>Update Case Status To Registration</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_status_Referral_Pending</fullName>
+        <description>Update Case status Referral Pending</description>
+        <field>Status</field>
+        <literalValue>Referral Pending</literalValue>
+        <name>Update Case status Referral Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Contact_City</fullName>
+        <field>Contact_City__c</field>
+        <formula>Contact.MailingCity</formula>
+        <name>Update Contact City</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Contact_Email</fullName>
+        <description>Update Contact Email on case</description>
+        <field>Contact_Email__c</field>
+        <formula>Contact.Email</formula>
+        <name>Update Contact Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Contact_Made_for_PO</fullName>
+        <field>Contact_Made_Timestamp__c</field>
+        <formula>Now()</formula>
+        <name>Update Contact Made for PO</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Contact_Post_Code</fullName>
+        <field>Contact_Post_Code__c</field>
+        <formula>Contact.MailingPostalCode</formula>
+        <name>Update Contact Post Code</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Contact_State</fullName>
+        <field>Contact_State__c</field>
+        <formula>Contact.MailingState</formula>
+        <name>Update Contact State</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Contact_Street</fullName>
+        <field>Contact_Street__c</field>
+        <formula>Contact.MailingStreet</formula>
+        <name>Update Contact Street</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_MC_Child_Case_Status_To_Completed</fullName>
+        <description>Update the child case status to Completed when the min corro case is created using categorisation UI.</description>
+        <field>Status</field>
+        <literalValue>Completed</literalValue>
+        <name>Update MC Child Case Status To Completed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_OBO_City</fullName>
+        <field>OBO_City__c</field>
+        <formula>OBO__r.MailingCity</formula>
+        <name>Update OBO City</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_OBO_Post_Code</fullName>
+        <field>OBO_Post_Code__c</field>
+        <formula>OBO__r.MailingPostalCode</formula>
+        <name>Update OBO Post Code</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_OBO_State</fullName>
+        <field>OBO_State__c</field>
+        <formula>OBO__r.MailingState</formula>
+        <name>Update OBO State</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_OBO_Street</fullName>
+        <field>OBO_Street__c</field>
+        <formula>OBO__r.MailingStreet</formula>
+        <name>Update OBO Street</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Owner_Agency_to_SNSW</fullName>
+        <field>OwnerAgency__c</field>
+        <literalValue>SNSW</literalValue>
+        <name>Update Owner Agency to SNSW</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_RecordType_To_WestConnex_Minister</fullName>
+        <description>Update Record Type To WestConnex Ministe</description>
+        <field>RecordTypeId</field>
+        <lookupValue>WestConnex_Ministerial_Correspondence</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update RecordType To WestConnex Minister</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Record_Type_To_Office_of_Secretar</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Office_of_the_Secretary_Ministerial_Correspondence</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type To Office of Secretar</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Record_Type_To_RMS</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>RMS_CE_Signatory</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type To RMS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Record_Type_To_Roads_Freight</fullName>
+        <description>Update Record Type To Roads &amp; Freight</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Roads_Freight_Ministerial_Correspondence</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type To Roads &amp; Freight</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Responsible_party_to_SNSW</fullName>
+        <field>Responsible_Party__c</field>
+        <literalValue>SNSW</literalValue>
+        <name>Update Responsible party to SNSW</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_SNSW_case_status_to_closed</fullName>
+        <field>Status</field>
+        <literalValue>Closed</literalValue>
+        <name>Update SNSW case status to closed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_SNSW_referral_sent_flag_to_true</fullName>
+        <field>SNSW_referral_sent__c</field>
+        <literalValue>1</literalValue>
+        <name>Update SNSW referral sent flag to true</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Shared_Flag</fullName>
+        <field>Shared__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Shared Flag</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Signature_Authorisation_Failure</fullName>
+        <description>Update Signature Authorisation Failure checkbox to checked.</description>
+        <field>Signature_Authorisation_Failure__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Signature Authorisation Failure</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Signature_Review_Completed</fullName>
+        <description>Update Signature Review Completed checkbox to unchecked.</description>
+        <field>Review_Completed__c</field>
+        <literalValue>0</literalValue>
+        <name>Update Signature Review Completed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_to_MO_Amend</fullName>
+        <field>Status</field>
+        <literalValue>MO Amend</literalValue>
+        <name>Update Status to MO Amend</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_agency_to_NSW_trains</fullName>
+        <field>Agency__c</field>
+        <literalValue>NSW Trains</literalValue>
+        <name>Update agency to NSW trains</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_agency_to_RMS</fullName>
+        <field>Agency__c</field>
+        <literalValue>RMS</literalValue>
+        <name>Update agency to RMS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_agency_to_sydney_trains</fullName>
+        <field>Agency__c</field>
+        <literalValue>Sydney Trains</literalValue>
+        <name>Update agency to sydney trains</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_case_status_to_In_progress</fullName>
+        <field>Status</field>
+        <literalValue>In Progress</literalValue>
+        <name>Update case status to In progress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_case_status_to_Received</fullName>
+        <field>Status</field>
+        <literalValue>Received</literalValue>
+        <name>Update case status to Received</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_date_assigned_to_agency</fullName>
+        <field>Date_Assigned_to_Agency__c</field>
+        <formula>NOW()</formula>
+        <name>Update date assigned to agency</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_origin_details_to_blank</fullName>
+        <description>update origin details field to blank for cases created from email to case for tmc</description>
+        <field>Origin_Details__c</field>
+        <name>Update origin details to blank</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_record_type_Campaign</fullName>
+        <description>Update record type - Campaign</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Campaign</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update record type - Campaign</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_record_type_Campaign_Member</fullName>
+        <description>Update record type - Campaign Member</description>
+        <field>RecordTypeId</field>
+        <lookupValue>CampaignMember</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update record type - Campaign Member</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_record_type_General_Min_Corro</fullName>
+        <description>Update record type - General Min Corro</description>
+        <field>RecordTypeId</field>
+        <lookupValue>General_Ministerial_Correspondence</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update record type - General Min Corro</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_record_type_Roads_Min_Corro</fullName>
+        <description>Update record type - Roads and Freight Min Corro</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Roads_Freight_Ministerial_Correspondence</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update record type - Roads Min Corro</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_record_type_Transport_Min_Corro</fullName>
+        <description>Update record type - Transport Min Corro</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Transport_Ministerial_Correspondence</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update record type - Transport Min Corro</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_response_due_date</fullName>
+        <field>Due_date__c</field>
+        <formula>IF( ISPICKVAL(Priority, &quot;MP - Standard&quot;) , CASE( MOD( TODAY() - DATE( 1900, 1, 6 ), 7 ),
+  0, TODAY() + 19, TODAY() + 21 ),IF(ISPICKVAL(Priority, &quot;Individual - Standard&quot;) , CASE( MOD( TODAY() - DATE( 1900, 1, 6 ), 7 ),
+  0, TODAY() + 26, TODAY() + 28 ),null))</formula>
+        <name>Update response due date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_status_to_triage</fullName>
+        <field>Status</field>
+        <literalValue>Triage</literalValue>
+        <name>Update status to triage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>extract_Branch_name_from_the_queue_and_s</fullName>
+        <description>extract Branch name from the queue and set the Branch attribute</description>
+        <field>Branch__c</field>
+        <name>extract Branch name from the queue and s</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>flip_record_type_to_Bus</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Bus</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>flip record type to Bus</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>flip_record_type_to_Private_Operators</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Private_Operators</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>flip record type to Private Operators</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>set_Wet_Signature</fullName>
+        <field>Wet_Signature__c</field>
+        <literalValue>1</literalValue>
+        <name>set Wet Signature</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>unset_is_reassigned</fullName>
+        <field>Is_Reassigned__c</field>
+        <literalValue>0</literalValue>
+        <name>unset is reassigned</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>update_OBO_Email</fullName>
+        <field>OBO_Email__c</field>
+        <formula>OBO__r.Email</formula>
+        <name>update OBO Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>update_case_to_resolved_for_SNSW_cases</fullName>
+        <description>this field update rule updates case status to &#39;Finalised&#39; for all SNSW cases i.e. where agency on case is stamped as &#39;SNSW&#39;</description>
+        <field>Status</field>
+        <literalValue>Closed</literalValue>
+        <name>update case to resolved for SNSW cases</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>Append Carriage Number to Case Description</fullName>
+        <actions>
+            <name>Append_Carriage_Number_to_description</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Carriage_Number__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Description</field>
+            <operation>notContain</operation>
+            <value>Carriage Number:</value>
+        </criteriaItems>
+        <description>Append Carriage Number entered for trains to Case Description.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Assign Case TO GIS Admin Queue</fullName>
+        <actions>
+            <name>Update_Record_Type_To_RMS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Signatory__c</field>
+            <operation>equals</operation>
+            <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Registration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Record_Type_Dev_Name__c</field>
+            <operation>notEqual</operation>
+            <value>Campaign</value>
+        </criteriaItems>
+        <description>If Signatory on the case is Chief Executive, Roads and Maritime Services then the case will be assigned to the GIS Admin queue.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Change_Case_Owner_To_GIS_Admin_Queue</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.X5_mins_from_now__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Assign Pre-Reg Case TO GIS Admin Queue</fullName>
+        <actions>
+            <name>Change_Case_Owner_To_GIS_Admin_Queue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Change_Record_Type_To_RMS_CE</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Reset_Trigger_RMS_CE_WF_Flag</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Case_Status_To_Registration</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Signatory__c</field>
+            <operation>equals</operation>
+            <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Pre-Registration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Trigger_RMS_CE_WF__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>If Signatory on the case is Chief Executive, Roads and Maritime Services then the case will be assigned to the GIS Admin queue.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Auto Complete Digitally Signed Case</fullName>
+        <actions>
+            <name>Mark_Case_as_Completed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Signed and Emailed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Response_Type__c</field>
+            <operation>notEqual</operation>
+            <value>Partial Referral</value>
+        </criteriaItems>
+        <description>Updating case status to Completed when signed digitally. Assumes when case is signed digitally and emailed to customer, case status is updated as &#39;Signed and Emailed&#39;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Case - Set Initial Type Submitted</fullName>
+        <actions>
+            <name>Case_Set_Initial_Type_Submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>On case insert or update, Copy value of &#39;Issue Type&#39; to &#39;Initial Type Submitted&#39; if &#39;Initial Type Submitted&#39; has not been populated.</description>
+        <formula>AND(ISBLANK( Initial_Type_Submitted__c),     NOT(ISBLANK((TEXT(Type)))) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Case Handled by Serco</fullName>
+        <actions>
+            <name>Check_Serco_Handled_checkbox</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>If Case Owner role or Case Queue pertains to Serco, update &quot;Serco Handled&quot; checkbox on Case.</description>
+        <formula>(Owner:User.UserRole.DeveloperName = &#39;Serco&#39;) || (Owner:User.UserRole.DeveloperName = &#39;Serco_CSA&#39;) || (Owner:User.UserRole.DeveloperName = &#39;Serco_Restricted_CSA&#39;) || (Owner:Queue.DeveloperName = &#39;Serco_Level_2_CFM&#39;) || (Owner:Queue.DeveloperName = &#39;Serco_Web_Triage_CFM&#39;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Case Owner Has Changed from User to Queue</fullName>
+        <actions>
+            <name>Increment_Returned_to_Queue_Count</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED(OwnerId) &amp;&amp;    !ISBLANK(Owner:Queue.QueueName) &amp;&amp;   LEFT(PRIORVALUE(OwnerId),3) = &#39;005&#39; /*005 is prefix for user */</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Case is No Longer reassigned</fullName>
+        <actions>
+            <name>unset_is_reassigned</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED(Status) 
+&amp;&amp; (ISPICKVAL(PRIORVALUE (Status),&quot;Re-assigned&quot;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Change Owner to CRGS when Ready For Printing</fullName>
+        <actions>
+            <name>Change_Owner_to_CRGS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Ready For Printing</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Change Record Type to Private Operator</fullName>
+        <actions>
+            <name>Set_Reassigned_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_to_Received</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>flip_record_type_to_Private_Operators</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>,QCity,Dions,Blue Mountains,Busabout,Busways Blacktown,Busways Central Coast,Hillsbus,Forest Coach,Hunter Valley,Interline Bus,Punchbowl Bus,Transdev,Coastal,Red,Port Stephens,Rover,Surfside,Ogdens,Forster,Cavanaghs,Ballina,Osborn,Tamworth,Transit Systems</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Is_Reassigned__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Change Record Type to Private Operator - Phase 2 operators</fullName>
+        <actions>
+            <name>Set_Reassigned_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_to_Received</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>flip_record_type_to_Private_Operators</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>,Coastal,Red,Port Stephens,Rover,Surfside,Ogdens,Forster,Cavanaghs,Ballina,Osborn,Tamworth,Eggins,Edwards,Blanch,Ryans,Sawtell,Newcombe,Orange,Picton,Bathurst,Lithgow,Dubbo,Berrima,Western,Forbes,Premier,Premier,Martins,Sapphire,Priors,Shoalbus,Nowra</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Is_Reassigned__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Change Record Type to Private Operator - Phase 2 operators Second WF Rule</fullName>
+        <actions>
+            <name>Set_Reassigned_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_to_Received</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>flip_record_type_to_Private_Operators</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Cooma,Marshall,Purtills,MIA,Light,Jemalit,Northern,Wagga,Community Transport Central Coast,Premier</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Is_Reassigned__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Close Case After N Days</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>This workflow will trigger a time based field update depending upon the no of days case can be reopened after it has been marked as Resolved</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Update_Case_Status_To_Closed</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.Reopen_Till_Date__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Close Case depending upon Response Type</fullName>
+        <actions>
+            <name>Case_Status_To_Closed_NRR</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Case status should update to close if Response Type is No response required (NRR).</description>
+        <formula>PRIORVALUE(Response_Type__c) != &quot;No response required (NRR)&quot; &amp;&amp; ISPICKVAL( Response_Type__c ,&quot;No response required (NRR)&quot;) &amp;&amp; IsMinCorroCase__c &amp;&amp; (TEXT(Origin) != &quot;Web&quot; &amp;&amp;  TEXT(Origin_Details__c) != &quot;Roads Webform&quot; &amp;&amp; TEXT(Origin_Details__c) != &quot;Transport Webform&quot;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Close Child Cases For MAGS When Created</fullName>
+        <actions>
+            <name>Update_MC_Child_Case_Status_To_Completed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This workflow will close all the child cases created using Taxanomy UI</description>
+        <formula>AND( ParentId &lt;&gt; null, ISPICKVAL(Parent.Modes__c, &quot;Multi Issue&quot;), IsMinCorroCase__c )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Create Case Reference Number</fullName>
+        <actions>
+            <name>Stamp_Case_Reference_Number</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.CaseNumber</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Add prefix to CaseNumber and stamp on External ID field Case_Reference_Number__c</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>E2C - send email response for Feedback Passthrough</fullName>
+        <actions>
+            <name>Email_Customer_E2C_Feedback_Passthrough_email_response</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>equals</operation>
+            <value>Feedback Passthrough</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification To LRO</fullName>
+        <actions>
+            <name>Notification_Email_To_LRO</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Set_isAssigned_as_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Unset_Case_Comment_Added</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Sent_email_to_Light_Rail_Operator</name>
+            <type>Task</type>
+        </actions>
+        <active>true</active>
+        <description>This workflow will send out an email  notification to LRO whenever case owner is changed to &quot;Light Rail&quot; 
+
+DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
+        <formula>CONTAINS(Owner:Queue.QueueName,&quot;Light Rail&quot;)  &amp;&amp;   NOT(ISBLANK(PBLROperator_Email_Address__c))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification To PBO</fullName>
+        <actions>
+            <name>Notification_Email_To_PBO</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Set_isAssigned_as_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Unset_Case_Comment_Added</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This workflow will send out an email  notification to PBO whenever case owner is changed to &quot;Private Bus Queue&quot; 
+
+DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
+        <formula>CONTAINS(Owner:Queue.QueueName,&quot;Private Bus&quot;)  &amp;&amp; NOT(ISBLANK(PBLROperator_Email_Address__c))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification To PBO%2FLRO New Case Comment</fullName>
+        <actions>
+            <name>Email_Notification_To_PBO_LRO_New_Case_Comment</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Set_Comment_Added_Checkbox_To_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.CommentAdded__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO,LRO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>notEqual</operation>
+            <value>Closed,Finalised</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.isAssigned__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Email notification will be send to a case owner when new case comment is added on PBO/LRO cases by user other the case owner i.e. Serco Agent</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification of Excused Performance incidents to Corporate Customer Relations</fullName>
+        <actions>
+            <name>Excused_Performance_Incidents_Email_Alert_To_Corporate_Customer_Relations</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.EPI__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus</value>
+        </criteriaItems>
+        <description>Email Notification of Excused Performance incidents to Corporate Customer Relations</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification of Vexatious Customer to Corporate Customer Relations</fullName>
+        <actions>
+            <name>Vexatious_Customer_Email_Alert_To_Corporate_Customer_Relations</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.STA_Vexatious_Customer__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus</value>
+        </criteriaItems>
+        <description>Email Notification of Vexatious Customer to Corporate Customer Relations</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Flip Case record type to Roads Freight Min Corro</fullName>
+        <actions>
+            <name>Update_record_type_Roads_Min_Corro</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Whenever RMS CE Case is sent back to Sr. Mags allocation queue then case record type will be changed to Roads and Freight Min Corro.</description>
+        <formula>ISCHANGED(OwnerId) &amp;&amp;  RecordType.DeveloperName == &quot;RMS_CE_Signatory&quot; &amp;&amp; ( Owner:Queue.DeveloperName == &quot;Senior_MAGS_Officer_Queue_MC&quot; ||  CONTAINS(Owner:User.UserRole.Name ,&quot;MAGS&quot;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Flip Case record type to Roads and  Freight</fullName>
+        <actions>
+            <name>Update_Record_Type_To_Roads_Freight</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1  AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Case.Portfolio__c</field>
+            <operation>equals</operation>
+            <value>&quot;Roads, Maritime and Freight&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>RMS CE Signatory,Campaign,Campaign Member</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Signatory__c</field>
+            <operation>notEqual</operation>
+            <value>RMS Chief Executive</value>
+        </criteriaItems>
+        <description>Will flip the record type to Roads &amp; Freight Ministerial Correspondence based on the corresponding Ministerial directed to being selected.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Flip Case record type to Secretary Min Corro</fullName>
+        <actions>
+            <name>Update_Record_Type_To_Office_of_Secretar</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Case.Portfolio__c</field>
+            <operation>equals</operation>
+            <value>Office of the Secretary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>RMS CE Signatory,Campaign,Campaign Member</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Signatory__c</field>
+            <operation>notEqual</operation>
+            <value>RMS Chief Executive</value>
+        </criteriaItems>
+        <description>Will flip the record type to Office of Secretary Ministerial Correspondence based on the corresponding portfolio being selected.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Flip Case record type to Transport Min Corro</fullName>
+        <actions>
+            <name>Update_record_type_Transport_Min_Corro</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Case.Portfolio__c</field>
+            <operation>equals</operation>
+            <value>Transport and Infrastructure</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>RMS CE Signatory,Campaign,Campaign Member</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Signatory__c</field>
+            <operation>notEqual</operation>
+            <value>RMS Chief Executive</value>
+        </criteriaItems>
+        <description>Will flip the record type to Transport Ministerial Correspondence based on the corresponding Ministerial directed to being selected.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Flip Case record type to WestConnex Ministerial Correspondence</fullName>
+        <actions>
+            <name>Update_RecordType_To_WestConnex_Minister</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Portfolio__c</field>
+            <operation>equals</operation>
+            <value>WestConnex</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Campaign,Campaign Member,RMS CE Signatory</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Signatory__c</field>
+            <operation>notEqual</operation>
+            <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
+        </criteriaItems>
+        <description>Will flip the record type to WestConnex Ministerial Correspondence based on the corresponding portfolio selected.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Flip Record type to Metro</fullName>
+        <actions>
+            <name>Change_Record_Type_to_Metro</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED(OwnerId) &amp;&amp; RecordType.DeveloperName != &quot;Metro&quot; &amp;&amp;  Owner:Queue.DeveloperName == &quot;Sydney_Metro_Customer_Relations&quot;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>HCF Email Case Created</fullName>
+        <actions>
+            <name>Send_HCF_acknowledgement_email_to_customer</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Email - HCF</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Live Traffic Email Case Created</fullName>
+        <actions>
+            <name>Send_Live_Traffic_acknowledgement_email_to_customer</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Email - Live Traffic</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Mark Referral Completed</fullName>
+        <actions>
+            <name>Mark_Case_status_Referral_Completed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 3) AND 4 AND (5 OR 6) and 7</booleanFilter>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Roads &amp; Freight Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Transport Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Office of the Secretary Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Response_Type__c</field>
+            <operation>equals</operation>
+            <value>Partial Referral</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Are_All_Recipients_Referrel__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Reason_Recipients_Not_Referred__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>MAGS Approved</value>
+        </criteriaItems>
+        <description>For Partial Referral, there needs to be way to close cases were partial referrals are completed versus those worked. It was requested once response type = Partial Referral and all Referees referred, that case status is updated to Referral Completed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Mark Referral pending</fullName>
+        <actions>
+            <name>Update_Case_status_Referral_Pending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 3 OR 8) AND 4 AND 5 AND 6 AND 7</booleanFilter>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Roads &amp; Freight Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Transport Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Office of the Secretary Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Response_Type__c</field>
+            <operation>equals</operation>
+            <value>Partial Referral</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Are_All_Recipients_Referrel__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Reason_Recipients_Not_Referred__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>contains</operation>
+            <value>Signed and Emailed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>WestConnex Ministerial Correspondence</value>
+        </criteriaItems>
+        <description>For Partial Referral, there needs to be way to track cases were partial referrals are worked versus those completed. It was requested once response type = Partial Referral and case is MO approved that case status is updated to Referral Pending</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Min Corro %3A Copy Contact address details on the case</fullName>
+        <actions>
+            <name>Update_Contact_City</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Contact_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Contact_Post_Code</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Contact_State</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Contact_Street</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update Contact Address details whenever the record is edited.</description>
+        <formula>AND(IsMinCorroCase__c, OR( ISCHANGED(ContactId), AND( ISBLANK(Contact_City__c), ISBLANK(Contact_Post_Code__c), ISBLANK(Contact_State__c), ISBLANK(Contact_Street__c), ISBLANK(Contact_Email__c) ) ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Min Corro %3A Copy OBO Contact details on the case</fullName>
+        <actions>
+            <name>Update_OBO_City</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_OBO_Post_Code</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_OBO_State</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_OBO_Street</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>update_OBO_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update OBO Address details whenever the record is edited.</description>
+        <formula>AND(IsMinCorroCase__c,  OR( ISCHANGED(OBO__c),  AND(  ISBLANK(OBO_City__c),  ISBLANK(OBO_Email__c),  ISBLANK(OBO_Post_Code__c),  ISBLANK(OBO_State__c) , ISBLANK(OBO_Street__c)  )  ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Min Corro %3A Populate registered by Name</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Allocation</value>
+        </criteriaItems>
+        <description>Name of the user who registered the case</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Min Corro%3A Populate Registered By User</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Allocation</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Case%3A Send Email Alert for Owner</fullName>
+        <actions>
+            <name>Case_Alert_Notify_Case_Owner</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>equals</operation>
+            <value>Concession - Concessions,Concession - School Drive Subsidy,Concession - SSTS,Concession - Replacement of TCEC</value>
+        </criteriaItems>
+        <description>This workflow should only be triggered on create. It is designed to send an email alert when a new case is created for any owners in the criteria. This is created for Concession team.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Case%3A Send Email Alert to Sydney Metro Case Owner</fullName>
+        <actions>
+            <name>Email_Sydney_Metro_Case_Owner</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Inform Sydney Metro Case Owner that a new Case has been assigned to him/her.</description>
+        <formula>ISCHANGED(OwnerId) &amp;&amp;  CONTAINS(Owner:User.UserRole.DeveloperName, 	&#39;North_West_Rail_Link&#39;) &amp;&amp; LEFT(PRIORVALUE(OwnerId),3) = &#39;005&#39; /*005 is prefix for user */</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Notify Queue Member - New Case Creation</fullName>
+        <actions>
+            <name>Notify_Case_Assignment</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>For Office of Secretary - Workflow Rule to avoid other emails.</description>
+        <formula>AND(  ISCHANGED(OwnerId),  Owner:Queue.DeveloperName = &#39;Office_of_the_Secretary_DLO_Queue&#39; )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Notify Queue Member - New Case Creation Secretary Queue</fullName>
+        <actions>
+            <name>Notify_Case_Assignment</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Secretary_Notified_Flag</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>For Office of Secretary - Workflow Rule to avoid other emails and inform for new case creation.</description>
+        <formula>Owner:Queue.DeveloperName = &#39;Office_of_the_Secretary_DLO_Queue&#39; &amp;&amp; Is_Secretary_Notified__c!=true</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Number of categorisation changes</fullName>
+        <actions>
+            <name>Number_of_categorisation_changes</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Number of categorisation changes</description>
+        <formula>AND(OR(     ISCHANGED(Taxonomy_Moment__c),    ISCHANGED(Taxonomy_Location_Type__c),    ISCHANGED( Taxonomy_Transaction__c ),    ISCHANGED( Taxonomy_Symptom__c ),    ISCHANGED( Taxonomy_Area__c ),    ISCHANGED( Taxonomy_Location__c )    ),(CreatedDate &lt;&gt; LastModifiedDate)     )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Origin Phone and User Serco then set Origin Details -131500</fullName>
+        <actions>
+            <name>Origin_Details_131500</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Phone</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.UserRoleId</field>
+            <operation>startsWith</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>If Origin = Phone and User Role starts with Serco - Origin Details = 131500</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Populate Recipient for High Priority Sydney Train Cases</fullName>
+        <actions>
+            <name>Populate_Recepient</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>Sydney Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Priority</field>
+            <operation>equals</operation>
+            <value>High</value>
+        </criteriaItems>
+        <description>Populate Recipient for High Priority Sydney Train Cases</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>RMS Update Responsible Party to SNSW</fullName>
+        <actions>
+            <name>Update_Responsible_party_to_SNSW</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update Responsible Party to SNSW as per Taxonomy configuration</description>
+        <formula>ISPICKVAL(Origin, &#39;CFM API&#39;) &amp;&amp;
+ISPICKVAL(Responsible_Party__c, &#39;&#39;) &amp;&amp;
+(Taxonomy_Symptom_Id__c != null &amp;&amp;
+(Taxonomy_Symptom_Id__r.Parent_Id__r.Auto_Share_With_SNSW__c || Taxonomy_Symptom_Id__r.Auto_Share_With_SNSW__c))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>RMS Web Case Created By CFM API</fullName>
+        <actions>
+            <name>Update_case_status_to_Received</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This workflow updates case status to Received when RMS creates case by CFM API</description>
+        <formula>AND( ISPICKVAL(Origin_Details__c,&#39;RMS Website&#39;),
+	ISPICKVAL(Origin,&#39;CFM API&#39;),
+	NOT(IsMinCorroCase__c), 
+	NOT(ISPICKVAL(Status, &#39;Received&#39;)),
+        Taxonomy_Symptom_Id__c != null ,
+Taxonomy_Symptom_Id__r.Parent_Id__r.Auto_Share_With_SNSW__c=false,
+Taxonomy_Symptom_Id__r.Auto_Share_With_SNSW__c=false
+	)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Reassign to TfNSW CLT Queue</fullName>
+        <actions>
+            <name>Reassign_to_TfNSW_CLT_Queue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Reassigned_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>flip_record_type_to_Bus</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>(RecordType.DeveloperName = &#39;Private_Operators&#39; || RecordType.DeveloperName = &#39;Light_Rail&#39; || RecordType.DeveloperName = &#39;On_Demand&#39; )&amp;&amp; AND( ISCHANGED( Status ), ISPICKVAL( Status , &quot;Re-assigned&quot; ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Remove values in Other Signatory if a Signatory is selected</fullName>
+        <actions>
+            <name>Remove_values_in_Other_Signatory_if_a_Si</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Signatory__c</field>
+            <operation>notEqual</operation>
+            <value>Other signatory</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Reopen Case</fullName>
+        <actions>
+            <name>Set_Last_Reopen_Date_to_Today</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Fires when the case status changes from soft close to a status other than hard closed</description>
+        <formula>ISCHANGED(Status) &amp;&amp;   TEXT(PRIORVALUE(Status)) = &#39;Closed&#39; &amp;&amp;    !ISPICKVAL(Status,&#39;Finalised&#39;) &amp;&amp;   IF(ISBLANK(Owner:Queue.QueueName),     true,     Owner:Queue.QueueName != &#39;SNSW Holding&#39;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Reset Skip Validation Flag</fullName>
+        <actions>
+            <name>Reset_Skip_Validation_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.SkipValidation__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>resets the skip validation flag that is used to note names that are used by triggers to denote which validation is to be skipped and validation rules refer it to not impose themselves</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send NRR notification</fullName>
+        <actions>
+            <name>NRR_case_notification_email_to_case_owner</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>When response Type is No response required (NRR) and not a CE Case.</description>
+        <formula>ISPICKVAL(  Status  ,&quot;Closed - NRR&quot;) &amp;&amp; IsMinCorroCase__c &amp;&amp; RecordTypeName__c &lt;&gt; &quot;RMS CE Signatory&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Office of the Secretary Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Roads &amp; Freight Ministerial Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Transport Ministerial Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;General Ministerial Correspondence&quot;</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send alert to Syd Trains Managers for new cases created from closed</fullName>
+        <actions>
+            <name>Send_alert_to_Syd_Trains_Managers_for_new_cases_created_from_closed</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Received</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Closed Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains,Sydney Trains</value>
+        </criteriaItems>
+        <description>Send email to the following users if a case has been created from a customer reply to a closed case.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send case comment notification from SNSW</fullName>
+        <actions>
+            <name>Notify_case_owner_on_new_case_comment_from_SNSW</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Case_comment_added_by_SNSW__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Reset_case_comment_added_flag</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Send referral to SNSW</fullName>
+        <actions>
+            <name>Send_referral_email_to_SNSW</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Update_SNSW_referral_sent_flag_to_true</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>update_case_to_resolved_for_SNSW_cases</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Sent_email_to_SNSW</name>
+            <type>Task</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>equals</operation>
+            <value>SNSW Holding</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.SNSW_referral_sent__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.SNSW_Referral_Email__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>this workflow if responsible for sending referral to SNSW when agency on case is stamped as SNSW</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set %27Signature Authorisation Failure%27 and %27Signature Review Completed%27 to default value</fullName>
+        <actions>
+            <name>Update_Signature_Authorisation_Failure</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Signature_Review_Completed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Set &#39;Signature Authorisation Failure&#39; to checked and &#39;Signature Review Completed&#39; to unchecked.</description>
+        <formula>AND( IsClosed  = false,  IsMinCorroCase__c = true,  OR(RecordType.DeveloperName = &#39;General_Ministerial_Correspondence&#39;,  RecordType.DeveloperName = &#39;Office_of_the_Secretary_Ministerial_Correspondence&#39;,  RecordType.DeveloperName = &#39;Roads_Freight_Ministerial_Correspondence&#39;,  RecordType.DeveloperName = &#39;Transport_Ministerial_Correspondence&#39;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Date First Awaiting MO Contact Approval</fullName>
+        <actions>
+            <name>Set_Date_First_Awaiting_MO_Contact_App</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Sets Date First Awaiting MO Contact Approval timestamp</description>
+        <formula>AND( ISPICKVAL(Status, &#39;Awaiting MO Contact Approval&#39;),      ISBLANK( Date_First_Awaiting_MO_Contact_Approval__c )     )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Date First Awaiting Signature</fullName>
+        <actions>
+            <name>Set_Date_First_Date_First_Awaiting_Sig</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Sets Date First Awaiting Signature timestamp</description>
+        <formula>AND( ISPICKVAL(Status, &#39;Awaiting Signature&#39;),      ISBLANK( Date_First_Awaiting_Signature__c )     )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Date First Ready for Printing</fullName>
+        <actions>
+            <name>Set_Date_First_Ready_for_Printing</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Sets Date First Ready for Printing timestamp</description>
+        <formula>AND( ISPICKVAL(Status, &#39;Ready For Printing&#39;),      ISBLANK( Date_First_Ready_for_Printing__c )     )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Response Due Date</fullName>
+        <actions>
+            <name>Update_response_due_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>This workflow rule is to set due date of response when case status is updated to Allocation and due date is not present on the case.
+Deactivated since this logic in covered in apex class which takes public holidays in consideration.</description>
+        <formula>(OR(ISPICKVAL( Priority , &#39;MP - Standard&#39;), ISPICKVAL( Priority , &#39;Individual - Standard&#39;)) &amp;&amp; ISBLANK( Due_date__c ) &amp;&amp; (ISCHANGED( Status ) &amp;&amp; ISPICKVAL( Status, &#39;Allocation&#39;)) || (ISCHANGED( Priority ) &amp;&amp; ISPICKVAL( Status, &#39;Allocation&#39;)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Response Due Date - RMS Registration Scenario</fullName>
+        <actions>
+            <name>Update_response_due_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>This workflow rule is to set due date of response when a RMS CE Signatory case is updated to Registration and due date is not present on the case.
+Deactivated since this logic in covered in apex class which takes public holidays in consideration.</description>
+        <formula>(OR(ISPICKVAL( Priority , &#39;MP - Standard&#39;), ISPICKVAL( Priority , &#39;Individual - Standard&#39;)) &amp;&amp; ISBLANK( Due_date__c ) &amp;&amp; ISCHANGED( Status ) &amp;&amp; ISPICKVAL( Status, &#39;Registration&#39;) &amp;&amp; ISPICKVAL(  Signatory__c , &#39;Chief Executive, Roads and Maritime Services&#39;) &amp;&amp; (ISPICKVAL( Origin , &#39;Email&#39;) || ISPICKVAL( Origin , &#39;Letter&#39;))) || ((ISCHANGED( Priority ) &amp;&amp; ISPICKVAL( Status, &#39;Registration&#39;) &amp;&amp;  ISPICKVAL(  Signatory__c , &#39;Chief Executive, Roads and Maritime Services&#39;)) &amp;&amp; (ISPICKVAL( Origin , &#39;Email&#39;) || ISPICKVAL( Origin , &#39;Letter&#39;)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Agency For NSW Trains</fullName>
+        <actions>
+            <name>Set_Agency_To_Sydney_Trains</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains,Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Calculated_Agency__c</field>
+            <operation>equals</operation>
+            <value>Sydney Trains</value>
+        </criteriaItems>
+        <description>This workflow will stamp the correct agency for NSW Trains</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Agency For Serco</fullName>
+        <actions>
+            <name>Set_Agency_To_Serco</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains,Sydney Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Calculated_Agency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>This workflow will stamp the correct agency for Serco</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Agency For Sydney Trains</fullName>
+        <actions>
+            <name>Set_Agency_To_NSW_Trains</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>Sydney Trains,Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Calculated_Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </criteriaItems>
+        <description>This workflow will stamp the correct agency for Sydney Trains</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Allocation</fullName>
+        <actions>
+            <name>Stamp_Date_Allocation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Allocation</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Awaiting Advice</fullName>
+        <actions>
+            <name>Stamp_Date_Awaiting_Advice</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Awaiting Advice</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Awaiting Signature</fullName>
+        <actions>
+            <name>Stamp_Date_Awaiting_Signature</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Awaiting Signature</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Closed</fullName>
+        <actions>
+            <name>Stamp_Date_Closed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Complete</fullName>
+        <actions>
+            <name>Stamp_Date_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Completed</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Draft Response in Progress</fullName>
+        <actions>
+            <name>Stamp_Date_Draft_Response_in_Progress</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Draft in Progress</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Editor Review</fullName>
+        <actions>
+            <name>Stamp_Date_Editor_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Editor Review</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date First Allocation</fullName>
+        <actions>
+            <name>Stamp_Date_First_Allocation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_First_Allocation__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Allocation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>SFCOE-2089: Capturing the date the status changes to Allocation for the first time</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Manager Review</fullName>
+        <actions>
+            <name>Stamp_Date_Manager_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Manager Review</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Ready For Printing</fullName>
+        <actions>
+            <name>Stamp_Date_Ready_For_Printing</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Ready For Printing</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Registration</fullName>
+        <actions>
+            <name>Stamp_Date_Registration</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Registration</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Reopened</fullName>
+        <actions>
+            <name>Stamp_Date_Reopened</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Reopened</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Research</fullName>
+        <actions>
+            <name>Stamp_Date_Research</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Research</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Resolved</fullName>
+        <actions>
+            <name>Stamp_Date_Resolved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Finalised</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Senior Review</fullName>
+        <actions>
+            <name>Stamp_Date_Senior_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Senior Review</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Triage</fullName>
+        <actions>
+            <name>Stamp_Date_Triage</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Date_Triage__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Triage</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp RMS Branch</fullName>
+        <actions>
+            <name>extract_Branch_name_from_the_queue_and_s</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>startsWith</operation>
+            <value>RMS</value>
+        </criteriaItems>
+        <description>a workflow rule that fires off when record is created or updated to match criteria (owner begins with RMS*) - use RegEx to extract Branch name from the queue and set the Branch attribute to this value (note Queue is in the format RMS_&lt;division name&gt;_&lt;bran</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp date assigned to agency</fullName>
+        <actions>
+            <name>Update_case_status_to_Received</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_date_assigned_to_agency</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>stamps date assigned to agency on case if case owner is other than serco user</description>
+        <formula>IF(AND(  NOT(IsMinCorroCase__c),  	ISBLANK(Date_Assigned_to_Agency__c),  	OR( ISPICKVAL( Status , &#39;New&#39;), ISPICKVAL( Status , &#39;Triage&#39;)),   	AND(Owner:Queue.DeveloperName != &#39;Serco_Web_Triage_CFM&#39;,  Owner:User.UserRole.DeveloperName != &#39;Serco&#39;, Owner:User.UserRole.DeveloperName != &#39;Serco_CSA&#39;, Owner:User.UserRole.DeveloperName != &#39;Serco_Restricted_CSA&#39; )), true, false)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Sydney Metro Cases - Email Notification for New Case Assignment</fullName>
+        <actions>
+            <name>Notify_Case_Assignment_to_Sydney_Metro_Case_Owner</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED(OwnerId) &amp;&amp; LEFT(OwnerId,3) = &#39;005&#39; &amp;&amp;  Record_Type_Dev_Name__c = &#39;Metro&#39;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Sydney Trains - High Priority Email</fullName>
+        <actions>
+            <name>Trains_High_Priority_Email</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2) AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>Sydney Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Priority</field>
+            <operation>equals</operation>
+            <value>High</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.High_Priority_Train_Recepient__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Sydney Trains - Send High Priority Email Notifications (Agency is Sydney Trains and Priority is High)</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>TMC Email Case Created</fullName>
+        <actions>
+            <name>Email_to_Customer_TMC_Web_to_Case_email_response</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Update_origin_details_to_blank</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Email - TMC</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Unset - Is Secretory Contacted</fullName>
+        <actions>
+            <name>Unset_Is_Secretory_Contacted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(  ISCHANGED(OwnerId),  Owner:Queue.DeveloperName != &#39;Office_of_the_Secretary_DLO_Queue&#39; )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Unsubstantiated Case Notification To Depot Manager</fullName>
+        <actions>
+            <name>Unsubstantiated_Case_Notification_To_Depot_Manager</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.STA_Unsubstantiated__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus</value>
+        </criteriaItems>
+        <description>Email Notification of Unsubstantiated Customer to Depot Manager</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Amendment Checkbox value</fullName>
+        <actions>
+            <name>Set_Amendment_Checkbox_to_false</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Ready For Printing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Amendment will be set to false if the case status is changed to Ready for printing</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Case Manager Role when case is closed</fullName>
+        <actions>
+            <name>Update_Case_Manager_Role_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.IsClosed</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>SFCOE-2139: Used to capture the role of the case manager at the time when the case is closed. For reporting purposes. Field is used by RMS, but can be used by other agencies if this is helpful.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Contact Made</fullName>
+        <actions>
+            <name>Update_Contact_Made_for_PO</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update the field Contact_Made_Timestamp__c for PO record type when the status changes from Received to In Progress</description>
+        <formula>RecordType.DeveloperName  = &#39;Private_Operators&#39; &amp;&amp; Text(PRIORVALUE(Status)) = &#39;Received&#39; &amp;&amp; text(Status) = &#39;In Progress&#39;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Priority STA Cases</fullName>
+        <actions>
+            <name>Set_Priority_to_high</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>STA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Modes__c</field>
+            <operation>equals</operation>
+            <value>Bus</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Issue_Level_3__c</field>
+            <operation>equals</operation>
+            <value>Mobile Phone Bus Operator,Unsafe Driving</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.KPI__c</field>
+            <operation>equals</operation>
+            <value>Insurance</value>
+        </criteriaItems>
+        <description>Updates the priority to High for STA cases</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Record Type to Bus when Owner is STA</fullName>
+        <actions>
+            <name>flip_record_type_to_Bus</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Modes__c</field>
+            <operation>equals</operation>
+            <value>Bus</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>STA</value>
+        </criteriaItems>
+        <description>Fix for defect SFCOE-1002
+
+Update the record type to Bus if Owner Agency is STA and Mode=Bus.
+This is to ensure that STA is able to &quot;Close with Customer&quot; for contract purposes.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status to MO Amend if new amendment</fullName>
+        <actions>
+            <name>Update_Status_to_MO_Amend</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>If a new amendment is added to the case, update the status to MO Amend. (Assumes previous status is awaiting signature)</description>
+        <formula>AND(Amendment__c,ISPICKVAL( Status , &quot;Awaiting Signature&quot;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update agency to RMS for cases submitted by SNSW</fullName>
+        <actions>
+            <name>Update_agency_to_RMS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>SNSW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Created_By_Email__c</field>
+            <operation>contains</operation>
+            <value>@service.nsw.gov.au</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Case_Owner__c</field>
+            <operation>notEqual</operation>
+            <value>SNSW Holding</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update case status to In Progress</fullName>
+        <actions>
+            <name>Update_case_status_to_In_progress</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(NOT( IsMinCorroCase__c ), ISPICKVAL(Status, &#39;Received&#39;) , Owner:User.UserRole.DeveloperName != &#39;Serco&#39;, Owner:User.UserRole.DeveloperName != &#39;Serco_CSA&#39;, Owner:User.UserRole.DeveloperName != &#39;Serco_Restricted_CSA&#39;, LEFT(OwnerId,3) == &quot;005&quot; )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update case status to Received</fullName>
+        <actions>
+            <name>Update_case_status_to_Received</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>this workflow updates case status to received on change of ownership to queue from a user.</description>
+        <formula>AND(LEFT(OwnerId,3)  &lt;&gt;  &quot;005&quot; , NOT(IsMinCorroCase__c), Owner:Queue.DeveloperName != &#39;SNSW_Holding&#39;, Owner:Queue.DeveloperName != &#39;Serco_Web_Triage_CFM&#39;, Owner:Queue.DeveloperName != &#39;Serco_Level_2_CFM&#39;, NOT(ISPICKVAL(Status, &#39;Received&#39;)))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update status for shared cases</fullName>
+        <actions>
+            <name>Update_SNSW_case_status_to_closed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Responsible_Party__c</field>
+            <operation>equals</operation>
+            <value>SNSW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Shared__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Workflow is responsible for updating case status to closed for the cases which are qualified for SNSW</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update status to Triage for E2C</fullName>
+        <actions>
+            <name>Update_status_to_triage</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Email - Live Traffic,Email - TMC,Email - HCF,Email - E2C</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.IsMinCorroCase__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Web Case Created</fullName>
+        <actions>
+            <name>Email_Customer_Web_to_Case_email_response</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
+        <criteriaItems>
+            <field>Case.Created_By_Email__c</field>
+            <operation>notContain</operation>
+            <value>@service.nsw.gov.au</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.SuppliedEmail</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>notEqual</operation>
+            <value>SNSW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Web</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.ParentId</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>notEqual</operation>
+            <value>Roads Webform</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>notEqual</operation>
+            <value>Transport Webform</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>notEqual</operation>
+            <value>WestConnex Webform</value>
+        </criteriaItems>
+        <description>Sends an acknowledgement email when a case is created from the web</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Web Case Created By CFM API</fullName>
+        <actions>
+            <name>Email_Customer_CFM_API_to_Case_email_response</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Case.Created_By_Email__c</field>
+            <operation>notContain</operation>
+            <value>@service.nsw.gov.au</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.SuppliedEmail</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>notEqual</operation>
+            <value>SNSW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>CFM API</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.ParentId</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>notEqual</operation>
+            <value>RMS Website</value>
+        </criteriaItems>
+        <description>Sends an acknowledgement email when a case is created from the CFM API</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Web Case Created for SNSW</fullName>
+        <actions>
+            <name>Email_Customer_Web_to_Case_email_response_for_SNSW_cases</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND (2 OR 3) AND 4 AND 5 AND (6 AND 7)</booleanFilter>
+        <criteriaItems>
+            <field>Case.Created_By_Email__c</field>
+            <operation>notContain</operation>
+            <value>@service.nsw.gov.au</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.SuppliedEmail</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.ContactEmail</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>equals</operation>
+            <value>SNSW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.ParentId</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>notEqual</operation>
+            <value>CFM API</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>notEqual</operation>
+            <value>RMS Website</value>
+        </criteriaItems>
+        <description>Sends an acknowledgement email when a case is created from the web for SNSW</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>WetSignatureDefault</fullName>
+        <actions>
+            <name>set_Wet_Signature</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Portfolio__c</field>
+            <operation>equals</operation>
+            <value>&quot;Roads, Maritime and Freight&quot;</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Sent_email_to_Light_Rail_Operator</fullName>
+        <assignedTo>systemuser@transport.nsw.gov.au</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>0</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Completed</status>
+        <subject>Sent email to Light Rail Operator</subject>
+    </tasks>
+    <tasks>
+        <fullName>Sent_email_to_SNSW</fullName>
+        <assignedTo>systemuser@transport.nsw.gov.au</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>0</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Completed</status>
+        <subject>Sent email to SNSW</subject>
+    </tasks>
+</Workflow>

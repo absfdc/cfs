@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Due_Date_should_less_than_case_Due_Date</fullName>
+    <active>false</active>
+    <description>The Action plan due date should not be greater than parent case Due Date.
+JT: Made inactive. No longer required as a validation rule.</description>
+    <errorConditionFormula>NOT(SkipValidations__c) &amp;&amp; Due_Date__c &gt; Parent_Case__r.Due_date__c</errorConditionFormula>
+    <errorDisplayField>Due_Date__c</errorDisplayField>
+    <errorMessage>Due Date should not be greater than Parent case Due Date.</errorMessage>
+</ValidationRule>

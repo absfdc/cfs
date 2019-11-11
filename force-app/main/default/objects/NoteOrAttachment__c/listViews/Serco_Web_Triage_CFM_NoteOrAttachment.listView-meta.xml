@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Serco_Web_Triage_CFM_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Serco - Web Triage</label>
+    <queue>Serco_Web_Triage_CFM</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

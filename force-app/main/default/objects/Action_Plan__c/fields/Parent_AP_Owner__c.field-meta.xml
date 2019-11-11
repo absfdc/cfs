@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_AP_Owner__c</fullName>
+    <description>Parent action plan owner name</description>
+    <externalId>false</externalId>
+    <formula>Parent_Action_Plan__r.Owner:User.FirstName + &#39; &#39; + Parent_Action_Plan__r.Owner:User.LastName</formula>
+    <inlineHelpText>Parent action plan owner name</inlineHelpText>
+    <label>Parent AP Owner</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

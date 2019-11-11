@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>In_Progress</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>In Progress</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/apex.js&quot;)}
+var actionPlanRecordId = &quot;{!Action_Plan__c.Id}&quot;; 
+try{
+	var msg = sforce.apex.execute(&quot;ActionPlanStatusTransition&quot;,&quot;inProgress&quot;,{actionPlanId:actionPlanRecordId});
+	if(msg == &#39;&#39;) {
+		alert(&#39;Action Plan status successfully updated to Action Plan in Progress&#39;); 
+		window.location.reload();
+	} else {
+		alert(msg); 
+	}
+} catch(err) {
+	if(err.message) {
+		alert(err.message);
+	} else {
+		alert(err);
+	}
+}</url>
+</WebLink>

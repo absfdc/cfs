@@ -1,0 +1,37 @@
+<apex:page id="thankyouPage" showHeader="false" sidebar="false" title="Thank you for your feedback">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+<apex:stylesheet value="{!IF(OR(LOWER($CurrentPage.parameters.source) == 'maritime',LOWER($CurrentPage.parameters.source) == 'rms intranet', LOWER($CurrentPage.parameters.source) == 'rms'),URLFOR($Resource.WebformStyles, 'rms.css'), IF(LOWER($CurrentPage.parameters.source) == 'nsw trains', URLFOR($Resource.WebformStyles, 'nswtrains.css'), IF(LOWER($CurrentPage.parameters.source) == 'sydney trains',URLFOR($Resource.WebformStyles, 'sydtrains.css'), URLFOR($Resource.WebformStyles, 'tfnsw.css'))))}"/>
+<apex:includeScript value="{!$Resource.combinedjs_1}"/>    
+
+    <!-- SFCOE-2041 Salesforce GA tracking - Google Tag Manager START -->
+	<apex:includeScript html-async="" value="{!IF(LOWER($CurrentPage.parameters.source) == 'tfnsw' || LOWER($CurrentPage.parameters.source) == 'nsw trains',$Resource.GoogleTagManagerHeader, '')}" />
+
+    <!-- apex:includeScript value="{!IF(LOWER($CurrentPage.parameters.source) == 'tfnsw',$Resource.GoogleTagManagerHeader, '')}"   -->
+	<!-- apex:includeScript value="{!IF(LOWER($CurrentPage.parameters.source) == 'nsw trains',$Resource.GoogleAnalyticsForNSWTrains, '')}"   -->
+    
+	<apex:outputPanel rendered="{!LOWER($CurrentPage.parameters.source) == 'tfnsw' || LOWER($CurrentPage.parameters.source) == 'nsw trains'}">
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZGSMR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    </apex:outputPanel>    
+    
+    <!-- SFCOE-2041 Salesforce GA tracking - Google Tag Manager END -->
+        
+
+   <!--<apex:pageBlock html-class="formWidth" id="thankYouBlock">-->
+      <!-- <div id="ackMsg" class="bPageBlock" style="border-left:0px;border-right:0px;max-width:900px;margin:0 auto">   -->
+          
+
+<div id="ackMsg" class="{!IF(OR(LOWER($CurrentPage.parameters.source) == 'maritime',LOWER($CurrentPage.parameters.source) == 'rms intranet',LOWER($CurrentPage.parameters.source) == 'rms'),'bPageBlock',IF(LOWER($CurrentPage.parameters.source) == 'nsw trains','bPageBlock',IF(LOWER($CurrentPage.parameters.source) == 'sydney trains',URLFOR($Resource.WebformStyles, 'sydtrains.css'),'background-color:#fff;font-family:TransText;')))}" style="border-left:0px;border-right:0px;max-width:900px;margin:0 auto{!IF(LOWER($CurrentPage.parameters.source) == 'tfnsw',';font-family:TransText;', '')}" >          
+<!-- div id="ackMsg" class="{!IF(OR(LOWER($CurrentPage.parameters.source) == 'maritime',LOWER($CurrentPage.parameters.source) == 'rms intranet',LOWER($CurrentPage.parameters.source) == 'rms'),'bPageBlock',IF(LOWER($CurrentPage.parameters.source) == 'nsw trains','bPageBlock',IF(LOWER($CurrentPage.parameters.source) == 'sydney trains',URLFOR($Resource.WebformStyles, 'sydtrains.css'),'background-color:#fff;font-family:TransText;')))}" style="border-left:0px;border-right:0px;max-width:900px;margin:0 auto" -->
+          
+          
+           <div class="col-md-12" >
+              <div class="col-md-12"  id="thankYouMessage" >
+                <p>{!$CurrentPage.parameters.message}</p>
+                <p>If you asked for a response, we'll be in touch soon.</p>
+              </div>
+            </div>
+        </div>
+    <!--</apex:pageBlock> -->
+    <script src="{!$Resource.IframeResizer}"/>
+    <script>window.parent.postMessage('scrollToAckMsg','*')</script>    
+</apex:page>

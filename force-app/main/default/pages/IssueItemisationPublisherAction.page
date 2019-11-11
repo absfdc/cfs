@@ -1,0 +1,658 @@
+<apex:page StandardController="Case" showHeader="false"  extensions="IssueItemisationPublisherAction_CX">
+	<html>
+        <script src="/soap/ajax/33.0/connection.js" type="text/javascript" /> 
+
+		<input id="theHiddenCaseId" value="{!thisCase.Id}" type="hidden" name="theHiddenCaseId" />
+		<script type="text/javascript" src="/canvas/sdk/js/34.0/publisher.js"></script>
+		<apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/css/bootstrap.min.css')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/js/bootstrap.min.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/themes/proton/style.css')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/jstree.min.js')}"/>
+		<br/>
+		<div class=" container" style="overflow:auto; height:55em;" >
+
+			<div class="row">
+				<label class="col-xs-3" style="padding-left:0px">Subject</label>
+				<textarea type="text" id="subject"  class="input col-xs-9" placeholder="enter subject" onfocus="this.placeholder = '';" onblur="this.placeholder = 'enter subject...';" style="display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="1" >{!thisCase.subject}</textarea> 
+				<button type="submit" id="updateCategory" class="btn col-xs-2 pull-right " style="margin-right:1em" data-loading-text="Updating..." onclick="updateValidCatagory()"  tabindex="2" >Update</button>
+			</div>
+			<div class="btn-group" data-toggle="buttons" id="SearchOrHierarchy" style="display:none">
+				<label class="btn btn-primary ">
+				<input type="radio" name="TaxonomySearch" value="search" id="TaxonomySearch" autocomplete="off" >Search</input>
+				</label>
+				<label class="btn btn-primary active">
+					<input type="radio" name="TaxonomyPicklist" value="picklist" id="TaxonomyPicklist" autocomplete="off" >Picklist</input>
+				</label>
+			</div>
+			<div class="row" style="z-index: 200;">
+				<div id="ModeWidget" class="dropdown_widget col-xs-6 " style="display:inline-block; padding-left: 0px;
+	    vertical-align:top; ">
+					<label>Mode</label>
+					<div class="inner-addon right-addon">
+					    <i class="glyphicon glyphicon-chevron-down"></i>
+					    <input type="text" id="searchInputMode" value="" readonly="true" class="searchbox input " placeholder="select mode..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'select mode';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;" tabindex="3" />
+					</div>
+					
+
+					<div id="ModeContainer"  class="searchableDropdown col-xs-6 simpleDropdown" style="background-color: rgb(252, 252, 255);z-index: 200;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;" ></div>
+				</div>
+				<div id="TypeWidget" class="dropdown_widget col-xs-6 " style="display:inline-block; padding-left: 0px;
+	    vertical-align:top;   ">
+					<label>Issue Type</label>
+					<div class="inner-addon right-addon">
+					    <i class="glyphicon glyphicon-chevron-down"></i>
+					    <input type="text" id="searchInputType" value="" readonly="true" class="searchbox input " placeholder="select issue type..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'select issue type';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;" tabindex="4" />
+					</div>
+
+					<div id="TypeContainer"  class="searchableDropdown col-xs-6 simpleDropdown" style="background-color: rgb(252, 252, 255);z-index: 200;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"  ></div>
+
+				</div>
+				
+			</div>
+			<b/>
+			<div class="row" style="z-index: 100;">
+				
+				<div id="LocationWidget" class="dropdown_widget col-xs-6" style="display:inline-block; padding-left: 0px;
+	    vertical-align:top;  " >
+					<label>Location</label>
+
+					<input type="text" id="searchInputLocation" value="" class="input searchbox " placeholder="search location..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search location...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="5" />
+					<div id="LocationContainer"  class="searchableDropdown col-xs-6 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"></div>
+
+				</div>
+				<div id="IssueWidget" class="dropdown_widget col-xs-6" style="display:inline-block; padding-left: 0px;
+	    vertical-align:top;  " >
+					<label>Issue Category</label>
+
+					<input type="text" id="searchInputIssue" value="" class="input searchbox " placeholder="search issue..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search issue...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="6" />
+					<div id="IssueContainer"  class="searchableDropdown col-xs-6 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;" ></div>
+
+				</div>
+			</div>
+			
+		</div>
+
+		<script>
+			var currentSelectedModeId='';
+			var currentSelectedType='';
+
+			var currentSelectedMode='';
+			var currentSelectedLocation='';
+			var currentSelectedLocationId='';
+			var currentSelectedIssue='';
+			var currentSelectedIssueId='';
+			var showTree=true;
+			var parentIssue='';
+		    var parentLocation='';
+		    var grandIssue='';
+		    var grandLocation='';
+
+			$(function() {
+				$('[tabindex="1"]').focus();
+
+				$(document).on('click', function(event) {
+					if ($(event.target).hasClass('searchbox') || $(event.target).hasClass('glyphicon-chevron-down')){
+						var simpleDropdownContainer=$(event.target).closest('.dropdown_widget').find('.simpleDropdown');
+						if (!simpleDropdownContainer.is(":visible")) {
+							simpleDropdownContainer.show();
+						}else{
+							simpleDropdownContainer.hide();
+						}
+					}else if (!$(event.target).closest('.simpleDropdown').length) {
+					    // Hide the menus.
+					    $('#ModeContainer').hide();
+						$('#TypeContainer').hide();
+					} 
+				});
+        
+				if (!showTree){
+					console.log('showtree -'+showTree);
+					$('#LocationContainer').hide();
+					$('#IssueContainer').hide();
+					
+				}
+
+				$('#ModeContainer').hide();
+				$('#TypeContainer').hide();
+
+
+			  //container Mode
+			  $('#ModeContainer').jstree({
+			  	"plugins" : ["wholerow",   "massload", "sort"],
+			    "core": {
+			    	"multiple" : false,
+			        'themes': {
+			            'name': 'proton',
+			            'responsive': true
+			        },
+			        'data' : getModes
+			    }
+			  });
+
+				
+  			// allow search results expanding
+			(function ($, undefined) {
+			    "use strict";
+			    $.jstree.plugins.show_matches_children = function (options, parent) {
+			        this.bind = function () {
+			            parent.bind.call(this);
+			            this.element
+			                .on('search.jstree before_open.jstree', function (e, data) {
+			                    if(data.instance.settings.search && data.instance.settings.search.show_only_matches) {
+			                        data.instance._data.search.dom.find('.jstree-node')
+			                            .show().filter('.jstree-last').filter(function() { return this.nextSibling; }).removeClass('jstree-last')
+			                            .end().end().end().find(".jstree-children").each(function () { $(this).children(".jstree-node:visible").eq(-1).addClass("jstree-last"); });
+			                    }
+			                });
+			        };
+			    };
+			})(jQuery);
+			  //container Location
+			  $('#LocationContainer').jstree({
+			  	"plugins" : ["wholerow",   "massload", "search", "sort","show_matches_children"],
+			    "core": {
+			    	"multiple" : false,
+			        'themes': {
+			            'name': 'proton',
+			            'responsive': true
+			        },
+			        'data' : getLocations,
+			        'expand_selected_onload' : true,
+			    },
+		    	'search' :	{
+			    	"show_only_matches" : true,
+			    	"show_only_matches_children" : true,
+			    	"close_opened_onclear" : true
+		        }
+			  });
+
+			  var to = false;
+			  $('#searchInputLocation').keyup(function () {
+			  	if(!$('#LocationContainer').is(":visible")){
+			  		$('#LocationContainer').show();
+			  	}
+			    if(to) { clearTimeout(to); }
+			    to = setTimeout(function () {
+			      var v = $('#searchInputLocation').val();
+			      $('#LocationContainer').jstree(true).search(v);
+			    }, 250);
+			  });
+
+
+			  //container Issue
+			  $('#IssueContainer').jstree({
+			  	"plugins" : ["wholerow",   "massload", "search", "sort","show_matches_children"],
+			    "core": {
+			    	"multiple" : false,
+			        'themes': {
+			            'name': 'proton',
+			            'responsive': true
+			        },
+			        'data' : getIssues,
+			        'expand_selected_onload' : true,
+			    },
+		    	'search' :	{
+			    	"show_only_matches" : true,
+			    	"show_only_matches_children" : true,
+			    	"close_opened_onclear" : true
+
+		        }
+			  });
+
+			  var to = false;
+			  $('#searchInputIssue').keyup(function () {
+			  	if(!$('#IssueContainer').is(":visible")){
+			  		$('#IssueContainer').show();
+			  	}
+			    if(to) { clearTimeout(to); }
+			    to = setTimeout(function () {
+			      var v = $('#searchInputIssue').val();
+			      $('#IssueContainer').jstree(true).search(v);
+			    }, 250);
+			  });
+
+
+
+			  //container Type
+			  $('#TypeContainer').jstree({
+			  	"plugins" : ["wholerow",   "massload", "sort"],
+			    "core": {
+			    	"multiple" : false,
+			        'themes': {
+			            'name': 'proton',
+			            'responsive': true
+			        },
+			        'data' : getTypes
+			    }
+			  });
+
+			$(".searchableDropdown").on('refresh.jstree', function (event, data) {
+				var widget;
+			  	var searchInput;
+			  	if(event){
+			  		widget=$(event.currentTarget).closest('.dropdown_widget');
+			  		searchInput=widget.find('.searchbox')[0];
+			  		if (widget[0].id=='LocationWidget'){
+					    $(searchInput).popover({
+			        		trigger:'hover',
+			        		placement:'auto bottom',
+			        		content: grandLocation +' / '+ parentLocation+' / '+currentSelectedLocation
+			        	});
+			        	$('#LocationContainer').show();
+					
+					
+			        	if(currentSelectedLocationId && currentSelectedLocationId.length>=15)
+			        		$('#LocationContainer').jstree(true).select_node(currentSelectedLocationId);  	
+					}else if (widget[0].id=='IssueWidget' ){
+					 	$(searchInput).popover({
+			        		trigger:'hover',
+			        		placement:'auto bottom',
+			        		content: grandIssue +' / '+ parentIssue+' / '+currentSelectedIssue
+			        	});
+			        	$('#IssueContainer').show();
+			        	if ( currentSelectedIssueId && currentSelectedIssueId.length>=15)
+			        		$('#IssueContainer').jstree(true).select_node(currentSelectedIssueId);
+					}
+				}
+			})
+			  // listen for event node selected
+			  $(".searchableDropdown").on('activate_node.jstree', function (event, data) {
+				if(data.instance.is_leaf(data.node)){
+					var widget;
+				  	var searchInput;
+				  	var dropdownContainer;
+				  	if(event){
+				  		widget=$(event.currentTarget).closest('.dropdown_widget');
+				  		searchInput=widget.find('.searchbox')[0];
+				  		dropdownContainer=widget.find('.searchableDropdown');
+				  		var thisNode=data.instance.get_node(data.node);
+
+						if (widget[0].id=='ModeWidget'){
+							currentSelectedMode=data.instance.get_node(data.node).text;
+							currentSelectedModeId=data.instance.get_node(data.node).id;
+
+							$('#LocationContainer').jstree(true).refresh(true);
+							$('#IssueContainer').jstree(true).refresh(true);
+							$('#searchInputLocation').val('');
+							currentSelectedLocation='';
+							currentSelectedLocationId='';
+							$('#searchInputIssue').val('');
+							currentSelectedIssue='';
+							currentSelectedIssueId='';
+							parentIssue='';
+						    parentLocation='';
+						    grandIssue='';
+						    grandLocation='';
+						    $('#searchInputLocation').popover('destroy');
+					    	$('#searchInputIssue').popover('destroy');
+
+						}else if (widget[0].id=='LocationWidget'){
+							console.log('Location selected');
+							currentSelectedLocation=data.instance.get_node(data.node).text;
+							currentSelectedLocationId=data.instance.get_node(data.node).id;
+						    parentLocation=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+						    var parentLocationId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+						    grandLocation=data.instance.get_node(data.instance.get_parent(parentLocationId)).text;
+						    $(searchInput).popover('destroy');
+							$(searchInput).popover({
+				        		trigger:'hover',
+				        		placement:'auto bottom',
+				        		content: grandLocation +' / '+ parentLocation+' / '+currentSelectedLocation
+				        	});
+
+						}else if (widget[0].id=='IssueWidget'){
+							console.log('Issue selected');
+							currentSelectedIssue=data.instance.get_node(data.node).text;
+							currentSelectedIssueId=data.instance.get_node(data.node).id;
+							parentIssue=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+						    var parentIssueId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+						    grandIssue=data.instance.get_node(data.instance.get_parent(parentIssueId)).text;
+						    $(searchInput).popover('destroy');
+							$(searchInput).popover({
+				        		trigger:'hover',
+				        		placement:'auto bottom',
+				        		content: grandIssue +' / '+ parentIssue+' / '+currentSelectedIssue
+				        	});
+
+						}
+						dropdownContainer.hide();
+				  	}
+
+
+					searchInput.value=data.instance.get_node(data.node).text;
+				}else{
+					$(event.target).jstree(true).deselect_node(data.node);
+                	$(event.target).jstree(true).toggle_node(data.node);
+				}
+
+			  })
+
+			// listen for event node search
+			$(".searchableDropdown").on('search.jstree', function (event, data) {
+				var widget;
+				var dropdownContainer;
+				if(event){
+					widget=$(event.currentTarget).closest('.dropdown_widget');
+					dropdownContainer=widget.find('.searchableDropdown')
+				}
+
+
+				if(data.res.length<=0){
+					if(!showTree) dropdownContainer.hide();
+				}
+			})
+
+
+			//Search Or Hierarchy
+			$("#SearchOrHierarchy :input").change(function() {
+				showTree= 'search'==event.target.children[0].value ? false : true;
+				if (showTree){
+					$('#LocationContainer').show();
+					$('#IssueContainer').show();
+				}else{
+					$('#LocationContainer').hide();
+					$('#IssueContainer').hide();
+				}
+			});
+
+			
+
+			$('.searchbox').keydown(function(event) {
+				
+				if ( event.which == 40 ) {
+					//down
+					event.preventDefault();
+					event.target.blur();
+					$(event.target.closest('.dropdown_widget')).find('.searchableDropdown').show();
+					var visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-clicked');
+					if (!visibleNodes.length>0){
+						visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-search');
+					}
+					if (!visibleNodes.length>0){
+						visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-anchor');
+					}
+					visibleNodes[0].focus();
+				}else if (event.which == 38){
+					//up
+					event.preventDefault();
+				}
+			  
+			});
+			$('.searchableDropdown').on('keydown.jstree', '.jstree-anchor', function (e) {
+				if (e.which == 9) {
+					e.preventDefault();
+					var thisTabindex = $(this).closest('.dropdown_widget').find('.searchbox').attr('tabindex');
+					thisTabindex++; //increment tabindex
+					$('[tabindex=' + thisTabindex + ']').focus();
+
+				}
+			})
+			
+		});//end $function
+
+
+		var closeIssueItemiser=function(){
+			Sfdc.canvas.publisher.publish({name : 'publisher.refresh', 
+										payload :  {feed: true, 
+										objectFields: true, 
+										objectRelatedLists: {}}});
+
+		}
+		
+		var updateValidCatagory=function(){
+			if(!currentSelectedLocationId || currentSelectedLocationId.length<15 || !currentSelectedIssueId || currentSelectedIssueId.length<15){
+					bootbox.alert({ size: 'small',
+									    		message: " No Issue or Location selected  ",
+								    		closeButton: false
+									    	}); 
+			}else{
+				updateCatagory();
+			}
+		}
+		
+		//update category
+		var updateCatagory=function(){
+			var updateButton=$('#updateCategory');
+			updateButton.button('loading');
+			currentSelectedType=$('#searchInputType').val();
+			if (currentSelectedType==''){
+				bootbox.alert({ size: 'small',
+						    	message: " Can not add categorisation as Type not selected for all child issues",
+					    		closeButton: false}); 
+				return;
+			}
+			
+			Visualforce.remoting.Manager.invokeAction(
+				
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.updateEx}',
+				$('#theHiddenCaseId').val(),
+				$('#subject').val(),
+				currentSelectedMode,
+				currentSelectedLocation,
+				currentSelectedLocationId,
+				currentSelectedIssue,
+				currentSelectedIssueId,
+				parentIssue,
+			    parentLocation,
+			    grandIssue,
+			    grandLocation,
+			    currentSelectedType,
+				function(result, event){
+	                if(event.status) {
+						updateButton.button('reset');
+						Sfdc.canvas.publisher.publish({name : 'publisher.refresh', 
+							payload :{feed: true, objectRelatedLists: {}}});
+						bootbox.alert({ size: 'small',
+							    		message: "   Updated the Categories   ",
+							    		callback: closeIssueItemiser,
+							    		closeButton: false
+							    	}); 
+	                }else{
+	                	var regexp = /(?:first error:)(.*)(?::)/;
+						var firstMatch = regexp.exec(event.message)[1]; 
+						updateButton.button('reset');
+						
+						bootbox.alert({ size: 'small',
+							    		message: firstMatch,
+							    		callback: closeIssueItemiser,
+							    		closeButton: false
+							    	}); 
+	                }
+	            }, {escape: true}
+			);
+
+		}
+		
+		//get data function
+		var getModes=function(obj, cb) {
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getModes}',
+				$('#theHiddenCaseId').val(),
+
+				function(result, event){
+	                if(event.status) {
+						$.each(result,function(index,node){
+							if(node.state && node.state.selected) {
+								$('#searchInputMode').val(node.text);
+								currentSelectedMode=node.text;
+								currentSelectedModeId=node.id;
+
+								$('#LocationContainer').jstree(true).refresh(true);
+								$('#IssueContainer').jstree(true).refresh(true);
+							}
+
+						});
+	                    cb.call(this,result);
+	                    if(currentSelectedModeId && currentSelectedModeId.length>=15) {
+	                    	$('#ModeContainer').jstree(true).select_node(currentSelectedModeId);
+	                    }
+	                }
+	            }, {escape: false}
+			);
+
+		}
+
+
+		//get location
+		var getLocations=function(obj, cb) {
+			if (!currentSelectedModeId || currentSelectedModeId.length<15) {
+				cb.call(this,[]);
+				return;
+			}
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getLocations}',
+				$('#theHiddenCaseId').val(),
+				currentSelectedModeId,
+				function(result, event){
+	                if(event.status) {
+						$.each(result,function(index,node){
+							if(node.state ) {
+								if(node.state.selected){
+									$('#searchInputLocation').val(node.text);
+									currentSelectedLocation=node.text;
+									currentSelectedLocationId=node.id;
+
+								}else if (node.state.opened && node.parent!='#'){
+									parentLocation=node.text
+
+								}else if (node.state.opened && node.parent=='#'){
+									grandLocation=node.text
+
+								}
+								
+							}
+
+						});
+		                cb.call(this,result);
+		                if(currentSelectedLocationId && currentSelectedLocationId.length>=15) {
+		               		$('#LocationContainer').jstree(true).select_node(currentSelectedLocationId);
+		               	}
+	                }
+	            }, {escape: false}
+			);
+
+			
+
+		}
+		//get issues
+		var getIssues=function(obj, cb) {
+			if (!currentSelectedModeId || currentSelectedModeId.length<15) {
+				cb.call(this,[]);
+				return;
+			}
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getIssues}',
+				$('#theHiddenCaseId').val(),
+				currentSelectedModeId,
+				function(result, event){
+	                if(event.status) {
+						$.each(result,function(index,node){
+							if(node.state) {
+								if(node.state.selected){
+									$('#searchInputIssue').val(node.text);
+									currentSelectedIssue=node.text;
+									currentSelectedIssueId=node.id;
+
+								}else if (node.state.opened && node.parent!='#'){
+									parentIssue=node.text
+
+								}else if (node.state.opened && node.parent=='#'){
+									grandIssue=node.text
+
+								}
+								
+
+							}
+						});
+		                cb.call(this,result);
+		                if(currentSelectedIssueId && currentSelectedIssueId.length>=15){
+		                	$('#IssueContainer').jstree(true).select_node(currentSelectedIssueId);
+
+		                } 
+	                }
+	            }, {escape: false}
+			);
+			
+		}
+		//get data function
+		var getTypes=function(obj, cb) {
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getTypes}',
+				$('#theHiddenCaseId').val(),
+				function(result, event){
+	                if(event.status) {
+						$.each(result,function(index,node){
+							if(node.state && node.state.selected) {
+								$('#searchInputType').val(node.text);
+								currentSelectedType=node.text;
+								
+							}
+
+						});
+	                    cb.call(this,result);
+	                    if(currentSelectedType && currentSelectedType.length>1) {
+	                    	$('#TypeContainer').jstree(true).select_node(currentSelectedType);
+						}
+	                }
+	            }, {escape: false}
+			);
+
+		}
+
+		
+		</script>
+		<style>
+		/* enable absolute positioning */
+			.inner-addon { 
+			    position: relative; 
+			}
+
+			/* style icon */
+			.inner-addon .glyphicon {
+			  position: absolute;
+			  padding: 10px;
+			}
+
+			/* align icon */
+			.left-addon .glyphicon  { left:  0px;}
+			.right-addon .glyphicon { right: 10px;}
+
+			/* add padding  */
+			.left-addon input  { padding-left:  30px; }
+			.right-addon input { padding-right: 30px; }
+			.jstree li a i { display:none !important; }
+			.jstree-proton-responsive .jstree-container-ul{
+				overflow-x:auto !important;
+				display: block;
+			}
+			.btn-primary:hover {
+			  color: #000000
+			}
+			input[type=text], textarea {
+			  -webkit-transition: all 0.30s ease-in-out;
+			  -moz-transition: all 0.30s ease-in-out;
+			  -ms-transition: all 0.30s ease-in-out;
+			  -o-transition: all 0.30s ease-in-out;
+			  outline: none;
+			  padding: 3px 0px 3px 3px;
+			  margin: 5px 1px 3px 0px;
+			  border: 1px solid #DDDDDD;
+			}
+			 
+			input[type=text]:focus, textarea:focus {
+			  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+			  padding: 3px 0px 3px 3px;
+			  margin: 5px 1px 3px 0px;
+			  border: 1px solid rgba(81, 203, 238, 1);
+			}
+			body button, body .x-btn, body .btn, body .btnDisabled, body .btnCancel, body .menuButton .menuButtonButton
+			{
+			  	color: #333!important;
+			}
+		</style>
+	</html>
+	<apex:includeScript value="{!$Resource.bootbox}"/>
+
+
+</apex:page>

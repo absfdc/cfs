@@ -1,0 +1,335 @@
+<apex:page StandardController="Case" showHeader="false"  extensions="SmeSelectionPublisherAction_CX">
+    <html>
+         <script src="/soap/ajax/46.0/connection.js" type="text/javascript" /> 
+
+        <input id="theHiddenCaseId" value="{!thisCase.Id}" type="hidden" name="theHiddenCaseId" />
+        <input id="theHiddenAgency" value="{!thisCase.agency__c}" type="hidden" name="theHiddenCaseId" />
+        <input id="theHiddenSmeId" value="{!thisCase.Assigned_Sme__c}" type="hidden" name="theHiddenCaseId" />
+
+        <input id="theHiddenStaffId" value="{!staffType.Id}" type="hidden" name="theHiddenStaffId" />
+
+        <script type="text/javascript" src="/canvas/sdk/js/34.0/publisher.js"></script>
+        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/css/bootstrap.min.css')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/js/bootstrap.min.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/themes/proton/style.css')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/jstree.min.js')}"/>
+        <br/>
+        <div class=" container" style="overflow:auto; height:25em;" >
+
+            <div class="row" style="z-index: 100;">
+                
+                <div id="SmeWidget" class="dropdown_widget col-xs-8" style="display:inline-block; padding-left: 0px;
+        vertical-align:top;  " >
+                    <label>SME</label>
+
+                    <input type="text" id="searchInputSme" value="" class="input searchbox " placeholder="search sme..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search sme...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="1" />
+                    <div id="SmeContainer"  class="searchableDropdown " style="background-color: rgb(252, 252, 255);z-index: 100;  width: 100%; padding-left: 0px;padding-bottom: 15px;"></div>
+
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <script>
+            var currentSelectedSme='';
+            var currentSelectedSmeId='';
+            var showTree=true;
+            var agency='';
+            var division='';
+
+            $(function() {
+                $('[tabindex="1"]').focus();
+
+                if (!showTree){
+                    console.log('showtree -'+showTree);
+                    $('#SmeContainer').hide();
+                    
+                }
+
+                // allow search results expanding
+                (function ($, undefined) {
+                    "use strict";
+                    $.jstree.plugins.show_matches_children = function (options, parent) {
+                        this.bind = function () {
+                            parent.bind.call(this);
+                            this.element
+                                .on('search.jstree before_open.jstree', function (e, data) {
+                                    if(data.instance.settings.search && data.instance.settings.search.show_only_matches) {
+                                        data.instance._data.search.dom.find('.jstree-node')
+                                            .show().filter('.jstree-last').filter(function() { return this.nextSibling; }).removeClass('jstree-last')
+                                            .end().end().end().find(".jstree-children").each(function () { $(this).children(".jstree-node:visible").eq(-1).addClass("jstree-last"); });
+                                    }
+                                });
+                        };
+                    };
+                })(jQuery);
+              //container sme
+              $('#SmeContainer').jstree({
+                "plugins" : ["wholerow",   "massload", "search", "sort","show_matches_children"],
+                "core": {
+                    "multiple" : false,
+                    'themes': {
+                        'name': 'proton',
+                        'responsive': true
+                    },
+                    'data' : getSmes
+                },
+                'search' :  {
+                    "show_only_matches" : true,
+                    "show_only_matches_children" : true,
+                    "close_opened_onclear" : true
+                }
+              });
+
+              var to = false;
+              $('#searchInputSme').keyup(function () {
+                if(!$('#SmeContainer').is(":visible")){
+                    $('#SmeContainer').show();
+                }
+                if(to) { clearTimeout(to); }
+                to = setTimeout(function () {
+                  var v = $('#searchInputSme').val();
+                  $('#SmeContainer').jstree(true).search(v);
+                }, 250);
+              });
+
+
+             
+            $("#SmeContainer").on('ready.jstree', function (event, data) {
+                var widget;
+                var searchInput;
+                if(event){
+                    widget=$(event.currentTarget).closest('.dropdown_widget');
+                    searchInput=widget.find('.searchbox')[0];
+                    if (widget[0].id=='SmeWidget' && currentSelectedSmeId && currentSelectedSmeId.length>=15){
+                        division=data.instance.get_node(data.instance.get_parent(currentSelectedSmeId)).text;
+                        var divisionId=data.instance.get_node(data.instance.get_parent(currentSelectedSmeId)).id;
+                        agency=data.instance.get_node(data.instance.get_parent(divisionId)).text;
+                        $(searchInput).popover({
+                            trigger:'hover',
+                            placement:'auto bottom',
+                            content: agency +' / '+ division+' / '+currentSelectedSme
+                        });
+                        $('#SmeContainer').jstree(true).select_node(currentSelectedSmeId);      
+                    }
+                }
+            })
+              // listen for event node selected
+              $(".searchableDropdown").on('activate_node.jstree', function (event, data) {
+                if(data.instance.is_leaf(data.node)){
+                    var widget;
+                    var searchInput;
+                    var dropdownContainer;
+                    if(event){
+                        widget=$(event.currentTarget).closest('.dropdown_widget');
+                        searchInput=widget.find('.searchbox')[0];
+                        dropdownContainer=widget.find('.searchableDropdown');
+                        var thisNode=data.instance.get_node(data.node);
+
+                        if (widget[0].id=='SmeWidget'){
+                            console.log('SME selected');
+                            currentSelectedSme=data.instance.get_node(data.node).text;
+                            currentSelectedSmeId=data.instance.get_node(data.node).id;
+                            division=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+                            var divisionId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+                            agency=data.instance.get_node(data.instance.get_parent(divisionId)).text;
+                            $(searchInput).popover('destroy');
+                            $(searchInput).popover({
+                                trigger:'hover',
+                                placement:'auto bottom',
+                                content: agency +' / '+ division+' / '+currentSelectedSme
+                            });
+                            if($('#theHiddenCaseId').val().length<15){
+                                bootbox.alert({ size: 'small',
+                                        message: "   Cannot select SME for this case   ",
+                                        callback: closeSmeSelector,
+                                        closeButton: false
+                                    }); 
+                            }else{
+                                updateSme();
+
+                            }
+                            
+                        }
+                        dropdownContainer.hide();
+                    }
+
+
+                    searchInput.value=data.instance.get_node(data.node).text;
+                }else{
+                    $(event.target).jstree(true).deselect_node(data.node);
+                    $(event.target).jstree(true).toggle_node(data.node);
+                }
+
+              })
+
+            // listen for event node search
+            $(".searchableDropdown").on('search.jstree', function (event, data) {
+                var widget;
+                var dropdownContainer;
+                if(event){
+                    widget=$(event.currentTarget).closest('.dropdown_widget');
+                    dropdownContainer=widget.find('.searchableDropdown')
+                }
+
+
+                if(data.res.length<=0){
+                    if(!showTree) dropdownContainer.hide();
+                }
+            })
+
+
+
+            $('.searchbox').keydown(function(event) {
+                
+                if ( event.which == 40 ) {
+                    //down
+                    event.preventDefault();
+                    event.target.blur();
+                    $(event.target.closest('.dropdown_widget')).find('.searchableDropdown').show();
+                    var visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-clicked');
+                    if (!visibleNodes.length>0){
+                        visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-search');
+                    }
+                    if (!visibleNodes.length>0){
+                        visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-anchor');
+                    }
+                    visibleNodes[0].focus();
+                }else if (event.which == 38){
+                    //up
+                    event.preventDefault();
+                }
+              
+            });
+            $('.searchableDropdown').on('keydown.jstree', '.jstree-anchor', function (e) {
+                if (e.which == 9) {
+                    event.preventDefault();
+                    var thisTabindex = $(this).closest('.dropdown_widget').find('.searchbox').attr('tabindex');
+                    thisTabindex++; //increment tabindex
+                    $('[tabindex=' + thisTabindex + ']').focus();
+
+                }
+            })
+            
+        });//end $function
+
+
+        var closeSmeSelector=function(){
+             Sfdc.canvas.publisher.publish({name : 'publisher.refresh', 
+                                        payload :  {feed: true, 
+                                        objectFields: true, 
+                                        objectRelatedLists: {}}});
+        }
+        
+        
+        
+        //update category
+        var updateSme=function(){
+            
+            
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.SmeSelectionPublisherAction_CX.updateSme}',
+                $('#theHiddenCaseId').val(),
+                currentSelectedSmeId,
+                function(result, event){
+                    if(event.status) {
+                        Sfdc.canvas.publisher.publish({name : 'publisher.refresh', 
+                            payload :{feed: true, objectRelatedLists: {}}});
+                        bootbox.alert({ size: 'small',
+                                        message: "   Updated the SME   ",
+                                        callback: closeSmeSelector,
+                                        closeButton: false
+                                    }); 
+                    }else{
+                        var regexp = /(?:first error:)(.*)(?::)/;
+                        var firstMatch = regexp.exec(event.message)[1]; 
+                        
+                        bootbox.alert({ size: 'small',
+                                        message: firstMatch,
+                                        callback: closeSmeSelector,
+                                        closeButton: false
+                                    }); 
+                    }
+                }, {escape: true}
+            );
+
+        }
+        
+    
+        //get sme
+        var getSmes=function(obj, cb) {
+            
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.SmeSelectionPublisherAction_CX.getSmes}',
+                $('#theHiddenStaffId').val(),
+                $('#theHiddenAgency').val(),
+                $('#theHiddenSmeId').val(),
+                function(result, event){
+                    if(event.status) {
+                        $.each(result,function(index,node){
+                            if(node.state ) {
+                                if(node.state.selected){
+                                    $('#searchInputSme').val(node.text);
+                                    currentSelectedSme=node.text;
+                                    currentSelectedSmeId=node.id;
+
+                                }else if (node.state.opened && node.parent!='#'){
+                                    division=node.text
+
+                                }else if (node.state.opened && node.parent=='#'){
+                                    agency=node.text
+
+                                }
+                                
+                            }
+
+                        });
+                        cb.call(this,result);
+                        if(currentSelectedSmeId && currentSelectedSmeId.length>=15) {
+                            $('#SmeContainer').jstree(true).select_node(currentSelectedSmeId);
+                        }
+                    }
+                }, {escape: false}
+            );
+
+            
+
+        }
+        
+        </script>
+        <style>
+        /* enable absolute positioning */
+            .inner-addon { 
+                position: relative; 
+            }
+
+            /* style icon */
+            .inner-addon .glyphicon {
+              position: absolute;
+              padding: 10px;
+            }
+
+            /* align icon */
+            .left-addon .glyphicon  { left:  0px;}
+            .right-addon .glyphicon { right: 10px;}
+
+            /* add padding  */
+            .left-addon input  { padding-left:  30px; }
+            .right-addon input { padding-right: 30px; }
+            .jstree li a i { display:none !important; }
+            .jstree-proton-responsive .jstree-container-ul{
+                overflow-x:auto !important;
+                display: block;
+            }
+            .btn-primary:hover {
+              color: #000000
+            }
+            
+        </style>
+    </html>
+    <apex:includeScript value="{!$Resource.bootbox}"/>
+
+
+</apex:page>

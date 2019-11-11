@@ -1,0 +1,127 @@
+<apex:page standardController="Additional_Corro_Recipients__c" recordSetVar="acreps" extensions="Referrals" title="Send Referral">
+    <apex:includeScript value="/support/console/38.0/integration.js"/>
+    <apex:includeScript value="{!$Resource.JQueryNew}"/>
+     
+    <script type="text/javascript">
+    function testSetTabTitle() {
+        //Set the current tab's title
+        sforce.console.setTabTitle('Send Referral');
+    }
+    var pageLoad = window.onload;
+    window.onload = function() {
+        if (pageLoad) {
+            pageLoad();
+        }
+        testSetTabTitle();
+    }
+
+    function testSetTabTitleToCaseNumber() {
+        //Set the current tab's title
+        sforce.console.setTabTitle('{!caseNumber}');
+    }
+
+    function updateField(row) {
+        myActionFunction(row.getAttribute('data-index'), row.value);
+        return false;
+    }
+    
+    function validateEmail(email){
+        debugger;
+        var emailValue = email.value;
+        var atpos=emailValue.indexOf("@");
+        var dotpos=emailValue.lastIndexOf(".");
+        var sendEmailChecked = email.parentElement.parentElement.parentElement.parentElement.children[0].children[0].checked;
+        
+        if (sendEmailChecked && (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailValue.length)){
+            alert("Please enter a valid email address.");
+            return false;
+        }
+        
+    }
+   
+    </script>
+    <apex:messages />
+    <apex:pageBlock >
+        <apex:form >
+            <apex:actionFunction name="myActionFunction" rerender="myRow" >
+                <apex:param name="index" value=""/>
+                <apex:param name="goal" value=""/>
+            </apex:actionFunction>
+            <apex:repeat value="{!recipients}" var="rec" id="theRepeat">
+                
+                <apex:pageBlockSection title="To: {!rec.recipient.Contact__r.Name} " columns="1" rendered="{!rec.typeName= 'ADDITIONAL_CONTACT'}" collapsible="true">
+                    <apex:panelGrid columns="3" id="theGrid"> 
+                        <apex:inputCheckbox id="sendEmailCheckBox" value="{!rec.doSend}" >Send Email:  </apex:inputCheckbox>
+                        <apex:selectList id="selectOptionDropDown" value="{!rec.selectedEmailType}" multiselect="false" size="" onchange="updateField(this)" html-data-index="{!rec.corroId}" html-data-render="" >
+                            <apex:selectOption itemValue="MO Email" itemLabel="Primary Email"/>
+                            <apex:selectOption itemValue="Electorate Email" itemLabel="Secondary Email"/>
+                        </apex:selectList>
+                        
+                        <apex:outputPanel id="myRow" layout="block">  
+                            <apex:outputLabel value="To: ">                                                
+                                <apex:inputText onchange="validateEmail(this)" id="moEmail" value="{!rec.moEmail}" rendered="{!IF(AND(rec.selectedEmailType == 'MO Email',rec.recipient.Contact__r.Record_Type_Dev_Name__c == 'MemberOfParliament'), TRUE, FALSE)}"/>
+                                <apex:inputText onchange="validateEmail(this)" id="electorateEmail" value="{!rec.elecEmail}" rendered="{!IF(AND(rec.selectedEmailType == 'Electorate Email',rec.recipient.Contact__r.Record_Type_Dev_Name__c == 'MemberOfParliament'), TRUE, FALSE)}"/>
+                                <apex:inputText onchange="validateEmail(this)" id="nonMoEmailPrimaryEmail" value="{!rec.nonMPEmail}" rendered="{!IF(AND(rec.selectedEmailType == 'MO Email',rec.recipient.Contact__r.Record_Type_Dev_Name__c != 'MemberOfParliament'), TRUE, FALSE)}"/>
+                                <apex:inputText onchange="validateEmail(this)" id="nonMoEmailSecondary" value="{!rec.nonMPSecondaryEmail}" rendered="{!IF(AND(rec.selectedEmailType == 'Electorate Email',rec.recipient.Contact__r.Record_Type_Dev_Name__c != 'MemberOfParliament'), TRUE, FALSE)}"/>
+                            </apex:outputLabel>
+                        </apex:outputPanel>
+                    </apex:panelGrid>
+                    
+                    <apex:pageBlockSectionItem >
+                        
+                        <apex:outputLabel value="Subject: " for="Subject"/><apex:inputText value="{!rec.subject}" id="Subject" maxlength="80" size="80"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:inputtextarea richText="True" value="{!rec.htmlBody}" id="Body" rows="20" cols="80" />        
+                    
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection title="To: Customer " columns="1" rendered="{!rec.typeName= 'CUSTOMER'}" collapsible="true">
+                    <apex:pageBlockSectionItem >
+                        <apex:inputCheckbox value="{!rec.doSend}">Send Email: </apex:inputCheckbox>
+                        <apex:outputLabel value="To: ">
+                            Customer
+                        </apex:outputLabel>
+                    </apex:pageBlockSectionItem>                
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Subject: " for="Subject"/><apex:inputText value="{!rec.subject}" id="Subject" maxlength="80" size="80"/>
+                    </apex:pageBlockSectionItem><apex:inputtextarea richText="True" value="{!rec.htmlBody}" id="Body" rows="20" cols="80" />        
+                    
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="To: Staff " columns="1" rendered="{!rec.typeName= 'STAFF'}" collapsible="true">
+                    <apex:pageBlockSectionItem >
+                        <apex:inputCheckbox value="{!rec.doSend}">Send Email:  </apex:inputCheckbox>
+                        <apex:outputLabel value="To: ">
+                            Staff
+                        </apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Subject: " for="Subject"/><apex:inputText value="{!rec.subject}" id="Subject" maxlength="80" size="80"/></apex:pageBlockSectionItem><apex:inputtextarea richText="True" value="{!rec.htmlBody}" id="Body" rows="20" cols="80" />        
+                    
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Attachments" columns="3" collapsible="true" rendered="{!IF(rec.attachments != null , true , false)}" >
+                    <apex:repeat value="{!rec.attachments}" var="atta" id="theRepeat">
+                        
+                        <a href="/servlet/servlet.FileDownload?file={!atta.Attachment_Id__c}" target="_blank">Name: {!atta.Name}</a>
+                        <apex:outputText value=" {!atta.ContentType__c} " id="content_type"/>
+                        <apex:outputText value=" {!atta.Category__c} " id="category"/>
+                        
+                        
+                    </apex:repeat>
+                </apex:pageBlockSection>
+            </apex:repeat>
+            <br />
+            <apex:commandButton value="Send Email" action="{!send}" rendered="{!IF(recipients != null , true , false)}"/>&nbsp;
+            <!--  <apex:commandButton value="Back" onclick="openTab('{!caseId}','{!caseNumber}'); return false;" /> -->
+            <apex:commandButton value="Back" onclick="testSetTabTitleToCaseNumber();" action="{!redirectToRecordDetail}"/>
+            <br/>
+        </apex:form>
+        <!-- HACK: Fake pbSection to inject the twistSection JS function -->
+        <apex:pageBlockSection title="Test" showHeader="true" rendered="false">
+            <apex:pageBlockSectionItem >
+                <apex:outputText value="Label" />
+                <apex:outputText value="Value" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assign_to_Agency</fullName>
+    <availability>online</availability>
+    <description>Button to assign to the agency.</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Assign to Agency</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+var agencyPicklistValue = &quot;{!Action_Plan__c.Agency__c}&quot;;
+var actionPlanRecordId = &quot;{!Action_Plan__c.Id}&quot;;
+var AgencyVsQueueMapping = &quot;{!Action_Plan__c.AgencyVsQueueMapping__c}&quot;;
+var apDueDate = &quot;{!Action_Plan__c.Due_Date_Is_Greater_Than_Case_Due_Date__c}&quot;;
+var parentCaseStatus = &quot;{!Action_Plan__c.Parent_Case_Status__c}&quot;; 
+if(parentCaseStatus  == &quot;Awaiting Approval&quot;) {
+alert(&quot;One of the draft is in approval. Please recall the approval and try again&quot;); 
+} else if(agencyPicklistValue  == &quot;&quot; || agencyPicklistValue  == null) {
+      alert(&quot;Please select agency and try again.&quot;);
+} else {
+
+if(AgencyVsQueueMapping  == &quot;QUEUE-NOT-FOUND&quot;) {
+    alert(&quot;Queue not found for &quot; + agencyPicklistValue );
+}
+else if(apDueDate == &quot;true&quot; || apDueDate == true) {
+    alert(&quot;Action plan due date is greater than Case due date.\nPlease update the due date and try again.&quot;);
+}
+else {
+var queueQueryStr = &quot;Select Id, Name From Group Where DeveloperName = &#39;&quot; +  AgencyVsQueueMapping   + &quot;&#39; and Type = &#39;Queue&#39; limit 1&quot;;
+var queues = sforce.connection.query(queueQueryStr);
+
+var apRecord = new sforce.SObject(&quot;Action_Plan__c&quot;);
+apRecord.Id = actionPlanRecordId ;
+apRecord.ownerId = queues.records.Id;
+apRecord.Status__c = &quot;Action Plan Assigned&quot;;
+sforce.connection.update([apRecord]);
+alert(&#39;Action Plan successfully assigned to queue &#39; + queues.records.Name);
+window.location.reload();
+}
+}</url>
+</WebLink>

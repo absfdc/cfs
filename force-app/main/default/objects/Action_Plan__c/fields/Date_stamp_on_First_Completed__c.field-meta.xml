@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_stamp_on_First_Completed__c</fullName>
+    <description>This field contains the date and time that the Action Plan was completed. It an action plan is ever completed more than once, this value will always contain the datetime stamp of when the Action Plan was first completed. (Also see: Date stamp on Completed)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field contains the date and time that the Action Plan was completed. It an action plan is ever completed more than once, this value will always contain the datetime stamp of when the Action Plan was first completed. (Also see: Date stamp on Completed</inlineHelpText>
+    <label>Date stamp on First Completed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

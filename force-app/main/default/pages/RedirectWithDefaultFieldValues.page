@@ -1,0 +1,11 @@
+<apex:page controller="RedirectWithDefaultFieldValues_CC" sidebar="false" action="{!redirectUser}" showHeader="false">
+    <apex:pageMessages id="errors" escape="false"></apex:pageMessages>
+    <script>
+    	var errorOnPage = "{!errorOnPage}";
+    	var url = "{!JSENCODE(pRefURL)}";
+    	window.onload = function() {
+    		if(errorOnPage == 'false' || errorOnPage == false)
+    			window.location.href = url;	
+    	}
+    </script>
+</apex:page>

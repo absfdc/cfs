@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BusinessHours__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This will be the Business hours corresponding to the Agency/Division selected on the Action plan, if a corresponding , business hr is not found the default one will be set</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The business hrs followed by the Agency / Division</inlineHelpText>
+    <label>Business Hours</label>
+    <referenceTo>BusinessHours</referenceTo>
+    <relationshipName>Action_Plans</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

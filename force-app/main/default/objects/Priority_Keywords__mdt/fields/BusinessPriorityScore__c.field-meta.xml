@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BusinessPriorityScore__c</fullName>
+    <description>The &quot;business priority score&quot; of this keyword. Higher score indicates a higher priority. A value of zero indicates a totally innocent word, while a value of 1000 would signify a word that, alone, would indicate high business priority.  Values of 50,100,150 etc would indicate an important word, but one that, alone, may not pass the score over the threshold.  All words in the description are evaluated and added up, which creates the total score.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter a value indicate the business priority level of this keyword. Zero indicates no security threat; 100 signals important; use 1000 for words such as bomb that, when they appear, should always be treated as high threat.</inlineHelpText>
+    <label>Business Priority Score</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

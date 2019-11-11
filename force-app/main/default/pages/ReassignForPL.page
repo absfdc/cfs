@@ -1,0 +1,63 @@
+<apex:page standardController="Case" extensions="ReassignForPL" showHeader="false" sidebar="false">
+    <apex:slds >
+        <apex:includeScript value="/support/console/42.0/integration.js"/>
+        <script>
+        window.onload=function(){
+            document.getElementById('j_id0:j_id3:j_id5:j_id7').value = '';
+            document.getElementById('j_id0:j_id3:j_id5:j_id7').style.marginLeft = "2px";
+        };
+        
+        //The callback function that closeTab will call once it has the ID for its tab
+        var callCloseTab= function callCloseTab(result) {
+            if (result.error) {
+                alert("Error message is " + result.error);
+            }
+            
+            console.log('resultid:: ' + result.id);
+            sforce.console.closeTab(result.id);
+        }
+        function saveAndCloseTab() {
+            alert('Re-assign complete. Please Click OK and then refresh the page.');
+            sforce.console.getEnclosingTabId(callCloseTab);
+        }
+        
+        var callback = function (result) {
+            if(result.success){
+                alert('success');
+            }
+            else{
+                alert('Something is wrong.');
+            }
+        }
+        
+        
+        function closeTab() {
+            sforce.console.getEnclosingTabId(callCloseTab);
+        }
+        
+        var refreshSuccess = function refreshSuccess(result) {
+            //Report whether refreshing the primary tab was successful
+            if (result.success == true) {
+                alert('Primary tab refreshed successfully');
+            } else {
+                alert('Primary tab did not refresh');
+            }
+        }
+        
+        
+        </script>
+        <apex:form >
+            
+            <div>
+                <div class="form-group">
+                    <apex:pageBlock mode="detail">
+                        Reassign this case to: <br/><br/>
+                        <apex:inputField value="{!Case.OwnerId}" /><br/>
+                        <apex:commandButton action="{!searchdata}" title="Save" value="Save" oncomplete="saveAndCloseTab()" />&nbsp;
+                        <apex:commandButton value="Cancel" onclick="closeTab()"/>
+                    </apex:pageblock>
+                </div>
+            </div>    
+        </apex:form> 
+    </apex:slds>                      
+</apex:page>

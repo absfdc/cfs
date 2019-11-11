@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Agency__c</fullName>
+    <externalId>false</externalId>
+    <label>Agency</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HCF</fullName>
+                <default>false</default>
+                <label>HCF</label>
+            </value>
+            <value>
+                <fullName>NSW Trains</fullName>
+                <default>false</default>
+                <label>NSW Trains</label>
+            </value>
+            <value>
+                <fullName>RMS</fullName>
+                <default>false</default>
+                <label>RMS</label>
+            </value>
+            <value>
+                <fullName>Serco</fullName>
+                <default>false</default>
+                <label>Serco</label>
+            </value>
+            <value>
+                <fullName>SNSW</fullName>
+                <default>false</default>
+                <label>SNSW</label>
+            </value>
+            <value>
+                <fullName>STA</fullName>
+                <default>false</default>
+                <label>STA</label>
+            </value>
+            <value>
+                <fullName>Sydney Trains</fullName>
+                <default>false</default>
+                <label>Sydney Trains</label>
+            </value>
+            <value>
+                <fullName>TfNSW</fullName>
+                <default>false</default>
+                <label>TfNSW</label>
+            </value>
+            <value>
+                <fullName>TMC</fullName>
+                <default>false</default>
+                <label>TMC</label>
+            </value>
+            <value>
+                <fullName>PBO</fullName>
+                <default>false</default>
+                <label>PBO</label>
+            </value>
+            <value>
+                <fullName>Newcastle Transport</fullName>
+                <default>false</default>
+                <label>Newcastle Transport</label>
+            </value>
+            <value>
+                <fullName>LRO</fullName>
+                <default>false</default>
+                <label>LRO</label>
+            </value>
+            <value>
+                <fullName>MTS</fullName>
+                <default>false</default>
+                <label>MTS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

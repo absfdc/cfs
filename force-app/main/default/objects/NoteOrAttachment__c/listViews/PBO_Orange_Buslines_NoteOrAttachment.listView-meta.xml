@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PBO_Orange_Buslines_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>PBO - Orange Buslines</label>
+    <queue>PBO_Orange_Buslines</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

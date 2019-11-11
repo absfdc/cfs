@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This metadata stores the value for case status need to be checked when updating the case owner as a responsible MAGS officer.</description>
+    <label>Case Status Values</label>
+    <pluralLabel>Case Status Values</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

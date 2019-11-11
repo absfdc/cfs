@@ -1,0 +1,15 @@
+Name,Case_Status_on_Mobile_App__c,Responsible_Party__c
+ADVICE RECEIVED,In Review,NA
+AWAITING ADVICE,In Review,NA
+CLOSED,Closed,NA
+CLOSED WITH CUSTOMER,Closed,NA
+FINALISED,Expired,NA
+IN PROGRESS,In Review,NA
+NEW,Processing,NA
+RECEIVED,Processing,NA
+REOPENED,In Review,NA
+TRIAGE,Received,NA
+Open,SNSWReceived,SNSW
+In-Progress,SNSWReceived,SNSW
+On-Hold,SNSWReceived,SNSW
+Closed,Expired,SNSW

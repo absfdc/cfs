@@ -1,0 +1,22 @@
+.THIS .slds-form-element__label {
+    
+    color: #000000;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.THIS .file-delete-icon {
+    
+    color:#54698d !important;
+    font-size: 1em !important;
+    cursor:pointer;
+}
+
+.THIS .slds-modal__container{
+    width: 70%;
+    max-width:90rem;
+}
+
+.THIS .slds-spinner{
+    position:fixed;
+}

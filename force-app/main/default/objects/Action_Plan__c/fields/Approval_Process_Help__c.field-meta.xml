@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_Process_Help__c</fullName>
+    <externalId>false</externalId>
+    <formula>&quot;Please click &quot; + &quot;&#39;&quot; + &quot;In Progress&quot; + &quot;&#39;&quot; + &quot; button before clicking &quot; + &quot;&#39;&quot; + &quot;Submit for Approval&quot; + &quot;&#39;&quot; + &quot;.&quot; +  BR() +
+&quot;If no approver is added below, then action plan owner will be prompted to add an approver after clicking &quot; + &quot;\&quot;&quot; + &quot;Submit for Approval&quot; + &quot;\&quot;&quot; + &quot; button.&quot;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Approval Process Help</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

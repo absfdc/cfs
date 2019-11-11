@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Level_2__c</fullName>
+    <externalId>false</externalId>
+    <label>Issue Level 2</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Boarding/Alighting</fullName>
+                <default>false</default>
+                <label>Boarding/Alighting</label>
+            </value>
+            <value>
+                <fullName>Brochure/Media</fullName>
+                <default>false</default>
+                <label>Brochure/Media</label>
+            </value>
+            <value>
+                <fullName>Bus Operation</fullName>
+                <default>false</default>
+                <label>Bus Operation</label>
+            </value>
+            <value>
+                <fullName>Bus Stop Location/Access</fullName>
+                <default>false</default>
+                <label>Bus Stop Location/Access</label>
+            </value>
+            <value>
+                <fullName>Environmental Issues</fullName>
+                <default>false</default>
+                <label>Environmental Issues</label>
+            </value>
+            <value>
+                <fullName>Internal Matters</fullName>
+                <default>false</default>
+                <label>Internal Matters</label>
+            </value>
+            <value>
+                <fullName>More Options</fullName>
+                <default>false</default>
+                <label>More Options</label>
+            </value>
+            <value>
+                <fullName>Not Categorised (N/A)</fullName>
+                <default>false</default>
+                <label>Not Categorised (N/A)</label>
+            </value>
+            <value>
+                <fullName>On Board Announcements</fullName>
+                <default>false</default>
+                <label>On Board Announcements</label>
+            </value>
+            <value>
+                <fullName>On Board Comfort</fullName>
+                <default>false</default>
+                <label>On Board Comfort</label>
+            </value>
+            <value>
+                <fullName>Other Passengers</fullName>
+                <default>false</default>
+                <label>Other Passengers</label>
+            </value>
+            <value>
+                <fullName>Phoning the Depot</fullName>
+                <default>false</default>
+                <label>Phoning the Depot</label>
+            </value>
+            <value>
+                <fullName>Printed Timetable</fullName>
+                <default>false</default>
+                <label>Printed Timetable</label>
+            </value>
+            <value>
+                <fullName>Public Timetable Case</fullName>
+                <default>false</default>
+                <label>Public Timetable Case</label>
+            </value>
+            <value>
+                <fullName>Real-time apps</fullName>
+                <default>false</default>
+                <label>Real-time apps</label>
+            </value>
+            <value>
+                <fullName>School Bus Operation</fullName>
+                <default>false</default>
+                <label>School Bus Operation</label>
+            </value>
+            <value>
+                <fullName>Special Event Bus</fullName>
+                <default>false</default>
+                <label>Special Event Bus</label>
+            </value>
+            <value>
+                <fullName>The Depot</fullName>
+                <default>false</default>
+                <label>The Depot</label>
+            </value>
+            <value>
+                <fullName>Timetable</fullName>
+                <default>false</default>
+                <label>Timetable</label>
+            </value>
+            <value>
+                <fullName>Unrelated to Journey</fullName>
+                <default>false</default>
+                <label>Unrelated to Journey</label>
+            </value>
+            <value>
+                <fullName>Waiting for the Bus</fullName>
+                <default>false</default>
+                <label>Waiting for the Bus</label>
+            </value>
+            <value>
+                <fullName>Access to Tram Stop</fullName>
+                <default>false</default>
+                <label>Access to Tram Stop</label>
+            </value>
+            <value>
+                <fullName>An incident / accident</fullName>
+                <default>false</default>
+                <label>An incident / accident</label>
+            </value>
+            <value>
+                <fullName>Announcements</fullName>
+                <default>false</default>
+                <label>Announcements</label>
+            </value>
+            <value>
+                <fullName>Environmental</fullName>
+                <default>false</default>
+                <label>Environmental</label>
+            </value>
+            <value>
+                <fullName>Kiosk</fullName>
+                <default>false</default>
+                <label>Kiosk</label>
+            </value>
+            <value>
+                <fullName>L1 Dulwich Hill Line</fullName>
+                <default>false</default>
+                <label>L1 Dulwich Hill Line</label>
+            </value>
+            <value>
+                <fullName>My Light Rail service</fullName>
+                <default>false</default>
+                <label>My Light Rail service</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Staff</fullName>
+                <default>false</default>
+                <label>Staff</label>
+            </value>
+            <value>
+                <fullName>Sydney</fullName>
+                <default>false</default>
+                <label>Sydney</label>
+            </value>
+            <value>
+                <fullName>Telephones</fullName>
+                <default>false</default>
+                <label>Telephones</label>
+            </value>
+            <value>
+                <fullName>The stop</fullName>
+                <default>false</default>
+                <label>The stop</label>
+            </value>
+            <value>
+                <fullName>The timetable</fullName>
+                <default>false</default>
+                <label>The timetable</label>
+            </value>
+            <value>
+                <fullName>The vehicle/tram</fullName>
+                <default>false</default>
+                <label>The vehicle/tram</label>
+            </value>
+            <value>
+                <fullName>Trackwork</fullName>
+                <default>false</default>
+                <label>Trackwork</label>
+            </value>
+            <value>
+                <fullName>Tram Operation</fullName>
+                <default>false</default>
+                <label>Tram Operation</label>
+            </value>
+            <value>
+                <fullName>Tram Stop Location/Access</fullName>
+                <default>false</default>
+                <label>Tram Stop Location/Access</label>
+            </value>
+            <value>
+                <fullName>Waiting for the Tram</fullName>
+                <default>false</default>
+                <label>Waiting for the Tram</label>
+            </value>
+            <value>
+                <fullName>App - Planning the Journey</fullName>
+                <default>false</default>
+                <label>App - Planning the Journey</label>
+            </value>
+            <value>
+                <fullName>App - Waiting for the Service</fullName>
+                <default>false</default>
+                <label>App - Waiting for the Service</label>
+            </value>
+            <value>
+                <fullName>Calling 131500</fullName>
+                <default>false</default>
+                <label>Calling 131500</label>
+            </value>
+            <value>
+                <fullName>Calling the Operator</fullName>
+                <default>false</default>
+                <label>Calling the Operator</label>
+            </value>
+            <value>
+                <fullName>Central Coast</fullName>
+                <default>false</default>
+                <label>Central Coast</label>
+            </value>
+            <value>
+                <fullName>Customer Suggestion</fullName>
+                <default>false</default>
+                <label>Customer Suggestion</label>
+            </value>
+            <value>
+                <fullName>Fares and Ticketing</fullName>
+                <default>false</default>
+                <label>Fares and Ticketing</label>
+            </value>
+            <value>
+                <fullName>Keolis Downer</fullName>
+                <default>false</default>
+                <label>Keolis Downer</label>
+            </value>
+            <value>
+                <fullName>Newcastle</fullName>
+                <default>false</default>
+                <label>Newcastle</label>
+            </value>
+            <value>
+                <fullName>On Board the Service</fullName>
+                <default>false</default>
+                <label>On Board the Service</label>
+            </value>
+            <value>
+                <fullName>On Demand Bicycle</fullName>
+                <default>false</default>
+                <label>On Demand Bicycle</label>
+            </value>
+            <value>
+                <fullName>Operator Website</fullName>
+                <default>false</default>
+                <label>Operator Website</label>
+            </value>
+            <value>
+                <fullName>Premier Motor Service</fullName>
+                <default>false</default>
+                <label>Premier Motor Service</label>
+            </value>
+            <value>
+                <fullName>Sydney Inner West</fullName>
+                <default>false</default>
+                <label>Sydney Inner West</label>
+            </value>
+            <value>
+                <fullName>Sydney North Western Suburbs</fullName>
+                <default>false</default>
+                <label>Sydney North Western Suburbs</label>
+            </value>
+            <value>
+                <fullName>Sydney Northern and Southern Suburbs</fullName>
+                <default>false</default>
+                <label>Sydney Northern and Southern Suburbs</label>
+            </value>
+            <value>
+                <fullName>Sydney South West</fullName>
+                <default>false</default>
+                <label>Sydney South West</label>
+            </value>
+            <value>
+                <fullName>TfNSW Website</fullName>
+                <default>false</default>
+                <label>TfNSW Website</label>
+            </value>
+            <value>
+                <fullName>The Operator</fullName>
+                <default>false</default>
+                <label>The Operator</label>
+            </value>
+            <value>
+                <fullName>Vehicle Operation</fullName>
+                <default>false</default>
+                <label>Vehicle Operation</label>
+            </value>
+            <value>
+                <fullName>Waiting for the Service</fullName>
+                <default>false</default>
+                <label>Waiting for the Service</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

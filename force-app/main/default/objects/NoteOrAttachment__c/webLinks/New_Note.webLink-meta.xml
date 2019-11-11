@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Note</fullName>
+    <availability>online</availability>
+    <description>This button will allow user to create the Note record with prepopulated information</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Note</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/support/console/33.0/integration.js&quot;)}
+if (sforce.console.isInConsole()) {
+sforce.console.getFocusedPrimaryTabId(function(response) {
+  var primaryTabId = response.id;
+  var rUrl = &quot;/apex/RedirectWithDefaultFieldValues?oname=NoteOrAttachment__c&amp;parentId={!Case.Id}&amp;allowRTS=false&amp;RecordType=Note&amp;isConsole=1&quot;; 
+  var isActive = true;
+  sforce.console.openSubtab(primaryTabId, rUrl , isActive, &#39;New Note&#39;, null);
+});
+} else {
+navigateToUrl(&quot;/apex/RedirectWithDefaultFieldValues?oname=NoteOrAttachment__c&amp;parentId={!Case.Id}&amp;allowRTS=false&amp;RecordType=Note&quot;, &quot;&quot;); 
+}</url>
+</WebLink>

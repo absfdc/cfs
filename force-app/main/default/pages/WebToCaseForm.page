@@ -1,0 +1,1598 @@
+<apex:page id="sitePageId" expires="86400" cache="true" docType="html-5.0" standardController="Case" html-lang="en" extensions="WebToCase_CX" title="Complaints & feedback" showHeader="false" sidebar="false" standardStylesheets="false">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+    <link rel="dns-prefetch" href="//maps.googleapis.com" />
+    <link rel="dns-prefetch" href="//maps.gstatic.com" />
+
+    <apex:stylesheet value="{!IF(OR(LOWER($CurrentPage.parameters.source) == modeMaritime,LOWER($CurrentPage.parameters.source) == sourceRmsIntranet, LOWER($CurrentPage.parameters.source) == sourceRms),URLFOR($Resource.WebformStyles, 'rms.css'), IF(LOWER($CurrentPage.parameters.source) == sourceNswTrains, URLFOR($Resource.WebformStyles, 'nswtrains.css'), IF(LOWER($CurrentPage.parameters.source) == sourceSydTrains,URLFOR($Resource.WebformStyles, 'sydtrains.css'), URLFOR($Resource.WebformStyles, 'tfnsw.css'))))}"/>
+    <apex:includeScript value="{!$Resource.combinedjs_1}"/>
+    <apex:includeScript value="{!$Resource.ValidationConfig}"/>
+
+    <!-- SFCOE-2041 Salesforce GA tracking - Google Tag Manager START -->
+    <apex:includeScript html-async="" value="{!IF(LOWER($CurrentPage.parameters.source) == 'tfnsw' || LOWER($CurrentPage.parameters.source) == 'nsw trains',$Resource.GoogleTagManagerHeader, '')}" />
+
+    <!-- apex:includeScript value="{!IF(LOWER($CurrentPage.parameters.source) == 'tfnsw',$Resource.GoogleTagManagerHeader, '')}"   -->
+    <!-- apex:includeScript value="{!IF(LOWER($CurrentPage.parameters.source) == 'nsw trains',$Resource.GoogleAnalyticsForNSWTrains, '')}"   -->
+
+    <apex:outputPanel rendered="{!LOWER($CurrentPage.parameters.source) == 'tfnsw' || LOWER($CurrentPage.parameters.source) == 'nsw trains'}">
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZGSMR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    </apex:outputPanel>
+
+    <!-- SFCOE-2041 Salesforce GA tracking - Google Tag Manager END -->
+
+    <apex:form id="caseFormId" onsubmit="b4submitFormValidationOnly(); return false;">
+        <apex:pageBlock id="pblockId">
+            <apex:actionFunction action="{!createCase}" name="createCase" />
+            <div class="col-md-12">
+                <span id="error-message" class="has-error errorMessage">{!errorMessage}</span>
+            </div>
+            <div id="mainForm" style="max-width:900px;margin:0 auto">
+                <div class="col-md-12">
+                    <div class="col-md-12 formLabel">
+                        <p class="fieldBottomMargin" role="heading" align="left">
+                            <apex:outputText rendered="{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceRms,LOWER($CurrentPage.parameters.source) == sourceRmsIntranet, LOWER($CurrentPage.parameters.source) == modeMaritime), TRUE, FALSE)}">
+                                Fields marked with an asterisk (<span class="mandatoryStar">*</span>) are mandatory.
+                            </apex:outputText>
+                            <apex:outputText rendered="{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceRms,LOWER($CurrentPage.parameters.source) == sourceRmsIntranet, LOWER($CurrentPage.parameters.source) == modeMaritime), FALSE, TRUE)}">
+                                Fields marked with an asterisk (<span class="mandatoryStar">*</span>) are mandatory.
+                            </apex:outputText>
+                        </p>
+                    </div>
+                    <div id="errorMessage" tabindex="-1" style="display:none" class="col-md-12">
+                        <span id="error-message4"  class="has-error errorMessage"></span>
+                    </div>
+                    <apex:variable var="intranetUserFieldCount" value="0"/>
+                    <div class="col-md-12" style="{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceRmsIntranet, LOWER($CurrentPage.parameters.source) == sourceTfnswIntranet) , 'display:block', 'display:none')}">
+                        <h1 style="display:none">&nbsp;</h1><h2  class="fieldBottomMargin heading" >Staff Member Details</h2>
+                        <hr style="border-top: dotted 1px; margin-top:-2px;margin-bottom:0.5em" />
+                    </div>
+                    <apex:repeat id="intranetFieldItr" rendered="{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceRmsIntranet, LOWER($CurrentPage.parameters.source) == sourceTfnswIntranet), true, false)}" value="{!$ObjectType.Case.FieldSets.Intranet_users_fields}" var="intranetField">
+                        <div class="col-md-12 formLabel intranetField">
+                            <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:intranetFieldItr:{!intranetUserFieldCount}:intranetField" style="margin-top:0px">{!IF(intranetField.fieldPath == 'Created_By_Email__c', "Staff email address" , intranetField.label)}<span class="mandatoryStar" >&nbsp;*</span></label>
+                            <div id="{!intranetField.fieldPath}ErrorMsg"  class="has-error errorMessage"></div>
+                            <apex:inputField html-aria-describedby="{!intranetField.fieldPath}ErrorMsg" required="false" html-placeholder="{!IF(intranetField.fieldPath == 'Created_By_Email__c', IF(LOWER($CurrentPage.parameters.source) == sourceRmsIntranet ,'example@rms.nsw.gov.au' ,'example@service.nsw.gov.au') , intranetField.label)}" styleClass="formInput name-field {!intranetField.fieldPath}" id="intranetField" value="{!caseRecord[intranetField.fieldPath]}" style="{!IF(LOWER($CurrentPage.parameters.source) == 'rms intranet' ,'margin-bottom:15px' ,'margin-bottom:10px')}"/>
+                        </div>
+                        <apex:variable var="intranetUserFieldCount" value="{!VALUE(intranetUserFieldCount) + 1}"/>
+                    </apex:repeat>
+
+                    <div class="col-md-12 formLabel" style="{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceTfnsw, LOWER($CurrentPage.parameters.source) == ''), 'display:none', '')}">
+                        <h1 style="display:none">&nbsp;</h1><h2  class="fieldBottomMargin heading" >Your feedback</h2>
+                        <hr style="border-top: dotted 1px;margin-top:-2px;{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceRmsIntranet, LOWER($CurrentPage.parameters.source) == modeMaritime, LOWER($CurrentPage.parameters.source) == sourceRms),'','margin-bottom:0.5em')}" />
+                    </div>
+                    <div class="col-md-12 formLabel rmsOptions" style="{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceRmsIntranet,LOWER($CurrentPage.parameters.source) == sourceRms, LOWER($CurrentPage.parameters.source) == modeMaritime), 'display:block; margin-bottom:-10px', 'display:none')}" >
+                            <label class="fieldLabel" aria-label="Roads or Maritime?" for="rmsOption">Roads or Maritime?<span class="mandatoryStar" >&nbsp;*</span></label>
+                            <input id="rmsOption" style="display:none" />
+                            <div id="rmOptionErrorMsg"  class="has-error errorMessage"></div>
+                        <!--KM-SFDC-13/10/2015 - Added LegendText and LegentInvisible attributes to get rid of WCAG2-W865 Warnings   -->
+                            <apex:selectRadio html-aria-describedby="rmOptionErrorMsg" id="rmsOption" legendText="Options" legendInvisible="true" onchange="selectMode(value)" styleClass="fieldHeight" style="margin-top:0px;width:100%" value="{!selectedRmsOption}">
+                                <apex:selectOptions value="{!rmsOptions}"/>
+                            </apex:selectRadio>
+                    </div>
+                    <div class="col-md-12 formLabel" style="{!IF(AND(ISBLANK($CurrentPage.parameters.about),LOWER($CurrentPage.parameters.source) != sourceRms, LOWER($CurrentPage.parameters.source) != sourceRmsIntranet, LOWER($CurrentPage.parameters.source) != modeMaritime), 'display:block;margin-top:10px','display:none')}">
+                            <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:mode-of-travel">Travel mode<span class="mandatoryStar" >&nbsp;*</span></label>
+                            <apex:inputField html-name="mode-of-travel" onchange="retrieveModeRelatedTaxonomy()" id="mode-of-travel" styleClass="formInput feedback"  value="{!caseRecord.Modes__c}"/>
+                    </div>
+                    <div class="col-md-12 formLabel">
+                            <label class="fieldLabel" style="margin-top:0px!important" for="sitePageId:caseFormId:pblockId:type-of-feedback">Type of feedback<span class="mandatoryStar" >&nbsp;*</span></label>
+                            <div id="feedbackTypeErrorMsg"  class="has-error errorMessage"></div>
+                            <apex:inputField html-aria-describedby="feedbackTypeErrorMsg" html-name="type-of-feedback"  onchange="checkForComplaints('{!$Label.FeedbackTypeComplaints}')" id="type-of-feedback" styleClass="formInput feedback"  value="{!caseRecord.Type}"/>
+
+                    </div>
+                    <c:WebsiteComponent id="websiteOptions" rendered="{!IF(AND(LOWER($CurrentPage.parameters.ilvl2) == feedbackForWebsite, LOWER($CurrentPage.parameters.about) == modeNonModal), true, false)}"  websiteChosen="{!websiteChosen}"/>
+                    <c:AppsComponent id="appOptions" rendered="{!IF(AND(LOWER($CurrentPage.parameters.ilvl2) == feedbackForApp, LOWER($CurrentPage.parameters.about) == modeNonModal), true, false)}"/>        
+                    <div class="col-md-12 formLabel" style="{!IF(AND(OR(LOWER($CurrentPage.parameters.ilvl2) == feedbackForWebsite,LOWER($CurrentPage.parameters.ilvl2) == feedbackForApp), LOWER($CurrentPage.parameters.about) == modeNonModal), 'display:none', '')}">
+                            <label class="fieldLabel" for="feedback-category">Your feedback is about<span class="mandatoryStar" >&nbsp;*</span></label>
+                            <div id="feedbackIsAbtErrorMsg"  class="has-error errorMessage"></div>
+                            <select aria-describedby="feedbackIsAbtErrorMsg" onchange="populateSubCategory(value);checkForConditionalFields(value);simulateLevel3ChangeEvent()" name="feedback-category" id="feedback-category"  class="formInput" />
+                    </div>
+                    <div class="col-md-12 formLabel" id="subCategoryDiv" style="display:none">
+                            <label class="fieldLabel" for="sub-category" style="{!IF(AND(OR(LOWER($CurrentPage.parameters.ilvl2) == feedbackForWebsite,LOWER($CurrentPage.parameters.ilvl2) == feedbackForApp), LOWER($CurrentPage.parameters.about) == modeNonModal), 'display:none', '')}">Relating to<span class="mandatoryStar" >&nbsp;*</span></label>
+                            <div id="relatingToErrorMsg"  class="has-error errorMessage"></div>
+                            <select aria-describedby="relatingToErrorMsg" name="sub-category" id="sub-category" style="{!IF(AND(OR(LOWER($CurrentPage.parameters.ilvl2) == feedbackForWebsite,LOWER($CurrentPage.parameters.ilvl2) == feedbackForApp), LOWER($CurrentPage.parameters.about) == modeNonModal), 'display:none', '')}" class="formInput" onchange="checkForConditionSubCat(value)" />
+                    </div>
+
+                    <c:SSTSWebComponent id="sstsWebFields" html-style="display:none"/>
+
+                    <div class="col-md-12 formLabel" style="display:none">
+                        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:caseDescription">Description</label>
+                        <apex:inputTextarea id="caseDescription" value="{!caseRecord.Description}"/>
+                    </div>
+                    <div class="col-md-12 formLabel" style="display:none">
+                        <label for="detailed-description">Detailed description</label>
+                        <input type="text" name="detailed-description" id="detailed-description" value=""/>
+                    </div>
+                    <apex:outputPanel id="panelId" rendered="{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceRms, LOWER($CurrentPage.parameters.source) == sourceRmsIntranet, LOWER($CurrentPage.parameters.source) == modeMaritime), true, false)}">
+                    <div class="col-md-12 formLabel">
+                         <label class="fieldLabel" aria-label="feedback details" for="sitePageId:caseFormId:pblockId:your-feedback" >Description of feedback<span class="mandatoryStar" >&nbsp;*</span></label>
+                        <div id="feedbackDescErrorMsg1"  class="has-error errorMessage"></div>
+                        <apex:inputTextarea html-aria-describedby="feedbackDescErrorMsg1" html-aria-required="true" html-placeholder="Detailed description of feedback" id="your-feedback" html-data-error-message="Please write your Feedback" html-maxlength="2000" html-data-errorid="0" styleClass="formInput js-required" style="height:100px; max-width:100%;" value="{!caseRecord.Description}" cols="100" rows="7"/>
+                    </div>
+                    <c:WebformAddAttachment id="addAttachmentComponent" attachments="{!attachments}" allowedFileAttachments="{!allowedFileAttachments}"/>
+                    </apex:outputPanel>
+                     <div class="col-md-12 rmsCategorySpecific">
+                        <p role="heading"  >To assist us with your message, if you are referring to an incident, please complete as many details as you can below.</p>
+                    </div>
+
+                    <div class="col-md-12 formLabel dateSectionLabel" style="display:none;margin-top:10px">
+                        <h1 style="display:none">&nbsp;</h1><h2  class="fieldBottomMargin heading" >This occurred on</h2>
+                        <hr style="border-top: dotted 1px; margin-top:-2px; margin-bottom:0.5em" />
+                    </div>
+
+                    <div class="col-md-12 formLabel dateSpecific" >
+                        <label class="fieldLabel" style="margin-top:0px!important" aria-label="Date of incident. Enter in the format DD/MM/YYYY." for="date-of-trip">Date<span class="mandatoryStar">&nbsp;*</span></label>
+                        <label class="fieldLabel" style="display:none" aria-label="Date of incident. Enter in the format DD/MM/YYYY." for="sitePageId:caseFormId:pblockId:dateOfIncident">Date of incident</label>
+                    </div>
+                    <div class="dateSpecific" >
+                        <apex:inputField label="Date of Incident" html-name="date-of-trip"  html-placeholder="DD/MM/YYYY" id="dateOfIncident" style="display:none"  value="{!caseRecord.Date_Time_of_Incident__c}" />
+                        <div id="date-error"  class="has-error errorMessage"></div>
+                        <!-- KM-SFDC-13/10/15-->
+                        <label  style="display:none" for="date-of-trip">Date of Trip</label >
+                        <input name="date-of-trip" aria-describedby="date-error" placeholder="DD/MM/YYYY" maxlength="10" id="date-of-trip" type="text" class="dateSpecific js-datepicker feedback-date formInput" style="width:210px;"  onchange="getDateValue();" />
+                        <!-- KM-SFDC-13/10/15-->
+                        <label style="display:none" for="date-of-trip-str">Date of Trip Str</label >
+                        <input name="date-of-trip-str" maxlength="10" placeholder="DD/MM/YYYY" id="date-of-trip-str" type="text" class="js-datepicker feedback-date formInput" style="width:210px;display:none" />
+                    </div>
+                    <div class="col-md-12 formLabel dateSpecific">
+                        <label class="fieldLabel" aria-label="approximate time of incident" for="sitePageId:caseFormId:pblockId:hour-of-incident">At approximately</label>
+                    </div>
+                    <div class="col-md-12 dateSpecific">
+                        <label style="display:none" for="sitePageId:caseFormId:pblockId:minutes-of-incident">Min</label>
+                        <!-- KM-SFDC-13-10-15 Inserted Label-->
+                        <div id="timeHourMinError"  class="has-error errorMessage"></div>
+                        <apex:selectList label="Hour of Incident" styleClass="fieldHeight dateSpecific time"  id="hour-of-incident" html-aria-label="hour-of-incident" value="{!selectedHour}" size="1">
+                            <apex:selectOptions value="{!hours}"></apex:selectOptions>
+                        </apex:selectList>
+                        <!-- KM-SFDC-13-10-15 Inserted Label-->
+                        <apex:selectList label="Minutes of Incident"  style="margin-left:10px"  styleClass="dateSpecific fieldHeight time" id="minutes-of-incident" html-aria-label="minutes-of-incident" value="{!selectedMinute}" size="1">
+                            <apex:selectOptions value="{!minutes}"></apex:selectOptions>
+                        </apex:selectList>
+                    </div>
+                    <!-- Place holder to capture selected location -->
+                    <!--KM-SFDC-13/10/2015 - Added label to inputfiled-->
+                        <label style="display:none"  for="sitePageId:caseFormId:pblockId:location">Location</label><apex:inputField label="location" style="display:none"  html-name="location" id="location" value="{!caseRecord.Taxonomy_Location__c}"/>
+                    <!--KM-SFDC-13/10/2015 - Added label to inputfiled-->
+                        <label style="display:none"  for="sitePageId:caseFormId:pblockId:locationtype">Location</label><apex:inputField label="locationtype" html-name="locationtype" style="display:none"  id="locationtype" value="{!caseRecord.Taxonomy_Location_Type__c}"/>
+
+                    <!-- Place holder to capture rfs region -->
+                    <!--KM-SFDC-13/10/2015 - Added label to inputfiled-->
+                        <label style="display:none"  for="sitePageId:caseFormId:pblockId:rfsregion">RFS Region</label><apex:inputField label="rfsregion" style="display:none"  html-name="rfs region" id="rfsregion" value="{!caseRecord.RFS_Region__c}"/>
+
+                    <!-- Place holder to capture selected sub category -->
+                    <!--KM-SFDC-13/10/2015 - Added label to inputfiled-->
+                        <label style="display:none"  for="sitePageId:caseFormId:pblockId:subcategory">Sub Category</label><apex:inputField label="subcategory" html-name="category" id="subcategory" style="display:none"  value="{!caseRecord.Taxonomy_Symptom__c}"/>
+
+                    <!-- Place holder to capture selected category -->
+                    <!--KM-SFDC-13/10/2015 - Added label to inputfiled-->
+                        <label style="display:none"  for="sitePageId:caseFormId:pblockId:category">Category</label><apex:inputField label="category" html-name="category" id="category" style="display:none"  value="{!caseRecord.Taxonomy_Transaction__c}"/>
+
+                    <!--START: Fields related for bus -->
+                    <div class="col-md-12 formLabel busField" style="display:none" >
+                        <p class="sr-only">Start typing the bus route then use arrow keys to browse suggested routes, press the enter key to select one.</p>
+                        <label class="fieldLabel name-field" for="bus-route">Bus route</label>
+                        <div class="tooltip">
+                        <img alt="help icon" aria-hidden="true" class="" height="16px" src="/feedback/resource/1474893284000/icons/help_grey.png"
+                            style="vertical-align: middle;display:inline" width="16px"/>
+                        <span class="tooltiptext"><b>Need help locating your route number?</b><br/>
+                            Route number is required so we can forward your feedback to the relevant operator to investigate.<br/>
+                            If you don’t know which route, or can’t find it in the list, select ‘Unspecified’ and provide your bus stop or incident location plus any additional details in the Description of feedback field.<br/>
+                            For school routes, type ‘school’ to select your school bus operator.
+                        </span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 busField" style="display:none" >
+                        <div id="busRouteErrorMsg"  class="has-error errorMessage"></div>
+                        <input name="bus-route" html-aria-describedby="busRouteErrorMsg" placeholder="Start typing to select a bus route" autocomplete="off" maxlength="100" id="bus-route" onchange="setTaxonomyLocation(this)" onblur="setTaxonomyLocation(this)" class="busRoute formInput name-field"  />
+                    </div>
+                    <div class="col-md-12 formLabel busField" style="display:none" >
+                        <div id="busRoute" tabindex="-1" class="col-md-12 searchResult searchableLocation" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;" />
+                    </div>
+                    <apex:variable var="busFieldCount" value="0"/>
+                    <apex:repeat id="busFieldItr"  value="{!$ObjectType.Case.FieldSets.Bus_related_fields}" var="busField">
+                        <div class="col-md-12 formLabel busField" style="display:none" >
+                            <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:busFieldItr:{!busFieldCount}:busField" aria-label="{!IF(busField.fieldPath == 'Vehicle_Registration__c','Bus number, for example MO 3071', IF(busField.fieldPath == 'Bus_driver_identification__c' ,'Bus driver identification, for example HA 1703',busField.label))}">{!IF(busField.fieldPath == 'Vehicle_Registration__c','Bus number',busField.label)}</label>
+                            <img class="{!busField.fieldPath} helpIcon sprite-help_grey" style="vertical-align: middle;{!IF( OR(busField.fieldPath == 'Bus_driver_identification__c', busField.fieldPath == 'Vehicle_Registration__c'), 'display:inline','display:none')}" aria-hidden="true" alt="help icon" width="16px" height="16px" src="{!URLFOR($Resource.icons,'help_grey.png')}" />
+                        </div>
+                        <div class="col-md-12 busField" style="display:none" >
+                            <div class="has-error errorMessage" id="{!busField.fieldPath}test"></div>
+                            <apex:inputField html-data-role="{!busField.fieldPath}" style="display:none;{!IF( OR(busField.fieldPath == 'Bus_driver_identification__c', busField.fieldPath == 'Vehicle_Registration__c'), 'width:50%','')}" html-placeholder="{!IF(busField.fieldPath = 'Direction_of_Travel__c' , 'e.g. Towards Sydney city' ,IF(busField.fieldPath == 'Bus_driver_identification__c', 'Found above the drivers cabin - e.g. HA1703', IF(busField.fieldPath == 'Vehicle_Registration__c', 'Exterior number plate - e.g. MO 3071' , busField.label)))}" required="false" styleClass="fieldBottomMargin formInput name-field busField busField{!busFieldCount} field{!busField.fieldPath}"  id="busField" value="{!caseRecord[busField.fieldPath]}" onchange="updateAllFieldValue('{!busField.fieldPath}', this.value)" />
+                                <apex:outputpanel rendered="{!IF( OR(busField.fieldPath == 'Bus_driver_identification__c', busField.fieldPath == 'Vehicle_Registration__c'), true,false)}" >
+
+                                <figure class="{!busField.fieldPath} {!IF(busField.fieldPath == 'Vehicle_Registration__c', 'busNumber','busDriver')}" style="float: right;position: absolute;display:none" aria-hidden="true">
+                                    <figcaption aria-hidden="true">Example of Bus {!IF(busField.fieldPath == 'Vehicle_Registration__c', 'Number','Driver Id')}</figcaption>
+                                    <img aria-hidden="true" class="busFieldImg" style="zoom:0.6;vertical-align: top;" alt="{!IF(busField.fieldPath == 'Bus_driver_identification__c','Example of bus driver identification: HA 1703','Example of bus number: NSW MO 3071')}" src="{!IF(busField.fieldPath == 'Vehicle_Registration__c', URLFOR($Resource.icons,'example-bus-rego.png'),URLFOR($Resource.icons,'example-bus-driver-ID-large.jpg'))}" />
+                                </figure>
+
+                                </apex:outputpanel>
+                        </div>
+                        <apex:variable var="busFieldCount" value="{!VALUE(busFieldCount) + 1}"/>
+                    </apex:repeat>
+                    <!--END: Fields related for bus -->
+                    
+                    <!--START: Fields related for On demand -->
+                    <div class="col-md-12 formLabel ondemandField" style="display:none" >
+                        <p class="sr-only">Start typing to select an on demand route.</p>
+                        <label class="fieldLabel name-field" for="ondemand-route">On Demand service area<span class="mandatoryStar" >&nbsp;*</span></label> 
+                    </div>
+                    <div class="col-md-12 ondemandField" style="display:none" >
+                        <div id="ondemandRouteErrorMsg"  class="has-error errorMessage"></div>
+                        <input name="ondemand-route" html-aria-describedby="ondemandRouteErrorMsg" placeholder="Start typing to select On Demand service area" autocomplete="off" maxlength="100" id="ondemand-route" onchange="setTaxonomyLocation(this)" onblur="setTaxonomyLocation(this)" class="ondemandRoute formInput name-field"  />
+                    </div>
+                    <div class="col-md-12 formLabel ondemandField" style="display:none" >
+                        <div id="ondemandRoute" tabindex="-1" class="col-md-12 searchResult searchableLocation" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;" />
+                    </div>
+                    <!--END: Fields related for on demand -->
+
+                    <!--START: Fields related for ferry -->
+                    <div class="col-md-12 formLabel ferryField" style="display:none" >
+                        <p class="sr-only">Start typing the ferry wharf then use arrow keys to browse suggested wharves, press the enter key to select one.</p>
+                        <label class="fieldLabel name-field" for="ferry-wharf">Ferry wharf</label>
+                    </div>
+                    <div class="col-md-12 ferryField" style="display:none" >
+                    <div id="ferrywharfError"  class="has-error errorMessage"></div>
+                        <input name="ferry-wharf" html-aria-describedby="ferrywharfError" maxlength="100" id="ferry-wharf" placeholder="Start typing to select a wharf" autocomplete="off" onchange="setTaxonomyLocation(this);" onblur="setTaxonomyLocation(this)" class="name-field ferryWharf formInput"  />
+                    </div>
+                    <div class="col-md-12 ferryField" style="display:none" >
+                        <div id="ferryWharf" tabindex="-1" class="col-md-12 searchResult searchableLocation" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;"/>
+                    </div>
+                    <!--<div class="col-md-12 ferryField" style="display:none" >
+                        <strong class="fieldLabel" >OR</strong>
+                    </div> -->
+                    <div class="col-md-12 formLabel ferryField" style="display:none" >
+                        <p class="sr-only">Start typing the ferry route then use arrow keys to browse suggested routes, press the enter key to select one.</p>
+                        <label class="fieldLabel name-field" for="ferry-route">Ferry route</label>
+                    </div>
+                    <div class="col-md-12 ferryField" style="display:none" >
+                    <div id="ferryRouteError"  class="has-error errorMessage"></div>
+                        <input name="ferry-route" html-aria-describedby="ferryRouteError" maxlength="100" id="ferry-route" placeholder="Start typing to select a ferry line" autocomplete="off" class="name-field ferryRoute formInput"  />
+                    </div>
+                    <div class="col-md-12 ferryField" style="display:none" >
+                        <div id="ferryRoute" tabindex="-1" class="col-md-12 searchableDropdown searchResult" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;"/>
+                    </div>
+                    <apex:variable var="ferryFieldCount" value="0"/>
+                    <apex:repeat id="ferryFieldItr"  value="{!$ObjectType.Case.FieldSets.Ferry_related_fields}" var="ferryField">
+                        <div class="col-md-12 formLabel ferryField" style="display:none" >
+                            <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:ferryFieldItr:{!ferryFieldCount}:ferryField">{!ferryField.label}</label>
+                        </div>
+                        <div class="col-md-12 ferryField" style="display:none" >
+                            <div id="ferryDirectionError"  class="has-error errorMessage"></div>
+                            <apex:inputField required="false" html-placeholder="{!IF(ferryField.fieldPath = 'Direction_of_Travel__c' , 'e.g. Towards Circular Quay', ferryField.label)}" styleClass="fieldBottomMargin formInput name-field {!ferryField.fieldPath} ferryField{!ferryFieldCount}" onchange="updateAllFieldValue('{!ferryField.fieldPath}', this.value)"  id="ferryField" value="{!caseRecord[ferryField.fieldPath]}"/>
+                        </div>
+                        <apex:variable var="ferryFieldCount" value="{!VALUE(ferryFieldCount) + 1}"/>
+                    </apex:repeat>
+                    <!--END: Fields related for ferry -->
+
+                    <!--START: Fields related for train -->
+                    <div class="col-md-12 formLabel trainField" style="display:none" >
+                        <p class="sr-only">Start typing the train station then use arrow eys to browse suggested stations, press the enter key to select one.</p>
+                        <label class="fieldLabel name-field" for="train-station">Train station</label>
+                    </div>
+                    <div class="col-md-12 trainField" style="display:none" >
+                    <div id="trainStationError"  class="has-error errorMessage"></div>
+                        <input name="train-station" html-aria-describedby="trainStationError" maxlength="100" placeholder="Start typing to select a station" autocomplete="off" id="train-station"  onchange="setTaxonomyLocation(this);" onblur="setTaxonomyLocation(this)" class="trainStation formInput address-field"  />
+                    </div>
+                    <div class="col-md-12 trainField" style="display:none" >
+                        <div id="trainStation" tabindex="-1" class="col-md-12 searchableLocation searchResult address-field" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;"/>
+                    </div>
+                    <div class="col-md-12 trainField" style="display:none" >
+                        <strong class="fieldLabel" >OR</strong>
+                    </div>
+                    <div class="col-md-12 formLabel trainField" style="display:none" >
+                        <p class="sr-only">Start typing the train line then use arrow keys to browse suggested lines, press the enter key to select one.</p>
+                        <label class="fieldLabel" for="train-line">Train line</label>
+                    </div>
+                    <div class="col-md-12 trainField" style="display:none" >
+                        <div id="trainLineError"  class="has-error errorMessage"></div>
+                        <input name="train-line" html-aria-describedby="trainLineError" maxlength="100" placeholder="Start typing to select a line" onchange="checkForPnrLines(value)" autocomplete="off" id="train-line"  class="trainLine formInput address-field"  />
+                    </div>
+                    <div class="col-md-12 trainField" style="display:none" >
+                        <div id="trainLine" tabindex="-1" class="col-md-12 searchResult searchableDropdown address-field" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;"/>
+                    </div>
+
+                    <apex:variable var="trainFieldCount" value="0"/>
+                    <apex:repeat id="trainFieldItr"  value="{!$ObjectType.Case.FieldSets.Train_related_fields}" var="trainField">
+                        <div class="col-md-12 formLabel trainField" style="display:none" >
+                            <label class="fieldLabel {!trainField.fieldPath}" for="sitePageId:caseFormId:pblockId:trainFieldItr:{!trainFieldCount}:trainField" style="{!IF(AND(trainField.fieldPath == 'PNR_Number__c', LOWER($CurrentPage.parameters.source) != 'nsw trains'), 'display:none', '')}">{!IF( trainField.fieldPath == 'PNR_Number__c' , 'PNR (booking number)', trainField.label)}</label>
+                        </div>
+                        <div class="col-md-12 trainField" style="display:none" >
+                            <apex:inputField html-placeholder="{!IF(trainField.fieldPath == 'PNR_Number__c', 'e.g. ABC123', IF(trainField.fieldPath = 'Direction_of_Travel__c' , 'e.g. Towards Sydney city',trainField.label))}" onchange="updateAllFieldValue('{!trainField.fieldPath}', this.value)" required="false" styleClass="{!trainField.fieldPath} fieldBottomMargin formInput name-field trainField{!trainFieldCount}"  id="trainField" value="{!caseRecord[trainField.fieldPath]}" style="{!IF(AND(trainField.fieldPath == 'PNR_Number__c', LOWER($CurrentPage.parameters.source) != 'nsw trains'), 'display:none', '')}"/>
+                        </div>
+                        <apex:variable var="trainFieldCount" value="{!VALUE(trainFieldCount) + 1}"/>
+                    </apex:repeat>
+                    <!--END: Fields related for train -->
+
+                        
+                        
+                        
+                    <!--START: Fields related for sydney metro -->
+                    <div class="col-md-12 formLabel metroField" style="display:none" >
+                        <p class="sr-only">Start typing the sydney metro station then use arrow eys to browse suggested stations, press the enter key to select one.</p>
+                        <label class="fieldLabel name-field" for="metro-station">Sydney Metro Station</label>
+                    </div>
+                    <div class="col-md-12 metroField" style="display:none" >
+                    <div id="metroStationError"  class="has-error errorMessage"></div>
+                        <input name="metro-station" html-aria-describedby="metroStationError" maxlength="100" placeholder="Start typing to select a metro station" autocomplete="off" id="metro-station"  onchange="setTaxonomyLocation(this);" onblur="setTaxonomyLocation(this)" class="metroStation formInput address-field" />
+                    </div>
+                    <div class="col-md-12 metroField" style="display:none" >
+                        <div id="metroStation" tabindex="-1" class="col-md-12 searchableLocation searchResult address-field" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;"/>
+                    </div>
+                    <div class="col-md-12 metroFields" style="display:none" >
+                        <strong class="fieldLabel" >OR</strong>
+                    </div>
+                    <div class="col-md-12 formLabel metroFields" style="display:none" >
+                        <p class="sr-only">Start typing the Sydney Metro train line then use arrow keys to browse suggested lines, press the enter key to select one.</p>
+                        <label class="fieldLabel" for="metro-line">Sydney Metro Train Line</label>
+                    </div>
+                    <div class="col-md-12 metroFields" style="display:none" >
+                        <div id="metroLineError"  class="has-error errorMessage"></div>
+                        <input name="metro-line" html-aria-describedby="metroLineError" maxlength="100" placeholder="Start typing to select a line" onchange="checkForPnrLines(value)" autocomplete="off" id="metro-line"  class="metroLine formInput address-field"  />
+                    </div>
+                    <div class="col-md-12 metroFields" style="display:none" >
+                        <div id="metroLine" tabindex="-1" class="col-md-12 searchResult searchableDropdown address-field" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;"/>
+                    </div>
+
+                    <apex:variable var="metroFieldCount" value="0"/>
+                    <apex:repeat id="metroFieldItr"  value="{!$ObjectType.Case.FieldSets.Sydney_Metro_related_fields}" var="metroField">
+                        <div class="col-md-12 formLabel metroField" style="display:none" >
+                            <label class="fieldLabel {!metroField.fieldPath}" for="sitePageId:caseFormId:pblockId:metroFieldItr:{!metroFieldCount}:metroField">{!metroField.label}</label>
+                        </div>
+                        <div class="col-md-12 metroField" style="display:none">
+                            <apex:inputField html-placeholder="{!IF(metroField.fieldPath = 'Direction_of_Travel__c' , 'e.g. Towards Sydney city',metroField.label)}" onchange="updateAllFieldValue('{!metroField.fieldPath}', this.value)" required="false" styleClass="{!metroField.fieldPath} fieldBottomMargin formInput name-field metroField{!metroFieldCount}"  id="metroField" value="{!caseRecord[metroField.fieldPath]}" style="{!IF(AND(metroField.fieldPath == 'PNR_Number__c', LOWER($CurrentPage.parameters.source) != 'nsw trains'), 'display:none', '')}"/>
+                        </div>
+                        <apex:variable var="metroFieldCount" value="{!VALUE(metroFieldCount) + 1}"/>
+                    </apex:repeat>
+                    <!--END: Fields related for sydney metro --> 
+                        
+                        
+                    <apex:variable var="tollingFieldCount" value="0"/>
+                    <apex:repeat id="tollingFieldItr" value="{!$ObjectType.Case.FieldSets.Tolling_Category}" var="tollField">
+                        <div class="col-md-12 formLabel tolling" style="display:none" >
+                            <label  class="fieldLabel" for="sitePageId:caseFormId:pblockId:tollingFieldItr:{!tollingFieldCount}:tolling">{!tollField.label}</label>
+                        </div>
+                        <div class="col-md-12 tolling" style="display:none" >
+                            <apex:inputField required="false" html-placeholder="{!tollField.label}" styleClass="formInput name-field tolling tolling{!tollingFieldCount} {!tollField.fieldPath}"  id="tolling" value="{!caseRecord[tollField]}"/>
+                        </div>
+                        <apex:variable var="tollingFieldCount" value="{!VALUE(tollingFieldCount) + 1}"/>
+                    </apex:repeat>
+
+                    <apex:variable var="licensingFieldCount" value="0"/>
+                    <apex:repeat id="licensingFieldItr" value="{!$ObjectType.Case.FieldSets.Licensing_related_fields}" var="licensingField">
+                        <div class="col-md-12 formLabel licensing boatLicence" style="display:none" >
+                            <label  class="fieldLabel" for="sitePageId:caseFormId:pblockId:licensingFieldItr:{!licensingFieldCount}:licensing">{!licensingField.label}</label>
+                        </div>
+                        <div class="col-md-12 licensing boatLicence" style="display:none" >
+                            <apex:inputField required="false" html-placeholder="{!licensingField.label}" styleClass="formInput name-field licensing boatLicence licensing{!licensingFieldCount} {!licensingField.fieldPath}"  id="licensing" value="{!caseRecord[licensingField]}"/>
+                        </div>
+                        <apex:variable var="licensingFieldCount" value="{!VALUE(licensingFieldCount) + 1}"/>
+                    </apex:repeat>
+
+                    <c:GoogleMap id="locationMap" caseRecord="{!caseRecord}" rendered="{!IF(LOWER(caseRecord.Modes__c) == 'on demand', FALSE, TRUE)}" />
+                    <c:googleInput id="locationInput" caseRecord="{!caseRecord}" rendered="{!IF(LOWER(caseRecord.Modes__c) == 'on demand', TRUE, FALSE)}" />
+                    
+                    <div class="col-md-12 formLabel lightRailField" style="display:none">
+                         <label class="fieldLabel" aria-label="light rail route" for="sitePageId:caseFormId:pblockId:lightrail-route">Route</label>
+                    </div>
+                    <div class="col-md-12 lightRailField" style="display:none">
+                        <apex:selectList styleClass="formInput fieldHeight"  id="lightrail-route" html-aria-label="light rail route" size="1" onselect="clearAllNodesinjSTree(),stopNameTreeSetup()" onchange="stopNameTreeSetup()">
+                           <apex:selectOptions value="{!lightRailLines}" ></apex:selectOptions>
+                        </apex:selectList>
+                    </div>
+                    <div class="col-md-12 formLabel lightRailField" style="display:none">
+                         <label class="fieldLabel" aria-label="light rail stop" for="sitePageId:caseFormId:pblockId:lightrail-stop">Stop name</label>
+                    </div>
+                    <div class="col-md-12 lightRailField" style="display:none">
+                        <!--
+                        <apex:selectList styleClass="formInput fieldHeight"  id="lightrail-stop" html-aria-label="light rail stop" size="1">
+                            <apex:selectOptions value="{!lightRailStops}"></apex:selectOptions>
+                        </apex:selectList>
+                        -->
+                        <div id="railStopError"  class="has-error errorMessage"></div>
+                        <input name="stop-name" html-aria-describedby="railStopError" maxlength="100" placeholder="Enter stop name details" autocomplete="off" id="stop-name" class="stopName formInput address-field"  />
+                    </div>
+                    <div class="col-md-12 lightRailField" style="display:none" >
+                        <div id="stopName" tabindex="-1" class="col-md-12 searchableLocation searchResult address-field" style="padding-left:0px;padding-right:0px;font-weight: 100;color: #000 !important;background-color: rgb(255, 255, 255);display:none; overflow:auto;"/>
+                    </div>
+                    <apex:outputPanel id="panelId2" rendered="{!IF(OR(LOWER($CurrentPage.parameters.source) == sourceRms, LOWER($CurrentPage.parameters.source) == sourceRmsIntranet, LOWER($CurrentPage.parameters.source) == modeMaritime), false, true)}">
+                    <div class="col-md-12 formLabel">
+                         <label class="fieldLabel" aria-label="feedback details" for="sitePageId:caseFormId:pblockId:your-feedback2">Description of feedback<span class="mandatoryStar" >&nbsp;*</span></label>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="feedbackDescErrorMsg2"  class="has-error errorMessage"></div>
+                        <apex:inputTextarea html-aria-describedby="feedbackDescErrorMsg2" html-aria-required="true" html-placeholder="The more information you can provide, the quicker we can investigate and action your feedback. Please do not use swearing or profanity as this may delay the processing of your feedback or cause your feedback to be rejected." id="your-feedback2" html-data-error-message="Please write your Feedback" html-maxlength="2000" html-data-errorid="0" styleClass="formInput js-required" style="height:100px;max-width:100%;" value="{!caseRecord.Description}" cols="100" rows="7"/>
+                        <!--KM-SFDC-16.10.15 - New Label for Text Area-->
+                         <label style="display:none" class="fieldLabel" aria-label="Feedback Description" for="dummy-your-feedback2">Please write your Feedback</label>
+
+                        <textarea aria-required="true" placeholder="Detailed description of feedback" id="dummy-your-feedback2" data-error-message="Please write your Feedback" maxlength="2000" data-errorid="0" class="formInput js-required" style="height:100px;max-width:100%;display:none;" value="" cols="100" rows="7"/>
+
+                    </div>
+
+                    <c:WebformAddAttachment id="addAttachmentComponent2" attachments="{!attachments}" allowedFileAttachments="{!allowedFileAttachments}"/>
+                    </apex:outputPanel>
+
+                    <div class="col-md-12 formLabel" >
+                        <label class="fieldLabel" style="margin-top:10px; display:inline;" for="response" aria-label="Would you like us to get back to you with a response" >Would you like us to get back to you with a response?<span class="mandatoryStar" >&nbsp;*</span></label>
+                        <input id="response" style="display:none"/>
+                        <div id="responseReqErrorMsg"  class="has-error errorMessage"></div>
+                        <!--KM-SFDC-13/10/2015 - Added LegendText and LegentInvisible attributes to get rid of WCAG2-W865 Warnings   -->
+                        <apex:selectRadio html-aria-describedby="responseReqErrorMsg" legendText="Contact Fields" legendInvisible="true" id="responseRadio" onchange="toggleContactFields(!0);" styleClass="fieldHeight" style="margin-top:0px;width:50%" value="{!caseRecord.Response_Requested__c}">
+                                <apex:selectOptions value="{!options}"/>
+                        </apex:selectRadio>
+                    </div>
+                    <div class="col-md-12 formLabel mandatoryContactField" style="display:none">
+                        <p class="fieldBottomMargin" role="heading">
+                            <ul style="padding:0em; margin-left:1em;">
+                                <li>Please provide at least one of the following details so we can contact you: Email address, Phone number or Postal address.
+                                </li>
+                                <li>If you have previously submitted feedback, using the same contact details will help us investigate and respond promptly.</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <c:WebformContact id="webformContact" caseRecord="{!caseRecord}" contactPerson="{!contactPerson}" rendered="true" selectedState="{!selectedState}" />
+
+                    <div class="col-md-12">&nbsp;</div>
+                    <div class="col-md-12">
+                        <input name="submitBtn" type="button" value="Send" style="text-decoration: none;" id="submitBtn" class="sendButton" onclick="b4submitForm();" />
+                    <!--KM-SFDC-13/10/2015 - Added dummy button, which is hidden to get rid of WCAG-E872 Error -->
+                    <input name="Submit" type="Submit" style="position: absolute; display: none !important; width: 1px; height: 1px;" tabindex="-1" value="Send" class="sendButton" onsubmit="" onclick="b4submitFormValidationOnly();"/>
+                    </div>
+                </div>
+            </div>
+            <div id="AnimatedImage" class="spinner" title="" style="display:none">
+                <img style="margin-left:45px;" alt="Sending your request" src="/img/loading32.gif" width="32px" height="32px"/>
+            </div>
+            <input type="checkbox" id="showTree" style="display:none"/>
+            <!--KM-SFDC-13/10/2015 - Added label to radio button to get rid of WCAG-E855 Error-->
+            <label for="showTree" style="display:none">.</label>
+            <input type="hidden" style="display:none" id="modeMaritime" value="{!modeMaritime}" />
+            <input type="hidden" style="display:none" id="sourceRmsIntranet" value="{!sourceRmsIntranet}" />
+            <input type="hidden" style="display:none" id="sourceRms" value="{!sourceRms}" />
+            <input type="hidden" style="display:none" id="sourceSydTrains" value="{!sourceSydTrains}" />
+            <input type="hidden" style="display:none" id="sourceNswTrains" value="{!sourceNswTrains}" />
+            <input type="hidden" style="display:none" id="sourceTfnswIntranet" value="{!sourceTfnswIntranet}" />
+            <input type="hidden" style="display:none" id="sourceTfnsw" value="{!sourceTfnsw}" />
+            <input type="hidden" style="display:none" id="modeNonModal" value="{!modeNonModal}" />
+            <input type="hidden" style="display:none" id="feedbackForWebsite" value="{!feedbackForWebsite}" />
+            <input type="hidden" style="display:none" id="feedbackForApp" value="{!feedbackForApp}" />
+        </apex:pageBlock>
+    </apex:form>
+    <style>
+    .sprite {
+        background-image: url("{!URLFOR($Resource.icons, 'spritesheet.png')}");
+    }
+    .formInput {
+        outline-offset: -1px;
+    }
+    .sr-only {
+        position: absolute !important;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0 !important;
+        border: 0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
+    }
+
+    .assistiveText {
+        position:absolute !important;
+        height:1px;width:1px;
+        overflow:hidden;
+        clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px)
+    }
+    .errorMsg {
+        color: #ef0000;
+    }
+
+    </style>
+    <script type="text/javascript">
+        var issueTaxonomies;
+        var isResponseChangedManually = !1;
+        var isMandatoryDataFilled = true;
+        
+        
+        $(window).load(function () {
+            var feedback = '{!JSENCODE($CurrentPage.parameters.typefeedback)}';
+            console.log(feedback);
+            document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").options[feedback].selected=true;
+            checkForComplaints('{!$Label.FeedbackTypeComplaints}');
+        });
+                
+        
+        $(document).ready(function () {
+            var mode = '{!JSENCODE($CurrentPage.parameters.about)}';
+            $.getScript("{!$Resource.WebToCaseScripts}")
+                .done(function() {
+                    $.getScript("{!URLFOR($Resource.jstree, '/dist/jstree.min.js')}")
+                    .done(function() {
+                        var source = '{!JSENCODE($CurrentPage.parameters.source)}';
+                        if(source.length > 0 && source.toLowerCase() == '{!sourceNswTrains}') {
+                            $(".PNR_Number__c").show();
+                        } else {
+                            $(".PNR_Number__c").hide();
+                        }
+                        init(mode);
+                        //setTimeout(addPlaceholderListener,4000);
+                    });
+            });
+        });
+
+        function checkForComplaints(e) {
+            var t = document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").value;
+        t == e ? ($(".previouslyRaisedIssue").css("display", "block"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:1").checked = !0) : (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:1").checked = !0, $(".previouslyRaisedIssue").css("display", "none"), $(".previouslyRaisedIssueYes").css("display", "none"))
+
+            if(!isResponseChangedManually){
+                t == 'Enquiry' ? document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked = !0 : document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:1").checked = !0
+                toggleContactFields(!1);
+            }
+            if(isResponseChangedManually && t != 'Enquiry' && document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked){
+                toggleContactFields(!0);
+            }
+            if(isResponseChangedManually && t == 'Enquiry' && document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:1").checked){
+                document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked = !0;
+                toggleContactFields(!0);
+            }
+        }
+
+        function toggleContactFields(bool) {
+            isResponseChangedManually = bool;
+            document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked ? $(".mandatoryContactField").show() : $(".mandatoryContactField").hide()
+        }
+
+        function retrieveTaxonomy(mode) {
+            var source = '{!JSENCODE($CurrentPage.parameters.source)}';
+            retrieveTaxonomies(mode, source);
+        }
+        function populateCategory(mode) {
+            var origin = '{!JSENCODE($CurrentPage.parameters.source)}';
+            retrieveIssueTaxonomy(origin, mode, '');
+        }
+        function populateSubCategory(category) {
+            if ((category != 'Please select')&&(category != '')) {
+                var mode = '{!JSENCODE($CurrentPage.parameters.about)}';
+                var origin = '{!JSENCODE($CurrentPage.parameters.source)}';
+                retrieveIssueTaxonomy(origin, mode, category);
+            }
+        }
+
+        function simulateLevel3ChangeEvent() {
+            var e = document.getElementById("sub-category");
+            var val = e.options[e.selectedIndex].value;
+            checkForConditionSubCat(val);
+        }
+
+
+        function addAttachment() {
+            var totalAttachmentCount = '{!attachments.size}';
+            addAttachments(totalAttachmentCount);
+        }
+        function getRMSlocations (latlng) {
+            var source = '{!JSENCODE($CurrentPage.parameters.source)}';
+            var mode = '{!JSENCODE($CurrentPage.parameters.about)}';
+            var datasetId = '{!datasetId}';
+            var lgaSedDatasetID = '{!lgaSedDatasetID}';
+            var maritimeDatasetID = '{!maritimeDatasetID}';
+            var gmeKey = '{!gmeKey}';
+            getRMSlocation(latlng, source, mode, datasetId, lgaSedDatasetID, maritimeDatasetID, gmeKey);
+        }
+        function validateRmsModes() {
+            var source = '{!JSENCODE($CurrentPage.parameters.source)}';
+            validateRmsMode(source);
+        }
+    //KM-SFDC-14.10.15 - Forcing the OOTB function to do nothing on the form:
+        function b4submitFormValidationOnly(){
+            //Do nothing
+            return false;
+        }
+    //KM-SFDC-14.10.15 - Do nothing - End!
+
+        function b4submitForm() {
+            console.log('Inside submitform');
+            var feedbackFor = '{!LOWER(JSENCODE($CurrentPage.parameters.ilvl2))}';
+            var about = '{!JSENCODE($CurrentPage.parameters.about)}';
+            var source = '{!JSENCODE($CurrentPage.parameters.source)}'; //alert(''+feedbackFor+''+about+''+source);
+
+            submitForm(feedbackFor, about, source);
+
+        }
+        function preselectCategory() {
+            var defaultCat = '{!JSENCODE($CurrentPage.parameters.ilvl2)}';
+            preselectCategories(defaultCat);
+        }
+        function preselectSubCategory() {
+            var defaultSubCat = '{!JSENCODE($CurrentPage.parameters.ilvl3)}';
+            var feedbackfor = '{!JSENCODE($CurrentPage.parameters.ilvl2)}';
+            var mode = '{!JSENCODE($CurrentPage.parameters.about)}';
+            preselectSubCategories(defaultSubCat, feedbackfor, mode);
+        }
+        function preselectMode(ilvl1, source) {
+            var defaultMode = '{!JSENCODE($CurrentPage.parameters.ilvl1)}';
+            var source = '{!JSENCODE($CurrentPage.parameters.source)}';
+            preselectModes(defaultMode, source);
+        }
+
+        function stopNameTreeSetup() {
+            //  var stopNamesString = '{!stopNames}';
+            
+            var stopNamesString = '';
+            
+            var chosenRoute = document.getElementById("sitePageId:caseFormId:pblockId:lightrail-route").value;
+			console.log('chosenRoute:: ' + chosenRoute);
+            //alert('chosenRoute:: ' + chosenRoute);
+            
+            if(chosenRoute){
+                //Remote Call to Apex Method
+                console.log('Remote calling Apex with chosenRoute: ' + chosenRoute);
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.WebToCase_CX.getStopName}', 
+                    chosenRoute,
+                    function(result, event){
+                        console.log('event.status:: ' + event.status + ' result:: ' + result);
+                        //alert('event.status:: ' + event.status + ' result:: ' + result);
+                        if(event.status) {
+                            if(result){
+                                console.log('result:: ' + result);
+            					stopNamesString = result;
+                                
+                                // alert('stopNamesString:: ' + stopNamesString);
+                                var stopNames = stopNamesString.split('$$');
+                                stopNameTree(stopNames);
+                                $('#stopName').jstree(true).settings.core.data = stopNames;
+                                $('#stopName').jstree(true).refresh();
+                                
+                            }
+                            else alert('No server response. Please contact your administrator. Result: ' + result);
+                        } else if (event.type === 'exception') {
+                            alert('Some error has occured! Please contact your system administrator. Error Details: ' + event.message);
+                            console.log('Some error has occured! Please contact your system administrator. Error Details: ' + event.message);
+                        } else{
+                            alert('Some error has occured! Please contact your system administrator.');
+                            console.log('Some error has occured! Please contact your system administrator.');
+                        }
+                    }, {escape: false}
+                );
+            }      
+            
+        }
+        
+        function clearAllNodesinjSTree() {
+            if ($.jstree.reference($('#stopName'))) {
+                $('#stopName').jstree().delete_node($('#stopName').jstree().get_json());
+            }
+        }
+            
+        
+        function checkForPnrLines(trainLine) {
+            var lines = '{!trainLinesForPnr}';
+            var linesForDisplayingPnr = lines.split('$$');
+            var source = '{!JSENCODE($CurrentPage.parameters.source)}';
+            if(source.toLowerCase() == '{!sourceNswTrains}') {
+                $('.PNR_Number__c').show();
+                document.getElementById('sitePageId:caseFormId:pblockId:trainFieldItr:0:trainField').onfocus =  function() {onFocusPlaceholder(this);};
+                document.getElementById('sitePageId:caseFormId:pblockId:trainFieldItr:0:trainField').onblur =   function() {onBlurPlaceholder(this);};
+                return true;
+            } else if(source.toLowerCase() == '{!sourceSydTrains}') {
+                $('.PNR_Number__c').hide();
+                $('.PNR_Number__c').val('');
+                return false;
+            }
+            if (new RegExp(linesForDisplayingPnr.join("|")).test(trainLine.toLowerCase())) {
+                $('.PNR_Number__c').show();
+                document.getElementById('sitePageId:caseFormId:pblockId:trainFieldItr:0:trainField').onfocus =  function() {onFocusPlaceholder(this);};
+                document.getElementById('sitePageId:caseFormId:pblockId:trainFieldItr:0:trainField').onblur =   function() {onBlurPlaceholder(this);};
+                return true;
+            } else {
+                $('.PNR_Number__c').hide();
+                $('.PNR_Number__c').val('');
+                return false;
+            }
+        }
+
+        function retrieveLocationTaxonomy(origin, mode) {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.WebToCase_CX.retrieveLocTaxonomy}', origin,
+                function(result, event){
+                    if (event.status) {
+                        if(mode == 'train') {
+                            var trainStationFieldLabel = '{!$Label.Train_Station}';
+                            trainStationTree(result, trainStationFieldLabel);
+                            var trainLineFieldLabel = '{!$Label.Train_Line}';
+                            trainLineTree(result, trainLineFieldLabel);
+                        }else if(mode == 'metro') {
+                            var metroStationFieldLabel = '{!$Label.Metro_Station}';
+                            metroStationTree(result, metroStationFieldLabel);
+                            var metroLineFieldLabel = '{!$Label.Metro_Line}';
+                            metroLineTree(result, metroLineFieldLabel);
+                        }
+                        else if(mode == 'ferry') {
+                            var ferryRouteFieldLabel = '{!$Label.Ferry_Route}';
+                            ferryRouteTree(result, ferryRouteFieldLabel);
+                            var ferryWharfFieldLabel = '{!$Label.Ferry_Wharf}';
+                            ferryWharfTree(result, ferryWharfFieldLabel);
+                        } else if(mode == 'bus') {
+                            var busRouteFieldLabel = '{!$Label.Bus_Route}';
+                            busRouteTree(result, busRouteFieldLabel);
+                        }else if(mode=='on demand' || mode=='On Demand') {
+                            console.log('retrieveLocationTaxonomy calling ondemandRouteTree ');
+                            var ondemandRouteFieldLabel = '{!$Label.On_Demand}';
+                            ondemandRouteTree(result, ondemandRouteFieldLabel);
+                        }
+                    }
+                });
+        }
+
+        function retrieveIssueTaxonomy(origin, mode, category) {
+
+            var issuelevel2 = '{!LOWER(JSENCODE($CurrentPage.parameters.ilvl2))}';
+            console.log('issuelevel2: ' + issuelevel2);
+            console.log('mode: ' + mode);
+            
+            if(category.length > 0) {
+                populateSubCategories(category, mode, issueTaxonomies);
+                preselectSubCategory();
+            }
+            //SFCOE-2369 - Non Modal Issue Taxonomy Changes - 13/03/2018 - Start
+             else if(mode == 'non-modal' || mode == 'Non-modal'){
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.WebToCase_CX.retrieveIssueCategoryAndSubCategoryNonModal}', origin, mode, issuelevel2,
+                    function(result, event){
+                        if (event.status) {
+                            issueTaxonomies = result;
+                            populateCategories(mode, result);
+                            preselectCategory();
+                        }
+                    });
+            }
+            //SFCOE-2369 - Non Modal Issue Taxonomy Changes - 13/03/2018 - End
+            
+             else {
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.WebToCase_CX.retrieveIssueTaxonomy}', origin,
+                    function(result, event){
+                        if (event.status) {
+                            issueTaxonomies = result;
+                            populateCategories(mode, result);
+                            preselectCategory();
+                        }
+                    });
+            }
+        }
+        function validateYourFeedbackIsAbt() {
+            var ilvl2 = '{!LOWER(JSENCODE($CurrentPage.parameters.ilvl2))}';
+            var abt = '{!LOWER(JSENCODE($CurrentPage.parameters.about))}';
+            var appFeedback = '{!feedbackForApp}';
+            var webFeedback = '{!feedbackForWebsite}';
+            var nonModal = '{!modeNonModal}';
+            if(nonModal == abt &&(appFeedback == ilvl2 || webFeedback == ilvl2)) {
+                return true;
+            }
+
+            var yourFeedback = document.getElementById('feedback-category').value;
+            if(!yourFeedback) {
+                document.getElementById('feedback-category').style.outline = '1px solid #EF0000';
+                setErrorFieldId('feedback-category');
+                document.getElementById('feedbackIsAbtErrorMsg').innerHTML = 'Error: Your feedback is about is not selected';
+                return false;
+            } else {
+                document.getElementById('feedbackIsAbtErrorMsg').innerHTML = '';
+                document.getElementById('feedback-category').style.outline = '0';
+            }
+            return true;
+        }
+        function validateRelatingTo() {
+            var ilvl2 = '{!LOWER(JSENCODE($CurrentPage.parameters.ilvl2))}';
+            var abt = '{!LOWER(JSENCODE($CurrentPage.parameters.about))}';
+            var appFeedback = '{!feedbackForApp}';
+            var webFeedback = '{!feedbackForWebsite}';
+            var nonModal = '{!modeNonModal}';
+            console.log('validateRelating To.');
+            isMandatoryDataFilled = true;
+            if(nonModal == abt) {
+                var NO_CONFIG = 'CONFIGURATION MISSING';
+                if(webFeedback == ilvl2) {
+                    //website
+                    uncheckWebsiteFields();
+                    var configKey ='';
+                    var radios = document.getElementsByName( 'websiteOptions' );
+                    for( i = 0; i < radios.length; i++ ) {
+                        if( radios[i].checked ) {
+                            configKey = radios[i].value + ' - '+document.getElementById('sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:relatedTo').value;
+                            break;
+                        }
+                    }
+                    var webConf = new WebsiteConfiguration();
+                    console.log('configKey: '+configKey);
+                    if(webConf.WEBSITEConfig(configKey,"Which page you were using") != NO_CONFIG &&  webConf.WEBSITEConfig(configKey,"Which page you were using") == 'TRUE') {
+                        checkWhichPageIsUsed();
+                    }
+                    if(webConf.WEBSITEConfig(configKey,"Browser") != NO_CONFIG &&  webConf.WEBSITEConfig(configKey,"Browser") == 'TRUE') {
+                        checkBrowser();
+                    }
+                    if(webConf.WEBSITEConfig(configKey,"operating System") != NO_CONFIG &&  webConf.WEBSITEConfig(configKey,"operating System") == 'TRUE') {
+                        checkOS();
+                    }
+                        if(webConf.WEBSITEConfig(configKey,"If using the Trip planner, please use the Share") != NO_CONFIG &&  webConf.WEBSITEConfig(configKey,"If using the Trip planner, please use the Share") == 'TRUE') {
+                        console.log('WebsiteConfiguration: checkTripPlanner'); checkTripPlanner();
+                    }
+                    if(webConf.WEBSITEConfig(configKey,"Which timetable were you using?") != NO_CONFIG &&  webConf.WEBSITEConfig(configKey,"Which timetable were you using?") == 'TRUE') {
+                        checkTimetableUsed();
+                    }
+                    if(webConf.WEBSITEConfig(configKey,"Date") != NO_CONFIG &&  webConf.WEBSITEConfig(configKey,"Date") == 'TRUE') {
+                        checkDateOfTrip();
+                    }
+                    if(webConf.WEBSITEConfig(configKey,"Time") != NO_CONFIG &&  webConf.WEBSITEConfig(configKey,"Time") == 'TRUE') {
+                        checkTimeHrsAndMins();
+                    }
+                    if(webConf.WEBSITEConfig(configKey,"Description") != NO_CONFIG &&  webConf.WEBSITEConfig(configKey,"Description") == 'TRUE') {
+                        checkDescription();
+                    }
+                }
+                else if(appFeedback == ilvl2) {
+                    // apps
+                    uncheckAppFields();
+                    var configKey = document.getElementById('sitePageId:caseFormId:pblockId:appOptions:appsComponent:relatedTo').value;
+                    var appConf = new  AppsConfiguration();
+                    //console.log('configKey: '+configKey);
+                    if(appConf.APPSConfig(configKey,"Trip details") != NO_CONFIG &&  appConf.APPSConfig(configKey,"Trip details") == 'TRUE') {
+                        checkTripURL();
+                    }
+                    if(appConf.APPSConfig(configKey,"What device were you using") != NO_CONFIG &&  appConf.APPSConfig(configKey,"What device were you using") == 'TRUE') {
+                        checkDeviceUsed();
+                    }
+                    if(appConf.APPSConfig(configKey,"operating System") != NO_CONFIG &&  appConf.APPSConfig(configKey,"operating System") == 'TRUE') {
+                        checkOSApps();
+                    }
+                    if(appConf.APPSConfig(configKey,"Date") != NO_CONFIG &&  appConf.APPSConfig(configKey,"Date") == 'TRUE') {
+                        checkDateOfTrip();
+                    }
+                    if(appConf.APPSConfig(configKey,"Time") != NO_CONFIG &&  appConf.APPSConfig(configKey,"Time") == 'TRUE') {
+                        checkTimeHrsAndMins();
+                    }
+                    if(appConf.APPSConfig(configKey,"Description") != NO_CONFIG &&  appConf.APPSConfig(configKey,"Description") == 'TRUE') {
+                        checkDescription();
+                    }
+                } else {
+                    //non modal
+                    uncheckNonModalFields();
+                    var relatingTo = document.getElementById('sub-category').value;
+                    if(!relatingTo) {
+                        document.getElementById('sub-category').style.outline = '1px solid #EF0000';
+                        setErrorFieldId('sub-category');
+                        document.getElementById('relatingToErrorMsg').innerHTML = 'Error: Relating to is not selected';
+                        return false;
+                    }
+                    var configKey = document.getElementById('feedback-category').value + ' - ' + document.getElementById('sub-category').value;
+                    console.log('configKey: '+configKey);
+                    var nonModalConf = new NonModalConfiguration();
+                    if(nonModalConf.NONMODALConfig(configKey,"Date") != NO_CONFIG &&  nonModalConf.NONMODALConfig(configKey,"Date") == 'TRUE') {
+                        checkDateOfTrip();
+                    }
+                    if(nonModalConf.NONMODALConfig(configKey,"Time") != NO_CONFIG &&  nonModalConf.NONMODALConfig(configKey,"Time") == 'TRUE') {
+                        checkTimeHrsAndMins();
+                    }
+                    if(nonModalConf.NONMODALConfig(configKey,"Student Name") != NO_CONFIG &&  nonModalConf.NONMODALConfig(configKey,"Student Name") == 'TRUE') {
+                        checkStudentName();
+                    }
+                    if(nonModalConf.NONMODALConfig(configKey,"Street Address") != NO_CONFIG &&  nonModalConf.NONMODALConfig(configKey,"Street Address") == 'TRUE') {
+                        checkStAddress();
+                    }
+                    if(nonModalConf.NONMODALConfig(configKey,"Operator details") != NO_CONFIG &&  nonModalConf.NONMODALConfig(configKey,"Operator details") == 'TRUE') {
+                        checkOperatorDetails();
+                    }
+                    if(nonModalConf.NONMODALConfig(configKey,"School Name") != NO_CONFIG &&  nonModalConf.NONMODALConfig(configKey,"School Name") == 'TRUE') {
+                        checkSchoolName();
+                    }
+                    if(nonModalConf.NONMODALConfig(configKey,"School year") != NO_CONFIG &&  nonModalConf.NONMODALConfig(configKey,"School year") == 'TRUE') {
+                        checkSchoolYear();
+                    }
+                    if(nonModalConf.NONMODALConfig(configKey,"Opal card number") != NO_CONFIG &&  nonModalConf.NONMODALConfig(configKey,"Opal card number") == 'TRUE') {
+                        checkOpalCardNumber();
+                    }
+                }
+                return isMandatoryDataFilled;
+            }
+            else {
+                var relatingTo = document.getElementById('sub-category').value;
+                if(!relatingTo) {
+                    document.getElementById('sub-category').style.outline = '1px solid #EF0000';
+                    setErrorFieldId('sub-category');
+                    document.getElementById('relatingToErrorMsg').innerHTML = 'Error: Relating to is not selected';
+                    return false;
+                }
+                else {
+                    document.getElementById('relatingToErrorMsg').innerHTML = '';
+                    document.getElementById('sub-category').style.outline = '0';
+                    var feedBackCategory = document.getElementById('feedback-category').value;
+                    var configKey = feedBackCategory + ' - ' + relatingTo;
+                    //var configKey = config.toUpperCase();
+                    console.log('configKey: '+configKey);
+                    var NO_CONFIG = 'CONFIGURATION MISSING';
+                    if(abt == 'ferry') {
+                        uncheckFerryFields();
+                        var conf = new FerryConfiguration();
+                        if(conf.FERRYConfig(configKey,"Date") != NO_CONFIG &&  conf.FERRYConfig(configKey,"Date") == 'TRUE') {
+                            checkDateOfTrip();
+                        }
+                        if(conf.FERRYConfig(configKey,"Time") != NO_CONFIG &&  conf.FERRYConfig(configKey,"Time") == 'TRUE') {
+                            checkTimeHrsAndMins();
+                        }
+                        if(conf.FERRYConfig(configKey,"Ferry Wharf") != NO_CONFIG &&  conf.FERRYConfig(configKey,"Ferry Wharf") == 'TRUE') {
+                            checkFerryWharf();
+                        }
+                        if(conf.FERRYConfig(configKey,"Ferry Route") != NO_CONFIG &&  conf.FERRYConfig(configKey,"Ferry Route") == 'TRUE') {
+                            checkFerryRoute();
+                        }
+                        if(conf.FERRYConfig(configKey,"Direction") != NO_CONFIG &&  conf.FERRYConfig(configKey,"Direction") == 'TRUE') {
+                            checkDirection();
+                        }
+                        if(conf.FERRYConfig(configKey,"Location") != NO_CONFIG &&  conf.FERRYConfig(configKey,"Location") == 'TRUE') {
+                            checkLocation();
+                        }
+                    }
+                    else if(abt == 'bus') {
+                        uncheckBusFields();
+                        var conf = new BusConfiguration();
+                        if(conf.BUSConfig(configKey,"Date") != NO_CONFIG &&  conf.BUSConfig(configKey,"Date") == 'TRUE') {
+                            checkDateOfTrip();
+                        }
+                        if(conf.BUSConfig(configKey,"Time") != NO_CONFIG &&  conf.BUSConfig(configKey,"Time") == 'TRUE') {
+                            checkTimeHrsAndMins();
+                        }
+                        if(conf.BUSConfig(configKey,"Bus Route") != NO_CONFIG &&  conf.BUSConfig(configKey,"Bus Route") == 'TRUE') {
+                            checkBusRoute();
+                        }
+                        if(conf.BUSConfig(configKey,"Direction of travel") != NO_CONFIG &&  conf.BUSConfig(configKey,"Direction of travel") == 'TRUE') {
+                            checkDirectionOfTravel();
+                        }
+                        if(conf.BUSConfig(configKey,"Bus Driver ID") != NO_CONFIG &&  conf.BUSConfig(configKey,"Bus Driver ID") == 'TRUE') {
+                            checkBusDriverId();
+                        }
+                        if(conf.BUSConfig(configKey,"Bus Number") != NO_CONFIG &&  conf.BUSConfig(configKey,"Bus Number") == 'TRUE') {
+                            checkBusNumber();
+                        }
+                        if(conf.BUSConfig(configKey,"Location") != NO_CONFIG &&  conf.BUSConfig(configKey,"Location") == 'TRUE') {
+                            checkLocation();
+                        }
+                    }
+                    else if (abt == 'on demand' || abt == 'On Demand' ) {
+                        uncheckOnDemandFields();
+                        console.log('new OnDemandConfiguration()');
+                        var conf = new OnDemandConfiguration();
+                        if(conf.ONDEMANDConfig(configKey,"Date") != NO_CONFIG &&  conf.ONDEMANDConfig(configKey,"Date") == 'TRUE') {
+                            checkDateOfTrip();
+                        }
+                        if(conf.ONDEMANDConfig(configKey,"Time") != NO_CONFIG &&  conf.ONDEMANDConfig(configKey,"Time") == 'TRUE') {
+                            checkTimeHrsAndMins();
+                        }
+                        if(conf.ONDEMANDConfig(configKey,"Description") != NO_CONFIG &&  conf.ONDEMANDConfig(configKey,"Description") == 'TRUE') {
+                            checkDescription();
+                        }
+                        if(conf.ONDEMANDConfig(configKey,"On demand service area") != NO_CONFIG &&  conf.ONDEMANDConfig(configKey,"On demand service area") == 'TRUE') {
+                            checkOnDemandServiceArea();
+                        }                        
+                    }
+                    if(abt == 'bus'){
+                        var isBusRouteValid = validateBusRoute();
+                        if(isBusRouteValid == false) {
+                            document.getElementById('bus-route').style.outline = '1px solid #EF0000';
+                            setErrorFieldId('bus-route');
+                            document.getElementById('busRouteErrorMsg').innerHTML = 'Error: Please choose an item from the dropdown list.';
+                            isMandatoryDataFilled = false;
+                        }
+                    }
+                    if(abt == 'on demand' || abt == 'On Demand' ){
+                        var isOnDemandRouteValid = validateOnDemandRoute();
+                        if(isOnDemandRouteValid == false) {
+                            document.getElementById('ondemand-route').style.outline = '1px solid #EF0000';
+                            setErrorFieldId('ondemand-route');
+                            document.getElementById('ondemandRouteErrorMsg').innerHTML = 'Error: Please select the On Demand service area';
+                            isMandatoryDataFilled = false;
+                        }
+                    }
+                    if(abt == 'ferry') {
+                        var feeryWharf = document.getElementById('ferry-wharf').value;
+                        console.log('feerywharf string: '+feeryWharf);
+                        if(feeryWharf){
+                            console.log('feerywharf not empty');
+                            var isFerryWharfValid = validateFerryWharf();
+                            console.log('isFerryWharfValid: '+isFerryWharfValid);
+                            if(isFerryWharfValid == false) {
+                                console.log('ferry wharf invalid');
+                                document.getElementById('ferry-wharf').style.outline = '1px solid #EF0000';
+                                setErrorFieldId('ferry-wharf');
+                                document.getElementById('ferrywharfError').innerHTML = 'Error: Please choose an item from the dropdown list.';
+                                isMandatoryDataFilled = false;
+                            }
+                        }
+                        var ferryRoute = document.getElementById('ferry-route').value;
+                        if(ferryRoute) {
+                            var isFerryRouteValid = validateFerryRoute();
+                            if(isFerryRouteValid == false) {
+                                document.getElementById('ferry-route').style.outline = '1px solid #EF0000';
+                                setErrorFieldId('ferry-route');
+                                document.getElementById('ferryRouteError').innerHTML = 'Error: Please choose an item from the dropdown list.';
+                                isMandatoryDataFilled = false;
+                            }
+                        }
+
+                    }
+
+                    if(abt == 'train'){
+                        var isTrainStationValid = validateTrainStation();
+                        var isTrainLineValid = validateTrainLine();
+                        console.log('isTrainStationValid: '+isTrainStationValid);
+                        console.log('isTrainLineValid: '+isTrainLineValid);
+                        if(isTrainStationValid == false){
+                            document.getElementById('train-station').style.outline = '1px solid #EF0000';
+                            setErrorFieldId('train-station');
+                            document.getElementById('trainStationError').innerHTML = 'Error: Please choose an item from the dropdown list.';
+                            isMandatoryDataFilled = false;
+                        }else{
+                            document.getElementById('trainStationError').innerHTML = '';
+                            document.getElementById('train-station').style.outline = '0';
+                        }
+                        if(isTrainLineValid == false){
+                            document.getElementById('train-line').style.outline = '1px solid #EF0000';
+                            setErrorFieldId('train-line');
+                            document.getElementById('trainLineError').innerHTML = 'Error: Please choose an item from the dropdown list.';
+                            isMandatoryDataFilled = false;
+                        }else{
+                            document.getElementById('trainLineError').innerHTML = '';
+                            document.getElementById('train-line').style.outline = '0';
+                        }
+
+                    }
+
+
+                    if(abt == 'metro'){
+                        var ismetroStationValid = validatemetroStation();
+                        var ismetroLineValid = validatemetroLine();
+                        console.log('ismetroStationValid: '+ismetroStationValid);
+                        console.log('ismetroLineValid: '+ismetroLineValid);
+                        if(ismetroStationValid == false){
+                            document.getElementById('metro-station').style.outline = '1px solid #EF0000';
+                            setErrorFieldId('metro-station');
+                            document.getElementById('metroStationError').innerHTML = 'Error: Please choose an item from the dropdown list.';
+                            isMandatoryDataFilled = false;
+                        }else{
+                            document.getElementById('metroStationError').innerHTML = '';
+                            document.getElementById('metro-station').style.outline = '0';
+                        }
+                        if(ismetroLineValid == false){
+                            document.getElementById('metro-line').style.outline = '1px solid #EF0000';
+                            setErrorFieldId('metro-line');
+                            document.getElementById('metroLineError').innerHTML = 'Error: Please choose an item from the dropdown list.';
+                            isMandatoryDataFilled = false;
+                        }else{
+                            document.getElementById('metroLineError').innerHTML = '';
+                            document.getElementById('metro-line').style.outline = '0';
+                        }
+                    }
+
+
+                    if(abt == 'light rail'){
+                        var isRailStopValid = validateRailStop();
+                        if(isRailStopValid == false){
+                            document.getElementById('stop-name').style.outline = '1px solid #EF0000';
+                            setErrorFieldId('stop-name');
+                            document.getElementById('railStopError').innerHTML = 'Error: Please choose an item from the dropdown list.';
+                            isMandatoryDataFilled = false;
+                        }else{
+                            document.getElementById('railStopError').innerHTML = '';
+                            document.getElementById('stop-name').style.outline = '0';
+                        }
+                    }
+
+                    return isMandatoryDataFilled;
+                }
+            }
+            return true;
+        }
+        function uncheckAppFields() {
+            document.getElementById('tripURLAppsErrorMsg').innerHTML = '';
+            document.getElementById('tripUrl').style.outline = '0';
+
+            document.getElementById('deviceErrorMsg').innerHTML = '';
+            document.getElementById('device').style.outline = '0';
+
+            document.getElementById('osErrorMsg').innerHTML = '';
+            document.getElementById('operatingSystem').style.outline = '0';
+
+            document.getElementById('date-error').innerHTML = '';
+            document.getElementById('date-of-trip').style.outline = '0';
+
+            document.getElementById('timeHourMinError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+            document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+
+            document.getElementById('feedbackDescErrorMsg2').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:your-feedback2').style.outline = '0';
+
+        }
+        function uncheckWebsiteFields() {
+            document.getElementById('browserErrorMsg').innerHTML = '';
+            document.getElementById('browser').style.outline = '0';
+
+            document.getElementById('operatingSystemErrorMsg').innerHTML = '';
+            document.getElementById('operatingSystem').style.outline = '0';
+
+            document.getElementById('tripPlannerErrorMsg').innerHTML = '';
+            document.getElementById('tripUrl').style.outline = '0';
+
+            document.getElementById('timeTableErrorMsg').innerHTML = '';
+            document.getElementById('timetable').style.outline = '0';
+
+            document.getElementById('date-error').innerHTML = '';
+            document.getElementById('date-of-trip').style.outline = '0';
+
+            document.getElementById('timeHourMinError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+            document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+
+            document.getElementById('feedbackDescErrorMsg2').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:your-feedback2').style.outline = '0';
+
+        }
+        function uncheckNonModalFields() {
+            document.getElementById('date-error').innerHTML = '';
+            document.getElementById('date-of-trip').style.outline = '0';
+
+            document.getElementById('timeHourMinError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+            document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+
+            document.getElementById('sstsStudentNameErrorMsg').innerHTML = '';
+            document.getElementById('student-name').style.outline = '0';
+
+            document.getElementById('sstsStreetAddressErrorMsg').innerHTML = '';
+            document.getElementById('student-street-address').style.outline = '0';
+
+            document.getElementById('sstsOperatorDetailsErrorMsg').innerHTML = '';
+            document.getElementById('operator-details').style.outline = '0';
+
+            document.getElementById('sstsSchoolNameErrorMsg').innerHTML = '';
+            document.getElementById('school-name').style.outline = '0';
+
+            document.getElementById('sstsSchoolYearErrorMsg').innerHTML = '';
+            document.getElementById('schoolYear').style.outline = '0';
+
+            document.getElementById('sstsOpalErrorMsg').innerHTML = '';
+            document.getElementById('opal-card-number').style.outline = '0';
+
+        }
+        function uncheckFerryFields() {
+            document.getElementById('date-error').innerHTML = '';
+            document.getElementById('date-of-trip').style.outline = '0';
+
+            document.getElementById('timeHourMinError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+            document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+
+            document.getElementById('ferrywharfError').innerHTML = '';
+            document.getElementById('ferry-wharf').style.outline = '0';
+
+            document.getElementById('ferryRouteError').innerHTML = '';
+            document.getElementById('ferry-route').style.outline = '0';
+
+            document.getElementById('ferryDirectionError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:ferryFieldItr:0:ferryField').style.outline = '0';
+
+            document.getElementById('locationError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location').style.outline = '0';
+        }
+        function uncheckBusFields() {
+            document.getElementById('date-error').innerHTML = '';
+            document.getElementById('date-of-trip').style.outline = '0';
+
+            document.getElementById('timeHourMinError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+            document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+
+            document.getElementById('Direction_of_Travel__ctest').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:0:busField').style.outline = '0';
+
+            document.getElementById('Bus_driver_identification__ctest').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:1:busField').style.outline = '0';
+
+            document.getElementById('Vehicle_Registration__ctest').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:2:busField').style.outline = '0';
+
+            document.getElementById('locationError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location').style.outline = '0';
+
+            document.getElementById('busRouteErrorMsg').innerHTML = '';
+            document.getElementById('bus-route').style.outline = '0';
+
+        }
+        function uncheckOnDemandFields() {
+            document.getElementById('date-error').innerHTML = '';
+            document.getElementById('date-of-trip').style.outline = '0';
+
+            document.getElementById('timeHourMinError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+            document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+
+            document.getElementById('ondemandRouteErrorMsg').innerHTML = '';
+            document.getElementById('ondemand-route').style.outline = '0';
+
+        }
+        function uncheckMetroFieldFields() {
+            document.getElementById('date-error').innerHTML = '';
+            document.getElementById('date-of-trip').style.outline = '0';
+
+            document.getElementById('timeHourMinError').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+            document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+
+            document.getElementById('ondemandRouteErrorMsg').innerHTML = '';
+            document.getElementById('ondemand-route').style.outline = '0';
+
+        }        
+        function checkDateOfTrip() {
+            var dateOfTrip = document.getElementById('date-of-trip').value;
+            if(!dateOfTrip) {
+                document.getElementById('date-of-trip').style.outline = '1px solid #EF0000';
+                setErrorFieldId('date-of-trip');
+                document.getElementById('date-error').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('date-error').innerHTML = '';
+                document.getElementById('date-of-trip').style.outline = '0';
+            }
+        }
+        function checkTimeHrsAndMins() {
+            var hr = document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').value;
+            var min = document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').value;
+            if(!hr || !min) {
+                document.getElementById('timeHourMinError').innerHTML = 'Error: Please complete selected field';
+                if(!hr) {
+                    document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '1px solid #EF0000';
+                    setErrorFieldId('sitePageId:caseFormId:pblockId:hour-of-incident');
+                    isMandatoryDataFilled = false;
+                } else {
+                    document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+                }
+                if(!min) {
+                    document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '1px solid #EF0000';
+                    setErrorFieldId('sitePageId:caseFormId:pblockId:minutes-of-incident');
+                    isMandatoryDataFilled = false;
+                } else {
+                    document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+                }
+
+            } else {
+                document.getElementById('timeHourMinError').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:hour-of-incident').style.outline = '0';
+                document.getElementById('sitePageId:caseFormId:pblockId:minutes-of-incident').style.outline = '0';
+            }
+        }
+
+        function checkFerryWharf() {
+            var feeryWharf = document.getElementById('ferry-wharf').value;
+            if(!feeryWharf) {
+                document.getElementById('ferry-wharf').style.outline = '1px solid #EF0000';
+                setErrorFieldId('ferry-wharf');
+                document.getElementById('ferrywharfError').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('ferrywharfError').innerHTML = '';
+                document.getElementById('ferry-wharf').style.outline = '0';
+            }
+
+        }
+        function checkFerryRoute() {
+            var ferryRoute = document.getElementById('ferry-route').value;
+            if(!ferryRoute) {
+                document.getElementById('ferry-route').style.outline = '1px solid #EF0000';
+                setErrorFieldId('ferry-route');
+                document.getElementById('ferryRouteError').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('ferryRouteError').innerHTML = '';
+                document.getElementById('ferry-route').style.outline = '0';
+            }
+
+        }
+        function checkDirection() {
+            var ferryDirectionError = document.getElementById('sitePageId:caseFormId:pblockId:ferryFieldItr:0:ferryField').value;
+            if(!ferryDirectionError) {
+                document.getElementById('sitePageId:caseFormId:pblockId:ferryFieldItr:0:ferryField').style.outline = '1px solid #EF0000';
+                setErrorFieldId('sitePageId:caseFormId:pblockId:ferryFieldItr:0:ferryField');
+                document.getElementById('ferryDirectionError').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('ferryDirectionError').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:ferryFieldItr:0:ferryField').style.outline = '0';
+            }
+        }
+        function checkLocation() {
+            var location = document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location').value;
+            if(!location) {
+                document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location').style.outline = '1px solid #EF0000';
+                setErrorFieldId('sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location');
+                document.getElementById('locationError').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('locationError').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location').style.outline = '0';
+            }
+
+        }
+        function checkBusRoute() {
+            var busRoute = document.getElementById('bus-route').value;
+            console.log('busRoute is = '+!busRoute);
+            if(!busRoute) {
+                document.getElementById('bus-route').style.outline = '1px solid #EF0000';
+                setErrorFieldId('bus-route');
+                document.getElementById('busRouteErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('busRouteErrorMsg').innerHTML = '';
+                document.getElementById('bus-route').style.outline = '0';
+            }
+
+        }
+        function checkDirectionOfTravel() {
+            /*var id = 'sitePageId:caseFormId:pblockId:busFieldItr:';
+            for(Integer i = 0; i < 5; i++){
+                id = id + i + 'busField';
+                if(document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:0:busField').html-data-role) {
+                }
+            }
+            */
+            var directionOfTravel = document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:0:busField').value;
+            if(!directionOfTravel) {
+                document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:0:busField').style.outline = '1px solid #EF0000';
+                setErrorFieldId('sitePageId:caseFormId:pblockId:busFieldItr:0:busField');
+                document.getElementById('Direction_of_Travel__ctest').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('Direction_of_Travel__ctest').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:0:busField').style.outline = '0';
+            }
+        }
+        function checkBusDriverId() {
+            var busDriverId = document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:1:busField').value;
+            if(!busDriverId) {
+                document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:1:busField').style.outline = '1px solid #EF0000';
+                setErrorFieldId('sitePageId:caseFormId:pblockId:busFieldItr:1:busField');
+                document.getElementById('Bus_driver_identification__ctest').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('Bus_driver_identification__ctest').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:1:busField').style.outline = '0';
+            }
+        }
+        function checkBusNumber() {
+            var busNumber = document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:2:busField').value;
+            if(!busNumber) {
+                document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:2:busField').style.outline = '1px solid #EF0000';
+                setErrorFieldId('sitePageId:caseFormId:pblockId:busFieldItr:2:busField');
+                document.getElementById('Vehicle_Registration__ctest').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('Vehicle_Registration__ctest').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:busFieldItr:2:busField').style.outline = '0';
+            }
+        }
+        function checkWhichPageIsUsed() {
+
+        }
+        function checkDeviceUsed() {
+            var device = document.getElementById('device').value;
+            if(!device) {
+                document.getElementById('device').style.outline = '1px solid #EF0000';
+                setErrorFieldId('device');
+                document.getElementById('deviceErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('deviceErrorMsg').innerHTML = '';
+                document.getElementById('device').style.outline = '0';
+            }
+        }
+        function checkBrowser() {
+            var browser = document.getElementById('browser').value;
+            if(!browser) {
+                document.getElementById('browser').style.outline = '1px solid #EF0000';
+                setErrorFieldId('browser');
+                document.getElementById('browserErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('browserErrorMsg').innerHTML = '';
+                document.getElementById('browser').style.outline = '0';
+            }
+        }
+        function checkOS() {
+            var operatingSystem = document.getElementById('operatingSystem').value;
+            if(!operatingSystem) {
+                document.getElementById('operatingSystem').style.outline = '1px solid #EF0000';
+                setErrorFieldId('operatingSystem');
+                document.getElementById('operatingSystemErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('operatingSystemErrorMsg').innerHTML = '';
+                document.getElementById('operatingSystem').style.outline = '0';
+            }
+        }
+        function checkOSApps() {
+            var operatingSystem = document.getElementById('operatingSystem').value;
+            if(!operatingSystem) {
+                document.getElementById('operatingSystem').style.outline = '1px solid #EF0000';
+                setErrorFieldId('operatingSystem');
+                document.getElementById('osErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('osErrorMsg').innerHTML = '';
+                document.getElementById('operatingSystem').style.outline = '0';
+            }
+        }
+        function checkTripURL() {
+            var tripUrl = document.getElementById('tripUrl').value;
+            if(!tripUrl) {
+                document.getElementById('tripUrl').style.outline = '1px solid #EF0000';
+                setErrorFieldId('tripUrl');
+                document.getElementById('tripURLAppsErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('tripURLAppsErrorMsg').innerHTML = '';
+                document.getElementById('tripUrl').style.outline = '0';
+            }
+        }
+        function checkTripPlanner() {
+            var tripUrl = document.getElementById('tripUrl').value;
+            if(!tripUrl) {
+                document.getElementById('tripUrl').style.outline = '1px solid #EF0000';
+                setErrorFieldId('tripUrl');
+                document.getElementById('tripPlannerErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('tripPlannerErrorMsg').innerHTML = '';
+                document.getElementById('tripUrl').style.outline = '0';
+            }
+        }
+        function checkTimetableUsed() {
+            var timetable = document.getElementById('timetable').value;
+            if(!timetable) {
+                document.getElementById('timetable').style.outline = '1px solid #EF0000';
+                setErrorFieldId('timetable');
+                document.getElementById('timeTableErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('timeTableErrorMsg').innerHTML = '';
+                document.getElementById('timetable').style.outline = '0';
+            }
+        }
+        function checkDescription() {
+            var description = document.getElementById('sitePageId:caseFormId:pblockId:your-feedback2').value;
+            if(!description) {
+                document.getElementById('sitePageId:caseFormId:pblockId:your-feedback2').style.outline = '1px solid #EF0000';
+                setErrorFieldId('sitePageId:caseFormId:pblockId:your-feedback2');
+                document.getElementById('feedbackDescErrorMsg2').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('feedbackDescErrorMsg2').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:your-feedback2').style.outline = '0';
+            }
+        }
+        function checkOnDemandServiceArea() {
+            var onDemandServiceAreaValue = document.getElementById('ondemand-route').value;
+            if(!onDemandServiceAreaValue) {
+                document.getElementById('ondemand-route').style.outline = '1px solid #EF0000';
+                setErrorFieldId('ondemand-route');
+                document.getElementById('ondemandRouteErrorMsg').innerHTML = 'Error: Please select the On Demand service area';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('ondemandRouteErrorMsg').innerHTML = '';
+                document.getElementById('ondemand-route').style.outline = '0';
+            }
+        }        
+        function checkStudentName() {
+            var studentName = document.getElementById('student-name').value;
+            if(!studentName) {
+                document.getElementById('student-name').style.outline = '1px solid #EF0000';
+                setErrorFieldId('student-name');
+                document.getElementById('sstsStudentNameErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('sstsStudentNameErrorMsg').innerHTML = '';
+                document.getElementById('student-name').style.outline = '0';
+            }
+        }
+        function checkStAddress() {
+            var stAdreess = document.getElementById('student-street-address').value;
+            if(!stAdreess) {
+                document.getElementById('student-street-address').style.outline = '1px solid #EF0000';
+                setErrorFieldId('student-street-address');
+                document.getElementById('sstsStreetAddressErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('sstsStreetAddressErrorMsg').innerHTML = '';
+                document.getElementById('student-street-address').style.outline = '0';
+            }
+        }
+        function checkOperatorDetails() {
+            var opDetails = document.getElementById('operator-details').value;
+            if(!opDetails) {
+                document.getElementById('operator-details').style.outline = '1px solid #EF0000';
+                setErrorFieldId('operator-details');
+                document.getElementById('sstsOperatorDetailsErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('sstsOperatorDetailsErrorMsg').innerHTML = '';
+                document.getElementById('operator-details').style.outline = '0';
+            }
+        }
+        function checkSchoolName() {
+            var schoolName = document.getElementById('school-name').value;
+            if(!schoolName) {
+                document.getElementById('school-name').style.outline = '1px solid #EF0000';
+                setErrorFieldId('school-name');
+                document.getElementById('sstsSchoolNameErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('sstsSchoolNameErrorMsg').innerHTML = '';
+                document.getElementById('school-name').style.outline = '0';
+            }
+        }
+        function checkSchoolYear() {
+            var schoolYr = document.getElementById('schoolYear').value;
+            if(!schoolYr || schoolYr == 'Please select') {
+                document.getElementById('schoolYear').style.outline = '1px solid #EF0000';
+                setErrorFieldId('schoolYear');
+                document.getElementById('sstsSchoolYearErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('sstsSchoolYearErrorMsg').innerHTML = '';
+                document.getElementById('schoolYear').style.outline = '0';
+            }
+        }
+        function checkOpalCardNumber() {
+            var opalNumber = document.getElementById('opal-card-number').value;
+            if(opalNumber == '') {
+                document.getElementById('opal-card-number').style.outline = '1px solid #EF0000';
+                setErrorFieldId('opal-card-number');
+                document.getElementById('sstsOpalErrorMsg').innerHTML = 'Error: Please complete selected field';
+                isMandatoryDataFilled = false;
+            } else {
+                document.getElementById('sstsOpalErrorMsg').innerHTML = '';
+                document.getElementById('opal-card-number').style.outline = '0';
+            }
+        }
+
+        function changeURLForNSWTrains() {
+            var source = '{!JSENCODE($CurrentPage.parameters.source)}';
+            console.log('source: '+source);
+            if(source.toLowerCase() == 'nsw trains'){
+                document.getElementById("statusAlert").href="http://www.nswtrainlink.info/your_journey/on_the_day/service_alerts";
+            }
+            else if(source.toLowerCase() == 'tfnsw'){
+                setUrlForTfNSWTrains();
+            }else{
+                document.getElementById("statusAlert").href="http://www.transportnsw.info/en/transport-status/index.page?";
+            }
+        }
+
+        function setUrlForTfNSWTrains(){
+            var abt = '{!LOWER(JSENCODE($CurrentPage.parameters.about))}';
+            if(abt == 'bus'){
+                document.getElementById("statusAlert").href="http://www.transportnsw.info/en/transport-status/index.page?#bus-status-updates-item-tab";
+            }
+            else if(abt == 'train'){
+                document.getElementById("statusAlert").href="http://www.transportnsw.info/en/transport-status/index.page?#train-status-updates-item-tab";
+            }
+            else if(abt == 'ferry'){
+                document.getElementById("statusAlert").href="http://www.transportnsw.info/en/transport-status/index.page?#ferry-status-updates-item-tab";
+            }
+            else if(abt == 'light rail'){
+                document.getElementById("statusAlert").href="http://www.transportnsw.info/en/transport-status/index.page?#lightrail-status-updates-item-tab";
+            }else{
+                document.getElementById("statusAlert").href="http://www.transportnsw.info/en/transport-status/index.page?";
+            }
+        }
+
+    </script>
+    <!--
+    <script src="{!URLFOR($Resource.jqueryUi, 'jquery-ui.js')}"/>
+    <script src="{!$Resource.JSON2}"/>
+    <script src="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/js/bootstrap.min.js')}"/>
+    <script src="{!$Resource.IframeResizer}"/>
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBJkgEAaLXfcCuEQLE_sLXjqVXkGlkpUAk&libraries=places&region=AU" />
+    </apex:page>

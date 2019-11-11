@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Level_3__c</fullName>
+    <externalId>false</externalId>
+    <label>Issue Level 3</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accessibility</fullName>
+                <default>false</default>
+                <label>Accessibility</label>
+            </value>
+            <value>
+                <fullName>Accident with Bus</fullName>
+                <default>false</default>
+                <label>Accident with Bus</label>
+            </value>
+            <value>
+                <fullName>Accident with Vehicle (not bus)</fullName>
+                <default>false</default>
+                <label>Accident with Vehicle (not bus)</label>
+            </value>
+            <value>
+                <fullName>Advertisements Bad</fullName>
+                <default>false</default>
+                <label>Advertisements Bad</label>
+            </value>
+            <value>
+                <fullName>Advertisements Good</fullName>
+                <default>false</default>
+                <label>Advertisements Good</label>
+            </value>
+            <value>
+                <fullName>Air Conditioning - Not Working</fullName>
+                <default>false</default>
+                <label>Air Conditioning - Not Working</label>
+            </value>
+            <value>
+                <fullName>Air Conditioning - Too Cold</fullName>
+                <default>false</default>
+                <label>Air Conditioning - Too Cold</label>
+            </value>
+            <value>
+                <fullName>Air Conditioning - Too Hot</fullName>
+                <default>false</default>
+                <label>Air Conditioning - Too Hot</label>
+            </value>
+            <value>
+                <fullName>Animal Restrictions</fullName>
+                <default>false</default>
+                <label>Animal Restrictions</label>
+            </value>
+            <value>
+                <fullName>Anti-Social Behaviour</fullName>
+                <default>false</default>
+                <label>Anti-Social Behaviour</label>
+            </value>
+            <value>
+                <fullName>Apps Not Working</fullName>
+                <default>false</default>
+                <label>Apps Not Working</label>
+            </value>
+            <value>
+                <fullName>Apps Wrong Information</fullName>
+                <default>false</default>
+                <label>Apps Wrong Information</label>
+            </value>
+            <value>
+                <fullName>Bicycle Restrictions</fullName>
+                <default>false</default>
+                <label>Bicycle Restrictions</label>
+            </value>
+            <value>
+                <fullName>Boarding Rules</fullName>
+                <default>false</default>
+                <label>Boarding Rules</label>
+            </value>
+            <value>
+                <fullName>Broken Seats/Stopping Bell</fullName>
+                <default>false</default>
+                <label>Broken Seats/Stopping Bell</label>
+            </value>
+            <value>
+                <fullName>Building Works</fullName>
+                <default>false</default>
+                <label>Building Works</label>
+            </value>
+            <value>
+                <fullName>Bus Bunching</fullName>
+                <default>false</default>
+                <label>Bus Bunching</label>
+            </value>
+            <value>
+                <fullName>Bus Cancelled</fullName>
+                <default>false</default>
+                <label>Bus Cancelled</label>
+            </value>
+            <value>
+                <fullName>Bus Early</fullName>
+                <default>false</default>
+                <label>Bus Early</label>
+            </value>
+            <value>
+                <fullName>Bus Infrequent/Excess Wait</fullName>
+                <default>false</default>
+                <label>Bus Infrequent/Excess Wait</label>
+            </value>
+            <value>
+                <fullName>Bus in Restricted</fullName>
+                <default>false</default>
+                <label>Bus in Restricted</label>
+            </value>
+            <value>
+                <fullName>Bus Late</fullName>
+                <default>false</default>
+                <label>Bus Late</label>
+            </value>
+            <value>
+                <fullName>Bus Overshot</fullName>
+                <default>false</default>
+                <label>Bus Overshot</label>
+            </value>
+            <value>
+                <fullName>Bus Reliability</fullName>
+                <default>false</default>
+                <label>Bus Reliability</label>
+            </value>
+            <value>
+                <fullName>Bus Terminated</fullName>
+                <default>false</default>
+                <label>Bus Terminated</label>
+            </value>
+            <value>
+                <fullName>Bus Unreliable</fullName>
+                <default>false</default>
+                <label>Bus Unreliable</label>
+            </value>
+            <value>
+                <fullName>Caught in Doors</fullName>
+                <default>false</default>
+                <label>Caught in Doors</label>
+            </value>
+            <value>
+                <fullName>Christmas Decorations</fullName>
+                <default>false</default>
+                <label>Christmas Decorations</label>
+            </value>
+            <value>
+                <fullName>Connection Intermodal</fullName>
+                <default>false</default>
+                <label>Connection Intermodal</label>
+            </value>
+            <value>
+                <fullName>Corporate Policy</fullName>
+                <default>false</default>
+                <label>Corporate Policy</label>
+            </value>
+            <value>
+                <fullName>Damage to Clothing/Property</fullName>
+                <default>false</default>
+                <label>Damage to Clothing/Property</label>
+            </value>
+            <value>
+                <fullName>Delayed at Depot</fullName>
+                <default>false</default>
+                <label>Delayed at Depot</label>
+            </value>
+            <value>
+                <fullName>Depot Noise and Pollution</fullName>
+                <default>false</default>
+                <label>Depot Noise and Pollution</label>
+            </value>
+            <value>
+                <fullName>Distance from Kerb</fullName>
+                <default>false</default>
+                <label>Distance from Kerb</label>
+            </value>
+            <value>
+                <fullName>Doors Not Open</fullName>
+                <default>false</default>
+                <label>Doors Not Open</label>
+            </value>
+            <value>
+                <fullName>Exhaust fumes/Prolonged Idling</fullName>
+                <default>false</default>
+                <label>Exhaust fumes/Prolonged Idling</label>
+            </value>
+            <value>
+                <fullName>Failed to Stop</fullName>
+                <default>false</default>
+                <label>Failed to Stop</label>
+            </value>
+            <value>
+                <fullName>Felt Unsafe</fullName>
+                <default>false</default>
+                <label>Felt Unsafe</label>
+            </value>
+            <value>
+                <fullName>Graffiti</fullName>
+                <default>false</default>
+                <label>Graffiti</label>
+            </value>
+            <value>
+                <fullName>Hard to Understand</fullName>
+                <default>false</default>
+                <label>Hard to Understand</label>
+            </value>
+            <value>
+                <fullName>Information Inadequate</fullName>
+                <default>false</default>
+                <label>Information Inadequate</label>
+            </value>
+            <value>
+                <fullName>Lighting</fullName>
+                <default>false</default>
+                <label>Lighting</label>
+            </value>
+            <value>
+                <fullName>Litter and Cleanliness</fullName>
+                <default>false</default>
+                <label>Litter and Cleanliness</label>
+            </value>
+            <value>
+                <fullName>Lost Property</fullName>
+                <default>false</default>
+                <label>Lost Property</label>
+            </value>
+            <value>
+                <fullName>Missed Stop</fullName>
+                <default>false</default>
+                <label>Missed Stop</label>
+            </value>
+            <value>
+                <fullName>Mobile Phone Bus Operator</fullName>
+                <default>false</default>
+                <label>Mobile Phone Bus Operator</label>
+            </value>
+            <value>
+                <fullName>Newcastle Bus and Ferry Services</fullName>
+                <default>false</default>
+                <label>Newcastle Bus and Ferry Services</label>
+            </value>
+            <value>
+                <fullName>New Timetable Better</fullName>
+                <default>false</default>
+                <label>New Timetable Better</label>
+            </value>
+            <value>
+                <fullName>No Announcement</fullName>
+                <default>false</default>
+                <label>No Announcement</label>
+            </value>
+            <value>
+                <fullName>No Explanation</fullName>
+                <default>false</default>
+                <label>No Explanation</label>
+            </value>
+            <value>
+                <fullName>Noise from Bus</fullName>
+                <default>false</default>
+                <label>Noise from Bus</label>
+            </value>
+            <value>
+                <fullName>Non STA related Issue</fullName>
+                <default>false</default>
+                <label>Non STA related Issue</label>
+            </value>
+            <value>
+                <fullName>No Stop Timetable</fullName>
+                <default>false</default>
+                <label>No Stop Timetable</label>
+            </value>
+            <value>
+                <fullName>Not Categorised (N/A)</fullName>
+                <default>false</default>
+                <label>Not Categorised (N/A)</label>
+            </value>
+            <value>
+                <fullName>Not Enough Bus Stops</fullName>
+                <default>false</default>
+                <label>Not Enough Bus Stops</label>
+            </value>
+            <value>
+                <fullName>Old Timetable Better</fullName>
+                <default>false</default>
+                <label>Old Timetable Better</label>
+            </value>
+            <value>
+                <fullName>On Board Information - Bad</fullName>
+                <default>false</default>
+                <label>On Board Information - Bad</label>
+            </value>
+            <value>
+                <fullName>On Board Information - Good</fullName>
+                <default>false</default>
+                <label>On Board Information - Good</label>
+            </value>
+            <value>
+                <fullName>Overcrowded</fullName>
+                <default>false</default>
+                <label>Overcrowded</label>
+            </value>
+            <value>
+                <fullName>Passenger Injury</fullName>
+                <default>false</default>
+                <label>Passenger Injury</label>
+            </value>
+            <value>
+                <fullName>Rain Coming In</fullName>
+                <default>false</default>
+                <label>Rain Coming In</label>
+            </value>
+            <value>
+                <fullName>Rough Driving</fullName>
+                <default>false</default>
+                <label>Rough Driving</label>
+            </value>
+            <value>
+                <fullName>Running Wrong Route</fullName>
+                <default>false</default>
+                <label>Running Wrong Route</label>
+            </value>
+            <value>
+                <fullName>S/children Taking Seats</fullName>
+                <default>false</default>
+                <label>S/children Taking Seats</label>
+            </value>
+            <value>
+                <fullName>School Bus Cancelled</fullName>
+                <default>false</default>
+                <label>School Bus Cancelled</label>
+            </value>
+            <value>
+                <fullName>School Bus Early</fullName>
+                <default>false</default>
+                <label>School Bus Early</label>
+            </value>
+            <value>
+                <fullName>School Bus Late</fullName>
+                <default>false</default>
+                <label>School Bus Late</label>
+            </value>
+            <value>
+                <fullName>School Bus Overshot</fullName>
+                <default>false</default>
+                <label>School Bus Overshot</label>
+            </value>
+            <value>
+                <fullName>School Bus Terminated</fullName>
+                <default>false</default>
+                <label>School Bus Terminated</label>
+            </value>
+            <value>
+                <fullName>School Holiday Services</fullName>
+                <default>false</default>
+                <label>School Holiday Services</label>
+            </value>
+            <value>
+                <fullName>School Service Request</fullName>
+                <default>false</default>
+                <label>School Service Request</label>
+            </value>
+            <value>
+                <fullName>Service Disruptions (planned/unplanned)</fullName>
+                <default>false</default>
+                <label>Service Disruptions (planned/unplanned)</label>
+            </value>
+            <value>
+                <fullName>Service Good</fullName>
+                <default>false</default>
+                <label>Service Good</label>
+            </value>
+            <value>
+                <fullName>Shelter Inadequate/Not Provided</fullName>
+                <default>false</default>
+                <label>Shelter Inadequate/Not Provided</label>
+            </value>
+            <value>
+                <fullName>Slow Between Stops</fullName>
+                <default>false</default>
+                <label>Slow Between Stops</label>
+            </value>
+            <value>
+                <fullName>Spillage from Bus</fullName>
+                <default>false</default>
+                <label>Spillage from Bus</label>
+            </value>
+            <value>
+                <fullName>Staff Conduct - Negative</fullName>
+                <default>false</default>
+                <label>Staff Conduct - Negative</label>
+            </value>
+            <value>
+                <fullName>Staff Conduct - Positive</fullName>
+                <default>false</default>
+                <label>Staff Conduct - Positive</label>
+            </value>
+            <value>
+                <fullName>Staff Playing Radio</fullName>
+                <default>false</default>
+                <label>Staff Playing Radio</label>
+            </value>
+            <value>
+                <fullName>Staff Smoking</fullName>
+                <default>false</default>
+                <label>Staff Smoking</label>
+            </value>
+            <value>
+                <fullName>State Transit</fullName>
+                <default>false</default>
+                <label>State Transit</label>
+            </value>
+            <value>
+                <fullName>Stop Info Poor</fullName>
+                <default>false</default>
+                <label>Stop Info Poor</label>
+            </value>
+            <value>
+                <fullName>Stop Info Wrong</fullName>
+                <default>false</default>
+                <label>Stop Info Wrong</label>
+            </value>
+            <value>
+                <fullName>Stop Location/Access Poor</fullName>
+                <default>false</default>
+                <label>Stop Location/Access Poor</label>
+            </value>
+            <value>
+                <fullName>Stop Missing</fullName>
+                <default>false</default>
+                <label>Stop Missing</label>
+            </value>
+            <value>
+                <fullName>Sydney Buses</fullName>
+                <default>false</default>
+                <label>Sydney Buses</label>
+            </value>
+            <value>
+                <fullName>Ticket Dispute</fullName>
+                <default>false</default>
+                <label>Ticket Dispute</label>
+            </value>
+            <value>
+                <fullName>Timetable Request</fullName>
+                <default>false</default>
+                <label>Timetable Request</label>
+            </value>
+            <value>
+                <fullName>Timetable Suggestion</fullName>
+                <default>false</default>
+                <label>Timetable Suggestion</label>
+            </value>
+            <value>
+                <fullName>Too Quiet</fullName>
+                <default>false</default>
+                <label>Too Quiet</label>
+            </value>
+            <value>
+                <fullName>Transit TV Info (CCTV Screens)</fullName>
+                <default>false</default>
+                <label>Transit TV Info (CCTV Screens)</label>
+            </value>
+            <value>
+                <fullName>Transport for NSW</fullName>
+                <default>false</default>
+                <label>Transport for NSW</label>
+            </value>
+            <value>
+                <fullName>Travel Rules</fullName>
+                <default>false</default>
+                <label>Travel Rules</label>
+            </value>
+            <value>
+                <fullName>Unhappy about Strike</fullName>
+                <default>false</default>
+                <label>Unhappy about Strike</label>
+            </value>
+            <value>
+                <fullName>Unhappy with Complaint Response</fullName>
+                <default>false</default>
+                <label>Unhappy with Complaint Response</label>
+            </value>
+            <value>
+                <fullName>Unhappy with Route</fullName>
+                <default>false</default>
+                <label>Unhappy with Route</label>
+            </value>
+            <value>
+                <fullName>Unsafe Driving</fullName>
+                <default>false</default>
+                <label>Unsafe Driving</label>
+            </value>
+            <value>
+                <fullName>Wrong Destination Head Sign</fullName>
+                <default>false</default>
+                <label>Wrong Destination Head Sign</label>
+            </value>
+            <value>
+                <fullName>Wrong Information</fullName>
+                <default>false</default>
+                <label>Wrong Information</label>
+            </value>
+            <value>
+                <fullName>Trespassing</fullName>
+                <default>false</default>
+                <label>Trespassing</label>
+            </value>
+            <value>
+                <fullName>Information Provided</fullName>
+                <default>false</default>
+                <label>Information Provided</label>
+            </value>
+            <value>
+                <fullName>Availability</fullName>
+                <default>false</default>
+                <label>Availability</label>
+            </value>
+            <value>
+                <fullName>Buses</fullName>
+                <default>false</default>
+                <label>Buses</label>
+            </value>
+            <value>
+                <fullName>Tram Overshot</fullName>
+                <default>false</default>
+                <label>Tram Overshot</label>
+            </value>
+            <value>
+                <fullName>Accident with Tram</fullName>
+                <default>false</default>
+                <label>Accident with Tram</label>
+            </value>
+            <value>
+                <fullName>Accident with Vehicle (not tram)</fullName>
+                <default>false</default>
+                <label>Accident with Vehicle (not tram)</label>
+            </value>
+            <value>
+                <fullName>Air conditioning</fullName>
+                <default>false</default>
+                <label>Air conditioning</label>
+            </value>
+            <value>
+                <fullName>Announcements</fullName>
+                <default>false</default>
+                <label>Announcements</label>
+            </value>
+            <value>
+                <fullName>Appearance</fullName>
+                <default>false</default>
+                <label>Appearance</label>
+            </value>
+            <value>
+                <fullName>Arlington Light Rail</fullName>
+                <default>false</default>
+                <label>Arlington Light Rail</label>
+            </value>
+            <value>
+                <fullName>Assault</fullName>
+                <default>false</default>
+                <label>Assault</label>
+            </value>
+            <value>
+                <fullName>Bad Driving (Non PAX - Serious Offence)</fullName>
+                <default>false</default>
+                <label>Bad Driving (Non PAX - Serious Offence)</label>
+            </value>
+            <value>
+                <fullName>Bad Driving (Non PAX)</fullName>
+                <default>false</default>
+                <label>Bad Driving (Non PAX)</label>
+            </value>
+            <value>
+                <fullName>Bad Driving (Pax - Serious Offence)</fullName>
+                <default>false</default>
+                <label>Bad Driving (Pax - Serious Offence)</label>
+            </value>
+            <value>
+                <fullName>Bad Driving (PAX)</fullName>
+                <default>false</default>
+                <label>Bad Driving (PAX)</label>
+            </value>
+            <value>
+                <fullName>Bad Driving (Serious Offence)</fullName>
+                <default>false</default>
+                <label>Bad Driving (Serious Offence)</label>
+            </value>
+            <value>
+                <fullName>Beggars</fullName>
+                <default>false</default>
+                <label>Beggars</label>
+            </value>
+            <value>
+                <fullName>BJI Ticket Machine</fullName>
+                <default>false</default>
+                <label>BJI Ticket Machine</label>
+            </value>
+            <value>
+                <fullName>Broken Seats</fullName>
+                <default>false</default>
+                <label>Broken Seats</label>
+            </value>
+            <value>
+                <fullName>Building and maintenance</fullName>
+                <default>false</default>
+                <label>Building and maintenance</label>
+            </value>
+            <value>
+                <fullName>Buskers</fullName>
+                <default>false</default>
+                <label>Buskers</label>
+            </value>
+            <value>
+                <fullName>Capacity / crowding</fullName>
+                <default>false</default>
+                <label>Capacity / crowding</label>
+            </value>
+            <value>
+                <fullName>Capitol Square Light Rail</fullName>
+                <default>false</default>
+                <label>Capitol Square Light Rail</label>
+            </value>
+            <value>
+                <fullName>Central Station Light Rail</fullName>
+                <default>false</default>
+                <label>Central Station Light Rail</label>
+            </value>
+            <value>
+                <fullName>Change</fullName>
+                <default>false</default>
+                <label>Change</label>
+            </value>
+            <value>
+                <fullName>Change Dispute</fullName>
+                <default>false</default>
+                <label>Change Dispute</label>
+            </value>
+            <value>
+                <fullName>Christmas Decorations Good</fullName>
+                <default>false</default>
+                <label>Christmas Decorations Good</label>
+            </value>
+            <value>
+                <fullName>Cleanliness / comfort</fullName>
+                <default>false</default>
+                <label>Cleanliness / comfort</label>
+            </value>
+            <value>
+                <fullName>Conduct</fullName>
+                <default>false</default>
+                <label>Conduct</label>
+            </value>
+            <value>
+                <fullName>Connection Rushed</fullName>
+                <default>false</default>
+                <label>Connection Rushed</label>
+            </value>
+            <value>
+                <fullName>Connections</fullName>
+                <default>false</default>
+                <label>Connections</label>
+            </value>
+            <value>
+                <fullName>Convention Centre Light Rail</fullName>
+                <default>false</default>
+                <label>Convention Centre Light Rail</label>
+            </value>
+            <value>
+                <fullName>Covered in Graffiti</fullName>
+                <default>false</default>
+                <label>Covered in Graffiti</label>
+            </value>
+            <value>
+                <fullName>Damage to Clothing</fullName>
+                <default>false</default>
+                <label>Damage to Clothing</label>
+            </value>
+            <value>
+                <fullName>Dirty/Litter</fullName>
+                <default>false</default>
+                <label>Dirty/Litter</label>
+            </value>
+            <value>
+                <fullName>Disability Access - Trams</fullName>
+                <default>false</default>
+                <label>Disability Access - Trams</label>
+            </value>
+            <value>
+                <fullName>Dispute</fullName>
+                <default>false</default>
+                <label>Dispute</label>
+            </value>
+            <value>
+                <fullName>Doors Not Shut</fullName>
+                <default>false</default>
+                <label>Doors Not Shut</label>
+            </value>
+            <value>
+                <fullName>Dulwich Grove Light Rail</fullName>
+                <default>false</default>
+                <label>Dulwich Grove Light Rail</label>
+            </value>
+            <value>
+                <fullName>Dulwich Hill Light Rail</fullName>
+                <default>false</default>
+                <label>Dulwich Hill Light Rail</label>
+            </value>
+            <value>
+                <fullName>Emergency Phone No Answer</fullName>
+                <default>false</default>
+                <label>Emergency Phone No Answer</label>
+            </value>
+            <value>
+                <fullName>Fish Market Light Rail</fullName>
+                <default>false</default>
+                <label>Fish Market Light Rail</label>
+            </value>
+            <value>
+                <fullName>Glebe Light Rail</fullName>
+                <default>false</default>
+                <label>Glebe Light Rail</label>
+            </value>
+            <value>
+                <fullName>Graffiti on Stop Info</fullName>
+                <default>false</default>
+                <label>Graffiti on Stop Info</label>
+            </value>
+            <value>
+                <fullName>Grafitti Offensive</fullName>
+                <default>false</default>
+                <label>Grafitti Offensive</label>
+            </value>
+            <value>
+                <fullName>Hawthorne Light Rail</fullName>
+                <default>false</default>
+                <label>Hawthorne Light Rail</label>
+            </value>
+            <value>
+                <fullName>Insufficient Time</fullName>
+                <default>false</default>
+                <label>Insufficient Time</label>
+            </value>
+            <value>
+                <fullName>Intoxicated</fullName>
+                <default>false</default>
+                <label>Intoxicated</label>
+            </value>
+            <value>
+                <fullName>Intoxicated Pax</fullName>
+                <default>false</default>
+                <label>Intoxicated Pax</label>
+            </value>
+            <value>
+                <fullName>John Street Square Light Rail</fullName>
+                <default>false</default>
+                <label>John Street Square Light Rail</label>
+            </value>
+            <value>
+                <fullName>Jubilee Park Light Rail</fullName>
+                <default>false</default>
+                <label>Jubilee Park Light Rail</label>
+            </value>
+            <value>
+                <fullName>L1 Dulwich Hill Line</fullName>
+                <default>false</default>
+                <label>L1 Dulwich Hill Line</label>
+            </value>
+            <value>
+                <fullName>Leichhardt North Light Rail</fullName>
+                <default>false</default>
+                <label>Leichhardt North Light Rail</label>
+            </value>
+            <value>
+                <fullName>Lewisham West Light Rail</fullName>
+                <default>false</default>
+                <label>Lewisham West Light Rail</label>
+            </value>
+            <value>
+                <fullName>Lilyfield Light Rail</fullName>
+                <default>false</default>
+                <label>Lilyfield Light Rail</label>
+            </value>
+            <value>
+                <fullName>Littering From Tram</fullName>
+                <default>false</default>
+                <label>Littering From Tram</label>
+            </value>
+            <value>
+                <fullName>Marion Light Rail</fullName>
+                <default>false</default>
+                <label>Marion Light Rail</label>
+            </value>
+            <value>
+                <fullName>Missed stops / overshot</fullName>
+                <default>false</default>
+                <label>Missed stops / overshot</label>
+            </value>
+            <value>
+                <fullName>Mobile Phone Tram Op</fullName>
+                <default>false</default>
+                <label>Mobile Phone Tram Op</label>
+            </value>
+            <value>
+                <fullName>No Disabled Access</fullName>
+                <default>false</default>
+                <label>No Disabled Access</label>
+            </value>
+            <value>
+                <fullName>No Disabled Stop Access</fullName>
+                <default>false</default>
+                <label>No Disabled Stop Access</label>
+            </value>
+            <value>
+                <fullName>No Lights</fullName>
+                <default>false</default>
+                <label>No Lights</label>
+            </value>
+            <value>
+                <fullName>No Timetable</fullName>
+                <default>false</default>
+                <label>No Timetable</label>
+            </value>
+            <value>
+                <fullName>Noise</fullName>
+                <default>false</default>
+                <label>Noise</label>
+            </value>
+            <value>
+                <fullName>Noise from Tram</fullName>
+                <default>false</default>
+                <label>Noise from Tram</label>
+            </value>
+            <value>
+                <fullName>Noisy/Unruly</fullName>
+                <default>false</default>
+                <label>Noisy/Unruly</label>
+            </value>
+            <value>
+                <fullName>Noisy/Unruly Pax</fullName>
+                <default>false</default>
+                <label>Noisy/Unruly Pax</label>
+            </value>
+            <value>
+                <fullName>Not Close to Kerb</fullName>
+                <default>false</default>
+                <label>Not Close to Kerb</label>
+            </value>
+            <value>
+                <fullName>Not Enough Tram Stops</fullName>
+                <default>false</default>
+                <label>Not Enough Tram Stops</label>
+            </value>
+            <value>
+                <fullName>Odour</fullName>
+                <default>false</default>
+                <label>Odour</label>
+            </value>
+            <value>
+                <fullName>Offended by Graffiti</fullName>
+                <default>false</default>
+                <label>Offended by Graffiti</label>
+            </value>
+            <value>
+                <fullName>On Board PAX Info Good</fullName>
+                <default>false</default>
+                <label>On Board PAX Info Good</label>
+            </value>
+            <value>
+                <fullName>On Board PAX Info Poor</fullName>
+                <default>false</default>
+                <label>On Board PAX Info Poor</label>
+            </value>
+            <value>
+                <fullName>Other Passengers</fullName>
+                <default>false</default>
+                <label>Other Passengers</label>
+            </value>
+            <value>
+                <fullName>Other vehicle</fullName>
+                <default>false</default>
+                <label>Other vehicle</label>
+            </value>
+            <value>
+                <fullName>Paddy&#39;s Markets Light Rail</fullName>
+                <default>false</default>
+                <label>Paddy&#39;s Markets Light Rail</label>
+            </value>
+            <value>
+                <fullName>Pax Assault</fullName>
+                <default>false</default>
+                <label>Pax Assault</label>
+            </value>
+            <value>
+                <fullName>Pax Smoking</fullName>
+                <default>false</default>
+                <label>Pax Smoking</label>
+            </value>
+            <value>
+                <fullName>Personal Claims</fullName>
+                <default>false</default>
+                <label>Personal Claims</label>
+            </value>
+            <value>
+                <fullName>Personal injury / damage</fullName>
+                <default>false</default>
+                <label>Personal injury / damage</label>
+            </value>
+            <value>
+                <fullName>Policy</fullName>
+                <default>false</default>
+                <label>Policy</label>
+            </value>
+            <value>
+                <fullName>Printed timetable</fullName>
+                <default>false</default>
+                <label>Printed timetable</label>
+            </value>
+            <value>
+                <fullName>Property Damage</fullName>
+                <default>false</default>
+                <label>Property Damage</label>
+            </value>
+            <value>
+                <fullName>Pyrmont Bay Light Rail</fullName>
+                <default>false</default>
+                <label>Pyrmont Bay Light Rail</label>
+            </value>
+            <value>
+                <fullName>Real-time Apps</fullName>
+                <default>false</default>
+                <label>Real-time Apps</label>
+            </value>
+            <value>
+                <fullName>Reliability</fullName>
+                <default>false</default>
+                <label>Reliability</label>
+            </value>
+            <value>
+                <fullName>Rozelle Bay Light Rail</fullName>
+                <default>false</default>
+                <label>Rozelle Bay Light Rail</label>
+            </value>
+            <value>
+                <fullName>Safety and security</fullName>
+                <default>false</default>
+                <label>Safety and security</label>
+            </value>
+            <value>
+                <fullName>Schoolbags</fullName>
+                <default>false</default>
+                <label>Schoolbags</label>
+            </value>
+            <value>
+                <fullName>Seating / shelter</fullName>
+                <default>false</default>
+                <label>Seating / shelter</label>
+            </value>
+            <value>
+                <fullName>Service Disruptions</fullName>
+                <default>false</default>
+                <label>Service Disruptions</label>
+            </value>
+            <value>
+                <fullName>Shelter Inadequate</fullName>
+                <default>false</default>
+                <label>Shelter Inadequate</label>
+            </value>
+            <value>
+                <fullName>Shelter No Seating</fullName>
+                <default>false</default>
+                <label>Shelter No Seating</label>
+            </value>
+            <value>
+                <fullName>Shelter Not Provided</fullName>
+                <default>false</default>
+                <label>Shelter Not Provided</label>
+            </value>
+            <value>
+                <fullName>Signage</fullName>
+                <default>false</default>
+                <label>Signage</label>
+            </value>
+            <value>
+                <fullName>Smoke / fumes</fullName>
+                <default>false</default>
+                <label>Smoke / fumes</label>
+            </value>
+            <value>
+                <fullName>Smoke From Tram</fullName>
+                <default>false</default>
+                <label>Smoke From Tram</label>
+            </value>
+            <value>
+                <fullName>Smoking</fullName>
+                <default>false</default>
+                <label>Smoking</label>
+            </value>
+            <value>
+                <fullName>Spillage From Tram</fullName>
+                <default>false</default>
+                <label>Spillage From Tram</label>
+            </value>
+            <value>
+                <fullName>Staff Helpful</fullName>
+                <default>false</default>
+                <label>Staff Helpful</label>
+            </value>
+            <value>
+                <fullName>Staff Hung Up</fullName>
+                <default>false</default>
+                <label>Staff Hung Up</label>
+            </value>
+            <value>
+                <fullName>Staff Rude</fullName>
+                <default>false</default>
+                <label>Staff Rude</label>
+            </value>
+            <value>
+                <fullName>Staff Unhelpful</fullName>
+                <default>false</default>
+                <label>Staff Unhelpful</label>
+            </value>
+            <value>
+                <fullName>Taverners Hill Light Rail</fullName>
+                <default>false</default>
+                <label>Taverners Hill Light Rail</label>
+            </value>
+            <value>
+                <fullName>The Star Light Rail</fullName>
+                <default>false</default>
+                <label>The Star Light Rail</label>
+            </value>
+            <value>
+                <fullName>Ticket Machine Faulty</fullName>
+                <default>false</default>
+                <label>Ticket Machine Faulty</label>
+            </value>
+            <value>
+                <fullName>Too Cold</fullName>
+                <default>false</default>
+                <label>Too Cold</label>
+            </value>
+            <value>
+                <fullName>Too Hot</fullName>
+                <default>false</default>
+                <label>Too Hot</label>
+            </value>
+            <value>
+                <fullName>Tram Bunching</fullName>
+                <default>false</default>
+                <label>Tram Bunching</label>
+            </value>
+            <value>
+                <fullName>Tram Cancelled</fullName>
+                <default>false</default>
+                <label>Tram Cancelled</label>
+            </value>
+            <value>
+                <fullName>Tram Early</fullName>
+                <default>false</default>
+                <label>Tram Early</label>
+            </value>
+            <value>
+                <fullName>Tram Infrequent/Excess Wait</fullName>
+                <default>false</default>
+                <label>Tram Infrequent/Excess Wait</label>
+            </value>
+            <value>
+                <fullName>Tram Late</fullName>
+                <default>false</default>
+                <label>Tram Late</label>
+            </value>
+            <value>
+                <fullName>Tram On Time</fullName>
+                <default>false</default>
+                <label>Tram On Time</label>
+            </value>
+            <value>
+                <fullName>Tram Reliability</fullName>
+                <default>false</default>
+                <label>Tram Reliability</label>
+            </value>
+            <value>
+                <fullName>Tram Terminated</fullName>
+                <default>false</default>
+                <label>Tram Terminated</label>
+            </value>
+            <value>
+                <fullName>Tram Unreliable</fullName>
+                <default>false</default>
+                <label>Tram Unreliable</label>
+            </value>
+            <value>
+                <fullName>Transit TV Info Poor</fullName>
+                <default>false</default>
+                <label>Transit TV Info Poor</label>
+            </value>
+            <value>
+                <fullName>Trees / weeds / pests</fullName>
+                <default>false</default>
+                <label>Trees / weeds / pests</label>
+            </value>
+            <value>
+                <fullName>Vibration</fullName>
+                <default>false</default>
+                <label>Vibration</label>
+            </value>
+            <value>
+                <fullName>Waratah Mills Light Rail</fullName>
+                <default>false</default>
+                <label>Waratah Mills Light Rail</label>
+            </value>
+            <value>
+                <fullName>Weekend / Holiday</fullName>
+                <default>false</default>
+                <label>Weekend / Holiday</label>
+            </value>
+            <value>
+                <fullName>Wentworth Park Light Rail</fullName>
+                <default>false</default>
+                <label>Wentworth Park Light Rail</label>
+            </value>
+            <value>
+                <fullName>Wrong Advice</fullName>
+                <default>false</default>
+                <label>Wrong Advice</label>
+            </value>
+            <value>
+                <fullName>Wrong Headsign</fullName>
+                <default>false</default>
+                <label>Wrong Headsign</label>
+            </value>
+            <value>
+                <fullName>Service levels</fullName>
+                <default>false</default>
+                <label>Service levels</label>
+            </value>
+            <value>
+                <fullName>Exhaust Fumes</fullName>
+                <default>false</default>
+                <label>Exhaust Fumes</label>
+            </value>
+            <value>
+                <fullName>Facilities</fullName>
+                <default>false</default>
+                <label>Facilities</label>
+            </value>
+            <value>
+                <fullName>Stop Location Good</fullName>
+                <default>false</default>
+                <label>Stop Location Good</label>
+            </value>
+            <value>
+                <fullName>Depot Noise / Pollution</fullName>
+                <default>false</default>
+                <label>Depot Noise / Pollution</label>
+            </value>
+            <value>
+                <fullName>Engine Noise</fullName>
+                <default>false</default>
+                <label>Engine Noise</label>
+            </value>
+            <value>
+                <fullName>Wash</fullName>
+                <default>false</default>
+                <label>Wash</label>
+            </value>
+            <value>
+                <fullName>Heritage Issues</fullName>
+                <default>false</default>
+                <label>Heritage Issues</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TestDueDate__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(TEXT(TestAgency__c) == &quot;RMS&quot;, 
+CASE(TEXT(TestCasePriority__c), 
+&quot;MP - Standard&quot;, 
+CASE( 
+MOD(TestCreatedDate__c - DATE( 1900, 1, 7),7), 
+0, TestCreatedDate__c + 3 + 9, 
+1, TestCreatedDate__c + 2 + 9, 
+2, TestCreatedDate__c + 4 + 9, 
+3, TestCreatedDate__c + 4 + 9, 
+4, TestCreatedDate__c + 4 + 9, 
+5, TestCreatedDate__c + 4 + 9, 
+TestCreatedDate__c + 4 + 9), 
+&quot;Individual - Standard&quot;, 
+CASE( 
+MOD(TestCreatedDate__c - DATE( 1900, 1, 7),7), 
+0, TestCreatedDate__c + 5 + 12, 
+1, TestCreatedDate__c + 4 + 12, 
+2, TestCreatedDate__c + 4 + 12, 
+3, TestCreatedDate__c + 4 + 12, 
+4, TestCreatedDate__c + 6 + 12, 
+5, TestCreatedDate__c + 6 + 12, 
+6, TestCreatedDate__c + 6 + 12, 
+TestCreatedDate__c + 3 + 12 
+), 
+NULL), 
+CASE( 
+MOD(TestCreatedDate__c - DATE( 1900, 1, 7),7), 
+0, TestCreatedDate__c + 0 + 5, 
+1, TestCreatedDate__c + 2 + 5, 
+2, TestCreatedDate__c + 2 + 5, 
+3, TestCreatedDate__c + 2 + 5, 
+4, TestCreatedDate__c + 2 + 5, 
+5, TestCreatedDate__c + 2 + 5, 
+TestCreatedDate__c + 1 + 5) 
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This field will display due date calculated by the formula</inlineHelpText>
+    <label>Test Due Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

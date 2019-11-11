@@ -1,0 +1,19 @@
+<apex:page standardController="Action_Plan__c" extensions="ParentNoteOrAttachmentViewer_CX" action="{!init}" sidebar="false" showHeader="false">
+    <apex:pageMessages id="errors"></apex:pageMessages>
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!attachments}" var="att" rendered="{!AND(attachments != null, attachments.size > 0)}">
+            <apex:column headerValue="Action">
+                <apex:outputField value="{!att.Note_Attachment__r.View__c}"/>
+            </apex:column>
+            <apex:column value="{!att.Note_Attachment__r.Name}"/>
+            <apex:column value="{!att.Note_Attachment__r.Requires_Printing__c}"/>
+            <apex:column value="{!att.Note_Attachment__r.Privacy__c}"/>
+            <apex:column headerValue="Record Type">
+                <apex:outputField value="{!att.Note_Attachment__r.RecordType.Name}"/>
+            </apex:column>
+        </apex:pageBlockTable>
+        <apex:outputPanel rendered="{!AND(attachments != null, attachments.size == 0)}">
+        No documents to display
+        </apex:outputPanel>
+    </apex:pageBlock>
+</apex:page>

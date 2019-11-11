@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Attachment</fullName>
+    <availability>online</availability>
+    <description>This button will allow user to create attachment for the Action Plan.</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Attach File</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/support/console/33.0/integration.js&quot;)} 
+if (sforce.console.isInConsole()) { 
+sforce.console.getFocusedPrimaryTabId(function(response) { 
+var primaryTabId = response.id; 
+var url = &quot;/apex/NewActionPlanAttachment?id={!Action_Plan__c.Id}&amp;display=Attachment&quot;; 
+var isActive = true; 
+sforce.console.openSubtab(primaryTabId, url, isActive, &#39;New Attachment&#39;, null); 
+});
+} else {
+navigateToUrl(&quot;/apex/NewActionPlanAttachment?id={!Action_Plan__c.Id}&amp;display=Attachment&quot;, &quot;&quot;); 
+}</url>
+</WebLink>

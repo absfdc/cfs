@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CIDR_Ip_Address_range__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>Ip address range in CIDR format i.e. xxx.xxx.xxx.xxx/n where 32 &gt;= n &gt;= 8</description>
+    <externalId>false</externalId>
+    <label>CIDR Ip Address range</label>
+    <length>20</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

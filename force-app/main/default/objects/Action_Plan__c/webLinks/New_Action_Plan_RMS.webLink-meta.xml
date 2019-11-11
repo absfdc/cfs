@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Action_Plan_RMS</fullName>
+    <availability>online</availability>
+    <description>This button will be used by RMS case managers to create action plan</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Action Plan.</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/support/console/33.0/integration.js&quot;)} 
+
+var parentCaseStatus = &quot;{!Case.Status}&quot;; 
+var isCategorised = &quot;{!Case.Is_Categorised__c}&quot;; 
+var isMinCorroCase = &quot;{!Case.IsMinCorroCase__c}&quot;; 
+
+if((isCategorised == &quot;false&quot; || isCategorised == &quot;0&quot; )&amp;&amp; (isMinCorroCase == &quot;true&quot; || isMinCorroCase == &quot;1&quot;)&amp;&amp; &quot;{!Case.RecordTypeName__c}&quot;!=&quot;RMS CE Signatory&quot;) { 
+alert(&quot;You can not create action plan on uncategorised case.&quot;); 
+} else if (parentCaseStatus == &quot;Awaiting Approval&quot;) { 
+alert(&quot;One of the draft is in approval. Please recall the approval and try again&quot;); 
+} else { 
+if (sforce.console.isInConsole()) { 
+sforce.console.getFocusedPrimaryTabId(function(response) { 
+var primaryTabId = response.id; 
+var rUrl = &quot;/apex/RedirectWithDefaultFieldValues?oname=Action_Plan__c&amp;parentId={!Case.Id}&amp;allowRTS=false&amp;isConsole=1&amp;RecordType=RMS_Action_Plan&quot;; 
+var isActive = true; 
+sforce.console.openSubtab(primaryTabId, rUrl, isActive, &#39;New Action Plan&#39;, null); 
+}) 
+} else { 
+navigateToUrl(&quot;/apex/RedirectWithDefaultFieldValues?oname=Action_Plan__c&amp;parentId={!Case.Id}&amp;allowRTS=false&amp;RecordType=RMS_Action_Plan&quot;, &quot;&quot;); 
+} 
+}</url>
+</WebLink>

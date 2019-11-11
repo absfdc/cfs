@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Road_Office_Manager_Queue_Action_Plan</fullName>
+    <columns>NAME</columns>
+    <columns>Agency__c</columns>
+    <columns>Case_Subject__c</columns>
+    <columns>Classification__c</columns>
+    <columns>Minister_User__c</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Referring_Mp__c</columns>
+    <columns>Status__c</columns>
+    <columns>Case_Number__c</columns>
+    <filterScope>Queue</filterScope>
+    <label>Roads Office Manager Queue</label>
+    <queue>Road_Office_Manager_Queue</queue>
+    <sharedTo>
+        <role>CRGS_Super_Admin</role>
+        <role>DLO_Road</role>
+        <role>MO_Office_Manager_Road</role>
+    </sharedTo>
+</ListView>

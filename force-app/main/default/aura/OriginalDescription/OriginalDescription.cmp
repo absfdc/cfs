@@ -1,0 +1,26 @@
+<aura:component implements="flexipage:availableForRecordHome,force:LightningQuickAction,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name="originalDesc" type="String" />
+   	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:spinner aura:id="spinner" variant="brand" size="large" class="slds-hide"/>
+    
+    <div aura:id="theModal" class="slds-modal " aria-hidden="false" role="dialog">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                Case Original Description
+            </div> 
+        	<div class="slds-modal__content slds-p-around--medium">
+            	<div class="slds-form--stacked"> 
+                    
+                        {!v.originalDesc}
+    				
+                </div>
+            </div>
+			<div class="slds-modal__footer">
+                <button aura:id="cancel" class="slds-button slds-button--neutral" onclick="{!c.closeAction}">Cancel</button>
+            </div> 
+        </div>
+    </div>
+    <div aura:id="modalBackdrop" class="slds-backdrop">
+    </div>
+</aura:component>

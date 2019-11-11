@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_I_P_Newcastle_Transport_Program_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>TfNSW I&amp;P - Newcastle Transport Program</label>
+    <queue>TfNSW_I_P_Newcastle_Transport_Program</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

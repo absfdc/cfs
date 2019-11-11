@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RMS_RAF_Freight_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>RMS - RAF - Freight</label>
+    <queue>RMS_RAF_Freight</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

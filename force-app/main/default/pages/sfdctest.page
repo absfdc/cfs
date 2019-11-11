@@ -1,0 +1,6 @@
+<apex:page standardController="Case" showHeader="true">
+    <apex:emailPublisher id="myEmailPublisher" 
+        entityId="{!case.id}" 
+        toAddresses="test@salesforce.com"
+    />  
+</apex:page>

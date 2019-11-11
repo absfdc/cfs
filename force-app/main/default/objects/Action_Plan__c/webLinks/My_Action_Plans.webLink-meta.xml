@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Action_Plans</fullName>
+    <availability>online</availability>
+    <description>This will display action plan</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>My Action Plans</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/support/console/33.0/integration.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)} 
+var queryStr = &quot;Select Id From Report Where DeveloperName = &#39;MyActionPlans&#39; limit 1&quot;; 
+var report = sforce.connection.query(queryStr); 
+if(report.records != undefined) {
+var rUrl = &quot;/&quot; +  report.records.Id + &quot;?pv1={!$User.Id}&quot;;
+navigateToUrl(rUrl, &quot;&quot;);
+} else {
+alert(&quot;You do not have access to My Action Plans report.&quot;);
+}</url>
+</WebLink>

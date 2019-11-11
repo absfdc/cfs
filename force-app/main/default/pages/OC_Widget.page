@@ -1,0 +1,2 @@
+<apex:page controller="OC_Widget_Redirect" action="{!widgetRedirect}">  
+</apex:page>

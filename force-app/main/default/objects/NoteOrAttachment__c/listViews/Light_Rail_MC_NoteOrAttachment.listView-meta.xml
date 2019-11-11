@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Light_Rail_MC_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>TfNSW I&amp;P -  Sydney Light Rail</label>
+    <queue>Light_Rail_MC</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

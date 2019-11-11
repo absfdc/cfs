@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close</fullName>
+    <availability>online</availability>
+    <description>Sets the Action Plan Status to the appropriate Closed status</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Complete Action Plan</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}
+ 
+var objActPlan = new sforce.SObject(&#39;Action_Plan__c&#39;);
+ 
+objActPlan.Id = &#39;{!Action_Plan__c.Id}&#39;;
+objActPlan.Status__c = &#39;Completed&#39;;
+var result = sforce.connection.update([objActPlan]);
+if(result[0].success == &#39;true&#39;){
+    alert(&#39;The Action Plan has been marked as Completed&#39;);
+   window.location.reload(); 
+
+} else { 
+   alert(&#39;Unable to close Action Plan:\n\n&#39; + result[0].errors.message); 
+}</url>
+</WebLink>

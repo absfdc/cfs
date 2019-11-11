@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Times_Edited__c</fullName>
+    <description>Number of times edited is the number of times the advice is for submitted for approval except for the first time. Used for coaching and performance management purposes</description>
+    <externalId>false</externalId>
+    <formula>IF(Times_Submitted__c &gt; 0, Times_Submitted__c - 1, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label># Times Edited</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

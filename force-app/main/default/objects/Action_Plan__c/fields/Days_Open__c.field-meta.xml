@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Open__c</fullName>
+    <description>Age of the action plan in number of days since creation. Once the status is &#39;Completed&#39;, the age stops incrementing.</description>
+    <externalId>false</externalId>
+    <formula>IF( ISPICKVAL(Status__c, &#39;Completed&#39;) , 
+    DATEVALUE(Closed_date__c) - DATEVALUE(CreatedDate),
+    TODAY() - DATEVALUE(CreatedDate))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Age of the action plan in number of days since creation. Once the status is &#39;Completed&#39;, the age stops incrementing.</inlineHelpText>
+    <label>Days Open</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

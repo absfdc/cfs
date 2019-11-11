@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgencyVsQueueMapping__c</fullName>
+    <description>This field is used in javscript of Assign To Agency Button and also used in apex classes APStatusTransitionforAssign and APStatusTransitionForRework.
+
+SFCOE-1802: Changes to TfNSW Agency, Division and Branch names due to restructure.</description>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Branch__c),
+&quot;IP Fleet Program Delivery&quot;, &quot;TfNSW_I_S_Fleet_Program_Delivery_MC&quot;,
+&quot;IP Infrastructure and Project Finance&quot;, &quot;TfNSW_I_P_Infrastructure_and_Project_F&quot;,
+&quot;IP Operational Systems&quot;, &quot;Transport_Services_MC&quot;,
+&quot;IP Placemaking and Real Estate&quot;, &quot;TfNSW_I_P_Placemaking_and_Real_Estate&quot;,
+&quot;IP Parramatta Light Rail&quot;, &quot;TfNSW_I_S_Parramatta_Light_Rail_MC&quot;,
+&quot;IP Precincts and Infrastructure&quot;, &quot;Transport_Projects_MC&quot;,
+&quot;IP Program Management Office&quot;, &quot;TfNSW_IS_Pgm_Divisional_Mgmt_Offc_MC&quot;,
+&quot;IP Newcastle Transport Program&quot;, &quot;TfNSW_I_P_Newcastle_Transport_Program&quot;,
+&quot;IP Rail Program Delivery&quot;, &quot;TfNSW_IS_Rail_Service_Delivery_MC&quot;,
+&quot;IP Sydney Light Rail&quot;, &quot;Light_Rail_MC&quot;,
+&quot;TfNSW Services&quot;, &quot;TfNSW_CTS_Services&quot;,
+&quot;TfNSW Services (Regional)&quot;, &quot;TfNSW_CTS_Services&quot;,
+&quot;TfNSW Centres for Road and Maritime Safety&quot;, &quot;Centre_for_Road_Safety_MC&quot;,
+&quot;TC Transport Management Centre&quot;, &quot;TfNSW_IS_Transport_Management_Centre_MC&quot;,
+&quot;TC Sydney Coordination Office&quot;, &quot;TfNSW_CBD_Coordination_Office_MC&quot;,
+&quot;IP Divisional Management Office&quot;, &quot;TfNSW_I_P_Divisional_Management_Office&quot;,
+&quot;TfNSW Asset Standards Authority&quot;, &quot;TfNSW_Freight_Strategy_and_Planning_MC&quot;,
+&quot;FSP Freight Industry&quot;, &quot;TfNSW_Freight_Strategy_and_Planning_MC&quot;,
+&quot;FSP Innovations, Research and Reform&quot;, &quot;TfNSW_Freight_Strategy_and_Planning_MC&quot;,
+&quot;FSP Transport Planning&quot;, &quot;TfNSW_Freight_Strategy_and_Planning_MC&quot;,
+&quot;FSP Transport Policy&quot;, &quot;TfNSW_Freight_Strategy_and_Planning_MC&quot;,
+&quot;Sydney Metro&quot;, &quot;North_West_Rail_Link_MC&quot;,
+&quot;Sydney Trains&quot;, &quot;Sydney_Trains_MC&quot;,
+&quot;State Transit&quot;, &quot;STA_MC&quot;,
+&quot;NSW TrainsLink&quot;, &quot;NSW_Trainlink_MC&quot;,
+
+&quot;Point to Point Transport Commission&quot;, &quot;TfNSW_P2P_Transport_Commission&quot;, /* Not part of the new structure Jul19 */
+
+/* RMS */
+&quot;RMS Corporate Affairs&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Audit and Assurance&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Financial Planning and Analysis&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Sydney Division&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Maritime&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Regional and Freight&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Property and Acquisitions&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Motorways&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Technical and Project Services&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+&quot;RMS Compliance and Regulatory Services&quot;, IF( ISPICKVAL(Status__c, &quot;New&quot;), &quot;GIS_Admin_RMS_MC&quot;, &quot;RMS_Corro_Officer_Queue&quot;),
+
+CASE(TEXT(Divisions__c),
+&quot;Corporate Services&quot;, &quot;People_and_corporate_services_MC&quot;,
+&quot;Customer Strategy and Technology&quot;, &quot;TfNSW_Customer_Services_MC&quot;,
+&quot;Finance and Investment&quot;, &quot;Finance_MC&quot;, /* Division no longer exists */
+
+&quot;QUEUE-NOT-FOUND&quot;
+)
+)</formula>
+    <label>Agency Vs Queue Mapping</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

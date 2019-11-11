@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_CTS_Services_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>TfNSW CTS - Services</label>
+    <queue>TfNSW_CTS_Services</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

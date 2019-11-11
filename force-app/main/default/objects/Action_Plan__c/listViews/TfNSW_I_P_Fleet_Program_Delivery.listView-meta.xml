@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_I_P_Fleet_Program_Delivery</fullName>
+    <columns>Case_Creation_Date__c</columns>
+    <columns>NAME</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Type__c</columns>
+    <columns>Divisions__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>OWNER.ALIAS</columns>
+    <filterScope>Queue</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Rejected-Incorrect Assignment,Completed</value>
+    </filters>
+    <filters>
+        <field>Branch__c</field>
+        <operation>equals</operation>
+        <value>Fleet Program Delivery</value>
+    </filters>
+    <label>TfNSW I&amp;P - Fleet Program Delivery</label>
+    <queue>TfNSW_I_S_Fleet_Program_Delivery_MC</queue>
+    <sharedTo>
+        <role>TfNSW_I_S_Fleet_Program_Delivery</role>
+        <role>TfNSW_I_S_Operational_Systems</role>
+        <role>TfNSW_I_S_Operational_Systems_Liaison_Officer</role>
+        <role>TfNSW_I_S_Operational_Systems_SME</role>
+        <role>TfNSW_I_S_Parramatta_Light_Rail</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office_Liaison_Officer</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office_SME</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery_Liaison_Officer</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery_SME</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance_Liaison_Officer</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance_SME</role>
+        <role>TfNSW_I_S_Service_Planning_Development</role>
+        <role>TfNSW_I_S_Service_Planning_Development_Liaison_Officer</role>
+        <role>TfNSW_I_S_Service_Planning_Development_SME</role>
+        <role>TfNSW_I_S_Ticketing_Concessions</role>
+        <role>TfNSW_I_S_Ticketing_Concessions_Liaison_Officer</role>
+        <role>TfNSW_I_S_Ticketing_Concessions_SME</role>
+        <role>TfNSW_I_S_Transport_Management_Centre</role>
+        <role>TfNSW_I_S_Transport_Management_Centre_Liaison_Officer</role>
+        <role>TfNSW_I_S_Transport_Management_Centre_SME</role>
+        <role>Transport_Projects</role>
+        <role>Transport_Projects_Liaison_Officer</role>
+        <role>Transport_Projects_SME</role>
+        <role>Transport_Services</role>
+        <role>Transport_Services_SME</role>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForRecordHome,force:LightningQuickAction,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global" controller="ShowOriginalDescriptionController">
+	<aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="originalDesc" type="String"/>
+       <button class="slds-button slds-button--neutral" onclick="{!c.viewDesc}">Show Uncensored Description</button>
+
+    <p>{!v.body}</p>
+</aura:component>

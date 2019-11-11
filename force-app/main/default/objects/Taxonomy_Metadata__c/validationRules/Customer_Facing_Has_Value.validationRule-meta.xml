@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Facing_Has_Value</fullName>
+    <active>true</active>
+    <description>Ensures that any taxonomy items marked as customer facing have a customer facing value specified</description>
+    <errorConditionFormula>ISPICKVAL(Status_Customer_Facing__c,&#39;Active&#39;) &amp;&amp;  ISBLANK(Customer_Value__c)</errorConditionFormula>
+    <errorDisplayField>Customer_Value__c</errorDisplayField>
+    <errorMessage>A customer facing value must be specified when the taxonomy item is marked as &#39;Active&#39; for customer facing channels.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Action_Plan_Child</fullName>
+    <availability>online</availability>
+    <description>This button allows user to create child action plan</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Action Plan</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/support/console/33.0/integration.js&quot;)} 
+
+var parentStatus = &quot;{!Action_Plan__c.Status__c}&quot;; 
+var parentCaseStatus = &quot;{!Action_Plan__c.Parent_Case_Status__c}&quot;; 
+
+if (parentCaseStatus == &quot;Awaiting Approval&quot;) { 
+alert(&quot;One of the draft is in approval. Please recall the approval and try again&quot;); 
+} else if (parentStatus == &quot;Completed&quot; || parentStatus == &quot;Rejected-Incorrect Assignment&quot;) { 
+alert(&quot;You can not create Child action plan on Completed/Rejected action plan.&quot;); 
+} else { 
+if (sforce.console.isInConsole()) { 
+sforce.console.getFocusedPrimaryTabId(function(response) { 
+var primaryTabId = response.id; 
+var rUrl = &quot;/apex/RedirectWithDefaultFieldValues?oname=Action_Plan__c&amp;parentId={!Action_Plan__c.Id}&amp;allowRTS=false&amp;RecordType=MCWS_Child_Action_Plan&amp;isConsole=1&quot;; 
+var isActive = true; 
+sforce.console.openSubtab(primaryTabId, rUrl, isActive, &#39;New Action Plan&#39;, null); 
+}) 
+} else { 
+navigateToUrl(&quot;/apex/RedirectWithDefaultFieldValues?oname=Action_Plan__c&amp;parentId={!Action_Plan__c.Id}&amp;allowRTS=false&amp;RecordType=MCWS_Child_Action_Plan&quot;, &quot;&quot;); 
+} 
+}</url>
+</WebLink>

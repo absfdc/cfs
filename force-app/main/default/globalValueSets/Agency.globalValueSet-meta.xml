@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>STA</fullName>
+        <default>false</default>
+        <label>STA</label>
+    </customValue>
+    <customValue>
+        <fullName>TfNSW</fullName>
+        <default>true</default>
+        <label>TfNSW</label>
+    </customValue>
+    <description>A list of all available agencies.</description>
+    <masterLabel>Agency</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Level_1_Values__c</fullName>
+    <description>comma separated list of level 1 taxonomy values</description>
+    <externalId>false</externalId>
+    <inlineHelpText>comma separated list of level 1 taxonomy values</inlineHelpText>
+    <label>Level 1 Values</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

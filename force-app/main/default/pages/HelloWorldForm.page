@@ -1,0 +1,16 @@
+<apex:page docType="html-5.0" standardController="Case" html-lang="en" extensions="WebToCase_CX"  title="Complaints & feedback" showHeader="false" sidebar="false" standardStylesheets="false">  
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />    
+  <link rel="dns-prefetch" href="//maps.googleapis.com" />
+  <link rel="dns-prefetch" href="//maps.gstatic.com" />
+  <apex:stylesheet value="{!IF(OR(LOWER($CurrentPage.parameters.source) == 'maritime',LOWER($CurrentPage.parameters.source) == 'rms intranet', LOWER($CurrentPage.parameters.source) == 'rms'),URLFOR($Resource.WebformStyles, 'rms.css'), IF(LOWER($CurrentPage.parameters.source) == 'nsw trains', URLFOR($Resource.WebformStyles, 'nswtrains.css'), IF(LOWER($CurrentPage.parameters.source) == 'sydney trains',URLFOR($Resource.WebformStyles, 'sydtrains.css'), URLFOR($Resource.WebformStyles, 'tfnsw.css'))))}"/>
+  <apex:includeScript value="{!$Resource.combinedjs_1}"/>
+  <script src="{!IF(OR(LOWER($CurrentPage.parameters.source) == 'maritime',LOWER($CurrentPage.parameters.source) == 'rms intranet', LOWER($CurrentPage.parameters.source) == 'rms'),$Resource.GoogleAnalyticsForRmsLoad, '')}" async="async" />
+    
+  <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+  <apex:includeScript value="{!$Resource.WebToCaseScripts}"/>
+  <apex:form >
+      <h3>Hello World!!</h3>
+      <p>This is a page with custom extension</p>
+      <apex:inputField value="{!contactPerson.FirstName}"/>
+  </apex:form>
+</apex:page>

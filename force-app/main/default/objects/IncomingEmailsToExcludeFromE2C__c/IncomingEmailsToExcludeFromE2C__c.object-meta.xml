@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Custom setting used to list down all the org wide email address (configured as E2C) but do not intend to receive fresh emails from customer to receive feedback. Only intended for receiving response from customer.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>IncomingEmailsToExcludeFromE2C</label>
+    <visibility>Public</visibility>
+</CustomObject>

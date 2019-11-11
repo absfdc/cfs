@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Accountability__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Defines which area is accountable for case management when this taxonomy item is selected (where case management can be determined purely by case category or location alone)</inlineHelpText>
+    <label>Issue Accountability</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Corporate</fullName>
+                <default>false</default>
+                <label>Corporate</label>
+            </value>
+            <value>
+                <fullName>Customer Liaison Team</fullName>
+                <default>false</default>
+                <label>Customer Liaison Team</label>
+            </value>
+            <value>
+                <fullName>Depot</fullName>
+                <default>false</default>
+                <label>Depot</label>
+            </value>
+            <value>
+                <fullName>IDD Pacific Highway</fullName>
+                <default>false</default>
+                <label>IDD Pacific Highway</label>
+            </value>
+            <value>
+                <fullName>Level 2</fullName>
+                <default>false</default>
+                <label>Level 2</label>
+            </value>
+            <value>
+                <fullName>Maritime Boating Operations</fullName>
+                <default>false</default>
+                <label>Maritime Boating Operations</label>
+            </value>
+            <value>
+                <fullName>Maritime Statewide Coordination</fullName>
+                <default>false</default>
+                <label>Maritime Statewide Coordination</label>
+            </value>
+            <value>
+                <fullName>Road Maintenance</fullName>
+                <default>false</default>
+                <label>Road Maintenance</label>
+            </value>
+            <value>
+                <fullName>SEG Government Information Services</fullName>
+                <default>false</default>
+                <label>SEG Government Information Services</label>
+            </value>
+            <value>
+                <fullName>SNSW</fullName>
+                <default>false</default>
+                <label>SNSW</label>
+            </value>
+            <value>
+                <fullName>Speed Limits and Cameras</fullName>
+                <default>false</default>
+                <label>Speed Limits and Cameras</label>
+            </value>
+            <value>
+                <fullName>Traffic Management &amp; Safety</fullName>
+                <default>false</default>
+                <label>Traffic Management &amp; Safety</label>
+            </value>
+            <value>
+                <fullName>JMD - TOLLING</fullName>
+                <default>false</default>
+                <label>JMD - TOLLING</label>
+            </value>
+            <value>
+                <fullName>Road rules</fullName>
+                <default>false</default>
+                <label>Road rules</label>
+            </value>
+            <value>
+                <fullName>IDD - CONTRACTS &amp; PROJECT STRATEGY</fullName>
+                <default>false</default>
+                <label>IDD - CONTRACTS &amp; PROJECT STRATEGY</label>
+            </value>
+            <value>
+                <fullName>IDD - Greater Sydney Program Office</fullName>
+                <default>false</default>
+                <label>IDD - Greater Sydney Program Office</label>
+            </value>
+            <value>
+                <fullName>IDD - Freight &amp; Regional Program Office</fullName>
+                <default>false</default>
+                <label>IDD - Freight &amp; Regional Program Office</label>
+            </value>
+            <value>
+                <fullName>IDD - Commercial</fullName>
+                <default>false</default>
+                <label>IDD - Commercial</label>
+            </value>
+            <value>
+                <fullName>IDD - Pacific Highway Program Office</fullName>
+                <default>false</default>
+                <label>IDD - Pacific Highway Program Office</label>
+            </value>
+            <value>
+                <fullName>IDD - Western Sydney Program Office</fullName>
+                <default>false</default>
+                <label>IDD - Western Sydney Program Office</label>
+            </value>
+            <value>
+                <fullName>RMS - CEP - Govt Information Services</fullName>
+                <default>false</default>
+                <label>RMS - CEP - Govt Information Services</label>
+            </value>
+            <value>
+                <fullName>Communications</fullName>
+                <default>false</default>
+                <label>Communications</label>
+            </value>
+            <value>
+                <fullName>Sydney or Regional</fullName>
+                <default>false</default>
+                <label>Sydney or Regional</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

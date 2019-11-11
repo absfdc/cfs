@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_IS_Svc_Dlvry_Performance_MC_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>TfNSW I&amp;P - Service Delivery &amp; Asset Mgt</label>
+    <queue>TfNSW_IS_Svc_Dlvry_Performance_MC</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Today_s_Failed</fullName>
+    <columns>Job_Id__c</columns>
+    <columns>Case__c</columns>
+    <columns>Case_Number_Operator__c</columns>
+    <columns>Processing_Status__c</columns>
+    <columns>Failure_Reason__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Created_Date__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Processing_Status__c</field>
+        <operation>equals</operation>
+        <value>Failed</value>
+    </filters>
+    <label>Today&#39;s Failed</label>
+    <sharedTo>
+        <allInternalUsers/>
+        <allPartnerUsers/>
+    </sharedTo>
+</ListView>

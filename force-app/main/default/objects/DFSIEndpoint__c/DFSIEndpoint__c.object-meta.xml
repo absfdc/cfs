@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting is a mapping of the DFSI methods and the URL</description>
+    <enableFeeds>false</enableFeeds>
+    <label>DFSIEndpoint</label>
+    <visibility>Public</visibility>
+</CustomObject>

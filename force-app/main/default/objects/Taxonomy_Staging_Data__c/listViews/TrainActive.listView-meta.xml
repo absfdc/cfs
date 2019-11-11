@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TrainActive</fullName>
+    <columns>Status_Customer_Facing__c</columns>
+    <columns>Status_NSWT_Customer_Facing__c</columns>
+    <columns>Status_ST_Customer_Facing__c</columns>
+    <columns>Status_Staff_Facing__c</columns>
+    <columns>Agency__c</columns>
+    <columns>Customer_Value__c</columns>
+    <columns>Driver__c</columns>
+    <columns>Issue_Accountability__c</columns>
+    <columns>KPI__c</columns>
+    <columns>Level_1__c</columns>
+    <columns>Mode__c</columns>
+    <columns>Level_2__c</columns>
+    <columns>Level_3__c</columns>
+    <columns>Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status_Customer_Facing__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>Customer_Value__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Mode - Train - Active</label>
+</ListView>

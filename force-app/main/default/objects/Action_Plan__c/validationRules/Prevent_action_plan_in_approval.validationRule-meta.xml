@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_action_plan_in_approval</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+	RecordType.DeveloperName  &lt;&gt; &#39;CFM_Action_Plan&#39;,	
+	NOT(OR(ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Awaiting Action Plan Approval&#39;), ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Action Plan in Progress&#39;), ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Action Plan in Review&#39;))),
+	ISPICKVAL( Status__c , &#39;Awaiting Action Plan Approval&#39;),
+	ISPICKVAL(  Type__c , &#39;Advice Request&#39;),
+	ISCHANGED(Status__c)   
+)</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Current status of action plan is other than &#39;Awaiting Action Plan Approval&#39;, &#39;Action Plan in Progress&#39; or &#39;Action Plan in Review&#39;. Status of action plan cannot be updated to &#39;Awaiting Action Plan Approval&#39;</errorMessage>
+</ValidationRule>

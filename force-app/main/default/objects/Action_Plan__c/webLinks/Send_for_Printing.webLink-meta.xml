@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Send_for_Printing</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send for Printing</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/apex.js&quot;)}
+{!REQUIRESCRIPT(&quot;/support/console/34.0/integration.js&quot;)} 
+
+var actionPlanRecordId = &quot;{!Action_Plan__c.Id}&quot;; 
+try {
+	var msg = sforce.apex.execute(&quot;ActionPlanStatusTransition&quot;,&quot;sendForPrinting&quot;,{actionPlanId:actionPlanRecordId});
+	if(msg == &#39;&#39;) {
+		alert(&#39;Action Plan successfully sent for printing&#39;); 
+		
+		if (sforce.console.isInConsole()) {
+			var closeSubtab = function closeSubtab(result) {
+				var tabId = result.id;
+				sforce.console.closeTab(tabId);
+			}
+			sforce.console.getFocusedSubtabId(closeSubtab);
+		} else {
+			var actionPlanObjPrefix = actionPlanRecordId.substring(0,3);
+			window.location.href = &#39;/&#39; + actionPlanObjPrefix;
+		}
+	} else {
+		alert(msg); 
+	}
+} catch(err) {
+	if(err.message) {
+		alert(err.message);
+	} else {
+		alert(err);
+	}
+}</url>
+</WebLink>

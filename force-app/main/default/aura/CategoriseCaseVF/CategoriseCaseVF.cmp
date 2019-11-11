@@ -1,0 +1,3 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome,force:LightningQuickAction,forceCommunity:availableForAllPageTypes" access="global">
+    <iframe src="{!$Label.c.Custom_Domain + '/apex/CategoriseIssueForCommunity?id=' + v.recordId }" width="100%" height="500px;" frameBorder="0"/>
+</aura:component>

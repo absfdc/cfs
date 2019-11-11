@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Minimum_Probability_Level__c</fullName>
+    <description>This is the minimum probability for an Einstein prediction that we will allow before stamping a Case with the predicted values</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the minimum probability for an Einstein prediction that we will allow before stamping a Case with the predicted values</inlineHelpText>
+    <label>Minimum Probability Level</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

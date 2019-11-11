@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Printing_Location__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Printing location for RMS CE letters</inlineHelpText>
+    <label>Printing Location</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Print_Location_Region__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>North Sydney (Miller Street)</fullName>
+                <default>false</default>
+                <label>North Sydney (Miller Street)</label>
+            </value>
+            <value>
+                <fullName>Parramatta (Argyle Street)</fullName>
+                <default>false</default>
+                <label>Parramatta (Argyle Street)</label>
+            </value>
+            <value>
+                <fullName>Parramatta (Octagon)</fullName>
+                <default>false</default>
+                <label>Parramatta (Octagon)</label>
+            </value>
+            <value>
+                <fullName>Parramatta (Wentworth Street)</fullName>
+                <default>false</default>
+                <label>Parramatta (Wentworth Street)</label>
+            </value>
+            <value>
+                <fullName>Newcastle (Darby &amp; Queen Streets)</fullName>
+                <default>false</default>
+                <label>Newcastle (Darby &amp; Queen Streets)</label>
+            </value>
+            <value>
+                <fullName>Woy Woy (George Street)</fullName>
+                <default>false</default>
+                <label>Woy Woy (George Street)</label>
+            </value>
+            <value>
+                <fullName>Grafton (Fitzroy &amp; King Streets)</fullName>
+                <default>false</default>
+                <label>Grafton (Fitzroy &amp; King Streets)</label>
+            </value>
+            <value>
+                <fullName>Grafton (Victoria Street)</fullName>
+                <default>false</default>
+                <label>Grafton (Victoria Street)</label>
+            </value>
+            <value>
+                <fullName>Pacific Highway Office</fullName>
+                <default>false</default>
+                <label>Pacific Highway Office</label>
+            </value>
+            <value>
+                <fullName>Glen Innes (Grey &amp; Ferguson Streets)</fullName>
+                <default>false</default>
+                <label>Glen Innes (Grey &amp; Ferguson Streets)</label>
+            </value>
+            <value>
+                <fullName>Parkes (Currajong Street)</fullName>
+                <default>false</default>
+                <label>Parkes (Currajong Street)</label>
+            </value>
+            <value>
+                <fullName>Wagga Wagga (Simmons Street)</fullName>
+                <default>false</default>
+                <label>Wagga Wagga (Simmons Street)</label>
+            </value>
+            <value>
+                <fullName>Wollongong (Crown Street)</fullName>
+                <default>false</default>
+                <label>Wollongong (Crown Street)</label>
+            </value>
+            <value>
+                <fullName>Northern Regional Office</fullName>
+                <default>false</default>
+                <label>Northern Regional Office</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Sydney Region</controllingFieldValue>
+            <valueName>North Sydney (Miller Street)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney Region</controllingFieldValue>
+            <valueName>Parramatta (Argyle Street)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney Region</controllingFieldValue>
+            <valueName>Parramatta (Octagon)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney Region</controllingFieldValue>
+            <valueName>Parramatta (Wentworth Street)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hunter Regional Offices</controllingFieldValue>
+            <valueName>Newcastle (Darby &amp; Queen Streets)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hunter Regional Offices</controllingFieldValue>
+            <valueName>Woy Woy (George Street)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Northern Regional Offices</controllingFieldValue>
+            <valueName>Grafton (Fitzroy &amp; King Streets)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Northern Regional Offices</controllingFieldValue>
+            <valueName>Grafton (Victoria Street)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Northern Regional Offices</controllingFieldValue>
+            <valueName>Pacific Highway Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Northern Regional Offices</controllingFieldValue>
+            <valueName>Glen Innes (Grey &amp; Ferguson Streets)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Northern Regional Offices</controllingFieldValue>
+            <valueName>Northern Regional Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Western Regional Office</controllingFieldValue>
+            <valueName>Parkes (Currajong Street)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional Office</controllingFieldValue>
+            <valueName>Wagga Wagga (Simmons Street)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Southern Regional Office</controllingFieldValue>
+            <valueName>Wollongong (Crown Street)</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_status_change_to_assigned</fullName>
+    <active>true</active>
+    <description>This validation will prevent min corro action plan status change to &#39;Action Plan Assigned&#39; if previous status value is other than &#39;New&#39;, &#39;Action Plan Assigned&#39;, &#39;Rejected Incorrect Assignment&#39; and &#39;Action Plan In Progress&#39;</description>
+    <errorConditionFormula>OR(AND(
+	RecordType.DeveloperName  &lt;&gt; &#39;CFM_Action_Plan&#39;,	
+	NOT(OR(ISPICKVAL( PRIORVALUE( Status__c ) , &#39;New&#39;), ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Action Plan Assigned&#39;), ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Rejected-Incorrect Assignment&#39;), ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Action Plan in Progress&#39;), ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Completed&#39;))),
+	ISPICKVAL( Status__c , &#39;Action Plan Assigned&#39;),
+	ISPICKVAL(  Type__c , &#39;Advice Request&#39;),
+	ISBLANK(Parent_Action_Plan__c),
+	ISCHANGED(Status__c)   
+),
+AND(
+	RecordType.DeveloperName  &lt;&gt; &#39;CFM_Action_Plan&#39;,	
+	NOT(OR(ISPICKVAL( PRIORVALUE( Status__c ) , &#39;New&#39;), ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Rejected-Incorrect Assignment&#39;), ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Action Plan in Progress&#39;),ISPICKVAL( PRIORVALUE( Status__c ) , &#39;Action Plan in Review&#39;))),
+	ISPICKVAL( Status__c , &#39;Action Plan Assigned&#39;),
+	ISPICKVAL(  Type__c , &#39;Advice Request&#39;),
+	NOT(ISBLANK(Parent_Action_Plan__c)),
+	ISCHANGED(Status__c)   
+))</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Current status of action plan is other than &#39;New&#39;, &#39;Action Plan In Progress&#39;, &#39;Rejected Incorrect Assignment&#39; or &#39;Action Plan Assigned&#39;. Status of action plan cannot be updated to &#39;Action Plan Assigned&#39;</errorMessage>
+</ValidationRule>

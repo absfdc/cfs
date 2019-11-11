@@ -1,0 +1,62 @@
+<apex:page controller="StartFeedbackCallController" >
+    <apex:includeScript value="{!$Resource.jqueryForWebForm}"/>
+    <!-- Enter your flow name below -->
+        <flow:interview name="Feedback_Call" interview="{!myFlow}" finishLocation="{!CaseRedirectURL}">
+        </flow:interview>
+    <script>
+    //row number of fields which should be rendered as single column, index starts with 0.
+    var ignoreTableRows = [0,1,2,3,4,5,6,7,8,13,14,15];
+    //var ignoreTableRows = [0];
+    function isValidRow(rowIndex) {
+        for(var j = 0; j< ignoreTableRows.length; j++) {
+            if(rowIndex == ignoreTableRows[j])
+                return false;
+        }
+        return true;
+    }
+    
+    $(function() {
+        var tableRowCounter = 0;
+        var tbl = $('table .detailList');
+        var rows = $('tr', tbl);        
+        var i = 0;
+        for(i = 0; i<rows.length;i++) { 
+            if(isValidRow(i)) { 
+                var currentRow = $('tr:eq('+i+')', tbl); 
+                var nextRowIndex = i+1; //check if next row is valid             
+                
+                if(!isValidRow(nextRowIndex)) { 
+                    while(!isValidRow(nextRowIndex)) { 
+                        nextRowIndex = nextRowIndex +1; 
+                        if(nextRowIndex >= rows.length)
+                            break;
+                    }
+                }
+                var nextRow = $('tr:eq('+nextRowIndex+')', tbl);                
+                if(nextRow) {
+                    var currentColumns = $('td', currentRow);
+                    var nextRowColumns = $('td', nextRow);
+                    if(currentColumns[2] && currentColumns[3]) {
+                        //remove 3rd and 4th column
+                        $(currentColumns[2]).remove();
+                        $(currentColumns[3]).remove();                        
+                        $(nextRowColumns[0]).detach().appendTo(currentRow);
+                        $(nextRowColumns[1]).detach().appendTo(currentRow);  
+                        $(nextRow).remove();    
+                    } 
+                } 
+            } 
+        }         
+    }); 
+    
+    </script>   
+    
+    
+    <style type="text/css">
+        .dataCol, .labelCol{
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        }
+    </style>
+    
+</apex:page>

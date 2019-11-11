@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>holds list of case record types that needs to be excluded from programmatic sharing of child cases</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Case Record Types to Exclude for Sharing</label>
+    <visibility>Public</visibility>
+</CustomObject>

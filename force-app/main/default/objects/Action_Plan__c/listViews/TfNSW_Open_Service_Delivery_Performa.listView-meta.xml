@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_Open_Service_Delivery_Performa</fullName>
+    <columns>NAME</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Divisions__c</columns>
+    <columns>Case_Number__c</columns>
+    <columns>Case_Subject__c</columns>
+    <columns>Type__c</columns>
+    <columns>Mode__c</columns>
+    <columns>Issue_Level_1__c</columns>
+    <columns>Issue_Level_2__c</columns>
+    <columns>Issue_Level_3__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Completed,Rejected-Incorrect Assignment</value>
+    </filters>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>Advice Request,Referral</value>
+    </filters>
+    <filters>
+        <field>Branch__c</field>
+        <operation>equals</operation>
+        <value>Service Delivery &amp; Asset Management,I&amp;S - Service Delivery &amp; Performance</value>
+    </filters>
+    <label>TfNSW Open - Service Del &amp; Asset Mgt</label>
+    <sharedTo>
+        <role>CRGS_Super_Admin</role>
+        <role>TfNSW_Customer_Services</role>
+        <role>TfNSW_Customer_Services_Liaison_Officer</role>
+        <role>TfNSW_Customer_Services_SME</role>
+        <role>TfNSW_I_S_Fleet_Program_Delivery</role>
+        <role>TfNSW_I_S_Operational_Systems</role>
+        <role>TfNSW_I_S_Operational_Systems_Liaison_Officer</role>
+        <role>TfNSW_I_S_Operational_Systems_SME</role>
+        <role>TfNSW_I_S_Parramatta_Light_Rail</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office_Liaison_Officer</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office_SME</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery_Liaison_Officer</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery_SME</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance_Liaison_Officer</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance_SME</role>
+        <role>TfNSW_I_S_Service_Planning_Development</role>
+        <role>TfNSW_I_S_Service_Planning_Development_Liaison_Officer</role>
+        <role>TfNSW_I_S_Service_Planning_Development_SME</role>
+        <role>TfNSW_I_S_Ticketing_Concessions</role>
+        <role>TfNSW_I_S_Ticketing_Concessions_Liaison_Officer</role>
+        <role>TfNSW_I_S_Ticketing_Concessions_SME</role>
+        <role>TfNSW_I_S_Transport_Management_Centre</role>
+        <role>TfNSW_I_S_Transport_Management_Centre_Liaison_Officer</role>
+        <role>TfNSW_I_S_Transport_Management_Centre_SME</role>
+        <role>Transport_Projects</role>
+        <role>Transport_Projects_Liaison_Officer</role>
+        <role>Transport_Projects_SME</role>
+        <role>Transport_Services</role>
+        <role>Transport_Services_SME</role>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PBO_Dions_Bus_Service_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>PBO - Dions Bus Service</label>
+    <queue>PBO_Dions_Bus_Service</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

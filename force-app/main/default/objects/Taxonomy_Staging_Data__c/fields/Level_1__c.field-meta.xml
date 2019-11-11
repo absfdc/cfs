@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Level_1__c</fullName>
+    <description>Level 1 value (This is mapped from &quot;Location Type&quot; column from Location Taxonomy and &quot;Moment&quot; column from Issue Taxonomy).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Level 1 value (This is mapped from &quot;Location Type&quot; column from Location Taxonomy and &quot;Moment&quot; column from Issue Taxonomy)</inlineHelpText>
+    <label>Level 1</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

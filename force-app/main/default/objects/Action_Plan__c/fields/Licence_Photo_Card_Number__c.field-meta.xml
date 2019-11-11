@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Licence_Photo_Card_Number__c</fullName>
+    <description>Customer&#39;s Licence/Photo Card Number</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Customer&#39;s Licence/Photo Card Number</inlineHelpText>
+    <label>Licence/Photo Card Number</label>
+    <length>20</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

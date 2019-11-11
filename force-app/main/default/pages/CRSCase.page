@@ -1,0 +1,55 @@
+<apex:page controller="CRSController"  showHeader="false">
+    <apex:stylesheet value="{!$Resource.CSS_CRS}"/>
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+    <apex:includeScript value="{!$Resource.validate_crs}"/>
+    
+    <apex:form >
+    <apex:pageMessages />
+        
+        <apex:pageBlock >  
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!save}" value="Submit" onclick="return okay();"/>
+            </apex:pageBlockButtons>    
+            
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Feedback Type" for="feedback_type"/>
+                    <apex:inputField value="{!crsCase.CRS_Feedback_Type__c}" id="feedback_type" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >                
+                    <apex:outputLabel value="Name" for="name"/>
+                    <apex:inputField value="{!crsCase.SuppliedName}" id="name" required="true"/>
+                </apex:pageBlockSectionItem>
+            
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Phone number" for="phonenumber"/>
+                    <apex:inputField value="{!crsCase.SuppliedPhone}" id="phonenumber" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Email" for="email"/>
+                    <apex:inputField value="{!crsCase.SuppliedEmail}" id="email" required="true"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enquiry/Comment" for="enquirycomment"/>
+                    <apex:inputField value="{!crsCase.Description}" id="enquirycomment" style="width: 360px; height: 150px" required="true"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Do you wish to receive a response?" for="responserequested"/>
+                    <apex:inputField value="{!crsCase.Response_Requested__c}" id="responserequested" required="true"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                  <apex:outputLabel value="File" for="file"/>
+                  <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" contentType="{!attachment.ContentType}" id="file"/>
+                </apex:pageBlockSectionItem>
+            
+            
+            </apex:pageBlockSection> 
+        </apex:pageBlock> 
+    </apex:form>
+    <script src="{!$Resource.IframeResizer}"/> 
+</apex:page>

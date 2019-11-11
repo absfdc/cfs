@@ -1,0 +1,4 @@
+<apex:page showHeader="false" sidebar="false">  
+  <h3>Hello World!!</h3>
+  <p>This is a simple page without any scripts</p>
+</apex:page>

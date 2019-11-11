@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This can be used for calculating the Action Plan due dates by Agency+priority as in case of RMSMP - Standard it might be 9 days which will be 9*8=72 business hrs</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Action Plan Due Dates by Agency</label>
+    <visibility>Public</visibility>
+</CustomObject>

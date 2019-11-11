@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomSite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowHomePage>false</allowHomePage>
+    <allowStandardAnswersPages>false</allowStandardAnswersPages>
+    <allowStandardIdeasPages>false</allowStandardIdeasPages>
+    <allowStandardLookups>false</allowStandardLookups>
+    <allowStandardPortalPages>true</allowStandardPortalPages>
+    <allowStandardSearch>false</allowStandardSearch>
+    <authorizationRequiredPage>WebToCaseErrorPage</authorizationRequiredPage>
+    <bandwidthExceededPage>WebToCaseErrorPage</bandwidthExceededPage>
+    <browserXssProtection>false</browserXssProtection>
+    <clickjackProtectionLevel>AllowAllFraming</clickjackProtectionLevel>
+    <contentSniffingProtection>false</contentSniffingProtection>
+    <cspUpgradeInsecureRequests>false</cspUpgradeInsecureRequests>
+    <description>Site hosting complaints and feedback management forms</description>
+    <enableAuraRequests>true</enableAuraRequests>
+    <fileNotFoundPage>WebToCaseErrorPage</fileNotFoundPage>
+    <genericErrorPage>WebToCaseErrorPage</genericErrorPage>
+    <inMaintenancePage>WebToCaseErrorPage</inMaintenancePage>
+    <inactiveIndexPage>WebToCaseErrorPage</inactiveIndexPage>
+    <indexPage>WebToCaseForm</indexPage>
+    <masterLabel>feedback</masterLabel>
+    <referrerPolicyOriginWhenCrossOrigin>false</referrerPolicyOriginWhenCrossOrigin>
+    <requireHttps>true</requireHttps>
+    <requireInsecurePortalAccess>false</requireInsecurePortalAccess>
+    <siteAdmin>systemuser@transport.nsw.gov.au</siteAdmin>
+    <siteTemplate>SiteTemplate</siteTemplate>
+    <siteType>Visualforce</siteType>
+    <subdomain>tfnsw</subdomain>
+    <urlPathPrefix>feedback</urlPathPrefix>
+</CustomSite>

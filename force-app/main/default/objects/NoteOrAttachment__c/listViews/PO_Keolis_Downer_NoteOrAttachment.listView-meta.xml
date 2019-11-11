@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PO_Keolis_Downer_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>PO - Keolis Downer</label>
+    <queue>PO_Keolis_Downer</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

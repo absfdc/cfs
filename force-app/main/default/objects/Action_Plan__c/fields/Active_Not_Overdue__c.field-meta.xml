@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Not_Overdue__c</fullName>
+    <description>Checks if an Active (not completed) Action Plan has not yet passed its due date. Used for RMS Min Corro reporting (WI-0000475).</description>
+    <externalId>false</externalId>
+    <formula>NOT(ISPICKVAL(Status__c, &#39;Completed&#39;)) 
+&amp;&amp; 
+NOT(ISBLANK(Due_Date__c)) 
+&amp;&amp; 
+(Due_Date__c &gt;= TODAY())</formula>
+    <inlineHelpText>Checks if an Active (not completed) Action Plan has not yet passed its due date. Used for RMS Min Corro reporting.</inlineHelpText>
+    <label>Active Not Overdue</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

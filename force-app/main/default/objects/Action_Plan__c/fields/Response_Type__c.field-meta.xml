@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Response_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Response Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Draft response</fullName>
+                <default>false</default>
+                <label>Draft response</label>
+            </value>
+            <value>
+                <fullName>Draft response and brief</fullName>
+                <default>false</default>
+                <label>Draft response and brief</label>
+            </value>
+            <value>
+                <fullName>Reply for Electorate Office</fullName>
+                <default>false</default>
+                <label>Reply for Electorate Office</label>
+            </value>
+            <value>
+                <fullName>Referred to other portfolio</fullName>
+                <default>false</default>
+                <label>Referred to other portfolio</label>
+            </value>
+            <value>
+                <fullName>No response required (NRR)</fullName>
+                <default>false</default>
+                <label>No response required (NRR)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

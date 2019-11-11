@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hide_Non_Modal_Webform__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>SFCOE-2369 - Hide this taxonomy on non-modal webform</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If this taxonomy is selected as Inactive, this taxonomy will be hidden from the non-modal webform.</inlineHelpText>
+    <label>Hide - Non Modal Webform</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Action_Plan_Closing_By_SME</fullName>
+    <active>true</active>
+    <description>Only Agency Liaison or Corro Officer  are allowed to close the action plan</description>
+    <errorConditionFormula>NOT(ISPICKVAL(PRIORVALUE(Status__c), &#39;Completed&#39;)) &amp;&amp;
+ISPICKVAL(Status__c, &#39;Completed&#39;) &amp;&amp; 
+NOT(Has_Liaison_Officer_Permissions__c) &amp;&amp;
+RecordType.DeveloperName != &quot;CFM_Action_Plan&quot; 
+&amp;&amp; NOT(SkipValidations__c)</errorConditionFormula>
+    <errorMessage>Failed to complete action plan. Action Plan can only be completed by Agency/Division Liaison Officer or RMS Corro Officer.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,23 @@
+<apex:page standardController="Case" extensions="reassign">
+<apex:slds >
+<script>
+      window.onload=function(){
+          document.getElementById('j_id0:j_id3:j_id5:j_id7').value = '';
+          document.getElementById('j_id0:j_id3:j_id5:j_id7').style.marginLeft = "2px";
+      };
+</script>
+   <apex:form >
+  
+  <div >
+      <div class="form-group">
+        
+        <apex:pageBlock mode="detail">
+         Re-Assigned User: <apex:inputField value="{!Case.OwnerId}" /><br/>
+         <apex:commandButton action="{!searchdata}" title="Save" value="Save"/>&nbsp;
+         <apex:commandButton value="Cancel" action="{!Cancel}"/>
+         </apex:pageblock>
+       </div>
+   </div>    
+  </apex:form> 
+  </apex:slds>                      
+</apex:page>

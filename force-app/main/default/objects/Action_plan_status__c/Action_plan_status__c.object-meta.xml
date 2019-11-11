@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting is to store list of action plan status.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Action Plan Status</label>
+    <visibility>Public</visibility>
+</CustomObject>

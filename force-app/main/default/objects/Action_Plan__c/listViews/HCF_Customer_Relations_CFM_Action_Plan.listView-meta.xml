@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HCF_Customer_Relations_CFM_Action_Plan</fullName>
+    <columns>NAME</columns>
+    <columns>Agency__c</columns>
+    <columns>Status__c</columns>
+    <columns>Case_Number__c</columns>
+    <filterScope>Queue</filterScope>
+    <label>HCF - Customer Relations</label>
+    <queue>HCF_Customer_Relations_CFM</queue>
+    <sharedTo>
+        <roleAndSubordinates>HCF</roleAndSubordinates>
+    </sharedTo>
+</ListView>

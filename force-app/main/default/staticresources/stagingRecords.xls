@@ -1,0 +1,4 @@
+Agency__c,Customer_Value__c,Customer_Value_L2__c,Customer_Value_L3__c,Driver__c,Issue_Accountability__c,KPI__c,Level_1__c,Level_2__c,Level_3__c,Mode__c,Status_Customer_Facing__c,Status_Customer_Facing_L2__c,Status_Customer_Facing_L3__c,Status_NSWT_Customer_Facing__c,Status_ST_Customer_Facing__c,Status_Staff_Facing__c,Name,Type__c
+,,Active,Active,Information,Corporate,Information (Customer Experience),Planning the Trip,Website,State Transit,Bus,,Active,Active,,,Active,TSD-0006508,Issue
+,,Active,Active,Information,Corporate,Information (Customer Experience),Planning the Trip,Website,Sydney Buses,Bus,,Active,Active,,,Active,TSD-0006509,Issue
+,,Active,Active,Information,Corporate,Information (Customer Experience),Planning the Trip,Website,Newcastle Bus and Ferry Services,Bus,,Active,Active,,,Active,TSD-0006510,Issue

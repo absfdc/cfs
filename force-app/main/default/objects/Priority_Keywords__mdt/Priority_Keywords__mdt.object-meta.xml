@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Place to store the keywords that determine whether a case is defaulted to a high priority case.</description>
+    <label>Priority Keyword</label>
+    <pluralLabel>Priority Keywords</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

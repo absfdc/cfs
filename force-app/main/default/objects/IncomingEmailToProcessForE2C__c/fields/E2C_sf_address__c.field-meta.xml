@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>E2C_sf_address__c</fullName>
+    <description>salesforce generate email address of E2C</description>
+    <externalId>false</externalId>
+    <inlineHelpText>salesforce generate email address of E2C</inlineHelpText>
+    <label>E2C sf address</label>
+    <length>255</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

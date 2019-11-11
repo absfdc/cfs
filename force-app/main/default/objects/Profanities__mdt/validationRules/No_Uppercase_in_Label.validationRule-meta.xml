@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Uppercase_in_Label</fullName>
+    <active>true</active>
+    <description>Words must be entered in lower case only. So long as the words are entered in lower case, they will match either upper or lower case in the user-entered description.</description>
+    <errorConditionFormula>MasterLabel != LOWER(MasterLabel)</errorConditionFormula>
+    <errorDisplayField>MasterLabel</errorDisplayField>
+    <errorMessage>Profanity keywords must be entered in lower case (the comparison is then case insensitive).</errorMessage>
+</ValidationRule>

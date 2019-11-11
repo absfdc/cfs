@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sydney_Trains</fullName>
+    <columns>OBJECT_ID</columns>
+    <columns>NAME</columns>
+    <columns>Agency__c</columns>
+    <columns>Closed_Date__c</columns>
+    <columns>of_Complaints__c</columns>
+    <columns>of_Patrons__c</columns>
+    <columns>FYTD_Patrons__c</columns>
+    <columns>FYTD_Complaints__c</columns>
+    <columns>Rolling12M_Patrons__c</columns>
+    <columns>Rolling12M_Complaints__c</columns>
+    <columns>Target__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Agency__c</field>
+        <operation>equals</operation>
+        <value>Sydney Trains</value>
+    </filters>
+    <label>Sydney Trains</label>
+</ListView>

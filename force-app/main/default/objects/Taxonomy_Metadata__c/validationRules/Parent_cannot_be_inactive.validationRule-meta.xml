@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_cannot_be_inactive</fullName>
+    <active>true</active>
+    <description>Active Taxonomy cannot have inactive parent</description>
+    <errorConditionFormula>AND( Is_Active__c , Has_Inactive_Parent__c )</errorConditionFormula>
+    <errorMessage>Active Taxonomy cannot have inactive parent, activate parent Taxonomy first.</errorMessage>
+</ValidationRule>

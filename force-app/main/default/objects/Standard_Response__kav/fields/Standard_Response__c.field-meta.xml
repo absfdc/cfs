@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Standard_Response__c</fullName>
+    <description>This field is to be used to store the standard response for cases.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>SAMPLE ONLY Please copy this response to your case</inlineHelpText>
+    <label>Standard Response</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

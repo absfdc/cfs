@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_Open_TP</fullName>
+    <columns>NAME</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Divisions__c</columns>
+    <columns>Case_Number__c</columns>
+    <columns>Case_Subject__c</columns>
+    <columns>Type__c</columns>
+    <columns>Mode__c</columns>
+    <columns>Issue_Level_1__c</columns>
+    <columns>Issue_Level_2__c</columns>
+    <columns>Issue_Level_3__c</columns>
+    <columns>Customer__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Completed</value>
+    </filters>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>Advice Request,Referral</value>
+    </filters>
+    <filters>
+        <field>Branch__c</field>
+        <operation>equals</operation>
+        <value>Transport Policy</value>
+    </filters>
+    <label>xTfNSW Open - Transport Policy</label>
+    <sharedTo>
+        <role>CRGS_Super_Admin</role>
+    </sharedTo>
+</ListView>

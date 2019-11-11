@@ -1,0 +1,2623 @@
+var FerryConfiguration = function(){	
+	this.NO_CONFIG = 'CONFIGURATION MISSING',
+	this.FERRY = {
+					  "Calling 131 500 - General enquiry": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Calling 131 500 - Information": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Calling 131 500 - Response time": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Calling 131 500 - Staff conduct": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Calling 131 500 - Waiting time": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Printed timetable - Hard to understand": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "TRUE",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Printed timetable - Timetable suggestion": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "TRUE",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Ticketing passes and fares - Fare policy": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Ticketing passes and fares - Ticket resellers": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": "TRUE"
+					  },
+					  "Boarding/alighting - Passenger injury": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Boarding/alighting - Staff conduct": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Ferry operation - Ferry early": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Ferry operation - Ferry late": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Ferry operation - Not enough ferries": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Ferry operation - Service bad": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Ferry operation - Service good": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "On board comfort - Damage to clothing/property": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "On board comfort - Litter and cleanliness": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "On board comfort - Overcrowded": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "On board comfort - Staff conduct": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Ticket inspector - Staff conduct": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Transport officers - Transport officers on ferry": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Indicators/signs - No explanation": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Indicators/signs - Wrong information": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Other passengers - Anti-social behaviour": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Other passengers - Smoking": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Ticket office - Staff conduct": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Transport officers - Transport officers on wharf": {
+					    "Date": "",
+					    "Time": "",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Waiting for the ferry - Felt unsafe": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Waiting for the ferry - Overcrowded": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Waiting for the ferry - Passenger injury": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Waiting for the ferry - Staff conduct": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Unrelated to journey - Engine noise": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Unrelated to journey - Exhaust fumes": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Unrelated to journey - Heritage issues": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Unrelated to journey - Lost property service": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Unrelated to journey - Spillage from ferry": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "TRUE",
+					    "Direction": "TRUE",
+					    "Location": ""
+					  },
+					  "Unrelated to journey - Unhappy about strike": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Unrelated to journey - Unhappy with complaint response": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "",
+					    "Ferry Route": "",
+					    "Direction": "",
+					    "Location": ""
+					  },
+					  "Unrelated to journey - Wash damage": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Ferry Wharf": "TRUE",
+					    "Ferry Route": "TRUE",
+					    "Direction": "",
+					    "Location": ""
+					  }
+					};
+
+	
+	this.FERRYConfig = function(key, FieldType) {
+		if(undefined !=  this.FERRY[key])
+			return this.FERRY[key][FieldType];
+		else
+			return this.NO_CONFIG;
+	}	
+}
+
+var BusConfiguration = function(){	
+	this.NO_CONFIG = 'CONFIGURATION MISSING',
+	this.BUS = {
+				  "Calling 131 500 - General enquiry": {
+				    "Date": "",
+				    "Time": "",
+				    "Bus Route": "",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Calling 131 500 - Information": {
+				    "Date": "",
+				    "Time": "",
+				    "Bus Route": "",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Calling 131 500 - Response time": {
+				    "Date": "",
+				    "Time": "",
+				    "Bus Route": "",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Calling 131 500 - Staff conduct": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Calling 131 500 - Waiting time": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Fares and ticketing - Integrated ticketing": {
+				    "Date": "",
+				    "Time": "",
+				    "Bus Route": "",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Printed timetable - Hard to understand": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - Accessibility": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - Apps": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - Hard to understand": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - New timetable better": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - Old timetable better": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - School holiday services": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - Service disruptions": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Timetable - Timetable request": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - Timetable suggestion": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Timetable - Wrong information": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Accessibility": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Animal restrictions": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Bicycle restrictions": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Boarding/alighting - Boarding rules": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Bus overshot": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Christmas decorations": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Distance from kerb": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Doors not open": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Passenger injury": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Staff conduct": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Boarding/alighting - Ticket dispute": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Bus cancelled": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Bus early": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Bus late": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Bus overshot": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Bus reliability": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Connection intermodal": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Bus operation - Missed stop": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Rough driving": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Running wrong route": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Service good": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Slow between stops": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - Staff conduct": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus operation - On board TV screens": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Bus operation - Travel rules": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Bus operation - Unhappy with route": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Bus operation - Unsafe driving": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board announcements - No announcement": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "TRUE",
+				    "Location": ""
+				  },
+				  "On board announcements - No explanation": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "TRUE",
+				    "Location": ""
+				  },
+				  "On board announcements - Too quiet": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "TRUE",
+				    "Location": ""
+				  },
+				  "On board announcements - Wrong information": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "TRUE",
+				    "Location": ""
+				  },
+				  "On board comfort - Air conditioning": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Damage to clothing/property": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Felt unsafe": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Graffiti": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Lighting": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Litter and cleanliness": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Noise from bus": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - On board information": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "On board comfort - Overcrowded": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Passenger injury": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Staff conduct": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - Staff playing radio": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "On board comfort - On board TV screens": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Other passengers - Anti-social behaviour": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Other passengers - S/children taking seats": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "School bus operation - School bus cancelled": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "School bus operation - School bus early": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "School bus operation - School bus late": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "School bus operation - School bus overshot": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "School bus operation - School bus terminated": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "School bus operation - School service request": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Transport officers - Appearance": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Transport officers - Availability": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Transport officers - Penalty notice disputes": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Transport officers - Staff conduct": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Bus stop location/access - Accessibility": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus stop location/access - Not enough bus stops": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Bus stop location/access - Stop location/access poor": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Public timetable case - Graffiti": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Public timetable case - Information inadequate": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Public timetable case - No stop timetable": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Public timetable case - Wrong information": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Waiting for the bus - Apps": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Bus bunching": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Bus cancelled": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Bus early": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Bus infrequent/excess wait": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Bus late": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Bus overshot": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Bus unreliable": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Failed to stop": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Felt unsafe": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Graffiti": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Lighting": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Cleanliness": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Noise from bus": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Overcrowded": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Passenger injury": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Service disruptions": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Shelter inadequate": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Staff conduct": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Waiting for the bus - Wrong destination": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Environmental - Environmental": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Environmental - Exhaust fumes/prolonged idling": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Environmental - Noise from bus": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Environmental - Spillage from bus": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Unrelated to journey - Accident with bus": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Unrelated to journey - Accident with vehicle (not bus)": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Unrelated to journey - Advertisements": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "Unrelated to journey - Unsafe driving": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": "TRUE"
+				  },
+				  "Unrelated to journey - Other": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "The depot - Lost property": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "TRUE",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  },
+				  "The depot - Unhappy with complaint response": {
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Bus Route": "",
+				    "Direction of travel": "TRUE",
+				    "Bus Driver ID": "",
+				    "Bus Number": "",
+				    "Location": ""
+				  }
+				};
+
+	
+	this.BUSConfig = function(key, FieldType) {
+		if(undefined !=  this.BUS[key])
+			return this.BUS[key][FieldType];
+		else
+			return this.NO_CONFIG;
+	}	
+}
+
+var NonModalConfiguration = function(){	
+	this.NO_CONFIG = 'CONFIGURATION MISSING',
+	this.NONMODAL = {
+					  "Aviation - Aviation Infrastructure": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Aviation - Aviation Policy": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Aviation - Aviation Routes": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Community Transport - Community Transport Driver Authority": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Community Transport - Community Transport Funding": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Community Transport - Community Transport Policy": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Community Transport - Community Transport Provider": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Cycling - Cycle Lanes": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Cycling - Cycleways": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Cycling - Cycling Programs": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Cycling - Road Rules": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Walking - Footbridge": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Walking - Footpath": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Walking - Pedestrian Subway": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Walking - Road Rules": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Walking - Walking Programs": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Calling 131 500 - General Enquiry": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Calling 131 500 - Information": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Calling 131 500 - IVR": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Calling 131 500 - Response time": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Calling 131 500 - Staff conduct": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Calling 131 500 - Waiting Time": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Conditions of Travel - Animals": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Conditions of Travel - Bicycles": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Conditions of Travel - Food and Drink": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Conditions of Travel - General Conditions": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Conditions of Travel - Mobility Aids": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Conditions of Travel - Prams or Strollers": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Timetable Booklets - Availability": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Timetable Booklets - Design & Layout": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Timetable Booklets - Fonts & Readability": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Timetable Booklets - Time Format": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Customer Care Centre - General Enquiry": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Customer Care Centre - Information Provided": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Customer Care Centre - IVR": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Customer Care Centre - Response time": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Customer Care Centre - Staff Conduct": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Customer Care Centre - Waiting Time": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Fare Structure - Opal Daily Travel Cap": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Fare Structure - Opal Default Fare": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Fare Structure - Fare Cost": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Fare Structure - Transfer Between Modes": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Fare Structure - Off-peak fares": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Fare Structure - Sunday Travel Cap": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Fare Structure - Weekly Travel Reward": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Functionality - My Opal Activity Statement": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Functionality - Blocked or Expired Cards": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Functionality - Opal Card - Reported Issues": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Functionality - Opal Reader": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Functionality - My Opal Account": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Functionality - Fare Adjustment": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Functionality - Funds Return": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Functionality - Opal Top-up": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Retailers - Location of Retailers": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Retailers - Opal Card Types Available": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Retailers - Service": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Opal Retailers - Surcharge": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - Apprentice or trainee": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - Asylum seeker": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - Child or student": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - International Student": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - Job Seeker": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - person with a disability": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - Senior or Pensioner": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - School Student Transport Scheme": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - School Drive Subsidy/PVC": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - Policy": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - Operator Enquiries": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - Application Updates": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - Student Misbehaviour": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - Interstate Students": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - Visa Enquiries": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - SSTS Replacement": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - School Student Transport Scheme Review": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Student Transport Scheme - School Updates": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Drive Subsidy/Private Vehicle Conveyance - PVC Payments": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Drive Subsidy/Private Vehicle Conveyance - PVC Updates": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Drive Subsidy/Private Vehicle Conveyance - School Drive Subsidy/Private Vehicle Conveyance School Portal": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Drive Subsidy/Private Vehicle Conveyance - SDS Payments": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Drive Subsidy/Private Vehicle Conveyance - SDS Parent Portal": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Drive Subsidy/Private Vehicle Conveyance - SDS Updates": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Drive Subsidy/Private Vehicle Conveyance - SDS Reviews": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "School Drive Subsidy/Private Vehicle Conveyance - SDS Application": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "TRUE",
+					    "Street Address": "TRUE",
+					    "Operator details": "TRUE",
+					    "School Name": "TRUE",
+					    "School year": "TRUE",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - Taxi Transport Subsidy Scheme": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Passes and Concessions - Veterans": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Customer Service Centre - General Enquiry": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Customer Service Centre - Hours of operation": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Customer Service Centre - Information Provided": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Customer Service Centre - Payment options": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Customer Service Centre - Queues": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Customer Service Centre - Staff Conduct": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Shop - General Enquiry": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Shop - Hours of operation": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Shop - Information Provided": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Shop - Payment options": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Shop - Queues": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Transport Shop - Staff Conduct": {
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Barangaroo Ferry Hub": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Bus Priority Program": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - CBD and South East Light Rail": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Future Planning": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - New Intercity Trains": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Newcastle Light Rail": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Northern Beaches B-Line": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Northern Sydney Freight Corridor": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Parramatta Light Rail": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Sydney Metro City & Southwest": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Sydney Metro Northwest": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - New Ferries": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Transport Access Program": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - WestConnex": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  },
+					  "Projects and Planning - Wynyard Walk": {
+					    "Date": "",
+					    "Time": "",
+					    "Student Name": "",
+					    "Street Address": "",
+					    "Operator details": "",
+					    "School Name": "",
+					    "School year": "",
+					    "Opal card number": ""
+					  }
+					};
+
+	
+	this.NONMODALConfig = function(key, FieldType) {
+		if(undefined !=  this.NONMODAL[key])
+			return this.NONMODAL[key][FieldType];
+		else
+			return this.NO_CONFIG;
+	}	
+}
+
+var WebsiteConfiguration = function(){	
+	this.NO_CONFIG = 'CONFIGURATION MISSING',
+	this.WEBSITE = {
+					  "Transport Info (transportnsw.info) - Trip planner (From/To locations used)": {
+					    "Which page you were using": "TRUE",
+					    "Browser": "TRUE",
+					    "operating System": "TRUE",
+					    "If using the Trip planner, please use the Share": "TRUE",
+					    "Which timetable were you using?": "",
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Description": "TRUE"
+					  },
+					  "Transport Info (transportnsw.info) - Next departures (From location used)": {
+					    "Which page you were using": "TRUE",
+					    "Browser": "TRUE",
+					    "operating System": "TRUE",
+					    "If using the Trip planner, please use the Share": "",
+					    "Which timetable were you using?": "",
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Description": "TRUE"
+					  },
+					  "Transport Info (transportnsw.info) - Timetables (traditional)": {
+					    "Which page you were using": "TRUE",
+					    "Browser": "",
+					    "operating System": "",
+					    "If using the Trip planner, please use the Share": "",
+					    "Which timetable were you using?": "TRUE",
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Description": "TRUE"
+					  },
+					  "Transport Info (transportnsw.info) - Ticketing information": {
+					    "Which page you were using": "TRUE",
+					    "Browser": "",
+					    "operating System": "",
+					    "If using the Trip planner, please use the Share": "",
+					    "Which timetable were you using?": "",
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Description": "TRUE"
+					  },
+					  "Transport Info (transportnsw.info) - Service disruption information": {
+					    "Which page you were using": "TRUE",
+					    "Browser": "",
+					    "operating System": "",
+					    "If using the Trip planner, please use the Share": "",
+					    "Which timetable were you using?": "",
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Description": "TRUE"
+					  },
+					  "Transport Info (transportnsw.info) - Other": {
+					    "Which page you were using": "TRUE",
+					    "Browser": "",
+					    "operating System": "",
+					    "If using the Trip planner, please use the Share": "",
+					    "Which timetable were you using?": "",
+					    "Date": "TRUE",
+					    "Time": "TRUE",
+					    "Description": "TRUE"
+					  }
+					};
+
+	
+	this.WEBSITEConfig = function(key, FieldType) {
+		if(undefined !=  this.WEBSITE[key])
+			return this.WEBSITE[key][FieldType];
+		else
+			return this.NO_CONFIG;
+	}	
+}
+
+var AppsConfiguration = function(){	
+	this.NO_CONFIG = 'CONFIGURATION MISSING',
+	this.APPS = {
+				  "Times": {
+				    "Trip details": "TRUE",
+				    "What device were you using": "",
+				    "operating System": "",
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Description": "TRUE"
+				  },
+				  "Functionality": {
+				    "Trip details": "",
+				    "What device were you using": "",
+				    "operating System": "",
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Description": "TRUE"
+				  },
+				  "Messaging": {
+				    "Trip details": "",
+				    "What device were you using": "",
+				    "operating System": "",
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Description": "TRUE"
+				  },
+				  "Other": {
+				    "Trip details": "",
+				    "What device were you using": "",
+				    "operating System": "",
+				    "Date": "TRUE",
+				    "Time": "TRUE",
+				    "Description": "TRUE"
+				  }
+				};
+	
+	this.APPSConfig = function(key, FieldType) {
+		if(undefined !=  this.APPS[key])
+			return this.APPS[key][FieldType];
+		else
+			return this.NO_CONFIG;
+	}	
+}
+
+var OnDemandConfiguration = function(){	
+	this.NO_CONFIG = 'CONFIGURATION MISSING',
+	this.ONDEMAND = {
+				  "Default": {
+				    "Date": "TRUE",
+				    "Time": "",
+				    "Description": "TRUE",
+					"On demand service area": "TRUE"
+				  }
+				};
+	
+	this.ONDEMANDConfig = function(key, FieldType) {
+		if(undefined !=  this.ONDEMAND['Default'])
+			return this.ONDEMAND['Default'][FieldType];
+		else
+			return this.NO_CONFIG;
+	}	
+}
+
+
+
+//var conf = new FerryConfiguration();
+//console.log("===" + conf.FERRYConfig("FerryUnrelated to journeySpillage from ferry","Time"));

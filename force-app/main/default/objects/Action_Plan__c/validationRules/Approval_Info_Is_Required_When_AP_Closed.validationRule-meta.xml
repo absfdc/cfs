@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_Info_Is_Required_When_AP_Closed</fullName>
+    <active>true</active>
+    <description>Whenever action plan is marked as complete then the approval information is required.</description>
+    <errorConditionFormula>AND(
+RecordType.Name != &quot;CFM Action Plan&quot;,
+NOT(ISPICKVAL( Agency__c ,&quot;RMS&quot;)),
+NOT(SkipValidations__c),
+ISPICKVAL(Status__c,&quot;Completed&quot;),
+ISBLANK(Parent_Action_Plan__c),
+OR(
+ISBLANK(Approver_Role__c ),
+ISBLANK( Approval_Date__c ),
+ISBLANK( Approver_Name__c)
+)
+)</errorConditionFormula>
+    <errorMessage>Failed to complete action plan. Please enter the final approver name, role and approval date.</errorMessage>
+</ValidationRule>

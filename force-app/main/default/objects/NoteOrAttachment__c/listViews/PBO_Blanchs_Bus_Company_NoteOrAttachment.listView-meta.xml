@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PBO_Blanchs_Bus_Company_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>PBO - Blanchs Bus Company</label>
+    <queue>PBO_Blanchs_Bus_Company</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

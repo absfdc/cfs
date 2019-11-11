@@ -1,0 +1,25 @@
+<apex:page standardController="Case" showHeader="false" sidebar="false" tabStyle="Case">
+<apex:includeScript value="/support/console/20.0/integration.js"/>
+
+<script type="text/javascript">
+    function setTabTitle() {
+        sforce.console.setTabTitle('Uncensored Description');
+    }
+          
+    var previousOnload = window.onload;       
+    window.onload = function() {
+   
+        if (previousOnload) {
+            previousOnload();
+        }               
+        setTimeout('setTabTitle()', '500');
+    }
+   
+</script>
+<apex:pageBlock >
+    <apex:pageBlockSection title="Case Information">
+        <apex:outputField value="{!case.Original_Description__c}" style="font-size: 14px;text-align: center;"/>
+    </apex:pageBlockSection>
+</apex:pageBlock>
+
+</apex:page>

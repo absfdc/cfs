@@ -1,0 +1,2481 @@
+function setCurrentLocationOnMap() {
+    navigator.geolocation ? ($(document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location")).removeClass("placeholder"), navigator.geolocation.getCurrentPosition(showPosition)) : alert("Geolocation is not supported by this browser. You cannot use this functionality")
+}
+
+function showPosition(e) {
+    var t = e.coords.latitude,
+        o = e.coords.longitude;
+    map.setCenter(new google.maps.LatLng(t, o)), attachDragEndEventToMap(), attachBoundChangedEventToMap(), geocodePosition(marker.getPosition()), initMarkerOnMap()
+}
+
+function initializeAutoCompleteForLocation(e) {
+    geocoder = new google.maps.Geocoder;
+    var t = new google.maps.LatLng(-34.397, 150.644),
+        o = {
+            zoom: 16,
+            center: t,
+            scrollwheel: !1,
+            panControlOptions: !0,
+            panControl: !0,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    map = new google.maps.Map(document.getElementById("map_canvas"), o), autocompleteLocation = new google.maps.places.Autocomplete(document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location"), {
+        types: ["geocode"]
+    }), attachDragEndEventToMap(), attachBoundChangedEventToMap(), initMarkerOnMap(), codeAddress(e, !0);
+    var n = "#map_canvas div";
+    $(n).each(function(e) {
+        $(this).focus(function() {
+            var e = {
+                stop: null,
+                latLng: new google.maps.LatLng(40, -90)
+            };
+            google.maps.event.trigger(map, "click", e)
+        })
+    }), setTimeout(resetMapLocation, 2500)
+}
+
+function resetMapLocation() {
+    document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").value = "", $(document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location")).addClass("placeholder")
+}
+
+function attachDragEndEventToMap() {
+    google.maps.event.addListener(map, "dragend", function() {
+        mapDragged = !0, marker && marker.setMap(null), initMarkerOnMap(), setTimeout(function() {
+            mapDragged = !1
+        }, 3e3), resetMapLocation()
+    })
+}
+
+function initMarkerOnMap() {
+    marker = new google.maps.Marker({
+        map: map,
+        draggable: !0,
+        position: map.getCenter()
+    }), attachDragStartEventToMarker(), google.maps.event.addListener(marker, "dragend", function() {
+        geocodePosition(marker.getPosition()), markerDragged = !1
+    }), geocodePosition(marker.getPosition()), marker.setMap(map)
+}
+
+function attachDragStartEventToMarker() {
+    google.maps.event.addListener(marker, "dragstart", function() {
+        markerDragged = !0
+    })
+}
+
+function attachBoundChangedEventToMap() {
+    google.maps.event.addListener(map, "bounds_changed", function() {
+        boundsChanged = !0;
+        this.getBounds();
+        markerDragged || (marker && marker.setMap(null), marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            draggable: !0
+        }), marker.setMap(map), attachDragStartEventToMarker(), google.maps.event.addListener(marker, "dragend", function() {
+            geocodePosition(marker.getPosition()), markerDragged = !1
+        }), 0 == checkingForAddress && (checkingForAddress = !0, setTimeout(getAddress, 1e3))), setTimeout(function() {
+            boundsChanged = !1
+        }, 3e3)
+    })
+}
+
+function getAddress() {
+    geocodePosition(marker.getPosition()), checkingForAddress = !1
+}
+
+function addKey() {
+    attempts++, attempts > maxAttempts || ($(mapSelector).each(function(e) {
+        var t = this.getAttribute("title");
+        t && (t = t.toLowerCase().trim()), t in titles && (jqel = $(this), titles[t] = jqel, jqel.attr("tabindex", "0"), jqel.attr("role", "button"), jqel.keydown(function(e) {
+            if (13 == e.which) $(this).trigger("click");
+            else if (40 == e.which) titles["pan down"].trigger("click");
+            else if (38 == e.which) titles["pan up"].trigger("click");
+            else if (37 == e.which) titles["pan left"].trigger("click");
+            else if (39 == e.which) titles["pan right"].trigger("click");
+            else if (61 == e.which || 187 == e.which) titles["zoom in"].trigger("click");
+            else {
+                if (173 != e.which && 189 != e.which) return;
+                titles["zoom out"].trigger("click")
+            }
+            e.preventDefault()
+        }), function() {
+            var e = !1,
+                t = jqel.css("border"),
+                o = jqel.css("margin"),
+                n = jqel.css("background-color"),
+                a = jqel.css("opacity");
+            jqel.mouseover(function() {
+                e = !0
+            }), jqel.mouseout(function() {
+                e = !1
+            }), jqel.focus(function() {
+                e || $(this).css({
+                    border: "2px solid blue",
+                    margin: "-2px",
+                    "background-color": "transparent",
+                    opacity: "1"
+                })
+            }), jqel.blur(function() {
+                $(this).css({
+                    border: t,
+                    margin: o,
+                    "background-color": n,
+                    opacity: a
+                })
+            }), notYet = !1
+        }())
+    }), notYet && setTimeout(addKey, 1e3 * attemptInterval))
+}
+
+function initiliazeAutoCompleteForAddress() {
+    autocompleteAddress = new google.maps.places.Autocomplete(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route"), {
+        types: ["geocode"]
+    }), google.maps.event.addListener(autocompleteAddress, "place_changed", function() {
+        fillInAddress()
+    })
+}
+
+function geolocate() {
+    navigator.geolocation && navigator.geolocation.getCurrentPosition(function(e) {
+        var t = new google.maps.LatLng(e.coords.latitude, e.coords.longitude),
+            o = new google.maps.Circle({
+                center: t,
+                radius: e.coords.accuracy
+            });
+        autocompleteLocation.setBounds(o.getBounds())
+    })
+}
+
+function fillInAddress() {
+    var e = autocompleteAddress.getPlace();
+     /*SFCOE - 82 : RMS Contact Us form */
+    var complete_addr =  document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value;
+    /*var street_addr;
+    if(complete_addr.indexOf(",") != -1){
+        street_addr = complete_addr.substring(0,complete_addr.indexOf(","));
+    }
+    else{
+        street_addr = complete_addr;
+    } */
+    for (var t in componentForm) "street_number" != t && (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + t).value = "");
+    for (var o = 0; o < e.address_components.length; o++) {
+        var n = e.address_components[o].types[0];
+        if (componentForm[n]) {
+            var a = e.address_components[o][componentForm[n]];
+            if ("street_number" == n) document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value = (a + " " + document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value).trim();
+            else if ("route" == n) document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + n).value = (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + n).value + " " + a).trim();
+            else if ("country" == n) {
+                for (var d = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:country"), r = !1, o = 0; o < d.length; o++) d[o].value == a && (r = !0);
+                r || (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:country").options[d.length] = new Option(a, a)), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:country").value = a, a.length > 0 && "au" != a.toLowerCase() && ($(".countryField").show(), setStateValue("Outside Australia"))
+            } else "administrative_area_level_1" == n ? setStateValue(a) : (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + n).value = a, $(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + n)).removeClass("placeholder"))
+        }
+    }
+    /* SFCOE - 82 : RMS Contact Us form*/
+    if(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:locality").value != null){
+        var suburb = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:locality").value;
+        suburb.length == 0?document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value = complete_addr:document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value = complete_addr.substring(0,complete_addr.indexOf(suburb));
+
+    }
+
+}
+
+function setStateValue(e) {
+    for (var t = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1"), o = !1, n = 0; n < t.length; n++) t[n].value == e && (o = !0);
+    if (o) document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").value = e, $(".countryField").hide();
+    else
+        for (var n = 0; n < t.length; n++) "Outside Australia" == t[n].text && (t[n].selected = !0)
+}
+
+function codeAddress(e, t) {
+    var o = e;
+    geocoder.geocode({
+        address: o
+    }, function(e, o) {
+        o == google.maps.GeocoderStatus.OK && (getRMSlocations(e[0].geometry.location), map.setCenter(e[0].geometry.location), marker && marker.setMap(null), 1 == t && (marker = new google.maps.Marker({
+            map: map,
+            draggable: !0,
+            position: e[0].geometry.location
+        }), attachDragStartEventToMarker(), google.maps.event.addListener(marker, "dragend", function() {
+            geocodePosition(marker.getPosition()), markerDragged = !1
+        }), map.setCenter(marker.position), marker.setMap(map)), addKey())
+    })
+}
+
+function geocodePosition(e) {
+    getRMSlocations(e), (document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").className.search("placeholder") < 0 && 0 == mapDragged || 0 == boundsChanged && 0 == mapDragged) && geocoder.geocode({
+        location: e
+    }, function(t) {
+        if (t && t.length > 0) {
+            var o = t[0].formatted_address;
+            document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").value = o, $(document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location")).removeClass("placeholder"), document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:lattitude-of-location").value = e.lat(), document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:longitude-of-location").value = e.lng()
+        }
+    })
+}
+
+function validateFeedback() {
+    var e, t, o;
+    return document.getElementById("sitePageId:caseFormId:pblockId:your-feedback") ? (t = document.getElementById("sitePageId:caseFormId:pblockId:your-feedback"), e = document.getElementById("sitePageId:caseFormId:pblockId:your-feedback").value, o = document.getElementById("feedbackDescErrorMsg1")) : document.getElementById("sitePageId:caseFormId:pblockId:your-feedback2") && (t = document.getElementById("sitePageId:caseFormId:pblockId:your-feedback2"), e = document.getElementById("sitePageId:caseFormId:pblockId:your-feedback2").value, o = document.getElementById("feedbackDescErrorMsg2")), e ? (t && (document.getElementById(t.id).setAttribute("aria-invalid", "false"), t.style.outline = "0", o.innerHTML = ""), !0) : (t.style.outline = "1px solid #EF0000", document.getElementById(t.id).setAttribute("aria-invalid", "true"), setErrorFieldId(t.id), o.innerHTML = "Error: Detailed description of feedback not provided.", !1)
+}
+
+function validateEmail(e) {
+    //var t = /^\w+([\.-]?\w+)*@\w+([\.+-]?\w+)*(\.\w{2,100})+$/;
+	
+	var t = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return e.match(t) ? !0 : !1
+}
+
+function validatePhone(e) {
+    return new RegExp("^[0-9+() ]*$").test(e)
+}
+
+function validatePhoneNumber(e) {
+    var t = e.which ? e.which : e.keyCode;
+    return 8 != t && 46 != t && (48 > t || t > 57) ? !1 : !0
+}
+
+function validateLastName() {
+    var e = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name").value;
+    if (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name").setAttribute("aria-invalid", "false"), e) {
+        var t = new RegExp("^[a-zA-Z' -]*$").test(e);
+        if (0 == t) return document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name"), document.getElementById("lastNameErrorMsg").innerHTML = "Error: Invalid family name provided. Family name can only contain alphabets, apostrophe, hyphen and blank space.", !1
+    }
+    return document.getElementById("lastNameErrorMsg").innerHTML = "", !0
+}
+
+function validateIntranetFields() {
+    for (var e, t = !1, o = document.getElementsByTagName("input"), n = 0; n < o.length; n++) o[n].className.search("Created_By_Email__c") > 0 && (t = !0, e = o[n]);
+    if (0 == t) return !0;
+    var a = e.value;
+    return a ? 0 == validateEmail(a) ? (e.style.outline = "1px solid #EF0000", errorFieldId = "", document.getElementById(e.id).setAttribute("aria-invalid", "true"), setErrorFieldId(e.id), document.getElementById("Created_By_Email__cErrorMsg").innerHTML = "Error: Invalid staff email address provided.", !1) : (document.getElementById(e.id).setAttribute("aria-invalid", "false"), document.getElementById("Created_By_Email__cErrorMsg").innerHTML = "", e.style.outline = "0", !0) : (e.style.outline = "1px solid #EF0000", errorFieldId = "", document.getElementById(e.id).setAttribute("aria-invalid", "true"), setErrorFieldId(e.id), document.getElementById("Created_By_Email__cErrorMsg").innerHTML = "Error: Invalid staff email address provided.", !1)
+}
+
+function validateFirstName() {
+    var e = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name").value;
+    if (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name").setAttribute("aria-invalid", "false"), e) {
+        var t = new RegExp("^[a-zA-Z' -]*$").test(e);
+        if (0 == t) return document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name"), document.getElementById("firstNameErrorMsg").innerHTML = "Error: Invalid given name provided. Given name can only contain alphabets, apostrophe, hyphen and blank space.", !1
+    }
+    return document.getElementById("firstNameErrorMsg").innerHTML = "", !0
+}
+
+function validateName() {
+    var e = !0;
+    return validateFirstName() || (e = !1), validateLastName() || (e = !1), e
+}
+
+function validatePhoneAndEmail() {
+    var e = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").value,
+        t = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value;
+    if ("Please specify" == t && (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value = "", t = ""), e || t) {
+        var o = !0,
+            n = !0;
+        return t ? (o = validateEmail(t), 1 == o ? (document.getElementById("emailErrorMsg").innerHTML = "", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "false"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "0") : (document.getElementById("emailErrorMsg").innerHTML = "Error: Please enter a valid email address in the format - <b><i>example@address.com.au</i></b>", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "1px solid #EF0000")) : (document.getElementById("emailErrorMsg").innerHTML = "", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "0"), e ? (n = validatePhone(e), 1 == n ? (document.getElementById("phoneErrorMsg").innerHTML = "", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").setAttribute("aria-invalid", "false")) : (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number"), document.getElementById("phoneErrorMsg").innerHTML = "Error: Please enter a valid phone number, including only characters: <b><i>+, ( ), 0-9</i></b>")) : (document.getElementById("phoneErrorMsg").innerHTML = "", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").style.outline = "0"), o && n
+    }
+    return !0
+}
+
+function validatePreferredFormOfContact() {
+    return !0
+}
+
+function validateEmailConfirmation() {
+    var e = !0,
+        t = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value,
+        o = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").value;
+    return t != o ? (e = !1, document.getElementById("emailErrorMsg").innerHTML = "Error: Contact email and confirmation email do not match.", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "1px solid #EF0000") : (document.getElementById("emailErrorMsg").innerHTML = "", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "false"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "0"), e
+}
+
+function validateAtleastOneContactFieldIsAvailable() {
+    var e = !0,
+        t = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").value,
+        o = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value,
+        n = (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name").value, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name").value, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value);
+    document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:locality").value, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code").value, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").value, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:country").value;
+    return t || o || n ? (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").setAttribute("aria-invalid", "false"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "false"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").setAttribute("aria-invalid", "false"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").setAttribute("aria-invalid", "false"), (document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked || document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:1").checked) && (document.getElementById("responseReqErrorMsg").innerHTML = "")) : (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").setAttribute("aria-invalid", "true"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "true"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").setAttribute("aria-invalid", "true"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address"), document.getElementById("responseReqErrorMsg").innerHTML = "Error: You have indicated that you would like a response from us. So that we can contact you, please provide either a phone number, email address or postal address.", e = !1), e
+}
+
+function validatePostalCode() {
+    var e = !0,
+        t = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code").value;
+    if (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code").setAttribute("aria-invalid", "false"), document.getElementById("postalCodeErrorMsg").innerHTML = "", t) {
+        var o = new RegExp("^[0-9A-z ]*$").test(t);
+        0 == o && (e = !1, document.getElementById("postalCodeErrorMsg").innerHTML = "Error: Invalid postcode provided. Postcode can contain only alphanumeric values.", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code"))
+    }
+    return e
+}
+
+function validateContactDetails() {
+    var e = !0;
+    if (validateName() || (e = !1), validatePhoneAndEmail() && validateEmailConfirmation() || (e = !1), validatePostalCode() || (e = !1), document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked) return validatePreferredFormOfContact() || (e = !1), validateAtleastOneContactFieldIsAvailable() || (e = !1), e;
+    var t = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value;
+    return "Please specify" == t && (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value = "", t = ""), t && "Please specify" != t && (validateEmail(t) ? (document.getElementById("emailErrorMsg").value = "", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "false"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "0") : (e = !1, document.getElementById("emailErrorMsg").value = "Invalid email address provided.", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address"), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "1px solid #EF0000")), e
+}
+
+function validateResponseRequired() {
+    var e = !1;
+    return document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked ? e = !0 : document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:1").checked && (e = !0), e ? (document.getElementById("sitePageId:caseFormId:pblockId:responseRadio").setAttribute("aria-invalid", "false"), document.getElementById("sitePageId:caseFormId:pblockId:responseRadio").style.outline = "0", document.getElementById("responseReqErrorMsg").innerHTML = "") : (document.getElementById("sitePageId:caseFormId:pblockId:responseRadio").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:responseRadio").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:responseRadio:0"), document.getElementById("responseReqErrorMsg").innerHTML = "Error: Please specify whether you want us to get back to you with a response."), e
+}
+
+function validateIncidentDate() {
+    if (document.getElementById("date-of-trip")) {
+        var e = document.getElementById("date-of-trip").value;
+        if (e && "DD/MM/YYYY" != e) {
+            var t = new Date;
+            if (e = e.split("/"), 3 == e.length && 4 == e[2].length) {
+                var o, n = new Date(e[2], e[1] - 1, e[0]),
+                    a = !0,
+                    d = n.getMonth() + 1,
+                    r = new Number(e[2]);
+                return isNaN(n) || d != e[1] || 1900 > r ? (a = !1, o = "Date of incident is not valid.", document.getElementById("date-of-trip").value = "") : 0 > t - n ? (a = !1, o = "Date can't be in the future.", document.getElementById("date-of-trip").value = "") : a = !0, a ? (document.getElementById("date-of-trip").style.outline = "0", document.getElementById("date-of-trip").setAttribute("aria-invalid", "false")) : (document.getElementById("date-of-trip").setAttribute("aria-invalid", "true"), document.getElementById("date-of-trip").style.outline = "1px solid #EF0000", setErrorFieldId("date-of-trip"), document.getElementById("date-error").innerHTML = o), a
+            }
+        }
+    }
+    return !0
+}
+
+function validatePreviousContactDate() {
+    var e = document.getElementById("approximateDateOfContact").value;
+    if (e && "DD/MM/YYYY" != e) {
+        var t = (new Date).getTime(),
+            e = e.split("/");
+        if (3 == e.length) {
+            e = new Date(e[2], e[1] - 1, e[0]).getTime();
+            var o = !0;
+            return isNaN(e) ? (o = !1, document.getElementById("previous-contact-date-error").innerHTML = "Error: Date of previous contact is not valid.", document.getElementById("approximateDateOfContact").value = "") : 0 > t - e ? (o = !1, document.getElementById("previous-contact-date-error").innerHTML = "Error: Date can't be in the future.", document.getElementById("approximateDateOfContact").value = "") : o = !0, o ? (document.getElementById("previous-contact-date-error").innerHTML = "", document.getElementById("approximateDateOfContact").style.outline = "0", document.getElementById("approximateDateOfContact").setAttribute("aria-invalid", "false")) : (document.getElementById("approximateDateOfContact").style.outline = "1px solid #EF0000", document.getElementById("approximateDateOfContact").setAttribute("aria-invalid", "true"), setErrorFieldId("approximateDateOfContact")), o
+        }
+    }
+    return !0
+}
+
+//SFCOE-994 Start
+function validateEmailProvidedEmailMeCopyofFeedback() {
+    var e = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:opt_in");
+	console.log('Email me a copy of this feedback checkbox: ' + e);
+    if (e) {
+		if (e.checked == true) {
+			console.log('Email me a copy of this feedback checkbox is checked.');
+			
+			var emailProvided = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value;
+			console.log('Email provided' + emailProvided);
+			if(!emailProvided)
+				{
+					document.getElementById("emailErrorMsg").innerHTML = "Error: Please enter a valid email address in the format - example@address.com.au";
+					return 0;
+				}
+			return 1;
+		} else if(e.checked == false) {
+			console.log('Email me a copy of this feedback checkbox is not checked.');
+			return 1;
+		}
+	}
+	else console.log('Could not access Email me a copy of this feedback checkbox');
+    return !0
+}
+
+//SFCOE-994 End
+
+function validateFeedbackType() {
+    var e = document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").value;
+    return e ? (document.getElementById("feedbackTypeErrorMsg").innerHTML = "", document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").setAttribute("aria-invalid", "false"), document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").style.outline = "0", !0) : (document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").setAttribute("aria-invalid", "true"), setErrorFieldId("sitePageId:caseFormId:pblockId:type-of-feedback"), document.getElementById("feedbackTypeErrorMsg").innerHTML = "Error: Type of feedback is not selected", !1)
+}
+
+function setErrorFieldId(e) {
+    errorFieldId && errorFieldId.length > 0 && "page" != e && "webOptionErrorMsg" != e && "device" != e && "appOptionErrorMsg" != e && "browser" != e && "operatingSystem" != e && "sitePageId:caseFormId:pblockId:appOptions:appsComponent:relatedTo" != e || "sitePageId:caseFormId:pblockId:type-of-feedback" == errorFieldId || "appOptionErrorMsg" != errorFieldId && "webOptionErrorMsg" != errorFieldId && "page" != errorFieldId && "browser" != errorFieldId && "device" != errorFieldId && "operatingSystem" != errorFieldId && (errorFieldId = e)
+}
+
+function validateOpalCardNumber() {
+    var e = document.getElementById("opal-card-number");
+    if (e && e.value.length > 0) {
+        var t;
+        t = e.value.replace(new RegExp(" ", "g"), "");
+        var o = new RegExp("^[0-9]*$").test(t);
+        if (0 == o || 16 != t.length) return document.getElementById("opalErrorMsg").innerHTML = "Error: Invalid opal card number.", document.getElementById("opal-card-number").style.outline = "1px solid #EF0000", document.getElementById("opal-card-number").setAttribute("aria-invalid", "true"), setErrorFieldId("opal-card-number"), !1
+    }
+    return document.getElementById("opalErrorMsg").innerHTML = "", document.getElementById("opal-card-number").setAttribute("aria-invalid", "false"), document.getElementById("opal-card-number").style.outline = "0", !0
+}
+
+function validateForm() {
+    var flag = true;
+    pageErrorMessage = '';
+    if (!validateFeedbackType()) {
+        console.log('feedback type is false');
+        flag = false;
+    }
+    if (!validateYourFeedbackIsAbt()) {
+        console.log('feedback abt is false');
+        flag = false;
+    }
+    if (!validateRelatingTo()) {
+        console.log('relating to is false');
+        flag = false;
+    }
+    if (!validateIncidentDate()) {
+        console.log('incident date is false');
+        flag = false;
+    }
+    if (!validateOpalCardNumber()) {
+        console.log('opal card is false');
+        flag = false;
+    }
+    if (!validateFeedback()) {
+        console.log('feedback  is false');
+        flag = false;
+    }
+    if (!validateResponseRequired()) {
+        console.log('response required is false');
+        flag = false;
+    }
+    if (!validateContactDetails()) {
+        console.log('contact details is false');
+        flag = false;
+    }
+    if (!validatePreviousContactDate()) {
+        console.log('previous contact is false');
+        flag = false;
+    }
+	//SFCOE-994 - Start
+	/*
+    if (!validateEmailProvidedEmailMeCopyofFeedback()) {
+        console.log('previous contact is false');
+        flag = false;
+    }
+	*/
+	//SFCOE-994 - End
+	
+    return flag;
+}
+
+function setMarkerToLocation() {
+    setTimeout(setLocation, 1e3)
+}
+
+function setLocation() {
+    document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").value;
+    codeAddress(document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").value, !0), google.maps.event.addListener(map, "bounds_changed", function() {
+        this.getBounds();
+        marker && marker.setMap(null), marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            draggable: !0
+        }), marker.setMap(map), attachDragStartEventToMarker(), google.maps.event.addListener(marker, "dragend", function() {
+            geocodePosition(marker.getPosition()), markerDragged = !1
+        }), 0 == checkingForAddress && (checkingForAddress = !0, setTimeout(getAddress, 1e3))
+    })
+}
+
+function showHideTollingFields(e) {
+    $(".tolling").css("display", e)
+}
+
+function showHideBoatLicenceFields(e) {
+    $(".boatLicence").css("display", e)
+}
+
+function showHideLicensingFields(e) {
+    $(".licensing").css("display", e)
+}
+
+function getDateValue() {
+    pageErrorMessage = "";
+    var e = validateIncidentDate();
+    if (e) {
+        var t = document.getElementById("date-of-trip").value;
+        if (t && "DD/MM/YYYY" != t) {
+            $("#date-of-trip").removeClass("placeholder");
+            t.split("/");
+            formatIncidentDate(document.getElementById("date-of-trip").value)
+        } else $("#date-of-trip").addClass("placeholder")
+    } else;
+}
+
+function getApproxDateOfContact() {
+    pageErrorMessage = "";
+    var e = validatePreviousContactDate();
+    if (e) {
+        var t = document.getElementById("date-of-trip").value;
+        t && "DD/MM/YYYY" != t ? $("#approximateDateOfContact").removeClass("placeholder") : $("#approximateDateOfContact").addClass("placeholder")
+    } else;
+}
+
+function checkFieldValue(e, t) {
+    e.length > 0 ? toggleFieldVisibility(t, !0) : toggleFieldVisibility(t, !1)
+}
+
+function toggleFieldVisibility(e, t) {
+    document.getElementById(e).disabled = t
+}
+
+function setTaxonomyLocation(e) {
+    document.getElementById("sitePageId:caseFormId:pblockId:location").value = document.getElementById(e.id).value
+}
+
+function updateAllFieldValue(e, t) {
+    $("." + e).val(t)
+}
+
+function convertStringLocationToCoords(e, t) {
+    var o = e.substring(e.indexOf("(") + 1, e.indexOf(")")),
+        n = [],
+        n = o.split(","),
+        a = n[0],
+        d = n[1],
+        r = d.substring(1, d.length);
+    return 0 == t ? a : r
+}
+
+/*function validateTrainLine() {
+  var e = $("#train-line").val(),
+    t = $("#trainLine").jstree(!0).get_node($("#trainLine").jstree(!0).get_selected()[0]).text;
+  null != t && t.toLowerCase() == e.toLowerCase() ? ($("#train-line").val(t), $("#trainLine").hide()) : $("#trainLine").show()
+}
+
+function validateTrainStation() {
+  var e = $("#train-station").val(),
+    t = $("#trainStation").jstree(!0).get_node($("#trainStation").jstree(!0).get_selected()[0]).text;
+  null != t && t.toLowerCase() == e.toLowerCase() ? ($("#train-station").val(t), $("#trainStation").hide()) : $("#trainStation").show()
+}
+
+function validateFerryRoute() {
+  var e = $("#ferry-route").val(),
+    t = $("#ferryRoute").jstree(!0).get_node($("#ferryRoute").jstree(!0).get_selected()[0]).text;
+  null != t && t.toLowerCase() == e.toLowerCase() ? ($("#ferry-route").val(t), $("#ferryRoute").hide()) : $("#ferryRoute").show()
+}
+
+function validateFerryWharf() {
+  var e = $("#ferry-wharf").val(),
+    t = $("#ferryWharf").jstree(!0).get_node($("#ferryWharf").jstree(!0).get_selected()[0]).text;
+  null != t && t.toLowerCase() == e.toLowerCase() ? ($("#ferry-wharf").val(t), $("#ferryWharf").hide()) : $("#ferryWharf").show()
+}
+
+function validateBusRoute() {
+  var e = $("#bus-route").val(),
+    t = $("#busRoute").jstree(!0).get_node($("#busRoute").jstree(!0).get_selected()[0]).text;
+  null != t && t.toLowerCase() == e.toLowerCase() ? ($("#bus-route").val(t), $("#busRoute").hide()) : $("#busRoute").show()
+}
+*/
+
+function validateBusRoute() {
+    var e = $("#bus-route").val();
+    var temp = $("#busRoute").jstree(!0).get_node($("#busRoute").jstree(!0).get_selected()[0]).text;
+    var t = temp;
+    console.log('input value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t && t != undefined) {
+        t = temp.replace("&amp;", "&");
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#busRoute").hide();
+            return true;
+        } else if (e != 'Start typing to select a bus route' && e != null) {
+            ($("#bus-route").val(e), $("#busRoute").hide());
+            var flag = false;
+            $('#busRoute').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#bus-route").val(e), $("#busRoute").hide());
+            var flag = false;
+            var e1 = e.replace("&", "&amp;");
+            $('#busRoute').jstree(true).search(e1);
+            $('.jstree-search').each(function() {
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+function validateOnDemandRoute() {
+    var e = $("#ondemand-route").val();
+    var temp = $("#ondemandRoute").jstree(!0).get_node($("#ondemandRoute").jstree(!0).get_selected()[0]).text;
+    var t = temp;
+    console.log('input value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t && t != undefined) {
+        t = temp.replace("&amp;", "&");
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#ondemandRoute").hide();
+            return true;
+        } else if (e != 'Start typing to select On Demand service area' && e != null) {
+            ($("#ondemand-route").val(e), $("#ondemandRoute").hide());
+            var flag = false;
+            $('#ondemandRoute').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#ondemand-route").val(e), $("#ondemandRoute").hide());
+            var flag = false;
+            var e1 = e.replace("&", "&amp;");
+            $('#ondemandRoute').jstree(true).search(e1);
+            $('.jstree-search').each(function() {
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+function validateTrainStation() {
+    var e = $("#train-station").val();
+    var t = $("#trainStation").jstree(!0).get_node($("#trainStation").jstree(!0).get_selected()[0]).text;
+    console.log('input train station value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t) {
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#trainStation").hide();
+            return true;
+        } else if (e != 'Start typing to select a station' && e != null) {
+            ($("#train-station").val(e), $("#trainStation").hide());
+            var flag = false;
+            $('#trainStation').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var nodeText = $(this).text();
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#train-station").val(e), $("#trainStation").hide());
+            var flag = false;
+            $('#trainStation').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var nodeText = $(this).text();
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+function validateTrainLine() {
+    var e = $("#train-line").val();
+    var temp = $("#trainLine").jstree(!0).get_node($("#trainLine").jstree(!0).get_selected()[0]).text;
+    var t = temp;
+    console.log('input train line value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t && t != undefined) {
+        t = temp.replace("&amp;", "&");
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#trainLine").hide();
+            return true;
+        } else if (e != 'Start typing to select a line' && e != null) {
+            ($("#train-line").val(e), $("#trainLine").hide());
+            var flag = false;
+            $('#trainLine').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                console.log('nodetext1 = ' + nodeText + ' e = ' + e);
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#train-line").val(e), $("#trainLine").hide());
+            var flag = false;
+            var e1 = e.replace("&", "&amp;");
+            $('#trainLine').jstree(true).search(e1);
+            $('.jstree-search').each(function() {
+                console.log('inside function call');
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+
+function validatemetroStation() {
+    var e = $("#metro-station").val();
+    var t = $("#metroStation").jstree(!0).get_node($("#metroStation").jstree(!0).get_selected()[0]).text;
+    console.log('input metro station value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t) {
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#metroStation").hide();
+            return true;
+        } else if (e != 'Start typing to select a station' && e != null) {
+            ($("#metro-station").val(e), $("#metroStation").hide());
+            var flag = false;
+            $('#metroStation').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var nodeText = $(this).text();
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#metro-station").val(e), $("#metroStation").hide());
+            var flag = false;
+            $('#metroStation').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var nodeText = $(this).text();
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+function validatemetroLine() {
+    var e = $("#metro-line").val();
+    var temp = $("#metroLine").jstree(!0).get_node($("#metroLine").jstree(!0).get_selected()[0]).text;
+    var t = temp;
+    console.log('input metro line value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t && t != undefined) {
+        t = temp.replace("&amp;", "&");
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#metroLine").hide();
+            return true;
+        } else if (e != 'Start typing to select a line' && e != null) {
+            ($("#metro-line").val(e), $("#metroLine").hide());
+            var flag = false;
+            $('#metroLine').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                console.log('nodetext1 = ' + nodeText + ' e = ' + e);
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#metro-line").val(e), $("#metroLine").hide());
+            var flag = false;
+            var e1 = e.replace("&", "&amp;");
+            $('#metroLine').jstree(true).search(e1);
+            $('.jstree-search').each(function() {
+                console.log('inside function call');
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+
+
+
+function validateFerryWharf() {
+    var e = $("#ferry-wharf").val();
+    var t = $("#ferryWharf").jstree(!0).get_node($("#ferryWharf").jstree(!0).get_selected()[0]).text;
+    console.log('input value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t) {
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#ferryWharf").hide();
+            return true;
+        } else if (e != 'Start typing to select a wharf' && e != null) {
+            ($("#ferry-wharf").val(e), $("#ferryWharf").hide());
+            var flag = false;
+            $('#ferryWharf').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var nodeText = $(this).text();
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#ferry-wharf").val(e), $("#ferryWharf").hide());
+            var flag = false;
+            $('#ferryWharf').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var nodeText = $(this).text();
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+function validateFerryRoute() {
+    var e = $("#ferry-route").val();
+    var temp = $("#ferryRoute").jstree(!0).get_node($("#ferryRoute").jstree(!0).get_selected()[0]).text;
+    var t = temp;
+    console.log('input value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t && t != undefined) {
+        t = temp.replace("&amp;", "&");
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#ferryRoute").hide();
+            return true;
+        } else if (e != 'Start typing to select a ferry line' && e != null) {
+            ($("#ferry-route").val(e), $("#ferryRoute").hide());
+            var flag = false;
+            $('#ferryRoute').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#ferry-route").val(e), $("#ferryRoute").hide());
+            var flag = false;
+            var e1 = e.replace("&", "&amp;");
+            $('#ferryRoute').jstree(true).search(e1);
+            $('.jstree-search').each(function() {
+                var temp1 = $(this).text();
+                var nodeText = temp1.replace("&amp;", "&");
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+function validateRailStop() {
+    var e = $("#stop-name").val();
+    var t = $("#stopName").jstree(!0).get_node($("#stopName").jstree(!0).get_selected()[0]).text;
+
+    console.log('input value = ' + e + ' Result value = ' + t);
+    if (e == '')
+        return true;
+    if (null != t) {
+        if (t.toLowerCase() == e.toLowerCase()) {
+            $("#stopName").hide();
+            return true;
+        } else if (e != 'Enter stop name details' && e != null) {
+            ($("#stop-name").val(e), $("#stopName").hide());
+            var flag = false;
+            $('#stopName').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var nodeText = $(this).text();
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        } else {
+            return true;
+        }
+    } else {
+        console.log('input val= ' + e + ' searched val= ' + t);
+        if (e != null) {
+            ($("#stop-name").val(e), $("#stopName").hide());
+            var flag = false;
+            $('#stopName').jstree(true).search(e);
+            $('.jstree-search').each(function() {
+                var nodeText = $(this).text();
+                if (nodeText.toLowerCase() == e.toLowerCase()) {
+                    flag = true;
+                }
+            });
+            return flag;
+        }
+        return true;
+    }
+}
+
+/*function validateTrainStation() {
+  var e = $("#train-station").val();
+  var t = $("#trainStation").jstree(!0).get_node($("#trainStation").jstree(!0).get_selected()[0]).text;
+  if(e == '')
+    return true;
+  if(null != t) {
+    if(t.toLowerCase() == e.toLowerCase()) {
+      $("#trainStation").hide();
+      return true;
+    } else if(e != 'Start typing to select a station' && e != null) {
+      ($("#train-station").val(e), $("#trainStation").hide());
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    console.log('input val= '+e+' searched val= '+t);
+    if( e!= null){
+      ($("#train-station").val(e), $("#trainStation").hide());
+      return false;
+    }
+    return true;
+  }
+}
+
+
+
+function validateTrainLine() {
+  var e = $("#train-line").val();
+  var temp = $("#trainLine").jstree(!0).get_node($("#trainLine").jstree(!0).get_selected()[0]).text;
+
+  var t = temp;
+
+  console.log('Input value = '+e+' found value = '+t);
+  if(e == '')
+    return true;
+  if(null != t) {
+  	console.log('t includes amppersand: '+t.includes('&amp;'));
+  	console.log('e includes amppersand: '+t.includes('&'));
+
+  	t = temp.replace("&amp;","&");
+    if(t.toLowerCase() == e.toLowerCase()) {
+      $("#trainLine").hide();
+      return true;
+    } else if(e != 'Start typing to select a line' && e != null) {
+      ($("#train-line").val(e), $("#trainLine").hide());
+      console.log('train line selected ');
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    console.log('input val= '+e+' searched val= '+t);
+    if( e!= null){
+      ($("#train-line").val(e), $("#trainLine").hide());
+      return false;
+    }
+    return true;
+  }
+}
+
+function validateBusRoute() {
+  var e = $("#bus-route").val();
+  var t = $("#busRoute").jstree(!0).get_node($("#busRoute").jstree(!0).get_selected()[0]).text;
+  if(e == '')
+    return true;
+  if(null != t) {
+    if(t.toLowerCase() == e.toLowerCase()) {
+      $("#busRoute").hide();
+      return true;
+    } else if(e != 'Start typing to select a bus route' && e != null) {
+      ($("#bus-route").val(e), $("#busRoute").hide());
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    console.log('input val= '+e+' searched val= '+t);
+    if( e!= null){
+      ($("#bus-route").val(e), $("#busRoute").hide());
+      return false;
+    }
+    return true;
+  }
+}
+
+
+
+
+
+function validateFerryWharf() {
+  var e = $("#ferry-wharf").val(),
+  t = $("#ferryWharf").jstree(!0).get_node($("#ferryWharf").jstree(!0).get_selected()[0]).text;
+  if(e == '') return true;
+  if(null != t) {
+    if(t.toLowerCase() == e.toLowerCase()) {
+      $("#ferryWharf").hide();
+      return true;
+    } else if(e != 'Start typing to select a wharf' && e != null) {
+      ($("#ferry-wharf").val(e), $("#ferryWharf").hide());
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    if( e!= null){
+      ($("#ferry-wharf").val(e), $("#ferryWharf").hide());
+      return false;
+    }
+    return true;
+  }
+}
+
+  /*
+  var e = $("#ferry-wharf").val(),
+  t = $("#ferryWharf").jstree(!0).get_node($("#ferryWharf").jstree(!0).get_selected()[0]).text;
+  if(null != t && t.toLowerCase() == e.toLowerCase() && e != 'Start typing to select a wharf'){
+    $("#ferryWharf").show();
+    return 'true';
+  } else{
+    ($("#ferry-wharf").val(t), $("#ferryWharf").hide());
+    return 'false';
+  }
+}
+
+
+
+
+function validateFerryRoute() {
+  var e = $("#ferry-route").val(),
+  t = $("#ferryRoute").jstree(!0).get_node($("#ferryRoute").jstree(!0).get_selected()[0]).text;
+  if(e == '') return true;
+  if(null != t) {
+    if(t.toLowerCase() == e.toLowerCase()) {
+      $("#ferryRoute").hide();
+      return true;
+    } else if(e != 'Start typing to select a ferry line' && e != null) {
+      ($("#ferry-route").val(e), $("#ferryRoute").hide());
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    if(e != null){
+    ($("#ferry-route").val(e), $("#ferryRoute").hide());
+      return false;
+    }
+    return true;
+  }
+
+  var e = $("#ferry-route").val(),
+  t = $("#ferryRoute").jstree(!0).get_node($("#ferryRoute").jstree(!0).get_selected()[0]).text;
+  if(null != t && t.toLowerCase() == e.toLowerCase() && e != 'Start typing to select a ferry line'){
+    $("#ferryRoute").show();
+    return 'true';
+  } else{
+    ($("#ferry-route").val(t), $("#ferryRoute").hide());
+    return 'false';
+  }
+}
+
+
+function validateRailStop() {
+  var e = $("#stop-name").val(),
+  t = $("#stopName").jstree(!0).get_node($("#stopName").jstree(!0).get_selected()[0]).text;
+  if(e == '') return true;
+  if(null != t) {
+    if(t.toLowerCase() == e.toLowerCase()) {
+      $("#stopName").hide();
+      return true;
+    } else if(e != 'Enter stop name details' && e != null) {
+      ($("#stop-name").val(e), $("#stopName").hide());
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    if(e != null){
+    ($("#stop-name").val(e), $("#stopName").hide());
+      return false;
+    }
+    return true;
+  }
+}
+*/
+
+
+
+function getFileName(e, t, o, n) {
+    var a = e.value;
+    if (a = a.substring(a.lastIndexOf("\\") + 1, a.length), document.getElementById("filename" + t).innerHTML = a + '<img class="sprite sprite-remove" style="float: initial;margin-left: 5px;" alt="Remove selected file" onclick="removeFile(\'' + t + '\')" src="' + n + '" width="8px" height="8px"/>', document.getElementById(e.id + "name").value = a, $("#attachmentRow" + t).show(), $("#addAttachmentBtn").css("margin-top", Number($("#addAttachmentBtn").css("margin-top").replace("px", "")) + 1 + "px"), a) {
+        var d = a.substring(a.lastIndexOf("."), a.length);
+        o.toLowerCase().search(d.toLowerCase()) < 0 && (alert("File attachments of type " + d + " are not supported."), removeFile(t))
+    }
+}
+
+function checkPreferredContact() {
+    var e = document.getElementById("preferredContactMethod").value;
+    "Email" == e ? ($(".preferredContactEmail").show(), $(".preferredContactPhone").hide()) : "Phone" == e ? ($(".preferredContactPhone").show(), $(".preferredContactEmail").hide()) : ($(".preferredContactPhone").hide(), $(".preferredContactEmail").hide())
+}
+
+function removeFile(e) {
+    document.getElementById("filename" + e).innerHTML = "", $("#attachmentRow" + e).css("display", "none"), document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + e + ":filename") ? document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + e + ":filename").value = "" : document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent2:attachmentComponent:attachments:" + e + ":filename").value = "", $("#addAttachmentBtn").css("margin-top", Number($("#addAttachmentBtn").css("margin-top").replace("px", "")) - 1 + "px");
+    var t = $(".attachment" + e);
+    t.replaceWith(t.val("").clone(!0))
+}
+
+function togglePreviousContactFields() {
+    document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:0").checked ? $(".previouslyRaisedIssueYes").css("display", "block") : $(".previouslyRaisedIssueYes").css("display", "none")
+}
+
+function handleData(e) {
+    var dataObj = e.rows[0];
+    var o = dataObj.rfs_maintenance_region;
+    document.getElementById("sitePageId:caseFormId:pblockId:rfsregion").value = o;
+}
+
+function handleLGA_SED(e) {
+    var dataObj = e.rows[0];
+    var o = dataObj.rms_region;
+    document.getElementById("sitePageId:caseFormId:pblockId:location").value = o;
+}
+
+function handleMaritimeRegions(e) {
+    var dataObj = e.rows[0];
+    var o = (dataObj.aql_area_code, dataObj.aql_area_name);
+    var n = (dataObj.waterway_area_code, dataObj.waterway_area_name, dataObj.region);
+    o.length > 0 ? document.getElementById("sitePageId:caseFormId:pblockId:location").value = o : (document.getElementById("sitePageId:caseFormId:pblockId:location").value = "Not Available", n.length > 0 ? document.getElementById("sitePageId:caseFormId:pblockId:locationtype").value = n : document.getElementById("sitePageId:caseFormId:pblockId:locationtype").value = "Not Available");
+}
+
+function queryDatasetForLgaSed(e, t, o) {
+    numberOfLgaDatasetRetry++;
+    var roadsQuery = 'select * from geolocateroads(' + e.lng() + ', ' + e.lat() + '), current_timestamp';
+    var roadPromise = getData(roadsQuery);
+    roadPromise
+        .success(function(data) {
+            if (data.rows && data.rows.length > 0) {
+                handleLGA_SED(data);
+            } else {
+                maxDatasetRetry > numberOfLgaDatasetRetry && queryDatasetForLgaSed(e, t, o);
+            }
+        });
+}
+
+function queryDatasetForRoads(e, t, o) {
+    numberOfRoadDatasetRetry++;
+    var roadsQuery = 'select * from geolocateroads(' + e.lng() + ', ' + e.lat() + '), current_timestamp';
+    var roadPromise = getData(roadsQuery);
+    roadPromise
+        .success(function(data) {
+            if (data.rows && data.rows.length > 0) {
+                handleData(data);
+            } else {
+                maxDatasetRetry > numberOfRoadDatasetRetry && queryDatasetForRoads(e);
+            }
+        });
+}
+
+function queryDatasetForMaritime(e, t, o) {
+    numberOfMaritimeDatasetRetry++;
+    var maritimeQuery = 'select * from geoLocateMaritime(' + e.lng() + ', ' + e.lat() + '), current_timestamp';
+    var maritimePromise = getData(maritimeQuery);
+    maritimePromise
+        .success(function(data) {
+            if (data.rows && data.rows.length > 0) {
+                handleMaritimeRegions(data)
+            } else {
+                maxDatasetRetry > numberOfMaritimeDatasetRetry && queryDatasetForMaritime(e);
+            }
+        });
+}
+
+function getData(query) {
+    var url = 'https://transportnsw.cartodb.com/api/v2/sql?q=' + query;
+    return $.ajax({
+        url: url,
+        cache: !1,
+        dataType: "jsonp"
+    })
+}
+
+function checkForConditionalFields(e) {
+    "tolling" == e.toLowerCase() ? (showHideBoatLicenceFields("none"), showHideLicensingFields("none"), checkForTollingFields(e)) : "boat licences and vessel registration" == e.toLowerCase() ? (showHideTollingFields("none"), showHideLicensingFields("none"), checkForBoatLicenceFields(e)) : "licensing" == e.toLowerCase() ? (showHideBoatLicenceFields("none"), showHideTollingFields("none"), checkForLicensingFields(e)) : (showHideBoatLicenceFields("none"), showHideTollingFields("none"), showHideLicensingFields("none")), document.getElementById("sitePageId:caseFormId:pblockId:sstsWebFields").style.display = "none"
+}
+
+function checkForTollingFields(e) {
+    "tolling" == e.toLowerCase() ? (showHideTollingFields("block"), addPlaceholderListener()) : (showHideTollingFields("none"), $(".tolling").val(""))
+}
+
+function checkForBoatLicenceFields(e) {
+    "boat licences and vessel registration" == e.toLowerCase() ? showHideBoatLicenceFields("block") : (showHideBoatLicenceFields("none"), $(".boatLicence").val(""))
+}
+
+function checkForLicensingFields(e) {
+    "licensing" == e.toLowerCase() ? showHideLicensingFields("block") : (showHideLicensingFields("none"), $(".licensing").val(""))
+}
+
+function retrieveModeRelatedTaxonomy() {
+    var e = document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").value;
+    retrieveTaxonomy(e), resetLocation(), resetModeSpecificFields()
+}
+
+function preselectNonRmsMode(e) {
+    for (var t = document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").options, o = 0; o < t.length; o++) t[o].text.toLowerCase() == e.toLowerCase() && (document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").value = t[o].text, retrieveModeRelatedTaxonomy())
+}
+
+function resetModeSpecificFields() {
+    $(".busField").val(""), $("#bus-route").val(""), $(".trainField").val(""), $("#train-line").val(""), $("#train-station").val(""), $(".metroField").val(""), $("#metro-line").val(""), $("#metro-station").val(""), $(".ferryField").val(""), $("#ferry-wharf").val(""), $("#ferry-route").val("")
+}
+
+function resetLocation() {
+    document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").value = "", $(document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location")).addClass("placeholder"), initializeAutoCompleteForLocation("Sydney, NSW")
+}
+
+function openLoadingDialog() {
+    $("#AnimatedImage").dialog("open")
+}
+
+function handleShiftTabForAddAttachments(e) {
+    var t, o;
+    e = null != e ? e.toLowerCase() : "", e == sourceRms || e == sourceRmsIntranet || e == modeMaritime ? (t = document.getElementById("addAttachments"), o = document.getElementById("sitePageId:caseFormId:pblockId:your-feedback")) : (t = document.getElementById("addAttachments"), o = document.getElementById("sitePageId:caseFormId:pblockId:your-feedback2")), t.addEventListener ? t.addEventListener("keydown", function(e, t) {
+        var n = e.which || e.keyCode;
+        9 == n && e.shiftKey && (e.preventDefault ? e.preventDefault() : e.returnValue = !1, o.focus())
+    }) : t.attachEvent("onkeydown", function(e, t) {
+        var n = e.which || e.keyCode;
+        9 == n && e.shiftKey && (e.preventDefault ? e.preventDefault() : e.returnValue = !1, o.focus())
+    })
+}
+
+function preselectRmsMode(e) {
+    var t = $("label[for='sitePageId:caseFormId:pblockId:rmsOption:0']").text().trim(),
+        o = $("label[for='sitePageId:caseFormId:pblockId:rmsOption:1']").text().trim();
+    t.toLowerCase() == e.toLowerCase() ? (document.getElementById("sitePageId:caseFormId:pblockId:rmsOption:0").checked = !0, selectMode(document.getElementById("sitePageId:caseFormId:pblockId:rmsOption:0").value)) : o.toLowerCase() == e.toLowerCase() && (document.getElementById("sitePageId:caseFormId:pblockId:rmsOption:1").checked = !0, selectMode(document.getElementById("sitePageId:caseFormId:pblockId:rmsOption:1").value))
+}
+
+function onKeyUpJstreeSearch(e, t) {
+    $("#" + e).css("width", $("#" + t).css("width")), $("#" + t).on("keyup", function(o, n) {
+        var a = o.which || o.keyCode,
+            d = !1;
+        if (9 == a) o.preventDefault ? o.preventDefault() : o.returnValue = !1;
+        else if (40 == a) {
+            var r = document.getElementById(e).getElementsByTagName("li");
+            if (r) {
+                var i;
+                for (i = 0; i < r.length; i++)
+                    if ("block" == r[i].style.display) {
+                        var c = document.getElementById(r[i].id).getElementsByTagName("a")[0];
+                        $(c).focus();
+                        break
+                    }
+                if (i == r.length) {
+                    var c = document.getElementById(r[0].id).getElementsByTagName("a")[0];
+                    $(c).focus()
+                }
+            }
+        } else $("#" + e).is(":visible") || $("#" + e).show(), d && clearTimeout(d), d = setTimeout(function() {
+            var o = $("#" + t).val();
+            $("#" + e).css("height", "auto"), $("#" + e).jstree(!0).search(o), $(".jstree-anchor").each(function() {
+                var e = $(this).html();
+//                console.log('html', e);
+                e = e.replace(new RegExp('<strong class="highlight">', "gi"), ""), e = e.replace(new RegExp("</strong>", "gi"), ""), $(this).html(e)
+            }), $(".jstree-search").each(function() {
+                var e = $(this).text();
+//                console.log('text', e);
+                o.length > 0 && (e = e.replace(new RegExp(o.replace('(', '[(]').replace(')', '[)]'), "gi"), "<strong class='highlight'>$&</strong>")), $(this).html(e)
+            });
+            var n = 0;
+            $(document.getElementById(e).childNodes[0].childNodes).each(function() {
+                var e = $(this).html();
+//                console.log('html', e);
+                e.search('<strong class="highlight">') < 0 && o.length > 0 || n++
+            }), $(document.getElementById(e).childNodes[0]).show(), 0 == n ? ($(document.getElementById(e).childNodes[0]).hide(), 1 == document.getElementById(e).childNodes.length ? document.getElementById(e).appendChild(document.createTextNode(" No matches found")) : document.getElementById(e).childNodes[1] = document.createTextNode(" No matches found")) : document.getElementById(e).childNodes.length > 1 && document.getElementById(e).removeChild(document.getElementById(e).childNodes[1]), $("#" + e).css("width", $("#" + t).css("width")), $("#" + e).css("height").replace("px", "") > 250 && $("#" + e).css("height", "250px")
+        }, 1)
+    })
+}
+
+function handleTabPressForCategory() {
+    $("#feedback-category").on("keydown", function(e, t) {
+        var o = e.which || e.keyCode;
+        if (9 == o && !e.shiftKey) {
+            populateSubCategory($("#feedback-category").val());
+            var n = document.getElementById("sub-category").options;
+            n.length > 1 && (e.preventDefault ? e.preventDefault() : e.returnValue = !1, $("#sub-category").focus())
+        }
+    })
+}
+
+function handleTabPressForLocation() {
+    document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").addEventListener ? document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").addEventListener("keydown", function(e, t) {
+        var o = e.which || e.keyCode;
+        9 != o || e.shiftKey ? 13 != o || e.shiftKey || setMarkerToLocation() : focusReportToGoogle()
+    }) : document.getElementById("sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location").attachEvent("onkeydown", function(e, t) {
+        var o = e.which || e.keyCode;
+        9 != o || e.shiftKey ? 13 != o || e.shiftKey || setMarkerToLocation() : focusReportToGoogle()
+    })
+}
+
+function focusReportToGoogle() {
+    var e = "#map_canvas div a";
+    $(e).each(function(e) {
+        var t = this.getAttribute("title");
+        t && (t = t.toLowerCase().trim()), "report errors in the road map or imagery to google" == t && $(this).trigger("focus")
+    })
+}
+
+function selectMode(e) {
+    $(".rmsCategorySpecific").hide(), $(".dateSpecific").hide(), $(".dateSpecific").val(""), $(".rmsCategorySpecific").val(""), document.getElementById("feedback-category").disabled = !1;
+    for (var t = e.toLowerCase(), o = document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").options, n = 0; n < o.length; n++) o[n].text.toLowerCase() == t && t.length > 0 && (document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").value = o[n].text);
+    populateCategory(e), showHideTollingFields("none"), $(".tolling").val("");
+    for (var a = document.getElementById("sub-category"), d = a.options, n = d.length; n > 1; n--) $(d[n - 1]).remove();
+    a.options[0] = new Option("--None--", ""), $("#subCategoryDiv").hide()
+}
+
+function handleTabPress(e, t, o, n) {
+    document.getElementById(e).addEventListener ? document.getElementById(e).addEventListener("keydown", function(a) {
+        var d = a.which || a.keyCode;
+        9 != d || a.shiftKey || n ? n && a.shiftKey && 9 == d ? (a.preventDefault ? a.preventDefault() : a.returnValue = !1, document.getElementById(t).focus(), document.getElementById("showTree").checked = !1) : 40 != d || "stop-name" != e && "train-station" != e && "train-line" != e && "metro-station" != e && "metro-line" != e && "ferry-route" != e && "ferry-wharf" != e && "bus-route" != e || (document.getElementById("showTree").checked = !0) : ("train-line" == e && (o = checkForPnrLines(document.getElementById(e).value) ? "trainField0" : "trainField1"), a.preventDefault ? a.preventDefault() : a.returnValue = !1, o ? $("." + o).focus() : document.getElementById(t).focus(), document.getElementById("showTree").checked = !1)
+    }) : document.getElementById(e).attachEvent("onkeydown", function(a) {
+        var d = a.which || a.keyCode;
+        9 != d || a.shiftKey || n ? n && a.shiftKey && 9 == d ? (a.preventDefault ? a.preventDefault() : a.returnValue = !1, document.getElementById(t).focus(), document.getElementById("showTree").checked = !1) : 40 != d || "stop-name" != e && "train-station" != e && "train-line" != e && "metro-station" != e && "metro-line" != e && "ferry-route" != e && "ferry-wharf" != e && "bus-route" != e || (document.getElementById("showTree").checked = !0) : (a.preventDefault ? a.preventDefault() : a.returnValue = !1, o ? $("." + o).focus() : document.getElementById(t).focus(), document.getElementById("showTree").checked = !1)
+    }), "metro-line" == e ? $("#mLine").hide() : "train-line" == e ? $("#trainLine").hide() : "metro-station" == e ? $("#metroStation").hide() : "train-station" == e ? $("#trainStation").hide() : "ferry-wharf" == e ? $("#ferryWharf").hide() : "ferry-route" == e ? $("#ferryRoute").hide() : "bus-route" == e ? $("#busRoute").hide() : "stop-name" == e && $("#stopName").hide()
+}
+
+function clearPlaceholder(e) {
+    var t = $(e);
+    t.attr("placeholder") && e.value === t.attr("placeholder") && (t.removeClass("placeholder"), t[0].value = "")
+}
+
+function onFocusPlaceholder(e) {
+    var t = $(e);
+    t.attr("placeholder") && t[0].value == t.attr("placeholder") && (t.removeClass("placeholder"), t[0].value = "")
+}
+
+function onBlurPlaceholder(e) {
+    var t = $(e);
+    t.attr("placeholder") && "" == t[0].value && (t.addClass("placeholder"), t[0].value = t.attr("placeholder"))
+}
+
+function setPlaceholder(e) {
+    var t = $(e);
+    "" === e.value && t.attr("placeholder") ? (t.addClass("placeholder"), t[0].value = t.attr("placeholder")) : t.attr("placeholder") && e.value != t.attr("placeholder") && t.removeClass("placeholder")
+}
+
+function checkForConditionSubCat(e) { console.log('e.toLowerCase()' + e.toLowerCase());
+
+var l2yfia = $("#feedback-category").val();
+console.log('l2yfia.toLowerCase()' + l2yfia.toLowerCase());   
+
+    (("school student transport scheme" == e.toLowerCase()) || ("school drive subsidy/pvc" == e.toLowerCase()) || ("school student transport scheme" == l2yfia.toLowerCase()) || ("school drive subsidy/private vehicle conveyance" == l2yfia.toLowerCase()) ) ? document.getElementById("sitePageId:caseFormId:pblockId:sstsWebFields").style.display = "block" : document.getElementById("sitePageId:caseFormId:pblockId:sstsWebFields").style.display = "none";
+	
+	//SFCOE-2357 - Remove hardcoding of mandatorystars on SSTS webform to enable selection of school drive subsidy pvc - Start - 31-01-2018
+	
+	if(("school student transport scheme" == e.toLowerCase()) || ("school drive subsidy/pvc" == e.toLowerCase()) || ("school student transport scheme" == l2yfia.toLowerCase()) || ("school drive subsidy/private vehicle conveyance" == l2yfia.toLowerCase())){  
+		document.getElementById("mandatoryStarStudentName").style.display = "";
+		document.getElementById("mandatoryStarStreetAddress").style.display = "";
+		document.getElementById("mandatoryStarSchoolName").style.display = "";
+		document.getElementById("mandatoryStarSchoolYear").style.display = "";
+	}
+	if ("school student transport scheme" == e.toLowerCase() || ("school student transport scheme" == l2yfia.toLowerCase()) || ("school drive subsidy/private vehicle conveyance" == l2yfia.toLowerCase())){   
+		document.getElementById("mandatoryStarOperatorDetails").style.display = "";
+	}
+	if ("school drive subsidy/pvc" == e.toLowerCase()){
+		document.getElementById("mandatoryStarOperatorDetails").style.display = "none";
+	}	
+	
+	//SFCOE-2357 - Remove hardcoding of mandatorystars on SSTS webform - End
+	
+	
+}
+
+function validatePageUsed() {
+    var e = !1;
+    if (document.getElementById("page")) {
+        var t = document.getElementById("page").value;
+        t && (e = !0)
+    }
+    return e ? (document.getElementById("page").setAttribute("aria-invalid", "false"), document.getElementById("pageUsedErrorMsg").innerHTML = "", document.getElementById("page").style.outline = "0") : (document.getElementById("pageUsedErrorMsg").innerHTML = "Error: Please specify the page URL.", document.getElementById("page").style.outline = "1px solid #EF0000", document.getElementById("page").setAttribute("aria-invalid", "true"), setErrorFieldId("page")), e
+}
+
+function validateWebFeedback() {
+    var e = !0;
+    return validateWebOptions() || (e = !1), validatePageUsed() || (e = !1), validateWebsiteRelatingTo() || (e = !1), e
+}
+
+function validateDeviceOption() {
+    var e, t, o = !0;
+    document.getElementById("browser").setAttribute("aria-invalid", "false"), document.getElementById("browser") && (e = document.getElementById("browser").value), document.getElementById("operatingSystem") && (t = document.getElementById("operatingSystem").value);
+    var n;
+    return e ? (document.getElementById("browser").setAttribute("aria-invalid", "false"), document.getElementById("browser").style.outline = "0") : (n = "Please specify browser details used for accessing page.", document.getElementById("browser").style.outline = "1px solid #EF0000", document.getElementById("browser").setAttribute("aria-invalid", "true"), setErrorFieldId("browser"), o = !1), t ? (document.getElementById("operatingSystem").setAttribute("aria-invalid", "false"), document.getElementById("operatingSystem").style.outline = "0") : (n = "Please specify operating system details used for accessing page.", document.getElementById("operatingSystem").style.outline = "1px solid #EF0000", document.getElementById("operatingSystem").setAttribute("aria-invalid", "true"), setErrorFieldId("operatingSystem"), o = !1), e || t || (n = "Please specify browser and operating system details used for accessing page.", setErrorFieldId("browser"), document.getElementById("browser").setAttribute("aria-invalid", "true"), o = !1), o ? (document.getElementById("deviceOptionErrorMsg").innerHTML = "", document.getElementById("browser").style.outline = "0", document.getElementById("browser").setAttribute("aria-invalid", "false"), document.getElementById("operatingSystem").style.outline = "0", document.getElementById("operatingSystem").setAttribute("aria-invalid", "false")) : document.getElementById("deviceOptionErrorMsg").innerHTML = n, o
+}
+
+function validateWebOptions() {
+	var e = document.getElementById("sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:tfnswWebOptions");
+        if (e.value == "") {
+            document.getElementById("webOptionErrorMsg").innerHTML = "Error: Please specify website.";
+            document.getElementById("sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:tfnswWebOptions").style.outline = "1px solid #EF0000";
+            setErrorFieldId("webOptionErrorMsg")
+        } else if (e.value == "Other" && document.getElementById("otherOptionText").value == "") {
+            document.getElementById("webOptionErrorMsg").innerHTML = "Error: Please specify website.";
+            document.getElementById("otherOptionText").style.outline = "1px solid #EF0000";
+            setErrorFieldId("webOptionErrorMsg");
+        } else {
+            return 1;
+        }
+
+}
+
+function validateAppDevice() {
+    var e, t = !0;
+    return document.getElementById("device") && (e = document.getElementById("device").value), e ? (document.getElementById("deviceErrorMsg").innerHTML = "", document.getElementById("device").style.outline = "0", document.getElementById("device").setAttribute("aria-invalid", "false")) : (t = !1, document.getElementById("deviceErrorMsg").innerHTML = "Error: Please specify device used for accessing the app.", document.getElementById("device").style.outline = "1px solid #EF0000", document.getElementById("device").setAttribute("aria-invalid", "true"), setErrorFieldId("device")), t
+}
+
+function validateAppOS() {
+    var e, t = !0;
+    return document.getElementById("operatingSystem") && (e = document.getElementById("operatingSystem").value), e ? (document.getElementById("osErrorMsg").innerHTML = "", document.getElementById("operatingSystem").setAttribute("aria-invalid", "false"), document.getElementById("operatingSystem").style.outline = "0") : (t = !1, document.getElementById("osErrorMsg").innerHTML = "Error: Please specify operating system of device used for accessing the app.", document.getElementById("operatingSystem").style.outline = "1px solid #EF0000", document.getElementById("operatingSystem").setAttribute("aria-invalid", "true"), setErrorFieldId("operatingSystem")), t
+}
+
+function validateAppFeedback() {
+    var e = !0;
+    return validateAppOptions() || (e = !1), validateAppRelatingTo() || (e = !1), e
+}
+
+function validateAppOptions() {
+    for (var e = !1, t = document.getElementsByName("appOptions"), o = !1, n = 0; n < t.length; n++) t[n].checked && ("Other" == t[n].value && document.getElementById("otherOptionText").value.length > 0 ? e = !0 : "Other" != t[n].value ? e = !0 : o = !0);
+    return document.getElementById("otherOptionText").style.outline = "0", document.getElementById("otherOptionText").setAttribute("aria-invalid", "false"), o && 0 == e ? (document.getElementById("appOptionErrorMsg").innerHTML = "Error: Please specify app.", document.getElementById("otherOptionText").style.outline = "1px solid #EF0000", document.getElementById("otherOptionText").setAttribute("aria-invalid", "true"), setErrorFieldId("appOptionErrorMsg")) : e ? document.getElementById("appOptionErrorMsg").innerHTML = "" : (document.getElementById("appOptionErrorMsg").innerHTML = "Error: Please select an app.", setErrorFieldId("appOptionErrorMsg")), e
+}
+
+function populateSstsFeedback(e) {
+    var t = document.getElementById("student-name").value,
+        o = document.getElementById("school-name").value,
+        n = document.getElementById("schoolYear").value,
+        a = document.getElementById("student-street-address").value,
+        d = document.getElementById("operator-details").value,
+        r = document.getElementById("opal-card-number").value;
+    t && t.length > 0 && (e.value = e.value + "\nStudent name: " + t), a && a.length > 0 && (e.value = e.value + "\nStudent street address: " + a), d && d.length > 0 && (e.value = e.value + "\nOperator details: " + d), o && o.length > 0 && (e.value = e.value + "\nSchool name: " + o), n && n.length > 0 && "--None--" != n && "Please select" != n && (e.value = e.value + "\nSchool year: " + n), r && r.length > 0 && (e.value = e.value + "\nOpal card number: " + r)
+}
+
+function populateAppFeedback(e) {
+    document.getElementById("feedback-category").value = "Apps", document.getElementById("sitePageId:caseFormId:pblockId:category").value = "Apps";
+    for (var t = document.getElementsByName("appOptions"), o = "", n = 0; n < t.length; n++) t[n].checked && (o = "Other" == t[n].value ? o + document.getElementById("otherOptionText").value + ", " : o + t[n].value + ", ");
+    o.length > 2 && (o = o.substring(0, o.length - 2)), o && o.length > 0 && (document.getElementById("sub-category").value = o, document.getElementById("sitePageId:caseFormId:pblockId:subcategory").value = o, e.value = e.value + "\nFeedback for app: " + o);
+    var a = document.getElementById("sitePageId:caseFormId:pblockId:appOptions:appsComponent:relatedTo").value;
+    a.length > 0 && (e.value = e.value + "\nRelating To: " + a);
+    var d = document.getElementById("tripUrl").value;
+    d.length > 0 && (e.value = e.value + "\nTrip details: " + d);
+    var r, i = document.getElementById("sitePageId:caseFormId:pblockId:appOptions:appsComponent:responseRadio:0"),
+        c = document.getElementById("sitePageId:caseFormId:pblockId:appOptions:appsComponent:responseRadio:1");
+    i && i.checked ? r = "Yes" : c && c.checked && (r = "No"), r && r.length > 0 && (e.value = e.value + "\nUser uses the same device: " + r);
+    var s = document.getElementById("device");
+    s && s.value.length > 0 && (e.value = e.value + "\nDevice details: " + s.value);
+    var l = document.getElementById("operatingSystem");
+    l && l.value.length > 0 && (e.value = e.value + "\nOperating system used: " + l.value)
+}
+
+function populateWebsiteFeedback(e) {
+    document.getElementById("feedback-category").value = "Website/Trip Planner", document.getElementById("sitePageId:caseFormId:pblockId:category").value = "Website/Trip Planner";
+    for (var t = document.getElementsByName("websiteOptions"), o = "", n = "", a = 0; a < t.length; a++) t[a].checked && (n = t[a].value, o = t[a].value, "Other" == t[a].value && (o = document.getElementById("otherOptionText").value));
+    var d = document.getElementById("page"),
+        r = "";
+    d && d.value.length > 0 && (r = d.value);
+    var i, c = document.getElementById("sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:relatedTo");
+    c && c.value.length > 0 && (i = c.value);
+    var s, l = document.getElementById("timetable");
+    l && l.value.length > 0 && (s = l.value);
+    var m, u = document.getElementById("tripUrl");
+    u && u.value.length > 0 && (m = u.value);
+    var g, p = document.getElementById("tripSettings");
+    p && p.value.length > 0 && (g = p.value);
+    var I, y = document.getElementById("browser");
+    y && y.value.length > 0 && (I = y.value);
+    var f, h = document.getElementById("operatingSystem");
+    h && h.value.length > 0 && (f = h.value);
+    var v, b = document.getElementById("sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:responseRadio:0"),
+        E = document.getElementById("sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:responseRadio:1");
+    b && b.checked ? v = "Yes" : E && E.checked && (v = "No"), o && o.length > 0 && (document.getElementById("sitePageId:caseFormId:pblockId:subcategory").value = n, e.value = e.value + "\nFeedback for websites: " + o), r && r.length > 0 && (e.value = e.value + "\nWebsite page url: " + r), i && i.length > 0 && (e.value = e.value + "\nFeedback relating to: " + i), m && m.length > 0 && (e.value = e.value + "\nTrip planner link: " + m), g && g.length > 0 && (e.value = e.value + "\nTrip settings used: " + g), s && s.length > 0 && (e.value = e.value + "\nTimetable used: " + s), v && v.length > 0 && (e.value = e.value + "\nUser uses the same device: " + v), I && I.length > 0 && (e.value = e.value + "\nBrowser used: " + I), f && f.length > 0 && (e.value = e.value + "\nOperating system used: " + f)
+}
+
+function formatDate(e) {
+    e = e.split("/");
+    var t = "";
+    if (3 == e.length && 4 == e[2].length) {
+        var o = new Date(e[2], e[1] - 1, e[0]);
+        if (isNaN(e[2]) || isNaN(e[1]) || isNaN(e[0]) || isNaN(o));
+        else {
+            var n = o.getDate(),
+                a = "",
+                d = "";
+            switch (o.getDay()) {
+                case 0:
+                    a = "Sun";
+                    break;
+                case 1:
+                    a = "Mon";
+                    break;
+                case 2:
+                    a = "Tue";
+                    break;
+                case 3:
+                    a = "Wed";
+                    break;
+                case 4:
+                    a = "Thu";
+                    break;
+                case 5:
+                    a = "Fri";
+                    break;
+                case 6:
+                    a = "Sat"
+            }
+            switch (o.getMonth()) {
+                case 0:
+                    d = "Jan";
+                    break;
+                case 1:
+                    d = "Feb";
+                    break;
+                case 2:
+                    d = "Mar";
+                    break;
+                case 3:
+                    d = "Apr";
+                    break;
+                case 4:
+                    d = "May";
+                    break;
+                case 5:
+                    d = "Jun";
+                    break;
+                case 6:
+                    d = "Jul";
+                    break;
+                case 7:
+                    d = "Aug";
+                    break;
+                case 8:
+                    d = "Sep";
+                    break;
+                case 9:
+                    d = "Oct";
+                    break;
+                case 10:
+                    d = "Nov";
+                    break;
+                case 11:
+                    d = "Dec"
+            }
+            var r = new Date;
+            r.setHours(0), r.setMinutes(0), r.setSeconds(0), r.setMilliseconds(0), r - o > 0 ? t = n + " " + d + " (" + a + ")" : r - o == 0 && (t = "Today (" + a + ")")
+        }
+    }
+    return t
+}
+
+function formatIncidentDate(e) {
+    var t = formatDate(e);
+    t.length > 0 ? (e = e.split("/"), $("#date-of-trip-str").val(e[0] + "/" + e[1] + "/" + e[2]), $("#date-of-trip").val(t)) : ($("#date-of-trip").val(""), $("#date-of-trip-str").val(""))
+}
+
+function preselectModes(e, t) {
+    e.length > 0 && (t.toLowerCase() == modeMaritime || t.toLowerCase() == sourceRmsIntranet || t.toLowerCase() == sourceRms ? preselectRmsMode(e) : preselectNonRmsMode(e))
+}
+
+function preselectSubCategories(e, t, o) {
+
+var l2yfia = $("#feedback-category").val();
+console.log('l2yfia.toLowerCase()' + l2yfia.toLowerCase());
+
+    if (e.length > 0) {
+        e = e.toLowerCase();  console.log('e.toLowerCase()' + e.toLowerCase());
+        for (var n = document.getElementById("sub-category").options, a = 0; a < n.length; a++) n[a].text.toLowerCase() == e && (document.getElementById("sub-category").value = n[a].text, (("school student transport scheme" == e.toLowerCase()) || ("school drive subsidy/pvc" == e.toLowerCase()) || ("school student transport scheme" == l2yfia.toLowerCase()) || ("school drive subsidy/private vehicle conveyance" == l2yfia.toLowerCase())) ? document.getElementById("sitePageId:caseFormId:pblockId:sstsWebFields").style.display = "block" : document.getElementById("sitePageId:caseFormId:pblockId:sstsWebFields").style.display = "none", $("#subCategoryDiv").show());
+        var d = "";
+        if ("non-modal" == o.toLowerCase()) {
+            "website" == t.toLowerCase() ? (d = "websiteOptions", $("#subCategoryDiv").hide()) : "apps" == t.toLowerCase() && (d = "appOptions", $("#subCategoryDiv").hide());
+            for (var r = !1, i = document.getElementsByName(d), a = 0; a < i.length; a++) i[a].value.toLowerCase() == e.toLowerCase() && (i[a].checked = !0, r = !0);
+            r || document.getElementById("otherOptionText") && (document.getElementById("otherOptionText").value = e, document.getElementById("otherOptionText").disabled = !1, document.getElementById("otherOption").checked = !0)
+        }
+    
+	
+	//SFCOE-2357 - Remove hardcoding of mandatorystars on SSTS webform - Start - 31-01-2018
+	
+	if(("school student transport scheme" == e.toLowerCase()) || ("school drive subsidy/pvc" == e.toLowerCase()) || ("school student transport scheme" == l2yfia.toLowerCase()) || ("school drive subsidy/private vehicle conveyance" == l2yfia.toLowerCase())){  
+		document.getElementById("mandatoryStarStudentName").style.display = "";
+		document.getElementById("mandatoryStarStreetAddress").style.display = "";
+		document.getElementById("mandatoryStarSchoolName").style.display = "";
+		document.getElementById("mandatoryStarSchoolYear").style.display = "";
+	}
+	if ("school student transport scheme" == e.toLowerCase() || ("school student transport scheme" == l2yfia.toLowerCase()) || ("school drive subsidy/private vehicle conveyance" == l2yfia.toLowerCase())){   
+		document.getElementById("mandatoryStarOperatorDetails").style.display = "";
+	}
+	if ("school drive subsidy/pvc" == e.toLowerCase()){
+		document.getElementById("mandatoryStarOperatorDetails").style.display = "none";
+	}
+	
+	//SFCOE-2357 - Remove hardcoding of mandatorystars on SSTS webform - Start
+	
+	}
+}
+
+function preselectCategories(e) {
+    if (e.length > 0) {
+        e = e.toLowerCase();
+        for (var t = document.getElementById("feedback-category").options, o = 0; o < t.length; o++) t[o].text.toLowerCase() == e && (document.getElementById("feedback-category").value = t[o].text, checkForTollingFields(e), populateSubCategory(t[o].text))
+    }
+}
+
+function submitForm(feedbackFor, about, source) {
+    errorFieldId = '';
+    isMandatoryDataFilled = true;
+    var description = $('#detailed-description').val();
+    var inputElements = document.querySelectorAll('.formInput');
+    for (var i = 0; i < inputElements.length; i++) {
+        clearPlaceholder(inputElements[i]);
+    }
+    if (!description) {
+        var validationStatus = validateForm();
+        var rmsModeSelected = validateRmsMode(source);
+        var intranetUsersValidation = true;
+        var webFeedbackValidation = true;
+        var appFeedbackValidation = true;
+        if (source.length > 0 && source.toLowerCase().search('intranet') >= 0) {
+            intranetUsersValidation = validateIntranetFields();
+        }
+        var mode = document.getElementById('sitePageId:caseFormId:pblockId:mode-of-travel').value;
+        if (!mode) {
+            mode = about;
+        }
+
+        if (feedbackFor == 'website' && mode.length > 0 && mode.toLowerCase() == 'non-modal') {
+            webFeedbackValidation = validateWebFeedback();
+        } else if (feedbackFor == 'apps' && mode.length > 0 && mode.toLowerCase() == 'non-modal') {
+            appFeedbackValidation = validateAppFeedback();
+        }
+        console.log('ValidationStatus: ' + validationStatus);
+        console.log('rmsModeSelected: ' + rmsModeSelected);
+        console.log('intranetUsersValidation: ' + intranetUsersValidation);
+        console.log('webFeedbackValidation: ' + webFeedbackValidation);
+        console.log('appFeedbackValidation: ' + appFeedbackValidation);
+        if (validationStatus == true && rmsModeSelected == true && intranetUsersValidation == true && webFeedbackValidation == true && appFeedbackValidation == true) {
+            var inputElements = document.getElementsByTagName('input');
+            for (var i = 0; i < inputElements.length; i++) {
+                inputElements[i].removeAttribute('placeholder');
+            }
+            var textAreaElements = document.getElementsByTagName('textarea');
+            for (var i = 0; i < textAreaElements.length; i++) {
+                textAreaElements[i].removeAttribute('placeholder');
+            }
+            if (document.getElementById('date-of-trip-str')) {
+                var incidentDate = document.getElementById('date-of-trip-str').value;
+                if (incidentDate && incidentDate != 'DD/MM/YYYY') {
+                    var date = incidentDate + ' 10:10 AM';
+                    document.getElementById('sitePageId:caseFormId:pblockId:dateOfIncident').value = date;
+                }
+            }
+            document.getElementById('date-of-trip').value = '';
+            document.getElementById('date-of-trip-str').value = '';
+
+            if (source.toLowerCase() != modeMaritime && source.toLowerCase() != sourceRmsIntranet && source.toLowerCase() != sourceRms) {
+                mode = mode.toLowerCase();
+                var modeOptions = document.getElementById('sitePageId:caseFormId:pblockId:mode-of-travel').options;
+                for (var i = 0; i < modeOptions.length; i++) {
+                    if (modeOptions[i].text.toLowerCase() == mode && mode.length > 0) {
+                        document.getElementById('sitePageId:caseFormId:pblockId:mode-of-travel').value = modeOptions[i].text;
+                    }
+                }
+            }
+
+            document.getElementById('sitePageId:caseFormId:pblockId:subcategory').value = document.getElementById('sub-category').value;
+            document.getElementById('sitePageId:caseFormId:pblockId:category').value = document.getElementById('feedback-category').value;
+            var appendStr = '';
+            var station = '';
+            var newLocValue = '';
+            if (mode == 'train' && document.getElementById('train-line').value.length > 0) {
+                appendStr = 'Train Line: ' + document.getElementById('train-line').value;
+                newLocValue = document.getElementById('train-line').value;
+                station = document.getElementById('train-station').value;
+            } else if (mode == 'metro' && document.getElementById('metro-line').value.length > 0) {
+                appendStr = 'Metro Line: ' + document.getElementById('metro-line').value;
+                newLocValue = document.getElementById('metro-line').value;
+                station = document.getElementById('metro-station').value;
+            } else if (mode == 'ferry' && document.getElementById('ferry-route').value.length > 0) {
+                newLocValue = document.getElementById('ferry-route').value;
+                appendStr = 'Ferry Route: ' + document.getElementById('ferry-route').value;
+                station = document.getElementById('ferry-wharf').value;
+            } else if (mode == 'light rail') {
+                var route = document.getElementById('sitePageId:caseFormId:pblockId:lightrail-route').value;
+                station = document.getElementById('stop-name').value;
+                if (route.length > 0 && station.length > 0) {
+                    newLocValue = station;
+                    appendStr = 'Route: ' + route;
+                } else if (route.length > 0) {
+                    newLocValue = route;
+                } else if (station.length > 0) {
+                    newLocValue = station;
+                }
+                if (newLocValue.length > 0) {
+                    document.getElementById('sitePageId:caseFormId:pblockId:location').value = newLocValue;
+                }
+            }
+            var descElement;
+            if (document.getElementById('sitePageId:caseFormId:pblockId:your-feedback')) {
+                descElement = document.getElementById('sitePageId:caseFormId:pblockId:your-feedback');
+            } else {
+                descElement = document.getElementById('sitePageId:caseFormId:pblockId:your-feedback2');
+                document.getElementById('dummy-your-feedback2').value = descElement.value;
+                $(document.getElementById('dummy-your-feedback2')).show();
+                $(document.getElementById('sitePageId:caseFormId:pblockId:your-feedback2')).hide();
+            }
+            if (document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:0').checked) {
+                var approxDateOfContact = document.getElementById('approximateDateOfContactStr').value;
+                var howDidYouContactUs = document.getElementById('howDidYouContactUs').value;
+                var referenceNumber = document.getElementById('referenceNumber').value;
+                if (approxDateOfContact.length > 0) {
+                    descElement.value = descElement.value + '\nApproximate date of contact: ' + approxDateOfContact;
+                }
+                if (howDidYouContactUs.length > 0 && howDidYouContactUs != '--None--') {
+                    descElement.value = descElement.value + '\nHow did you contact us: ' + howDidYouContactUs;
+                }
+                if (referenceNumber.length > 0) {
+                    descElement.value = descElement.value + '\nReference Number: ' + referenceNumber;
+                }
+            }
+
+            if (feedbackFor == 'website') {
+                populateWebsiteFeedback(descElement);
+            } else if (feedbackFor == 'apps') {
+                populateAppFeedback(descElement);
+            }
+
+            populateSstsFeedback(descElement);
+
+            if (appendStr.length > 0 && station.length > 0) {
+                descElement.value = descElement.value + '\n' + appendStr;
+            } else if (appendStr.length > 0) {
+                document.getElementById('sitePageId:caseFormId:pblockId:location').value = newLocValue;
+                descElement.value = descElement.value + '#JustLine#';
+            }
+            console.log('mode : ['+mode+']');
+            if (mode == 'on demand'){
+                 console.log('In on demand');
+                var locOfIncident = document.getElementById('sitePageId:caseFormId:pblockId:locationInput:googleInput:autocompleteGoogleInput').value;
+                if (locOfIncident.length > 100) {
+                    document.getElementById('sitePageId:caseFormId:pblockId:locationInput:googleInput:autocompleteGoogleInput').value = locOfIncident.substring(0, 100);
+                }
+            }
+            else{
+                console.log('In NOT on demand');
+                var locOfIncident = document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location').value;
+                if (locOfIncident.length > 100) {
+                    document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location').value = locOfIncident.substring(0, 100);
+                } else if (locOfIncident.length < 1) {
+                    document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:lattitude-of-location').value = '';
+                    document.getElementById('sitePageId:caseFormId:pblockId:locationMap:googleMap:longitude-of-location').value = '';
+                }
+            }
+            document.getElementById('sitePageId:caseFormId:pblockId:caseDescription').value = descElement.value;
+            openLoadingDialog();
+
+            var licencePhotoNumber = document.getElementById('sitePageId:caseFormId:pblockId:tollingFieldItr:1:tolling').value;
+            var vehicleRegistration = document.getElementById('sitePageId:caseFormId:pblockId:tollingFieldItr:2:tolling').value;
+            if (licencePhotoNumber.length > 0) {
+                $('.License_Photo_Card_Number__c').val(licencePhotoNumber);
+            }
+            if (vehicleRegistration.length > 0) {
+                $('.RMS_Vehicle_registration__c').val(vehicleRegistration);
+            }
+
+            createCase();
+            return false;
+        } else {
+            $('#submitBtn').removeAttr('name');
+            document.getElementById(errorFieldId).focus();
+        }
+    }
+    return false;
+}
+
+function validateRmsMode(e) {
+    return e.toLowerCase() != modeMaritime && e.toLowerCase() != sourceRmsIntranet && e.toLowerCase() != sourceRms ? (document.getElementById("sitePageId:caseFormId:pblockId:rmsOption").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:rmsOption").setAttribute("aria-invalid", "false"), document.getElementById("rmOptionErrorMsg").innerHTML = "", !0) : document.getElementById("sitePageId:caseFormId:pblockId:rmsOption:0").checked || document.getElementById("sitePageId:caseFormId:pblockId:rmsOption:1").checked ? (document.getElementById("sitePageId:caseFormId:pblockId:rmsOption").style.outline = "0", document.getElementById("sitePageId:caseFormId:pblockId:rmsOption").setAttribute("aria-invalid", "false"), document.getElementById("rmOptionErrorMsg").innerHTML = "", !0) : (document.getElementById("rmOptionErrorMsg").innerHTML = "Error: Please select RMS mode of transport.", document.getElementById("sitePageId:caseFormId:pblockId:rmsOption").style.outline = "1px solid #EF0000", document.getElementById("sitePageId:caseFormId:pblockId:rmsOption").setAttribute("aria-invalid", "true"), errorFieldId = "", setErrorFieldId("sitePageId:caseFormId:pblockId:rmsOption:0"), !1)
+}
+
+function getRMSlocation(e, t, o, n, a, d, r) {
+    numberOfRoadDatasetRetry = 0, numberOfMaritimeDatasetRetry = 0, numberOfLgaDatasetRetry = 0, (t.toLowerCase() == modeMaritime || t.toLowerCase() == sourceRmsIntranet || t.toLowerCase() == sourceRms) && (o = document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").value), o = o.toLowerCase(), "road" == o ? (queryDatasetForRoads(e, n, r), queryDatasetForLgaSed(e, a, r)) : o == modeMaritime && queryDatasetForMaritime(e, d, r)
+}
+
+function addAttachments(e) {
+    for (var t = 0; e > t; t++) {
+        var o;
+        if (o = document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + t + ":filename") ? document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + t + ":filename") : document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent2:attachmentComponent:attachments:" + t + ":filename"), "" == o.value) {
+            var n;
+            return n = document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + t + ":file") ? document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + t + ":file") : document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent2:attachmentComponent:attachments:" + t + ":file"), void n.click()
+        }
+    }
+}
+
+function updateJstreeAriaLabel(id) {
+    $(document.getElementById(id)).children().children().each(function(e) {
+      var child = $(this);
+      child.attr('aria-label', child.text());
+    });
+}
+
+function trainLineTree(e, t) {
+    for (var o, n = 0; n < e.length; n++) t.toLowerCase() == e[n].category.toLowerCase() && "train" == e[n].mode.toLowerCase() && (o = e[n].subCategory);
+    $("#trainLine").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: o
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("trainLine", "train-line"), setTimeout(function() {
+        updateJstreeAriaLabel("trainLine");
+        updateJstreeAriaLabel("train-line");
+        for (var e = $(document.getElementById("trainLine").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            if (9 == o) {
+                e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("train-line").value = this.innerText.trim() : document.getElementById("train-line").value = this.textContent.trim();
+                var n = checkForPnrLines(document.getElementById("train-line").value);
+                $("#train-line").removeClass("placeholder"), e.shiftKey ? $("#train-station").focus() : 1 == n ? $(".trainField0").focus() : $(".trainField1").focus(), document.getElementById("showTree").checked = !1, $("#trainLine").hide()
+            } else 13 == o && e.preventDefault()
+        })
+    }, 1e3)
+
+}
+
+
+
+function metroLineTree(e, t) {
+    for (var o, n = 0; n < e.length; n++) t.toLowerCase() == e[n].category.toLowerCase() && "metro" == e[n].mode.toLowerCase() && (o = e[n].subCategory);
+	console.log('metroLineTree: subCategory: ' + 0);
+    $("#metroLine").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: o
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("metroLine", "metro-line"), setTimeout(function() {
+        updateJstreeAriaLabel("metroLine");
+        updateJstreeAriaLabel("metro-line");
+        for (var e = $(document.getElementById("metroLine").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            if (9 == o) {
+                e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("metro-line").value = this.innerText.trim() : document.getElementById("metro-line").value = this.textContent.trim();
+                var n = checkForPnrLines(document.getElementById("metro-line").value);
+                $("#metro-line").removeClass("placeholder"), e.shiftKey ? $("#metro-station").focus() : 1 == n ? $(".metroField0").focus() : $(".metroField1").focus(), document.getElementById("showTree").checked = !1, $("#metroLine").hide()
+            } else 13 == o && e.preventDefault()
+        })
+    }, 1e3)
+
+}
+
+
+function trainStationTree(e, t) {
+    for (var o, n = 0; n < e.length; n++) t.toLowerCase() == e[n].category.toLowerCase() && "train" == e[n].mode.toLowerCase() && (o = e[n].subCategory);
+    $("#trainStation").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: o
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("trainStation", "train-station"), setTimeout(function() {
+        updateJstreeAriaLabel("trainStation");
+        updateJstreeAriaLabel("train-station");
+        for (var e = $(document.getElementById("trainStation").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            9 == o ? (e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("train-station").value = this.innerText.trim() : document.getElementById("train-station").value = this.textContent.trim(), setTaxonomyLocation(document.getElementById("train-station")), $("#train-station").removeClass("placeholder"), e.shiftKey ? document.getElementById("sitePageId:caseFormId:pblockId:minutes-of-incident").focus() : $("#train-line").focus(), document.getElementById("showTree").checked = !1, $("#trainStation").hide()) : 13 == o && e.preventDefault()
+        })
+    }, 1e3)
+}
+
+function metroStationTree(e, t) {
+    for (var o, n = 0; n < e.length; n++) t.toLowerCase() == e[n].category.toLowerCase() && "metro" == e[n].mode.toLowerCase() && (o = e[n].subCategory);
+	console.log('metroStationTree: subCategory: ' + o);
+    $("#metroStation").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: o
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("metroStation", "metro-station"), setTimeout(function() {
+        updateJstreeAriaLabel("metroStation");
+        updateJstreeAriaLabel("metro-station");
+        for (var e = $(document.getElementById("metroStation").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            9 == o ? (e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("metro-station").value = this.innerText.trim() : document.getElementById("metro-station").value = this.textContent.trim(), setTaxonomyLocation(document.getElementById("metro-station")), $("#metro-station").removeClass("placeholder"), e.shiftKey ? document.getElementById("sitePageId:caseFormId:pblockId:minutes-of-incident").focus() : $("#metro-line").focus(), document.getElementById("showTree").checked = !1, $("#metroStation").hide()) : 13 == o && e.preventDefault()
+        })
+    }, 1e3)
+}
+
+
+function busRouteTree(e, t) {
+    for (var o, n = 0; n < e.length; n++) t.toLowerCase() == e[n].category.toLowerCase() && "bus" == e[n].mode.toLowerCase() && (o = e[n].subCategory);
+    $("#busRoute").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: o
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("busRoute", "bus-route"), setTimeout(function() {
+        updateJstreeAriaLabel("busRoute");
+        updateJstreeAriaLabel("bus-route");
+        for (var e = $(document.getElementById("busRoute").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            9 == o ? (e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("bus-route").value = this.innerText.trim() : document.getElementById("bus-route").value = this.textContent.trim(), setTaxonomyLocation(document.getElementById("bus-route")), $("#bus-route").removeClass("placeholder"), e.shiftKey ? document.getElementById("sitePageId:caseFormId:pblockId:minutes-of-incident").focus() : $(".busField0").focus(), document.getElementById("showTree").checked = !1, $("#busRoute").hide()) : 13 == o && e.preventDefault()
+        })
+    }, 1e3)
+}
+
+function ondemandRouteTree(e, t) {
+    for (var o, n = 0; n < e.length; n++){
+        t.toLowerCase() == e[n].category.toLowerCase() && "on demand" == e[n].mode.toLowerCase() && (o = e[n].subCategory);
+    }
+    console.log('ondemandRouteTree o '+o);
+    $("#ondemandRoute").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: o
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("ondemandRoute", "ondemand-route"), setTimeout(function() {
+        updateJstreeAriaLabel("ondemandRoute");
+        updateJstreeAriaLabel("ondemand-route");
+        for (var e = $(document.getElementById("ondemandRoute").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            9 == o ? (e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("ondemand-route").value = this.innerText.trim() : document.getElementById("ondemand-route").value = this.textContent.trim(), setTaxonomyLocation(document.getElementById("ondemand-route")), $("#ondemand-route").removeClass("placeholder"), e.shiftKey ? document.getElementById("sitePageId:caseFormId:pblockId:minutes-of-incident").focus() : $(".autocompleteGoogleInput").focus(), document.getElementById("showTree").checked = !1, $("#ondemandRoute").hide()) : 13 == o && e.preventDefault()
+        })
+    }, 1e3)
+}
+
+function ferryRouteTree(e, t) {
+    for (var o, n = 0; n < e.length; n++) t.toLowerCase() == e[n].category.toLowerCase() && "ferry" == e[n].mode.toLowerCase() && (o = e[n].subCategory);
+    $("#ferryRoute").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: o
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("ferryRoute", "ferry-route"), setTimeout(function() {
+        updateJstreeAriaLabel("ferryRoute");
+        updateJstreeAriaLabel("ferry-route");
+        for (var e = $(document.getElementById("ferryRoute").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            9 == o ? (e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("ferry-route").value = this.innerText.trim() : document.getElementById("ferry-route").value = this.textContent.trim(), $("#ferry-route").removeClass("placeholder"), e.shiftKey ? document.getElementById("ferry-wharf").focus() : $(".ferryField0").focus(), document.getElementById("showTree").checked = !1, $("#ferryRoute").hide()) : 13 == o && e.preventDefault()
+        })
+    }, 1e3)
+}
+
+function ferryWharfTree(e, t) {
+    for (var o, n = 0; n < e.length; n++) t.toLowerCase() == e[n].category.toLowerCase() && "ferry" == e[n].mode.toLowerCase() && (o = e[n].subCategory);
+    $("#ferryWharf").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: o
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("ferryWharf", "ferry-wharf"), setTimeout(function() {
+        updateJstreeAriaLabel("ferryWharf");
+        updateJstreeAriaLabel("ferry-wharf");
+        for (var e = $(document.getElementById("ferryWharf").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            9 == o ? (e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("ferry-wharf").value = this.innerText.trim() : document.getElementById("ferry-wharf").value = this.textContent.trim(), setTaxonomyLocation(document.getElementById("ferry-wharf")), $("#ferry-wharf").removeClass("placeholder"), e.shiftKey ? document.getElementById("sitePageId:caseFormId:pblockId:minutes-of-incident").focus() : $(".ferryRoute").focus(), document.getElementById("showTree").checked = !1, $("#ferryWharf").hide()) : 13 == o && e.preventDefault()
+        })
+    }, 2e3)
+}
+
+function populateSubCategories(e, t, o) {
+    var n = document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").value;
+    if (n || (n = t), n = n.toLowerCase(), "road" == n) {
+        var a = ["traffic management & safety", "environment", "road maintenance", "maritime property", "major highways and projects", "licensing and road rules", "speed limits and camera", "traffic management and safety"];
+        new RegExp(a.join("|")).test(e.toLowerCase()) ? ($(".rmsCategorySpecific").show(), $(".dateSpecific").show(), setTimeout(addPlaceholderListener, 4e3)) : ($(".rmsCategorySpecific").hide(), $(".dateSpecific").hide(), $(".dateSpecific").val(""), $(".rmsCategorySpecific").val("")), resetLocation()
+    } else if (n == modeMaritime) {
+        var a = ["report an on-water concern", "maritime products and services", "maritime geospatial and surveying services", "compliance and enforcement", "waterways management and safety", "maritime property", "traffic management and safety"];
+        new RegExp(a.join("|")).test(e.toLowerCase()) ? ($(".rmsCategorySpecific").show(), $(".dateSpecific").show(), setTimeout(addPlaceholderListener, 4e3)) : ($(".rmsCategorySpecific").hide(), $(".dateSpecific").hide(), $(".dateSpecific").val(""), $(".rmsCategorySpecific").val("")), resetLocation()
+    }
+    for (var d = o, r = document.getElementById("sub-category"), i = r.options, c = i.length; c > 1; c--) $(i[c - 1]).remove();
+    r.options[0] = new Option("--None--", ""), $("#subCategoryDiv").hide();
+    for (var c = 0; c < d.length; c++)
+        if (e.toLowerCase() == d[c].category.toLowerCase() && n == d[c].mode.toLowerCase())
+            for (var s = d[c].subCategory, l = 0; l < s.length; l++) {
+                var m = $("<textarea />").html(s[l]).text();
+                r.options[l + 1] = new Option(m, m), $("#subCategoryDiv").show(), 1 == document.getElementById("sub-category").disabled && (document.getElementById("sub-category").disabled = !1)
+            }
+    r.options.length > 1 ? $("#subCategoryDiv").show() : $("#subCategoryDiv").hide()
+}
+
+function populateCategories(e, t) {
+    for (var o = t, n = document.getElementById("feedback-category"), a = n.options, d = a.length; d > 1; d--) $(a[d - 1]).remove();
+    n.options[0] = new Option("--None--", "");
+    for (var d = 0; d < o.length; d++)
+        if (o[d].mode.toLowerCase() == e.toLowerCase()) {
+            var r = $("<textarea />").html(o[d].category).text();
+            n.options[n.options.length] = new Option(r, r)
+        }
+}
+
+function stopNameTree(e) {
+    $("#stopName").jstree({
+        plugins: ["contextmenu", "dnd", "massload", "search", "state", "types", "unique", "ui", "wholerow"],
+        core: {
+            themes: {
+                name: "proton",
+                responsive: !0
+            },
+            data: e
+        },
+        search: {
+            case_insensitive: !0,
+            show_only_matches: !0
+        },
+        ui: {
+            select_limit: 1
+        },
+        state: {
+            ttl: 1e3
+        }
+    }), onKeyUpJstreeSearch("stopName", "stop-name"), setTimeout(function() {
+        for (var e = $(document.getElementById("stopName").children[0]).children(), t = 0; t < e.length; t++) $(e[t]).on("keydown", function(e, t) {
+            var o = e.which || e.keyCode;
+            9 == o ? (e.preventDefault ? e.preventDefault() : e.returnValue = !1, this.innerText ? document.getElementById("stop-name").value = this.innerText.trim() : document.getElementById("stop-name").value = this.textContent.trim(), $("#stop-name").removeClass("placeholder"), e.shiftKey ? document.getElementById("sitePageId:caseFormId:pblockId:lightrail-route").focus() : document.getElementById("sitePageId:caseFormId:pblockId:your-feedback2").focus(), document.getElementById("showTree").checked = !1, $("#stopName").hide()) : 13 == o && e.preventDefault()
+        })
+    }, 1e3)
+}
+
+function retrieveTaxonomies(e, t) {
+    if (document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").value = e, e = e.toLowerCase(), t.toLowerCase() != modeMaritime && t.toLowerCase() != sourceRmsIntranet && t.toLowerCase() != sourceRms) $(".rmsCategorySpecific").hide(), $(".dateSectionLabel").show(), $(".dateSpecific").show(), populateCategory(e), $("#subCategoryDiv").hide(), "train" == e ? ($(".ferryField").css("display", "none"), $(".ondemandField").css("display", "none"), $(".metroField").css("display", "none"), $(".busField").css("display", "none"), $(".locOfIncident").css("display", "none"), $(".trainField").css("display", "block"), setTimeout(function() {
+        retrieveLocationTaxonomy(t, e)
+    }, 500)) : "ferry" == e ? ($(".trainField").css("display", "none"), $(".busField").css("display", "none"), $(".locOfIncident").css("display", "none"), $(".ondemandField").css("display", "none"), $(".metroField").css("display", "none"), $(".ferryField").css("display", "block"), setTimeout(function() {
+        retrieveLocationTaxonomy(t, e), initializeAutoCompleteForLocation("Circular Quay, Sydney, New South Wales")
+    }, 500)) : "bus" == e ? ($(".trainField").css("display", "none"), $(".ferryField").css("display", "none"), $(".locOfIncident").css("display", "none"), $(".ondemandField").css("display", "none"), $(".metroField").css("display", "none"), $(".busField").css("display", "block"), setTimeout(function() {
+        retrieveLocationTaxonomy(t, e), initializeAutoCompleteForLocation("Sydney, NSW"), $(".locOfIncident").css("display", "block")
+    }, 500)) : "on demand" == e ? ($(".trainField").css("display", "none"), $(".ferryField").css("display", "none"), $(".locOfIncident").css("display", "none"), $(".busField").css("display", "none"), $(".ondemandField").css("display", "block"), $(".metroField").css("display", "none"), setTimeout(function() {
+        retrieveLocationTaxonomy(t, e), initAutocompleteGoogleInput(), $(".locOfIncident").css("display", "block")
+    }, 500)) : "metro" == e ? ($(".trainField").css("display", "none"), $(".ferryField").css("display", "none"), $(".locOfIncident").css("display", "none"), $(".busField").css("display", "none"), $(".ondemandField").css("display", "none"), $(".metroField").css("display", "block"), setTimeout(function() {
+        retrieveLocationTaxonomy(t, e), initAutocompleteGoogleInput(), $(".locOfIncident").css("display", "block")
+    }, 500))	: "road" == e || e == modeMaritime ? (setTimeout(function() {
+        initializeAutoCompleteForLocation("Sydney, NSW")
+    }, 500), $(".trainField").css("display", "none"), $(".ferryField").css("display", "none"), $(".busField").css("display", "none"), $(".locOfIncident").css("display", "block")) : ($(".trainField").css("display", "none"), $(".ferryField").css("display", "none"), $(".ondemandField").css("display", "none"), $(".metroField").css("display", "none"), $(".busField").css("display", "none"), $(".locOfIncident").css("display", "none"));
+    else {
+        $(".rmsCategorySpecific").hide(), $(".dateSpecific").hide(), document.getElementById("feedback-category").disabled = !0;
+        var o = document.getElementById("feedback-category");
+        o.options[0] = new Option("--None--", "")
+    }
+    "light rail" == e ? (setTimeout(function() {
+        stopNameTreeSetup()
+    }, 500), $(".lightRailField").show()) : $(".lightRailField").hide()
+}
+
+
+
+function init(e) {
+	//document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").options.item(0).label = "--None--";
+    $("#AnimatedImage").dialog && $("#AnimatedImage").dialog({
+        autoOpen: !1,
+        modal: !0,
+        draggable: !1,
+        width: 0,
+        minHeight: 0,
+        closeText: "Sending...",
+        closeOnEscape: !1
+    }), setTimeout(function() {
+        $("#date-of-trip").datepicker({
+            dateFormat: "dd/mm/yy",
+            maxDate: 0,
+            constrainInput: !0
+        }), $("#date-of-trip-str").datepicker({
+            dateFormat: "dd/mm/yy",
+            maxDate: 0,
+            constrainInput: !0
+        }), $("#approximateDateOfContact").datepicker({
+            dateFormat: "dd/mm/yy",
+            maxDate: 0,
+            constrainInput: !0
+        }), $("#ui-datepicker-div").css("font-size", "80%")
+    }, 1e3), $(".ui-dialog-titlebar").hide(), document.getElementById("sitePageId:caseFormId:pblockId:your-feedback") ? document.getElementById("sitePageId:caseFormId:pblockId:your-feedback").removeAttribute("name") : document.getElementById("sitePageId:caseFormId:pblockId:your-feedback2").removeAttribute("name"), $(".dateFormat").hide(), $(".contactFields").show(), $(".mandatoryContactField").hide(), $(".preferredContactEmail").hide(), $(".preferredContactPhone").hide(), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").options[0].text = "--None--", document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").options[0].text = "--None--", document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:country").options[0].text = "--None--", document.getElementById("sub-category").options[0] = new Option("--None--", ""), $("#subCategoryDiv").hide(), document.getElementById("sitePageId:caseFormId:pblockId:mode-of-travel").value = "", retrieveTaxonomy(e), initiliazeAutoCompleteForAddress(), $("#bus-route").focus(function() {
+        1 == displayTree && $("#busRoute").show()
+    }), $("#ondemand-route").focus(function() {
+        1 == displayTree && $("#ondemandRoute").show()
+    }),$("#stop-name").focus(function() {
+        1 == displayTree && $("#stopName").show()
+    }), $("#train-station").focus(function() {
+        1 == displayTree && ($("#trainLine").hide(), $("#trainStation").show())
+    }), $("#train-line").focus(function() {
+        1 == displayTree && ($("#trainLine").show(), $("#trainStation").hide())
+    }), $("#metro-station").focus(function() {
+        1 == displayTree && ($("#metroLine").hide(), $("#metroStation").show())
+    }), $("#metro-line").focus(function() {
+        1 == displayTree && ($("#metroLine").show(), $("#metroStation").hide())
+    }), $("#ferry-route").focus(function() {
+        1 == displayTree && ($("#ferryRoute").show(), $("#ferryWharf").hide())
+    }), $("#ferry-wharf").focus(function() {
+        1 == displayTree && ($("#ferryWharf").show(), $("#ferryRoute").hide())
+    }), $("#train-line").blur(function() {
+        checkForPnrLines(this.value), setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#trainLine").hide()
+        }, 200)
+    }), $("#train-station").blur(function() {
+        setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#trainStation").hide()
+        }, 200)
+    }), $("#metro-line").blur(function() {
+        setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#metroLine").hide()
+        }, 200)
+    }), $("#metro-station").blur(function() {
+        setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#metroStation").hide()
+        }, 200)
+    }), $("#stop-name").blur(function() {
+        setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#stopName").hide()
+        }, 200)
+    }), $("#bus-route").blur(function() {
+        setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#busRoute").hide()
+        }, 200)
+    }), $("#ondemand-route").blur(function() {
+        setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#ondemandRoute").hide()
+        }, 200)
+    }), $("#ferry-route").blur(function() {
+        setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#ferryRoute").hide()
+        }, 200)
+    }), $("#ferry-wharf").blur(function() {
+        setTimeout(function() {
+            var e = document.getElementById("showTree").checked;
+            1 != e && $("#ferryWharf").hide()
+        }, 200)
+    }), $(".PNR_Number__c").focus(function() {
+        $(this).val() || ($(this).removeClass("placeholder"), $(this).val(""))
+    }), $(".PNR_Number__c").blur(function() {
+        $(this).val() ? $(this).removeClass("placeholder") : $(this).addClass("placeholder")
+    }), $("#trainLine").focus(function() {
+        $("#trainLine").show(), document.getElementById("showTree").checked = !0
+    }), $("#trainLine").blur(function() {
+        $("#trainLine").hide(), document.getElementById("showTree").checked = !1
+    }), $("#trainStation").focus(function() {
+        $("#trainStation").show(), document.getElementById("showTree").checked = !0
+    }), $("#trainStation").blur(function() {
+        $("#trainStation").hide(), document.getElementById("showTree").checked = !1
+    }), $("#ferryRoute").focus(function() {
+        $("#ferryRoute").show(), document.getElementById("showTree").checked = !0
+    }), $("#ferryRoute").blur(function() {
+        $("#ferryRoute").hide(), document.getElementById("showTree").checked = !1
+    }), $("#ferryWharf").focus(function() {
+        $("#ferryWharf").show(), document.getElementById("showTree").checked = !0
+    }), $("#ferryWharf").blur(function() {
+        $("#ferryWharf").hide(), document.getElementById("showTree").checked = !1
+    }), $("#busRoute").focus(function() {
+        $("#busRoute").show(), document.getElementById("showTree").checked = !0
+    }), $("#stopName").focus(function() {
+        $("#stopName").show(), document.getElementById("showTree").checked = !0
+    }), $("#busRoute").blur(function() {
+        $("#busRoute").hide(), document.getElementById("showTree").checked = !1
+    }), $("#stopName").blur(function() {
+        $("#stopName").hide(), document.getElementById("showTree").checked = !1
+    }), document.getElementById("date-of-trip").addEventListener ? document.getElementById("date-of-trip").addEventListener("keyup", function(e) {
+        var t = document.getElementById("date-of-trip").value.split("/");
+        3 == t.length && 4 == t[2].length && (document.getElementById("date-of-trip").disabled = !0), !validateIncidentDate(), document.getElementById("date-of-trip").disabled = !1
+    }) : document.getElementById("date-of-trip").attachEvent("onkeyup", function(e) {
+        !validateIncidentDate(), document.getElementById("date-of-trip").disabled = !1
+    }), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").addEventListener ? document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").addEventListener("keydown", function(e) {
+        for (var t = e.which || e.keyCode, o = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").options, n = document.getElementById("outsideAus").value, a = !1, d = 0; d < o.length; d++) o[d].selected && o[d].text == n && (a = !0);
+        9 != t || e.shiftKey || a || "Complaint" != document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").value && (e.preventDefault ? e.preventDefault() : e.returnValue = !1, document.getElementById("submitBtn").focus())
+    }) : document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").attachEvent("onkeydown", function(e) {
+        for (var t = e.which || e.keyCode, o = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").options, n = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:outsideAus").value, a = !1, d = 0; d < o.length; d++) o[d].selected && o[d].text == n && (a = !0);
+        9 != t || e.shiftKey || a || "Complaint" != document.getElementById("sitePageId:caseFormId:pblockId:type-of-feedback").value && (e.preventDefault ? e.preventDefault() : e.returnValue = !1, document.getElementById("submitBtn").focus())
+    }), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").addEventListener ? document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").addEventListener("keydown", function(e) {
+        var t = e.which || e.keyCode;
+        13 != t || e.shiftKey || (e.preventDefault ? e.preventDefault() : e.returnValue = !1, fillInAddress(), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:locality").focus())
+    }) : document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").attachEvent("onkeydown", function(e) {
+        var t = e.which || e.keyCode;
+        13 != t || e.shiftKey || (e.preventDefault ? e.preventDefault() : e.returnValue = !1, fillInAddress(), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:locality").focus())
+    }), $(".helpIcon").hover(function() {
+        $(this).addClass("sprite-help_orange"), $(this).removeClass("sprite-help_grey")
+    }, function() {
+        $(this).addClass("sprite-help_grey"), $(this).removeClass("sprite-help_orange")
+    }), $(".Bus_driver_identification__c").hover(function() {
+        var e = document.activeElement.className;
+        e.search("Vehicle_Registration__c") < 0 && $("figure.Bus_driver_identification__c").fadeIn("1000")
+    }, function() {
+        $("figure.Bus_driver_identification__c").fadeOut("1000")
+    }), $(".fieldBus_driver_identification__c").blur(function() {
+        $("figure.Bus_driver_identification__c").css("display", "none")
+    }), $(".fieldBus_driver_identification__c").focus(function() {
+        $("figure.Bus_driver_identification__c").css("display", "block")
+    }), $(".Vehicle_Registration__c").hover(function() {
+        var e = document.activeElement.className;
+        e.search("Bus_driver_identification__c") < 0 && $("figure.Vehicle_Registration__c").fadeIn("1000")
+    }, function() {
+        $("figure.Vehicle_Registration__c").fadeOut("1000")
+    }), $(".fieldVehicle_Registration__c").blur(function() {
+        $("figure.Vehicle_Registration__c").css("display", "none")
+    }), $(".fieldVehicle_Registration__c").focus(function() {
+        $("figure.Vehicle_Registration__c").css("display", "block")
+    }), $(".searchableDropdown").on("select_node.jstree", function(e, t) {
+        $("." + e.currentTarget.getAttribute("id")).val($("<textarea />").html(t.instance.get_node(t.selected[0]).text).text()), $("." + e.currentTarget.getAttribute("id")).removeClass("placeholder"), $("#trainLine").hide(), $("#trainStation").hide(), $("#ferryRoute").hide(), $("#ferryWharf").hide(), $("#busRoute").hide(), $("#stopName").hide();
+        var o = e.currentTarget.getAttribute("id");
+        displayTree = !1, "trainStation" == o ? setTimeout(function() {
+            displayTree = !1, $("#train-station").focus(), displayTree = !0
+        }, 200) : "trainLine" == o ? setTimeout(function() {
+            displayTree = !1, $("#train-line").focus(), checkForPnrLines(t.instance.get_node(t.selected[0]).text), displayTree = !0
+        }, 200) : "ferryRoute" == o ? setTimeout(function() {
+            displayTree = !1, $("#ferry-route").focus(), displayTree = !0
+        }, 200) : "ferryWharf" == o ? setTimeout(function() {
+            displayTree = !1, $("#ferry-wharf").focus(), displayTree = !0
+        }, 200) : "busRoute" == o ? setTimeout(function() {
+            displayTree = !1, $("#bus-route").focus(), displayTree = !0
+        }, 200) : "stopName" == o ? setTimeout(function() {
+            displayTree = !1, $("#stop-name").focus(), displayTree = !0
+        }, 200) : displayTree = !0
+    }), $(".searchableDropdown, .searchableLocation").on("ready.jstree", function(e, t) {
+        var o = $("#" + e.currentTarget.getAttribute("id")).css("height");
+        o.replace("px", "") > 250 && $("#" + e.currentTarget.getAttribute("id")).css("height", "250px"), $(".jstree-icon").removeClass("jstree-icon")
+    }), $(".searchableLocation").on("select_node.jstree", function(e, t) {
+        $("." + e.currentTarget.getAttribute("id")).val($("<textarea />").html(t.instance.get_node(t.selected[0]).text).text()), $("." + e.currentTarget.getAttribute("id")).removeClass("placeholder"), $("#trainLine").hide(), $("#trainStation").hide(), $("#ferryRoute").hide(), $("#ferryWharf").hide(), $("#busRoute").hide(), $("#stopName").hide(), document.getElementById("sitePageId:caseFormId:pblockId:location").value = t.instance.get_node(t.selected[0]).text;
+        var o = e.currentTarget.getAttribute("id");
+        displayTree = !1, "trainStation" == o ? setTimeout(function() {
+            displayTree = !1, $("#train-station").focus(), displayTree = !0
+        }, 200) : "trainLine" == o ? setTimeout(function() {
+            displayTree = !1, $("#train-line").focus(), checkForPnrLines(t.instance.get_node(t.selected[0]).text), displayTree = !0
+        }, 200) : "ferryRoute" == o ? setTimeout(function() {
+            displayTree = !1, $("#ferry-route").focus(), displayTree = !0
+        }, 200) : "ferryWharf" == o ? setTimeout(function() {
+            displayTree = !1, $("#ferry-wharf").focus(), displayTree = !0
+        }, 200) : "busRoute" == o ? setTimeout(function() {
+            displayTree = !1, $("#bus-route").focus(), displayTree = !0
+        }, 200) : "stopName" == o ? setTimeout(function() {
+            displayTree = !1, $("#stop-name").focus(), displayTree = !0
+        }, 200) : displayTree = !0
+    });
+    document.referrer;
+    document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:0").addEventListener ? document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:0").addEventListener("keydown", function(e) {
+            var t = e.which || e.keyCode;
+            9 != t || e.shiftKey || (e.preventDefault ? e.preventDefault() : e.returnValue = !1, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:1").focus())
+        }) : document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:0").attachEvent("onkeydown", function(e) {
+            var t = e.which || e.keyCode;
+            9 != t || e.shiftKey || (e.preventDefault ? e.preventDefault() : e.returnValue = !1, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:1").focus())
+        }), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:1").addEventListener ? document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:1").addEventListener("keydown", function(e) {
+            var t = e.which || e.keyCode;
+            9 != t || e.shiftKey || (e.preventDefault ? e.preventDefault() : e.returnValue = !1, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:0").checked ? document.getElementById("approximateDateOfContact").focus() : document.getElementById("submitBtn").focus())
+        }) : document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:1").attachEvent("onkeydown", function(e) {
+            var t = e.which || e.keyCode;
+            9 != t || e.shiftKey || (e.preventDefault ? e.preventDefault() : e.returnValue = !1, document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:previouslyRaisedIssueRadio:0").checked ? document.getElementById("approximateDateOfContact").focus() : document.getElementById("submitBtn").focus())
+        }),
+        document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").addEventListener ? document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").addEventListener("keydown", function(e) {
+            var t = e.which || e.keyCode;
+            9 != t || e.shiftKey || document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked || (e.preventDefault ? e.preventDefault() : e.returnValue = !1, document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:1").focus())
+        }) : document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").attachEvent("onkeydown", function(e) {
+            var t = e.which || e.keyCode;
+            9 != t || e.shiftKey || document.getElementById("sitePageId:caseFormId:pblockId:responseRadio:0").checked || (e.preventDefault ? e.preventDefault() : e.returnValue = !1, document.getElementById("sitePageId:caseFormId:pblockId:Radio:1").focus())
+        }), preselectMode(), handleTabPress("train-station", "train-line", "", !1), handleTabPress("train-line", "", "trainField0", !1), handleTabPress("metro-station", "metro-line", "", !1), handleTabPress("metro-line", "", "metroField0", !1), handleTabPress("ferry-route", "", "ferryField0", !1), handleTabPress("stop-name", "sitePageId:caseFormId:pblockId:your-feedback2", "", !1), handleTabPress("ferry-wharf", "ferry-route", "", !1), handleTabPress("bus-route", "", "busField0", !1), document.getElementById("sitePageId:caseFormId:pblockId:your-feedback") ? handleTabPress("sitePageId:caseFormId:pblockId:your-feedback", "addAttachments", "", !1) : handleTabPress("sitePageId:caseFormId:pblockId:your-feedback2", "addAttachments", "", !1), handleTabPressForCategory(), handleTabPressForLocation(), handleShiftTabForAddAttachments(e), $(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1")).css("width", $(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code")).css("width")), $("#preferredContactMethod").css("width", $(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code")).css("width")), $("#approximateDateOfContact").css("width", $(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code")).css("width")), $("#howDidYouContactUs").css("width", $(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code")).css("width")), $("#referenceNumber").css("width", $(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code")).css("width")), addPlaceholderListener()
+}
+
+function addPlaceholderListener() {
+    for (var e = document.querySelectorAll(".formInput"), t = 0; t < e.length; t++) setPlaceholder(e[t]), e[t].onfocus = function() {
+        onFocusPlaceholder(this)
+    }, e[t].onblur = function() {
+        onBlurPlaceholder(this)
+    }
+}
+var componentForm = {
+        street_number: "short_name",
+        route: "long_name",
+        locality: "long_name",
+        administrative_area_level_1: "short_name",
+        postal_code: "short_name",
+        country: "short_name"
+    },
+    errorFieldId, markerDragged = !1,
+    marker, pageErrorMessage, mapSelector = "#map_canvas div",
+    attemptInterval = 2,
+    maxAttempts = 18,
+    attempts = 0,
+    notYet = !0,
+    titles = {
+        "pan up": 1,
+        "pan down": 1,
+        "pan right": 1,
+        "pan left": 1,
+        "zoom in": 1,
+        "zoom out": 1,
+        "show street map": 1,
+        "show satellite imagery": 1
+    },
+    checkingForAddress = !1,
+    geocoder, autocompleteLocation, autocompleteAddress, map, numberOfRoadDatasetRetry = 0,
+    numberOfMaritimeDatasetRetry = 0,
+    numberOfLgaDatasetRetry = 0,
+    maxDatasetRetry = 5,
+    displayTree = !0,
+    modeMaritime = document.getElementById("modeMaritime").value,
+    sourceRmsIntranet = document.getElementById("sourceRmsIntranet").value,
+    sourceRms = document.getElementById("sourceRms").value,
+    sourceSydTrains = document.getElementById("sourceSydTrains").value,
+    sourceNswTrains = document.getElementById("sourceNswTrains").value,
+    sourceTfnswIntranet = document.getElementById("sourceTfnswIntranet").value,
+    sourceTfnsw = document.getElementById("sourceTfnsw").value,
+    modeNonModal = document.getElementById("modeNonModal").value,
+    feedbackForWebsite = document.getElementById("feedbackForWebsite").value,
+    feedbackForApp = document.getElementById("feedbackForApp").value,
+    boundsChanged = !1,
+    mapDragged = !1;

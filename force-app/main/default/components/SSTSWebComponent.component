@@ -1,0 +1,83 @@
+<apex:component id="sstsDetails" >
+    <div class="col-md-12 sstsField" >
+        <label class="fieldLabel name-field" for="student-name">Student name
+            <span id = "mandatoryStarStudentName" style="display:none" >
+                <!-- apex:outputText rendered="{!if(isSSTSSelection == 'school student transport scheme' || isSSTSSelection == 'school drive subsidy/pvc', 'true', 'false')}" -->
+                <span class="mandatoryStar" >&nbsp;*</span>
+                <!-- /apex:outputText -->
+            </span>
+        </label>
+        <div id="sstsStudentNameErrorMsg"  class="has-error errorMessage"></div>
+    </div>
+    <div class="col-md-12 sstsField" >
+        <input name="student-name" placeholder="Please specify" autocomplete="off" id="student-name"  class="ssts formInput" />
+    </div>
+    <div class="col-md-12 sstsField" >
+        <label class="fieldLabel name-field" for="student-street-address">Street address<!-- span class="mandatoryStar" >&nbsp;*</span -->
+            <span id = "mandatoryStarStreetAddress" style="display:none" >
+                <span class="mandatoryStar" >&nbsp;*</span>
+            </span>                
+        </label>
+        <div id="sstsStreetAddressErrorMsg"  class="has-error errorMessage"></div>
+    </div>
+    <div class="col-md-12 sstsField" >
+        <input name="student-street-address" placeholder="Please specify" autocomplete="off" id="student-street-address"  class="ssts formInput"  />
+    </div>
+    <div class="col-md-12 sstsField" >
+        <label class="fieldLabel name-field" for="operator-details">Operator details<!-- span class="mandatoryStar" >&nbsp;*</span -->
+            <span id = "mandatoryStarOperatorDetails" style="display:none" >
+                <span class="mandatoryStar" >&nbsp;*</span>
+            </span>
+        </label>
+        <div id="sstsOperatorDetailsErrorMsg"  class="has-error errorMessage"></div>
+    </div>
+    <div class="col-md-12 sstsField" >
+        <input name="operator-details" placeholder="Please specify" autocomplete="off" id="operator-details"  class="ssts formInput"  />
+    </div>    
+    <div class="col-md-12 sstsField" >
+        <label class="fieldLabel name-field" for="school-name">School name<!--span class="mandatoryStar" >&nbsp;*</span -->
+            <span id = "mandatoryStarSchoolName" style="display:none" >
+                <span class="mandatoryStar" >&nbsp;*</span>
+            </span>
+        </label>
+        <div id="sstsSchoolNameErrorMsg"  class="has-error errorMessage"></div>
+    </div>
+    <div class="col-md-12 sstsField" >
+        <input name="school-name" placeholder="Please specify" autocomplete="off" id="school-name"  class="ssts formInput"  />
+    </div>
+    <div class="col-md-12 sstsField" >
+        <label class="fieldLabel"  for="schoolYear" aria-label="School year" >School year<!-- span class="mandatoryStar" >&nbsp;*</span -->
+            <span id = "mandatoryStarSchoolYear" style="display:none" >
+                <span class="mandatoryStar" >&nbsp;*</span>
+            </span>
+        </label>
+    </div>
+    <div class="col-md-12 sstsField" >
+        <div id="sstsSchoolYearErrorMsg"  class="has-error errorMessage"></div>
+        <select id="schoolYear" name="school-year" class="fieldHeight state formInput" size="1" >    
+            <option value="">Please select</option>
+            <option value="Kindergarten">Kindergarten</option>
+            <option value="Year 1">Year 1</option>
+            <option value="Year 2">Year 2</option>
+            <option value="Year 3">Year 3</option>
+            <option value="Year 4">Year 4</option>
+            <option value="Year 5">Year 5</option>
+            <option value="Year 6">Year 6</option>
+            <option value="Year 7">Year 7</option>
+            <option value="Year 8">Year 8</option>
+            <option value="Year 9">Year 9</option>
+            <option value="Year 10">Year 10</option>
+            <option value="Year 11">Year 11</option>
+            <option value="Year 12">Year 12</option>
+        </select>
+    </div>
+    <div class="col-md-12 sstsField" >
+        <label class="fieldLabel name-field" for="opal-card-number">Opal card number</label>
+        <div id="sstsOpalErrorMsg" class="has-error errorMessage"></div>
+    </div>
+    <div class="col-md-12 sstsField" >
+        <div id="opalErrorMsg"  class="has-error errorMessage"></div>
+        <input aria-describedby="opalErrorMsg" name="opal-card-number" placeholder="Enter 16 digit Opal card number" type="text" autocomplete="off" id="opal-card-number"  class="ssts formInput"  />
+    </div>
+    
+</apex:component>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AmendmentReason__c</fullName>
+    <externalId>false</externalId>
+    <label>Amendment Reason</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CRGS - Typo</fullName>
+                <default>false</default>
+                <label>CRGS - Typo</label>
+            </value>
+            <value>
+                <fullName>CRGS - Style</fullName>
+                <default>false</default>
+                <label>CRGS - Style</label>
+            </value>
+            <value>
+                <fullName>CRGS - Comprehension</fullName>
+                <default>false</default>
+                <label>CRGS - Comprehension</label>
+            </value>
+            <value>
+                <fullName>CRGS - Incomplete File</fullName>
+                <default>false</default>
+                <label>CRGS - Incomplete File</label>
+            </value>
+            <value>
+                <fullName>Minister’s Office - Change of Signatory</fullName>
+                <default>false</default>
+                <label>Minister’s Office - Change of Signatory</label>
+            </value>
+            <value>
+                <fullName>Minister’s Office - Delay in Review</fullName>
+                <default>false</default>
+                <label>Minister’s Office - Delay in Review</label>
+            </value>
+            <value>
+                <fullName>Minister’s Office - New Direction</fullName>
+                <default>false</default>
+                <label>Minister’s Office - New Direction</label>
+            </value>
+            <value>
+                <fullName>Minister’s Office - Stylistic Change(s)</fullName>
+                <default>false</default>
+                <label>Minister’s Office - Stylistic Change(s)</label>
+            </value>
+            <value>
+                <fullName>Minister’s Office - Clarification or more information sought</fullName>
+                <default>false</default>
+                <label>Minister’s Office - Clarification or more information sought</label>
+            </value>
+            <value>
+                <fullName>Business Center advice inaccurate or incomplete</fullName>
+                <default>false</default>
+                <label>Business Center advice inaccurate or incomplete</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

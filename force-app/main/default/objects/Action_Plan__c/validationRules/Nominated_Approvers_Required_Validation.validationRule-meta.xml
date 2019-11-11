@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nominated_Approvers_Required_Validation</fullName>
+    <active>false</active>
+    <description>If Nominate Approvers is checked then Nominated Approvers are required</description>
+    <errorConditionFormula>AND(
+NOT(SkipValidations__c),
+OR(
+ISBLANK(Approver_Level_1__c ), 
+ISBLANK(Approver_Level_2__c ), 
+ISBLANK(Approver_Level_3__c )
+),
+NominateApprovers__c 
+)</errorConditionFormula>
+    <errorMessage>Please select Approver Level 1/2/3 user</errorMessage>
+</ValidationRule>

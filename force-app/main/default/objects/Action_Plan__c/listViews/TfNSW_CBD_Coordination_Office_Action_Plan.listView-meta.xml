@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_CBD_Coordination_Office_Action_Plan</fullName>
+    <columns>NAME</columns>
+    <columns>Divisions__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Parent_Action_Plan__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Type__c</columns>
+    <columns>Case_Number__c</columns>
+    <filterScope>Queue</filterScope>
+    <label>TCO - Sydney Coordination Office</label>
+    <queue>TfNSW_CBD_Coordination_Office_MC</queue>
+    <sharedTo>
+        <group>TMC_Case_Manager</group>
+        <role>CBD_Coordination_Office_Liaison_Officer</role>
+    </sharedTo>
+</ListView>

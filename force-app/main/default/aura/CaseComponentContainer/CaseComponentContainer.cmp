@@ -1,0 +1,21 @@
+<aura:component implements="flexipage:availableForRecordHome,force:LightningQuickAction,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global">
+	<aura:attribute name="subString" type="String"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <div style="box; float:right;" class="{!v.subString == '500' ? 'displayClass' : 'displayNone'}">
+        <ul data-reactroot="" class="slds-button-group-list">
+            <li>
+             <c:OpenUploadAttachmentModal recordId="{!v.recordId}"/>
+          </li>
+          <li>
+            <c:CreatePDF recordId="{!v.recordId}"/>
+          </li>
+            <li>
+			  <c:ShowOriginalDescription recordId="{!v.recordId}"/>
+            </li>
+            <li>
+			  <c:CustomModalPopup recordId="{!v.recordId}"/>
+            </li>
+        </ul>
+    </div>
+</aura:component>

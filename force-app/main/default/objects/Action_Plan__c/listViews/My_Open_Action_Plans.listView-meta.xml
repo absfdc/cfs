@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Open_Action_Plans</fullName>
+    <columns>Action_Plan_Type__c</columns>
+    <columns>NAME</columns>
+    <columns>Agency__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Parent_Action_Plan__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Type__c</columns>
+    <columns>Case_Number__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Rejected-Incorrect Assignment,Completed</value>
+    </filters>
+    <label>My Open Action Plans</label>
+    <sharedTo>
+        <roleAndSubordinates>TfNSW</roleAndSubordinates>
+    </sharedTo>
+</ListView>

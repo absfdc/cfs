@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Level_1__c</fullName>
+    <externalId>false</externalId>
+    <label>Issue Level 1</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Planning the Trip</fullName>
+                <default>false</default>
+                <label>Planning the Trip</label>
+            </value>
+            <value>
+                <fullName>The Bus</fullName>
+                <default>false</default>
+                <label>The Bus</label>
+            </value>
+            <value>
+                <fullName>The Bus Stop</fullName>
+                <default>false</default>
+                <label>The Bus Stop</label>
+            </value>
+            <value>
+                <fullName>Unrelated to Journey</fullName>
+                <default>false</default>
+                <label>Unrelated to Journey</label>
+            </value>
+            <value>
+                <fullName>Sydney Light Rail Route</fullName>
+                <default>false</default>
+                <label>Sydney Light Rail Route</label>
+            </value>
+            <value>
+                <fullName>Sydney Light Rail Stop</fullName>
+                <default>false</default>
+                <label>Sydney Light Rail Stop</label>
+            </value>
+            <value>
+                <fullName>The Tram</fullName>
+                <default>false</default>
+                <label>The Tram</label>
+            </value>
+            <value>
+                <fullName>The Tram Stop</fullName>
+                <default>false</default>
+                <label>The Tram Stop</label>
+            </value>
+            <value>
+                <fullName>Bykko</fullName>
+                <default>false</default>
+                <label>Bykko</label>
+            </value>
+            <value>
+                <fullName>Community Transport Central Coast</fullName>
+                <default>false</default>
+                <label>Community Transport Central Coast</label>
+            </value>
+            <value>
+                <fullName>Hillsbus</fullName>
+                <default>false</default>
+                <label>Hillsbus</label>
+            </value>
+            <value>
+                <fullName>Interline Bus Service</fullName>
+                <default>false</default>
+                <label>Interline Bus Service</label>
+            </value>
+            <value>
+                <fullName>Keolis Downer</fullName>
+                <default>false</default>
+                <label>Keolis Downer</label>
+            </value>
+            <value>
+                <fullName>Newcastle Transport</fullName>
+                <default>false</default>
+                <label>Newcastle Transport</label>
+            </value>
+            <value>
+                <fullName>On Board</fullName>
+                <default>false</default>
+                <label>On Board</label>
+            </value>
+            <value>
+                <fullName>Pickup Point</fullName>
+                <default>false</default>
+                <label>Pickup Point</label>
+            </value>
+            <value>
+                <fullName>Planning</fullName>
+                <default>false</default>
+                <label>Planning</label>
+            </value>
+            <value>
+                <fullName>Premier Motor Service</fullName>
+                <default>false</default>
+                <label>Premier Motor Service</label>
+            </value>
+            <value>
+                <fullName>Punchbowl Bus Company</fullName>
+                <default>false</default>
+                <label>Punchbowl Bus Company</label>
+            </value>
+            <value>
+                <fullName>Transdev NSW</fullName>
+                <default>false</default>
+                <label>Transdev NSW</label>
+            </value>
+            <value>
+                <fullName>Transit Systems West</fullName>
+                <default>false</default>
+                <label>Transit Systems West</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

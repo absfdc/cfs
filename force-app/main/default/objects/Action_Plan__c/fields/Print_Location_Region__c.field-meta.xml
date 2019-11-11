@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Print_Location_Region__c</fullName>
+    <description>Office location regions where letters can be sent for signing</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Office location regions where letters can be sent for signing</inlineHelpText>
+    <label>Print Location Region</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sydney Region</fullName>
+                <default>false</default>
+                <label>Sydney Region</label>
+            </value>
+            <value>
+                <fullName>Hunter Regional Offices</fullName>
+                <default>false</default>
+                <label>Hunter Regional Offices</label>
+            </value>
+            <value>
+                <fullName>Northern Regional Offices</fullName>
+                <default>false</default>
+                <label>Northern Regional Offices</label>
+            </value>
+            <value>
+                <fullName>Western Regional Office</fullName>
+                <default>false</default>
+                <label>Western Regional Office</label>
+            </value>
+            <value>
+                <fullName>Regional Office</fullName>
+                <default>false</default>
+                <label>Regional Office</label>
+            </value>
+            <value>
+                <fullName>Southern Regional Office</fullName>
+                <default>false</default>
+                <label>Southern Regional Office</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

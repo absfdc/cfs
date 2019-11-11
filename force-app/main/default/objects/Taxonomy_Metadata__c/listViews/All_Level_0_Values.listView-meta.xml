@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Level_0_Values</fullName>
+    <columns>NAME</columns>
+    <columns>Type__c</columns>
+    <columns>IsMinCorro__c</columns>
+    <columns>External_Id__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Parent_Id__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>All Level 0 Values</label>
+</ListView>

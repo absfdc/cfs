@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PBO_Configuration</fullName>
+    <columns>NAME</columns>
+    <columns>Location_Level_1__c</columns>
+    <columns>Email__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>PBO Configuration</label>
+    <sharedTo>
+        <group>Delegated_Admin_Serco</group>
+    </sharedTo>
+</ListView>

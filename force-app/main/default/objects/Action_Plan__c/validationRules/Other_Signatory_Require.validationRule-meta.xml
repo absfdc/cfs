@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Signatory_Require</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISPICKVAL(Signatory__c, &#39;Other signatory&#39;), 
+ISBLANK(Other_Signatory__c), 
+RecordType.DeveloperName != &quot;CFM_Action_Plan&quot;
+)</errorConditionFormula>
+    <errorMessage>Please enter other signatory.</errorMessage>
+</ValidationRule>

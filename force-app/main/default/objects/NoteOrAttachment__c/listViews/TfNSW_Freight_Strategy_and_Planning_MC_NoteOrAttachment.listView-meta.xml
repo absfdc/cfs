@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_Freight_Strategy_and_Planning_MC_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>TfNSW - Freight, Strategy and Planning</label>
+    <queue>TfNSW_Freight_Strategy_and_Planning_MC</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

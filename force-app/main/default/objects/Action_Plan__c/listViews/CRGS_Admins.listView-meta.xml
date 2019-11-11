@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRGS_Admins</fullName>
+    <columns>NAME</columns>
+    <columns>Agency__c</columns>
+    <columns>Case_Subject__c</columns>
+    <columns>Classification__c</columns>
+    <columns>Minister__c</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Referring_Mp__c</columns>
+    <columns>Status__c</columns>
+    <columns>Case_Number__c</columns>
+    <filterScope>Queue</filterScope>
+    <label>CRGS Admin</label>
+    <queue>CRGS_Admins_MC</queue>
+    <sharedTo>
+        <role>CRGS_Admin</role>
+    </sharedTo>
+</ListView>

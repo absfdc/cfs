@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ClosedDate2__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(MONTH(  Closed_Date__c),
+1, &quot;07 Jan&quot;,
+2, &quot;08 Feb&quot;,
+3, &quot;09 Mar&quot;,
+4, &quot;10 Apr&quot;,
+5, &quot;11 May&quot;,
+6, &quot;12 Jun&quot;,
+7, &quot;01 Jul&quot;,
+8, &quot;02 Aug&quot;,
+9, &quot;03 Sep&quot;,
+10, &quot;04 Oct&quot;,
+11, &quot;05 Nov&quot;,
+12, &quot;06 Dec&quot;, &quot;None&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Closed(FM)</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

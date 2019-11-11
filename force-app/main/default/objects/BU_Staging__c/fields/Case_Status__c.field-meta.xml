@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Case Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Triage</fullName>
+                <default>false</default>
+                <label>Triage</label>
+            </value>
+            <value>
+                <fullName>Pre-Registration</fullName>
+                <default>false</default>
+                <label>Pre-Registration</label>
+            </value>
+            <value>
+                <fullName>Registration</fullName>
+                <default>false</default>
+                <label>Registration</label>
+            </value>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <label>Received</label>
+            </value>
+            <value>
+                <fullName>Allocation</fullName>
+                <default>false</default>
+                <label>Allocation</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Research</fullName>
+                <default>false</default>
+                <label>Research</label>
+            </value>
+            <value>
+                <fullName>Awaiting Advice</fullName>
+                <default>false</default>
+                <label>Awaiting Advice</label>
+            </value>
+            <value>
+                <fullName>Draft in Progress</fullName>
+                <default>false</default>
+                <label>Draft in Progress</label>
+            </value>
+            <value>
+                <fullName>Senior Review</fullName>
+                <default>false</default>
+                <label>Senior Review</label>
+            </value>
+            <value>
+                <fullName>Editor Review</fullName>
+                <default>false</default>
+                <label>Editor Review</label>
+            </value>
+            <value>
+                <fullName>Manager Review</fullName>
+                <default>false</default>
+                <label>Manager Review</label>
+            </value>
+            <value>
+                <fullName>MAGS Approved</fullName>
+                <default>false</default>
+                <label>MAGS Approved</label>
+            </value>
+            <value>
+                <fullName>Awaiting Approval</fullName>
+                <default>false</default>
+                <label>Awaiting Approval</label>
+            </value>
+            <value>
+                <fullName>Awaiting MO Contact Approval</fullName>
+                <default>false</default>
+                <label>Awaiting MO Contact Approval</label>
+            </value>
+            <value>
+                <fullName>MO Contact Rejected</fullName>
+                <default>false</default>
+                <label>MO Contact Rejected</label>
+            </value>
+            <value>
+                <fullName>Advice Received</fullName>
+                <default>false</default>
+                <label>Advice Received</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <label>On Hold</label>
+            </value>
+            <value>
+                <fullName>Awaiting Signature</fullName>
+                <default>false</default>
+                <label>Awaiting Signature</label>
+            </value>
+            <value>
+                <fullName>Review</fullName>
+                <default>false</default>
+                <label>Review</label>
+            </value>
+            <value>
+                <fullName>Ready For Printing</fullName>
+                <default>false</default>
+                <label>Ready For Printing</label>
+            </value>
+            <value>
+                <fullName>Signed</fullName>
+                <default>false</default>
+                <label>Signed</label>
+            </value>
+            <value>
+                <fullName>Signed and Emailed</fullName>
+                <default>false</default>
+                <label>Signed and Emailed</label>
+            </value>
+            <value>
+                <fullName>Signatory Rejected</fullName>
+                <default>false</default>
+                <label>Signatory Rejected</label>
+            </value>
+            <value>
+                <fullName>Closed - NRR</fullName>
+                <default>false</default>
+                <label>Closed - NRR</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Closed with Customer</fullName>
+                <default>false</default>
+                <label>Closed with Customer</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <default>false</default>
+                <label>Closed</label>
+            </value>
+            <value>
+                <fullName>Reopened</fullName>
+                <default>false</default>
+                <label>Reopened</label>
+            </value>
+            <value>
+                <fullName>Finalised</fullName>
+                <default>false</default>
+                <label>Finalised</label>
+            </value>
+            <value>
+                <fullName>Error - Case Not Found</fullName>
+                <default>false</default>
+                <label>Error - Case Not Found</label>
+            </value>
+            <value>
+                <fullName>Error - Closed</fullName>
+                <default>false</default>
+                <label>Error - Closed</label>
+            </value>
+            <value>
+                <fullName>MO Amend</fullName>
+                <default>false</default>
+                <label>MO Amend</label>
+            </value>
+            <value>
+                <fullName>Referral Pending</fullName>
+                <default>false</default>
+                <label>Referral Pending</label>
+            </value>
+            <value>
+                <fullName>Referral Completed</fullName>
+                <default>false</default>
+                <label>Referral Completed</label>
+            </value>
+            <value>
+                <fullName>Re-assigned</fullName>
+                <default>false</default>
+                <label>Re-assigned</label>
+            </value>
+            <value>
+                <fullName>Hello</fullName>
+                <default>false</default>
+                <label>Hello</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

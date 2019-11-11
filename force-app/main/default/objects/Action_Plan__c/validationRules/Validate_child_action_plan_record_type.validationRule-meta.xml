@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_child_action_plan_record_type</fullName>
+    <active>true</active>
+    <description>This validation rule validates if correct record type is selected for child action plan for mincorro</description>
+    <errorConditionFormula>AND(
+	RecordType.DeveloperName  &lt;&gt; &#39;CFM_Action_Plan&#39;,	
+	NOT(ISBLANK(Parent_Action_Plan__c)),
+	RecordType.DeveloperName  &lt;&gt; &#39;MCWS_Child_Action_Plan&#39;
+)</errorConditionFormula>
+    <errorMessage>Incorrect record type selected for child action plan. Valid record type for child action plan is &#39;MCWS Child Action Plan&#39;</errorMessage>
+</ValidationRule>

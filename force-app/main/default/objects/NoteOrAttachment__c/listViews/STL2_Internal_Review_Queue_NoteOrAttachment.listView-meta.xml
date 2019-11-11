@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STL2_Internal_Review_Queue_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>STL2 Internal Review Queue</label>
+    <queue>STL2_Internal_Review_Queue</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

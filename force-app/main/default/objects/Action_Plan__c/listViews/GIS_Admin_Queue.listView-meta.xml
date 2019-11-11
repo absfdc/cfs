@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GIS_Admin_Queue</fullName>
+    <columns>Action_Plan_Type__c</columns>
+    <columns>NAME</columns>
+    <columns>Divisions__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Days_Until_Due__c</columns>
+    <columns>Status__c</columns>
+    <columns>Case_Subject__c</columns>
+    <columns>Customer__c</columns>
+    <columns>OBO__c</columns>
+    <columns>Classification__c</columns>
+    <columns>Date_stamp_on_Action_Plan_Assigned__c</columns>
+    <columns>Case_Number__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Queue</filterScope>
+    <filters>
+        <field>Owner_Is_User__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>RMS Corro Triage</label>
+    <queue>GIS_Admin_RMS_MC</queue>
+    <sharedTo>
+        <role>Compliance_and_Regulatory_Services</role>
+        <role>Motorways</role>
+        <role>RMS</role>
+        <role>Regional_and_Freight</role>
+        <role>Sydney</role>
+    </sharedTo>
+</ListView>

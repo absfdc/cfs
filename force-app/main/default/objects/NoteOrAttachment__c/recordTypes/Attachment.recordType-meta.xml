@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attachment</fullName>
+    <active>true</active>
+    <description>USE THIS RECORD TYPE TO CREATE NEW FILE ATTACHMENT</description>
+    <label>Attachment</label>
+    <picklistValues>
+        <picklist>Category__c</picklist>
+        <values>
+            <fullName>Advice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enclosures</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incoming</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signed Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsigned Response</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Privacy__c</picklist>
+        <values>
+            <fullName>Restricted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Standard</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Advise Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Article</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cover Letter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Response</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

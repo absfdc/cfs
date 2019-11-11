@@ -1,0 +1,9 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+  <aura:attribute name="recordId" type="String"/>
+  <!--  <aura:attribute name="subString" type="String"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <div style="box; float:right;" class="{!v.subString == '500' ? 'displayClass' : 'displayNone'}"> -->
+        <ui:button aura:id="button" buttonTitle="Print case details" class="button" label="Print View" press="{!c.getInput}"/> 
+  <!--  </div> -->
+</aura:component>

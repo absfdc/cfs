@@ -1,0 +1,262 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" controller="ResponsePreview">
+    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html;" charset="utf-8" />
+
+        <title>Response Preview</title>
+
+        <meta http-equiv="x-ua-compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <apex:stylesheet value="{!URLFOR($Resource.SLDS212, '/assets/styles/salesforce-lightning-design-system-vf.css')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/jquery.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/compatibility.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/pdf.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/text_layer_builder.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/jsrender.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF, 'js/svg4everybody.min.js')}" />
+        
+        <apex:includeScript value="/support/console/25.0/integration.js"/>
+        <script>
+            svg4everybody();
+        </script>
+        
+        <style>
+            body {
+                margin: 0px;
+            }
+
+            canvas {
+                width: 100%;
+            }
+            
+            .pdfPreviewBackgroundColor {
+                background-color: dimgrey;
+            }
+            
+            #pdfPreviewMode{
+                width: 90%;
+                margin-left: 5%;
+                margin-right: 5%; 
+                padding-top: 2rem;
+            }
+
+            .tfnsw-arxxus .slds-spinner_container {
+                background-color: rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+            }
+
+            #previewErrorMessage{
+                margin-top: 2em;
+                display: none;
+                margin-left: 15%;
+                margin-right: 15%;
+            }
+
+            #errorMessage{
+                color: white;
+            }
+            
+        </style>
+        <script type="text/javascript">
+
+            var $j = jQuery.noConflict();
+            var BASE64_MARKER = ';base64,';
+            $j(document).ready(function() {
+                console.log('called');
+                __willShowResponseBodyForPreview();
+            });
+
+
+            var id = '{!$CurrentPage.parameters.Id}';
+            // fetch response body for preview with signature
+                var willFetchResponseBodyForPreview = function() {
+                    pageLoadingController.showLoading();
+                    console.log('willFetchResponseBodyForPreview called');
+                    return new Promise(function(resolve, reject) {
+                        Visualforce.remoting.timeout = 120000;
+                        ResponsePreview.showResponsePreviewPDF(
+                            id,
+                            function(result, event) {
+                                if(event.status){
+                                    var key = [];
+                                    key = Object.keys(result);
+                                    if ( ! key.includes('Error'))
+                                        resolve(result);
+                                    else
+                                        reject('Conga failed to generate the response');   
+                                }else if(event.type === 'exception'){
+                                    $j('#previewErrorMessage').css('display', 'block');
+                                    $j('.pdfPreviewModal').removeClass('pdfPreviewBackgroundColor');
+                                    $j('.pdfPreviewContainer').addClass('tfnsw-arxxus');
+                                    $j('.pdfPreviewModal').css('display', 'block');
+                                    $j('#pdfPreviewMode').remove();
+                                }
+                                
+                            }, {
+                                escape: false
+                            });
+                    })
+                };
+
+                var __willShowResponseBodyForPreview = function() {
+                    willFetchResponseBodyForPreview().then(function(result) {
+                        attachmentId = result.Id;
+                        sforce.console.setTabTitle(result.name);
+                        PDFRenderModule.renderPDFWithResponseBody(result.data, 'pdfPreviewMode');
+                        $j('#pdfPreviewMode').css('display', 'block');
+                        $j('.pdfPreviewModal').css('display', 'block');
+                        pageLoadingController.hideLoading();
+                    }).catch(function(error) {
+                        pageLoadingController.hideLoading();
+                        $j('#errorMessage').html('Conga failed to generate the response');
+                        $j('#previewErrorMessage').css('display', 'block');
+                        $j('.pdfPreviewModal').removeClass('pdfPreviewBackgroundColor');
+                        $j('.pdfPreviewContainer').addClass('tfnsw-arxxus');
+                        $j('.pdfPreviewModal').css('display', 'block');
+                        $j('#pdfPreviewMode').remove();
+                    })
+                };
+
+
+            var pageLoadingController = (function() {
+
+                var showLoading = function() {
+                    $j('.slds-spinner_container').css('display', 'block');
+                };
+
+                var hideLoading = function() {
+                    $j('.slds-spinner_container').css('display', 'none');
+                };
+
+                return {
+                    showLoading: showLoading,
+                    hideLoading: hideLoading
+                }
+
+            })();   
+
+            // PDF render module 
+            var PDFRenderModule = (function() {
+
+                var renderPDFWithResponseBody = function(content, containerId) {
+
+                    $j('#' + containerId).html('');
+                    var myData = convertDataURIToBinary(content); //put it in a Uint8Array
+
+                    PDFJS.getDocument(myData).then(function(pdf) {
+
+                        // Get div#container and cache it for later use
+                        var container = document.getElementById(containerId);
+
+                        // Loop from 1 to total_number_of_pages in PDF document
+                        for (var i = 1; i <= pdf.numPages; i++) {
+
+                            // Get desired page
+                            pdf.getPage(i).then(function(page) {
+
+                                var scale = 3;
+                                var viewport = page.getViewport(scale);
+                                var div = document.createElement("div");
+
+                                // Set id attribute with page-#{pdf_page_number} format
+                                div.setAttribute("id", "page-" + (page.pageIndex + 1));
+
+                                // This will keep positions of child elements as per our needs
+                                div.setAttribute("style", "position: relative");
+
+                                div.setAttribute("style", "height: 100%");
+
+                                // Append div within div#container
+                                container.appendChild(div);
+
+                                if (i > 1)
+                                    container.appendChild(document.createElement("br"));
+
+                                // Create a new Canvas element
+                                var canvas = document.createElement("canvas");
+
+                                canvas.setAttribute("style", "height: 100%");
+
+                                // Append Canvas within div#page-#{pdf_page_number}
+                                div.appendChild(canvas);
+
+                                var context = canvas.getContext('2d');
+                                canvas.height = viewport.height;
+                                canvas.width = viewport.width;
+
+                                var renderContext = {
+                                    canvasContext: context,
+                                    viewport: viewport
+                                };
+
+                                // Render PDF page
+                                page.render(renderContext).then(function() {
+                                    // Get text-fragments
+                                    return page.getTextContent();
+                                })
+                            });
+                        }
+
+                    });
+
+                };
+
+                // convert base64 data to binary data
+                var convertDataURIToBinary = function(dataURI) {
+
+                    var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+                    var base64 = dataURI.substring(base64Index);
+                    var raw = window.atob(base64);
+                    var rawLength = raw.length;
+                    var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+                    for (var i = 0; i < rawLength; i++) {
+                        array[i] = raw.charCodeAt(i);
+                    }
+
+                    return array;
+                };
+
+                return {
+                    renderPDFWithResponseBody: renderPDFWithResponseBody
+                }
+            })();
+ 
+
+        </script>
+    </head>    
+    <body>
+    
+        <!-- Ligthning Spinner -->
+        <div class="tfnsw-arxxus slds-spinner_container" style="display:none;">
+            <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+                <div class="slds-assistive-text">Please wait it take while</div>
+            </div>
+        </div>
+
+        <!-- PDFPreviewModal -->
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open pdfPreviewModal pdfPreviewBackgroundColor " id="pdfModal" style="display:block;" >
+            <div class="slds-modal__container pdfPreviewContainer">
+                <div class="slds-modal__header slds-theme--error slds-theme--alert-texture" id="previewErrorMessage" style='display: none;'>
+                    <div class="tfnsw-arxxus slds-col slds-align-middle" style="display: inline-block;">
+                        <svg aria-hidden="true" class="slds-icon slds-icon--medium slds-m-right--medium slds-col slds-no-flex">
+                            <use xlink:href="{!URLFOR($Resource.SLDS212, '/assets/icons/utility-sprite/svg/symbols.svg#warning')}"></use>
+                        </svg>
+                        <h2 class="slds-text-heading--medium" id="errorMessage">Conga failed to generate the response</h2>
+                    </div>
+                </div>
+                <div class="slds-modal__content slds-p-around--medium" id="pdfPreviewMode" style="display: none">
+                </div>              
+            </div>
+         
+        </div>
+    </body>  
+    </html>  
+</apex:page>

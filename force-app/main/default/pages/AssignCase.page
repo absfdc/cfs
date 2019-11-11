@@ -1,0 +1,26 @@
+<apex:page standardController="Case" extensions="AssignCase_CX" action="{!autoRun}">
+  <apex:includeScript value="/support/console/20.0/integration.js"/>
+  <apex:sectionHeader title="Assigning Case"/>
+  <!--successPanel Will be rendered though user has no access on 
+      the record and will execute the javascript to close the tab-->
+  <apex:outputPanel id="successPanel" rendered="{!NOT(HasReadAccess)}">
+    <!-- Case has been assigned to L2 successfully.    -->
+    <script type="text/javascript">
+        function testCloseTab() {
+            sforce.console.getEnclosingPrimaryTabId(closeSubtab);
+        }
+
+        var closeSubtab = function closeSubtab(result) {
+            var tabId = result.id;
+            sforce.console.closeTab(tabId);
+        }
+       
+        window.onload = function() {
+            testCloseTab();
+        }
+    </script>
+  </apex:outputPanel>  
+  <apex:outputPanel id="errorPanel" rendered="{!HasReadAccess}">
+      An error has occured trying to assign the case. Please contact your system administrator.
+  </apex:outputPanel>
+</apex:page>

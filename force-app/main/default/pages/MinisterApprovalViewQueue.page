@@ -1,0 +1,642 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" controller="MinisterApprovalViewQueueController">
+
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+
+    <head>
+
+        <meta charset="utf-8" />
+
+        <title>Response Approval Queue</title>
+
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width,heigth=device-heigth, initial-scale=1" />
+        
+        <apex:stylesheet value="{!URLFOR($Resource.SLDS212, '/assets/styles/salesforce-lightning-design-system-vf.css')}" />
+
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/jquery.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/hammer.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/bootstrap.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/jsrender.min.js')}" />
+
+        <apex:includeScript value="{!URLFOR($Resource.SLDS212,'jquery.tablesorter.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.SLDS212,'jquery.tablesorter.widgets.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.SLDS212,'parser-input-select.js')}" />
+
+        <script src="/support/console/33.0/integration.js" />
+        
+        <apex:includeScript value="{!URLFOR($Resource.JSPDF, 'js/svg4everybody.min.js')}" />
+        <script>svg4everybody();</script>
+
+        <style>
+            .tfnsw-arxxus .slds-spinner--brand.slds-spinner:before,
+            .tfnsw-arxxus .slds-spinner--brand.slds-spinner:after,
+            .tfnsw-arxxus .slds-spinner--brand .slds-spinner__dot-a:before,
+            .tfnsw-arxxus .slds-spinner--brand .slds-spinner__dot-b:before,
+            .tfnsw-arxxus .slds-spinner--brand .slds-spinner__dot-a:after,
+            .tfnsw-arxxus .slds-spinner--brand .slds-spinner__dot-b:after {
+                background-color: darkred;
+            }
+            
+            .tfnsw-arxxus .slds-spinner--brand.slds-spinner:before,
+            .tfnsw-arxxus .slds-spinner--brand.slds-spinner:after,
+            .tfnsw-arxxus .slds-spinner--brand .slds-spinner__dot-a:before,
+            .tfnsw-arxxus .slds-spinner--brand .slds-spinner__dot-b:before,
+            .tfnsw-arxxus .slds-spinner--brand .slds-spinner__dot-a:after,
+            .tfnsw-arxxus .slds-spinner--brand .slds-spinner__dot-b:after {
+                background-color: darkred;
+            }
+            
+            .tfnsw-arxxus .slds-spinner_container {
+                background-color: rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+            }
+            
+            .tablesorter-header span {
+                background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
+                background-position: right center;
+                background-repeat: no-repeat;
+                padding-right: 20px;
+            }
+            
+            .tablesorter-headerAsc span {
+                background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
+                background-position: right center;
+                background-repeat: no-repeat;
+                padding-right: 20px;
+            }
+            
+            .tablesorter-headerDesc span {
+                background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
+                background-position: right center;
+                background-repeat: no-repeat;
+                padding-right: 20px;
+            }
+            /* header sort CSS start */
+            
+            .tablesorter-header {
+                /* black (unsorted) double arrow */
+                //background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
+                /* white (unsorted) double arrow */
+                /* background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAAP///////yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==); */
+                /* image */
+                /* background-image: url(images/black-unsorted.gif); */
+                background-repeat: no-repeat;
+                background-position: center right;
+                padding: 4px 18px 4px 4px;
+                white-space: normal;
+                cursor: pointer;
+            }
+            
+            .tablesorter-blue .headerSortUp,
+            .tablesorter-blue .tablesorter-headerSortUp,
+            .tablesorter-blue .tablesorter-headerAsc {
+                //background-color: #9fbfdf;
+                /* black asc arrow */
+                //background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
+                /* white asc arrow */
+                /* background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7); */
+                /* image */
+                /* background-image: url(images/black-asc.gif); */
+            }
+            
+            .tablesorter-blue .headerSortDown,
+            .tablesorter-blue .tablesorter-headerSortDown,
+            .tablesorter-blue .tablesorter-headerDesc {
+                //background-color: #8cb3d9;
+                /* black desc arrow */
+                //background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
+                /* white desc arrow */
+                /* background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7); */
+                /* image */
+                /* background-image: url(images/black-desc.gif); */
+            }
+            
+            .tablesorter-blue thead .sorter-false {
+                background-image: none;
+                cursor: default;
+                padding: 4px;
+            }
+            /* header sort CSS end */
+        </style>
+
+        <script>
+            var $j = jQuery.noConflict();
+
+            $j(document).ready(function() {
+
+                $j('#caseQueueTable').hide();
+                $j('#caseQueueNotification').hide();
+
+                MinisterApprovalQueueModule.fetchCaseQueue('');
+
+            });
+
+            var helperModule = function() {
+
+                var convertDate = function(epoch) {
+
+
+                    if (epoch != undefined) {
+
+                        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                        var tempDate = new Date(epoch);
+                        var dateStr = tempDate.getDate() + ' ' + months[tempDate.getMonth()] + ', ' + tempDate.getFullYear();
+                        return dateStr;
+                    }
+
+                    return '';
+                }
+
+                return {
+
+                    convertDate: convertDate
+                }
+            }();
+
+            var MinisterApprovalQueueModule = (function() {
+
+                var caseIndex = 0;
+                var showErrorMsgOnPage = '{!$CurrentPage.parameters.showErrorPage}';
+
+                var fetchCaseQueue = function(queryStr) {
+
+                    //console.log('Query String: ' + queryStr);
+
+                    MinisterApprovalViewQueueController.getCaseQueue(
+                        queryStr,showErrorMsgOnPage,
+                        function(result, event) {
+
+                            if (event.status) {
+
+                                //console.log(result);
+                                //console.log(result.length);
+
+                                //$j('.slds-spinner--brand').hide();
+
+                                if (result.length > 0) {
+
+                                    $j('#scrollContainer').css({
+                                        "height": "90%"
+                                    });
+                                    $j('#scrollContainer').css({
+                                        "overflow-y": "auto"
+                                    });
+                                    $j('#caseQueueTable').show();
+                                    $j('#caseQueueNotification').hide();
+
+                                    if (result.length == 1)
+                                        $j('#queueSize').text('(' + result.length + ' item)');
+                                    else
+                                        $j('#queueSize').text('(' + result.length + ' items)');
+
+                                    var data = $j.templates({
+                                        markup: "#caseQueueView",
+                                        allowCode: true
+                                    }).render(result, helperModule);
+                                    $j('#caseQueueContainer').html(data);
+
+                                    var colIndex = '{!$CurrentPage.parameters.sortColIndex}';
+                                    var colSortOrder = '{!$CurrentPage.parameters.sortColOrder}';
+
+                                    //console.log('Got Col Index:' + colIndex);
+                                    //console.log('Got Col Sort Index:' + colSortOrder);
+
+                                    if (colIndex == '')
+                                        colIndex = 0;
+
+                                    if (colSortOrder == '')
+                                        colSortOrder = 0;
+
+                                    var defaultSort = false;
+                                    if (colIndex != '' && colSortOrder != '') {
+                                        defaultSort = true;
+                                    }
+
+                                    if (defaultSort == false) {
+                                        $j("#caseQueueTable").tablesorter({
+
+                                            theme: 'blue', //blue theme css not included inorder to maintain lightning design system styling
+                                            emptyTo: 'none',
+
+                                            headers: {
+
+                                                '.actionColumn': {
+                                                    // disable it by setting the property sorter to false
+                                                    sorter: false
+                                                },
+                                                6: {
+                                                    sorter: "checkbox"
+                                                },
+                                                0: {
+                                                    sorter: "shortDate"
+                                                },
+                                            },
+                                            sortList: [
+                                                [0, 0]
+                                            ],
+                                            sortAppend: [
+                                                [1, 0]
+                                            ],
+                                            widgets: ['stickyHeaders'],
+                                            widgetOptions: {
+
+                                                stickyHeaders_attachTo: '.wrapper',
+                                                stickyHeaders_offset: 0,
+                                            }
+                                        });
+                                    }
+
+
+                                    
+                                    if (defaultSort == true) {
+                                    
+                                        $j("#caseQueueTable").tablesorter({
+
+                                            theme: 'blue', //blue theme css not included inorder to maintain lightning design system styling
+                                            emptyTo: 'none',
+
+                                            headers: {
+
+                                                '.actionColumn': {
+                                                    // disable it by setting the property sorter to false
+                                                    sorter: false
+                                                },
+                                                6: {
+                                                    sorter: "checkbox"
+                                                },
+                                                0: {
+                                                    sorter: "shortDate"
+                                                },
+                                            },
+                                            sortList: [
+                                                [colIndex, colSortOrder],
+                                                [1, 0]
+                                            ],
+                                            sortAppend: [
+                                                [1, 0]
+                                            ],
+                                            widgets: ['stickyHeaders'],
+                                            widgetOptions: {
+
+                                                stickyHeaders_attachTo: '.wrapper',
+                                                stickyHeaders_offset: 0,
+                                            }
+                                        });
+
+                                        var i = 0;
+                                        $j("#caseQueueTable").find("tr:gt(0)").each(function() {
+
+                                            //console.log($j(this).find("td:last").find('#actionDiv').find('#reviewLink').attr('onclick'));
+                                            var reviewNowOnclickVal = $j(this).find("td:last").find('#actionDiv').find('#reviewLink').attr('onclick');
+
+                                            var updatedOnclickEventArray = reviewNowOnclickVal.split(',');
+
+                                            $j(this).find("td:last").find('#actionDiv').find('#reviewLink').attr('onclick', updatedOnclickEventArray[0] + ', ' + i + ')');
+                                            i++;
+                                        });
+
+                                    }
+                                    $j('#caseQueueTable').trigger("update");
+
+
+                                    var caseApprovalTable = $j("#caseQueueTable");
+                                    caseApprovalTable.bind("sortEnd", function() {
+
+                                        //console.log('Recalculating Links');
+                                        var i = 0;
+                                        caseApprovalTable.find("tr:gt(0)").each(function() {
+
+                                            //console.log($j(this).find("td:last").find('#actionDiv').find('#reviewLink').attr('onclick'));
+                                            var reviewNowOnclickVal = $j(this).find("td:last").find('#actionDiv').find('#reviewLink').attr('onclick');
+
+                                            var updatedOnclickEventArray = reviewNowOnclickVal.split(',');
+
+                                            $j(this).find("td:last").find('#actionDiv').find('#reviewLink').attr('onclick', updatedOnclickEventArray[0] + ', ' + i + ')');
+                                            i++;
+                                        });
+                                    });
+                                    
+                                } else {
+
+                                    $j('#queueSize').text('(0 items)');
+                                    $j('#scrollContainer').css({
+                                        "height": ""
+                                    });
+                                    $j('#scrollContainer').css({
+                                        "overflow-y": "unset"
+                                    });
+                                    $j('#caseQueueTable').hide();
+                                    $j('.tfnsw-arxxus').css('background', '#e4e4e4');
+                                    $j('#caseQueueNotification').show();
+
+                                }
+                            }
+                        }, {
+                            escape: false
+                        }
+                    );
+                };
+
+                return {
+
+                    fetchCaseQueue: fetchCaseQueue,
+                    caseIndex: caseIndex
+                }
+            })();
+
+            function fetchQueryStr() {
+
+                //console.log($j('#global-search-01').val());
+
+                //$j('.slds-spinner--brand').show();
+
+                MinisterApprovalQueueModule.fetchCaseQueue('' + $j('#global-search-01').val());
+            }
+
+            function caseReviewNow(caseRef, caseIndex) {
+
+                //console.log(caseRef);
+                //console.log(caseIndex);
+
+                // returns array as [columnIndex, sortDirection], where columnIndex is a zero-based index for your columns left-to-right and sortDirection is 0 for Ascending and 1 for Descending
+                var sortArray = $j("#caseQueueTable")[0].config.sortList;
+
+                //console.log(sortArray);
+                //console.log('Column Index: ' + sortArray[0][0]);
+                //console.log('Column Sort Order: ' + sortArray[0][1]);
+
+                var sortColIndex = sortArray[0][0];
+                var sortColOrder = sortArray[0][1];
+
+                $j('.slds-spinner_container').show();
+
+                viewCaseApproval(caseRef, caseIndex, sortColIndex, sortColOrder,'' + $j('#global-search-01').val());
+
+                return false;
+            }
+
+
+            function openConsoleTab(elem, caseId, caseNumber) {
+
+                $j(elem).blur();
+
+                var tempExistingTabId = '';
+                var matchingTabFound = false;
+
+                var tempExistingTabIds = [];
+                var tempCounter = -1;
+
+                sforce.console.getPrimaryTabIds(getPageInfo);
+
+                function getPageInfo(result) {
+
+                    //console.log(result);
+
+                    if (result.ids.length == 0) {
+
+                        //console.log('No Tabs Open');
+
+                        sforce.console.openPrimaryTab(null, '/' + caseId, true, caseNumber, fetchOpnedTabId, 'Case: ' + caseNumber);
+                    }
+
+                    for (i = 0; i < result.ids.length; i++) {
+
+                        tempExistingTabId = result.ids[i];
+
+                        tempExistingTabIds.push(result.ids[i]);
+
+                        console.log('Opened Tab Id: ' + tempExistingTabId);
+                        sforce.console.getPageInfo(result.ids[i], checkPresence);
+                    }
+
+                    if (matchingTabFound == false)
+                        sforce.console.openPrimaryTab(null, '/' + caseId, true, caseNumber, fetchOpnedTabId, 'Case: ' + caseNumber);
+                }
+
+                function checkPresence(result) {
+
+                    //console.log('PageInfo: ' + result.pageInfo);
+                    //console.log('Current Case Id: ' + caseId);
+                    //console.log('Trimmed Current Case Id: ' + caseId.substring(0, 15));
+
+                    tempCounter++;
+
+                    if (JSON.parse(result.pageInfo).objectId == caseId.substring(0, 15)) {
+
+                        matchingTabFound = true;
+                        //console.log('Tab Found');
+
+                        //console.log('Existing Tab Id: ' + tempExistingTabIds[tempCounter]);
+                        sforce.console.openPrimaryTab(tempExistingTabIds[tempCounter], '/' + caseId, true, caseNumber, fetchOpnedTabId);
+                    }
+                }
+
+
+                function fetchOpnedTabId(result) {
+
+                    //console.log('Tab Opened: ' + result.success);
+                    sforce.console.getFocusedPrimaryTabId(setTabIcon);
+                }
+
+                function setTabIcon(result) {
+
+                    //console.log('Opened Tab Id: ' + result.id);
+                    sforce.console.setTabIcon('{!URLFOR($Resource.JSPDF,'
+                        case_60.png ')}', result.id);
+                }
+            }
+        </script>
+
+        <script id="caseQueueView" type="text/x-jsrender">
+
+
+            <tr class="slds-text-title--caps" style="width:100%;height:5%;">
+                <td scope="col" data-label="Due Date" class="slds-cell-wrap" style="width: 10.3%;">
+                    <div style="text-align: center;">
+                        {{:~convertDate(Due_date__c)}}
+                    </div>
+                </td>
+                <td scope="row" data-label="Case Number Sort" class="slds-cell-wrap" style="display: none;"> 
+                    <div style="text-align: center;max-width: 100%;"> 
+                        {{if CaseNumber}}
+                            {{:CaseNumber}}
+                        {{/if}}
+                  </div>
+                </td>
+                <td scope="col" data-label="Case Number" class="slds-cell-wrap" style="width: 9.3%;">
+                    <div style="text-align: center;max-width: 100%;">
+                        <a id="reviewLink" href="#" onclick="sforce.one.navigateToURL('/{{:Id}}')" style="{!IF($User.UIThemeDisplayed == 'Theme3', 'display:none', 'display:block')}">{{:CaseNumber}}</a>
+                        <a id="reviewLink" href="#" onclick="openConsoleTab(this, '{{:Id}}','{{:CaseNumber}}')" style="{!IF($User.UIThemeDisplayed == 'Theme3', 'display:block', 'display:none')}">{{:CaseNumber}}</a>
+                    </div>
+                </td>
+                <td scope="row" data-label="Status" class="slds-cell-wrap" style="width: 12.3%;">
+                    <div style="text-align: center;max-width: 100%;">
+                        {{if Status}} 
+                            {{:Status}}
+                        {{/if}}
+                    </div>
+                </td>
+                <td scope="row" data-label="Contact Name" class="slds-cell-wrap" style="width: 12.3%;">
+                    <div style="text-align: center;max-width: 100%;">
+                        {{if ContactId}} 
+                            {{:Contact.Name}}
+                        {{/if}}
+                    </div>
+                </td>
+                <td scope="row" data-label="Signatory Person" class="slds-cell-wrap" style="width: 14.3%;">
+                    <div style="text-align: center;max-width: 100%;">
+                        {{if Signatory_Person__c}} 
+                            {{:Signatory_Person__r.Name}}
+                        {{/if}}
+                    </div>
+                </td>
+                <td scope="row" data-label="Desktop Editing" class="slds-cell-wrap" style="width: 11.3%;">
+                    <div style="text-align: center;max-width: 100%;">
+                        {{if Desktop_Editing__c == true }}
+                            <input type="checkbox" checked="checked" disabled/>
+                        {{else}}
+                            <input type="checkbox" disabled/>
+                        {{/if}}
+                    </div>
+                </td>
+                <td scope="row" data-label="Case Subject" class="slds-cell-wrap" style="width: 28.3%;">
+                    <div style="text-align: center;max-width: 100%;">
+                        {{:Subject}}
+                    </div>
+                </td>
+                <td scope="row" data-label="Action" class="slds-cell-wrap" style="width: 12.3%;">
+                    <div id="actionDiv" style="text-align:center;">
+                        <a id="reviewLink" href="#" onclick="caseReviewNow('{{:Id}}', '{{* :MinisterApprovalQueueModule.caseIndex++; }}')">Review Now</a>
+                    </div>
+                </td>
+
+            </tr>
+
+        </script>
+
+
+    </head>
+
+    <body>
+        <apex:form >
+
+            <div class="tfnsw-arxxus" style="position: fixed;width: 100%;height: 100%;">
+
+                <header class="slds-global-header_container" style="background: #FFFFFF;padding: 0.5rem 1.5rem;">
+                    <div class="slds-global-header slds-grid slds-grid--align-spread">
+                        <div class="slds-global-header__item">
+                            <div class="slds-global-header__logo">
+                                <img src="{!URLFOR($Resource.JSPDF,'image/Approval.png')}" class="slds-icon"></img>
+                                <div style="display:inline">
+                                    <font style="font-size: 1.25rem;">Approvals</font> <span id="queueSize">(0 items)</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="slds-global-header__item slds-global-header__item--search" style="position:absolute;margin: auto;left: 0;right: 0;top: 6px;bottom: 0px;width: 250px;">
+                            <div class="slds-form-element slds-lookup">
+                                <label class="slds-assistive-text" for="global-search-01">Search Approval Queue</label>
+                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--left">
+                                  <img src="{!URLFOR($Resource.JSPDF,'image/Search.png')}" class="slds-input__icon"/>
+                                  <!-- <svg aria-hidden="true" class="slds-input__icon">
+                                        <use xlink:href="{!URLFOR($Resource.SLDS212, '/assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                                  </svg>  -->
+                                    <input id="global-search-01" class="slds-input slds-lookup__search-input" type="search" placeholder="Search Approval Queue" onkeyUp="fetchQueryStr()" />
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <ul class="slds-global-header__item slds-grid slds-grid--vertical-align-center">
+                            <li class="slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small">
+                            </li>
+                        </ul>
+
+                    </div>
+                </header>
+
+                <div class="slds-spinner_container" style="display:none;">
+                    <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+
+                <div id="scrollContainer" class="wrapper" style="padding: 0 5px;overflow-y:auto;position: relative;width:100%; height:90%;background: #FFFFFF;-webkit-overflow-scrolling: touch;">
+
+                    <table class="tablesorter slds-table slds-table--bordered slds-table--fixed-layout" role="grid" style="width:100%;display:none;" id="caseQueueTable">
+                        <thead>
+                            <tr class="slds-text-title--caps" style="background-color: #f4f6f9;width:100%;height:5%;">
+                                <th scope="col" class="slds-cell-wrap" style="width: 9.3%;">
+                                    <div title="Due Date" style="text-align: center;font-weight:bold;">Due Date<span></span></div>
+                                </th>
+                                <th scope="col" class="slds-cell-wrap" style="display: none;">
+                                    <div title="Case Number" style="text-align: center;font-weight:bold;">Case Number Sort<span></span></div>
+                                </th>
+                                <th scope="col" class="slds-cell-wrap" style="width: 9.3%;">
+                                    <div title="Case Number" style="text-align: center;font-weight:bold;">Case Number<span></span></div>
+                                </th>
+                                <th scope="col" class="slds-cell-wrap" style="width: 9.3%;">
+                                    <div title="Case Number" style="text-align: center;font-weight:bold;">Status<span></span></div>
+                                </th>
+                                <th scope="col" class="slds-cell-wrap" style="width: 12.3%;">
+                                    <div title="Contact Name" style="text-align: center;font-weight:bold;">Contact Name<span></span></div>
+                                </th>
+                                <th scope="col" class="slds-cell-wrap" style="width: 14.3%;">
+                                    <div title="Signatory Person" style="text-align: center;font-weight:bold;">Signatory Person<span></span></div>
+                                </th>
+                                <th scope="col" class="slds-cell-wrap" style="width: 10.3%;">
+                                    <div title="Desktop Editing" style="text-align: center;font-weight:bold;">Desktop Editing<span></span></div>
+                                </th>
+                                <th scope="col" class="slds-cell-wrap" style="width: 25.3%;">
+                                    <div title="Case Subject" style="text-align: center;font-weight:bold;">Case Subject<span></span></div>
+                                </th>
+                                <th scope="col" class="slds-cell-wrap actionColumn" style="width: 12.3%;">
+                                    <div title="Action" style="text-align: center;font-weight:bold;">Action</div>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody style="width:100%;" id="caseQueueContainer">
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <br/>
+                <br/>
+
+                <div style="position: relative;text-align: center;display:none;" id="caseQueueNotification">
+                    <div class="slds-notify slds-notify--toast slds-theme--error slds-theme--alert-texture" role="alert" style="text-align: center;">
+                         <img src="{!URLFOR($Resource.JSPDF,'image/Warning.png')}" class="slds-icon slds-icon--small slds-m-right--small slds-col slds-no-flex"/>
+                         <!-- <svg aria-hidden="true" class="slds-icon slds-icon--small slds-m-right--small slds-col slds-no-flex">
+                            <use xlink:href="{!URLFOR($Resource.SLDS212, '/assets/icons/utility-sprite/svg/symbols.svg#warning')}"></use>
+                        </svg> -->
+                        <h2 class="slds-text-heading--small">No items found for approval.</h2>
+                    </div>
+                </div>
+
+            </div>
+
+            <apex:actionFunction name="viewCaseApproval" action="{!reviewNow}" reRender="">
+                <apex:param name="queueCaseId" value="" />
+                <apex:param name="queueCaseIndex" value="" />
+                <apex:param name="queueSortColIndex" value="" />
+                <apex:param name="queueSortColOrder" value="" />
+                <apex:param name="searchBy" value="" />
+            </apex:actionFunction>
+
+        </apex:form>
+    
+    </body>
+    
+    </html>
+
+
+
+</apex:page>

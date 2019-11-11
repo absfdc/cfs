@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>list of level 1 taxonomy to be used for different fields displayed on web to case form</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Web form level1 taxonomy field values</label>
+    <visibility>Public</visibility>
+</CustomObject>

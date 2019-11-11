@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_must_be_same_Type</fullName>
+    <active>false</active>
+    <description>The parent Taxonomy Type must be the same as the Child Taxonomy Type.</description>
+    <errorConditionFormula>!ISBLANK(Parent_Id__c) &amp;&amp; 
+  (TEXT( Parent_Id__r.Type__c) != TEXT( Type__c ) )</errorConditionFormula>
+    <errorDisplayField>Type__c</errorDisplayField>
+    <errorMessage>The parent Taxonomy Type must be the same as the Child Taxonomy Type.</errorMessage>
+</ValidationRule>

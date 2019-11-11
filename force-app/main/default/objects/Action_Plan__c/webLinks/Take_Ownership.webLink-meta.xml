@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Take_Ownership</fullName>
+    <availability>online</availability>
+    <description>Changes owner to current logged in user</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Take Ownership</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/connection.js&quot;)};  
+
+var actPlanObj = new sforce.SObject(&quot;Action_Plan__c&quot;); 
+actPlanObj.Id = &#39;{!Action_Plan__c.Id}&#39;; 
+
+actPlanObj.OwnerId = sforce.connection.getUserInfo().userId; 
+var response = sforce.connection.update([actPlanObj]); 
+if (response[0].getBoolean(&#39;success&#39;)) { 
+window.location.reload(); 
+
+} else { 
+alert(&#39;Could not take ownership:\n\n&#39; + response[0].errors.message); 
+}</url>
+</WebLink>

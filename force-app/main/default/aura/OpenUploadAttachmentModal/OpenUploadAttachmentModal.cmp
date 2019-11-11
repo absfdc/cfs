@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForRecordHome,force:LightningQuickAction,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global">
+	<aura:attribute name="recordId" type="String"/>
+       <button class="slds-button slds-button--neutral" onclick="{!c.showModal}">Upload Attachment</button>
+
+    <p>{!v.body}</p>
+</aura:component>

@@ -1,0 +1,33 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" controller="BulkUploadStagingRecords">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="maximumRecord" type="Integer" />
+    <aura:attribute name="fileToUpload" type="String" />
+	<aura:attribute name="successUploads" type="Integer" default="0" />
+	<aura:attribute name="isSuccess" type="Boolean" default="false" />
+	<aura:attribute name="baseUrl" type="String" default="$A.get('$Label.c.Community_Base_Url')" /> 
+    <aura:attribute name="csvColumnHeaders" type="String[]" />
+    
+	<div role="dialog" aura:id = "modalDiv">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+            	<h2 id="header43" class="slds-text-heading--medium">Upload Your File</h2>
+    		</div>
+	    	<div class="slds-modal__content slds-p-around--medium">
+		    	<center>
+                    <div class='selectFile' style="display:inline; margin-right:2em;">
+                        <label class="slds-radio_button__label slds-button slds-button_neutral" for="file-upload-input-01" >
+                            <input type="file" class="slds-file-selector__input slds-assistive-text" id="file-upload-input-01" accept=".csv" value="{!v.fileToUpload}" aura:id="file" onchange="{!c.setFileName}"/>
+                            Choose File
+                        </label>
+                        <span style="margin-left:0.5em;">
+                            <label id="selectedFileName">No File Chosen</label>
+                        </span>
+                    </div>
+                    <ui:button class="slds-button slds-button--neutral" press="{!c.readFile}"> Upload </ui:button>
+			    </center>
+	    	</div>
+	    
+  		</div>
+	</div> 
+	
+</aura:component>

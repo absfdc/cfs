@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STA_Randwick_Depot_CFM_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>STA - Randwick Depot</label>
+    <queue>STA_Randwick_Depot_CFM</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

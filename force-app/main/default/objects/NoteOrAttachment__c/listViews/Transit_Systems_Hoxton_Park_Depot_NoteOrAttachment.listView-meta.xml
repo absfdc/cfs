@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transit_Systems_Hoxton_Park_Depot_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Transit Systems - Hoxton Park Depot</label>
+    <queue>Transit_Systems_Hoxton_Park_Depot</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,296 @@
+<apex:page controller="ChangeofGovernmentController">
+  
+  <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'/>
+  
+  <apex:stylesheet value="{!URLFOR($Resource.JSPDF,'css/bootstrap.min.css')}" />
+  <apex:stylesheet value="{!URLFOR($Resource.JSPDF,'css/bootstrap-theme.min.css')}" />
+  <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/jquery.min.js')}"/>
+  
+  <apex:includeScript value="{!URLFOR($Resource.JSPDF,'js/bootstrap.min.js')}"/> 
+  
+  <style>
+   
+   .alert {
+    
+      padding: 10px;
+   }
+   
+   div.spinner {
+     
+      display: inline-block;
+      background:#4a4f56;;
+      padding: 10px;
+      border-radius: 10px;
+      
+      position: fixed;
+      z-index: 999;
+      height: 3em;
+      width: 3em;
+      overflow: show;
+      margin: auto;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 10px;
+    }
+    
+    /* Transparent Overlay */
+    div.spinner:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.3);
+    }
+    
+    div.spinner div {
+      width: 6%;
+      height: 16%;
+      background: #FFF;
+      position: absolute;
+      left: 49%;
+      top: 43%;
+      opacity: 0;
+      -webkit-border-radius: 50px;
+      -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
+      -webkit-animation: fade 1s linear infinite;
+    }
+    
+    @-webkit-keyframes fade {
+      from {opacity: 1;}
+      to {opacity: 0.25;}
+    }
+    
+    div.spinner div.bar1 {
+      -webkit-transform:rotate(0deg) translate(0, -130%);
+      -webkit-animation-delay: 0s;
+    }    
+    
+    div.spinner div.bar2 {
+      -webkit-transform:rotate(30deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.9167s;
+    }
+    
+    div.spinner div.bar3 {
+      -webkit-transform:rotate(60deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.833s;
+    }
+    div.spinner div.bar4 {
+      -webkit-transform:rotate(90deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.7497s;
+    }
+    div.spinner div.bar5 {
+      -webkit-transform:rotate(120deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.667s;
+    }
+    div.spinner div.bar6 {
+      -webkit-transform:rotate(150deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.5837s;
+    }
+    div.spinner div.bar7 {
+      -webkit-transform:rotate(180deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.5s;
+    }
+    div.spinner div.bar8 {
+      -webkit-transform:rotate(210deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.4167s;
+    }
+    div.spinner div.bar9 {
+      -webkit-transform:rotate(240deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.333s;
+    }
+    div.spinner div.bar10 {
+      -webkit-transform:rotate(270deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.2497s;
+    }
+    div.spinner div.bar11 {
+      -webkit-transform:rotate(300deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.167s;
+    }
+    div.spinner div.bar12 {
+      -webkit-transform:rotate(330deg) translate(0, -130%); 
+      -webkit-animation-delay: -0.0833s;
+    }
+    
+    div.fadeBackground:before {
+     content: '';
+     display: block;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0,0,0,0.3);
+   }
+   
+   
+   .vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events:all;
+}
+   
+  </style>
+  
+  <script>
+     
+   var $j = jQuery.noConflict();
+   
+   $j(document).ready(function(){
+     
+    $j('.spinner').hide();
+    
+   });
+   
+   function showSpinner() {
+    
+    $j('.spinner').show();
+   }
+   
+   function hideSpinner(completionStatus) {
+    
+    $j('.spinner').hide();
+    
+    if(completionStatus == "true")
+     $j('#success-alert').show();
+    else
+     $j('#error-alert').show();
+   }
+   
+  </script>
+  
+  <apex:form id="frm">
+   
+   <apex:sectionHeader title="Change of Government"/>
+   
+   <div class="bootstrap">
+    <div class=" bootstrap row">
+     <div class="bootstrap col-xs-12">
+       
+        <div class="bootstrap panel panel-primary">
+         
+         <div class="bootstrap panel-heading">
+          <Strong>Transfer Case Ownership</Strong>
+         </div>
+         
+         <div class="bootstrap panel-body">
+            
+            <div class="alert alert-warning" role="alert">
+    
+             <strong>
+              <font color="black">Note:</font> 
+             </strong>
+             <br/><br/>
+             <font color="red">
+              <ul style="padding: 0px;">
+               <li>
+                Clicking on Transfer Ownership button will transfer all Cases owned by MO users to Roads Manager Queue or Transport Manager Queue
+                based on the Portfolio specified on the individual Case record.
+               </li>
+               <li>
+                You will be notified via email when the process completes.
+               </li>
+              </ul>
+             </font>
+    
+            </div>
+            
+            <div class="col-xs-6">
+            
+             <div class="col-xs-12">
+              <div class="form-group">
+               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirm">Transfer Ownership</button>
+              </div>
+              
+              <div class="alert alert-success" role="alert" id="success-alert" style="{!If(batchScheduled == true, 'display:block', 'display:none')};font-size:13px;">
+                <strong>
+                 <font color="black">Success:</font> 
+                </strong>
+                <font color="black">Transfer process has been started and you will be notified via email once completed.</font>
+              </div>
+              
+             </div>
+             
+             <div class="alert alert-error" role="alert" id="success-alert" style="display:none;font-size:13px;">
+                <strong>
+                 <font color="black">Error:</font> 
+                </strong>
+                <font color="black">Could not start the process. Please contact System Administrator for more information.</font>
+             </div>
+              
+             
+            </div>
+            
+         </div>
+        </div>
+       </div>
+        
+     </div>
+     
+     <!-- Modal -->
+     <div class="bootstrap modal fade fadeBackground" id="confirm" role="dialog">
+      <div class="vertical-alignment-helper">
+       <div class="bootstrap modal-dialog modal-lg vertical-align-center">
+        <div class="bootstrap modal-content">
+         <div class="bootstrap modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirmation</h4>
+         </div>
+         <div class="bootstrap modal-body" style="font-size:13px;">
+          <p>Start case ownership transfer process?</p>
+         </div>
+         <div class="bootstrap  modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="showSpinner(), callTransferOwnership()">Start</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Modal End -->
+    
+    </div>
+    
+    
+    <!-- spinner during content waiting to display -->
+    <div class="spinner">
+    
+     <div class="bar1"></div>
+     <div class="bar2"></div>
+     <div class="bar3"></div>
+     <div class="bar4"></div>
+     <div class="bar5"></div>
+     <div class="bar6"></div>
+     <div class="bar7"></div>
+     <div class="bar8"></div>
+     <div class="bar9"></div>
+     <div class="bar10"></div>
+     <div class="bar11"></div>
+     <div class="bar12"></div>
+        
+    </div>  
+    <!-- End of spinner -->            
+    
+    <apex:actionFunction name="callTransferOwnership" action="{!transferOwnerShip}" reRender="" oncomplete="hideSpinner('{!batchScheduled}')"/>
+     
+  </apex:form>
+</apex:page>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_P2P_Transport_Commission_Action_Plan</fullName>
+    <columns>NAME</columns>
+    <filterScope>Queue</filterScope>
+    <label>TfNSW P2P Transport Commission</label>
+    <queue>TfNSW_P2P_Transport_Commission</queue>
+    <sharedTo>
+        <group>Point_to_point_transport_Commission</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Value__c</fullName>
+    <description>Allows the customer facing value to be different from the internal / staff-facing taxonomy value</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Defines the value that customers can select if this taxonomy item is visible in customer-facing channels (i.e. on the web).</inlineHelpText>
+    <label>Customer Value</label>
+    <length>100</length>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

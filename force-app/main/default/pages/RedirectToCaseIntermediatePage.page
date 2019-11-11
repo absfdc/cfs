@@ -1,0 +1,75 @@
+<apex:page standardController="Case" extensions="RedirectToCaseExtension">
+    
+<apex:includeScript value="/soap/ajax/26.0/connection.js"/> 
+<apex:includeScript value="/support/console/26.0/integration.js"/>
+    <script type="text/javascript">
+        
+         function createPrimaryTab() {
+            //Open a new primary tab with the salesforce.com home page in it
+            var param = getParameterByName('Id','');
+           	var caseNumber = getParameterByName('caseNumber','');
+          	console.log(param);
+            var baseUrlPTab='{!baseURL}';
+            sforce.console.openPrimaryTab(null, baseUrlPTab+'/'+param, true,
+                caseNumber, openSubtab, 'salesforceTab');
+        }
+        
+    	var openSubtab = function openSubtab(result) {
+            //Now that we have the primary tab ID, we can open a new subtab in it
+            var primaryTabId = result.id;
+            var baseUrlSTab='{!baseURL}';
+            sforce.console.openSubtab(primaryTabId , baseUrlSTab+'/apex/CategoriseIssue?id='+getParameterByName('Id',''), true, 
+                'salesforce', null, testSetTabIcon, 'salesforceSubtab');
+        };
+        
+        var openSuccess = function openSuccess(result) {
+            //Report whether we succeeded in opening the subtab
+            if (result.success == true) {
+                console.log('subtab successfully opened');
+            } else {
+                console.log('subtab cannot be opened');
+            }
+        };
+    	function testSetTabIcon(){
+    		var baseUrlIcon ='{!baseURL}';
+            console.log(baseUrlIcon);
+            sforce.console.setTabIcon(baseUrlIcon+'/img/icon/cases16.png', null, checkResult);
+    	}
+        function testResetTabIcon() {
+            sforce.console.setTabIcon(null, null, checkResult);
+    	}
+       
+    </script>
+    <script>
+    window.onload=function() {  
+        var baseUrl='{!baseURL}';
+        console.log(baseUrl);
+        createPrimaryTab();
+    };
+    
+    function getParameterByName(name, url) {
+        if (!url) {
+          url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+    	return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+         
+    </script>
+    <style>
+    .caseIcon {
+    background-image: url("/img/sprites/master.png");
+    background-position: 0 -986px;
+    height: 32px;
+    width: 32px;
+}
+
+    </style>
+    <apex:form >
+    	
+    </apex:form>
+</apex:page>

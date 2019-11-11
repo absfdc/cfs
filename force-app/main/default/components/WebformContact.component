@@ -1,0 +1,227 @@
+<apex:component controller="WebformContactController" id="contactComponent">    
+    <apex:attribute access="public" description="Contact record" id="contactRecord" name="contactPerson" required="true" type="Contact"/>
+    <apex:attribute access="public" description="State details of contact" id="selectedState" name="selectedState" required="true" type="String"/>
+    <apex:attribute access="public" description="Case record details associated with contact" id="caseRecord" name="caseRecord" required="true" type="Case" />
+  
+    <div class="col-md-12 formLabel">
+        <h1 style="display:none">&nbsp;</h1><h2 class="heading fieldBottomMargin"  aria-label="Your contact details">Your contact details</h2>
+        <hr style="border-top: dotted 1px;margin-top:0px;margin-bottom:0px;" />
+    </div>
+    <!--
+    <div class="col-md-12 formLabel contactFields" >
+        <label class="fieldLabel" aria-label="Title" for="sitePageId:caseFormId:pblockId:contact-detail-salutation">Title</label>
+    </div>
+    <div class="col-md-12" >
+        <apex:inputField type="text" style="width:21%;display:none" styleClass="formInput name-field" html-name="contact-detail-title" html-data-error-message="Please select your title" id="contact-detail-salutation" value="{!contactPerson.Salutation}"/>                            
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-2">
+            <input type="radio" name="title" value="Mr" onchange="setTitle(value)">Mr</input>
+        </div>
+        <div class="col-md-2">  
+            <input type="radio" name="title" value="Miss" onchange="setTitle(value)">Miss</input>
+        </div>
+        <div class="col-md-2">
+            <input type="radio" name="title" value="Mrs" onchange="setTitle(value)" >Mrs</input>
+        </div>
+        <div class="col-md-6">  
+            <input type="radio" name="title" value="Other" onchange="setTitle(value)" >Other</input>
+            <input type="text" id="otherTitle" disabled="disabled" placeholder="Please specify" onchange="setTitle(value)" class="formInput name-field" style="width:150px"/>
+        </div>
+    </div>
+    -->
+    
+    <div class="col-md-12 formLabel contactFields" >
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label  class="fieldLabel" aria-label="Contact given name" for="sitePageId:caseFormId:pblockId:contact-detail-first-name">Given name</label>
+        -->
+        <label  class="fieldLabel" aria-label="Contact given name" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name">Given name</label>
+        
+        <div id="firstNameErrorMsg"  class="has-error errorMessage"></div>
+        <apex:inputField html-aria-describedby="firstNameErrorMsg" html-placeholder="Please specify" styleClass="formInput name-field" html-maxlength="40" html-name="contact-detail-given-name" html-data-error-message="Please write your given name for when we contact you" id="contact-detail-first-name" value="{!contactPerson.FirstName}"/>                        
+    </div>
+    
+    <div class="col-md-12 formLabel contactFields" >
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" aria-label="Contact family name" for="sitePageId:caseFormId:pblockId:contact-detail-last-name">Family name</label>
+        -->
+        <label class="fieldLabel" aria-label="Contact family name" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name">Family name</label>
+        
+        <div id="lastNameErrorMsg"  class="has-error errorMessage"></div>
+        <apex:inputField html-aria-describedby="lastNameErrorMsg" required="false" html-maxlength="80" html-placeholder="Please specify" styleClass="formInput name-field" html-name="contact-detail-family-name" html-data-error-message="Please write your family name for when we contact you"  id="contact-detail-last-name" value="{!contactPerson.LastName}"/>                        
+    </div>
+    <div class="col-md-12 formLabel contactFields" >
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" aria-label="Contact email" for="sitePageId:caseFormId:pblockId:contact-detail-email-address">Email address<span class="mandatoryStar preferredContactEmail">&nbsp;*</span></label>
+        -->
+        <label class="fieldLabel" aria-label="Contact email" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address">Email address<span class="mandatoryStar preferredContactEmail">&nbsp;*</span></label>
+        
+        <div id="emailErrorMsg"  class="has-error errorMessage"></div>
+        <apex:inputField html-aria-describedby="emailErrorMsg" type="email" html-placeholder="example@address.com.au" styleClass="formInput email-field" html-name="contact-detail-email" id="contact-detail-email-address" html-data-error-message="Please write either your valid email address or phone number so we can contact you" value="{!contactPerson.Email}"/>
+    </div>
+    <div class="col-md-12 formLabel contactFields">
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" aria-label="Confirm contact email" for="sitePageId:caseFormId:pblockId:contact-detail-email-address-confirm">Confirm your email<span class="mandatoryStar preferredContactEmail">&nbsp;*</span></label>       
+        -->
+        <label class="fieldLabel" aria-label="Confirm contact email" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm">Confirm your email<span class="mandatoryStar preferredContactEmail">&nbsp;*</span></label>       
+
+        <apex:inputField type="email" html-placeholder="example@address.com.au" styleClass="formInput email-field" html-name="contact-detail-email-confirm" id="contact-detail-email-address-confirm" html-data-error-message="Please write either your valid email address or phone number so we can contact you" value="{!contactPerson.Email}"/>
+    </div>
+    <div class="col-md-12 contactFields formLabel" >
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:contact-detail-phone-number" aria-label="Contact phone">Phone number (during business hours)<span class="mandatoryStar preferredContactPhone">&nbsp;*</span></label>
+        -->
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number" aria-label="Contact phone">Phone number (during business hours)<span class="mandatoryStar preferredContactPhone">&nbsp;*</span></label>
+
+        <div id="phoneErrorMsg"  class="has-error errorMessage"></div>
+        <apex:inputField html-aria-describedby="phoneErrorMsg" html-placeholder="Please specify" styleClass="formInput phone-field" type="tel" html-maxlength="20" html-name="contact-detail-phone-number" id="contact-detail-phone-number" value="{!contactPerson.Phone}"/>               
+    </div>
+    <div class="col-md-12 formLabel contactFields" >
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:route" aria-label="Contact street address" >Postal Address</label>
+        -->
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:route" aria-label="Contact street address" >Postal Address</label>
+        
+        <apex:inputTextarea html-placeholder="Please specify" rows="1" html-autocomplete="off" html-maxlength="200" style="max-width: 100%;" styleClass="address-field formInput"  id="route" value="{!contactPerson.MailingStreet}"/>             
+    </div>
+    <div class="col-md-12 formLabel contactFields" >
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:locality" aria-label="Contact suburb/city" >Suburb</label>
+        -->
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:locality" aria-label="Contact suburb/city" >Suburb</label>
+        <apex:inputField html-placeholder="Please specify" styleClass="formInput suburb-field" html-name="contact-detail-suburb" id="locality" value="{!contactPerson.MailingCity}"/>                        
+    </div>
+    
+    <div class="col-md-12 formLabel contactFields" >
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:postal_code">Postcode</label>
+        -->
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code">Postcode</label>        
+    </div>
+    <div class="col-md-12 contactFields" > 
+        <div id="postalCodeErrorMsg"  class="has-error errorMessage"></div>
+        <apex:inputField html-aria-describedby="postalCodeErrorMsg" style="width:auto;" html-placeholder="Please specify" html-name="contact-detail-postcode" html-maxlength="10" html-size="15" styleClass="formInput"  id="postal_code" value="{!contactPerson.MailingPostalCode}"/>
+    </div>
+    
+    <div class="col-md-12 formLabel contactFields" >
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:administrative_area_level_1" aria-label="Contact State" >State</label>
+        -->
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1" aria-label="Contact State" >State</label>
+    </div>
+    <div class="col-md-12 contactFields" >
+        <apex:selectList styleClass="fieldHeight state formInput"  id="administrative_area_level_1" onchange="checkForNonAusCountry()" value="{!selectedState}" size="1">
+            <apex:selectOptions value="{!states}"></apex:selectOptions>
+        </apex:selectList>
+        <!-- KM-SFDC-13.10.15 - Added Label  tage for WCAG-E895.-->
+        <label for="outsideAus" style="display:none">Outside Australia</label>
+        
+        <input  id="outsideAus" style="display:none" type="text" value="{!outsideAus}" />             
+    </div>
+    
+    <div class="col-md-12 formLabel countryField" style="display:none">
+        <!-- KM-SFDC-13.10.15 - Changed Label Attribute for WCAG-E895.
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:country" aria-label="Specify country if outside Australia" >Country</label>
+        -->
+        <label class="fieldLabel" for="sitePageId:caseFormId:pblockId:webformContact:contactComponent:country" aria-label="Specify country if outside Australia" >Country</label>
+    </div>
+    <div class="col-md-12 countryField" style="display:none">                        
+        <apex:inputField styleClass="fieldHeight formInput" id="country" value="{!contactPerson.MailingCountryCode}" />
+    </div>
+    
+    <div class="col-md-12 formLabel previouslyRaisedIssue formLabel" style="display:none" >                        
+        <label class="fieldLabel"  for="previousIssue" aria-label="Have you raised this issue previously?" >Have you raised this issue previously?</label>
+    </div>
+    <div class="col-md-12 previouslyRaisedIssue" style="display:none" >
+        <input id="previousIssue" style="display:none" />
+        <apex:selectRadio title="Previously raised Issue" onchange="togglePreviousContactFields();" id="previouslyRaisedIssueRadio" styleClass="fieldHeight" style="margin-top:0px;width:50%" value="{!caseRecord.User_have_raised_the_issue_previously__c}">
+            <apex:selectOptions value="{!previouslyRaisedIssueOptions}"/>
+        </apex:selectRadio>                        
+    </div>
+    <div class="col-md-12 formLabel previouslyRaisedIssueYes formLabel" style="display:none" >                        
+        <label class="fieldLabel" for="approximateDateOfContact" aria-label="Approximate date of contact" >Approximate date of contact</label>
+    </div>
+    <div class="col-md-12 previouslyRaisedIssueYes" style="display:none" >
+        <div id="previous-contact-date-error"  class="has-error errorMessage"></div>
+        <input name="date-of-contact" placeholder="DD/MM/YYYY" aria-describedby="previous-contact-date-error" id="approximateDateOfContact" onchange="getApproxDateOfContact();formatDateOfContact(value)" type="text" class="js-datepicker feedback-date formInput" style="width:210px;"  />
+        <!-- KM-SFDC-13.10.15 - Added Label Tag for WCAG-E895.-->
+        <label for="approximateDateOfContactStr" style="display:none">Date Picker</label>
+        <input name="date-of-contact-str" placeholder="DD/MM/YYYY" id="approximateDateOfContactStr" type="text" class="js-datepicker feedback-date formInput" style="display:none;width:210px;"  />
+    </div>
+    <div class="col-md-12 formLabel previouslyRaisedIssueYes formLabel" style="display:none" >                        
+        <label class="fieldLabel"  for="howDidYouContactUs" aria-label="How did you contact us?" >How did you contact us?</label>
+    </div>
+    <div class="col-md-12 previouslyRaisedIssueYes" style="display:none" >
+        <select id="howDidYouContactUs"  name="how-did-you-contact-us" class="state fieldHeight formInput" size="1" >    
+            <option value="">Please select</option>
+            <option value="Phone">Phone</option>
+            <option value="Website">Website</option>
+            <option value="Letter">Letter</option>
+            <option value="Other">Other</option>    
+        </select>
+    </div>
+    <div class="col-md-12 formLabel previouslyRaisedIssueYes formLabel" style="display:none" >                        
+        <label class="fieldLabel" for="referenceNumber" aria-label="Reference number" >Reference number (if known)</label>
+    </div>
+    <div class="col-md-12 previouslyRaisedIssueYes" style="display:none" >
+        <input type="text" id="referenceNumber" placeholder="10001" class="formInput" style="width:auto;" maxlength="10"/>
+    </div>    
+    <script>
+    function setTitle(title) { 
+        var titles = document.getElementsByName('title');
+        var otherSelected = false;
+        for(var i=0; i< titles.length; i++) {
+            if(titles[i].checked && titles[i].value == 'Other') {
+                otherSelected = true;
+            }
+        }
+        if(otherSelected) {
+            document.getElementById('otherTitle').disabled = false;
+        } else {
+            document.getElementById('otherTitle').disabled = true;
+            document.getElementById('otherTitle').value = 'Please specify';
+        }
+        
+        var titleOptions = document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-salutation');
+        var optionMatchFound = false;
+        for(var i =0; i < titleOptions.length; i++) {
+            if(titleOptions[i].value == title) {
+                optionMatchFound = true;
+            }
+        }
+        if(!optionMatchFound) {
+            document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-salutation').options[titleOptions.length] = new Option(title, title);
+        }
+        document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-salutation').value = title;
+        console.log(document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-salutation').value);
+    }
+    
+    function checkForNonAusCountry() {
+        var stateOptions = document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1').options;
+        for(var i=0; i < stateOptions.length; i++) {
+            if(stateOptions[i].selected) {
+                var state = stateOptions[i].innerHTML;
+                if(state == 'Outside Australia') {
+                    $('.countryField').show();
+                } else {
+                    $('.countryField').hide();
+                    document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:country').value = '';
+                }
+            }           
+        }        
+    }
+    function formatDateOfContact(dateValue) {
+        var strDate = formatDate(dateValue);
+        if(strDate.length > 0) {
+            dateValue = dateValue.split("/");
+            $('#approximateDateOfContactStr').val(dateValue[0] + '/' + dateValue[1] + '/' + dateValue[2]);
+            $('#approximateDateOfContact').val(strDate);
+            $('#approximateDateOfContact').removeClass('placeholder');
+        } else {
+            $('#approximateDateOfContact').val('');
+            $('#approximateDateOfContactStr').val('');
+            $('#approximateDateOfContact').addClass('placeholder');
+        }
+    }
+    </script>
+</apex:component>

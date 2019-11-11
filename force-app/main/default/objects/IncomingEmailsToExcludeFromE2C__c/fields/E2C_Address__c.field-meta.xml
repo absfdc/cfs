@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>E2C_Address__c</fullName>
+    <caseSensitive>true</caseSensitive>
+    <description>Email address of E2C to be excluded from creating new case</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Email address of E2C to be excluded from creating new case</inlineHelpText>
+    <label>E2C Address</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Email</type>
+    <unique>true</unique>
+</CustomField>

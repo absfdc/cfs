@@ -1,0 +1,109 @@
+<apex:page controller="CheckRecordAccess_CX" action="{!autoRun}" showHeader="true" tabStyle="Case">
+  
+  <apex:includeScript value="/support/console/35.0/integration.js"/>
+  
+  <apex:sectionHeader title="Assigning {!objectLabel}"/>
+  <!--successPanel Will be rendered though user has no access on 
+      the record and will execute the javascript to close the tab-->
+  <apex:outputPanel id="successPanel" rendered="{!NOT(hasReadAccess)}">
+    
+    <h2>
+     {!tabLabel} has been assigned to {!assignedTo}. You no longer have access to the {!objectLabel}.
+     <br/>
+     You will be redirected back to {!objectLabel} list view screen.   
+    </h2>
+    
+    <script type="text/javascript">
+        
+        function closeTab() {
+         
+         sforce.console.getNavigationTabs(callback);
+         //sforce.console.getEnclosingPrimaryTabId(closeSubtab);
+        }
+        
+        var closeSubtab = function closeSubtab(result) {
+            
+          var tabId = result.id;
+          sforce.console.closeTab(tabId);
+        };
+        
+        var navigationCallback = function(result) {
+         
+         if(result.success) { 
+          
+          sforce.console.focusNavigationTab();
+          sforce.console.getEnclosingPrimaryTabId(closeSubtab);
+          
+         }
+        }
+        
+        var callback = function (result) { 
+           
+          if(result.success) { 
+                
+            var tempItem = JSON.parse(result.items);
+            for(var i = 0, len = tempItem.length; i < len; i++) {
+              
+              console.log('Label:'+tempItem[i].label+'listViewURl:'+tempItem[i].listViewUrl+'navTabid:'+tempItem[i].navigationTabId+'Selected ' +tempItem[i].selected);
+              
+              //checking plural of object label 
+              if(tempItem[i].label == '{!objectLabel}s') {
+               
+               sforce.console.setSelectedNavigationTab(navigationCallback, ''+tempItem[i].navigationTabId);
+               
+              }
+            }
+          } 
+        };
+        
+        window.onload = function() {
+            
+         if(sforce.console.isInConsole()) {
+           
+          setTimeout(function () {
+            
+            closeTab();
+          }, 5000);
+         
+         }
+         else {
+          
+          setTimeout(function () {
+            
+            var recprefix = '{!recordPrefix}';
+            if(recprefix != '')
+             window.open("/{!recordPrefix}/o", "_parent");
+          }, 5000);
+         }
+         
+        }
+    </script>
+  </apex:outputPanel>  
+  
+  <apex:outputPanel rendered="{!hasReadAccess}">
+    
+    <img src="/img/loading32.gif" style="float: left; margin: 8px;" />
+    
+    <script type="text/javascript">
+    
+     window.onload = function() {
+    
+      if(sforce.console.isInConsole()) {
+      
+       console.log('refreshing...');
+       sforce.console.getEnclosingPrimaryTabId(refreshTab);
+       
+      }
+      else {
+       
+       window.open("/{!$CurrentPage.parameters.id}", "_parent");
+      }
+     }
+     
+     var refreshTab = function refreshTab(result) {
+        
+        sforce.console.openPrimaryTab(result.id, '/{!$CurrentPage.parameters.id}', true, '{!tabLabel}');
+     }
+    </script> 
+  </apex:outputPanel>
+</apex:page>

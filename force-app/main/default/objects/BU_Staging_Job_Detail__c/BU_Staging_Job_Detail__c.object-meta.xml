@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>used to store the job id which will be used for reporting purpose.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>BU Staging Job Detail</label>
+    <visibility>Public</visibility>
+</CustomObject>

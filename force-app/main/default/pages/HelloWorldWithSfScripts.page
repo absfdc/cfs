@@ -1,0 +1,4 @@
+<apex:page >  
+  <h3>Hello World!!</h3>
+  <p>This is a page with salesforce scripts</p>
+</apex:page>

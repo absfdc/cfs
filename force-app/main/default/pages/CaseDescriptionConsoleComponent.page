@@ -1,0 +1,46 @@
+<apex:page standardController="Case">
+    <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+    <!--<script src="https://mobile1.t.salesforce.com/soap/ajax/34.0/connection.js" type="text/javascript" /> -->
+    <apex:includeScript value="{!$Resource.sfConnection}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+    <apex:includeScript value="/support/console/34.0/integration.js"/>
+        
+    <script type="text/javascript">
+        var primaryTabId;
+        var objectId;
+        $(function () {
+            //sforce.console.onFocusedSubtab(eventHandler);
+            sforce.console.onFocusedPrimaryTab(eventHandler);
+        });
+        
+        var eventHandler = function (result) {
+            primaryTabId = result.id;
+            objectId = result.objectId;
+            if (objectId.substring(0, 3) == '500') {
+                var parentQuery = "SELECT Id, CaseNumber,Description,(SELECT Id, CaseNumber FROM Cases) FROM Case WHERE Id = '" + objectId + "'";
+                sforce.connection.sessionId = '{!$Api.Session_ID}';
+                var parentResult = sforce.connection.query(parentQuery);
+                $('#CaseNumber').html('Case Number: ' + parentResult.records.CaseNumber);      
+                $('#CaseDescription').val(parentResult.records.Description);
+                children = parentResult.records.Cases;
+                if(children == null) return;
+                $.each(children.records, function (index, aChild) {
+                    console.log('aChild - ' + aChild);
+                    sforce.console.openSubtab(primaryTabId, '/' + aChild.Id, false, aChild.CaseNumber, null, openSuccess, 'salesforceSubtab');
+                });
+            }
+        };
+        
+        var openSuccess = function (result) {
+            console.log(result);
+        }
+    </script>
+    <div>
+        <br/>
+        <div id="CaseNumber"></div>
+        <br/>
+        <div>
+            <textarea id="CaseDescription" readonly="readonly" style="width:100%; display:block; min-height:300px"  tabindex="2" ></textarea> 
+        </div>
+    </div>
+</apex:page>

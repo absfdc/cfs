@@ -1,0 +1,1932 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Branch__c</fullName>
+    <externalId>false</externalId>
+    <label>Branch</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Divisions__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ACCREDITATION</fullName>
+                <default>false</default>
+                <label>ACCREDITATION</label>
+            </value>
+            <value>
+                <fullName>Asset Standards Authority</fullName>
+                <default>false</default>
+                <label>Asset Standards Authority</label>
+            </value>
+            <value>
+                <fullName>AUDIT &amp; RISK</fullName>
+                <default>false</default>
+                <label>AUDIT &amp; RISK</label>
+            </value>
+            <value>
+                <fullName>Boating Infrastructure</fullName>
+                <default>false</default>
+                <label>Boating Infrastructure</label>
+            </value>
+            <value>
+                <fullName>BOATING OPERATIONS</fullName>
+                <default>false</default>
+                <label>BOATING OPERATIONS</label>
+            </value>
+            <value>
+                <fullName>Brookvale Depot</fullName>
+                <default>false</default>
+                <label>Brookvale Depot</label>
+            </value>
+            <value>
+                <fullName>Bureau of Transport Statistics</fullName>
+                <default>false</default>
+                <label>Bureau of Transport Statistics</label>
+            </value>
+            <value>
+                <fullName>Burwood Depot</fullName>
+                <default>false</default>
+                <label>Burwood Depot</label>
+            </value>
+            <value>
+                <fullName>Bus and Ferry Services Contracts</fullName>
+                <default>false</default>
+                <label>Bus and Ferry Services Contracts</label>
+            </value>
+            <value>
+                <fullName>Centre for Road and Maritime Safety</fullName>
+                <default>false</default>
+                <label>Centre for Road and Maritime Safety</label>
+            </value>
+            <value>
+                <fullName>CHIEF EXECUTIVE&#39;S OFFICE</fullName>
+                <default>false</default>
+                <label>CHIEF EXECUTIVE&#39;S OFFICE</label>
+            </value>
+            <value>
+                <fullName>Commercial</fullName>
+                <default>false</default>
+                <label>Commercial</label>
+            </value>
+            <value>
+                <fullName>Commercial and Property Management</fullName>
+                <default>false</default>
+                <label>Commercial and Property Management</label>
+            </value>
+            <value>
+                <fullName>Commercial and Strategy</fullName>
+                <default>false</default>
+                <label>Commercial and Strategy</label>
+            </value>
+            <value>
+                <fullName>COMMERCIAL PROPERTY</fullName>
+                <default>false</default>
+                <label>COMMERCIAL PROPERTY</label>
+            </value>
+            <value>
+                <fullName>Commercial Services</fullName>
+                <default>false</default>
+                <label>Commercial Services</label>
+            </value>
+            <value>
+                <fullName>COMMUNICATION &amp; STAKEHOLD</fullName>
+                <default>false</default>
+                <label>COMMUNICATION &amp; STAKEHOLD</label>
+            </value>
+            <value>
+                <fullName>Communications</fullName>
+                <default>false</default>
+                <label>Communications</label>
+            </value>
+            <value>
+                <fullName>Communications and Engagement</fullName>
+                <default>false</default>
+                <label>Communications and Engagement</label>
+            </value>
+            <value>
+                <fullName>Community Transport Agreements</fullName>
+                <default>false</default>
+                <label>Community Transport Agreements</label>
+            </value>
+            <value>
+                <fullName>COMM VESSEL SURVEY</fullName>
+                <default>false</default>
+                <label>COMM VESSEL SURVEY</label>
+            </value>
+            <value>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+                <label>Compliance</label>
+            </value>
+            <value>
+                <fullName>COMPLIANCE OPERATIONS</fullName>
+                <default>false</default>
+                <label>COMPLIANCE OPERATIONS</label>
+            </value>
+            <value>
+                <fullName>CONTRACT MANAGEMENT OFFICE</fullName>
+                <default>false</default>
+                <label>CONTRACT MANAGEMENT OFFICE</label>
+            </value>
+            <value>
+                <fullName>Contracts, Agreements &amp; Revenue Protect</fullName>
+                <default>false</default>
+                <label>Contracts, Agreements &amp; Revenue Protect</label>
+            </value>
+            <value>
+                <fullName>Corporate</fullName>
+                <default>false</default>
+                <label>Corporate</label>
+            </value>
+            <value>
+                <fullName>Corporate and Project Finance</fullName>
+                <default>false</default>
+                <label>Corporate and Project Finance</label>
+            </value>
+            <value>
+                <fullName>Corporate Communications</fullName>
+                <default>false</default>
+                <label>Corporate Communications</label>
+            </value>
+            <value>
+                <fullName>Corporate Planning &amp; Performance Info</fullName>
+                <default>false</default>
+                <label>Corporate Planning &amp; Performance Info</label>
+            </value>
+            <value>
+                <fullName>Country Rail Contracts</fullName>
+                <default>false</default>
+                <label>Country Rail Contracts</label>
+            </value>
+            <value>
+                <fullName>Critical Infrastructure and Security</fullName>
+                <default>false</default>
+                <label>Critical Infrastructure and Security</label>
+            </value>
+            <value>
+                <fullName>CS Divisional Management Office</fullName>
+                <default>false</default>
+                <label>CS Divisional Management Office</label>
+            </value>
+            <value>
+                <fullName>CST Centre for Property Acquisition</fullName>
+                <default>false</default>
+                <label>CST Centre for Property Acquisition</label>
+            </value>
+            <value>
+                <fullName>CST Customer Experience, Design and Delivery</fullName>
+                <default>false</default>
+                <label>CST Customer Experience, Design and Delivery</label>
+            </value>
+            <value>
+                <fullName>CST Digital Products Delivery</fullName>
+                <default>false</default>
+                <label>CST Digital Products Delivery</label>
+            </value>
+            <value>
+                <fullName>CST Divisional Management Office</fullName>
+                <default>false</default>
+                <label>CST Divisional Management Office</label>
+            </value>
+            <value>
+                <fullName>CST Marketing and Campaigns</fullName>
+                <default>false</default>
+                <label>CST Marketing and Campaigns</label>
+            </value>
+            <value>
+                <fullName>CST Pricing and Revenue</fullName>
+                <default>false</default>
+                <label>CST Pricing and Revenue</label>
+            </value>
+            <value>
+                <fullName>CST Public Affairs and Engagement</fullName>
+                <default>false</default>
+                <label>CST Public Affairs and Engagement</label>
+            </value>
+            <value>
+                <fullName>CST Ticket and Information Services</fullName>
+                <default>false</default>
+                <label>CST Ticket and Information Services</label>
+            </value>
+            <value>
+                <fullName>Customer Information and Digital</fullName>
+                <default>false</default>
+                <label>Customer Information and Digital</label>
+            </value>
+            <value>
+                <fullName>Customer Relations and Government Services</fullName>
+                <default>false</default>
+                <label>Customer Relations and Government Services</label>
+            </value>
+            <value>
+                <fullName>CUSTOMER SUPPORT SERVICES</fullName>
+                <default>false</default>
+                <label>CUSTOMER SUPPORT SERVICES</label>
+            </value>
+            <value>
+                <fullName>Divisional Management Office</fullName>
+                <default>false</default>
+                <label>Divisional Management Office</label>
+            </value>
+            <value>
+                <fullName>EASING SYDNEY&#39;S CONGESTION</fullName>
+                <default>false</default>
+                <label>EASING SYDNEY&#39;S CONGESTION</label>
+            </value>
+            <value>
+                <fullName>Easing Sydney Congestion</fullName>
+                <default>false</default>
+                <label>Easing Sydney Congestion</label>
+            </value>
+            <value>
+                <fullName>Efficiency &amp; Effectiveness</fullName>
+                <default>false</default>
+                <label>Efficiency &amp; Effectiveness</label>
+            </value>
+            <value>
+                <fullName>Electronic Ticketing System</fullName>
+                <default>false</default>
+                <label>Electronic Ticketing System</label>
+            </value>
+            <value>
+                <fullName>ENGINEERING SERVICES</fullName>
+                <default>false</default>
+                <label>ENGINEERING SERVICES</label>
+            </value>
+            <value>
+                <fullName>ENGINEERING TECHNOLOGY</fullName>
+                <default>false</default>
+                <label>ENGINEERING TECHNOLOGY</label>
+            </value>
+            <value>
+                <fullName>Enrolment</fullName>
+                <default>false</default>
+                <label>Enrolment</label>
+            </value>
+            <value>
+                <fullName>ENVIRONMENT</fullName>
+                <default>false</default>
+                <label>ENVIRONMENT</label>
+            </value>
+            <value>
+                <fullName>F6 Extension</fullName>
+                <default>false</default>
+                <label>F6 Extension</label>
+            </value>
+            <value>
+                <fullName>Finance and Revenue Branch</fullName>
+                <default>false</default>
+                <label>Finance and Revenue Branch</label>
+            </value>
+            <value>
+                <fullName>Finance Business Partners</fullName>
+                <default>false</default>
+                <label>Finance Business Partners</label>
+            </value>
+            <value>
+                <fullName>Financial Planning and Analysis</fullName>
+                <default>false</default>
+                <label>Financial Planning and Analysis</label>
+            </value>
+            <value>
+                <fullName>Freight</fullName>
+                <default>false</default>
+                <label>Freight</label>
+            </value>
+            <value>
+                <fullName>Freight &amp; Regional Program Office</fullName>
+                <default>false</default>
+                <label>Freight &amp; Regional Program Office</label>
+            </value>
+            <value>
+                <fullName>FSP Divisional Management Office</fullName>
+                <default>false</default>
+                <label>FSP Divisional Management Office</label>
+            </value>
+            <value>
+                <fullName>FSP Freight Industry</fullName>
+                <default>false</default>
+                <label>FSP Freight Industry</label>
+            </value>
+            <value>
+                <fullName>FSP Innovations, Research and Reform</fullName>
+                <default>false</default>
+                <label>FSP Innovations, Research and Reform</label>
+            </value>
+            <value>
+                <fullName>FSP Transport Planning</fullName>
+                <default>false</default>
+                <label>FSP Transport Planning</label>
+            </value>
+            <value>
+                <fullName>FSP Transport Policy</fullName>
+                <default>false</default>
+                <label>FSP Transport Policy</label>
+            </value>
+            <value>
+                <fullName>Future Transport</fullName>
+                <default>false</default>
+                <label>Future Transport</label>
+            </value>
+            <value>
+                <fullName>Governance and Strategy</fullName>
+                <default>false</default>
+                <label>Governance and Strategy</label>
+            </value>
+            <value>
+                <fullName>GOVT INFORMATION SERVICES</fullName>
+                <default>false</default>
+                <label>GOVT INFORMATION SERVICES</label>
+            </value>
+            <value>
+                <fullName>Greater Sydney Program Office</fullName>
+                <default>false</default>
+                <label>Greater Sydney Program Office</label>
+            </value>
+            <value>
+                <fullName>Greater Sydney Project Office</fullName>
+                <default>false</default>
+                <label>Greater Sydney Project Office</label>
+            </value>
+            <value>
+                <fullName>Group Finance</fullName>
+                <default>false</default>
+                <label>Group Finance</label>
+            </value>
+            <value>
+                <fullName>Group IT</fullName>
+                <default>false</default>
+                <label>Group IT</label>
+            </value>
+            <value>
+                <fullName>Group Property</fullName>
+                <default>false</default>
+                <label>Group Property</label>
+            </value>
+            <value>
+                <fullName>HCF</fullName>
+                <default>false</default>
+                <label>HCF</label>
+            </value>
+            <value>
+                <fullName>HEAVY VEHICLES</fullName>
+                <default>false</default>
+                <label>HEAVY VEHICLES</label>
+            </value>
+            <value>
+                <fullName>HUMAN RESOURCES</fullName>
+                <default>false</default>
+                <label>HUMAN RESOURCES</label>
+            </value>
+            <value>
+                <fullName>Hunter Region</fullName>
+                <default>false</default>
+                <label>Hunter Region</label>
+            </value>
+            <value>
+                <fullName>IM &amp; IT</fullName>
+                <default>false</default>
+                <label>IM &amp; IT</label>
+            </value>
+            <value>
+                <fullName>Industry and Environment</fullName>
+                <default>false</default>
+                <label>Industry and Environment</label>
+            </value>
+            <value>
+                <fullName>Information Communications Technology</fullName>
+                <default>false</default>
+                <label>Information Communications Technology</label>
+            </value>
+            <value>
+                <fullName>Infrastructure and Technical Capability</fullName>
+                <default>false</default>
+                <label>Infrastructure and Technical Capability</label>
+            </value>
+            <value>
+                <fullName>INFRASTRUCTURE DELIVERY</fullName>
+                <default>false</default>
+                <label>INFRASTRUCTURE DELIVERY</label>
+            </value>
+            <value>
+                <fullName>Insights and Education</fullName>
+                <default>false</default>
+                <label>Insights and Education</label>
+            </value>
+            <value>
+                <fullName>Integrated Planning</fullName>
+                <default>false</default>
+                <label>Integrated Planning</label>
+            </value>
+            <value>
+                <fullName>Intelligent Transport Systems</fullName>
+                <default>false</default>
+                <label>Intelligent Transport Systems</label>
+            </value>
+            <value>
+                <fullName>Investment</fullName>
+                <default>false</default>
+                <label>Investment</label>
+            </value>
+            <value>
+                <fullName>Investment Programs Branch</fullName>
+                <default>false</default>
+                <label>Investment Programs Branch</label>
+            </value>
+            <value>
+                <fullName>IP Divisional Management Office</fullName>
+                <default>false</default>
+                <label>IP Divisional Management Office</label>
+            </value>
+            <value>
+                <fullName>IP Fleet Program Delivery</fullName>
+                <default>false</default>
+                <label>IP Fleet Program Delivery</label>
+            </value>
+            <value>
+                <fullName>IP Infrastructure and Project Finance</fullName>
+                <default>false</default>
+                <label>IP Infrastructure and Project Finance</label>
+            </value>
+            <value>
+                <fullName>IP Newcastle Transport Program</fullName>
+                <default>false</default>
+                <label>IP Newcastle Transport Program</label>
+            </value>
+            <value>
+                <fullName>IP Operational Systems</fullName>
+                <default>false</default>
+                <label>IP Operational Systems</label>
+            </value>
+            <value>
+                <fullName>IP Parramatta Light Rail</fullName>
+                <default>false</default>
+                <label>IP Parramatta Light Rail</label>
+            </value>
+            <value>
+                <fullName>IP Placemaking and Real Estate</fullName>
+                <default>false</default>
+                <label>IP Placemaking and Real Estate</label>
+            </value>
+            <value>
+                <fullName>IP Precincts and Infrastructure</fullName>
+                <default>false</default>
+                <label>IP Precincts and Infrastructure</label>
+            </value>
+            <value>
+                <fullName>IP Program Management Office</fullName>
+                <default>false</default>
+                <label>IP Program Management Office</label>
+            </value>
+            <value>
+                <fullName>IP Rail Program Delivery</fullName>
+                <default>false</default>
+                <label>IP Rail Program Delivery</label>
+            </value>
+            <value>
+                <fullName>IP Sydney Light Rail</fullName>
+                <default>false</default>
+                <label>IP Sydney Light Rail</label>
+            </value>
+            <value>
+                <fullName>JOURNEY INFORMATION &amp; DIGITAL</fullName>
+                <default>false</default>
+                <label>JOURNEY INFORMATION &amp; DIGITAL</label>
+            </value>
+            <value>
+                <fullName>Kingsgrove Depot</fullName>
+                <default>false</default>
+                <label>Kingsgrove Depot</label>
+            </value>
+            <value>
+                <fullName>Land Use and Integrated Transport</fullName>
+                <default>false</default>
+                <label>Land Use and Integrated Transport</label>
+            </value>
+            <value>
+                <fullName>LEGAL</fullName>
+                <default>false</default>
+                <label>LEGAL</label>
+            </value>
+            <value>
+                <fullName>Legal, Privacy and Information Access</fullName>
+                <default>false</default>
+                <label>Legal, Privacy and Information Access</label>
+            </value>
+            <value>
+                <fullName>Legal Services and Governance</fullName>
+                <default>false</default>
+                <label>Legal Services and Governance</label>
+            </value>
+            <value>
+                <fullName>Leichhardt Depot</fullName>
+                <default>false</default>
+                <label>Leichhardt Depot</label>
+            </value>
+            <value>
+                <fullName>Major Project Transport Planning</fullName>
+                <default>false</default>
+                <label>Major Project Transport Planning</label>
+            </value>
+            <value>
+                <fullName>Maritime Management Centre</fullName>
+                <default>false</default>
+                <label>Maritime Management Centre</label>
+            </value>
+            <value>
+                <fullName>Maritime Operations and Compliance</fullName>
+                <default>false</default>
+                <label>Maritime Operations and Compliance</label>
+            </value>
+            <value>
+                <fullName>Mona Vale Depot</fullName>
+                <default>false</default>
+                <label>Mona Vale Depot</label>
+            </value>
+            <value>
+                <fullName>Motorways Partnerships and Planning</fullName>
+                <default>false</default>
+                <label>Motorways Partnerships and Planning</label>
+            </value>
+            <value>
+                <fullName>Network and Asset Intelligence</fullName>
+                <default>false</default>
+                <label>Network and Asset Intelligence</label>
+            </value>
+            <value>
+                <fullName>Network Motorways</fullName>
+                <default>false</default>
+                <label>Network Motorways</label>
+            </value>
+            <value>
+                <fullName>NETWORK NSW</fullName>
+                <default>false</default>
+                <label>NETWORK NSW</label>
+            </value>
+            <value>
+                <fullName>NETWORK OPTIMISATION</fullName>
+                <default>false</default>
+                <label>NETWORK OPTIMISATION</label>
+            </value>
+            <value>
+                <fullName>Network Sydney – CBD &amp; East</fullName>
+                <default>false</default>
+                <label>Network Sydney – CBD &amp; East</label>
+            </value>
+            <value>
+                <fullName>Network Sydney - Network Operations</fullName>
+                <default>false</default>
+                <label>Network Sydney - Network Operations</label>
+            </value>
+            <value>
+                <fullName>Network Sydney – North</fullName>
+                <default>false</default>
+                <label>Network Sydney – North</label>
+            </value>
+            <value>
+                <fullName>Network Sydney – South</fullName>
+                <default>false</default>
+                <label>Network Sydney – South</label>
+            </value>
+            <value>
+                <fullName>Network Sydney – West</fullName>
+                <default>false</default>
+                <label>Network Sydney – West</label>
+            </value>
+            <value>
+                <fullName>NorthConnex</fullName>
+                <default>false</default>
+                <label>NorthConnex</label>
+            </value>
+            <value>
+                <fullName>Northern Region</fullName>
+                <default>false</default>
+                <label>Northern Region</label>
+            </value>
+            <value>
+                <fullName>North Sydney Depot</fullName>
+                <default>false</default>
+                <label>North Sydney Depot</label>
+            </value>
+            <value>
+                <fullName>NSW TrainsLink</fullName>
+                <default>false</default>
+                <label>NSW TrainsLink</label>
+            </value>
+            <value>
+                <fullName>Business Management</fullName>
+                <default>false</default>
+                <label>Office of the Chief Executive</label>
+            </value>
+            <value>
+                <fullName>Office of the Deputy Director-General</fullName>
+                <default>false</default>
+                <label>Office of the Deputy Director-General</label>
+            </value>
+            <value>
+                <fullName>Office of the Executive Director</fullName>
+                <default>false</default>
+                <label>Office of the Executive Director</label>
+            </value>
+            <value>
+                <fullName>Office of the Executive Director (CaRS)</fullName>
+                <default>false</default>
+                <label>Office of the Executive Director (CaRS)</label>
+            </value>
+            <value>
+                <fullName>Office of the Executive Director (Fin)</fullName>
+                <default>false</default>
+                <label>Office of the Executive Director (Fin)</label>
+            </value>
+            <value>
+                <fullName>Office of the Executive Director (Mar)</fullName>
+                <default>false</default>
+                <label>Office of the Executive Director (Mar)</label>
+            </value>
+            <value>
+                <fullName>Office of the Executive Director (MWY)</fullName>
+                <default>false</default>
+                <label>Office of the Executive Director (MWY)</label>
+            </value>
+            <value>
+                <fullName>Office of the Executive Director (RAF)</fullName>
+                <default>false</default>
+                <label>Office of the Executive Director (RAF)</label>
+            </value>
+            <value>
+                <fullName>Office of the Executive Director (SYD)</fullName>
+                <default>false</default>
+                <label>Office of the Executive Director (SYD)</label>
+            </value>
+            <value>
+                <fullName>Office of the Executive Director (TPS)</fullName>
+                <default>false</default>
+                <label>Office of the Executive Director (TPS)</label>
+            </value>
+            <value>
+                <fullName>Operational Policy and Geospatial Services</fullName>
+                <default>false</default>
+                <label>Operational Policy and Geospatial Services</label>
+            </value>
+            <value>
+                <fullName>Operational Policy and Performance</fullName>
+                <default>false</default>
+                <label>Operational Policy and Performance</label>
+            </value>
+            <value>
+                <fullName>Pacific Highway Program Office</fullName>
+                <default>false</default>
+                <label>Pacific Highway Program Office</label>
+            </value>
+            <value>
+                <fullName>Pacific Highway Project Office</fullName>
+                <default>false</default>
+                <label>Pacific Highway Project Office</label>
+            </value>
+            <value>
+                <fullName>Passes &amp; Schemes</fullName>
+                <default>false</default>
+                <label>Passes &amp; Schemes</label>
+            </value>
+            <value>
+                <fullName>Performance and Business Management</fullName>
+                <default>false</default>
+                <label>Performance and Business Management</label>
+            </value>
+            <value>
+                <fullName>PLANNING &amp; PERFORMANCE REPORTING</fullName>
+                <default>false</default>
+                <label>PLANNING &amp; PERFORMANCE REPORTING</label>
+            </value>
+            <value>
+                <fullName>Point to Point Transport Commission</fullName>
+                <default>false</default>
+                <label>Point to Point Transport Commission</label>
+            </value>
+            <value>
+                <fullName>Port Botany Depot</fullName>
+                <default>false</default>
+                <label>Port Botany Depot</label>
+            </value>
+            <value>
+                <fullName>PROCUREMENT</fullName>
+                <default>false</default>
+                <label>PROCUREMENT</label>
+            </value>
+            <value>
+                <fullName>Program Communications</fullName>
+                <default>false</default>
+                <label>Program Communications</label>
+            </value>
+            <value>
+                <fullName>Program Director&#39;s Office</fullName>
+                <default>false</default>
+                <label>Program Director&#39;s Office</label>
+            </value>
+            <value>
+                <fullName>PROGRAM MANAGEMENT</fullName>
+                <default>false</default>
+                <label>PROGRAM MANAGEMENT</label>
+            </value>
+            <value>
+                <fullName>PROJECT DEVELOPMENT</fullName>
+                <default>false</default>
+                <label>PROJECT DEVELOPMENT</label>
+            </value>
+            <value>
+                <fullName>Project Services</fullName>
+                <default>false</default>
+                <label>Project Services</label>
+            </value>
+            <value>
+                <fullName>Property Acquisitions</fullName>
+                <default>false</default>
+                <label>Property Acquisitions</label>
+            </value>
+            <value>
+                <fullName>PROSECUTIONS</fullName>
+                <default>false</default>
+                <label>PROSECUTIONS</label>
+            </value>
+            <value>
+                <fullName>Public Information Office</fullName>
+                <default>false</default>
+                <label>Public Information Office</label>
+            </value>
+            <value>
+                <fullName>Rail Services Delivery</fullName>
+                <default>false</default>
+                <label>Rail Services Delivery</label>
+            </value>
+            <value>
+                <fullName>Randwick Depot</fullName>
+                <default>false</default>
+                <label>Randwick Depot</label>
+            </value>
+            <value>
+                <fullName>REFORM AND IMPLEMENTATION</fullName>
+                <default>false</default>
+                <label>REFORM AND IMPLEMENTATION</label>
+            </value>
+            <value>
+                <fullName>REGIONAL MAINTENANCE</fullName>
+                <default>false</default>
+                <label>REGIONAL MAINTENANCE</label>
+            </value>
+            <value>
+                <fullName>Regional Project Office</fullName>
+                <default>false</default>
+                <label>Regional Project Office</label>
+            </value>
+            <value>
+                <fullName>RMS Audit and Assurance</fullName>
+                <default>false</default>
+                <label>RMS Audit and Assurance</label>
+            </value>
+            <value>
+                <fullName>RMS Business Services</fullName>
+                <default>false</default>
+                <label>RMS Business Services</label>
+            </value>
+            <value>
+                <fullName>RMS Communications</fullName>
+                <default>false</default>
+                <label>RMS Communications</label>
+            </value>
+            <value>
+                <fullName>RMS Compliance and Regulatory Services</fullName>
+                <default>false</default>
+                <label>RMS Compliance and Regulatory Services</label>
+            </value>
+            <value>
+                <fullName>RMS Corporate Affairs</fullName>
+                <default>false</default>
+                <label>RMS Corporate Affairs</label>
+            </value>
+            <value>
+                <fullName>RMS Environment</fullName>
+                <default>false</default>
+                <label>RMS Environment</label>
+            </value>
+            <value>
+                <fullName>RMS Finance and Investment</fullName>
+                <default>false</default>
+                <label>RMS Finance and Investment</label>
+            </value>
+            <value>
+                <fullName>RMS Financial Planning and Analysis</fullName>
+                <default>false</default>
+                <label>RMS Financial Planning and Analysis</label>
+            </value>
+            <value>
+                <fullName>RMS Freight</fullName>
+                <default>false</default>
+                <label>RMS Freight</label>
+            </value>
+            <value>
+                <fullName>RMS Maritime</fullName>
+                <default>false</default>
+                <label>RMS Maritime</label>
+            </value>
+            <value>
+                <fullName>RMS Ministerial and Briefings</fullName>
+                <default>false</default>
+                <label>RMS Ministerial and Briefings</label>
+            </value>
+            <value>
+                <fullName>RMS Motorways</fullName>
+                <default>false</default>
+                <label>RMS Motorways</label>
+            </value>
+            <value>
+                <fullName>RMS People and Culture</fullName>
+                <default>false</default>
+                <label>RMS People and Culture</label>
+            </value>
+            <value>
+                <fullName>RMS Property and Acquisitions</fullName>
+                <default>false</default>
+                <label>RMS Property and Acquisitions</label>
+            </value>
+            <value>
+                <fullName>RMS Regional and Freight</fullName>
+                <default>false</default>
+                <label>RMS Regional and Freight</label>
+            </value>
+            <value>
+                <fullName>RMS Safety</fullName>
+                <default>false</default>
+                <label>RMS Safety</label>
+            </value>
+            <value>
+                <fullName>RMS Sydney Division</fullName>
+                <default>false</default>
+                <label>RMS Sydney Division</label>
+            </value>
+            <value>
+                <fullName>RMS Technical and Project Services</fullName>
+                <default>false</default>
+                <label>RMS Technical and Project Services</label>
+            </value>
+            <value>
+                <fullName>ROAD NETWORK OPERATIONS</fullName>
+                <default>false</default>
+                <label>ROAD NETWORK OPERATIONS</label>
+            </value>
+            <value>
+                <fullName>Ryde Depot</fullName>
+                <default>false</default>
+                <label>Ryde Depot</label>
+            </value>
+            <value>
+                <fullName>Safety, Quality &amp; Environment</fullName>
+                <default>false</default>
+                <label>Safety, Quality &amp; Environment</label>
+            </value>
+            <value>
+                <fullName>Safety, Quality And Environment</fullName>
+                <default>false</default>
+                <label>Safety, Quality And Environment</label>
+            </value>
+            <value>
+                <fullName>Service Delivery &amp; Asset Management</fullName>
+                <default>false</default>
+                <label>Service Delivery &amp; Asset Management</label>
+            </value>
+            <value>
+                <fullName>Service Delivery and Education</fullName>
+                <default>false</default>
+                <label>Service Delivery and Education</label>
+            </value>
+            <value>
+                <fullName>Service Planning and Improvement</fullName>
+                <default>false</default>
+                <label>Service Planning and Improvement</label>
+            </value>
+            <value>
+                <fullName>Service Procurement and Performance</fullName>
+                <default>false</default>
+                <label>Service Procurement and Performance</label>
+            </value>
+            <value>
+                <fullName>Service Relationships</fullName>
+                <default>false</default>
+                <label>Service Relationships</label>
+            </value>
+            <value>
+                <fullName>Services</fullName>
+                <default>false</default>
+                <label>Services</label>
+            </value>
+            <value>
+                <fullName>Shared Services</fullName>
+                <default>false</default>
+                <label>Shared Services</label>
+            </value>
+            <value>
+                <fullName>Southern Region</fullName>
+                <default>false</default>
+                <label>Southern Region</label>
+            </value>
+            <value>
+                <fullName>South West Region</fullName>
+                <default>false</default>
+                <label>South West Region</label>
+            </value>
+            <value>
+                <fullName>State Transit</fullName>
+                <default>false</default>
+                <label>State Transit</label>
+            </value>
+            <value>
+                <fullName>STATEWIDE COORDINATION</fullName>
+                <default>false</default>
+                <label>STATEWIDE COORDINATION</label>
+            </value>
+            <value>
+                <fullName>OneRMS Program Office</fullName>
+                <default>false</default>
+                <label>Strategic Initiatives</label>
+            </value>
+            <value>
+                <fullName>Strategic Policy and Stakeholders</fullName>
+                <default>false</default>
+                <label>Strategic Policy and Stakeholders</label>
+            </value>
+            <value>
+                <fullName>Strategic Projects</fullName>
+                <default>false</default>
+                <label>Strategic Projects</label>
+            </value>
+            <value>
+                <fullName>Strategic Review &amp; Priority Initiatives</fullName>
+                <default>false</default>
+                <label>Strategic Review &amp; Priority Initiatives</label>
+            </value>
+            <value>
+                <fullName>Strategy and Transformation</fullName>
+                <default>false</default>
+                <label>Strategy and Transformation</label>
+            </value>
+            <value>
+                <fullName>Sydney Gateway</fullName>
+                <default>false</default>
+                <label>Sydney Gateway</label>
+            </value>
+            <value>
+                <fullName>Sydney Maintenance</fullName>
+                <default>false</default>
+                <label>Sydney Maintenance</label>
+            </value>
+            <value>
+                <fullName>Sydney Metro</fullName>
+                <default>false</default>
+                <label>Sydney Metro</label>
+            </value>
+            <value>
+                <fullName>Sydney – North West Precinct</fullName>
+                <default>false</default>
+                <label>Sydney – North West Precinct</label>
+            </value>
+            <value>
+                <fullName>Sydney Planning</fullName>
+                <default>false</default>
+                <label>Sydney Planning</label>
+            </value>
+            <value>
+                <fullName>Sydney – South East Precinct</fullName>
+                <default>false</default>
+                <label>Sydney – South East Precinct</label>
+            </value>
+            <value>
+                <fullName>Sydney Trains</fullName>
+                <default>false</default>
+                <label>Sydney Trains</label>
+            </value>
+            <value>
+                <fullName>TC Comms Strategy and Media</fullName>
+                <default>false</default>
+                <label>TC Comms Strategy and Media</label>
+            </value>
+            <value>
+                <fullName>TC Divisional Management Office</fullName>
+                <default>false</default>
+                <label>TC Divisional Management Office</label>
+            </value>
+            <value>
+                <fullName>TC Security and Emergency Management</fullName>
+                <default>false</default>
+                <label>TC Security and Emergency Management</label>
+            </value>
+            <value>
+                <fullName>TC Sydney Coordination Office</fullName>
+                <default>false</default>
+                <label>TC Sydney Coordination Office</label>
+            </value>
+            <value>
+                <fullName>TC Transport Management Centre</fullName>
+                <default>false</default>
+                <label>TC Transport Management Centre</label>
+            </value>
+            <value>
+                <fullName>Tempe Depot</fullName>
+                <default>false</default>
+                <label>Tempe Depot</label>
+            </value>
+            <value>
+                <fullName>TfNSW Asset Standards Authority</fullName>
+                <default>false</default>
+                <label>TfNSW Asset Standards Authority</label>
+            </value>
+            <value>
+                <fullName>TfNSW Centres for Road and Maritime Safety</fullName>
+                <default>false</default>
+                <label>TfNSW Centres for Road and Maritime Safety</label>
+            </value>
+            <value>
+                <fullName>TfNSW Office of Secretary</fullName>
+                <default>false</default>
+                <label>TfNSW Office of Secretary</label>
+            </value>
+            <value>
+                <fullName>People and Culture</fullName>
+                <default>false</default>
+                <label>TfNSW People and Culture</label>
+            </value>
+            <value>
+                <fullName>TfNSW Services</fullName>
+                <default>false</default>
+                <label>TfNSW Services</label>
+            </value>
+            <value>
+                <fullName>TfNSW Services (Regional)</fullName>
+                <default>false</default>
+                <label>TfNSW Services (Regional)</label>
+            </value>
+            <value>
+                <fullName>Ticketing Services</fullName>
+                <default>false</default>
+                <label>Ticketing Services</label>
+            </value>
+            <value>
+                <fullName>Tolling</fullName>
+                <default>false</default>
+                <label>Tolling</label>
+            </value>
+            <value>
+                <fullName>Transport Management System</fullName>
+                <default>false</default>
+                <label>Transport Management System</label>
+            </value>
+            <value>
+                <fullName>Transport Shared Services</fullName>
+                <default>false</default>
+                <label>Transport Shared Services</label>
+            </value>
+            <value>
+                <fullName>Waverley Depot</fullName>
+                <default>false</default>
+                <label>Waverley Depot</label>
+            </value>
+            <value>
+                <fullName>WestConnex</fullName>
+                <default>false</default>
+                <label>WestConnex</label>
+            </value>
+            <value>
+                <fullName>WESTCONNEX DELIVERY</fullName>
+                <default>false</default>
+                <label>WESTCONNEX DELIVERY</label>
+            </value>
+            <value>
+                <fullName>WestConnex Delivery Interface Office</fullName>
+                <default>false</default>
+                <label>WestConnex Delivery Interface Office</label>
+            </value>
+            <value>
+                <fullName>Western Region</fullName>
+                <default>false</default>
+                <label>Western Region</label>
+            </value>
+            <value>
+                <fullName>Western Sydney Program Office</fullName>
+                <default>false</default>
+                <label>Western Sydney Program Office</label>
+            </value>
+            <value>
+                <fullName>Western Sydney Project Office</fullName>
+                <default>false</default>
+                <label>Western Sydney Project Office</label>
+            </value>
+            <value>
+                <fullName>WHTB Link</fullName>
+                <default>false</default>
+                <label>WHTB Link</label>
+            </value>
+            <value>
+                <fullName>Willoughby Depot</fullName>
+                <default>false</default>
+                <label>Willoughby Depot</label>
+            </value>
+            <value>
+                <fullName>WORK HEALTH &amp; SAFETY</fullName>
+                <default>false</default>
+                <label>WORK HEALTH &amp; SAFETY</label>
+            </value>
+            <value>
+                <fullName>Workplaces</fullName>
+                <default>false</default>
+                <label>Workplaces</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>CST Centre for Property Acquisition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>CST Customer Experience, Design and Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>CST Digital Products Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>CST Divisional Management Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>CST Marketing and Campaigns</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>CST Pricing and Revenue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>CST Public Affairs and Engagement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>CST Ticket and Information Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>FSP Divisional Management Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>FSP Freight Industry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>FSP Innovations, Research and Reform</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>FSP Transport Planning</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>FSP Transport Policy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>RMS Communications</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>RMS Freight</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Strategy and Technology</controllingFieldValue>
+            <valueName>RMS Ministerial and Briefings</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>People and Culture</controllingFieldValue>
+            <valueName>RMS People and Culture</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>People and Culture</controllingFieldValue>
+            <valueName>People and Culture</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Safety, Environment and Regulation</controllingFieldValue>
+            <valueName>RMS Compliance and Regulatory Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Safety, Environment and Regulation</controllingFieldValue>
+            <valueName>RMS Environment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Safety, Environment and Regulation</controllingFieldValue>
+            <valueName>RMS Safety</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Safety, Environment and Regulation</controllingFieldValue>
+            <valueName>TfNSW Asset Standards Authority</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Safety, Environment and Regulation</controllingFieldValue>
+            <valueName>TfNSW Centres for Road and Maritime Safety</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asset Maintenance</controllingFieldValue>
+            <valueName>CONTRACT MANAGEMENT OFFICE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asset Maintenance</controllingFieldValue>
+            <valueName>ENGINEERING TECHNOLOGY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asset Maintenance</controllingFieldValue>
+            <controllingFieldValue>Regional and Freight</controllingFieldValue>
+            <valueName>REGIONAL MAINTENANCE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate</controllingFieldValue>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>AUDIT &amp; RISK</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate</controllingFieldValue>
+            <valueName>COMMERCIAL PROPERTY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate</controllingFieldValue>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>HUMAN RESOURCES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate</controllingFieldValue>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>IM &amp; IT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate</controllingFieldValue>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>LEGAL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate</controllingFieldValue>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>PROCUREMENT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate</controllingFieldValue>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>WORK HEALTH &amp; SAFETY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure Development</controllingFieldValue>
+            <valueName>Commercial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure Development</controllingFieldValue>
+            <valueName>Freight &amp; Regional Program Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure Development</controllingFieldValue>
+            <valueName>Greater Sydney Program Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure Development</controllingFieldValue>
+            <valueName>Pacific Highway Program Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure Development</controllingFieldValue>
+            <valueName>PROJECT DEVELOPMENT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure Development</controllingFieldValue>
+            <valueName>Western Sydney Program Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>EASING SYDNEY&#39;S CONGESTION</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>Network Motorways</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>NETWORK NSW</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>NETWORK OPTIMISATION</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>Network Sydney – CBD &amp; East</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>Network Sydney – North</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>Network Sydney – South</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>Network Sydney – West</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Management</controllingFieldValue>
+            <valueName>ROAD NETWORK OPERATIONS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maritime</controllingFieldValue>
+            <valueName>Industry and Environment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maritime</controllingFieldValue>
+            <valueName>Infrastructure and Technical Capability</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maritime</controllingFieldValue>
+            <valueName>Maritime Operations and Compliance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maritime</controllingFieldValue>
+            <valueName>Office of the Executive Director (Mar)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maritime</controllingFieldValue>
+            <valueName>Operational Policy and Performance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maritime</controllingFieldValue>
+            <valueName>Service Delivery and Education</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Chief Executive &amp; Reform</controllingFieldValue>
+            <valueName>CHIEF EXECUTIVE&#39;S OFFICE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Chief Executive &amp; Reform</controllingFieldValue>
+            <valueName>REFORM AND IMPLEMENTATION</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance and Regulatory Services</controllingFieldValue>
+            <valueName>Compliance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance and Regulatory Services</controllingFieldValue>
+            <valueName>Enrolment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance and Regulatory Services</controllingFieldValue>
+            <valueName>Insights and Education</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance and Regulatory Services</controllingFieldValue>
+            <valueName>Office of the Executive Director (CaRS)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance and Regulatory Services</controllingFieldValue>
+            <valueName>PROGRAM MANAGEMENT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Compliance and Regulatory Services</controllingFieldValue>
+            <valueName>Service Relationships</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Engagement &amp; Planning</controllingFieldValue>
+            <valueName>COMMUNICATION &amp; STAKEHOLD</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Engagement &amp; Planning</controllingFieldValue>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>ENVIRONMENT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Engagement &amp; Planning</controllingFieldValue>
+            <valueName>GOVT INFORMATION SERVICES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Engagement &amp; Planning</controllingFieldValue>
+            <valueName>JOURNEY INFORMATION &amp; DIGITAL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Engagement &amp; Planning</controllingFieldValue>
+            <valueName>PLANNING &amp; PERFORMANCE REPORTING</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney Motorway Corp</controllingFieldValue>
+            <valueName>WESTCONNEX DELIVERY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Southern Region</controllingFieldValue>
+            <valueName>Burwood Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Southern Region</controllingFieldValue>
+            <valueName>Kingsgrove Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Southern Region</controllingFieldValue>
+            <valueName>Leichhardt Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Southern Region</controllingFieldValue>
+            <valueName>Tempe Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Eastern Region</controllingFieldValue>
+            <valueName>Port Botany Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Eastern Region</controllingFieldValue>
+            <valueName>Randwick Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Eastern Region</controllingFieldValue>
+            <valueName>Waverley Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Northern Region</controllingFieldValue>
+            <valueName>Brookvale Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Northern Region</controllingFieldValue>
+            <valueName>Mona Vale Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Northern Region</controllingFieldValue>
+            <valueName>North Sydney Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Western Region</controllingFieldValue>
+            <valueName>Ryde Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Western Region</controllingFieldValue>
+            <valueName>Willoughby Depot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Bus and Ferry Services Contracts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Community Transport Agreements</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Contracts, Agreements &amp; Revenue Protect</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Country Rail Contracts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Electronic Ticketing System</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Passes &amp; Schemes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Performance and Business Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Rail Services Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Service Planning and Improvement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Ticketing Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Services</controllingFieldValue>
+            <valueName>Transport Management System</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Policy and Regulation</controllingFieldValue>
+            <valueName>Asset Standards Authority</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Policy and Regulation</controllingFieldValue>
+            <valueName>Corporate Planning &amp; Performance Info</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Policy and Regulation</controllingFieldValue>
+            <valueName>Efficiency &amp; Effectiveness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Policy and Regulation</controllingFieldValue>
+            <valueName>Maritime Management Centre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Policy and Regulation</controllingFieldValue>
+            <valueName>Office of the Deputy Director-General</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Policy and Regulation</controllingFieldValue>
+            <valueName>Safety, Quality &amp; Environment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Policy and Regulation</controllingFieldValue>
+            <valueName>Service Procurement and Performance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Policy and Regulation</controllingFieldValue>
+            <valueName>Strategic Review &amp; Priority Initiatives</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Planning</controllingFieldValue>
+            <valueName>Bureau of Transport Statistics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Planning</controllingFieldValue>
+            <valueName>Land Use and Integrated Transport</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Planning</controllingFieldValue>
+            <valueName>Major Project Transport Planning</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Divisional Management Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Fleet Program Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Infrastructure and Project Finance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Newcastle Transport Program</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Operational Systems</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Parramatta Light Rail</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Placemaking and Real Estate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Precincts and Infrastructure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Program Management Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Rail Program Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>IP Sydney Light Rail</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>RMS Motorways</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>RMS Property and Acquisitions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Infrastructure and Place</controllingFieldValue>
+            <valueName>RMS Technical and Project Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>HCF</controllingFieldValue>
+            <valueName>HCF</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Experience</controllingFieldValue>
+            <valueName>Customer Relations and Government Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>Commercial and Property Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>Office of the Executive Director</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Services</controllingFieldValue>
+            <valueName>Property Acquisitions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>F6 Extension</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>Governance and Strategy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>Motorways Partnerships and Planning</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>NorthConnex</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>Office of the Executive Director (MWY)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>Sydney Gateway</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>Tolling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>WestConnex</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>WestConnex Delivery Interface Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Motorways</controllingFieldValue>
+            <valueName>WHTB Link</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Chief Executive</controllingFieldValue>
+            <valueName>Communications</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Chief Executive</controllingFieldValue>
+            <valueName>Business Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Chief Executive</controllingFieldValue>
+            <valueName>OneRMS Program Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Chief Executive</controllingFieldValue>
+            <valueName>Strategic Policy and Stakeholders</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Freight</controllingFieldValue>
+            <valueName>Freight</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Freight</controllingFieldValue>
+            <valueName>Hunter Region</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Freight</controllingFieldValue>
+            <valueName>Northern Region</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Freight</controllingFieldValue>
+            <valueName>Office of the Executive Director (RAF)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Freight</controllingFieldValue>
+            <valueName>Southern Region</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Freight</controllingFieldValue>
+            <valueName>South West Region</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Freight</controllingFieldValue>
+            <valueName>Western Region</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>Commercial and Strategy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>CS Divisional Management Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <controllingFieldValue>Finance and Investment (RMS)</controllingFieldValue>
+            <valueName>Group Finance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>Group IT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>Legal, Privacy and Information Access</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>RMS Business Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>RMS Finance and Investment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>Shared Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>Strategic Projects</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corporate Services</controllingFieldValue>
+            <valueName>Workplaces</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney</controllingFieldValue>
+            <valueName>Critical Infrastructure and Security</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney</controllingFieldValue>
+            <valueName>Easing Sydney Congestion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney</controllingFieldValue>
+            <valueName>Office of the Executive Director (SYD)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney</controllingFieldValue>
+            <valueName>Sydney Maintenance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney</controllingFieldValue>
+            <valueName>Sydney – North West Precinct</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney</controllingFieldValue>
+            <valueName>Sydney Planning</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney</controllingFieldValue>
+            <valueName>Sydney – South East Precinct</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Commercial Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>ENGINEERING SERVICES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Greater Sydney Project Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Intelligent Transport Systems</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Network and Asset Intelligence</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Office of the Executive Director (TPS)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Pacific Highway Project Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Project Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Regional Project Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical and Project Services</controllingFieldValue>
+            <valueName>Western Sydney Project Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney Metro</controllingFieldValue>
+            <valueName>Communications and Engagement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sydney Metro</controllingFieldValue>
+            <valueName>Program Director&#39;s Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finance and Investment (RMS)</controllingFieldValue>
+            <valueName>Finance Business Partners</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finance and Investment (RMS)</controllingFieldValue>
+            <valueName>Financial Planning and Analysis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finance and Investment (RMS)</controllingFieldValue>
+            <valueName>Investment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finance and Investment (RMS)</controllingFieldValue>
+            <valueName>Office of the Executive Director (Fin)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Point to Point Transport Commission</controllingFieldValue>
+            <valueName>Point to Point Transport Commission</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>RMS Maritime</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>RMS Sydney Division</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>State Transit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>Sydney Metro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>Sydney Trains</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>TC Comms Strategy and Media</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>TC Divisional Management Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>TC Security and Emergency Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>TC Sydney Coordination Office</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>TC Transport Management Centre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Greater Sydney</controllingFieldValue>
+            <valueName>TfNSW Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Outer Metropolitan</controllingFieldValue>
+            <valueName>NSW TrainsLink</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Outer Metropolitan</controllingFieldValue>
+            <valueName>RMS Regional and Freight</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regional and Outer Metropolitan</controllingFieldValue>
+            <valueName>TfNSW Services (Regional)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Secretary</controllingFieldValue>
+            <valueName>RMS Audit and Assurance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Secretary</controllingFieldValue>
+            <valueName>RMS Corporate Affairs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Secretary</controllingFieldValue>
+            <valueName>RMS Financial Planning and Analysis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Office of the Secretary</controllingFieldValue>
+            <valueName>TfNSW Office of Secretary</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>41.0</apiVersion>
+    <description>This will be used on Private Operators page layout to view the Original Description for a case masked with &lt;bad_url&gt; or &lt;profanity&gt;</description>
+</AuraDefinitionBundle>

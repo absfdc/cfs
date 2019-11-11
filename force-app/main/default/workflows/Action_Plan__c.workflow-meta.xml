@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Action_Plan_Closed_Notification</fullName>
+        <description>Action Plan Closed Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Ministerial_Correspondence/Closed_Action_Plan_for_NRR_Case</template>
+    </alerts>
+    <alerts>
+        <fullName>Closed_Action_Plan_Notification_To_Case_Manager</fullName>
+        <description>Closed Action Plan Notification To Case Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>CaseOwnerEmail__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Ministerial_Correspondence/Closed_Action_Plan_Notification_To_Case_Manager</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_To_Case_Owner_When_Action_Plan_Status_Changed_to_Rejected_Inc</fullName>
+        <description>Email Notification To Case Owner When Action Plan Status Changed to Rejected - Incorrect Assignment</description>
+        <protected>false</protected>
+        <recipients>
+            <field>CaseOwnerEmail__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Ministerial_Correspondence/Email_Notification_To_Owner_When_Incorrectly_Assigned_To_Agency</template>
+    </alerts>
+    <alerts>
+        <fullName>Final_approval_notification_for_Sydney_Trains_agency</fullName>
+        <description>Final approval notification for Sydney Trains agency</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Sydney_Trains_Internal/AP_Approved_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Final_approval_notification_to_AP_owner</fullName>
+        <description>Final approval notification to AP owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>NSW_Trains_Internal/NSW_TrainLink_AP_Approved_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Final_rejection_notification</fullName>
+        <description>Final rejection notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Sydney_Trains_Internal/AP_Rejected_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Final_rejection_notification_for_NSW_TrainLink</fullName>
+        <description>Final rejection notification for NSW TrainLink</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>NSW_Trains_Internal/NSW_TrainLink_AP_Rejected_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Action_Plan_Approval_Requesting_User_About_Status</fullName>
+        <description>Notify Action Plan Approval Requesting User About Status Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Ministerial_Correspondence/Action_Plan_Approval_Post_Template_Approved</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Action_Plan_Approval_Requesting_User_About_Status_Rejected</fullName>
+        <description>Notify Action Plan Approval Requesting User About Status - Rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Ministerial_Correspondence/Action_Plan_Approval_Post_Template_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Corro_User_of_Newcastle</fullName>
+        <description>Notify Corro User of Newcastle</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>tegan.hughes@keolisdowner.com.au</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Sri_View/Assigned_To_Queue_Email_template_for_AP</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_alert_to_Action_Plan_owner_1_day_before_AP_is_due</fullName>
+        <description>Send alert to Action Plan owner 1 day before AP is due</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>response@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Ministerial_Correspondence/Action_Plan_Notification_To_AP_Owner_1_day_before_due</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_alert_to_Action_Plan_owner_everyday_AP_is_overdue</fullName>
+        <description>Send alert to Action Plan owner everyday AP is overdue</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>response@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Ministerial_Correspondence/Action_Plan_Notification_To_AP_Owner_overdue</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_alert_to_Action_Plan_owner_when_AP_is_due</fullName>
+        <description>Send alert to Action Plan owner when AP is due</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>response@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Ministerial_Correspondence/Action_Plan_Notification_To_AP_Owner_due</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_email_notification_to_SME_when_Action_Plan_is_assigned</fullName>
+        <description>Send email notification to SME when Action Plan is assigned</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Ministerial_Correspondence/Action_Plan_assignment_notification_to_SME</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_email_when_SME_is_selected_in_AP</fullName>
+        <description>Send email when SME is selected in AP</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SME_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>TfNSW_Internal/NewAPassignmentnotification</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>AP_Status_To_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Action Plan in Review</literalValue>
+        <name>AP Status To Action Plan in Review</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AP_Status_To_Awaiting_Advice_Approval</fullName>
+        <description>Change Status To Awaiting Action Plan Approval</description>
+        <field>Status__c</field>
+        <literalValue>Awaiting Action Plan Approval</literalValue>
+        <name>AP Status To Awaiting AP Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AP_Status_To_Draft_Advice_in_Progress</fullName>
+        <description>AP Status To Action Plan in Progress</description>
+        <field>Status__c</field>
+        <literalValue>Action Plan in Progress</literalValue>
+        <name>AP Status To Advice in Progress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AP_Status_to_New</fullName>
+        <description>Sets Action Plan Status to New</description>
+        <field>Status__c</field>
+        <literalValue>New</literalValue>
+        <name>AP Status to New</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Action_Plan_Update_to_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Action Plan in Review</literalValue>
+        <name>Action Plan Update to AP in Review</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Action_Plan_Updated_Submitted</fullName>
+        <description>Updates Action Plan Status to Submitted for Approval when Submitted</description>
+        <field>Status__c</field>
+        <literalValue>Awaiting Action Plan Approval</literalValue>
+        <name>Action Plan Updated Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_MCWS_Action_Plan</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>MCWS_Action_Plan</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to MCWS Action Plan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Check_Created_by_MAGS_Officer_checkbox</fullName>
+        <field>Created_by_MAGS_Officer__c</field>
+        <literalValue>1</literalValue>
+        <name>Check Created by MAGS Officer checkbox</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_Assigned_SME_Field</fullName>
+        <field>AssignedSME__c</field>
+        <name>Clear out Assigned SME Field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Close_The_Action_Plan_Once_Approved</fullName>
+        <description>This field update will change the status of the action plan to &quot;Closed&quot; whenever it is approved.</description>
+        <field>Status__c</field>
+        <literalValue>Completed</literalValue>
+        <name>Close The Action Plan Once Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Copy_Case_Road_Investigation</fullName>
+        <description>The RMS Investigation section from the case to be copied across to the Action Plan</description>
+        <field>Case_Description__c</field>
+        <formula>Case_Description__c &amp; &quot;&lt;br/&gt;&lt;br/&gt;&quot; &amp;&quot;Case Investigation Section (if provided):&quot; &amp; &quot;&lt;br/&gt;&quot; &amp;IF(ISBLANK(TEXT(Parent_Case__r.Type_of_Hazard__c)),&quot;&quot;,&quot;Type of Hazard - &quot; &amp; TEXT(Parent_Case__r.Type_of_Hazard__c) &amp; &quot;&lt;br/&gt;&quot;  ) &amp;IF(ISBLANK(TEXT(Parent_Case__r.Type_of_Infrastructure__c)),&quot;&quot;, &quot;Type of Infrastructure - &quot; &amp; TEXT(Parent_Case__r.Type_of_Infrastructure__c) &amp; &quot;&lt;br/&gt;&quot; ) 
+&amp; IF(ISBLANK(Parent_Case__r.E_Toll_Account_Number__c ),&quot;&quot;, &quot;E-Toll account number - &quot; &amp; Parent_Case__r.E_Toll_Account_Number__c &amp; &quot;&lt;br/&gt;&quot;  )&amp; 
+IF(ISBLANK(Parent_Case__r.License_Photo_Card_Number__c),&quot;&quot;,&quot;Licence/Photo card number - &quot; &amp; Parent_Case__r.License_Photo_Card_Number__c &amp; &quot;&lt;br/&gt;&quot; )&amp; 
+IF(ISBLANK(Parent_Case__r.RMS_Vehicle_registration__c ),&quot;&quot;,&quot;Vehicle registration - &quot; &amp; Parent_Case__r.RMS_Vehicle_registration__c &amp; &quot;&lt;br/&gt;&quot; )&amp; 
+IF(ISBLANK(TEXT(Parent_Case__r.Project__c)),&quot;&quot;,&quot;Project - &quot; &amp; TEXT(Parent_Case__r.Project__c ) &amp; &quot;&lt;br/&gt;&quot; )&amp;IF(ISBLANK(TEXT(Parent_Case__r.External_Agency__c)),&quot;&quot;,&quot;External Agency - &quot; &amp; TEXT(Parent_Case__r.External_Agency__c) &amp; &quot;&lt;br/&gt;&quot; )</formula>
+        <name>Copy Case Road Investigation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Copy_STA_Investigation</fullName>
+        <description>Copy STA Investigation Section If Provided</description>
+        <field>Case_Description__c</field>
+        <formula>Case_Description__c &amp; &quot;&lt;br/&gt;&lt;br/&gt;&quot; &amp;&quot;Case Investigation Section (if provided):&quot; &amp; &quot;&lt;br/&gt;&quot; &amp;
+IF(ISBLANK(Parent_Case__r.STA_Employee_Number__c),&quot;&quot;,&quot;STA Employee Number - &quot; &amp; Parent_Case__r.STA_Employee_Number__c &amp; &quot;&lt;br/&gt;&quot; ) &amp;
+
+IF(ISBLANK(Parent_Case__r.STA_Event_ID__c),&quot;&quot;, &quot;STA Service Event ID - &quot; &amp; Parent_Case__r.STA_Event_ID__c &amp; &quot;&lt;br/&gt;&quot; ) &amp; 
+
+IF(ISBLANK(Parent_Case__r.STA_Insurance_360_Number__c ),&quot;&quot;, &quot;STA Insurance (360) Number - &quot; &amp; Parent_Case__r.STA_Insurance_360_Number__c &amp; &quot;&lt;br/&gt;&quot; )&amp; 
+
+IF(ISBLANK(TEXT(Parent_Case__r.External_Agency__c)),&quot;&quot;,&quot;External Agency - &quot; &amp; TEXT(Parent_Case__r.External_Agency__c) &amp; &quot;&lt;br/&gt;&quot; )&amp; 
+
+IF(ISBLANK(TEXT(Parent_Case__r.STA_Outcome__c) ),&quot;&quot;,&quot;STA Outcome - &quot; &amp; TEXT(Parent_Case__r.STA_Outcome__c) &amp; &quot;&lt;br/&gt;&quot; )&amp;
+
+IF(ISBLANK(Parent_Case__r.Vehicle_Registration__c),&quot;&quot;,&quot;Vehicle Registration (MO/ST) - &quot; &amp; Parent_Case__r.Vehicle_Registration__c &amp; &quot;&lt;br/&gt;&quot; )&amp;
+
+IF(ISBLANK(TEXT(Parent_Case__r.STA_Unsubstantiated__c)),&quot;&quot;,&quot;STA Unsubstantiated - &quot; &amp; TEXT(Parent_Case__r.STA_Unsubstantiated__c) &amp; &quot;&lt;br/&gt;&quot; )&amp; 
+
+IF(ISBLANK(Parent_Case__r.STA_Results_of_Investigation__c),&quot;&quot;,&quot;STA Results of Investigation- &quot; &amp; Parent_Case__r.STA_Results_of_Investigation__c &amp; &quot;&lt;br/&gt;&quot; )&amp;
+IF(ISBLANK(TEXT(Parent_Case__r.STA_Vexatious_Customer__c)),&quot;&quot;,&quot;STA Vexatious Customer- &quot; &amp; TEXT(Parent_Case__r.STA_Vexatious_Customer__c) &amp; &quot;&lt;br/&gt;&quot; )</formula>
+        <name>Copy STA Investigation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Flip_record_type_to_MCWS_Agency</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>MCWS_Agency</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Flip record type to MCWS Agency</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Increment_AP_Submitted</fullName>
+        <description>Increments the number of times an Action Plan is submitted for Approval</description>
+        <field>Times_Submitted__c</field>
+        <formula>Times_Submitted__c + 1</formula>
+        <name>Increment AP Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Last_To_be_Approver3</fullName>
+        <field>Last_To_be_Approver__c</field>
+        <formula>Approver_Level_3__r.FirstName &amp; &quot; &quot; &amp; Approver_Level_3__r.LastName</formula>
+        <name>Last To be Approver3</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_AP_SME_Email</fullName>
+        <description>Sets the SME Email field when Assigned SME is set to allow outbound email notification</description>
+        <field>SME_Email__c</field>
+        <formula>TempAssignedSME__r.Email</formula>
+        <name>Set AP SME Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Action_Plan_Type_To_Advice_Request</fullName>
+        <description>Set Action Plan Type To Advice Request</description>
+        <field>Type__c</field>
+        <literalValue>Advice Request</literalValue>
+        <name>Set Action Plan Type To Advice Request</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Action_Plan_Type_To_Agency_Response</fullName>
+        <description>Set Action Plan Type To Agency Response</description>
+        <field>Type__c</field>
+        <literalValue>Agency Response</literalValue>
+        <name>Set Action Plan Type To Agency Response</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Last_To_be_Approver</fullName>
+        <field>Last_To_be_Approver__c</field>
+        <formula>Approver_Level_1__r.FirstName &amp; &quot; &quot; &amp; Approver_Level_1__r.LastName</formula>
+        <name>Set Last To be Approver</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Last_To_be_Approver2</fullName>
+        <field>Last_To_be_Approver__c</field>
+        <formula>Approver_Level_2__r.FirstName &amp; &quot; &quot; &amp; Approver_Level_2__r.LastName</formula>
+        <name>Set Last To be Approver2</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Return_to_Owner_to_true</fullName>
+        <description>When action plan status selected is &quot;Rejected-Incorrect Assignment&quot; then set Return to Owner to true. APEX Code attached to this process</description>
+        <field>ReturnToOwner__c</field>
+        <literalValue>1</literalValue>
+        <name>Set Return to Owner to true</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Advice_Approved</fullName>
+        <field>Date_Advice_Approved__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Advice Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Advice_Request_Received</fullName>
+        <field>Date_Advice_Request_Received__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Advice Request Received</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Awaiting_Advice_Approval</fullName>
+        <field>Date_Awaiting_Advice_Approval__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Awaiting Advice Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Complete</fullName>
+        <description>This field update will stamp the date field when Action plan status is set to completed.</description>
+        <field>Date_Complete__c</field>
+        <formula>IF( 
+AND( 
+OR(ISPICKVAL(Status__c , &quot;Awaiting Signature&quot;), ISPICKVAL(Status__c , &quot;Completed&quot;)), 
+ISPICKVAL(Type__c, &quot;Agency Response&quot;) 
+), 
+IF(Date_stamp_on_Awaiting_Signature__c &lt; Date_stamp_on_Completed__c, 
+IF(ISBLANK(Date_stamp_on_Awaiting_Signature__c), DATEVALUE(Date_stamp_on_Completed__c),DATEVALUE(Date_stamp_on_Awaiting_Signature__c)), 
+IF(ISBLANK(Date_stamp_on_Completed__c),DATEVALUE(Date_stamp_on_Awaiting_Signature__c), DATEVALUE(Date_stamp_on_Completed__c)) 
+), 
+IF(ISPICKVAL(Status__c , &quot;Completed&quot;), 
+DATEVALUE(Date_stamp_on_Completed__c), 
+NULL 
+)	
+)</formula>
+        <name>Stamp Date Complete</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Draft_Advice_in_Progress</fullName>
+        <field>Date_Draft_Advice_in_Progress__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Draft Advice in Progress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Rejected_Incorrect_Assignment</fullName>
+        <field>Date_Rejected_Incorrect_Assignment__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Rejected-Incorrect Assignment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stamp_Date_Waiting_for_Manager_Approval</fullName>
+        <field>Date_Awaiting_Advice_Approval__c</field>
+        <formula>TODAY()</formula>
+        <name>Stamp Date Waiting for Manager Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Time_Sent_for_Last_Approval</fullName>
+        <field>Time_Sent_for_Last_Approval__c</field>
+        <formula>NOW()</formula>
+        <name>Set Time Sent for Last Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Action_Plan_Status_to</fullName>
+        <description>Change Action Plan status to&quot; Advice Requested Recieved&quot; when owner changes from &quot;MAGS Officer &quot; to Any of the agency queue.</description>
+        <field>Status__c</field>
+        <literalValue>Action Plan Assigned</literalValue>
+        <name>Action Plan Status to Awaiting Advice</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_CaseNumber_for_Parent_Action_Plan</fullName>
+        <field>CaseNumber__c</field>
+        <formula>Parent_Case__r.CaseNumber</formula>
+        <name>Update CaseNumber for Parent Action Plan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Number_for_Child_Action_Plan</fullName>
+        <description>set case number for child action plan</description>
+        <field>CaseNumber__c</field>
+        <formula>Parent_Action_Plan__r.Parent_Case__r.CaseNumber</formula>
+        <name>Update Case Number for Child Action Plan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Owner_Email</fullName>
+        <field>CaseOwnerEmail__c</field>
+        <formula>Parent_Case__r.Owner:User.Email</formula>
+        <name>Update Case Owner Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Is_Office_Secretary_Action_Plan</fullName>
+        <field>IsOfficeOfSecActionPlan__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Is Office Secretary Action Plan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Time_Sent_for_Last_Approval_c</fullName>
+        <description>SFCOE 50</description>
+        <field>Time_Sent_for_Last_Approval__c</field>
+        <formula>NOW()</formula>
+        <name>Update Time Sent for Last Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_closed_date_on_action_plan</fullName>
+        <field>Closed_date__c</field>
+        <formula>NOW()</formula>
+        <name>Update closed date on action plan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_due_date_on_Action_Plan</fullName>
+        <description>Agency = RMS
+Priority = Individual 
+              Due Date : 13 days : Action Plan created date + 13 
+Priority = MP
+              Due Date : 13 days : Action Plan created date +  10
+
+All other agency/division  : Action Plan created date + 5 days</description>
+        <field>Due_Date__c</field>
+        <formula>IF(TEXT(Agency__c) == &quot;RMS&quot;, 
+CASE(TEXT(Parent_Case__r.Priority), 
+&quot;MP - Standard&quot;, 
+CASE( 
+MOD(DATEVALUE(CreatedDate) - DATE( 1900, 1, 7),7), 
+0, DATEVALUE(CreatedDate) + 3 + 9, 
+1, DATEVALUE(CreatedDate) + 2 + 9, 
+2, DATEVALUE(CreatedDate) + 4 + 9, 
+3, DATEVALUE(CreatedDate) + 4 + 9, 
+4, DATEVALUE(CreatedDate) + 4 + 9, 
+5, DATEVALUE(CreatedDate) + 4 + 9, 
+DATEVALUE(CreatedDate) + 4 + 9), 
+&quot;Individual - Standard&quot;, 
+CASE( 
+MOD(DATEVALUE(CreatedDate) - DATE( 1900, 1, 7),7), 
+0, DATEVALUE(CreatedDate) + 5 + 12, 
+1, DATEVALUE(CreatedDate) + 4 + 12, 
+2, DATEVALUE(CreatedDate) + 4 + 12, 
+3, DATEVALUE(CreatedDate) + 4 + 12, 
+4, DATEVALUE(CreatedDate) + 6 + 12, 
+5, DATEVALUE(CreatedDate) + 6 + 12, 
+6, DATEVALUE(CreatedDate) + 6 + 12, 
+DATEVALUE(CreatedDate) + 3 + 12 
+), 
+NULL), 
+CASE( 
+MOD(DATEVALUE(CreatedDate) - DATE( 1900, 1, 7),7), 
+0, DATEVALUE(CreatedDate) + 0 + 5, 
+1, DATEVALUE(CreatedDate) + 2 + 5, 
+2, DATEVALUE(CreatedDate) + 2 + 5, 
+3, DATEVALUE(CreatedDate) + 2 + 5, 
+4, DATEVALUE(CreatedDate) + 2 + 5, 
+5, DATEVALUE(CreatedDate) + 2 + 5, 
+DATEVALUE(CreatedDate) + 1 + 5) 
+)</formula>
+        <name>Update due date on Action Plan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>AP%3A Notify Newcastle Corro User</fullName>
+        <actions>
+            <name>Notify_Corro_User_of_Newcastle</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>Owner:Queue.DeveloperName == &#39;Newcastle_Transport_MC&#39;</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Action Plan Closed Notification</fullName>
+        <actions>
+            <name>Action_Plan_Closed_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>ISPICKVAL(Status__c,&#39;Completed&#39;)  &amp;&amp; ISPICKVAL(Parent_Case__r.Response_Type__c, &#39;No response required (NRR)&#39;) &amp;&amp; Parent_Case__r.IsMinCorroCase__c</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Action Plan Completion Notification To Case Owner</fullName>
+        <actions>
+            <name>Closed_Action_Plan_Notification_To_Case_Manager</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>ISPICKVAL(Status__c,&#39;Completed&#39;)  &amp;&amp;  TEXT(Parent_Case__r.Response_Type__c) != &#39;No response required (NRR)&#39; &amp;&amp;  Parent_Case__r.IsMinCorroCase__c &amp;&amp; ISPICKVAL(Type__c, &quot;Advice Request&quot;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Action Plan Status set to Advice Request Received</fullName>
+        <actions>
+            <name>Flip_record_type_to_MCWS_Agency</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Action_Plan_Status_to</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Change Action Plan Status to &quot;Advice Request Received&quot;  when Action Plan Owner changes from &quot;MAGS Officer&quot; to any of the agency queues</description>
+        <formula>AND(CONTAINS(PRIORVALUE( Owner_Profile_Name__c ),&#39;MAGS&#39;),   CONTAINS(Owner:Queue.DeveloperName, &#39;_MC&#39;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Action Plan due Reminders</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Created_by_MAGS_Officer__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Due_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>notEqual</operation>
+            <value>New,Rejected-Incorrect Assignment,Completed</value>
+        </criteriaItems>
+        <description>Send notification to action plan owners:
+- 1 day before due (if not completed)
+- on due date (if not completed)
+- every day after due (if not completed)</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_when_AP_is_due</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_everyday_AP_is_overdue</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_1_day_before_AP_is_due</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>-1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_everyday_AP_is_overdue</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>2</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_everyday_AP_is_overdue</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>3</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_everyday_AP_is_overdue</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>4</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_everyday_AP_is_overdue</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_everyday_AP_is_overdue</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>6</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Send_alert_to_Action_Plan_owner_everyday_AP_is_overdue</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.Due_Date__c</offsetFromField>
+            <timeLength>7</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Check Created by MAGS Officer checkbox</fullName>
+        <actions>
+            <name>Check_Created_by_MAGS_Officer_checkbox</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Action_Plan_Type_To_Advice_Request</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Check Created by MAGS Officer when Action plan is created By MAGS Officer.
+Added - if also created by Office of Sec Admin.</description>
+        <formula>IF(OR( CreatedBy.UserRole.Name == &#39;MAGS Manager&#39;, CreatedBy.UserRole.Name == &#39;Senior MAGS Officer&#39;, CreatedBy.UserRole.Name == &#39;MAGS Officer&#39;,  CreatedBy.UserRole.Name == &#39;CRGS Admin&#39;, 
+CreatedBy.UserRole.Name == &#39;MAGS Editor&#39;,
+CreatedBy.UserRole.Name == &#39;Office of the Secretary Admin&#39;), true, false)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Copy Road specific Investigation Section</fullName>
+        <actions>
+            <name>Copy_Case_Road_Investigation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Agency__c</field>
+            <operation>equals</operation>
+            <value>RMS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CFM Action Plan</value>
+        </criteriaItems>
+        <description>Copy Road specific Investigation Section from case to action plan</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Copy STA specific Investigation Section</fullName>
+        <actions>
+            <name>Copy_STA_Investigation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Agency__c</field>
+            <operation>equals</operation>
+            <value>STA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CFM Action Plan</value>
+        </criteriaItems>
+        <description>Copy STA specific Investigation Section from case to action plan</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification To Owner When Incorrectly Assigned To Agency</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Rejected-Incorrect Assignment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>CFM Action Plan</value>
+        </criteriaItems>
+        <description>Email Notification To Action Plan owner When Incorrectly Assigned To Agency</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Email_Notification_To_Case_Owner_When_Action_Plan_Status_Changed_to_Rejected_Inc</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Set_Return_to_Owner_to_true</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.X5_mins_from_now__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Email Notification To Owner When Incorrectly Assigned To Agency%28CFM%29</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Rejected-Incorrect Assignment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CFM Action Plan</value>
+        </criteriaItems>
+        <description>Email Notification To Action Plan owner When Incorrectly Assigned To Agency</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Email_Notification_To_Case_Owner_When_Action_Plan_Status_Changed_to_Rejected_Inc</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Action_Plan__c.X5_mins_from_now__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Flip record type to MCWS Action Plan</fullName>
+        <actions>
+            <name>Change_record_type_to_MCWS_Action_Plan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Flip Record type to MCWS Action Plan when action plan depending upon the parent case Record Type.</description>
+        <formula>CONTAINS(Parent_Case__r.RecordType.DeveloperName, &#39;Ministerial Correspondence&#39;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Min Corro Update Owner</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Agency__c</field>
+            <operation>equals</operation>
+            <value>RMS</value>
+        </criteriaItems>
+        <description>Update owner field when the criteria meet.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Populate Case Owner Email</fullName>
+        <actions>
+            <name>Update_Case_Owner_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>(ISNEW() &amp;&amp; NOT(ISBLANK(Parent_Case__c))) ||  ( PRIORVALUE(Parent_Case__c) &lt;&gt; Parent_Case__c &amp;&amp; NOT(ISBLANK(Parent_Case__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send email to SME when AP is Assigned</fullName>
+        <actions>
+            <name>Send_email_notification_to_SME_when_Action_Plan_is_assigned</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Whenever action plan is assigned to SME then email notification sent out to SME.</description>
+        <formula>OR( (ISNEW() &amp;&amp; LEFT(OwnerId,3) == &quot;005&quot; &amp;&amp; TempAssignedSME__c == OwnerId &amp;&amp; RecordType.DeveloperName != &quot;CFM_Action_Plan&quot;),  (ISCHANGED(OwnerId) &amp;&amp; LEFT(OwnerId,3) == &quot;005&quot; &amp;&amp; TempAssignedSME__c == OwnerId &amp;&amp; RecordType.DeveloperName != &quot;CFM_Action_Plan&quot;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send email to SME when AP is Assigned CFM</fullName>
+        <actions>
+            <name>Send_email_when_SME_is_selected_in_AP</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Set_AP_SME_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Send email to SME when AP is Assigned</description>
+        <formula>OR(  (ISNEW() &amp;&amp; OwnerId == TempAssignedSME__c &amp;&amp; RecordType.DeveloperName == &quot;CFM_Action_Plan&quot;),  (ISCHANGED(OwnerId) &amp;&amp; OwnerId == TempAssignedSME__c &amp;&amp; RecordType.DeveloperName == &quot;CFM_Action_Plan&quot;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Case Number for child Action Plan</fullName>
+        <actions>
+            <name>Update_Case_Number_for_Child_Action_Plan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This rule will set the case number (for search results) for the child action plan.</description>
+        <formula>NOT(ISBLANK(Parent_Action_Plan__r.Parent_Case__c)) &amp;&amp; ISBLANK(CaseNumber__c)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Case Number for parent Action Plan</fullName>
+        <actions>
+            <name>Update_CaseNumber_for_Parent_Action_Plan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This rule will set the case number (for search results) for the parent action plan.</description>
+        <formula>NOT(ISBLANK(Parent_Case__c)) &amp;&amp; ISBLANK(CaseNumber__c)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Advice Approved</fullName>
+        <actions>
+            <name>Stamp_Date_Advice_Approved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Date_Advice_Request_Received__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Advice Request Received</fullName>
+        <actions>
+            <name>Stamp_Date_Advice_Request_Received</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Date_Advice_Request_Received__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Action Plan Assigned</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Awaiting Action Plan Approval</fullName>
+        <actions>
+            <name>Stamp_Date_Awaiting_Advice_Approval</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Date_Advice_Request_Received__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Action Plan Approval</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Awaiting Advice Approval</fullName>
+        <actions>
+            <name>Stamp_Date_Awaiting_Advice_Approval</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Date_Advice_Request_Received__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Action Plan Approval</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Complete</fullName>
+        <actions>
+            <name>Stamp_Date_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This field will be used to stamp the date completed.
+If action plan is Agency Response then min of Awaiting_Signature Date and Completed Date will be stamped. If Action plan status is completed then Completed Date will be returned.</description>
+        <formula>OR(  ISCHANGED(Status__c), ISCHANGED(Type__c), ISCHANGED(Date_stamp_on_Awaiting_Signature__c), ISCHANGED(Date_stamp_on_Completed__c) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Draft Advice in Progress</fullName>
+        <actions>
+            <name>Stamp_Date_Draft_Advice_in_Progress</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Date_Advice_Request_Received__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Action Plan in Progress</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Date Rejected-Incorrect Assignment</fullName>
+        <actions>
+            <name>Stamp_Date_Rejected_Incorrect_Assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Rejected-Incorrect Assignment</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Is Office Secretary Action Plan</fullName>
+        <actions>
+            <name>Update_Is_Office_Secretary_Action_Plan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates attribute used in sharing rules to provide access to Office of Secretary users</description>
+        <formula>Parent_Case__r.RecordType.DeveloperName = &quot;Office_of_the_Secretary_Ministerial_Correspondence&quot;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update closed date on closed status</fullName>
+        <actions>
+            <name>Update_closed_date_on_action_plan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Completed</value>
+        </criteriaItems>
+        <description>update closed date on action plan when status is marked as &#39;Closed&#39;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

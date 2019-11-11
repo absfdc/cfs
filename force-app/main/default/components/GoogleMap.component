@@ -1,0 +1,53 @@
+<apex:component id="googleMap">
+    <apex:attribute access="public" description="Case record" id="caseRecord" name="caseRecord" required="true" type="Case"/>    
+        <label style="display:none" aria-label="Lattitude of location" for="sitePageId:caseFormId:pblockId:lattitude-of-location">Lattitude</label>
+        <apex:inputField style="display:none" html-name="lattitude-of-location"  label="lattitude of location"  id="lattitude-of-location" value="{!caseRecord.GPS_Incident_Location__Latitude__s}"/>                       
+
+        <label style="display:none" aria-label="Longitude of location" for="sitePageId:caseFormId:pblockId:longitude-of-location">Longitude</label>                        
+        <apex:inputField style="display:none" html-name="longitude-of-location" label="longitude of location" id="longitude-of-location" value="{!caseRecord.GPS_Incident_Location__Longitude__s}"/>
+
+    <!-- Rendered only when page is open for Bus and Ferry-->
+    <apex:outputText rendered="{!IF(OR(LOWER(caseRecord.Modes__c) == 'bus', LOWER(caseRecord.Modes__c) == 'ferry'), TRUE, FALSE)}">
+        <div class="col-md-12 ferryField formLabel locOfIncident rmsCategorySpecific" style="display:none;">
+            <label class="fieldLabel" style="margin-bottom: 0px;" aria-label="Location of incident" for="sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location">Where did this occur?</label>
+            <div id="locationError"  class="has-error errorMessage"></div>
+        </div>
+        <div class="col-md-12 ferryField locOfIncident rmsCategorySpecific" style="display:none;" >        
+            <img align="right" tabindex="0" class="sprite sprite-currentLoc" onclick="setCurrentLocation()" onkeydown="validateKeyPress(event)" src="{!URLFOR($Resource.icons,'img_trans.gif')}" style="margin-left: 5px;" width="40px" height="40px" alt="Select this button to set your current location on the Google map and in the location edit field below"/>
+                <p style="margin-bottom: 0px;text-align: justify;">If you witnessed or experienced an incident, enter the location or drag the pin in the map below. Type a location to zoom the map. You can then move the pin to an exact location, such as a bus stop or ferry wharf. Clicking a stop icon will bring up the services that use that stop. </p>
+        </div>
+    </apex:outputText>
+    <!-- Render only when page is open for other than Bus and Ferry -->
+    <apex:outputText rendered="{!IF(OR(LOWER(caseRecord.Modes__c) == 'bus', LOWER(caseRecord.Modes__c) == 'ferry'), FALSE, TRUE)}">  
+        <div class="col-md-12 ferryField locOfIncident rmsCategorySpecific" style="display:none">
+            <label class="fieldLabel" style="margin-bottom: 0px;" aria-label="Location of incident" for="sitePageId:caseFormId:pblockId:locationMap:googleMap:optional-location">Location of your feedback</label>
+        </div>
+        <div class="col-md-12 ferryField locOfIncident rmsCategorySpecific" style="display:none;" >        
+            <img align="right" tabindex="0" class="sprite sprite-currentLoc" onclick="setCurrentLocation()" onkeydown="validateKeyPress(event)" src="{!URLFOR($Resource.icons,'img_trans.gif')}" style="margin-left: 5px;" width="40px" height="40px" alt="Select this button to set your current location on the Google map and in the location edit field below"/>
+                <p style="margin-bottom: 0px;text-align: justify;">Where did this occur? Enter the location of your feedback or select from the map. You can set your current location by clicking the icon on the right.</p>
+        </div>
+    </apex:outputText>
+        <apex:inputField onfocus="geolocate()" onchange="setMarkerToLocation()" styleClass="ferryField rmsCategorySpecific locOfIncident formInput address-field" html-placeholder="{!IF(LOWER($CurrentPage.parameters.about)='bus', 'e.g. 15 George St, Sydney', IF(LOWER($CurrentPage.parameters.about) = 'ferry', 'e.g. Circular Quay','Location of incident'))}" html-name="optional-location"  id="optional-location" value="{!caseRecord.Location_of_Incident__c}"/>   
+    <div class="col-md-12 ferryField locOfIncident rmsCategorySpecific" style="display:none; margin-bottom: 15px;"> 
+        <div  id="map_canvas" style="height:250px" class="locOfIncident2"></div>
+    </div>
+    <script>
+    function setCurrentLocation() {
+        setCurrentLocationOnMap();
+    }
+    function validateKeyPress(event) {
+        var x = event.which || event.keyCode;
+        if(x == 13) {
+            setCurrentLocationOnMap();
+        }
+    }
+    </script>
+    <style>
+    .sprite-currentLoc {
+        width: 40px;
+        height: 40px;
+        background-position: -7px -7px;
+        border-radius: 5%;
+    }
+    </style>
+</apex:component>

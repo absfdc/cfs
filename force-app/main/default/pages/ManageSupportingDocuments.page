@@ -1,0 +1,342 @@
+<apex:page standardController="Case" tabStyle="Case" extensions="MassEditAttachment_CX" sidebar="false" action="{!init}" id="manage-case-documents">
+    <apex:includeScript value="/support/console/33.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+    <apex:includeScript value="{!$Resource.RowSorterJqueryUi}"/>  
+    <style>
+        .container {
+            width:800px;
+            margin:0px auto;
+        }
+        .caseTab .bPageBlock {
+            border-top: 3px solid #dce9f9 !important;
+            margin-top: 5px;
+            height:100%;
+        }
+        
+        #caseDetailsTable {
+            text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+            border: solid #ccc 1px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 1px 1px #ccc; 
+            -moz-box-shadow: 0 1px 1px #ccc; 
+            box-shadow: 0 1px 1px #ccc;     
+        }
+        
+        #caseDetailsTable td {
+            background-color: #fff;
+        }
+        
+        .pageTitle {
+            text-align:center;
+            padding:20px;
+        }
+        
+        .buttonPanel {
+            padding:10px;
+            overflow:auto;
+        }
+        
+        .table {
+            border: solid #ccc 1px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 1px 1px #ccc; 
+            -moz-box-shadow: 0 1px 1px #ccc; 
+            box-shadow: 0 1px 1px #ccc;         
+        }
+        
+        .table tr:hover {
+            background: #fbf8e9;
+            -o-transition: all 0.1s ease-in-out;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -ms-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;     
+        }    
+            
+        .table td, .table th {
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 5px;
+            text-align: left;    
+            cursor:move;
+        }
+        
+        .table th {
+            background-color: #dce9f9;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+            background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+            -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+            -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+            box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+            border-top: none;
+            text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+        }
+        
+        .table td:first-child, .table th:first-child {
+            border-left: none;
+        }
+        
+        .table th:first-child {
+            -moz-border-radius: 6px 0 0 0;
+            -webkit-border-radius: 6px 0 0 0;
+            border-radius: 6px 0 0 0;
+        }
+        
+        .table th:last-child {
+            -moz-border-radius: 0 6px 0 0;
+            -webkit-border-radius: 0 6px 0 0;
+            border-radius: 0 6px 0 0;
+        }
+        
+        .table th:only-child{
+            -moz-border-radius: 6px 6px 0 0;
+            -webkit-border-radius: 6px 6px 0 0;
+            border-radius: 6px 6px 0 0;
+        }
+        
+        .table tr:last-child td:first-child {
+            -moz-border-radius: 0 0 0 6px;
+            -webkit-border-radius: 0 0 0 6px;
+            border-radius: 0 0 0 6px;
+        }
+
+        .table tr:last-child td:last-child {
+            -moz-border-radius: 0 0 6px 0;
+            -webkit-border-radius: 0 0 6px 0;
+            border-radius: 0 0 6px 0;
+        } 
+        .warning{ display:inline-block; color: #9F6000; font-size:10px; background-color: #D7E4BD; padding:5px;float:right;}
+        
+        .toast {
+          text-align: center;
+          position: fixed;  
+          top: 0.8em;
+          color: #9F6000; 
+          background-color: #FEEFB3;
+          padding: 5px;
+          z-index: 11;
+          display: none;  
+        }
+        
+        .messageTable {
+            width:100%;
+        }
+        
+        .message {
+            border:0px !important;
+            margin:0px !important;
+        }
+
+        /*Start: 08/09/2017 
+        * make all clickable links to blue
+        */        
+        a:link{
+          color:blue;
+        }
+        a:visited{
+          color:blue;
+        }
+        /* end */
+        
+    </style>
+    <div class="container">
+        <apex:form id="mainForm">
+            <apex:pageBlock id="mainBlock" title="Manage Supporting Documents">
+                <apex:pageMessages id="errors"/>
+                <br/>
+                <table   style="width:100%;text-align:center;" class="table">
+                    <thead>
+                        <tr>
+                         <th style="width:25%">
+                            <h2>Case Number</h2>
+                         </th>
+                         <th style="width:25%">
+                            <h2>Status</h2>
+                         </th>
+                         <th style="width:25%">
+                           <h2>RecordType</h2>
+                         </th>
+                         <th style="width:25%">
+                            <h2>Priority</h2>
+                         </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                         <td style="width:25%">
+                            {!caseRecord.CaseNumber}
+                         </td>
+                         <td style="width:25%">
+                            {!caseRecord.Status}
+                         </td>
+                         <td style="width:25%">
+                           {!caseRecord.RecordType.Name}
+                         </td>
+                         <td style="width:25%">
+                            {!caseRecord.Priority}
+                         </td>
+                      </tr>
+                   </tbody>
+                </table> 
+                <div class="buttonPanel">
+                    <apex:commandButton id="save-btn" value="Save Order" action="{!updateDetails}" reRender="mainForm" status="saveAttStatus" disabled="{!AND(attachments != null, attachments.size == 0)}" rendered="{!enableSaveAndReordering}"/>&nbsp;
+
+                    <apex:commandButton id="cancel-btn" rendered="{!enableSaveAndReordering}" value="Close" onClick="closeSubTab();"/>&nbsp;
+
+                    <a id="conga-url-link" href="#" style="display:{!IF(enablePrintSelected, 'inline','none')}" congaLink="https://composer.congamerge.com?sessionId={!$API.Session_ID}&serverUrl={!$API.Partner_Server_URL_290}&id={!caseRecord.Id}&DefaultPDF=1{!congaURL}" onclick="openCongaComposer(this);">Print Selected Documents</a>&nbsp;
+                    <a id="comb-conga-url-link" href="#" style="display:{!IF(enablePrintCombinedPDF, 'inline','none')}" congaLinkCombined="https://composer.congamerge.com?sessionId={!$API.Session_ID}&serverUrl={!$API.Partner_Server_URL_290}&id={!caseRecord.Id}&DefaultPDF=1{!combinedPDFCongaURL}" onclick="openCongaComposerCombinedPDF(this);">Generate Combined PDF</a>&nbsp;
+                    
+                    <apex:actionstatus id="saveAttStatus">
+                        <apex:facet name="start">
+                            <apex:image value="/img/loading.gif" height="12" width="12"/>
+                        </apex:facet>
+                    </apex:actionstatus> 
+                    <div class="warning">Attachments will be printed in the order they appear in the list.<br/>
+                                        Please save your work before you click on "Print Selected Documents"<br/>
+                                        or "Generate Combined PDF" link.<br/>
+                                        Drag and drop the table rows to reorder the documents.
+                    </div>
+                </div>
+                <table id="attachmentsList" style="width:100%;" class="table" border="0">
+                    <thead>
+                        <tr>
+                            <th width="5%">Order</th>
+                            <th width="5%">Print</th>
+                            <th width="25%">Title</th>
+                            <th width="20%">Created Date</th>
+                            <th width="10%">Sharing</th>
+                            <th width="25%">Action</th>
+                        </tr>
+                    </thead>   
+                    <tbody>
+                        <apex:repeat value="{!attachments}" var="att_object">
+                            <tr>
+                                <td class="order"><span class="sequenceNumber">{!att_object.Sequence__c}</span><apex:inputHidden value="{!att_object.Sequence__c}"/></td>
+                                <td>
+                                    <apex:inputField rendered="{!enableSaveAndReordering}" value="{!att_object.Requires_Printing__c}" onchange="allowPrinting('{!OR(att_object.PDF_Attachment__c != null, NOT(att_object.Is_Image__c))}',this);"/>
+                                    <apex:outputField rendered="{!NOT(enableSaveAndReordering)}" value="{!att_object.Requires_Printing__c}"/>
+                                </td>
+                                <td><apex:outputField value="{!att_object.Name}"/></td>
+                                <td><apex:outputField value="{!att_object.CreatedDate}"/></td>
+                                <td><apex:outputField value="{!att_object.Privacy__c}"/></td>
+                                <td><apex:commandLink value="" action="{!generatePDF}" rendered="{!AND(att_object.PDF_Attachment__c == null, att_object.Is_Image__c)}" reRender="mainForm" status="AttStatus">
+                                        <apex:param assignTo="{!attachmentSelected}" name="pdfParam" value="{!att_object.Id}"/> 
+                                         <apex:actionstatus id="AttStatus">
+                                            <apex:facet name="start">
+                                                Generating pdf <apex:image value="/img/loading.gif" height="12" width="12"/>
+                                            </apex:facet>
+                                            <apex:facet name="stop">
+                                                Generate PDF
+                                            </apex:facet>
+                                        </apex:actionstatus> 
+                                    </apex:commandLink>
+                                    <apex:outputText value="Generate PDF" rendered="{!OR(att_object.PDF_Attachment__c != null, NOT(att_object.Is_Image__c))}"/>
+                                    &nbsp;|&nbsp;<a target="blank" href="/servlet/servlet.FileDownload?file={!URLENCODE(att_object.Attachment_Id__c)}">View</a></td>                     
+                            </tr>
+                        </apex:repeat> 
+                        <tr style="display:{!IF(AND(attachments != null, attachments.size == 0),'table-row','none')};">
+                            <td colspan="7">No documents to display</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <apex:outputPanel rendered="{!enableSaveAndReordering}">
+                    <script type="text/javascript">
+                        var a = function(e, tr) {
+                            var $originals = tr.children();
+                            var $helper = tr.clone();
+                            $helper.children().each(function(index) {
+                                $(this).width($originals.eq(index).width())
+                            });
+                            return $helper;
+                        };
+                        var b = function(e, ui) {
+                            isOrderChanged = true;
+                            console.log('--Stop--' + isOrderChanged);
+                            $('.order', ui.item.parent()).each(function (i) {
+                                var sn = i + 1;
+                                $(this).find('input[type="hidden"]').val(sn);
+                                $(this).find('.sequenceNumber').html(sn); 
+                            });
+                        };
+                        
+                        $("#attachmentsList tbody").sortable({
+                            helper: a,
+                            stop: b 
+                        }).disableSelection();
+                    </script>
+                </apex:outputPanel>
+            </apex:pageBlock>
+            <script type="text/javascript">
+                var isOrderChanged = false;
+            </script>
+       </apex:form>
+    </div>    
+    <script type="text/javascript"> 
+        function closeSubTab() {   
+            if(confirm("Your changes will be discarded if you leave this page without saving the changes.\nClick on OK to leave this page or click on Cancel to resume the work.")) {
+                if (sforce.console.isInConsole()) {
+                    sforce.console.getEnclosingTabId(function(response) { 
+                        sforce.console.closeTab(response.id);
+                        
+                    });
+                    sforce.console.getFocusedPrimaryTabId(function(response) {
+                        sforce.console.refreshPrimaryTabById(response.id, true, function() {});
+                    });
+                } else {
+                    window.location.href = "/{!caseRecord.id}";
+                }
+            }
+        }
+       
+        function imagetopdf(_this) {
+            generatePdfDoc($(_this).attr("att_id"));
+        }
+        
+        function allowPrinting(allow,_this) {
+            if(_this.checked && allow == 'false') {
+                alert("Only pdf documents can be printed. Please click on Generate PDF link and try again.");
+                _this.checked = false;
+            }
+        }
+    
+        function openCongaComposer(_this) {
+            if(sforce.console.isInConsole()) { 
+                sforce.console.getFocusedPrimaryTabId(function(response) { 
+                    var primaryTabId = response.id; 
+                    var rUrl = $(_this).attr("congaLink"); 
+                    var isActive = true; 
+                    console.log(rUrl);
+                    sforce.console.openSubtab(primaryTabId, rUrl , isActive, 'Merging PDF Documents', null); 
+                }) 
+            }else { 
+                navigateToUrl($(_this).attr("congaLink"), ""); 
+            }
+        }
+        function openCongaComposerCombinedPDF(_this) {
+            if(isOrderChanged) {
+                alert('Please save the changes and then click Generate Combined PDF');
+                return;
+            }
+
+            if(sforce.console.isInConsole()) { 
+                sforce.console.getFocusedPrimaryTabId(function(response) { 
+                    var primaryTabId = response.id; 
+                    var rUrl = $(_this).attr("congaLinkCombined"); 
+                    var isActive = true; 
+                    console.log(rUrl);
+                    sforce.console.openSubtab(primaryTabId, rUrl , isActive, 'Merging PDF Documents', null); 
+                }) 
+            }else { 
+                navigateToUrl($(_this).attr("congaLinkCombined"), ""); 
+            }
+        }
+    </script>
+</apex:page>

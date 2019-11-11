@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>UCC_Clear_Expiration</fullName>
+        <description>Clear the UCC_Expiration field.</description>
+        <field>UCC_Expiration__c</field>
+        <name>UCC_Clear_Expiration</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UCC_Clear_Flag</fullName>
+        <description>This workflow rule clears the UCC flag.</description>
+        <field>UCC_Flag__c</field>
+        <literalValue>0</literalValue>
+        <name>UCC_Clear_Flag</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UCC_Clear_Restrictions</fullName>
+        <description>Clear the UCC_Restrictions field.</description>
+        <field>UCC_Restrictions__c</field>
+        <name>UCC_Clear_Restrictions</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>Expire_UCC_Restriction</fullName>
+        <active>true</active>
+        <description>This rule will expire the UCC Restriction after the expiration date has passed.</description>
+        <formula>NOT(ISNULL(UCC_Expiration__c))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>UCC_Clear_Expiration</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <actions>
+                <name>UCC_Clear_Flag</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <actions>
+                <name>UCC_Clear_Restrictions</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Contact.UCC_Expiration__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>UCC_Manual_Clear</fullName>
+        <actions>
+            <name>UCC_Clear_Expiration</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>UCC_Clear_Restrictions</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.UCC_Flag__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Fires off when UCC flag has been manually cleared by an authorized user.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>UCC_Set_Notify</fullName>
+        <actions>
+            <name>Review_UCC_Action</name>
+            <type>Task</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Contact.UCC_Flag__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When UCC is set on a contact, send notification to TfNSW Customer Liaison Team.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Review_UCC_Action</fullName>
+        <assignedToType>owner</assignedToType>
+        <description>This contact has been flagged as demonstrating Unreasonable Complainant Conduct and has had restrictions placed on them.
+
+Please review this action was justified.</description>
+        <dueDateOffset>7</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Review UCC Action</subject>
+    </tasks>
+</Workflow>

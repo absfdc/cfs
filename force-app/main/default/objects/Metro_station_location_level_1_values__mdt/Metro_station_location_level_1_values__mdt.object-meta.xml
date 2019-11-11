@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Metro station location level 1 values</label>
+    <pluralLabel>Metro station location level 1 values</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

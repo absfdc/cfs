@@ -1,0 +1,94 @@
+<apex:page standardController="Action_Plan__c" extensions="NewActionPlanAttachment_CX" id="newActionPlanAttachmentPage">
+    <apex:includeScript value="/support/console/33.0/integration.js"/>
+    <apex:sectionHeader id="sectionHeader" title="New Note For {!actionPlan.Name}"/>
+    <apex:form id="mainForm" enctype="multipart/form-data">
+        <apex:pageBlock id="containerBlockExistingAttachments" title="Showing Notes From Case Record">
+            <apex:pageMessages id="errors"></apex:pageMessages> 
+            <apex:outputPanel rendered="{!AND(CaseAttachments != null, noOfAttachments > 0)}">
+                <div style="margin: 10px;">
+                    <h3>Click on&nbsp;<apex:image value="/img/feeds/follow12.png"/>&nbsp;icon to add a note to the Action Plan</h3><br/>
+                    <h3>Click on&nbsp;<apex:image value="{!URLFOR($Resource.icons, 'minus.png')}" height="12" width="12"/>&nbsp;icon to remove a note from the Action Plan</h3><br/>
+                    <h3><img src="/img/func_icons/util/checkmark16.gif" height="12" width="12" title="This note is already added"/>&nbsp;icon indicates that note is already added to this Action Plan</h3><br/>
+                </div>
+            </apex:outputPanel>
+            <apex:actionRegion id="region1">
+                <apex:pageBlockTable value="{!CaseAttachments}" var="k" rendered="{!AND(CaseAttachments != null, noOfAttachments > 0)}">
+                    <apex:column >
+                        <apex:facet name="header">Action</apex:facet>
+                        <apex:actionRegion >
+                            <apex:commandLink action="{!getAttachmentFromTheCase}" value="" title="Add this note to the action plan" rendered="{!NOT(CaseAttachments[k].added)}" rerender="containerBlockExistingAttachments" status="fetchAttStatus">
+                                <apex:param value="{!CaseAttachments[k].noteOrAttachment.Id}" name="attId" assignTo="{!attachmentIdToBeCloned}"/>
+                                <apex:actionstatus id="fetchAttStatus">
+                                    <apex:facet name="start">
+                                        <apex:image value="/img/loading.gif" height="12" width="12"/>
+                                    </apex:facet>
+                                    <apex:facet name="stop">
+                                        <apex:image value="/img/feeds/follow12.png"/>
+                                    </apex:facet>
+                        		</apex:actionstatus> 
+                            </apex:commandLink>
+                            <apex:outputPanel rendered="{!CaseAttachments[k].added}"> 
+                                <img src="/img/func_icons/util/checkmark16.gif" title="This note is already added" width="12"/>&nbsp;
+                            </apex:outputPanel>
+                            <apex:commandLink action="{!deleteAttachment}" value="" title="Remove this note" rendered="{!CaseAttachments[k].added}" rerender="containerBlockExistingAttachments" status="DeleteAttStatus">
+                                <apex:param value="{!CaseAttachments[k].apNoteOrAttachment.Id}" name="attId" assignTo="{!attachmentIdToBeDeleted}"/>
+                                <apex:actionstatus id="DeleteAttStatus">
+                                    <apex:facet name="start">
+                                        <apex:image value="/img/loading.gif" height="12" width="12"/>
+                                    </apex:facet>
+                                    <apex:facet name="stop">
+                                        &nbsp;<apex:image value="{!URLFOR($Resource.icons, 'minus.png')}" height="12" width="12"/>
+                                    </apex:facet>
+                        		</apex:actionstatus> 
+                            </apex:commandLink> 
+                        </apex:actionRegion>
+                    </apex:column> 
+                    <apex:column value="{!CaseAttachments[k].noteOrAttachment.Name}"/>
+                    <apex:column value="{!CaseAttachments[k].noteOrAttachment.Privacy__c}"/>
+                </apex:pageBlockTable>
+                <apex:panelGrid columns="5" style="margin:0px auto;" rendered="{!AND(CaseAttachments != null, noOfAttachments > 0)}">
+                    <apex:commandButton action="{!first}" status="fetchStatus" value=" |<" immediate="true" reRender="containerBlockExistingAttachments"/>
+                    <apex:commandButton action="{!previous}" status="fetchStatus" rendered="{!hasPrevious}" value=" < " immediate="true" reRender="containerBlockExistingAttachments"/>
+                	<apex:commandButton action="{!next}" status="fetchStatus" rendered="{!hasNext}" value=" > " immediate="true" reRender="containerBlockExistingAttachments"/>
+            		<apex:commandButton action="{!last}" status="fetchStatus" value=" >| " immediate="true" reRender="containerBlockExistingAttachments"/>
+                    <apex:outputPanel >
+                        <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                    </apex:outputPanel>
+                </apex:panelGrid>
+                <apex:outputPanel rendered="{!OR(CaseAttachments == null, noOfAttachments == 0)}">
+                	No notes to display
+                </apex:outputPanel>
+            </apex:actionRegion>
+        </apex:pageBlock>
+        <apex:pageBlock id="containerBlock" title="Create New Note">
+            <apex:pageBlockButtons location="top">
+				<input type="button" class="btn" value="Close" onClick="closeSubTab()"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Note details" columns="1" collapsible="false">
+                <apex:inputField required="true" value="{!customAttachment.Name}"/>
+                <apex:inputField value="{!customAttachment.Privacy__c}"/>
+                <apex:inputField value="{!customAttachment.Body__c}"/>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value=""/>
+                	<apex:commandButton action="{!saveNote}" value="Save"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form> 
+    <script>
+    	function closeSubTab() {
+            if (sforce.console.isInConsole()) {
+                sforce.console.getEnclosingPrimaryTabId(function(result) {
+                    var tabId = result.id;
+                    sforce.console.refreshPrimaryTabById(tabId, true,function(result) { });
+                });
+    
+                sforce.console.getEnclosingTabId(function(response) { 
+                    sforce.console.closeTab(response.id);
+                });
+            } else {
+            	window.location.href = "/{!$CurrentPage.parameters.id}";
+            }
+        }
+    </script>
+</apex:page>

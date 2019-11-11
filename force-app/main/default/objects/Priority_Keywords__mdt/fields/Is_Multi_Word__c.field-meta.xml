@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Multi_Word__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This should be ticked if the word is multi word. For e.g. for record &#39;anti-social&#39; this should be ticked. Also the record should be stored without special characters i.e. hyphens, spaces etc. So words like &#39;anit-social&#39; will be stored as &#39;antisocial&#39;</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>This should be ticked if the word is multi word. For e.g. for record &#39;anti-social&#39; this should be ticked. Also the record should be stored without special characters i.e. hyphens, spaces etc.</inlineHelpText>
+    <label>Is Multi Word</label>
+    <type>Checkbox</type>
+</CustomField>

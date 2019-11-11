@@ -1,0 +1,610 @@
+<apex:page standardController="Action_Plan__c" showHeader="true" sidebar="false" extensions="ActionPlanCategorisationAction">
+    <html>
+
+        <input id="theHiddenActionPlanId" value="{!actionPlan.Id}" type="hidden" name="theHiddenActionPlanId" />
+        <apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/css/bootstrap.min.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/themes/proton/style.css')}"/>
+        <br/>
+        <div class=" container" style="overflow:auto; height:25em;" >
+            <div class="row">
+                <button type="submit" id="backButton" class="btn col-xs-2 pull-left " style="margin-bottom:1em" data-loading-text="Updating..." onclick="backToCase()"  tabindex="1" >Back</button>
+                <button type="submit" id="updateCategory" class="btn col-xs-2 pull-right " style="margin-bottom:1em" data-loading-text="Updating..." onclick="updateCatagory()"  tabindex="2" >Update</button>
+            </div>
+            <div class="row">
+                <label class="col-xs-3" style="padding-left:0px">Description</label>
+                <!-- <textarea type="text" id="description"  class="input col-xs-9" readonly="true" style="display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="3" >{!actionPlan.Case_Description__c}</textarea>  -->
+                <textarea type="text" id="description"  class="input col-xs-9" readonly="true" style="display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="3" >{!caseDescription}</textarea> 
+
+            </div>
+            <div class="btn-group" data-toggle="buttons" id="SearchOrHierarchy" style="display:none">
+                <label class="btn btn-primary ">
+                <input type="radio" name="TaxonomySearch" value="search" id="TaxonomySearch" autocomplete="off" >Search</input>
+                </label>
+                <label class="btn btn-primary active">
+                    <input type="radio" name="TaxonomyPicklist" value="picklist" id="TaxonomyPicklist" autocomplete="off" >Picklist</input>
+                </label>
+            </div>
+            <div class="row" style="z-index: 200;">
+                <div id="ModeWidget" class="dropdown_widget col-xs-4 " style="display:inline-block; padding-left: 0px;
+        vertical-align:top; ">
+                    <label>Mode</label>
+                    <div class="inner-addon right-addon">
+                        <i class="glyphicon glyphicon-chevron-down"></i>
+                        <input type="text" id="searchInputMode" value="" readonly="true" class="searchbox input " placeholder="select mode..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'select mode';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;" tabindex="4" />
+                    </div>
+                    
+
+                    <div id="ModeContainer"  class="searchableDropdown col-xs-4 simpleDropdown" style="background-color: rgb(252, 252, 255);z-index: 200;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;" ></div>
+                </div>
+                
+                
+            </div>
+            <b/>
+            <div class="row" style="z-index: 100;">
+                
+                <div id="LocationWidget" class="dropdown_widget col-xs-6" style="display:inline-block; padding-left: 0px;
+        vertical-align:top;  " >
+                    <label>Location</label>
+
+                    <input type="text" id="searchInputLocation" value="" class="input searchbox " placeholder="search location..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search location...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="5" />
+                    <div id="LocationContainer"  class="searchableDropdown col-xs-6 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"></div>
+
+                </div>
+                <div id="IssueWidget" class="dropdown_widget col-xs-6" style="display:inline-block; padding-left: 0px;
+        vertical-align:top;  " >
+                    <label>Issue Category</label>
+
+                    <input type="text" id="searchInputIssue" value="" class="input searchbox " placeholder="search issue..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search issue...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="6" />
+                    <div id="IssueContainer"  class="searchableDropdown col-xs-6 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;" ></div>
+
+                </div>
+            </div>
+            
+        </div>
+        <script src="/soap/ajax/33.0/connection.js" type="text/javascript" /> 
+
+        <script type="text/javascript" src="/canvas/sdk/js/publisher.js"></script>
+        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/js/bootstrap.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/jstree.min.js')}"/>
+        <apex:includeScript value="/support/console/33.0/integration.js"/>
+
+    <script>
+        var currentSelectedModeId='';
+            var currentSelectedType='';
+            var tabId;
+            var thisTabId;
+            var currentSelectedMode='';
+            var currentSelectedLocation='';
+            var currentSelectedLocationId=null;
+            var currentSelectedIssue='';
+            var currentSelectedIssueId='';
+            var showTree=true;
+            var parentIssue='';
+            var parentLocation='';
+            var grandIssue='';
+            var grandLocation='';
+            var issueKpi ='';
+            var issueDriver ='';
+            var issueAccountability ='';
+            var issueAgency='';
+            var locationAgency='';
+
+            $(function() {
+                
+                sforce.console.getEnclosingPrimaryTabId(storePrimaryTab);
+                sforce.console.getEnclosingTabId(storeThisTab);
+
+                $(document).on('click', function(event) {
+                    if ($(event.target).hasClass('searchbox') || $(event.target).hasClass('glyphicon-chevron-down')){
+                        var simpleDropdownContainer=$(event.target).closest('.dropdown_widget').find('.simpleDropdown');
+                        if (!simpleDropdownContainer.is(":visible")) {
+                            simpleDropdownContainer.show();
+                        }else{
+                            simpleDropdownContainer.hide();
+                        }
+                    }else if (!$(event.target).closest('.simpleDropdown').length) {
+                        // Hide the menus.
+                        $('#ModeContainer').hide();
+                    } 
+                });
+                sforce.console.setTabTitle('Categorise Action Plan');
+                if (!showTree){
+                    console.log('showtree -'+showTree);
+                    $('#LocationContainer').hide();
+                    $('#IssueContainer').hide();
+                    
+                }
+
+                $('#ModeContainer').hide();
+
+
+              //container Mode
+              $('#ModeContainer').jstree({
+                "plugins" : ["wholerow",   "massload", "sort"],
+                "core": {
+                    "multiple" : false,
+                    'themes': {
+                        'name': 'proton',
+                        'responsive': true
+                    },
+                    'data' : getModes
+                }
+              });
+
+            // allow search results expanding
+            (function ($, undefined) {
+                "use strict";
+                $.jstree.plugins.show_matches_children = function (options, parent) {
+                    this.bind = function () {
+                        parent.bind.call(this);
+                        this.element
+                            .on('search.jstree before_open.jstree', function (e, data) {
+                                if(data.instance.settings.search && data.instance.settings.search.show_only_matches) {
+                                    data.instance._data.search.dom.find('.jstree-node')
+                                        .show().filter('.jstree-last').filter(function() { return this.nextSibling; }).removeClass('jstree-last')
+                                        .end().end().end().find(".jstree-children").each(function () { $(this).children(".jstree-node:visible").eq(-1).addClass("jstree-last"); });
+                                }
+                            });
+                    };
+                };
+            })(jQuery);
+
+              //container Location
+              $('#LocationContainer').jstree({
+                "plugins" : ["wholerow",   "massload", "search", "sort","show_matches_children"],
+                "core": {
+                    "multiple" : false,
+                    'themes': {
+                        'name': 'proton',
+                        'responsive': true
+                    },
+                    'data' : getLocations
+                },
+                'search' :  {
+                    "show_only_matches" : true,
+                    "show_only_matches_children" : true,
+                    "close_opened_onclear" : true
+                }
+              });
+
+              var to = false;
+              $('#searchInputLocation').keyup(function () {
+                if(!$('#LocationContainer').is(":visible")){
+                    $('#LocationContainer').show();
+                }
+                if(to) { clearTimeout(to); }
+                to = setTimeout(function () {
+                  var v = $('#searchInputLocation').val();
+                  $('#LocationContainer').jstree(true).search(v);
+                }, 250);
+              });
+
+
+              //container Issue
+              $('#IssueContainer').jstree({
+                "plugins" : ["wholerow",   "massload", "search", "sort","show_matches_children"],
+                "core": {
+                    "multiple" : false,
+                    'themes': {
+                        'name': 'proton',
+                        'responsive': true
+                    },
+                    'data' : getIssues
+                },
+                'search' :  {
+                    "show_only_matches" : true,
+                    "show_only_matches_children" : true,
+                    "close_opened_onclear" : true
+                }
+              });
+
+              var to = false;
+              $('#searchInputIssue').keyup(function () {
+                if(!$('#IssueContainer').is(":visible")){
+                    $('#IssueContainer').show();
+                }
+                if(to) { clearTimeout(to); }
+                to = setTimeout(function () {
+                  var v = $('#searchInputIssue').val();
+                  $('#IssueContainer').jstree(true).search(v);
+                }, 250);
+              });
+              
+
+              $(".searchableDropdown").on('refresh.jstree', function (event, data) {
+                var widget;
+                var searchInput;
+                if(event){
+                    widget=$(event.currentTarget).closest('.dropdown_widget');
+                    searchInput=widget.find('.searchbox')[0];
+                    if (widget[0].id=='LocationWidget'){
+                        $(searchInput).popover({
+                            trigger:'hover',
+                            placement:'auto bottom',
+                            content: grandLocation +' / '+ parentLocation+' / '+currentSelectedLocation
+                        });
+                        $('#LocationContainer').show();
+                    
+                    
+                        if(currentSelectedLocationId && currentSelectedLocationId.length>=15)
+                            $('#LocationContainer').jstree(true).select_node(currentSelectedLocationId);    
+                    }else if (widget[0].id=='IssueWidget' ){
+                        $(searchInput).popover({
+                            trigger:'hover',
+                            placement:'auto bottom',
+                            content: grandIssue +' / '+ parentIssue+' / '+currentSelectedIssue
+                        });
+                        $('#IssueContainer').show();
+                        if ( currentSelectedIssueId && currentSelectedIssueId.length>=15)
+                            $('#IssueContainer').jstree(true).select_node(currentSelectedIssueId);
+                    }
+                }
+            })
+              // listen for event node selected
+              $(".searchableDropdown").on('activate_node.jstree', function (event, data) {
+                if(data.instance.is_leaf(data.node)){
+                    var widget;
+                    var searchInput;
+                    var dropdownContainer;
+                    if(event){
+                        widget=$(event.currentTarget).closest('.dropdown_widget');
+                        searchInput=widget.find('.searchbox')[0];
+                        dropdownContainer=widget.find('.searchableDropdown');
+                        var thisNode=data.instance.get_node(data.node);
+
+                        if (widget[0].id=='ModeWidget'){
+                            currentSelectedMode=data.instance.get_node(data.node).text;
+                            currentSelectedModeId=data.instance.get_node(data.node).id;
+
+                            $('#LocationContainer').jstree(true).refresh(true);
+                            $('#IssueContainer').jstree(true).refresh(true);
+                            $('#searchInputLocation').val('');
+                            currentSelectedLocation='';
+                            currentSelectedLocationId=null;
+                            $('#searchInputIssue').val('');
+                            currentSelectedIssue='';
+                            currentSelectedIssueId='';
+                            parentIssue='';
+                            parentLocation='';
+                            grandIssue='';
+                            grandLocation='';
+                            issueKpi ='';
+                            issueDriver ='';
+                            issueAccountability ='';
+                            issueAgency='';
+                            locationAgency='';
+
+                        }else if (widget[0].id=='LocationWidget'){
+                            console.log('Location selected');
+                            currentSelectedLocation=data.instance.get_node(data.node).text;
+                            currentSelectedLocationId=data.instance.get_node(data.node).id;
+                            parentLocation=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+                            var parentLocationId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+                            grandLocation=data.instance.get_node(data.instance.get_parent(parentLocationId)).text;
+                            $(searchInput).popover('destroy');
+                            $(searchInput).popover({
+                                trigger:'hover',
+                                placement:'auto bottom',
+                                content: grandLocation +' / '+ parentLocation+' / '+currentSelectedLocation
+                            });
+
+
+                        }else if (widget[0].id=='IssueWidget'){
+                            console.log('Issue selected');
+                            currentSelectedIssue=data.instance.get_node(data.node).text;
+                            currentSelectedIssueId=data.instance.get_node(data.node).id;
+                            parentIssue=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+                            var parentIssueId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+                            grandIssue=data.instance.get_node(data.instance.get_parent(parentIssueId)).text;
+                            if (!grandIssue) grandIssue=null;
+                            $(searchInput).popover('destroy');
+
+                            $(searchInput).popover({
+                                trigger:'hover',
+                                placement:'auto bottom',
+                                content: grandIssue +' / '+ parentIssue+' / '+currentSelectedIssue
+                            });
+
+                        }
+                        dropdownContainer.hide();
+                    }
+
+
+                    searchInput.value=data.instance.get_node(data.node).text;
+                }else{
+                    $(event.target).jstree(true).deselect_node(data.node);
+                    $(event.target).jstree(true).toggle_node(data.node);
+                }
+
+              })
+
+            // listen for event node search
+            $(".searchableDropdown").on('search.jstree', function (event, data) {
+                var widget;
+                var dropdownContainer;
+                if(event){
+                    widget=$(event.currentTarget).closest('.dropdown_widget');
+                    dropdownContainer=widget.find('.searchableDropdown')
+                }
+
+
+                if(data.res.length<=0){
+                    if(!showTree) dropdownContainer.hide();
+                }
+            })
+
+
+            //Search Or Hierarchy
+            $("#SearchOrHierarchy :input").change(function() {
+                showTree= 'search'==event.target.children[0].value ? false : true;
+                if (showTree){
+                    $('#LocationContainer').show();
+                    $('#IssueContainer').show();
+                }else{
+                    $('#LocationContainer').hide();
+                    $('#IssueContainer').hide();
+                }
+            });
+
+            $('#updateCategory').keydown(function(event) {
+                
+                if ( event.which == 9) {
+                    $('[tabindex="1"]').focus();
+                }
+              
+            });
+
+            $('.searchbox').keydown(function(event) {
+                
+                if ( event.which == 40 ) {
+                    //down
+                    event.preventDefault();
+                    event.target.blur();
+                    $(event.target.closest('.dropdown_widget')).find('.searchableDropdown').show();
+                    var visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-clicked');
+                    if (!visibleNodes.length>0){
+                        visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-search');
+                    }
+                    if (!visibleNodes.length>0){
+                        visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-anchor');
+                    }
+                    visibleNodes[0].focus();
+                }else if (event.which == 38){
+                    //up
+                    event.preventDefault();
+                }
+              
+            });
+            $('.searchableDropdown').on('keydown.jstree', '.jstree-anchor', function (e) {
+                if (e.which == 9) {
+                    event.preventDefault();
+                    var thisTabindex = $(this).closest('.dropdown_widget').find('.searchbox').attr('tabindex');
+                    thisTabindex++; //increment tabindex
+                    $('[tabindex=' + thisTabindex + ']').focus();
+
+                }
+            })
+            
+        });//end $function
+
+
+        var closeIssueItemiser=function(){
+            sforce.console.refreshPrimaryTabById(tabId, true);
+             
+            sforce.console.closeTab(thisTabId);
+            backToCase();
+
+        }
+        var storePrimaryTab = function(result) {
+            //Now that we have the primary tab ID, we can close it
+            tabId = result.id;
+        };
+        var storeThisTab = function(result) {
+            //Now that we have the primary tab ID, we can close it
+            thisTabId = result.id;
+        };
+        //back to case
+        var backToCase=function(){
+            window.location.href ='/{!actionPlan.Id}';
+        }
+        
+        //update category
+        var updateCatagory=function(){
+            var updateButton=$('#updateCategory');
+            updateButton.button('loading');
+            
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.ActionPlanCategorisationAction.updateEx}',
+                $('#theHiddenActionPlanId').val(),
+                $('#description').val(),
+                currentSelectedMode,
+                currentSelectedLocation,
+                currentSelectedLocationId,
+                currentSelectedIssue,
+                currentSelectedIssueId,
+                parentIssue,
+                parentLocation,
+                grandIssue,
+                grandLocation,
+                currentSelectedType,
+                function(result, event){
+                    if(event.status) {
+                        updateButton.button('reset');
+                        Sfdc.canvas.publisher.publish({name : 'publisher.refresh', 
+                            payload :{feed: true, objectRelatedLists: {}}});
+                        bootbox.alert({ size: 'small',
+                                        message: "   Updated the Categories   ",
+                                        callback: closeIssueItemiser,
+                                        closeButton: false
+                                    }); 
+                    }else{
+                        var regexp = /(?:first error:)(.*)(?::)/;
+                        var firstMatch = regexp.exec(event.message)[1]; 
+                        updateButton.button('reset');
+                        
+                        bootbox.alert({ size: 'small',
+                                        message: firstMatch,
+                                        callback: closeIssueItemiser,
+                                        closeButton: false
+                                    }); 
+                    }
+                }, {escape: true}
+            );
+
+        }
+        
+        //get data function
+        var getModes=function(obj, cb) {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.ActionPlanCategorisationAction.getModes}',
+                $('#theHiddenActionPlanId').val(),
+
+                function(result, event){
+                    if(event.status) {
+                        $.each(result,function(index,node){
+                            if(node.state && node.state.selected) {
+                                $('#searchInputMode').val(node.text);
+                                currentSelectedMode=node.text;
+                                currentSelectedModeId=node.id;
+
+                                $('#LocationContainer').jstree(true).refresh(true);
+                                $('#IssueContainer').jstree(true).refresh(true);
+                            }
+
+                        });
+                        cb.call(this,result);
+                        if(currentSelectedModeId && currentSelectedModeId.length>=15) {
+                            $('#ModeContainer').jstree(true).select_node(currentSelectedModeId);
+                        }
+                    }
+                }, {escape: false}
+            );
+
+        }
+
+        //get location
+        var getLocations=function(obj, cb) {
+            if (!currentSelectedModeId || currentSelectedModeId.length<15) {
+                cb.call(this,[]);
+                return;
+            }
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.ActionPlanCategorisationAction.getLocations}',
+                $('#theHiddenActionPlanId').val(),
+                currentSelectedModeId,
+                function(result, event){
+                    if(event.status) {
+                        $.each(result,function(index,node){
+                            if(node.state ) {
+                                if(node.state.selected){
+                                    $('#searchInputLocation').val(node.text);
+                                    currentSelectedLocation=node.text;
+                                    currentSelectedLocationId=node.id;
+
+                                }else if (node.state.opened && node.parent!='#'){
+                                    parentLocation=node.text
+
+                                }else if (node.state.opened && node.parent=='#'){
+                                    grandLocation=node.text
+
+                                }
+                                
+                            }
+
+                        });
+                        cb.call(this,result);
+                        if(currentSelectedLocationId && currentSelectedLocationId.length>=15) {
+                            $('#LocationContainer').jstree(true).select_node(currentSelectedLocationId);
+                        }
+                    }
+                }, {escape: false}
+            );
+
+            
+
+        }
+        //get issues
+        var getIssues=function(obj, cb) {
+            if (!currentSelectedModeId || currentSelectedModeId.length<15) {
+                cb.call(this,[]);
+                return;
+            }
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.ActionPlanCategorisationAction.getIssues}',
+                $('#theHiddenActionPlanId').val(),
+                currentSelectedModeId,
+                function(result, event){
+                    if(event.status) {
+                        $.each(result,function(index,node){
+                            if(node.state) {
+                                if(node.state.selected){
+                                    $('#searchInputIssue').val(node.text);
+                                    currentSelectedIssue=node.text;
+                                    currentSelectedIssueId=node.id;
+
+                                }else if (node.state.opened && node.parent!='#'){
+                                    parentIssue=node.text
+
+                                }else if (node.state.opened && node.parent=='#'){
+                                    grandIssue=node.text
+
+                                }
+                                
+
+                            }
+                        });
+                        cb.call(this,result);
+                        if(currentSelectedIssueId && currentSelectedIssueId.length>=15){
+                            $('#IssueContainer').jstree(true).select_node(currentSelectedIssueId);
+
+                        } 
+                    }
+                }, {escape: false}
+            );
+            
+        }
+        
+        </script>
+        <style>
+
+        /* enable absolute positioning */
+            .inner-addon { 
+                position: relative; 
+            }
+
+            /* style icon */
+            .inner-addon .glyphicon {
+              position: absolute;
+              padding: 10px;
+            }
+
+            /* align icon */
+            .left-addon .glyphicon  { left:  0px;}
+            .right-addon .glyphicon { right: 10px;}
+
+            /* add padding  */
+            .left-addon input  { padding-left:  30px; }
+            .right-addon input { padding-right: 30px; }
+            .jstree li a i { display:none !important; }
+            .jstree-proton-responsive .jstree-container-ul{
+                overflow-x:auto !important;
+                display: block;
+            }
+            .btn-primary:hover {
+              color: #000000
+            }
+            body button, body .x-btn, body .btn, body .btnDisabled, body .btnCancel, body .menuButton .menuButtonButton
+            {
+                color: #333!important;
+            }
+            html,body {
+              font-size: 100% !important;
+            }
+            
+        </style>
+    </html>
+    <apex:includeScript value="{!$Resource.bootbox}"/>
+
+
+</apex:page>

@@ -1,0 +1,14 @@
+<apex:page showHeader="false" sidebar="false" title="Feedback error" controller="WebToCaseErrorPage_CC"> 
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+<apex:stylesheet value="{!IF(OR(LOWER($CurrentPage.parameters.source) == 'maritime',LOWER($CurrentPage.parameters.source) == 'rms intranet', LOWER($CurrentPage.parameters.source) == 'rms'),URLFOR($Resource.WebformStyles, 'rms.css'), IF(LOWER($CurrentPage.parameters.source) == 'nsw trains', URLFOR($Resource.WebformStyles, 'nswtrains.css'), IF(LOWER($CurrentPage.parameters.source) == 'sydney trains',URLFOR($Resource.WebformStyles, 'sydtrains.css'), URLFOR($Resource.WebformStyles, 'tfnsw.css'))))}"/>
+<script src="{!IF(LOWER($CurrentPage.parameters.source) == 'tfnsw',$Resource.GoogleAnalyticsForTfNSW, '')}"/>
+       <div id="mainForm" class="bPageBlock formWidth" style="border-left:0px;border-right:0px;max-width:900px;margin:0 auto;border-bottom: 0px;">
+           <div class="col-md-12">
+               <div  class="col-md-12" id="errorMessage" >
+                   <p style="color:#F00!important">{!errorMessage}</p>            
+               </div>
+            </div>
+        </div>
+      <script src="{!$Resource.IframeResizer}"/>
+      <script>window.parent.postMessage('scrollToErrMsg','*')</script>
+</apex:page>

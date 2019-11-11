@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_FSP_Open</fullName>
+    <columns>Case_Creation_Date__c</columns>
+    <columns>NAME</columns>
+    <columns>Type__c</columns>
+    <columns>Divisions__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>New,Rejected-Incorrect Assignment,Completed</value>
+    </filters>
+    <filters>
+        <field>Divisions__c</field>
+        <operation>equals</operation>
+        <value>Freight Strategy and Planning</value>
+    </filters>
+    <filters>
+        <field>Branch__c</field>
+        <operation>notEqual</operation>
+        <value>Centre for Road and Maritime Safety</value>
+    </filters>
+    <label>TfNSW FSP - Open</label>
+    <sharedTo>
+        <group>Access_to_TfNSW_FSP_Queue</group>
+        <role>Freight_and_Regional_Development</role>
+        <role>Freight_and_Regional_Development_Liaison_Officer</role>
+        <role>Freight_and_Regional_Development_SME</role>
+        <role>MCPolicy_and_Regulation</role>
+        <role>Planning</role>
+        <role>Planning_Liaison_Officer</role>
+        <role>Planning_SME</role>
+        <role>Policy_and_Regulation_Liaison_Officer</role>
+        <role>Policy_and_Regulation_SME</role>
+        <role>TfNSW_FSP</role>
+        <role>TfNSW_FSP_SME</role>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,806 @@
+<apex:page StandardController="Case" showHeader="false"  extensions="IssueItemisationPublisherAction_CX">
+	<html>
+		 <script src="https://mobile1.t.salesforce.com/soap/ajax/30.0/connection.js" type="text/javascript" /> 
+
+		<input id="theHiddenCaseId" value="{!thisCase.Id}" type="hidden" name="theHiddenCaseId" />
+		<script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+		<apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/css/bootstrap.min.css')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/js/bootstrap.min.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/themes/proton/style.css')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/jstree.min.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.DataTable, '/DataTables/media/css/jquery.dataTables.min.css')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.DataTable, '/DataTables/media/js/jquery.dataTables.min.js')}"/>
+
+		<br/>
+		<div class="MainDiv container-fluid" style="overflow:auto; height:25em;" >
+			<div >
+				<table class="table" id="ChildIssueTable"  tabindex="8" >
+					<thead>
+			            <tr>
+			                <th>Mode</th>
+			                <th>Location</th>
+			                <th>Issue</th>
+			                <th>Type</th>
+
+			            </tr>
+			        </thead>
+
+				</table>
+			</div>
+			<div  >
+				<button type="button" class="btn btn-default  col-xs-2" id="AddIssue" onclick="addCategory()">
+				  <span class="glyphicon glyphicon-plus" aria-hidden="true"  tabindex="5" ></span> Add 
+				</button>
+				<button type="button" class="btn btn-default  col-xs-2" id="DeleteIssue" onclick="deleteCategory()">
+				  <span class="glyphicon glyphicon-remove" aria-hidden="true"  tabindex="6" ></span> Delete 
+				</button>
+				<button type="button" class="btn btn-default  col-xs-2" id="EditIssue" onclick="editCategory()">
+				  <span class="glyphicon glyphicon-edit" aria-hidden="true"  tabindex="7" ></span> Edit 
+				</button>
+				<button type="button" id="updateCategory" class="btn btn-default col-xs-2 pull-right" onclick="updateCatagories()" aria-hidden="true"  tabindex="4" > 
+					<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Update
+				</button>
+			</div>
+			<div  class="row"  style="z-index: 200;">
+				<div class=" col-xs-6 ">
+					<label >Description</label>
+					<textarea type="text" id="description"  placeholder="enter description" onfocus="this.placeholder = '';" onblur="this.placeholder = 'enter description...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="4" >{!thisCase.description}</textarea> 
+				</div>
+				<div id="ModeWidget" class="dropdown_widget col-xs-6 " style="display:inline-block; padding-left: 0px;
+	    vertical-align:top;   ">
+					<label>Mode</label>
+					<div class="inner-addon right-addon">
+					    <i class="glyphicon glyphicon-chevron-down"></i>
+					    <input type="text" id="searchInputMode" value="" readonly="true" class="searchbox input " placeholder="select mode..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'select mode';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;" tabindex="1" />
+					</div>
+
+					<div id="ModeContainer"  class="searchableDropdown col-xs-6 " style="background-color: rgb(252, 252, 255);z-index: 200;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"  ></div>
+
+				</div>
+			</div>
+			
+			
+			<div class="btn-group" data-toggle="buttons" id="SearchOrHierarchy" style="display:none">
+				<label class="btn btn-primary ">
+				<input type="radio" name="TaxonomySearch" value="search" id="TaxonomySearch" autocomplete="off" >Search</input>
+				</label>
+				<label class="btn btn-primary active">
+					<input type="radio" name="TaxonomyPicklist" value="picklist" id="TaxonomyPicklist" autocomplete="off" >Picklist</input>
+				</label>
+			</div>
+			<div  class="row"  style="z-index: 100;">
+				
+				<div id="LocationWidget" class="dropdown_widget col-xs-4" style="display:inline-block;
+	    vertical-align:top;  " >
+					<label>Location</label>
+
+					<input type="text" id="searchInputLocation" value="" class="input searchbox" placeholder="search location..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search location...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="2" />
+					<div id="LocationContainer"  class="searchableDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;" ></div>
+
+				</div>
+				<div id="IssueWidget" class="dropdown_widget col-xs-4" style="display:inline-block;
+	    vertical-align:top;  " >
+					<label>Issue Category</label>
+
+					<input type="text" id="searchInputIssue" value="" class="input searchbox" placeholder="search issue..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search issue...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="3" />
+					<div id="IssueContainer"  class="searchableDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"  ></div>
+
+				</div>
+				<div id="TypeWidget" class="dropdown_widget col-xs-4 " style="display:inline-block;
+	    vertical-align:top;   ">
+					<label>Type</label>
+					<div class="inner-addon right-addon">
+					    <i class="glyphicon glyphicon-chevron-down"></i>
+					    <input type="text" id="searchInputType" value="" readonly="true" class="searchbox input " placeholder="select type..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'select type';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;" tabindex="9" />
+					</div>
+
+					<div id="TypeContainer"  class="searchableDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"  ></div>
+
+				</div>
+			</div>
+			
+		</div>
+
+		<script>
+			var currentSelectedType='';
+			var currentSelectedModeId='';
+			var currentSelectedMode='';
+			var currentSelectedLocation='';
+			var currentSelectedLocationId='';
+			var currentSelectedIssue='';
+			var currentSelectedIssueId='';
+			var showTree=true;
+			var childIssuesData=[];
+			var childIssueDataTable;
+			var currentSelectedCaseId=$('#theHiddenCaseId').val();
+			var currentDescription='';
+			var parentIssue='';
+		    var parentIssueId='';
+		    var parentlocation='';
+		    var parentlocationId='';
+		    var grandIssue='';
+		    var grandlocation='';
+		    var issueKpi ='';
+		    var issueDriver ='';
+		   	var issueAccountability ='';
+		   	var selectedIndex='';
+		   	var issueAgency='';
+		   	var locationAgency='';
+
+			$(function() {
+
+				childIssueDataTable=	$('#ChildIssueTable').DataTable( {
+					"paging":false,
+					"info":false,
+					"searching":false,
+					"columns": [
+				        { data: 'mode' },
+				        { data: 'location' },
+				        { data: 'issue' },
+				        { data: 'type' }
+
+					  ],
+
+					 "tableTools": {
+				            "sRowSelect": "single"
+				        },
+				     "initComplete": dataTableInitComplete
+			        
+				} );
+
+
+				$('#ChildIssueTable tbody').on( 'click', 'tr', function () {
+			        if ( $(this).hasClass('selected') ) {
+			            $(this).removeClass('selected');
+			        }else {
+			            childIssueDataTable.$('tr.selected').removeClass('selected');
+			            $(this).addClass('selected');
+			            selectedIndex=childIssueDataTable.row( this ).index();
+			            console.log('selected - '+selectedIndex);
+			        }
+			    } );
+			 
+			    $('#DeleteIssue').click( deleteCategory() );
+			    $('#EditIssue').click( editCategory());
+
+				if (!showTree){
+					console.log('showtree -'+showTree);
+					$('#LocationContainer').hide();
+					$('#IssueContainer').hide();
+
+				}
+				$('#ModeContainer').hide();
+
+
+
+			  //container Mode
+			  $('#ModeContainer').jstree({
+			  	"plugins" : ["wholerow",   "massload", "sort"],
+			    "core": {
+			    	"multiple" : false,
+			        'themes': {
+			            'name': 'proton',
+			            'responsive': true
+			        },
+			        'data' : getModes
+			    }
+			  });
+
+				$('#searchInputMode').click(function () {
+					if(!$('#ModeContainer').is(":visible")){
+						$('#ModeContainer').show();
+					}
+				});
+
+			  //container Location
+			  $('#LocationContainer').jstree({
+			  	"plugins" : ["wholerow",   "massload", "search", "sort"],
+			    "core": {
+			    	"multiple" : false,
+			        'themes': {
+			            'name': 'proton',
+			            'responsive': true
+			        },
+			        'data' : getLocations
+			    },
+		    	'search' :	{
+			    	"case_insensitive": true,
+		            "show_only_matches" : true,
+					"search_leaves_only" : true
+		        }
+			  });
+
+			  var to = false;
+			  $('#searchInputLocation').keyup(function () {
+			  	if(!$('#LocationContainer').is(":visible")){
+			  		$('#LocationContainer').show();
+			  	}
+			    if(to) { clearTimeout(to); }
+			    to = setTimeout(function () {
+			      var v = $('#searchInputLocation').val();
+			      $('#LocationContainer').jstree(true).search(v);
+			    }, 250);
+			  });
+
+
+			  //container Issue
+			  $('#IssueContainer').jstree({
+			  	"plugins" : ["wholerow",   "massload", "search", "sort"],
+			    "core": {
+			    	"multiple" : false,
+			        'themes': {
+			            'name': 'proton',
+			            'responsive': true
+			        },
+			        'data' : getIssues
+			    },
+		    	'search' :	{
+			    	"case_insensitive": true,
+		            "show_only_matches" : true,
+					"search_leaves_only" : true
+		        }
+			  });
+
+			  var to = false;
+			  $('#searchInputIssue').keyup(function () {
+			  	if(!$('#IssueContainer').is(":visible")){
+			  		$('#IssueContainer').show();
+			  	}
+			    if(to) { clearTimeout(to); }
+			    to = setTimeout(function () {
+			      var v = $('#searchInputIssue').val();
+			      $('#IssueContainer').jstree(true).search(v);
+			    }, 250);
+			  });
+
+			  //container Type
+			  $('#TypeContainer').jstree({
+			  	"plugins" : ["wholerow",   "massload", "sort"],
+			    "core": {
+			    	"multiple" : false,
+			        'themes': {
+			            'name': 'proton',
+			            'responsive': true
+			        },
+			        'data' : getTypes
+			    }
+			  });
+
+				$('#searchInputType').click(function () {
+					if(!$('#TypeContainer').is(":visible")){
+						$('#TypeContainer').show();
+					}
+				});
+
+			  // listen for event node selected
+			  $(".searchableDropdown").on('activate_node.jstree', function (event, data) {
+				if(data.instance.is_leaf(data.node)){
+					var widget;
+				  	var searchInput;
+				  	var dropdownContainer;
+				  	if(event){
+				  		widget=$(event.currentTarget).closest('.dropdown_widget');
+				  		searchInput=widget.find('.searchbox')[0];
+				  		dropdownContainer=widget.find('.searchableDropdown');
+				  		var thisNode=data.instance.get_node(data.node);
+						if (widget[0].id=='ModeWidget'){
+							console.log('Mode selected');
+							currentSelectedMode=data.instance.get_node(data.node).text;
+							currentSelectedModeId=data.instance.get_node(data.node).id;
+							console.log('Load location and issue');
+							$('#LocationContainer').jstree(true).load_node('#');
+							$('#IssueContainer').jstree(true).load_node('#');
+							$('#searchInputLocation').val('');
+
+							currentSelectedLocation='';
+							currentSelectedLocationId='';
+							$('#searchInputIssue').val('');
+							currentSelectedIssue='';
+							currentSelectedIssueId='';
+							parentIssue='';
+						    parentIssueId='';
+						    parentlocation='';
+						    parentlocationId='';
+						    grandIssue='';
+						    grandlocation='';
+						    issueKpi ='';
+						    issueDriver ='';
+						   	issueAccountability ='';
+						   	issueAgency='';
+						   	locationAgency='';
+
+						}else if (widget[0].id=='LocationWidget'){
+							console.log('Location selected');
+							currentSelectedLocation=data.instance.get_node(data.node).text;
+							currentSelectedLocationId=data.instance.get_node(data.node).id;
+						    parentlocation=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+						    parentlocationId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+						    grandlocation=data.instance.get_node(data.instance.get_parent(parentlocationId)).text;
+						    locationAgency=data.instance.get_node(data.node).locationAgency;
+
+						}else if (widget[0].id=='IssueWidget'){
+							console.log('Issue selected');
+							currentSelectedIssue=data.instance.get_node(data.node).text;
+							currentSelectedIssueId=data.instance.get_node(data.node).id;
+							parentIssue=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+						    parentIssueId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+						    grandIssue=data.instance.get_node(data.instance.get_parent(parentIssueId)).text;
+						   	issueAgency=data.instance.get_node(data.node).issueAgency;
+
+						    issueKpi =data.instance.get_node(data.node).issueKpi;
+						    issueDriver =data.instance.get_node(data.node).issueDriver;
+						   	issueAccountability =data.instance.get_node(data.node).issueAccountability;
+
+						}else if (widget[0].id=='TypeWidget'){
+							console.log('Type selected');
+							currentSelectedType=data.instance.get_node(data.node).text;
+						}
+						dropdownContainer.hide();
+				  	}
+
+
+					searchInput.value=data.instance.get_node(data.node).text;
+				}else{
+					$(event.target).jstree(true).deselect_node(data.node);
+                	$(event.target).jstree(true).toggle_node(data.node);
+				}
+
+			  })
+
+			// listen for event node search
+			$(".searchableDropdown").on('search.jstree', function (event, data) {
+				var widget;
+				var dropdownContainer;
+				if(event){
+					widget=$(event.currentTarget).closest('.dropdown_widget');
+					dropdownContainer=widget.find('.searchableDropdown')
+				}
+
+
+				if(data.res.length<=0){
+					if(!showTree) dropdownContainer.hide();
+				}
+			})
+
+
+			//Search Or Hierarchy
+			$("#SearchOrHierarchy :input").change(function() {
+				showTree= 'search'==event.target.children[0].value ? false : true;
+				if (showTree){
+					$('#LocationContainer').show();
+					$('#IssueContainer').show();
+				}else{
+					$('#LocationContainer').hide();
+					$('#IssueContainer').hide();
+				}
+			});
+			$('#updateCategory').keydown(function(event) {
+				
+				if ( event.which == 9) {
+					$('[tabindex="1"]').focus();
+				}
+			  
+			});
+
+			$('.searchbox').keydown(function(event) {
+				
+				if ( event.which == 40 ) {
+					//down
+					event.preventDefault();
+					event.target.blur();
+					$(event.target.closest('.dropdown_widget')).find('.searchableDropdown').show();
+					var visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-clicked');
+					if (!visibleNodes.length>0){
+						visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-search');
+					}
+					if (!visibleNodes.length>0){
+						visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-anchor');
+					}
+					visibleNodes[0].focus();
+				}else if (event.which == 38){
+					//up
+					event.preventDefault();
+				}
+			  
+			});
+			$('.searchableDropdown').on('keydown.jstree', '.jstree-anchor', function (e) {
+				if (e.which == 9) {
+					event.preventDefault();
+					var thisTabindex = $(this).closest('.dropdown_widget').find('.searchbox').attr('tabindex');
+					thisTabindex++; //increment tabindex
+					$('[tabindex=' + thisTabindex + ']').focus();
+
+				}
+			})
+		});//end $function
+		
+
+
+
+
+		var dataTableInitComplete=function(settings, json) {
+	    	//get the data of the child issues
+	    	Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getChildCaseIssues}',
+				$('#theHiddenCaseId').val(),
+				function(result, event){
+	                if(event.status) {
+						childIssueDataTable.rows.add( result).draw();
+						var rows=$('#ChildIssueTable tbody tr');
+						if (rows && rows.length>0){
+							$(rows[0]).addClass('selected');
+							editCategory();
+						}
+	                }
+	            }, {escape: false}
+			);
+
+	  	}
+
+		function CaseCategory ( modeId,mode, location, issue,  caseId, locationId, issueId,description,parentIssue, parentIssueId, parentlocation, parentlocationId, grandIssue, grandlocation, issueKpi, issueDriver, issueAccountability,type,issueAgency,locationAgency) {
+		    this.modeId=modeId;
+		    this.mode = mode;
+		    this.location = location;
+		    this.issue = issue;
+		    this.caseId = caseId;
+		    this.locationId = locationId;
+		    this.issueId = issueId;
+		    this.description = description;
+		    this.parentIssue= parentIssue;
+		    this.parentIssueId= parentIssueId;
+		    this.parentlocation= parentlocation;
+		    this.parentlocationId= parentlocationId;
+		    this.grandIssue= grandIssue;
+		    this.grandlocation= grandlocation;
+		    this.issueKpi =issueKpi;
+		    this.issueDriver =issueDriver;
+		   	this.issueAccountability =issueAccountability;
+		   	this.type=type;
+		   	this.issueAgency=issueAgency;
+		   	this.locationAgency=locationAgency;
+
+		};
+
+		var addCategory=function(){
+			currentDescription=$('#description').val();
+			currentSelectedType=$('#searchInputType').val();
+			var aCategory =new CaseCategory(
+					currentSelectedModeId,
+		            currentSelectedMode,
+					currentSelectedLocation,
+					currentSelectedIssue,
+					currentSelectedCaseId,
+					currentSelectedLocationId,
+					currentSelectedIssueId,
+					currentDescription,
+					parentIssue,
+					parentIssueId,
+					parentlocation,
+					parentlocationId,
+					grandIssue,
+			    	grandlocation,
+
+			    	issueKpi ,
+			    	issueDriver ,
+			   		issueAccountability,
+			   		currentSelectedType,
+			   		issueAgency,
+			   		locationAgency );
+
+			if (selectedIndex<0 && (currentSelectedModeId.length>=15 ||currentSelectedLocation.length>0 ||
+					currentSelectedIssue>0)){
+				aCategory.parent=$('#theHiddenCaseId').val();
+				childIssueDataTable.row.add( aCategory).draw();
+			}else if(currentSelectedMode.length>1 &&
+						(currentSelectedLocation.length>1 ||
+							currentSelectedIssue.length>1 )
+					){
+				childIssueDataTable.row(selectedIndex).data(aCategory).draw();
+			}
+
+			selectedIndex=-1;
+			currentSelectedModeId='';
+   			currentSelectedMode='';
+			currentSelectedLocation='';
+			currentSelectedIssue='';
+			currentSelectedCaseId='';
+			currentSelectedLocationId='';
+			currentSelectedIssueId='';
+			currentDescription='';
+			parentIssue='';
+	    	parentIssueId='';
+	    	parentlocation='';
+	    	parentlocationId='';
+	    	grandIssue='';
+	    	grandlocation='';
+	    	issueKpi='';
+	    	issueDriver='';
+	   		issueAccountability ='';
+	   		currentSelectedType='';
+	   		issueAgency='';
+	   		locationAgency='';
+			$('#searchInputLocation').val('');
+			$('#searchInputIssue').val('');
+			$('#searchInputMode').val('');
+			$('#ModeContainer').jstree("deselect_all");
+			$('#LocationContainer').jstree("deselect_all");
+			$('#IssueContainer').jstree("deselect_all");
+			$('#description').val('');
+			$('#searchInputType').val('');
+
+
+		}
+
+
+		var editCategory=function(){
+			var selectedRow=childIssueDataTable.row('.selected').data();
+			if (!selectedRow) return;
+			currentSelectedModeId=selectedRow.modeId;
+			currentSelectedMode=selectedRow.mode;
+			currentSelectedLocation=selectedRow.location;
+			currentSelectedIssue=selectedRow.issue;
+			currentSelectedCaseId=selectedRow.caseId;
+			currentSelectedLocationId=selectedRow.locationid;
+			currentSelectedIssueId=selectedRow.issueId;
+			currentDescription=selectedRow.description;
+			parentIssue=selectedRow.parentIssue;
+	    	parentIssueId=selectedRow.parentIssueId;
+	    	parentlocation=selectedRow.parentlocation;
+	    	parentlocationId=selectedRow.parentlocationId;
+	    	grandIssue=selectedRow.grandIssue;
+		    grandlocation=selectedRow.grandlocation;
+		    issueKpi=selectedRow.issueKpi;
+	    	issueDriver=selectedRow.issueDriver;
+	   		issueAccountability =selectedRow.issueAccountability;
+	   		selectedIndex=childIssueDataTable.row('.selected').index();
+	   		currentSelectedType=selectedRow.type;
+	   		issueAgency=selectedRow.issueAgency;
+	   		locationAgency=selectedRow.locationAgency;
+			$('#searchInputLocation').val(selectedRow.location=='null'?'':selectedRow.location);
+			$('#searchInputIssue').val(selectedRow.issue=='null'?'':selectedRow.issue);
+			$('#searchInputMode').val(selectedRow.mode=='null'?'':selectedRow.mode);
+			$('#searchInputType').val(selectedRow.type=='null'?'':selectedRow.type);
+
+			$('#ModeContainer').jstree("deselect_all");
+			$('#ModeContainer').jstree(true).select_node(selectedRow.mode);
+			$('#LocationContainer').jstree("deselect_all");
+			$('#LocationContainer').jstree(true).select_node(selectedRow.locationId);
+
+			$('#IssueContainer').jstree("deselect_all");
+			$('#IssueContainer').jstree(true).select_node(selectedRow.issueId);
+			$('#description').val(selectedRow.description);
+
+			$('#TypeContainer').jstree("deselect_all");
+			$('#TypeContainer').jstree(true).select_node(selectedRow.type);
+
+		}
+
+		var deleteCategory=function(){
+			
+			var apiDt=childIssueDataTable.row('.selected');
+			var deletedRow=apiDt.data();
+			if(deletedRow && deletedRow.caseId.length>0 && deletedRow.caseId!=$('#theHiddenCaseId').val()){
+				Visualforce.remoting.Manager.invokeAction(
+	        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.deleteEx}',
+					deletedRow.caseId,
+					
+					function(result, event){
+		                if(event.status) {
+		                	apiDt.remove().draw(false);
+							updateButton.button('delete');
+							
+							bootbox.alert({ size: 'small',
+								    		message: "   deleted the child case with Categories   "
+								    		
+								    	}); 
+		                }
+		            }, {escape: true}
+				);
+
+			}else{
+				apiDt.remove().draw(false);
+			}
+			
+		}
+
+		var closeIssueItemiser=function(){
+			 Sfdc.canvas.publisher.publish({name : "publisher.close", payload :{refresh:"true"}});
+			 Sfdc.canvas.publisher.publish({name: "publisher.refresh", payload:{ refresh:"true"}});
+
+		}
+		
+		
+
+
+		//update categories
+		var updateCatagories=function(){
+			var updateButton=$('#updateCategory');
+			updateButton.button('loading');
+			addCategory();
+			var array_values = new Array();
+
+			$.each(childIssueDataTable.rows().indexes(),function(index,node){
+				array_values.push(childIssueDataTable.row(index).data());
+			})
+			//console.log('array -'+JSON.stringify(array_values));
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.upsertCategories}',
+				array_values,
+				function(result, event){
+	                if(event.status) {
+						updateButton.button('reset');
+						Sfdc.canvas.publisher.publish({name : 'publisher.refresh', 
+							payload :{feed: true, objectRelatedLists: {}}});
+						bootbox.alert({ size: 'small',
+							    		message: "   Updated the Categories   ",
+							    		callback: closeIssueItemiser
+							    	}); 
+	                }
+	            }, {escape: true}
+			);
+
+		}
+		
+		//get data function
+		var getModes=function(obj, cb) {
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getModes}',
+				currentSelectedCaseId,
+
+				function(result, event){
+	                if(event.status) {
+						$.each(result,function(index,node){
+							if(node.state && node.state.selected) {
+								$('#searchInputMode').val(node.text);
+								currentSelectedModeId=node.id;
+								currentSelectedMode=node.text;
+								$('#LocationContainer').jstree(true).refresh(true);
+								$('#IssueContainer').jstree(true).refresh(true);
+							}
+
+						});
+	                    cb.call(this,result);
+	                }
+	            }, {escape: false}
+			);
+
+		}
+
+		//get location
+		var getLocations=function(obj, cb) {
+			if (!currentSelectedModeId || currentSelectedModeId.length<15) {
+				
+				return;
+			}
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getLocations}',
+				currentSelectedCaseId,
+				currentSelectedModeId,
+				function(result, event){
+	                if(event.status) {
+						$.each(result,function(index,node){
+							if(node.state ) {
+								if(node.state.selected){
+									$('#searchInputLocation').val(node.text);
+									currentSelectedLocation=node.text;
+									currentSelectedLocationId=node.id;
+
+								}else if (node.state.opened && node.parent!='#'){
+									parentLocation=node.text
+
+								}else if (node.state.opened && node.parent=='#'){
+									grandLocation=node.text
+
+								}
+								
+							}
+
+						});
+		                cb.call(this,result);
+	                }
+	            }, {escape: false}
+			);
+
+			
+
+		}
+		//get issues
+		var getIssues=function(obj, cb) {
+			if (!currentSelectedModeId || currentSelectedModeId.length<15) {
+				
+				return;
+			}
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getIssues}',
+				currentSelectedCaseId,
+				currentSelectedModeId,
+				function(result, event){
+	                if(event.status) {
+						$.each(result,function(index,node){
+							if(node.state) {
+								if(node.state.selected){
+									$('#searchInputIssue').val(node.text);
+									currentSelectedIssue=node.text;
+									currentSelectedIssueId=node.id;
+									
+
+
+								}else if (node.state.opened && node.parent!='#'){
+									parentIssue=node.text
+
+								}else if (node.state.opened && node.parent=='#'){
+									grandIssue=node.text
+
+								}
+								
+
+							}
+						});
+		                cb.call(this,result);
+	                }
+	            }, {escape: false}
+			);
+			
+		}
+
+		//get data function
+		var getTypes=function(obj, cb) {
+			Visualforce.remoting.Manager.invokeAction(
+        		'{!$RemoteAction.IssueItemisationPublisherAction_CX.getTypes}',
+        		currentSelectedCaseId,
+				function(result, event){
+	                if(event.status) {
+						$.each(result,function(index,node){
+							if(node.state && node.state.selected) {
+								$('#searchInputType').val(node.text);
+								currentSelectedType=node.text;
+								
+							}
+
+						});
+	                    cb.call(this,result);
+	                }
+	            }, {escape: false}
+			);
+
+		}
+
+		</script>
+		<style>
+		/* enable absolute positioning */
+			.inner-addon { 
+			    position: relative; 
+			}
+
+			/* style icon */
+			.inner-addon .glyphicon {
+			  position: absolute;
+			  padding: 10px;
+			}
+
+			/* align icon */
+			.left-addon .glyphicon  { left:  0px;}
+			.right-addon .glyphicon { right: 10px;}
+
+			/* add padding  */
+			.left-addon input  { padding-left:  30px; }
+			.right-addon input { padding-right: 30px; }
+			.jstree li a i { display:none !important; }
+			.jstree-proton-responsive .jstree-container-ul{
+				overflow-x:auto !important;
+				display: block;
+
+			}
+			.btn-primary:hover {
+			  color: #000000
+			}
+			table.dataTable {
+				  width: 100%!important;
+			}
+		</style>
+	</html>
+	<apex:includeScript value="{!$Resource.bootbox}"/>
+
+
+</apex:page>

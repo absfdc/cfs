@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FullCustName__c</fullName>
+    <description>The full customer-facing name (with hierarchy) for this Taxonomy record.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK( ParentLevel0CustName__c ),&quot;&quot;, &quot;[&quot;&amp;ParentLevel0CustName__c&amp;&quot;]&quot;)&amp;IF(ISBLANK( ParentLevel1CustName__c ),&quot;&quot;, &quot;.[&quot;&amp;ParentLevel1CustName__c&amp;&quot;]&quot;)&amp;IF(ISBLANK( ParentLevel2CustName__c ),&quot;&quot;, &quot;.[&quot;&amp;ParentLevel2CustName__c&amp;&quot;]&quot;)&amp; IF(OR(ISBLANK( ParentLevel0CustName__c ), ISBLANK( Customer_Value__c )),&quot;&quot;, &quot;.&quot;)&amp; IF(ISBLANK( Customer_Value__c ),&quot;&quot;, &quot;[&quot;&amp;Customer_Value__c&amp;&quot;]&quot;)</formula>
+    <label>FullCustName</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

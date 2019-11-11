@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_I_P_Infrastructure_and_Project_F_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>TfNSW I&amp;P - Infrastructure and Project F</label>
+    <queue>TfNSW_I_P_Infrastructure_and_Project_F</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

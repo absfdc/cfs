@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TfNSW_IS_Pgm_Divisional_Mgmt_Offc_MC_Action_Plan</fullName>
+    <columns>NAME</columns>
+    <columns>Action_Plan_Type__c</columns>
+    <columns>Divisions__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Parent_Action_Plan__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Case_Number__c</columns>
+    <filterScope>Queue</filterScope>
+    <label>TfNSW I&amp;P - Program Management Office</label>
+    <queue>TfNSW_IS_Pgm_Divisional_Mgmt_Offc_MC</queue>
+    <sharedTo>
+        <role>TfNSW_I_S_Fleet_Program_Delivery</role>
+        <role>TfNSW_I_S_Operational_Systems</role>
+        <role>TfNSW_I_S_Operational_Systems_Liaison_Officer</role>
+        <role>TfNSW_I_S_Operational_Systems_SME</role>
+        <role>TfNSW_I_S_Parramatta_Light_Rail</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office_Liaison_Officer</role>
+        <role>TfNSW_I_S_Program_Divisional_Management_Office_SME</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery_Liaison_Officer</role>
+        <role>TfNSW_I_S_Rail_Service_Delivery_SME</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance_Liaison_Officer</role>
+        <role>TfNSW_I_S_Service_Delivery_Performance_SME</role>
+        <role>TfNSW_I_S_Service_Planning_Development</role>
+        <role>TfNSW_I_S_Service_Planning_Development_Liaison_Officer</role>
+        <role>TfNSW_I_S_Service_Planning_Development_SME</role>
+        <role>TfNSW_I_S_Ticketing_Concessions</role>
+        <role>TfNSW_I_S_Ticketing_Concessions_Liaison_Officer</role>
+        <role>TfNSW_I_S_Ticketing_Concessions_SME</role>
+        <role>TfNSW_I_S_Transport_Management_Centre</role>
+        <role>TfNSW_I_S_Transport_Management_Centre_Liaison_Officer</role>
+        <role>TfNSW_I_S_Transport_Management_Centre_SME</role>
+        <role>Transport_Projects</role>
+        <role>Transport_Projects_Liaison_Officer</role>
+        <role>Transport_Projects_SME</role>
+        <role>Transport_Services</role>
+        <role>Transport_Services_SME</role>
+    </sharedTo>
+</ListView>

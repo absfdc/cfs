@@ -1,0 +1,159 @@
+<apex:component id="appsComponent" controller="AppsComponentController">
+
+    <div class="col-md-12" id="appOptionLabel">
+        <label class="fieldLabel">Which App is your feedback about?<span class="mandatoryStar">&nbsp;*</span></label>
+    </div>
+    <div style="width:105%;"> 
+        <div id="appOptionErrorMsg" tabindex="-1" style="outline:0px" class="has-error errorMessage"></div>       
+        <apex:repeat id="optionsItr"  value="{!appOptions}" var="option">
+            <div class="{!IF(isIE8 == false,'col-lg-2 col-md-3 col-sm-4 col-xs-6','ie8')}" style="margin-right: -10px;">                
+                <figure style="display: inline-block;">            
+                    <img class="img-thumbnail {!option}" style="height:60px !important" width="60px" height="60px" aria-hidden="true" alt="app icon" src="{!URLFOR($Resource.icons, SUBSTITUTE(option, ' ', '')  + '.png')}" onclick="selectCheckbox('{!option}')"/>
+                    <figcaption style="padding-bottom: 5px;" >
+                        <input type="radio" id="{!option}" onclick="enableOther()" style="margin-left: -15px;" name="appOptions" value="{!option}"/>
+                        <span style="word-wrap: break-word;">{!option}</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </apex:repeat>
+        
+        <div  class="{!IF(isIE8 == false,'col-lg-2 col-md-3 col-sm-4 col-xs-6','ie8')}" style="margin-right: -10px;">                       
+            <figure style="display: inline-block;">            
+                <img class="img-thumbnail" style="height:60px !important" width="60px" height="60px" alt="app icon" src="{!URLFOR($Resource.icons, 'Other.png')}" onclick="selectCheckbox('otherOption')"/>
+                <figcaption style="padding-bottom: 5px;">                
+                <input type="radio" style="margin-left: -15px;outline-offset: -1px" id="otherOption" name="appOptions" onclick="enableOther()" value="Other"/>
+                <input  aria-describedby="appOptionErrorMsg" id="otherOptionText" class="formInput" disabled="disabled" style="display:inline;width:100px" type="text" placeholder="Other" value=""/>
+                </figcaption>
+            </figure>
+        </div> 
+        
+    </div>  
+    
+    <div class="col-md-12" style="width:200px">
+        <label class="fieldLabel">Relating to<span class="mandatoryStar">&nbsp;*</span></label>
+    </div>  
+    <div class="col-md-12">
+        <div id="appRelatedToErrorMsg" style="outline:0px" class="has-error errorMessage"></div>
+        <apex:selectList styleClass="fieldHeight formInput" id="relatedTo" html-aria-label="feedback-related-to" onchange="checkRelatedTo(value)" size="1">
+            <apex:selectOptions value="{!relatedTo}"></apex:selectOptions>
+        </apex:selectList>                        
+    </div>    
+    
+    <div class="col-md-12 tripPlanner" style="display:none">
+        <label class="fieldLabel">Please specify trip details.</label>
+        <div id="tripURLAppsErrorMsg" style="outline:0px" class="has-error errorMessage"></div>
+    </div>
+    <div class="col-md-12 tripPlanner" style="display:none">
+        <input name="trip-planner-link" placeholder="E.g., route/line number and name, direction of travel" autocomplete="off" id="tripUrl"  class="formInput"  />
+    </div>
+                
+    <div class="col-md-12 deviceInfo">
+        <label for="device" class="fieldLabel">What device were you using (e.g. iPhone 6, iPad Air, Samsung S5, Nokia Lumia, etc)</label>
+        <div id="deviceErrorMsg" style="outline:0px" class="has-error errorMessage"></div>
+        <input  aria-describedby="deviceErrorMsg" name="device" placeholder="e.g. iPhone 6, iPad Air, Samsung S5, Nokia Lumia, etc" autocomplete="off" id="device"  class="formInput"  />        
+    </div>
+    
+    <div class="col-md-12 deviceInfo">
+        <label for="operatingSystem" class="fieldLabel">Operating system</label>
+        <div id="osErrorMsg" style="outline:0px" class="has-error errorMessage"></div>
+        <input aria-describedby="osErrorMsg" name="device" placeholder="e.g. iOS 8.4.1, Android 4.4.4, etc." autocomplete="off" id="operatingSystem"  class="formInput"  />        
+    </div>
+    
+    <style>
+    .ie8 { float: left } .ie8 { width: 25% }
+    </style>
+    <script>
+    
+    function enableOther() {
+        var otherOption = document.getElementById('otherOption');
+        if(otherOption.checked) {
+            document.getElementById('otherOptionText').disabled = false;            
+            $('#otherOptionText').val('Please specify');
+            $('#otherOptionText').attr('placeholder','Please specify');
+            $(document.getElementById('otherOptionText')).addClass('placeholder');
+            document.getElementById('otherOptionText').focus();
+            if(document.getElementById('otherOptionText').addEventListener) {
+                document.getElementById('otherOptionText').addEventListener('focus', function() {
+                    if(document.getElementById('otherOptionText').value == 'Please specify') {
+                        document.getElementById('otherOptionText').value = '';
+                        $(document.getElementById('otherOptionText')).removeClass('placeholder');
+                    }
+                });
+                document.getElementById('otherOptionText').addEventListener('blur', function() {
+                    var otherOptionVal = document.getElementById('otherOptionText').value;
+                    if(otherOptionVal == '' || otherOptionVal == 'Please specify') {
+                        if(document.getElementById('otherOption').checked == false) {                       
+                            $('#otherOptionText').val('Other');
+                            $('#otherOptionText').attr('placeholder','Other');
+                        }
+                        $(document.getElementById('otherOptionText')).addClass('placeholder');
+                    }
+                });
+            } else {
+                document.getElementById('otherOptionText').attachEvent('onfocus', function() {
+                    if(document.getElementById('otherOptionText').value == 'Please specify') {
+                        document.getElementById('otherOptionText').value = '';
+                        $(document.getElementById('otherOptionText')).removeClass('placeholder');
+                    }
+                });
+                document.getElementById('otherOptionText').addEventListener('onblur', function() {
+                    var otherOptionVal = document.getElementById('otherOptionText').value;
+                    if(otherOptionVal == '' || otherOptionVal == 'Please specify') {
+                        if(document.getElementById('otherOption').checked == false) {                       
+                            $('#otherOptionText').val('Other');
+                            $('#otherOptionText').attr('placeholder','Other');
+                        }
+                        $(document.getElementById('otherOptionText')).addClass('placeholder');
+                    }
+                });
+            }
+        } else {
+            $('#otherOptionText').val('Other');
+            document.getElementById('otherOptionText').disabled = true;
+        }
+    }
+    function checkForSelectedOption() {
+        var allInputs = document.getElementsByTagName("input");
+        for (var i = 0, max = allInputs.length; i < max; i++){
+            if (allInputs[i].type === 'checkbox') {                
+                if(allInputs[i].checked) {
+                }
+            }
+        }
+    }
+    
+    function checkRelatedTo(relatedTo) {
+        if(relatedTo && relatedTo.toLowerCase() == 'times') {
+            $('.tripPlanner').show();
+        } else {
+            $('.tripPlanner').hide();
+        }
+    }
+        
+    function selectCheckbox(optionId) {
+        document.getElementById(optionId).checked = !(document.getElementById(optionId).checked);        
+        enableOther();
+    }
+    function validateAppRelatingTo() {
+        var relatingTo = document.getElementById('sitePageId:caseFormId:pblockId:appOptions:appsComponent:relatedTo').value;
+        if(!relatingTo) {
+            document.getElementById('sitePageId:caseFormId:pblockId:appOptions:appsComponent:relatedTo').style.outline = '1px solid #F00';
+            setErrorFieldId('sitePageId:caseFormId:pblockId:appOptions:appsComponent:relatedTo');
+            document.getElementById('appRelatedToErrorMsg').innerHTML = 'Error: Relating to is not selected';
+            return false;
+        } else {
+            document.getElementById('appRelatedToErrorMsg').innerHTML = '';
+            document.getElementById('sitePageId:caseFormId:pblockId:appOptions:appsComponent:relatedTo').style.outline = '0';
+        }
+        return true;
+    }
+    </script>
+    <style>
+    label[for="sitePageId:caseFormId:pblockId:appOptions:appsComponent:responseRadio:0"] {
+      padding-left: 5px !important;
+    }
+    label[for="sitePageId:caseFormId:pblockId:appOptions:appsComponent:responseRadio:1"] {
+      padding-left: 5px !important;
+    }
+    </style>
+</apex:component>

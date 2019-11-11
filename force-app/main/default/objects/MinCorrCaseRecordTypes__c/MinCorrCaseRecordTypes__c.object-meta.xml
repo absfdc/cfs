@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>holds list of min corr case record type names</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Min Corro Case Record Types</label>
+    <visibility>Public</visibility>
+</CustomObject>

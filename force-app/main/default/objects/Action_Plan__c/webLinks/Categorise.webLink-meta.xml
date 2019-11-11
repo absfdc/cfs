@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Categorise</fullName>
+    <availability>online</availability>
+    <description>Categorise action plan</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Categorise</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>if (typeof(srcUp) == &#39;function&#39;) {
+    srcUp(&#39;/apex/ActionPlanCategorisationUISample?id={! Action_Plan__c.Id}&amp;isdtp=vw&#39;);
+} else {    
+    window.location.href =&#39;/apex/ActionPlanCategorisationUISample?id={! Action_Plan__c.Id}&#39;;
+}</url>
+</WebLink>

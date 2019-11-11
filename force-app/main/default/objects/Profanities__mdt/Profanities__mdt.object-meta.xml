@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Contains the list of profanities that auto-triage will scrub against.  Auto-triage will automatically add &quot;ed&quot; and &quot;ing&quot; to each of these words, e.g. one entry &quot;tesst&quot; will also scrub &quot;tessted&quot; and &quot;tessting&quot;.  Words must be entered into this list in all lowercase.</description>
+    <label>Profanity</label>
+    <pluralLabel>Profanities</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

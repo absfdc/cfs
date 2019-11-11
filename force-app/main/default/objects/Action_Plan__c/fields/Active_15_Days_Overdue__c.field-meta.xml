@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_15_Days_Overdue__c</fullName>
+    <description>Checks if an Active (not completed) Case is 15 or more days overdue compared to its due date. Used for RMS Min Corro reporting (WI-0000475).</description>
+    <externalId>false</externalId>
+    <formula>NOT(ISPICKVAL(Status__c, &#39;Completed&#39;)) 
+&amp;&amp; 
+NOT(ISBLANK(Due_Date__c)) 
+&amp;&amp; 
+(CASE(MOD( Due_Date__c - DATE(1985,6,24),7), 
+0 , CASE( MOD( TODAY() - Due_Date__c ,7),1,2,2,3,3,4,4,5,5,5,6,5,1), 
+1 , CASE( MOD( TODAY() - Due_Date__c ,7),1,2,2,3,3,4,4,4,5,4,6,5,1), 
+2 , CASE( MOD( TODAY() - Due_Date__c ,7),1,2,2,3,3,3,4,3,5,4,6,5,1), 
+3 , CASE( MOD( TODAY() - Due_Date__c ,7),1,2,2,2,3,2,4,3,5,4,6,5,1), 
+4 , CASE( MOD( TODAY() - Due_Date__c ,7),1,1,2,1,3,2,4,3,5,4,6,5,1), 
+5 , CASE( MOD( TODAY() - Due_Date__c ,7),1,0,2,1,3,2,4,3,5,4,6,5,0), 
+6 , CASE( MOD( TODAY() - Due_Date__c ,7),1,1,2,2,3,3,4,4,5,5,6,5,0), 
+999) 
++ 
+(FLOOR(( TODAY() - Due_Date__c )/7)*5) &gt;= 16)</formula>
+    <inlineHelpText>Checks if an Active (not completed) Case is 15 or more days overdue compared to its due date. Used for RMS Min Corro reporting.</inlineHelpText>
+    <label>Active 15+ Days Overdue</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

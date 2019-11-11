@@ -1,0 +1,65 @@
+<apex:page standardController="Case"  extensions="EmailPublisherAction_CX" >
+<apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.CasePublisherScripts,'ext.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.CasePublisherScripts,'main.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.CasePublisherScripts,'ServiceDeskView.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.CasePublisherScripts,'CaseInteraction.js')}"/>
+    <style>
+        #adviceRequestPublisher {
+            //height:800px;
+            overflow-y:hidden;
+        }
+    </style>
+    <div id="adviceRequestPublisher">
+        <apex:emailPublisher entityId="{!Case.id}"
+             width="100%"
+             autoCollapseBody="false"
+             bccVisibility="editable"
+             verticalResize="false"
+             expandableHeader="false"
+             emailBodyHeight="450em"
+             emailBodyFormat="HTML"
+             emailBody="" 
+             subject=""
+             sendButtonName="Email Staff Member"
+             showTemplates="true"
+             subjectVisibility="editable"
+             showAdditionalFields="false" 
+             enableQuickText="false"
+             toAddresses="{!IF(ISBLANK(Case.Assigned_SME__r.Email),'' , Case.Assigned_SME__r.Email)}"
+             toVisibility="editableWithLookup"
+             fromAddresses="{!orgWideEmail}"
+             fromVisibility="selectable"
+             onSubmitFailure="alert('Failed to send email.')" 
+             onSubmitSuccess="alert('Email sent successfully.')" />
+    </div>
+    <script>
+        $(document).ready(function () {
+            var emailVsDisplayName = $.parseJSON('{!JSENCODE(emailVsDisplayName)}'); 
+            var fromAddressId = 'from_' + ('{!Case.Id}'.substring(0,15));
+            var fromAddresses = document.getElementById(fromAddressId );
+            if(fromAddresses) {
+                var options = fromAddresses.options;
+                for(var i = options.length; i > 0; i--) {
+                    var email = options[i - 1].value.split(':')[0];
+                    if(emailVsDisplayName.hasOwnProperty(email)) {
+                        fromAddresses.options[i - 1] = new Option("\"" + emailVsDisplayName[email] + "\" <" + email + ">", email + ":" + emailVsDisplayName[email]);
+                    }
+                }
+            }
+            
+            var sme = '{!Case.Assigned_SME__r.Email}';
+            $.each($('input.innerRecipient[value="{!Case.Contact.Email}"]'),function(index,node){
+                if(sme.length > 0) {
+                    $(node).val(sme);
+                    $(node).attr('data-email', sme);
+                } else {
+                    $.each($(node).siblings( "img.deleteRecipient" ),function(indx,butn){
+                        butn.click();                            
+                    });                   
+                }
+                
+            });
+        });
+    </script>
+</apex:page>

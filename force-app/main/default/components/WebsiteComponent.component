@@ -1,0 +1,217 @@
+<apex:component id="websiteComponent" controller="WebsiteComponentController">
+    <apex:attribute access="public" description="website chosen on web form" id="websiteChosen" name="websiteChosen" type="String"/>
+
+    <div class="col-md-12" id="webOptionLabel">
+        <label class="fieldLabel">Which website is your feedback about?<span class="mandatoryStar">&nbsp;*</span></label>
+    </div>
+    <!--
+    <div style="width:105%" > 
+        <div id="webOptionErrorMsg" style="outline:0px" tabindex="-1"  class="has-error errorMessage"></div>       
+        <apex:repeat id="optionsItr"  value="{!websiteOptions}" var="option">
+            <div class="{!IF(isIE8 == false,'col-lg-2 col-md-3 col-sm-4 col-xs-6','ie8')}" style="margin-right: -10px;">
+                <div class="front{!IF(option == 'Transport Info', 'tfnsw' ,'')}">                    
+                    <figure style="display: inline-block;">                    
+                        <img class="img-thumbnail" style="height:70px !important" width="100px" height="70px" alt="" src="{!URLFOR($Resource.icons, SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(option, ' ', ''), '(',''),')','') + '.jpg')}" onclick="selectCheckbox('{!option}')"/>                                       
+                        <figcaption style="height:{!textBoxHeight}px;width:140px" >
+                            <input type="radio" name="websiteOptions" id="{!option}" style="{!IF(isIE8 == false,'margin-left:-15px;','display:block;')}" onclick="checkForTfNSW(this)" value="{!option}"/>
+                            <span style="word-wrap:break-word;{!IF(isIE8 == false,'','display:inline;')}">{!option}</span>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </apex:repeat>
+        
+        <div class="{!IF(isIE8 == false,'col-lg-2 col-md-3 col-sm-4 col-xs-6','ie8')}" style="margin-right: -10px;">
+            <figure style="display: inline-block;">
+                <img  width="100px" height="70px" alt="" src="{!URLFOR($Resource.icons, 'OtherWeb.png')}" onclick="selectCheckbox('otherOption')"/>
+                <figcaption style="width:140px">                    
+                    <input type="radio" id="otherOption" name="websiteOptions" style="{!IF(isIE8 == false,'margin-left:-15px;','display:block;')}" value="Other" onclick="enableOther();" />
+                    <input  aria-describedby="webOptionErrorMsg" name="other website" class="formInput" id="otherOptionText" disabled="disabled" style="display:inline;width:120px" autocomplete="off" placeholder="Other" />                    
+                </figcaption>
+            </figure>
+        </div>   
+    </div> -->
+    
+    <div id="webOptionErrorMsg" style="outline:0px" tabindex="-1"  class="has-error errorMessage"></div> 
+    <div class="col-md-12">
+        <apex:selectList required="true" styleClass="fieldHeight formInput tfnswRelatedToValue"  id="tfnswWebOptions"  size="1" value="{!websiteChosen}" onchange="checkForTfNSW(value)">
+            <apex:selectOptions value="{!websiteOptionsDropDown}"></apex:selectOptions>
+        </apex:selectList>                        
+    </div>
+    
+	 <div class="{!IF(isIE8 == false,'col-md-12','ie8')}" style="display:none;" id="otherOptionDiv"  >    
+         <label class="fieldLabel">Specify website name<span class="mandatoryStar">&nbsp;*</span></label>
+         <input  aria-describedby="webOptionErrorMsg" name="other website" class="formInput" id="otherOptionText"  style="display:none;width:120px" autocomplete="off" placeholder="Other" />                    
+    </div>  
+    
+   <div class="col-md-12" style="display:inline-block; clear:both; width:100%;">
+        <label class="fieldLabel">Which page were you using<span class="mandatoryStar">&nbsp;*</span></label>
+    </div>
+    <div class="col-md-12">
+        <div id="pageUsedErrorMsg" style="outline:0px" class="has-error errorMessage"></div>
+        <input  aria-describedby="pageUsedErrorMsg" name="page" placeholder="Please specify URL" autocomplete="off" id="page"  class="formInput"  />
+    </div>
+    
+    <div class="col-md-12 tfnswRelatedTo" style="display:none">
+        <label class="fieldLabel">Relating to<span class="mandatoryStar">&nbsp;*</span></label>
+    </div>  
+    <div class="col-md-12 tfnswRelatedTo" style="display:none">
+    <div id="webRelatedToErrorMsg" style="outline:0px" class="has-error errorMessage"></div>
+        <apex:selectList styleClass="fieldHeight formInput tfnswRelatedToValue" id="relatedTo" html-aria-label="feedback-related-to" onchange="checkRelatedTo(value)" size="1">
+            <apex:selectOptions value="{!relatedTo}"></apex:selectOptions>
+        </apex:selectList>                        
+    </div>
+        
+    <div class="col-md-12 tripPlanner" style="display:none">
+        <label class="fieldLabel">If using the Trip planner, please use the 'Share' link <img style="vertical-align: middle;height:23px !important" width="19px" height="23px" alt="share link" src="{!URLFOR($Resource.icons, 'share.png')}" /> to copy and paste the link here</label>
+    	<div id="tripPlannerErrorMsg"  class="has-error errorMessage"></div>
+    </div>
+    <div class="col-md-12 tripPlanner" style="display:none">
+        <input name="trip-planner-link" placeholder="Please specify trip URL" autocomplete="off" id="tripUrl"  class="formInput tripPlannerVal"  />
+    </div>
+    
+    <div class="col-md-12 tripPlanner" style="display:none">
+        <label class="fieldLabel">OR Specify trip details</label>
+    </div>
+    <div class="col-md-12 tripPlanner" style="display:none">
+        <input name="trip-settings" placeholder="Example, From/To locations, date/time, Trip preferences/Mobility options" autocomplete="off" id="tripSettings"  class="formInput tripPlannerValue"  />
+    </div>
+    
+    <div class="col-md-12 timeTableRelated" style="display:none">
+        <label class="fieldLabel">Which timetable were you using?</label>
+        <div id="timeTableErrorMsg"  class="has-error errorMessage"></div>
+        <!-- p style="margin-bottom: 0px;text-align: justify;">Note: If using transportnsw.info, use the 'Copy link' feature</p  -->
+    </div>
+    <div class="col-md-12 timeTableRelated" style="display:none">
+        <input name="timetable" placeholder="Enter route number(s) and direction" autocomplete="off" id="timetable"  class="formInput timeTableRelatedValue"  />
+    </div>
+    
+    <div class="col-md-12 formLabel" id="deviceOption">
+        <label class="fieldLabel" for="sameDevice" aria-label="How were you accessing the site?" >How were you accessing the site?</label>  
+        <div id="deviceOptionErrorMsg"  class="has-error errorMessage"></div>
+        <div class="col-md-6" style="padding-left: 0px;padding-right: 5px;">
+            <label class="fieldLabel">Browser</label>
+            <div id="browserErrorMsg"  class="has-error errorMessage"></div>
+            <input  aria-describedby="deviceOptionErrorMsg" name="browser" placeholder="e.g., IE10, Firefox, Chrome" autocomplete="off" id="browser"  class="formInput"  />
+        </div>
+        <div class="col-md-6" style="padding-left: 0px;padding-right: 0px;">
+            <label class="fieldLabel">Operating system</label>
+            <div id="operatingSystemErrorMsg"  class="has-error errorMessage"></div>
+            <input  aria-describedby="deviceOptionErrorMsg" name="operating-system" placeholder="e.g., Mac OS X, Yosemite,  Windows 7, Vista" autocomplete="off" id="operatingSystem"  class="formInput"  />
+        </div>
+    </div>
+    
+    <style>
+    .ie8 {
+        float: left;
+        width: 50%;
+    }
+    </style>
+    <script>
+    var checkedValue;
+    function hideRelatedToFields() {
+        $('.tfnswRelatedTo').hide();
+        $('.tfnswRelatedToValue').val('');
+        $('.tripPlanner').hide();
+        $('.tripPlannerValue').val('');
+        $('.timeTableRelated').hide();
+        $('.timeTableRelatedValue').val('');
+    }
+    
+    function enableOther() {
+        var otherOption = document.getElementById('otherOption');
+        if(otherOption.checked) {
+            document.getElementById('otherOptionText').disabled = false;
+            document.getElementById('otherOptionText').focus();
+        } else {
+            document.getElementById('otherOptionText').disabled = true;
+            document.getElementById('otherOptionText').value = '';
+        }
+    }
+    
+    function toggleWebThumbnail(className, display) {
+        $('.' + className).css('display', display);
+    }
+    
+    function checkRelatedTo(relatedTo) {
+        if(relatedTo && relatedTo.toLowerCase() == '{!$Label.RelatedToTripPlanner}') {
+            //  $('.tripPlanner').show();
+            $('.timeTableRelated').hide();
+            $('.timeTableRelatedValue').val('');
+        } else if(relatedTo && relatedTo.toLowerCase() == '{!$Label.RelatedToTimetables}') {
+            $('.timeTableRelated').show();
+            $('.tripPlanner').hide();
+            $('.tripPlannerValue').val('');
+        } else {
+            $('.tripPlanner').hide();
+            $('.tripPlannerValue').val('');
+            $('.timeTableRelated').hide();
+            $('.timeTableRelatedValue').val('');
+        }
+    }
+    
+    function checkForDeviceInfo() {
+        if(document.getElementById('sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:responseRadio:0').checked) {
+            $('.deviceInfo').hide();
+        } else {
+            $('.deviceInfo').show();
+        }
+    }
+    
+    function toggleTfnswOtherWebOption() {      
+        document.getElementById('othertransportnsw.info').checked = !(document.getElementById('othertransportnsw.info').checked);
+        console.log(document.getElementById('othertransportnsw.info').checked);
+        if(document.getElementById('othertransportnsw.info').checked) {
+            document.getElementById('otherTexttransportnsw.info').disabled = false;
+        } else {
+            document.getElementById('otherTexttransportnsw.info').disabled = true;
+        }
+    }
+    
+    function selectCheckbox(optionId) {
+        document.getElementById(optionId).checked = !(document.getElementById(optionId).checked);  
+        if(document.getElementById(optionId).checked) {
+            checkForTfNSW(document.getElementById(optionId));
+        } else {
+            $('.tfnswRelatedTo').hide();
+        }      
+        enableOther();
+    }
+    
+    
+    function checkForTfNSW(element) {
+        var webLabel = '{!$Label.TfNSWWebsiteValue}';
+        if(webLabel.indexOf(element) != -1) {
+            $('.tfnswRelatedTo').show();
+        } else {
+            $('.tfnswRelatedTo').hide();
+        }
+        if(element == 'Other'){
+            document.getElementById('otherOptionDiv').style.display = "block";
+            document.getElementById('otherOptionText').style.display = "block";
+             document.getElementById('otherOptionText').focus();
+        }
+        else{
+            document.getElementById('otherOptionDiv').style.display = "none";
+            document.getElementById('otherOptionText').style.display = "none";
+            //document.getElementById('otherOptionText').focus();
+            }
+        //enableOther();
+    }
+
+    function validateWebsiteRelatingTo() {
+        var relatingTo = document.getElementById('sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:relatedTo').value;
+        if(!relatingTo && checkedValue == '{!$Label.TfNSWWebsiteValue}') {
+            document.getElementById('sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:relatedTo').style.outline = '1px solid #F00';
+            setErrorFieldId('sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:relatedTo');
+            document.getElementById('webRelatedToErrorMsg').innerHTML = 'Error: Relating to is not selected';
+            return false;
+        } else {
+        	document.getElementById('sitePageId:caseFormId:pblockId:websiteOptions:websiteComponent:relatedTo').style.outline = '';
+			document.getElementById('webRelatedToErrorMsg').innerHTML = '';
+            return true;
+        }
+        return true;
+    }
+    </script>
+</apex:component>

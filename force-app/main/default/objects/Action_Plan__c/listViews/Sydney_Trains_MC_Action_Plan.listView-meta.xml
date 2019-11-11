@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sydney_Trains_MC_Action_Plan</fullName>
+    <columns>NAME</columns>
+    <columns>Agency__c</columns>
+    <columns>Parent_Action_Plan__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Type__c</columns>
+    <columns>Case_Number__c</columns>
+    <filterScope>Queue</filterScope>
+    <label>Sydney Trains Queue</label>
+    <queue>Sydney_Trains_MC</queue>
+    <sharedTo>
+        <role>Sydney_Trains_Liaison_Officer</role>
+    </sharedTo>
+</ListView>

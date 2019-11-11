@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Inactive_Parent__c</fullName>
+    <description>Indicates if this Taxonomy record has an inactive parent (at any level). If any of the parents is inactive, the Taxonomy hierarchy is broken and some of the VF pages won&#39;t work correctly.</description>
+    <externalId>false</externalId>
+    <formula>/* If any of the parents is inactive, this flag should be set to true */
+OR(
+NOT(IF(NOT(ISBLANK(Parent_Id__r.Parent_Id__r.Parent_Id__c)), Parent_Id__r.Parent_Id__r.Parent_Id__r.Is_Active__c, TRUE))
+, NOT(IF(NOT(ISBLANK(Parent_Id__r.Parent_Id__c)), Parent_Id__r.Parent_Id__r.Is_Active__c, TRUE))
+, NOT(IF(NOT(ISBLANK(Parent_Id__c)), Parent_Id__r.Is_Active__c, TRUE))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Indicates if any of the parents is inactive. Active Taxonomy records should have active parents.</inlineHelpText>
+    <label>Has Inactive Parent</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

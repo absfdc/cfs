@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transportation_Management_Centre_CFM_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>TCO - Transport Management Centre</label>
+    <queue>Transport_Management_Centre_CFM</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

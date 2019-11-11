@@ -1,0 +1,75 @@
+<apex:page Controller="ChangeOwnership_CX" tabStyle="{!IF(objectLabel<>null, objectLabel, "Account")}">
+  
+  <apex:includeScript value="/support/console/35.0/integration.js"/>
+  
+  <head>
+   <title>Change {!objectLabel} owner</title>
+  </head>
+  
+  <script>
+    
+    var refreshTab = function refreshTab(result) {
+        
+     sforce.console.openPrimaryTab(result.id, '/{!$CurrentPage.parameters.id}', true, '{!recordName}');
+    }
+     
+    function cancelOperation() {
+     
+     alert('hi');
+     
+     if(sforce.console.isInConsole()) {
+      
+       console.log('refreshing...');
+       sforce.console.getEnclosingPrimaryTabId(refreshTab);
+       
+      }
+      else {
+       
+       window.open("/{!$CurrentPage.parameters.id}", "_parent");
+      }
+    }
+   </script>
+  
+  <apex:sectionHeader title="Change {!objectLabel} Owner"/>
+  
+  <p>
+   This screen allows you to transfer {!objectLabel} from one user or queue to another. When you transfer ownership, the new owner will own:
+  </p>
+  
+  <ul>
+   <li>all open activities (tasks and events) for this {!objectLabel} that are assigned to the current owner</li>  
+  </ul>
+  
+  <p>
+   Note that completed activities will not be transferred. Open activities will not be transferred when assigning this {!objectLabel} to a queue.
+  </p>
+  
+  <apex:form >
+   <apex:pageBlock mode="edit">
+    
+    <apex:pageBlockButtons location="bottom">
+      <apex:commandButton value="Save" action="{!Save}"/>
+      <!--
+      <apex:commandButton value="Cancel" action="{!Cancel}" immediate="true" html-formnovalidate="formnovalidate"/>
+      -->
+      <apex:commandButton value="Cancel" onclick="cancelOperation();return false;" immediate="true" html-formnovalidate="formnovalidate" reRender=""/>
+    </apex:pageBlockButtons>
+     
+    <apex:pagemessages ></apex:pagemessages>
+    <br/>
+    <apex:pageBlockSection columns="1" title="Select {!objectLabel} Owner">
+    
+     <apex:outputText value="{!recordName}" label="Transfer this {!objectLabel}"/>
+     
+     <apex:inputField value="{!updationRecord['OwnerId']}"/>
+    
+    </apex:pageBlockSection>
+    
+    <apex:selectCheckboxes >
+     <apex:selectOption itemLabel="Send Notification Email" itemValue="{!sendEmailNotification}"></apex:selectOption>
+    </apex:selectCheckboxes>
+   
+   </apex:pageBlock>
+  </apex:form>
+
+</apex:page>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>this list stores email address associated issue level 2 (issue category) for sending SNSW referral emails</description>
+    <enableFeeds>false</enableFeeds>
+    <label>SNSW referral email address</label>
+    <visibility>Public</visibility>
+</CustomObject>

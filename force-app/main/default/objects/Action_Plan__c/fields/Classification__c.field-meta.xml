@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Classification__c</fullName>
+    <description>Classification field: 
+Routine (Agency / Division SME / Corrospondene Officer advice approval, MAGS Editor response approval) 
+Significant (Agency / Division Manager advice approval, MAGS Editor response approval) 
+Contentious (Agency / Division Senior Manager advice approval, MAGS Manager response approval) 
+Highly Contentious (Agency / Division General Manager advice approval, MAGS Manager response approval) 
+Confidential (Agency / division General Manager advice approval, MAGS Manager response approval, with added access restrictions)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Case classification by MO</inlineHelpText>
+    <label>Classification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Routine</fullName>
+                <default>false</default>
+                <label>Routine</label>
+            </value>
+            <value>
+                <fullName>Significant</fullName>
+                <default>false</default>
+                <label>Significant</label>
+            </value>
+            <value>
+                <fullName>Contentious</fullName>
+                <default>false</default>
+                <label>Contentious</label>
+            </value>
+            <value>
+                <fullName>Highly Contentious</fullName>
+                <default>false</default>
+                <label>Highly Contentious</label>
+            </value>
+            <value>
+                <fullName>Confidential</fullName>
+                <default>false</default>
+                <label>Confidential</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

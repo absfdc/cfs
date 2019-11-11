@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Serco_Level_2_TTSS_Mail_Requests_Action_Plan</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Serco - Level 2 - TTSS Mail Requests</label>
+    <queue>Serco_Level_2_TTSS_Mail_Requests</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

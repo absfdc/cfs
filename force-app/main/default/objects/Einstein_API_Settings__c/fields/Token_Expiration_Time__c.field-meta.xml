@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Token_Expiration_Time__c</fullName>
+    <description>The time in milliseconds before the token expires. A scheduled job will update the token every 24 hours so the expiration time will be set ~48 hours to ensure there is always a valid token.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The time in milliseconds before the token expires. A scheduled job will update the token every 24 hours so the expiration time will be set ~48 hours to ensure there is always a valid token.</inlineHelpText>
+    <label>Token Expiration Time</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

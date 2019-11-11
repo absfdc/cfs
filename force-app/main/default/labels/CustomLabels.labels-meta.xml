@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AdviceRequestEmailTemplateId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AdviceRequestEmailTemplateId</shortDescription>
+        <value>00XO0000000QlVy</value>
+    </labels>
+    <labels>
+        <fullName>BULK_UPLOAD_EXCEPTION</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BULK UPLOAD EXCEPTION</shortDescription>
+        <value>Something went wrong. Please contact system administrator to check exception log.</value>
+    </labels>
+    <labels>
+        <fullName>Bus_Route</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bus Route</shortDescription>
+        <value>Bus Route</value>
+    </labels>
+    <labels>
+        <fullName>CFM_Case_Support_Process</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CFM Case Support Process</shortDescription>
+        <value>Master</value>
+    </labels>
+    <labels>
+        <fullName>Custom_Domain</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Custom Domain</shortDescription>
+        <value>https://tfnswscfs.force.com/operatorportal</value>
+    </labels>
+    <labels>
+        <fullName>ERRMSG_ATTACHMENT_UPLOAD_FAILED</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ERRMSG ATTACHMENT UPLOAD FAILED</shortDescription>
+        <value>Failed to upload the attachments.</value>
+    </labels>
+    <labels>
+        <fullName>ERRMSG_FILE_COLUMN_MATCH</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ERRMSG FILE COLUMN MATCH</shortDescription>
+        <value>Invalid columns found in file.</value>
+    </labels>
+    <labels>
+        <fullName>ERRMSG_FILE_NOT_SELECTED</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ERRMSG FILE NOT SELECTED</shortDescription>
+        <value>File is not selected</value>
+    </labels>
+    <labels>
+        <fullName>ERRMSG_NO_RECORDS_IN_FILE</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ERRMSG NO RECORDS IN FILE</shortDescription>
+        <value>No records found in file.</value>
+    </labels>
+    <labels>
+        <fullName>ERRMSG_NO_RECORDS_UPLOADED</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ERRMSG NO RECORDS UPLOADED</shortDescription>
+        <value>No records uploaded.</value>
+    </labels>
+    <labels>
+        <fullName>ERROR_FOR_TOO_MANY_FILES</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ERROR FOR TOO MANY FILES</shortDescription>
+        <value>Too many files selected. Please allow up to 5 files per upload</value>
+    </labels>
+    <labels>
+        <fullName>ERROR_MESSAGE_FILE_FORMAT</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ERROR MESSAGE FILE FORMAT</shortDescription>
+        <value>Invalid file selected. Please check the file format.</value>
+    </labels>
+    <labels>
+        <fullName>ERROR_MESSAGE_TOAST</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ERROR MESSAGE TOAST</shortDescription>
+        <value>error</value>
+    </labels>
+    <labels>
+        <fullName>Exception_Email_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Exception Email Id</shortDescription>
+        <value>salesforcerequests@transport.nsw.gov.au</value>
+    </labels>
+    <labels>
+        <fullName>FILE_PROCESSING</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FILE PROCESSING</shortDescription>
+        <value>Please wait as your file is being uploaded.</value>
+    </labels>
+    <labels>
+        <fullName>FILE_UPLOADING</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FILE UPLOADING</shortDescription>
+        <value>Please wait while your file is getting loaded</value>
+    </labels>
+    <labels>
+        <fullName>FILE_UPLOAD_PROCESSED</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FILE UPLOAD PROCESSED</shortDescription>
+        <value>Attachment files has been processed.
+Please check Notes &amp; Attachments in related list below.</value>
+    </labels>
+    <labels>
+        <fullName>FeedbackTypeComplaints</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FeedbackTypeComplaints</shortDescription>
+        <value>Complaint</value>
+    </labels>
+    <labels>
+        <fullName>Ferry_Route</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ferry Route</shortDescription>
+        <value>Ferry Route</value>
+    </labels>
+    <labels>
+        <fullName>Ferry_Wharf</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ferry Wharf</shortDescription>
+        <value>Ferry Wharf</value>
+    </labels>
+    <labels>
+        <fullName>Field_size_is_too_large</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Field size is too large</shortDescription>
+        <value>Full case description is too long and will be copied to this Action Plan after you click hit the Save button. Kindly do not edit this text unless you wish to override and enter a new description for this Action Plan.</value>
+    </labels>
+    <labels>
+        <fullName>For_Printing_Queue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>For Printing Queue</shortDescription>
+        <value>For_Printing_Queue</value>
+    </labels>
+    <labels>
+        <fullName>INFO_MESSAGE</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>INFO MESSAGE</shortDescription>
+        <value>info</value>
+    </labels>
+    <labels>
+        <fullName>MAXIMUM_RECORD_SIZE</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MAXIMUM RECORD SIZE</shortDescription>
+        <value>Number of records can not be greater than</value>
+    </labels>
+    <labels>
+        <fullName>MAX_FILE_SIZE_ERROR</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MAX FILE SIZE ERROR</shortDescription>
+        <value>File size cannot exceed 4 MB</value>
+    </labels>
+    <labels>
+        <fullName>MaritimeCategoriesToDisplayLocation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MaritimeCategoriesToDisplayLocation</shortDescription>
+        <value>report an on-water concern,maritime products and services,maritime geospatial and surveying services,compliance and enforcement,waterways management and safety,maritime property</value>
+    </labels>
+    <labels>
+        <fullName>MaxDuplicateContactsOnCase</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MaxDuplicateContactsOnCase</shortDescription>
+        <value>5</value>
+    </labels>
+    <labels>
+        <fullName>Metro_Line</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Metro Line</shortDescription>
+        <value>Metro Line</value>
+    </labels>
+    <labels>
+        <fullName>Metro_Station</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Metro Station</shortDescription>
+        <value>Metro Station</value>
+    </labels>
+    <labels>
+        <fullName>MinsToDelayCaseAssignmentToAgency</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MinsToDelayCaseAssignmentToAgency</shortDescription>
+        <value>1</value>
+    </labels>
+    <labels>
+        <fullName>On_Demand</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>On Demand</shortDescription>
+        <value>On Demand</value>
+    </labels>
+    <labels>
+        <fullName>RMS_CAD_Communications_Queue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RMS - CAD - Communications Queue for DFSI Integration</shortDescription>
+        <value>RMS_SYD_CFM_Coordination</value>
+    </labels>
+    <labels>
+        <fullName>RMS_Corro_officer_queue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RMS Corro officer queue</shortDescription>
+        <value>RMS_Corro_Officer_Queue</value>
+    </labels>
+    <labels>
+        <fullName>RMS_Queue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RMS Queue</shortDescription>
+        <value>RMS_SCE_Customer_Information_and_Digital</value>
+    </labels>
+    <labels>
+        <fullName>ReferralNoResponseEmailTemplateId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReferralNoResponseEmailTemplateId</shortDescription>
+        <value>00XO0000000QlW8</value>
+    </labels>
+    <labels>
+        <fullName>RelatedToTimetables</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RelatedToTimetables</shortDescription>
+        <value>timetables (traditional)</value>
+    </labels>
+    <labels>
+        <fullName>RelatedToTripPlanner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RelatedToTripPlanner</shortDescription>
+        <value>trip planner (from/to locations used)</value>
+    </labels>
+    <labels>
+        <fullName>RoadCategoriesToDisplayLocation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RoadCategoriesToDisplayLocation</shortDescription>
+        <value>traffic management and safety,environment,road maintenance,maritime property,major highways and projects,licensing and road rules,speed limits and camera</value>
+    </labels>
+    <labels>
+        <fullName>SNSW_referral_subject</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SNSW referral subject</shortDescription>
+        <value>Case Referral from Transport for NSW Complaints and Management Feedback</value>
+    </labels>
+    <labels>
+        <fullName>STAGING_RECORDS_PROCESSED</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>STAGING RECORDS PROCESSED</shortDescription>
+        <value>records has been processed.
+Please check success/failed records in below list</value>
+    </labels>
+    <labels>
+        <fullName>SUCCESS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SUCCESS</shortDescription>
+        <value>success</value>
+    </labels>
+    <labels>
+        <fullName>SUCCESS_MESSAGE</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SUCCESS_MESSAGE</shortDescription>
+        <value>The file has been loaded and sent for processing.</value>
+    </labels>
+    <labels>
+        <fullName>SUCCESS_MESSAGE_TOAST</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SUCCESS MESSAGE TOAST</shortDescription>
+        <value>success</value>
+    </labels>
+    <labels>
+        <fullName>Serco_Web_Triage_Queue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Serco Web Triage Queue</shortDescription>
+        <value>Serco_Web_Triage_CFM</value>
+    </labels>
+    <labels>
+        <fullName>TfNSWWebsiteValue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TfNSWWebsiteValue</shortDescription>
+        <value>Transport Info (transportnsw.info)</value>
+    </labels>
+    <labels>
+        <fullName>Train_Line</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Train Line</shortDescription>
+        <value>Train Line</value>
+    </labels>
+    <labels>
+        <fullName>Train_Station</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Train Station</shortDescription>
+        <value>Train Station</value>
+    </labels>
+</CustomLabels>

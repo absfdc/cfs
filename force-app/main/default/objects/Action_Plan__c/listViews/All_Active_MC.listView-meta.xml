@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Active_MC</fullName>
+    <columns>Action_Plan_Type__c</columns>
+    <columns>NAME</columns>
+    <columns>Divisions__c</columns>
+    <columns>Branch__c</columns>
+    <columns>Location_Level_3__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Days_Until_Due__c</columns>
+    <columns>Status__c</columns>
+    <columns>Case_Subject__c</columns>
+    <columns>Customer__c</columns>
+    <columns>OBO__c</columns>
+    <columns>Parent_Action_Plan__c</columns>
+    <columns>Type__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Action_Plan__c.MCWS_Action_Plan,Action_Plan__c.MCWS_Agency,Action_Plan__c.MCWS_Child_Action_Plan,Action_Plan__c.RMS_Action_Plan</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Rejected-Incorrect Assignment,Completed</value>
+    </filters>
+    <label>All Active (MC)</label>
+    <sharedTo/>
+</ListView>

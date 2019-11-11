@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>ist of location level 1 values under mode=ferry. All level2 child of this list will be displayed on webform under ferry wharf</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Ferry wharf location level 1 values</label>
+    <visibility>Public</visibility>
+</CustomObject>

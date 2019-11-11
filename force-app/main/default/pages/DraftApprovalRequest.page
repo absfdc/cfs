@@ -1,0 +1,68 @@
+<apex:page StandardController="TH1__Draft__c" extensions="DraftApprovalProcess_CX" tabStyle="Case" id="approvalRequestPage" action="{!init}">
+   <style>
+   	 .pbContainer {width:100%; height:500px; overflow:auto;}
+   </style>  
+   <apex:includeScript value="/support/console/33.0/integration.js"/>
+   <apex:form id="approvalRequestForm">
+       <apex:sectionHeader title="Draft" subtitle="{!draft.Name}"/>
+       <apex:pageMessages escape="false" id="errors"></apex:pageMessages>
+       <div class="pbContainer">
+	       <apex:pageBlock title="Approve/Reject Approval Request" rendered="{!NOT(errorOnPage)}" id="approvalContainerPb">
+	           
+	           <apex:pageBlockButtons location="bottom"> 
+	               <apex:commandButton value="Approve" action="{!approve}" rerender="errors,approvalRequestForm"/>
+	               <apex:commandButton value="Reject" action="{!reject}" rerender="errors,approvalRequestForm"/>
+	               <apex:commandButton value="Cancel" onClick="closeSubTab();"/>
+	           </apex:pageBlockButtons>
+	              
+	           <apex:pageBlockSection columns="1">
+                   <apex:pageBlockSectionItem >
+                       Draft Number: <apex:outputPanel ><a href="{!JSENCODE(draftURL)}" id="{!JSENCODE(draft.Id)}" name="{!JSENCODE(draft.Name)}" target="_blank">{!JSENCODE(draft.Name)}</a></apex:outputPanel>
+	               </apex:pageBlockSectionItem>
+                   
+                   <apex:pageBlockSectionItem >
+	                   Draft Owner: <apex:outputField value="{!draft.OwnerId}"/>
+	               </apex:pageBlockSectionItem>
+                   
+	               <apex:pageBlockSectionItem >
+	                   Case Number: <apex:outputField value="{!draft.Related_Lookup_Case__r.CaseNumber}"/>
+	               </apex:pageBlockSectionItem> 
+	               
+	               <apex:pageBlockSectionItem >
+	                   Case Owner: <apex:outputField value="{!draft.Related_Lookup_Case__r.OwnerId}"/>
+	               </apex:pageBlockSectionItem>
+	               
+	               <apex:pageBlockSectionItem >
+	                   Status: <apex:outputField value="{!draft.Related_Lookup_Case__r.status}"/>
+	               </apex:pageBlockSectionItem>
+
+	               <apex:pageBlockSectionItem >
+	                   Priority: <apex:outputField value="{!draft.Related_Lookup_Case__r.Priority}"/>
+	               </apex:pageBlockSectionItem>
+						               
+	               <apex:pageBlockSectionItem >
+	                   Rejection Reason: 
+	                   <apex:selectList id="rejectionReasonsPicklist" value="{!rejectionReason}" size="1" required="false">
+	                   		<apex:selectOptions value="{!RejectionReasons}"/>
+	                   </apex:selectList>
+	               </apex:pageBlockSectionItem>
+                   
+                   <apex:pageBlockSectionItem >
+	                  Comments: <apex:inputTextArea value="{!comments}" rows="5" cols="60"/>
+	               </apex:pageBlockSectionItem>
+	           </apex:pageBlockSection>
+	       </apex:pageBlock>
+       </div>
+   	</apex:form>
+   	<script >
+   		function closeSubTab() {   
+            if (sforce.console.isInConsole()) {
+                sforce.console.getFocusedPrimaryTabId(function(response) { 
+                    sforce.console.closeTab(response.id);
+                });
+            } else {
+                window.location.href = "/{!JSENCODE(draft.id)}";
+            }
+        }
+    </script>
+</apex:page>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sydney_Trains_Customer_Relations_CFM_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Sydney Trains - Customer Relations</label>
+    <queue>Sydney_Trains_Customer_Relations_CFM</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PBO_Coastal_Liner_Nortale_NoteOrAttachment</fullName>
+    <filterScope>Queue</filterScope>
+    <label>PBO - Coastal Liner Nortale</label>
+    <queue>PBO_Coastal_Liner_Nortale</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>
