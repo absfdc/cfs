@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>TfNSW FSP - Strategy</name>
+    <queueMembers>
+        <roles>
+            <role>Policy_and_Regulation_Liaison_Officer</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

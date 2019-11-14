@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>STL2 Internal Review Queue</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>NSW_TrainLink_List_View_Visibility</publicGroup>
+            <publicGroup>Sydney_Trains_List_View_Visibility</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

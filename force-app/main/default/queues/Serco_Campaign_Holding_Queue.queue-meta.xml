@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Serco Campaign Holding Queue</name>
+    <queueMembers>
+        <users>
+            <user>amanda.hewitt@transport.nsw.gov.au</user>
+            <user>divya.malhotra@serco-ap.com.au</user>
+            <user>jennifer.chambers@serco-ap.com.au</user>
+            <user>jenny.hutton@serco-ap.com</user>
+            <user>kinga.chachowska@serco-ap.com</user>
+            <user>kory.hearn@serco-ap.com.au</user>
+            <user>louise.waters@transport.nsw.gov.au</user>
+            <user>maricar.maniti@serco-ap.com.au</user>
+            <user>nick.perrett@transport.nsw.gov.au</user>
+            <user>nishath.nizam@serco-ap.com</user>
+            <user>prince.george@serco-ap.com.au</user>
+            <user>sarina.ali-abdullah@transport.nsw.gov.au</user>
+            <user>yuvaraj.sampath@serco-ap.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

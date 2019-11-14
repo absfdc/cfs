@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>TfNSW I&amp;P - Program Management Office</name>
+    <queueMembers>
+        <roles>
+            <role>TfNSW_I_S_Program_Divisional_Management_Office_Liaison_Officer</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

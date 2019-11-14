@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Chief_of_Staff_Road</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Chief_of_Staff_Transport</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>DLO_Road</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>DLO_Transport</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>DLO_WestConnex</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Executive_Director_CRGS</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>MAGS_Editor</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>MAGS_Manager</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>MAGS_Officer</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Minister_for_Regional_Transport_and_Roads</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Minister_for_Western_Sydney_WestConnex_and_Sport</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Minister_of_Road</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Minister_of_Transport</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Parliamentary_Secretary</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Parliamentary_Secretary_for_Regional_Roads_and_Infrastructure</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Parliamentary_Secretary_for_Regional_Transport</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Parliamentary_Secretary_Regional_Roads_Rail</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Policy_Advisor_Road</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Policy_Advisor_Transport</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Policy_Advisor_WestConnex</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>RMS_Chief_Executive</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Secretary_Transport_for_NSW</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Senior_MAGS_Officer</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>CaseNumber</field>
+        <field>Owner</field>
+        <field>Subject</field>
+        <field>Description</field>
+        <field>Contact</field>
+        <field>Status</field>
+        <field>Priority</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Set_Date_First_Awaiting_Signature</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Stamp_Date_Awaiting_Signature</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Update_Case_Status_Signatory_Approval</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>MO_User__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step when MAGS Manager sends the response to the MO User (either DLO or PA) for intermediate approval</description>
+        <entryCriteria>
+            <formula>ISPICKVAL(Status, &#39;Awaiting MO Contact Approval&#39;) &amp;&amp; NOT(ISBLANK( MO_User__c ))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>DLO/PA Intermediate Approval</label>
+        <name>MO_User_Intermediate_Approval</name>
+        <rejectionActions>
+            <action>
+                <name>Update_Case_Status_MO_Amend</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Update_Case_Status_Signed</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Signatory_Person__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step when MO User (either DLO or PA) sends the response to non MAGS signatory for approval</description>
+        <entryCriteria>
+            <formula>ISPICKVAL(Status, &#39;Awaiting Signature&#39;) &amp;&amp; 
+NOT(ISBLANK( Signatory_Person__c )) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &#39;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &#39;Principal Manager, Ministerial &amp; Government Services&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &#39;Executive Director, Customer Relations &amp; Government Services&#39;)) &amp;&amp; 
+ISBLANK( Signatory_Person_OBO__c ) &amp;&amp; 
+NOT( Wet_Signature__c )</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Signatory Approval</label>
+        <name>Non_MAGS_Signatory_Approval</name>
+        <rejectBehavior>
+            <type>BackToPrevious</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Update_Case_Status_MO_Signatory_Reject</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Update_Case_Status_Signed</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Signatory_Person_OBO__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step when MO User (either DLO or PA) sends the response to non MAGS signatory for approval</description>
+        <entryCriteria>
+            <formula>ISPICKVAL(Status, &#39;Awaiting Signature&#39;) &amp;&amp; 
+NOT(ISBLANK( Signatory_Person_OBO__c )) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &#39;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &#39;Principal Manager, Ministerial &amp; Government Services&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &#39;Executive Director, Customer Relations &amp; Government Services&#39;)) &amp;&amp; 
+NOT( Wet_Signature__c )</formula>
+        </entryCriteria>
+        <label>Signatory Approval</label>
+        <name>Signatory_Approval</name>
+        <rejectBehavior>
+            <type>BackToPrevious</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Update_Case_Status_MO_Signatory_Reject</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>Approval process flow when signatory is not MAGS manager
+
+SFCOE-2089: Added actions to Stamp Date Awaiting MO Contact Approval upon submission and Stamp Date Awaiting Signature” when approval request sent to signatory.</description>
+    <emailTemplate>Ministerial_Correspondence/MO_Approval_Notification</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>(TEXT(Status) = &#39;MAGS Approved&#39; || TEXT(Status) = &#39;Signatory Rejected&#39; || TEXT(Status) = &#39;Awaiting Signature&#39; || TEXT(Status) = &#39;MO Amend&#39;) &amp;&amp; 
+NOT(ISBLANK(MO_User__c)) &amp;&amp;  
+NOT(ISPICKVAL( Signatory__c, &#39;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &#39;Principal Manager, Ministerial &amp; Government Services&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &#39;Executive Director, Customer Relations &amp; Government Services&#39;)) &amp;&amp; 
+NOT(ISBLANK( Signatory_Person__c )) &amp;&amp; 
+NOT(ISPICKVAL( Response_Type__c, &#39;Referred to other portfolio&#39;))</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Set_Submit_For_MO_Approval_To_False</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Set_Submit_For_MO_Approval_To_False</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Set_Date_First_Awaiting_MO_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Set_Submit_For_MO_Approval_To_True</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Stamp_Date_Awaiting_MO_Contact_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Case_Status_MO_User_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>MO Approval Process - Non MAGS Signatory</label>
+    <recallActions>
+        <action>
+            <name>Set_Submit_For_MO_Approval_To_False</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Case_Status_MAGS_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>TfNSW P2P Transport Commission</name>
+    <queueMembers>
+        <users>
+            <user>rachel.muscat@transport.nsw.gov.au.mc</user>
+            <user>jo.denney@transport.nsw.gov.au.mc</user>
+            <user>robert.marshall@transport.nsw.gov.au.mc</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>TfNSW CTS - Ticketing</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Triage_Cases</publicGroup>
+        </publicGroups>
+        <roles>
+            <role>Transport_Services</role>
+            <role>TfNSW_I_S_Ticketing_Concessions</role>
+            <role>TfNSW_I_S_Ticketing_Concessions_Liaison_Officer</role>
+            <role>TfNSW_I_S_Ticketing_Concessions_SME</role>
+            <role>Transport_Services_SME</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

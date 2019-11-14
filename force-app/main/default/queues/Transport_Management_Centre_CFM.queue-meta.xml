@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>TCO - Transport Management Centre</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Triage_Cases</publicGroup>
+        </publicGroups>
+        <roleAndSubordinatesInternal>
+            <roleAndSubordinateInternal>TfNSW_I_S_Transport_Management_Centre</roleAndSubordinateInternal>
+        </roleAndSubordinatesInternal>
+        <roles>
+            <role>CBD_Coordination_Office_Liaison_Officer</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

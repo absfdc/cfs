@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <description>Sydney Trains</description>
+    <entryStartDateField>Case.Date_Assigned_to_Agency__c</entryStartDateField>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <isVersionDefault>false</isVersionDefault>
+    <milestones>
+        <businessHours>Sydney Trains</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Sydney Trains</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Response_Requested__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Origin</field>
+            <operation>notEqual</operation>
+            <value>Letter</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Attempted contact, Made contact and closed</milestoneName>
+        <minutesToComplete>2400</minutesToComplete>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Sydney Trains</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Sydney Trains</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Letter</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Response_Requested__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Send Letter</milestoneName>
+        <minutesToComplete>4800</minutesToComplete>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <name>Sydney Trains</name>
+    <versionMaster>552O000000000Yi</versionMaster>
+    <versionNumber>1</versionNumber>
+</EntitlementProcess>

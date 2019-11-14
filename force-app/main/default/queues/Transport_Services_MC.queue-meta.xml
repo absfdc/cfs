@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>TfNSW I&amp;P - Operational Systems</name>
+    <queueMembers>
+        <users>
+            <user>aparna.casimir@transport.nsw.gov.au</user>
+            <user>justine.gray@transport.nsw.gov.au</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

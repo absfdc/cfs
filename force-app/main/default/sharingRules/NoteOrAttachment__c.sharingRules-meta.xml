@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Portal_View_All_Read_Only</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Portal View All Read Only</label>
+        <sharedTo>
+            <group>Portal_View_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Attachment</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_AP_Notes_and_MAGS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share AP Notes and MAGS</label>
+        <sharedTo>
+            <group>MAGS_Team</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsMinCorroCaseNote__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Attachments_with_CRGS_Admin</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Attachments with CRGS Admin</label>
+        <sharedTo>
+            <role>CRGS_Admin</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsMinCorroCaseNote__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Attachments_with_MAGS_Manager</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share Attachments with MAGS Manager</label>
+        <sharedTo>
+            <role>MAGS_Manager</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsMinCorroCaseNote__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Attachments_with_Super_CRGS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Attachments with Super CRGS</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsMinCorroCaseNote__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_CFM_Notes_with_Serco</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Shares CFM Notes with Serco</description>
+        <label>Share CFM Notes with Serco</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsMinCorroCaseNote__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Privacy__c</field>
+            <operation>equals</operation>
+            <value>Standard</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Notes_with_MO_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Notes with MO Users</label>
+        <sharedTo>
+            <group>MO_Custom_Notes_Access_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsMinCorroCaseNote__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Privacy__c</field>
+            <operation>equals</operation>
+            <value>Standard</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Office_of_Sec_Notes_to_Office_of_Sec</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Office of Sec Notes to Office of Sec</label>
+        <sharedTo>
+            <roleAndSubordinates>Office_of_the_Secretary_Admin</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsOfficeOfSecNote__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Privacy__c</field>
+            <operation>equals</operation>
+            <value>Standard</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>NSW_Trains_to_Syd_Trains</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>To allow for sharing of attachments whilst Syd Train is managing NSW trains cases.  This is expected to be temporary.</description>
+        <label>NSW Trains to Syd Trains</label>
+        <sharedTo>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_MAGS_to_CRGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share MAGS to CRGS</label>
+        <sharedTo>
+            <role>CRGS_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

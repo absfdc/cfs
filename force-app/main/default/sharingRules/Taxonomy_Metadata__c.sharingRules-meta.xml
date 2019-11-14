@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>share_with_portal_users</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>share with portal users</label>
+        <sharedTo>
+            <allPartnerUsers/>
+        </sharedTo>
+        <criteriaItems>
+            <field>Visible_in_Portal__c</field>
+            <operation>equals</operation>
+            <value>False,True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>share_all_metacategorise</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>with internal users</description>
+        <label>share all metacategorise</label>
+        <sharedTo>
+            <allInternalUsers/>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers/>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

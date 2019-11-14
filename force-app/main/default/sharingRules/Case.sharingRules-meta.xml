@@ -1,0 +1,3085 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Bathurst_Buslines</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Bathurst Buslines Sharing</label>
+        <sharedTo>
+            <group>BathurstBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Bathurst</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Berrima_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Berrima Buslines Sharing</label>
+        <sharedTo>
+            <group>BerrimaBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Berrima</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Blanch_s_Bus_Company_Sharinf</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Blanch&#39;s Bus Company Sharing</label>
+        <sharedTo>
+            <group>BlanchsBusCompanyPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Blanch</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Busways_case_sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Busways case sharing</label>
+        <sharedTo>
+            <group>Busways_Portal_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Busways</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CFM_to_Serco</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CFM to Serco</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ferry,Light Rail,Bus,Metro,Maritime,Road,Multi Issue,Walking &amp; Cycling,Non Mode,Train,On Demand,Private Operators</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Dubbo_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Dubbo Buslines Sharing</label>
+        <sharedTo>
+            <group>DubboBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Dubbo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Edwards_Coaches_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Edwards Coaches Sharing</label>
+        <sharedTo>
+            <group>EdwardsCoachesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Edwards</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Eggins_Comfort_Coaches_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Eggins Comfort Coaches Sharing</label>
+        <sharedTo>
+            <group>EgginsComfortCoachesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Eggins</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Forbes_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Forbes Buslines Sharing</label>
+        <sharedTo>
+            <group>ForbesBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Forbes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Hunter_Valley_Bus_Case_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Hunter Valley Bus Case Sharing</label>
+        <sharedTo>
+            <group>Hunter_Valley_Bus_Portal_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Hunter Valley</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Jemalit_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Jemalit Sharing Rule</label>
+        <sharedTo>
+            <group>Jemalit</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Jemalit</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Light_Rail_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Light Rail Sharing</label>
+        <sharedTo>
+            <group>LightRailPortalGroup</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Light</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO,Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Lithgow_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Lithgow Buslines Sharing</label>
+        <sharedTo>
+            <group>LithgowBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Lithgow</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>MIA_Coaches</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>MIA Coaches</label>
+        <sharedTo>
+            <group>MIACoachesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>MIA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Marshall_s_Bus_and_Coach</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Marshall&#39;s Bus and Coach</label>
+        <sharedTo>
+            <group>MarshallBusandCoachPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Marshall</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Martins_Albury</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Martins Albury Sharing</label>
+        <sharedTo>
+            <group>MartinsAlburyPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Martins</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Metro_Sharing_C1</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Metro Sharing C1</label>
+        <sharedTo>
+            <role>Sydney_Metro_CFM</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>MTS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>notEqual</operation>
+            <value>Triage</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Min_Corro_Non_Closed_Cases_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Min Corro Non Closed Cases Sharing</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>notEqual</operation>
+            <value>Closed - NRR,Completed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>General Ministerial Correspondence,Campaign Member,Campaign,Transport Ministerial Correspondence,Roads &amp; Freight Ministerial Correspondence,WestConnex Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Signatory__c</field>
+            <operation>notEqual</operation>
+            <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>00G28000002Vrds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>00G28000002Vre0</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Min_Corro_Share_Closed_Cases</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Min Corro Share Closed Cases</label>
+        <sharedTo>
+            <group>Min_Corro_Closed_Case_Viewers</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed - NRR,Completed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>General Ministerial Correspondence,Campaign Member,Campaign,Transport Ministerial Correspondence,Roads &amp; Freight Ministerial Correspondence</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Min_Corro_and_CFM_cases</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share Min Corro and CFM cases, not owned by RMS with the DLO Transport Role users</description>
+        <label>Min Corro and CFM cases</label>
+        <sharedTo>
+            <role>DLO_Transport</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>notEqual</operation>
+            <value>RMS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>NEW_Share_with_Dion</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>NEW Share with Dion</label>
+        <sharedTo>
+            <group>Dions_Bus_Service_Seapost_Portal_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 or (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Dions Bus Service</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>NEW_Share_with_qcity</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>NEW Share with qcity</label>
+        <sharedTo>
+            <group>QCity_Transit_Portal_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 or (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>QCity Transit</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>NSW_Trainlink_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all marked as NSW Trains with NSW Trains</description>
+        <label>NSW Trainlink Sharing</label>
+        <sharedTo>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>notEqual</operation>
+            <value>Triage</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Newcombe_Coach_Lines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Newcombe Coach Lines Sharing</label>
+        <sharedTo>
+            <group>NewcombeCoachLinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Newcombe</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Northern_Rivers_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Northern Rivers Buslines Sharing</label>
+        <sharedTo>
+            <group>Northern_Rivers_Buslines_Portal_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Northern Rivers</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Nowra_Coaches</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Nowra Coaches</label>
+        <sharedTo>
+            <group>NowraCoachesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Nowra</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Ogdens_Coaches_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Ogdens Coaches Sharing</label>
+        <sharedTo>
+            <group>OgdensCoachesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Ogdens</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Orange_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Orange Buslines Sharing</label>
+        <sharedTo>
+            <group>OrangeBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Orange</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Picton_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Picton Buslines Sharing</label>
+        <sharedTo>
+            <group>PictonBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Picton</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Port_Stephens_case_sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Port Stephens case sharing</label>
+        <sharedTo>
+            <group>PortStephensCoachesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Port Stephens</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Portal_PBO_Cases_View_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Portal PBO Cases View All</label>
+        <sharedTo>
+            <group>Portal_View_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Premier_Charters_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Premier Charters Sharing</label>
+        <sharedTo>
+            <group>PremierChartersPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Premier</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Priors_Bus_Service_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Priors Bus Service Sharing</label>
+        <sharedTo>
+            <group>PriorsBusServicePortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Priors</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Purtills_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Purtills Sharing</label>
+        <sharedTo>
+            <group>PurtillsPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Purtills</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>RMS_CE_Case_Sharing_With_MAGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>RMS CE Case Sharing With MAGS</description>
+        <label>RMS CE Case Sharing With MAGS</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>notEqual</operation>
+            <value>Closed - NRR,Completed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>General Ministerial Correspondence,Campaign Member,Campaign,Transport Ministerial Correspondence,Roads &amp; Freight Ministerial Correspondence,WestConnex Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Signatory__c</field>
+            <operation>equals</operation>
+            <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>00G28000002Vrds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>00G28000002Vre0</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Read_Access_for_Reporting</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Read Access for Reporting</label>
+        <sharedTo>
+            <group>Case_Read_Access_and_Reporting_Capabilit</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CaseNumber</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Red_case_sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Red case sharing</label>
+        <sharedTo>
+            <group>RedBusServicesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Red</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Rover_Coaches_case_sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Rover Coaches case sharing</label>
+        <sharedTo>
+            <group>RoverCoachesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Rover</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Ryans_Bus_Service_Shairnf</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Ryan Bus Service Shairng</label>
+        <sharedTo>
+            <group>RyansBusServicePortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Ryan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Sapphire_Coast_Buslines</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sapphire Coast Buslines Sharing</label>
+        <sharedTo>
+            <group>SapphireCoastBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Sapphire</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Sawtell_Coaches</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sawtell Coaches</label>
+        <sharedTo>
+            <group>SawtellCoachesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Sawtell,Ryans</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_CRS_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share CRS Cases</label>
+        <sharedTo>
+            <group>CRS_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Is_CRS__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Cases_PA_Roads</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Cases PA Roads</label>
+        <sharedTo>
+            <group>Roads_PA_Access_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Road_Policy_Advisor_Owned__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Cases_PA_Transport</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Cases PA Transport</label>
+        <sharedTo>
+            <group>Transport_PA_Access_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Transport_Policy_Advisor_Owned__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Cases_PA_WestConnex</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Cases PA WestConnex</label>
+        <sharedTo>
+            <group>WestConnex_PA_Access_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>WestConnex_Policy_Advisor_Owned__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_DLO_Road_Cases_With_OOS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share DLO Road Cases With OOS</label>
+        <sharedTo>
+            <role>Secretary_Transport_for_NSW</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Signatory__c</field>
+            <operation>equals</operation>
+            <value>Secretary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Office of the Secretary Correspondence,Roads &amp; Freight Ministerial Correspondence,Transport Ministerial Correspondence</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Office_of_Sec_Cases_with_Office_of_Sec</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Office of Sec Cases with Office of Sec</label>
+        <sharedTo>
+            <roleAndSubordinates>Office_of_the_Secretary_Admin</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Office of the Secretary Correspondence</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Owner_Agency_RMS_with_RMS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule shares all cases with an Owner Agency of RMS with RMS Role and Subordinates.  Necessary to share all cases on RMS queues with RMS users since ownership based rule doesn&#39;t work on queues.</description>
+        <label>Share Owner Agency RMS with RMS</label>
+        <sharedTo>
+            <roleAndSubordinates>RMS</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>RMS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_RMS_MinCorro_cases_with_RMS_Mincorro_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share RMS MinCorro cases with RMS Mincorro Users</label>
+        <sharedTo>
+            <group>RMS_MinCorro_Users</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>RMS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>General Ministerial Correspondence,RMS CE Signatory,Campaign Member,Campaign,Roads &amp; Freight Ministerial Correspondence,Transport Ministerial Correspondence,Erroneous Cases Ministerial Correspondence</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_RMS_agency_cases_with_RMS_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share RMS agency cases with RMS Users</label>
+        <sharedTo>
+            <role>RMS</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>RMS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Signatory_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Signatory Cases</label>
+        <sharedTo>
+            <group>Signatory_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Signatory_Person_OBO__c</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>00G28000002Vrds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>00G28000002Vre0</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Transdev_On_Demand</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Transdev On-Demand</label>
+        <sharedTo>
+            <group>Transdev_On_Demand</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR (6 AND 7))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Transdev</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location__c</field>
+            <operation>contains</operation>
+            <value>On Demand</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_all_Light_Rail_cases_with_Light_Rail_Contract_Management_Team</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share all Light Rail cases with Light Rail Contract Management Team</label>
+        <sharedTo>
+            <group>Light_Rail_Contract_Management_Team_Grou</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Light Rail</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>LRO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Sydney Light Rail</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_all_NSW_Trains_Categorized_Cases_with_NSW_Train_Liaison_Officer</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule is required because, without it, NSW Trains members in the NSW Trains Liaison Officer would not be able to see NSW Trains cases that have been worked and managed by Sydney Trains&#39; role case managers.</description>
+        <label>Share all NSW Trains Categorized Cases with NSW Train Liaison Officer</label>
+        <sharedTo>
+            <role>NSW_Trainlink_Liaison_Officer</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>notEqual</operation>
+            <value>Triage</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_all_STA_Read_Only</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Shares all cases marked STA Agency as Read Only with STA and Subordinates</description>
+        <label>Share all STA Read Only</label>
+        <sharedTo>
+            <roleAndSubordinates>STA</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>STA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>notEqual</operation>
+            <value>Triage</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_for_CCTCL</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share for CCTCL</label>
+        <sharedTo>
+            <group>CommunityTransportCentralCoast</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Community Transport Central Coast</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_for_Coastal_Liner_Nortale</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share for Coastal Liner (Nortale)</label>
+        <sharedTo>
+            <group>CoastalLinerNortalePortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Coastal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_for_Keolis_Downer</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share for Keolis Downer</label>
+        <sharedTo>
+            <group>Keolis_Downer_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Keolis Downer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_Transdev_Bus</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with Transdev Bus</label>
+        <sharedTo>
+            <group>Transdev_Bus_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR (6 AND 7))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Transdev</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location__c</field>
+            <operation>notContain</operation>
+            <value>On Demand</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_Transdev_Light_Rail</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with Transdev Light Rail</label>
+        <sharedTo>
+            <group>Transdev_Light_Rail_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND  (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Light Rail</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Sydney Light Rail</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>LRO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>LRO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Shoalbus_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Shoalbus Sharing</label>
+        <sharedTo>
+            <group>ShoalbusPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Shoalbus</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Surfside_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Surfside Buslines Sharing</label>
+        <sharedTo>
+            <group>SurfsideBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Surfside</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Sydney_Trains_RMC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sydney Trains RMC</label>
+        <sharedTo>
+            <role>Sydney_Trains_CFM</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>Sydney Trains,NSW Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>notEqual</operation>
+            <value>Triage</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Tamworth_Buslines_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Tamworth Buslines Sharing</label>
+        <sharedTo>
+            <group>TamworthBuslinesPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Tamworth</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Western_Road_Liners_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Western Road Liners Sharing</label>
+        <sharedTo>
+            <group>WesternRoadLinersPortalGroup</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Western</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_for_Punchbowl</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share for Punchbowl</label>
+        <sharedTo>
+            <portalRoleAndSubordinates>PunchbowlBusCompanyPartnerUser</portalRoleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Punchbowl Bus Company</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_for_interline</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share for interline</label>
+        <sharedTo>
+            <portalRoleAndSubordinates>InterlineBusServicePartnerUser</portalRoleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Interline Bus Service</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_for_transit_systems</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share for transit systems</label>
+        <sharedTo>
+            <portalRoleAndSubordinates>TransitSystemsPartnerUser</portalRoleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND 7 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Transit Systems</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Area__c</field>
+            <operation>notEqual</operation>
+            <value>Transit Systems West</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_for_transit_systems_west</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share for transit systems west</label>
+        <sharedTo>
+            <group>Transit_Systems_West</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR (6 AND 7))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Transit Systems</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Area__c</field>
+            <operation>equals</operation>
+            <value>Transit Systems West</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_with_Busways</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share with Busways</label>
+        <sharedTo>
+            <group>Busabout_Portal_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND ( 5 OR (6 AND 7))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Busabout</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>notContain</operation>
+            <value>Busabout Wagga</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_with_Busways_Wagga</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share with Busways Wagga</label>
+        <sharedTo>
+            <group>Busabout_Wagga_Portal_Group</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>contains</operation>
+            <value>Wagga</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_with_blue_mountain_transit</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share with blue mountain transit</label>
+        <sharedTo>
+            <portalRoleAndSubordinates>BlueMountainsTransitPartnerUser</portalRoleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Blue Mountains Transit</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>share_with_hillsbus</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>share with hillsbus</label>
+        <sharedTo>
+            <portalRoleAndSubordinates>HillsbusCDCPartnerUser</portalRoleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6))</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus,Private Operators</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Hillsbus</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>PBO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Serco</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>Closed with Customer,Finalised,Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Cases_Owned_by_Mincorro_users_with_Mincorro_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Cases Owned by Mincorro users with Mincorro Users</label>
+        <sharedTo>
+            <group>RMS_MinCorro_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>RMS_MinCorro_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>GIS_Admin_To_MAGS_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>All the cases owned by GIS admin queue will be shared with mags team in Read Only Mode</description>
+        <label>GIS Admin To MAGS Sharing</label>
+        <sharedTo>
+            <group>MAGS_Team</group>
+        </sharedTo>
+        <sharedFrom>
+            <queue>GIS_Admin_RMS_MC</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>HCF_share_with_HCF</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Gives full read / write access to cases for users in the HCF Role</description>
+        <label>HCF share with HCF</label>
+        <sharedTo>
+            <role>HCF</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>HCF</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>MAGS_Team_Case_Visibility</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Open up Case record visibility to entire MAGS Team</description>
+        <label>MAGS Team Case Visibility</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Metro_Sharing_C2</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Metro Sharing C2</label>
+        <sharedTo>
+            <role>Sydney_Metro_CFM</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Sydney_Metro_CFM</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Metro_Sharing_C3</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Metro Sharing C3</label>
+        <sharedTo>
+            <roleAndSubordinates>Sydney_Metro_CFM</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sydney_Metro_CFM</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Metro_Sharing_C4</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Metro Sharing C4</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sydney_Metro_CFM</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>RMS_share_with_RMS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>RMS share with RMS</label>
+        <sharedTo>
+            <role>RMS</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>RMS</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>STA_CM</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all STA rules with STA Role</description>
+        <label>STA - CM</label>
+        <sharedTo>
+            <role>STA</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>STA</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>STA_Eastern_Region</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Shares all records owned with users in the region with other users in the region</description>
+        <label>STA - Eastern Region</label>
+        <sharedTo>
+            <role>STA_Eastern_Region</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>STA_Eastern_Region</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>STA_Northern_Region</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Gives case access to users within the same role</description>
+        <label>STA - Northern Region</label>
+        <sharedTo>
+            <role>STA_Northern_Region</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>STA_Northern_Region</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>STA_Read_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Shares all STA cases with all STA subordinates, read-only</description>
+        <label>STA_Read_All</label>
+        <sharedTo>
+            <roleAndSubordinates>STA</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>STA</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>STA_Southern_Region</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Gives access to cases to users with the same role</description>
+        <label>STA - Southern Region</label>
+        <sharedTo>
+            <role>STA_Southern_Region</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>STA_Southern_Region</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>STA_Western_Region</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Give case access to users with the same role</description>
+        <label>STA - Western Region</label>
+        <sharedTo>
+            <role>STA_Western_Region</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>STA_Western_Region</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_MO_Roads</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share cases owned by Minister of Road, Chief of Staff (Road), Parliamentary Secretary (Transport), DLO (Road)  &amp; MO Office Manager (Road)  roles with each other. Above specified role users are part of Roads MO Users group.</description>
+        <label>Share Cases MO Roads</label>
+        <sharedTo>
+            <group>Roads_MO_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Roads_MO_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_MO_Transport</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share cases owned by Minister of Transport, Chief of Staff (Transport), Parliamentary Secretary (Transport), DLO (Transport)  &amp; MO Office Manager (Transport)  roles with each other. Above specified role users are part of Transport MO Users group.</description>
+        <label>Share Cases MO Transport</label>
+        <sharedTo>
+            <group>Transport_MO_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Transport_MO_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_MO_WestConnex</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share cases owned by Minister of WestConnex, Chief of Staff (WestConnex), Parliamentary Secretary (WestConnex), DLO (WestConnex)  &amp; MO Office Manager (WestConnex)  roles with each other. Above specified role users are part of WestConnex MO Users group.</description>
+        <label>Share Cases MO WestConnex</label>
+        <sharedTo>
+            <group>WestConnex_MO_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>WestConnex_MO_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_OFS_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Cases OFS Users</label>
+        <sharedTo>
+            <group>Office_of_Secretary_MO_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Office_of_Secretary_MO_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_OM_Roads</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Cases OM Roads</label>
+        <sharedTo>
+            <role>MO_Office_Manager_Road</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>MO_Office_Manager_Road</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_OM_Transport</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Cases OM Transport</label>
+        <sharedTo>
+            <role>MO_Office_Manager_Transport</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>MO_Office_Manager_Transport</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_CBD_with_CRGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with CRGS for reporting purposes.</description>
+        <label>Share Cases TfNSW CBD with CRGS</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_CBD_Coordination_Office_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_CBD_with_MAGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with MAGS</description>
+        <label>Share Cases TfNSW CBD with MAGS</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_CBD_Coordination_Office_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_CLT_with_CRGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with CRGS for reporting purposes.</description>
+        <label>Share Cases TfNSW CLT with CRGS</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Customer_Liaison_Team_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_CLT_with_MAGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with MAGS</description>
+        <label>Share Cases TfNSW CLT with MAGS</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Customer_Liaison_Team_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_CRS_with_CRGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with CRGS for reporting purposes.</description>
+        <label>Share Cases TfNSW CRS with CRGS</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Centre_for_Road_Safety_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_CRS_with_MAGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with MAGS</description>
+        <label>Share Cases TfNSW CRS with MAGS</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Centre_for_Road_Safety_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_P_S_with_CRGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with CRGS for reporting purposes.</description>
+        <label>Share Cases TfNSW P&amp;S with CRGS</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Passes_Schemes_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_P_S_with_MAGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with MAGS</description>
+        <label>Share Cases TfNSW P&amp;S with MAGS</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Passes_Schemes_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_TMC_with_CRGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with CRGS for reporting purposes.</description>
+        <label>Share Cases TfNSW TMC with CRGS</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>Transport_Management_Centre_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_TMC_with_MAGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with MAGS</description>
+        <label>Share Cases TfNSW TMC with MAGS</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <queue>Transport_Management_Centre_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_Ticketing_with_CRGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with CRGS for reporting purposes.</description>
+        <label>Share Cases TfNSW Ticketing with CRGS</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Ticketing_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Cases_TfNSW_Ticketing_with_MAGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW CFM cases with MAGS</description>
+        <label>Share Cases TfNSW Ticketing with MAGS</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Ticketing_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_HCF_with_Serco</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all HCF cases with Serco</description>
+        <label>Share HCF with Serco</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>HCF</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_MAGS_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Open up Case record visibility to entire MAGS Team</description>
+        <label>Share MAGS Cases</label>
+        <sharedTo>
+            <roleAndSubordinates>Executive_Director_CRGS</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Executive_Director_CRGS</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_MAGS_Cases_With_OOS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share MAGS Cases With OOS</label>
+        <sharedTo>
+            <roleAndSubordinates>Office_of_the_Secretary_Admin</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Executive_Director_CRGS</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_NSW_TrainLink_CFM_with_NSW_Trains_MC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all CFM NSW TrainLink cases with NSW TrainLink MC users in a read-write fashion.</description>
+        <label>Share NSW TrainLink CFM with NSW Trains MC</label>
+        <sharedTo>
+            <role>NSW_Trainlink_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_NSW_Trains_Internally</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share NSW Trains Internally</label>
+        <sharedTo>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_NSW_Trains_with_Serco</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all NSW Trains cases with Serco</description>
+        <label>Share NSW Trains with Serco</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Newcastle_Transport_Cases_With_Newcastle_Transport_Role</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Cases owned by user with role &#39;Newcastle Transport&#39; would be shared with all other users in role &#39;Newcastle Transport&#39;.</description>
+        <label>Share Newcastle Transport Cases With Newcastle Transport Role</label>
+        <sharedTo>
+            <role>Newcastle_Transport</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Newcastle_Transport</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Office_of_Sec_Cases_to_MAGS_Team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Office of Sec Cases to MAGS Team</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Office_of_the_Secretary_Admin</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_RMS_Cases_Internally</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share RMS Cases Internally</label>
+        <sharedTo>
+            <roleAndSubordinates>RMS</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>RMS</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Road_Cases_With_PS_PSRR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Road Cases With PS/PSRR</label>
+        <sharedTo>
+            <group>Parliamentary_Secretary_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Roads_MO_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Road_DLO_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Road DLO Cases</label>
+        <sharedTo>
+            <group>Roads_MO_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <role>DLO_Road</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_STA_with_Serco</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Shares all STA cases with Serco</description>
+        <label>Share STA with Serco</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>STA</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_SYD_Trains_Liaison_Officer_with_SYD_Trains_Sr_Case_Mgr</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Allow Senior Case Manager to access Liaison Officer data</description>
+        <label>Share SYD Trains Liaison Officer with SYD Trains Sr Case Mgr</label>
+        <sharedTo>
+            <group>Syd_Trains_Case_to_Liaison</group>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Sydney_Trains_CFM_with_Sydney_Trains_MC</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule shares all Sydney Trains CFM cases with Sydney Trains MC Users in a read-only fashion.</description>
+        <label>Share Sydney Trains CFM with Sydney Trains MC</label>
+        <sharedTo>
+            <role>Sydney_Trains_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Sydney_Trains_with_Serco</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Shares all records owned by Sydney Trains with Serco</description>
+        <label>Share Sydney Trains with Serco</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_TfNSW_Cases_with_CRGS_Super_Admins</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule is required to share all TfNSW cases with CRGS Super Admins.</description>
+        <label>Share TfNSW Cases with CRGS Super Admins</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_TfNSW_Cases_with_MAGS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share TfNSW cases with MAGS for visibility</description>
+        <label>Share TfNSW Cases with MAGS</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_TfNSW_Internally</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share TfNSW Internally</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>TfNSW</roleAndSubordinatesInternal>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>TfNSW</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_TfNSW_with_Serco</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all TfNSW cases with Serco</description>
+        <label>Share TfNSW with Serco</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Transport_Cases_With_PS_PSRR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Transport Cases With PS/PSRR</label>
+        <sharedTo>
+            <group>Parliamentary_Secretary_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Transport_MO_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Transport_DLO_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Transport DLO Cases</label>
+        <sharedTo>
+            <group>Transport_MO_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <role>DLO_Transport</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_WestConnex_Cases_With_PS_PSRR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share WestConnex Cases With PS/PSRR</label>
+        <sharedTo>
+            <group>Parliamentary_Secretary_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>WestConnex_MO_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_WestConnex_DLO_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share WestConnex DLO Cases</label>
+        <sharedTo>
+            <group>WestConnex_MO_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <role>DLO_WestConnex</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_cases_with_CRGS_Admin</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Give Read Only Access to CRGS Admin of cases which are owned by MAGS Officer.</description>
+        <label>Share cases with CRGS Admin</label>
+        <sharedTo>
+            <role>CRGS_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>Senior_MAGS_Officer_Queue_MC</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_with_CFM_and_Min_Corro_Permission_Set_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with CFM and Min Corro Permission Set Users</label>
+        <sharedTo>
+            <group>Triage_Cases</group>
+        </sharedTo>
+        <sharedFrom>
+            <queue>TfNSW_Centre_for_Road_Safety_CFM</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Syd_Trains_with_Syd_Trains</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Gives full read / write access to cases for users in the Syd Trains Role</description>
+        <label>Syd Trains with Syd Trains</label>
+        <sharedTo>
+            <role>Sydney_Trains_CFM</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Sydney_Trains_CFM</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sydney_Trains_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all Sydney Trains CFM cases with all Syd Trains CFM and Subordinates</description>
+        <label>Sydney Trains Sharing Rule</label>
+        <sharedTo>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Temp_Syd_Trains_Access_NSW_Trains</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Temp Syd Trains Access NSW Trains</label>
+        <sharedTo>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Transit_Systems_Case_Manager_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule will share all cases owned by anyone in Transit Systems &gt; Case Manager to everyone else in the role.</description>
+        <label>Transit Systems Case Manager Sharing</label>
+        <sharedTo>
+            <roleAndSubordinates>Transit_Systems_Case_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Transit_Systems_Case_Manager</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

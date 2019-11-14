@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Response__c</field>
+        <field>ResponseHistory__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Sydney_Trains_Customer_Response_Approver</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Manager review of the response</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>startsWith</operation>
+                <value>Syd Trains</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Manager Review</label>
+        <name>Manager_Review</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>NSW_Trains_Customer_Response_Approver</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Review by NSW Trains Approver(s)</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>startsWith</operation>
+                <value>NSW Train</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>NSW Trains Review</label>
+        <name>NSW_Trains_Review</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Approval process for customer-facing responses for NSW TrainLink that will be incorporated into email for Complaints &amp; Feedback Management</description>
+    <emailTemplate>Sydney_Trains_Internal/Approval_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>(1 AND (2 OR 3)) OR (1 AND 4 AND 5)</booleanFilter>
+        <criteriaItems>
+            <field>Action_Plan__c.Type__c</field>
+            <operation>equals</operation>
+            <value>Customer-Facing Response</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trainlink</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Agency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Agency__c</field>
+            <operation>notEqual</operation>
+            <value>NSW Trainlink,NSW Trains,Sydney Trains</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>AP_Status_To_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Final_approval_notification_to_AP_owner</name>
+            <type>Alert</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>AP_Status_to_New</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Final_rejection_notification_for_NSW_TrainLink</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Action_Plan_Updated_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Increment_AP_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>CFM Customer-Facing Response for NSW</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <recallActions>
+        <action>
+            <name>AP_Status_to_New</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

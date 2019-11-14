@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>MAGS_Manager</submitter>
+        <type>roleSubordinates</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Related_Lookup_Case__c</field>
+        <field>Owner</field>
+        <field>TH1__Email_subject__c</field>
+        <field>Status__c</field>
+        <field>TH1__Storage_Name__c</field>
+        <field>CreatedBy</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Draft_Approval_Status_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Draft_Status_To_Editor_Review</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>MCWS_Senior_MAGS_Approval_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Senior Review</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>TH1__Draft__c.Status__c</field>
+                <operation>equals</operation>
+                <value>Senior Review</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>01 - Senior Review</label>
+        <name>Setp1_Senior_Review</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Draft_Approval_Status_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Draft_Status_To_Manager_Review</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>MCWS_Editor_Approval_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Editor Review</description>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL( Status__c, &quot;Editor Review&quot; ),
+NOT( Related_Lookup_Case__r.Amendment__c ))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>02 - Editor Review</label>
+        <name>Setp2_Editor_Review</name>
+        <rejectBehavior>
+            <type>BackToPrevious</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Draft_Approval_Status_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Draft_Status_To_Senior_Review</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Draft_Approval_Status_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Draft_Status_To_Ready_For_Printing</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>MCWS_Manager_Approval_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Manager Review</description>
+        <entryCriteria>
+            <formula>AND(
+ISPICKVAL(Status__c,&quot;Manager Review&quot;),
+OR(
+ISPICKVAL( Related_Lookup_Case__r.Classification__c,&quot;Contentious&quot;),
+ISPICKVAL( Related_Lookup_Case__r.Classification__c,&quot;Highly Contentious&quot;)
+),
+NOT( Related_Lookup_Case__r.Amendment__c )
+)</formula>
+        </entryCriteria>
+        <label>03 - Manager Review</label>
+        <name>Step3_Manager_Review</name>
+        <rejectBehavior>
+            <type>BackToPrevious</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Draft_Approval_Status_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Draft_Status_To_Editor_Review</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>Approval process will be used by Senior MAGS officer, MAGS Officers for WestConnex</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>IF( 
+TEXT(Related_Lookup_Case__r.Response_Type__c) != &quot;Draft response and brief&quot;, 
+AND( 
+OR( 
+ISPICKVAL(Related_Lookup_Case__r.Status ,&quot;Draft in Progress&quot;), 
+ISPICKVAL(Related_Lookup_Case__r.Status ,&quot;Awaiting Approval&quot;), 
+ISPICKVAL(Status__c ,&quot;Draft Response in Progress&quot;) 
+), 
+Related_Lookup_Case__r.NoOfActiveActionPlans__c = 0,
+ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;WestConnex&#39; )
+) 
+, 
+AND( 
+OR( 
+ISPICKVAL(Related_Lookup_Case__r.Status ,&quot;Draft in Progress&quot;), 
+ISPICKVAL(Related_Lookup_Case__r.Status ,&quot;Awaiting Approval&quot;), 
+ISPICKVAL(Status__c ,&quot;Draft Response in Progress&quot;) 
+), 
+Related_Lookup_Case__r.NoOfActiveActionPlans__c = 0, 
+LEN(Related_Lookup_Case__r.Dot_Points__c) != 0,
+ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;WestConnex&#39; )
+) 
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Draft_Approval_Status_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Draft_Status_To_Ready_For_Printing</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Draft_Approval_Status_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Draft_Status_Draft_Response_in_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Draft_Approval_Status_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Set_Submit_For_Approval_To_True</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>WestConnex - Draft Response Approval</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <recallActions>
+        <action>
+            <name>Draft_Approval_Status_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Draft_Status_Draft_Response_in_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>TfNSW FSP Centre Road Maritime Safety</name>
+    <queueMembers>
+        <users>
+            <user>cazcarolyn.heim@transport.nsw.gov.au</user>
+            <user>gaylene.maurangi@transport.nsw.gov.au</user>
+            <user>meagan.hunt@transport.nsw.gov.au</user>
+            <user>ruth.graver@transport.nsw.gov.au</user>
+            <user>troy.griffith@transport.nsw.gov.au</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

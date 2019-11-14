@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>Concession - Customer Schemes</name>
+    <queueMembers>
+        <users>
+            <user>anumrita.saha@transport.nsw.gov.au</user>
+            <user>azeez.yusuff@transport.nsw.gov.au</user>
+            <user>craig.clarke@transport.nsw.gov.au</user>
+            <user>david.wilson@transport.nsw.gov.au</user>
+            <user>hasanga.weerakoon@transport.nsw.gov.au</user>
+            <user>kiranpreet.kaur@transport.nsw.gov.au</user>
+            <user>lawrence.powderly@transport.nsw.gov.au</user>
+            <user>lewin.jamito@transport.nsw.gov.au</user>
+            <user>lindy.hall@transport.nsw.gov.au</user>
+            <user>mary-anne.morris@transport.nsw.gov.au</user>
+            <user>michaela.evans@transport.nsw.gov.au</user>
+            <user>rachel.iuli@transport.nsw.gov.au</user>
+            <user>rachel.williams@transport.nsw.gov.au</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

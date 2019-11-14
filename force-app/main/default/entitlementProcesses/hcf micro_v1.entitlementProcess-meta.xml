@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <description>HCF</description>
+    <entryStartDateField>Case.Date_Assigned_to_Agency__c</entryStartDateField>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <isVersionDefault>true</isVersionDefault>
+    <milestones>
+        <businessHours>HCF</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>HCF</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Contact Made</milestoneName>
+        <minutesToComplete>7</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>HCF_contact_made_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>HCF_contact_made_violation</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <name>HCF Micro</name>
+    <versionMaster>552O000000000XB</versionMaster>
+    <versionNumber>1</versionNumber>
+</EntitlementProcess>

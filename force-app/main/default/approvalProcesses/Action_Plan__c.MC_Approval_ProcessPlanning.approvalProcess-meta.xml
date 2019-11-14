@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Parent_Action_Plan__c</field>
+        <field>Parent_Case__c</field>
+        <field>Case_Subject__c</field>
+        <field>Agency__c</field>
+        <field>Customer__c</field>
+        <field>Minister__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>adhoc</type>
+            </approver>
+        </assignedApprover>
+        <description>Manager will approve</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Action_Plan__c.Agency__c</field>
+                <operation>equals</operation>
+                <value>Planning</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Action_Plan__c.Status__c</field>
+                <operation>equals</operation>
+                <value>Waiting for Manager Approval</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Step 1 - Manger Approval</label>
+        <name>Step_1_Manger_Approval</name>
+        <rejectionActions>
+            <action>
+                <name>AP_Status_To_Draft_Advice_in_Progress</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>AP_Status_To_Awaiting_Advice_Approval</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <type>adhoc</type>
+            </approver>
+        </assignedApprover>
+        <description>Principal Manager will approve the action plan</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Action_Plan__c.Agency__c</field>
+                <operation>equals</operation>
+                <value>Planning</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Action_Plan__c.Status__c</field>
+                <operation>equals</operation>
+                <value>Waiting for PM Approval</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Step 2 - Principal Manager Approval</label>
+        <name>Step_2_Principal_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>AP_Status_To_Draft_Advice_in_Progress</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>adhoc</type>
+            </approver>
+        </assignedApprover>
+        <description>General Manager will approve action plan</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Action_Plan__c.Agency__c</field>
+                <operation>equals</operation>
+                <value>Planning</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Action_Plan__c.Status__c</field>
+                <operation>equals</operation>
+                <value>Waiting for GM Approval</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>Step 3 - General Manager Approval</label>
+        <name>Step_3_General_Manager_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>AP_Status_To_Draft_Advice_in_Progress</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>This approval process will be used by Planning Division</description>
+    <emailTemplate>Min_Corro_Div_Planning/Approval_Assignment_Planning</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Action_Plan__c.Agency__c</field>
+            <operation>equals</operation>
+            <value>Planning</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Action Plan in Progress</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Response__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Close_The_Action_Plan_Once_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>MC Approval Process- Planning</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

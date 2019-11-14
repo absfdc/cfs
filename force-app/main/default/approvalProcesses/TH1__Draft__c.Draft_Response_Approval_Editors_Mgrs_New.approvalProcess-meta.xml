@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Executive_Director_CRGS</submitter>
+        <type>roleSubordinates</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Related_Lookup_Case__c</field>
+        <field>Owner</field>
+        <field>TH1__Email_subject__c</field>
+        <field>Status__c</field>
+        <field>TH1__Storage_Name__c</field>
+        <field>CreatedBy</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>MCWS_Editor_Approval_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>TH1__Draft__c.Name</field>
+                <operation>equals</operation>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Editor / Manager Approval</label>
+        <name>Editor_Manager_Approval</name>
+    </approvalStep>
+    <description>Approval process will be used by Editors and Managers</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(IF( 
+TEXT(Related_Lookup_Case__r.Response_Type__c) != &quot;Draft response and brief&quot;, 
+AND( 
+OR( 
+ISPICKVAL(Related_Lookup_Case__r.Status ,&quot;Draft in Progress&quot;), 
+ISPICKVAL(Related_Lookup_Case__r.Status ,&quot;Awaiting Approval&quot;), 
+ISPICKVAL(Status__c ,&quot;Draft Response in Progress&quot;) 
+), 
+Related_Lookup_Case__r.NoOfActiveActionPlans__c = 0,
+OR( ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;Transport and Infrastructure&#39;), 
+	ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;Roads, Maritime and Freight&#39;), 
+	ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;Office of the Secretary&#39;),
+	ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;WestConnex&#39;)) 
+) 
+, 
+AND( 
+OR( 
+ISPICKVAL(Related_Lookup_Case__r.Status ,&quot;Draft in Progress&quot;), 
+ISPICKVAL(Related_Lookup_Case__r.Status ,&quot;Awaiting Approval&quot;), 
+ISPICKVAL(Status__c ,&quot;Draft Response in Progress&quot;) 
+), 
+Related_Lookup_Case__r.NoOfActiveActionPlans__c = 0, 
+LEN(Related_Lookup_Case__r.Dot_Points__c) != 0,
+OR( ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;Transport and Infrastructure&#39;), 
+	ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;Roads, Maritime and Freight&#39;), 
+	ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;Office of the Secretary&#39;),
+	ISPICKVAL(Related_Lookup_Case__r.Portfolio__c, &#39;WestConnex&#39;)) 
+) 
+), 
+OR ($UserRole.DeveloperName = &quot;MAGS_Manager&quot;, 
+	$UserRole.DeveloperName = &quot;MAGS_Editor&quot;, 
+	$UserRole.DeveloperName = &quot;Executive_Director_CRGS&quot;, 
+	$UserRole.DeveloperName = &quot;Principal_MAGS_Manager&quot;, 
+	$UserRole.DeveloperName = &quot;Policy_Advisor_Road&quot;, 
+	$UserRole.DeveloperName = &quot;DLO_Road&quot;, 
+	$UserRole.DeveloperName = &quot;Policy_Advisor_Transport&quot;, 
+	$UserRole.DeveloperName = &quot;DLO_Transport&quot;, 
+	$UserRole.DeveloperName = &quot;Executive_Director&quot;, 
+	$UserRole.DeveloperName = &quot;Senior_Executive_Coordinator&quot;,
+	$UserRole.DeveloperName = &quot;DLO_WestConnex&quot;,
+	$UserRole.DeveloperName = &quot;Policy_Advisor_WestConnex&quot;
+	)
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Draft_Approval_Status_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Draft_Status_MAGS_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Draft_Approval_Status_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Draft_Status_Draft_Response_in_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Draft_Approval_Status_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Set_Submit_For_Approval_To_True</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Draft Response Approval - Editors Mgrs</label>
+    <recallActions>
+        <action>
+            <name>Draft_Approval_Status_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Draft_Status_Draft_Response_in_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

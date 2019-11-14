@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>TfNSW CTS - Services</name>
+    <queueMembers>
+        <roles>
+            <role>TfNSW_Customer_Services</role>
+            <role>TfNSW_Customer_Services_Liaison_Officer</role>
+            <role>TfNSW_Customer_Services_SME</role>
+            <role>Transport_Services</role>
+            <role>Transport_Services_SME</role>
+        </roles>
+        <users>
+            <user>kiranpreet.kaur@transport.nsw.gov.au</user>
+            <user>steven.slezak@transport.nsw.gov.au</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

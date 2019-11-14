@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>TCO - Sydney Coordination Office</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>TMC_Case_Manager</publicGroup>
+            <publicGroup>Triage_Cases</publicGroup>
+        </publicGroups>
+        <roles>
+            <role>CBD_Coordination_Office</role>
+            <role>CBD_Coordination_Office_Liaison_Officer</role>
+            <role>CBD_Coordination_Office_SME</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

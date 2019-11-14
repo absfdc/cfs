@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Parent_Action_Plan__c</field>
+        <field>Parent_Case__c</field>
+        <field>Case_Subject__c</field>
+        <field>Agency__c</field>
+        <field>Customer__c</field>
+        <field>Minister_User__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Notify_Action_Plan_Approval_Requesting_User_About_Status</name>
+                <type>Alert</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Approver_Level_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Action_Plan__c.Status__c</field>
+                <operation>equals</operation>
+                <value>Awaiting Action Plan Approval</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
+        <label>Level 1 Approval</label>
+        <name>Level_1_Approval</name>
+        <rejectionActions>
+            <action>
+                <name>AP_Status_To_Draft_Advice_in_Progress</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>This approval process will be used by all the users who have access to action plans and only one level approver is specified.</description>
+    <emailTemplate>Ministerial_Correspondence/Action_Plan_Approval_Assignment</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>(((((1 OR 7) AND 8) OR (1 AND 9)) AND 10 AND ((13 AND 14) OR 15)) OR ((1 OR 7) AND 9 AND 11 AND ((13 AND 14) OR 15))) AND (3 AND 12  AND (4 AND 5 AND 6)) AND ( 2 AND (8 OR 9))</booleanFilter>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Action Plan in Progress</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Owner_Is_User__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Approver_Level_1__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Approver_Level_2__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Approver_Level_3__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Action Plan in Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Type__c</field>
+            <operation>equals</operation>
+            <value>Advice Request,Agency Response</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Type__c</field>
+            <operation>equals</operation>
+            <value>Agency Response,Advice Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.RecordType</field>
+            <operation>notEqual</operation>
+            <value>Child Action Plan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Child Action Plan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Pending_Child_AP__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Response__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Type__c</field>
+            <operation>equals</operation>
+            <value>Advice Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Type__c</field>
+            <operation>notEqual</operation>
+            <value>Advice Request</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>AP_Status_To_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>AP_Status_To_Draft_Advice_in_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Notify_Action_Plan_Approval_Requesting_User_About_Status_Rejected</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>AP_Status_To_Awaiting_Advice_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>MC Action Plan Approval Process Level 1</label>
+    <recallActions>
+        <action>
+            <name>AP_Status_To_Draft_Advice_in_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

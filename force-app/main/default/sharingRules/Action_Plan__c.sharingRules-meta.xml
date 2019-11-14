@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>MagsActionPlanSharingRule</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>MAGS AP Sharing Rules</description>
+        <label>MAGS AP Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Created_by_MAGS_Officer__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Min_Corro_AP_Write_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Min Corro AP Write Access</label>
+        <sharedTo>
+            <group>Min_Corro_AP_Write_Access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>1</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_AP_with_MO_Users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share AP with MO Users</label>
+        <sharedTo>
+            <group>MO_Action_Plan_Access_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Created_by_MAGS_Officer__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Action_Plans_With_MAGS_Team_Members_in_read_write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Action Plans With MAGS Team Members in read/write</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Completed,Rejected-Incorrect Assignment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Created_by_MAGS_Officer__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Action_Plans_With_MAGS_Team_Members_when</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Action Plans With MAGS Team Members in read only</label>
+        <sharedTo>
+            <roleAndSubordinates>MAGS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Created_by_MAGS_Officer__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_CBD_APs_with_CBD</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all Action Plans with an Agency / Division of CBD Coordination Office with the Role CBD Coordination Office Liaision Officer.</description>
+        <label>Share CBD APs with CBD</label>
+        <sharedTo>
+            <role>CBD_Coordination_Office_Liaison_Officer</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>CBD Coordination Office</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Office_of_Sec_APs_with_Office_of_Sec</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Office of Sec APs with Office of Sec</label>
+        <sharedTo>
+            <roleAndSubordinates>Office_of_the_Secretary_Admin</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Created_by_MAGS_Officer__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>IsOfficeOfSecActionPlan__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_TfNSW_CFM_Action_Plans_with_TfNSW_Case_Mgrs</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share TfNSW CFM Action Plans with TfNSW Case Mgrs</label>
+        <sharedTo>
+            <role>TfNSW</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>TfNSW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CFM Action Plan</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Freight_and_Regional_Development_Sharing_Rules</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the FSP Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Freight and Regional Development  Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>Freight_and_Regional_Development</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Freight_and_Regional_Development</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>NSW_Trainlink_AP_Sharing_Rules</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>NSW Trainlink AP Sharing Rules</description>
+        <label>NSW Trainlink AP Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>NSW_Trainlink</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trainlink</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Operational_Systems_Sharing_Rules</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the I&amp;S Operational Systems Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Operational Systems Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>TfNSW_I_S_Operational_Systems</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW_I_S_Operational_Systems</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Program_Delivery_Sharing_Rules</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the I&amp;S Program Delivery Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Program Delivery Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>Transport_Projects</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Transport_Projects</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Program_Divisional_Management_Sharing_Rules</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the I&amp;S Program and Divisional Management Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Program &amp; Divisional Management Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>TfNSW_I_S_Program_Divisional_Management_Office</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW_I_S_Program_Divisional_Management_Office</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>RMS_All_AP_Read_Only</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all RMS Action Plans with all RMS</description>
+        <label>RMS All AP Read Only</label>
+        <sharedTo>
+            <roleAndSubordinates>RMS</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>RMS</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Rail_Service_Delivery_Sharing_Rules</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the I&amp;S Rail Service Delivery Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Rail Service Delivery Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>TfNSW_I_S_Rail_Service_Delivery</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW_I_S_Rail_Service_Delivery</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sahring_for_P2P_role</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sahring for P2P role</label>
+        <sharedTo>
+            <role>Point_to_Point_Correspondence</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Point_to_Point_Correspondence</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Service_Delivery_and_Performance_Sharing_Rules</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the I&amp;S Service Delivery and Performance Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Service Delivery and Performance Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>TfNSW_I_S_Service_Delivery_Performance</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW_I_S_Service_Delivery_Performance</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Service_Planning_and_Development_Sharing_Rules</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the I&amp;S Service Planning and Development Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Service Planning and Development Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>TfNSW_I_S_Service_Planning_Development</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW_I_S_Service_Planning_Development</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_AP_Owned_By_Newcastle_Transport_With_Newcastle_Transport_Role</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Action Plans owned by user with Role &#39;Newcastle Transport&#39; with other users in Newcastle Transport Role</description>
+        <label>Share AP Owned By Newcastle Transport With Newcastle Transport Role</label>
+        <sharedTo>
+            <role>Newcastle_Transport</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Newcastle_Transport</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_APs_with_Approvers</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Temporary: to allow approvers to edit the action plan during the approval process</description>
+        <label>Share APs with Approvers</label>
+        <sharedTo>
+            <role>TfNSW_FSP_SME</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TfNSW_FSP_SME</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Action_Plans_to_MAGS_Officer</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Give Read Only Access to MAGS Officer of cases which are owned by GIS Admin.</description>
+        <label>Share Action Plans to MAGS Officer</label>
+        <sharedTo>
+            <role>MAGS_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>CRGS_Admins_MC</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Action_plans_owned_by_RMS_Mincorro_users_with_all_RMS_Mincorro_users</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Action plans owned by RMS Mincorro users with all RMS Mincorro users</label>
+        <sharedTo>
+            <group>RMS_MinCorro_Users</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>RMS_MinCorro_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_NSW_TrainLink_CFM_with_NSW_Trains_MC</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule shares all CFM NSW TrainLink Action Plans with MC NSW TrainLink SMEs</description>
+        <label>Share NSW TrainLink CFM with NSW Trains MC</label>
+        <sharedTo>
+            <role>NSW_Trainlink_SME</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_NSW_TrainLink_with_NSW_TrainLink_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all AP&#39;s at the NSW TrainLink Role only with NSW TrainLink Role in RW mode.  It is required to provide RW access to NSW TrainLink AP&#39;s for Liaison Officers.</description>
+        <label>Share NSW TrainLink with NSW TrainLink RW</label>
+        <sharedTo>
+            <role>NSW_Trainlink</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>NSW_Trainlink</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_STA_with_STA_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This shares all STA action plans with STA at the Role level only, in Read Write.  This enables anyone in the STA (top level role) to assign any action plan owned by the STA (top level role) in the event it needs to be reassigned (e.g. due to holiday)</description>
+        <label>Share STA with STA RW</label>
+        <sharedTo>
+            <role>STA</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>STA</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_SYD_Train_Liaison_Officer_with_SYD_Train_Sr_Case_Manager</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share APs owned by Syd Trains Liaison Officer with Syd Trains Senior Case Manager</description>
+        <label>Share SYD Train Liaison Officer with SYD Train Sr Case Manager</label>
+        <sharedTo>
+            <group>Syd_Trains_Case_to_Liaison</group>
+        </sharedTo>
+        <sharedFrom>
+            <role>Sydney_Trains_Liaison_Officer</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Syd_Light_Rail_Del_Offc_with_Syd_Light_Rail_Del_Offc_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares AP&#39;s within the Sydney Light Rail Delivery Office Liaison Officer role.</description>
+        <label>Share Syd Light Rail Del Offc with Syd Light Rail Del Offc RW</label>
+        <sharedTo>
+            <role>Light_Rail_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Light_Rail_Liaison_Officer</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Syd_Metro_Delivery_Offc_with_same_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares Sydney Metro Delivery Office with the same at the Role level in read/write.  Required for Liaison Officers in case one needs to take over anothers&#39; case.</description>
+        <label>Share Syd Metro Delivery Offc with same RW</label>
+        <sharedTo>
+            <role>North_West_Rail_Link_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>North_West_Rail_Link_Liaison_Officer</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Syd_Trains_MC_with_Syd_Trains_Liaison_Officer_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares AP&#39;s within the Sydney Trains Liaison Officer Role in RW</description>
+        <label>Share Syd Trains MC with Syd Trains Liaison Officer RW</label>
+        <sharedTo>
+            <role>Sydney_Trains_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Sydney_Trains_Liaison_Officer</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Sydney_Trains_CFM_with_Sydney_Trains_MC</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Shares all Sydney Trains CFM Action Plans with all Sydney Trains MC SMEs in a Read-Only fashion.</description>
+        <label>Share Sydney Trains CFM with Sydney Trains MC</label>
+        <sharedTo>
+            <role>Sydney_Trains_SME</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_TfNSW_Action_Plans_with_CRGS_Super_Admins</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This rule shares all TfNSW Action Plans with CRGS Super Admins.  It was requested by Nick Race, Kebinh and co. on the week of 16/11/2015.</description>
+        <label>Share TfNSW Action Plans with CRGS Super Admins</label>
+        <sharedTo>
+            <role>CRGS_Super_Admin</role>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_TfNSW_Action_Plans_with_TfNSW_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all TfNSW level action plans with all people at the TfNSW level.  This is so that people at the top level can reassign action plans, if for example someone has gone on holiday.</description>
+        <label>Share TfNSW Action Plans with TfNSW RW</label>
+        <sharedTo>
+            <role>TfNSW</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TfNSW</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_all_NSW_Trains_with_Sydney_Trains</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all NSW Trains with Sydney Trains</description>
+        <label>Share all NSW Trains with Sydney Trains</label>
+        <sharedTo>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_with_HCF_roles</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share with HCF roles</label>
+        <sharedTo>
+            <roleAndSubordinates>HCF</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>HCF</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_within_CBD_Coordination_Office_Liaison_Officer</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all AP&#39;s within the CBD Coordination Office Liaison Officer team in RW mode.</description>
+        <label>Share within CBD Coordination Office Liaison Officer</label>
+        <sharedTo>
+            <role>CBD_Coordination_Office_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>CBD_Coordination_Office_Liaison_Officer</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_within_TfNSW_Customer_Services</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all AP&#39;s within the TfNSW Customer Services Liaison Officer team in RW mode.</description>
+        <label>Share within TfNSW Customer Services</label>
+        <sharedTo>
+            <role>TfNSW_Customer_Services_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TfNSW_Customer_Services_Liaison_Officer</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_within_TfNSW_FSP</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all AP&#39;s in the Role TfNSW FSP with the same role in RW mode.</description>
+        <label>Share within TfNSW FSP</label>
+        <sharedTo>
+            <role>TfNSW_FSP</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TfNSW_FSP</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_within_TfNSW_Finance_and_Investment</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all AP&#39;s within the TfNSW Finance and Investment role in RW</description>
+        <label>Share within TfNSW Finance and Investment</label>
+        <sharedTo>
+            <role>Finance_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Finance_Liaison_Officer</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_within_TfNSW_I_S</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all AP&#39;s within the TfNSW I&amp;S Role in a Read/Write mode.  This is for Liaison Officers directly in the I&amp;S Role.</description>
+        <label>Share within TfNSW I&amp;S</label>
+        <sharedTo>
+            <role>Transport_Services</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Transport_Services</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_within_TfNSW_People</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This rule shares all AP&#39;s within the TfNSW People and Corporate Services role in a RW mode.  This is for Liaison officers within the group.</description>
+        <label>Share within TfNSW People and Corporate Services</label>
+        <sharedTo>
+            <role>People_and_corporate_services_Liaison_Officer</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>People_and_corporate_services_Liaison_Officer</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sharing_for_RMS_role</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sharing for RMS role</label>
+        <sharedTo>
+            <role>RMS</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>RMS</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sharing_with_NSW_trains</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sharing with NSW trains</label>
+        <sharedTo>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>NSW_Trains</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sharing_with_STA_roles</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sharing with STA roles</label>
+        <sharedTo>
+            <roleAndSubordinates>STA</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>STA</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sharing_with_Serco_roles</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sharing with Serco roles</label>
+        <sharedTo>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Serco</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sharing_with_sydney_trains_CFM</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sharing with sydney trains CFM</label>
+        <sharedTo>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>Sydney_Trains_CFM</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sharing_with_tfnsw</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sharing with tfnsw</label>
+        <sharedTo>
+            <roleAndSubordinates>TfNSW</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sydney_Trains_sharing_rule</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sydney Trains sharing rule</label>
+        <sharedTo>
+            <roleAndSubordinates>SydneyTrainsMC</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>SydneyTrainsMC</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Ticketing_and_Concessions</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the I&amp;S Ticketing and Concessions Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Ticketing and Concessions</label>
+        <sharedTo>
+            <roleAndSubordinates>TfNSW_I_S_Ticketing_Concessions</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW_I_S_Ticketing_Concessions</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Transport_Management_Centre_Sharing_Rules</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share all records within the I&amp;S Transport Management Centre Division with Read/Write access. This is to ensure that approvers are able to edit the response when responses are submitted for approval. (Responses can be submitted by the Co-ordinator or an SME.)</description>
+        <label>Transport Management Centre Sharing Rules</label>
+        <sharedTo>
+            <roleAndSubordinates>TfNSW_I_S_Transport_Management_Centre</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TfNSW_I_S_Transport_Management_Centre</roleAndSubordinates>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

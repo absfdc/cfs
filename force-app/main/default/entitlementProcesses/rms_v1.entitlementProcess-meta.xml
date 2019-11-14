@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <description>RMS entitlements</description>
+    <entryStartDateField>Case.Date_Assigned_to_Agency__c</entryStartDateField>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <isVersionDefault>false</isVersionDefault>
+    <milestones>
+        <businessHours>RMS</businessHours>
+        <criteriaBooleanFilter>1 AND 2</criteriaBooleanFilter>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>RMS</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Response_Requested__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Attempt Contact or Contact Made</milestoneName>
+        <minutesToComplete>2400</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>RMS_milestone_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-33</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>RMS</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>RMS</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Response_Requested__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Closed</milestoneName>
+        <minutesToComplete>9600</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>RMS_milestone_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-40</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <name>RMS</name>
+    <versionMaster>552O000000000YY</versionMaster>
+    <versionNumber>1</versionNumber>
+</EntitlementProcess>

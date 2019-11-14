@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <description>NSW Trains Micro Sale</description>
+    <entryStartDateField>Case.Date_Assigned_to_Agency__c</entryStartDateField>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <isVersionDefault>true</isVersionDefault>
+    <milestones>
+        <businessHours>NSW Trainlink</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Attempted Contact</milestoneName>
+        <minutesToComplete>2</minutesToComplete>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>NSW Trainlink</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Case_or_Issue__c</field>
+            <operation>equals</operation>
+            <value>Case and Issue, Case</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Contact Made</milestoneName>
+        <minutesToComplete>3</minutesToComplete>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>NSW Trainlink</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Case_or_Issue__c</field>
+            <operation>equals</operation>
+            <value>Case and Issue, Case</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>NSW Trains</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case Closed</milestoneName>
+        <minutesToComplete>7</minutesToComplete>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <name>NSW Trains Micro</name>
+    <versionMaster>552O000000000Xa</versionMaster>
+    <versionNumber>1</versionNumber>
+</EntitlementProcess>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <businessHours>STA</businessHours>
+    <entryStartDateField>Case.CreatedDate</entryStartDateField>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <isVersionDefault>true</isVersionDefault>
+    <milestones>
+        <businessHours>STA</businessHours>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Response_Requested__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Complaint</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bus, Private Operators</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Transit Systems</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Contact Made</milestoneName>
+        <minutesToComplete>10560</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <name>PBO</name>
+    <versionMaster>552O00000008RhB</versionMaster>
+    <versionNumber>1</versionNumber>
+</EntitlementProcess>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Parent_Action_Plan__c</field>
+        <field>Parent_Case__c</field>
+        <field>Case_Subject__c</field>
+        <field>Agency__c</field>
+        <field>Customer__c</field>
+        <field>Minister__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>adhoc</type>
+            </approver>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Action_Plan__c.Status__c</field>
+                <operation>notEqual</operation>
+                <value>Completed</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Step 1 - Approval Process</label>
+        <name>Step_1_Approval_Process</name>
+    </approvalStep>
+    <description>This approval process will be used by all the users who have access to action plans</description>
+    <emailTemplate>Ministerial_Correspondence/Action_Plan_Approval_Assignment</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Action_Plan__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Action Plan in Progress</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Response__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Action_Plan__c.Owner_Is_User__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>AP_Status_To_Draft_Advice_in_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>AP_Status_To_Awaiting_Advice_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>MC Action Plan Approval Process</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

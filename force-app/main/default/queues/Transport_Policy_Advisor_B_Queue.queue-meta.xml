@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>Transport Policy Advisor B Queue</name>
+    <queueMembers>
+        <roles>
+            <role>DLO_Transport</role>
+            <role>MO_Office_Manager_Transport</role>
+            <role>Policy_Advisor_Transport</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>TH1__Draft__c</sobjectType>
+    </queueSobject>
+</Queue>
