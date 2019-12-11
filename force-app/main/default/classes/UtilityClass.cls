@@ -104,4 +104,11 @@ public with sharing class UtilityClass {
         return tempDueDate;
     }
 
+    public static Datetime addBusinessDays(Datetime dueDateTimeValue, Integer days, Integer noOfHoursInADay, Id businessHrsId){
+        Long miliSeconds = (60 * 60 * 1000) * (noOfHoursInADay * days);
+        DateTime tempDueDate = BusinessHours.add(businessHrsId, dueDateTimeValue, miliSeconds );
+        System.debug('--Case Due Date Calculation Temp Due Date---' + tempDueDate);
+        return tempDueDate;
+    }
+
 }

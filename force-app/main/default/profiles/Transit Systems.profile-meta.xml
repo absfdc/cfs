@@ -10,7 +10,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForAssign</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForAssign_Test</apexClass>
@@ -26,7 +26,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForCompleted</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForCompleted_Test</apexClass>
@@ -34,7 +34,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForInProgress</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForInProgress_Test</apexClass>
@@ -54,11 +54,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForRejectedAssignment</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForReview</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForReview_Test</apexClass>
@@ -66,7 +66,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForRework</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForRework_Test</apexClass>
@@ -74,7 +74,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForTakeOwnership</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionForTakeOwnership_Test</apexClass>
@@ -82,7 +82,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>APStatusTransitionRetriever</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>AP_NoteOrAttAfterDeleteTriggerHandler</apexClass>
@@ -114,7 +114,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>AbstractAPStatusTransition</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ActionPlanAfterDeleteTriggerHandler</apexClass>
@@ -206,7 +206,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ActionPlanStatusTransition</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ActionPlanStatusTransition_Test</apexClass>
@@ -234,7 +234,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ActivityValidationHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>AddUserAudit</apexClass>
@@ -242,11 +242,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ApplicationLogMessage</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ApplicationLogUtility</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ApplicationLog_Test</apexClass>
@@ -262,7 +262,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>AssignCase_CX</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>AssignCase_CX_Test</apexClass>
@@ -374,7 +374,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>BusinessHoursUtil</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>BusinessHoursUtil_Test</apexClass>
@@ -426,7 +426,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CaseAfterInsertTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CaseAfterUnDeleteTriggerHandler</apexClass>
@@ -446,7 +446,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CaseAfterUpdateTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CaseAmendmentChecker</apexClass>
@@ -506,7 +506,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CaseBeforeInsertTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CaseBeforeUpdateHandlerForMO</apexClass>
@@ -522,7 +522,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CaseBeforeUpdateTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CaseCFSApiAttachmentRestService</apexClass>
@@ -582,7 +582,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CaseEntitlementUtil</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CaseEntitlementUtil_Test</apexClass>
@@ -634,7 +634,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CaseTriggerDispatcher</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CaseTriggerDispatcher_Test</apexClass>
@@ -734,11 +734,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ContactAfterDeleteTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ContactAfterInsertTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ContactBeforeInsertTriggerHandler</apexClass>
@@ -750,7 +750,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ContactBeforeUpdateTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ContactCaseCounter</apexClass>
@@ -782,11 +782,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ContactTriggerDispatcher</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ContactTriggerDispatcher_Test</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CustomSendEmail_CX</apexClass>
@@ -978,7 +978,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>EmailCustomer</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>EmailCustomer_Test</apexClass>
@@ -990,19 +990,19 @@
     </classAccesses>
     <classAccesses>
         <apexClass>EmailMessageBeforeInsertTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>EmailMessageTriggerDispatcher</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>EmailMessageTriggerDispatcher_Test</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>EmailNotifications_WS</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>EmailNotifications_WS_Test</apexClass>
@@ -1134,11 +1134,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ITriggerDispatcher</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ITriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>InboundEmailsWithScannedDocumentsHandler</apexClass>
@@ -1158,7 +1158,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>IssueItemisationPublisherAction_CX</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>IssueItemisationPublisherAction_Test</apexClass>
@@ -1602,7 +1602,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>StampDateFirstChildAssignedOnParent</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>StartFeedbackCallController</apexClass>
@@ -1622,7 +1622,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TaskAfterInsertTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TaskAfterInsertTriggerHandler_Test</apexClass>
@@ -1634,15 +1634,15 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TaskBeforeInsertTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TaskBeforeUpdateTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TaskTriggerDispatcher</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TaskTriggerDispatcherTest</apexClass>
@@ -1674,7 +1674,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TimeSpentInStatusCalculator</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TimeSpentInStatusCalculator_Test</apexClass>
@@ -1682,7 +1682,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TimeWithAdminCalculator</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TimeWithAdminCalculator_Test</apexClass>
@@ -1690,23 +1690,23 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TriggerDispatcherBase</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TriggerException</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TriggerFactory</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TriggerHandlerBase</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>TriggerParameters</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>UpdateContactPhoneFields_Batch</apexClass>
@@ -1734,7 +1734,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>UtilityClass</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ValuePopulatorIncomingSNSWCases</apexClass>
@@ -2361,10 +2361,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>LightningConsoleAllowedForUser</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>LightningExperienceUser</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

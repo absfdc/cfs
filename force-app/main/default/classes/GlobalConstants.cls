@@ -11,6 +11,7 @@ History
 06/07/2017    Arxxus             Updated. New constants related to Private Operator added.
 25/08/2017    Arxxus             Updated. New constants for MO Enhancements added.
 25/09/2017    Arxxus             Oct Release: added new constants for combined pdf. Removed variable for send for printing
+19/11/2019    Abhi I             Transit Systems: added new constants Transit Systems agency
 -------------------------------------------------------------*/
 
 global with sharing class GlobalConstants {
@@ -86,6 +87,7 @@ global with sharing class GlobalConstants {
     public static final String STA_AGENCY = 'STA';
     public static final String AGENCY_SYDNEY_TRAINS='Sydney Trains';
     public static final String AGENCY_NSW_TRAINS='NSW Trains';
+    public static final String TRANSIT_SYSTEMS_AGENCY = 'Transit Systems';
     
     public static final String NEWCASTLE_TRANSPORT_AGENCY = 'Newcastle Transport';
 
@@ -332,7 +334,7 @@ global with sharing class GlobalConstants {
     
     
     public static final Set<String> MO_DLO_AND_PA_ROLE_NAMES = new Set<String> {'Policy_Advisor_WestConnex','DLO_WestConnex','Policy_Advisor_Transport', 'DLO_Transport', 'Policy_Advisor_Road', 'DLO_Road', 'Executive_Director', 'Senior_Executive_Coordinator'};
-    public static final set<String> MO_SIGNATORY_ROLE_NAMES = new set<String> {'Chief_of_Staff_WestConnex','Minister_for_Western_Sydney_WestConnex_and_Sport','Executive_Director_CRGS', 'Principal_MAGS_Manager', 'MAGS_Manager', 'MAGS_Manager_Transport', 'Minister_of_Road', 'Chief_of_Staff_Road', 'Parliamentary_Secretary', 'Minister_for_Regional_Transport_and_Roads', 'Minister_of_Transport', 'Chief_of_Staff_Transport', 'Parliamentary_Secretary_Regional_Roads_Rail', 'Parliamentary_Secretary_for_Regional_Transport', 'Parliamentary_Secretary_for_Regional_Roads_and_Infrastructure', 'RMS_Chief_Executive', 'Secretary_Transport_for_NSW'};
+    public static final set<String> MO_SIGNATORY_ROLE_NAMES = new set<String> {'Chief_of_Staff_WestConnex','Minister_for_Western_Sydney_WestConnex_and_Sport','Executive_Director_CRGS', 'Principal_MAGS_Manager', 'MAGS_Manager', 'Minister_of_Road', 'Chief_of_Staff_Road', 'Parliamentary_Secretary', 'Minister_for_Regional_Transport_and_Roads', 'Minister_of_Transport', 'Chief_of_Staff_Transport', 'Parliamentary_Secretary_Regional_Roads_Rail', 'Parliamentary_Secretary_for_Regional_Transport', 'Parliamentary_Secretary_for_Regional_Roads_and_Infrastructure', 'RMS_Chief_Executive', 'Secretary_Transport_for_NSW'};
     public static final String MO_SIGNED_AND_EMAILED_MIN_CORRO  = 'Signed and Emailed';  
 
     public static final String CASE_SIGNATURE_IMAGE_URI  = 'feedback/services/apexrest/mincor/v1/GenerateSignature?';
@@ -365,7 +367,7 @@ global with sharing class GlobalConstants {
     public static final String PRINCIPAL_MAGS_MANAGER_SIGNATORY_ROLE = 'Principal Manager, Ministerial & Government Services';
 
     public static final Set<String> MO_SIGNATORY_ROLES_FOR_REJECTION = new Set<String>{'Minister_for_Western_Sydney_WestConnex_and_Sport', 'Minister_of_Road', 'Chief_of_Staff_Road', 'Parliamentary_Secretary', 'Minister_of_Transport', 'Minister_for_Regional_Transport_and_Roads', 'Chief_of_Staff_Transport', 'Parliamentary_Secretary_Regional_Roads_Rail', 'Parliamentary_Secretary_for_Regional_Transport', 'Parliamentary_Secretary_for_Regional_Roads_and_Infrastructure', 'RMS_Chief_Executive', 'Secretary_Transport_for_NSW'};
-    public static final Set<String> MO_MANAGER_ROLES_FOR_REJECTION = new Set<String>{'Executive_Director_CRGS','Principal_MAGS_Manager','MAGS_Manager','MAGS_Manager_Transport'};
+    public static final Set<String> MO_MANAGER_ROLES_FOR_REJECTION = new Set<String>{'Executive_Director_CRGS','Principal_MAGS_Manager','MAGS_Manager'};
     
     public static final Set<String> CONGA_PRINT_ACCESS_ROLE_NAMES = new Set<String> {'Policy_Advisor_Transport', 'DLO_Transport', 'Policy_Advisor_Road', 'DLO_Road', 'Executive_Director', 'Senior_Executive_Coordinator', 'MO_Office_Manager_Road', 'MO_Office_Manager_Transport'};
     

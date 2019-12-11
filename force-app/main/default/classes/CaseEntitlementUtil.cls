@@ -6,12 +6,14 @@ Description:   Called from After Update handler class for the Case trigger
 Test Class:    CaseEntitlementUtil_Test
 
 History
-<Date>         <Authors Name>     <Brief Description of Change>
-7/08/2015      Dipankar Barman    Created
-13/01/2017     Arxxus             Updated - Optimised to avoid 101 soql queries. 
-03/11/2017     Ian F              Update to method populateClosureTargetDate, if Case is a Sydney Trains or NSW Trains 
-                                  Case and it is closed then do not update the Closure Target Date.  This was filling 
-                                  the logs with a validation rule error
+<Date>          <Authors Name>      <Brief Description of Change>
+7/08/2015       Dipankar Barman     Created
+13/01/2017      Arxxus              Updated - Optimised to avoid 101 soql queries. 
+03/11/2017      Ian F               Update to method populateClosureTargetDate, if Case is a Sydney Trains or NSW Trains
+                                    Case and it is closed then do not update the Closure Target Date.  This was filling 
+                                    the logs with a validation rule error
+21/11/2019      Abhi I              Update to method detectAgencyChange. Two new date fields are being calculated
+                                    Update to method completeMilestones. Added Transit Systems in Milestone completion check
 -----------------------------------------------------------------------------------------*/
 public without sharing class CaseEntitlementUtil {
     public static boolean isReassigned{get;set;}
@@ -252,10 +254,10 @@ public without sharing class CaseEntitlementUtil {
             if (oldCase.Contact_Made_Timestamp__c==null && newCase.Contact_Made_Timestamp__c!=null && newCase.OwnerAgency__c==GlobalConstants.AGENCY_HCF){
                 completed.add(milestoneIdByString.get(GlobalConstants.MILESTONE_CONTACT_MADE));
             }
-            if (((oldCase.Contact_Made_Timestamp__c==null && newCase.Contact_Made_Timestamp__c!=null) || (oldCase.Contact_Attempted_Timestamp__c==null && newCase.Contact_Attempted_Timestamp__c!=null)) && (newCase.OwnerAgency__c == GlobalConstants.STA_AGENCY || newCase.OwnerAgency__c == GlobalConstants.NEWCASTLE_TRANSPORT_AGENCY || newCase.OwnerAgency__c == GlobalConstants.AGENCY_MTS)){
+            if (((oldCase.Contact_Made_Timestamp__c==null && newCase.Contact_Made_Timestamp__c!=null) || (oldCase.Contact_Attempted_Timestamp__c==null && newCase.Contact_Attempted_Timestamp__c!=null)) && (newCase.OwnerAgency__c == GlobalConstants.STA_AGENCY || newCase.OwnerAgency__c == GlobalConstants.NEWCASTLE_TRANSPORT_AGENCY || newCase.OwnerAgency__c == GlobalConstants.AGENCY_MTS || newCase.OwnerAgency__c == GlobalConstants.TRANSIT_SYSTEMS_AGENCY)){
                 completed.add(milestoneIdByString.get(GlobalConstants.MILESTONE_CONTACT_MADE));
             }
-            if (oldCase.Status!=GlobalConstants.CASE_SOFTCLOSED_STATUS_STA && oldCase.Status!=GlobalConstants.CASE_SOFTCLOSED_STATUS && (newCase.Status==GlobalConstants.CASE_SOFTCLOSED_STATUS_STA || newCase.Status==GlobalConstants.CASE_SOFTCLOSED_STATUS) && (newCase.OwnerAgency__c == GlobalConstants.STA_AGENCY || newCase.OwnerAgency__c == GlobalConstants.NEWCASTLE_TRANSPORT_AGENCY || newCase.OwnerAgency__c == GlobalConstants.AGENCY_MTS)){
+            if (oldCase.Status!=GlobalConstants.CASE_SOFTCLOSED_STATUS_STA && oldCase.Status!=GlobalConstants.CASE_SOFTCLOSED_STATUS && (newCase.Status==GlobalConstants.CASE_SOFTCLOSED_STATUS_STA || newCase.Status==GlobalConstants.CASE_SOFTCLOSED_STATUS) && (newCase.OwnerAgency__c == GlobalConstants.STA_AGENCY || newCase.OwnerAgency__c == GlobalConstants.NEWCASTLE_TRANSPORT_AGENCY || newCase.OwnerAgency__c == GlobalConstants.AGENCY_MTS || newCase.OwnerAgency__c == GlobalConstants.TRANSIT_SYSTEMS_AGENCY)){
                 completed.add(milestoneIdByString.get(GlobalConstants.MILESTONE_CASE_CLOSED));
                 if(newCase.OwnerAgency__c != GlobalConstants.AGENCY_MTS)
                 completed.add(milestoneIdByString.get(GlobalConstants.MILESTONE_CASE_CLOSED_95));
@@ -551,8 +553,6 @@ public without sharing class CaseEntitlementUtil {
                         newCase.OwnerAgency__c=newAgency;
                         if(newAgency!=oldAgency){
                             newCase.Date_Assigned_to_Agency__c=System.now();
-                            
-                            
 
                             DateTime dT = UtilityClass.addBusinessDays(System.now(),2,stdBusinessHours);
                             newCase.X2_days_from_assigned_to_Agency__c = date.newinstance(dT.year(), dT.month(), dT.day());
@@ -562,7 +562,17 @@ public without sharing class CaseEntitlementUtil {
                             newCase.X15_days_from_assigned_to_Agency__c = date.newinstance(dT.year(), dT.month(), dT.day());
                             dT = UtilityClass.addBusinessDays(System.now(),30,stdBusinessHours);
                             newCase.X30_days_from_assigned_to_Agency__c = date.newinstance(dT.year(), dT.month(), dT.day());
-                            
+
+                            //Calculation introduced for Transit Systems - Start
+                            //Calculate 5 Business days before the current End of Month 
+                            //For Transit Systems 1 business day is 10 hours
+                            Date endOfCurrentMonth = System.today().toStartOfMonth().addMonths(1).addDays(-1);
+                            Datetime dtEndOfCurrentMonth = Datetime.newInstance(endOfCurrentMonth, System.now().time());
+                            dT = UtilityClass.addBusinessDays( dtEndOfCurrentMonth, -5, 10 ,BusinessHoursUtil.getBusinessHour(newAgency));
+
+                            newCase.EOM_for_ATA__c = endOfCurrentMonth;
+                            newCase.X5_bus_days_before_EOM_for_ATA__c = date.newinstance(dT.year(), dT.month(), dT.day());
+                            //Transit Systems - End
                             if (ownerIsUser==false && newCase.Agency__c!=GlobalConstants.SNSW_AGENCY && !isSiteUser && newCase.Status!=GlobalConstants.CASE_SOFTCLOSED_STATUS &&  newCase.Status!=GlobalConstants.CASE_CLOSED_STATUS && newCase.Status!=GlobalConstants.CASE_REOPENED_STATUS && newCase.Status!=GlobalConstants.CASE_SOFTCLOSED_STATUS_STA){
                                 newCase.Status=GlobalConstants.ASSIGNED_TO_AGENCY_STATUS;
                             }
