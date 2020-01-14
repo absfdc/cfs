@@ -3082,4 +3082,16 @@
             <roleAndSubordinates>Transit_Systems_Case_Manager</roleAndSubordinates>
         </sharedFrom>
     </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Transit_Systems_Case_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing all cases owned by users in the &quot;Transit Systems&quot; role to Transit Systems Case Manager role</description>
+        <label>Transit Systems Case Sharing</label>
+        <sharedTo>
+            <roleAndSubordinates>Transit_Systems_Case_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <role>Transit_Systems</role>
+        </sharedFrom>
+    </sharingOwnerRules>
 </SharingRules>

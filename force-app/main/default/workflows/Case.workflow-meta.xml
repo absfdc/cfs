@@ -396,6 +396,34 @@
         <template>Sydney_Trains_Internal/Trains_High_Priority_Email_System_Template</template>
     </alerts>
     <alerts>
+        <fullName>Transit_Systems_milestone_violated</fullName>
+        <description>Transit Systems milestone violated</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Last_Queue_Assigned_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>TfNSW_Internal/Milestone_Violated</template>
+    </alerts>
+    <alerts>
+        <fullName>Transit_Systems_milestone_warning</fullName>
+        <description>Transit Systems milestone warning</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Last_Queue_Assigned_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>TfNSW_Internal/Milestone_Target_Warning</template>
+    </alerts>
+    <alerts>
         <fullName>Unsubstantiated_Case_Notification_To_Depot_Manager</fullName>
         <description>Unsubstantiated Case Notification To Depot Manager</description>
         <protected>false</protected>

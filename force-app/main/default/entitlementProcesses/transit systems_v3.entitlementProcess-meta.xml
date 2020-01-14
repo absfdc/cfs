@@ -30,18 +30,14 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <value>Complaint</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Contact Made</milestoneName>
-        <minutesToComplete>12000</minutesToComplete>
-        <timeTriggers>
-            <timeLength>48</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
-        </timeTriggers>
+        <minutesToComplete>10</minutesToComplete>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_warning</name>
                 <type>Alert</type>
             </actions>
-            <timeLength>-4</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+            <timeLength>-2</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
             <actions>
@@ -50,6 +46,10 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             </actions>
             <timeLength>1</timeLength>
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <timeLength>48</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
@@ -76,7 +76,15 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <value>Yes</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Case Closed</milestoneName>
-        <minutesToComplete>1200</minutesToComplete>
+        <minutesToComplete>5</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>Transit_Systems_milestone_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-2</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_violated</name>
@@ -84,14 +92,6 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             </actions>
             <timeLength>1</timeLength>
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
-        </timeTriggers>
-        <timeTriggers>
-            <actions>
-                <name>Transit_Systems_milestone_warning</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>-4</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
@@ -113,14 +113,14 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <value>SMBSC003</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Contact Made</milestoneName>
-        <minutesToComplete>1200</minutesToComplete>
+        <minutesToComplete>5</minutesToComplete>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_warning</name>
                 <type>Alert</type>
             </actions>
-            <timeLength>-4</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+            <timeLength>-2</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
             <actions>
@@ -150,7 +150,7 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <value>SMBSC003</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Case Closed</milestoneName>
-        <minutesToComplete>1200</minutesToComplete>
+        <minutesToComplete>5</minutesToComplete>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_violated</name>
@@ -164,8 +164,8 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
                 <name>Transit_Systems_milestone_warning</name>
                 <type>Alert</type>
             </actions>
-            <timeLength>-4</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+            <timeLength>-2</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
@@ -187,15 +187,7 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <value>SMBSC003</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Case closed SLA 95%</milestoneName>
-        <minutesToComplete>18000</minutesToComplete>
-        <timeTriggers>
-            <actions>
-                <name>Transit_Systems_milestone_warning</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>-22</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
-        </timeTriggers>
+        <minutesToComplete>10</minutesToComplete>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_violated</name>
@@ -204,9 +196,17 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <timeLength>1</timeLength>
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>Transit_Systems_milestone_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-2</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
     <name>Transit Systems</name>
     <versionMaster>552O00000004FwX</versionMaster>
-    <versionNumber>2</versionNumber>
+    <versionNumber>3</versionNumber>
 </EntitlementProcess>

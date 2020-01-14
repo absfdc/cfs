@@ -10,7 +10,7 @@ Mar/2/2018   Ian F, TfNSW
 Mar/28/2018  Ian F, TfNSW  Version 2.0 updates.  Comments inline.
 May/9/2018  Ian F, TfNSW  Fixed bug in convertFromGMT
 Jul/02/2019 Abhi I, TfNSW SFCOE-3171 Add UTC Date of Incident option to CFS API
-
+Jan/13/2020 Abhi I, TfNSW SFCOE-3549 fixed bug in setEmptyValuesToNull method
 ------------------------------------------------------------*/
 @RestResource(urlMapping='/v1/salesforce/case/*')
 global class CaseCFSApiRestService {
@@ -41,7 +41,8 @@ global class CaseCFSApiRestService {
        
             if (RestContext.request.requestBody!=null && RestContext.request.requestBody.toString().length()>0){
                 //Set any tokens that have empty strings as values to Null
-                receivedJson=setEmptyValuesToNull(RestContext.request.requestBody.toString()); 
+                receivedJson=setEmptyValuesToNull(RestContext.request.requestBody.toString());
+                // receivedJson = JSON.serializePretty( JSON.deserializeUntyped(receivedJson));
             //    return receivedJson;
                 Savepoint sp = Database.setSavepoint();
                 try {
@@ -690,7 +691,7 @@ global class CaseCFSApiRestService {
             while (receivedJSON.contains('" ')){
                 receivedJSON = receivedJSON.replace('" ', '"');
             }
-            receivedJSON = receivedJSON.replace('""', 'null');
+            receivedJSON = receivedJSON.replaceAll(':[ ]*"",', ':null,');
             return receivedJSON;
         }
         
