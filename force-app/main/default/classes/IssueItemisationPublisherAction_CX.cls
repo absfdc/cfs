@@ -594,7 +594,7 @@ School Bus Routes - Partially completed code - End
             if(categories==null || categories.size()<1) return;
             Map<Id,CaseCategory>caseCategoriesForUpdate=new Map<Id,CaseCategory>();
             List<Case>caseForInsert= new List<Case>();
-            RecordType multiType=[SELECT ID FROM RecordType WHERE sObjectType = 'Case' AND DeveloperName =:GlobalConstants.CASE_RECORD_TYPE_MULTI_ISSUE_DEV limit 1];
+            // RecordType multiType=[SELECT ID FROM RecordType WHERE sObjectType = 'Case' AND DeveloperName =:GlobalConstants.CASE_RECORD_TYPE_MULTI_ISSUE_DEV limit 1];
             List<Id> taxomyIds= new List<Id>();
             Case parentCase;
             system.debug('---@Categorisation UpsertCategories---Parent Case Id-' + parentCaseId);
@@ -606,7 +606,7 @@ School Bus Routes - Partially completed code - End
                                   Subject,Priority,Description,IsEscalated,OwnerId,Taxonomy_Moment__c,Taxonomy_Location__c,Taxonomy_Transaction__c,
                                   Taxonomy_Symptom__c,Taxonomy_Location_Type__c,Taxonomy_Area__c,Secondary_Contact__c,Supplied_Address__c,
                                   Case_Reference_Number__c,Modes__c,User_have_raised_the_issue_previously__c,Taxonomy_Accountability__c,
-                                  Origin_Details__c,Referrer_URL__c,User_agent__c,Users_Ip_address__c,RFS_Region__c,Product_Type__c,
+                                  Origin_Details__c,Referrer_URL__c,Users_Ip_address__c,RFS_Region__c,Product_Type__c,User_agent__c,
                                   Signatory__c,Taxonomy_Symptom_Id__c,Taxonomy_Location_Id__c,Acknowledgement_Required__c,Use_Contact_Details__c,
                                   Case_Registered_By__c,Alternate_Email__c,Alternative_Postal_Address__c,PNR_Number__c, Date_Time_of_Incident__c, 
                                   Request_for_Action__c,Location_of_Incident__c,Direction_of_Travel__c,STA_Event_ID__c,STA_Employee_Number__c,

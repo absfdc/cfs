@@ -38,7 +38,7 @@ global class CaseCFSApiRestService {
             String result='';
             String receivedJson = '';
             RestResponse res = RestContext.response;
-       
+
             if (RestContext.request.requestBody!=null && RestContext.request.requestBody.toString().length()>0){
                 //Set any tokens that have empty strings as values to Null
                 receivedJson=setEmptyValuesToNull(RestContext.request.requestBody.toString());
