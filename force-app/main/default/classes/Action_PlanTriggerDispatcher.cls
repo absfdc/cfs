@@ -194,7 +194,7 @@ public without sharing class Action_PlanTriggerDispatcher extends TriggerDispatc
     
     public Boolean checkBypassed(){
         if (isBypassed==null){
-            if (TriggerDispatcherBase.invoker.Bypass_Triggers__c!=null){
+            if (TriggerDispatcherBase.invoker !=null && TriggerDispatcherBase.invoker.Bypass_Triggers__c!=null){
                 Set<String> bypassed=new Set <String>(TriggerDispatcherBase.invoker.Bypass_Triggers__c.split(',',0));
                 if (bypassed.contains('Action Plan') || bypassed.contains('Action_Plan')){
                     isBypassed=true;

@@ -38,12 +38,12 @@ global class CaseCFSApiRestService {
             String result='';
             String receivedJson = '';
             RestResponse res = RestContext.response;
-
+       
             if (RestContext.request.requestBody!=null && RestContext.request.requestBody.toString().length()>0){
                 //Set any tokens that have empty strings as values to Null
+                System.debug('@@@ReceivedString Length: ' + RestContext.request.requestBody.toString().length());
                 receivedJson=setEmptyValuesToNull(RestContext.request.requestBody.toString());
-                // receivedJson = JSON.serializePretty( JSON.deserializeUntyped(receivedJson));
-            //    return receivedJson;
+                
                 Savepoint sp = Database.setSavepoint();
                 try {
                     //Validate Case, contact and Attachment object names are correct
@@ -691,7 +691,13 @@ global class CaseCFSApiRestService {
             while (receivedJSON.contains('" ')){
                 receivedJSON = receivedJSON.replace('" ', '"');
             }
-            receivedJSON = receivedJSON.replaceAll(':[ ]*"",', ':null,');
+            while (receivedJSON.contains(': ""')){
+                receivedJSON = receivedJSON.replace(': ""', ':null');
+            }
+            while (receivedJSON.contains(':""') ){
+                receivedJSON = receivedJSON.replace(':""', ':null');
+            }
+            // receivedJSON = receivedJSON.replaceAll('""', 'null');
             return receivedJSON;
         }
         
