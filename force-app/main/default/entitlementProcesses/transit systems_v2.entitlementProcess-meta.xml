@@ -14,6 +14,7 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
     <isVersionDefault>false</isVersionDefault>
     <milestones>
         <businessHours>Transit Systems</businessHours>
+        <criteriaBooleanFilter>(1 OR 4) AND 2 AND 3</criteriaBooleanFilter>
         <milestoneCriteriaFilterItems>
             <field>Case.Contract__c</field>
             <operation>equals</operation>
@@ -29,12 +30,13 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <operation>equals</operation>
             <value>Complaint</value>
         </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Contract__c</field>
+            <operation>equals</operation>
+            <value>SBSC006</value>
+        </milestoneCriteriaFilterItems>
         <milestoneName>Contact Made</milestoneName>
         <minutesToComplete>12000</minutesToComplete>
-        <timeTriggers>
-            <timeLength>48</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
-        </timeTriggers>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_warning</name>
@@ -51,10 +53,15 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <timeLength>1</timeLength>
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
+        <timeTriggers>
+            <timeLength>48</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
     <milestones>
         <businessHours>Transit Systems</businessHours>
+        <criteriaBooleanFilter>1 AND 2 AND (3 OR 5) AND 4</criteriaBooleanFilter>
         <milestoneCriteriaFilterItems>
             <field>Case.Type</field>
             <operation>equals</operation>
@@ -74,6 +81,11 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <field>Case.Response_Requested__c</field>
             <operation>equals</operation>
             <value>Yes</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Contract__c</field>
+            <operation>equals</operation>
+            <value>SBSC006</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Case Closed</milestoneName>
         <minutesToComplete>1200</minutesToComplete>
@@ -190,19 +202,19 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
         <minutesToComplete>18000</minutesToComplete>
         <timeTriggers>
             <actions>
-                <name>Transit_Systems_milestone_warning</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>-22</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
-        </timeTriggers>
-        <timeTriggers>
-            <actions>
                 <name>Transit_Systems_milestone_violated</name>
                 <type>Alert</type>
             </actions>
             <timeLength>1</timeLength>
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>Transit_Systems_milestone_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-22</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>

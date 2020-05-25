@@ -4,7 +4,12 @@
 public class CasePBOTaxonomyFieldsSyncTest {
     
     static testmethod void  testCase(){    
-        
+            List<CaseRecordTypesToExcludeFromRtFlip__c> rtToExclude = new List<CaseRecordTypesToExcludeFromRtFlip__c>();
+            rtToExclude.add(new CaseRecordTypesToExcludeFromRtFlip__c(Name= 'On Demand', Record_Type_Name__c = 'On Demand'));
+            rtToExclude.add(new CaseRecordTypesToExcludeFromRtFlip__c(Name= 'Light Rail', Record_Type_Name__c = 'Light Rail'));
+            rtToExclude.add(new CaseRecordTypesToExcludeFromRtFlip__c(Name= 'Private Operators', Record_Type_Name__c = 'Private Operators'));
+            insert rtToExclude;
+            
             Taxonomy_metadata__c bus = new Taxonomy_metadata__c(name='Bus',type__c='Mode');
             insert bus;
             Taxonomy_metadata__c planningtheTrip = new Taxonomy_metadata__c(name='Planning the Trip',type__c='Issue', Parent_Id__c=bus.Id,
@@ -38,7 +43,7 @@ public class CasePBOTaxonomyFieldsSyncTest {
                                                                                      Customer_Value__c = 'School Specials', Status_Staff_Facing__c = 'Active', Status_Customer_Facing__c = 'Active');
             insert appearanceSchoolSpecials;
             
-            RecordType rt = [Select Id From RecordType where name = 'Bus'];//Private Operators
+            RecordType rt = [Select Id From RecordType where name = 'Private Operators'];//Private Operators
             
             Case c = new Case(Subject = 'Bus',
                               Description = 'bus service is just so...',
@@ -65,5 +70,5 @@ public class CasePBOTaxonomyFieldsSyncTest {
             System.debug('*******Just Issue updated from Portal: '+c.id);   
         	Test.stopTest();
     }
-    
+
 }

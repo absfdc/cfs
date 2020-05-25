@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>tfnsw@mailinator.com</email>
+    <name>RMS Corro Holding</name>
+    <queueMembers>
+        <roles>
+            <role>Business_Services</role>
+            <role>Compliance_and_Regulatory_Services</role>
+            <role>Office_of_the_Chief_Executive</role>
+            <role>Maritime</role>
+            <role>Motorways</role>
+            <role>Regional_and_Freight</role>
+            <role>RMS</role>
+            <role>Sydney</role>
+            <role>Technical_Project_Services</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Action_Plan__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>NoteOrAttachment__c</sobjectType>
+    </queueSobject>
+</Queue>

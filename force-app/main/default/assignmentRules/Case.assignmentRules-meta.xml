@@ -43,6 +43,73 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>Concession_Concessions</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.CreatedById</field>
+                <operation>equals</operation>
+                <value>Concessions Site Guest User</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Modes__c</field>
+                <operation>equals</operation>
+                <value>Non-modal</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Moment__c</field>
+                <operation>equals</operation>
+                <value>Concessions and Schemes</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Transaction__c</field>
+                <operation>equals</operation>
+                <value>Customer Schemes</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Concession_SSTS</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.CreatedById</field>
+                <operation>equals</operation>
+                <value>Concessions Site Guest User</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Modes__c</field>
+                <operation>equals</operation>
+                <value>Non-modal</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Moment__c</field>
+                <operation>equals</operation>
+                <value>Concessions and Schemes</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Transaction__c</field>
+                <operation>equals</operation>
+                <value>SSTS</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Concession_TTSS</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Taxonomy_Transaction__c</field>
+                <operation>equals</operation>
+                <value>TTSS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Modes__c</field>
+                <operation>equals</operation>
+                <value>Non-modal</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Moment__c</field>
+                <operation>equals</operation>
+                <value>Concessions and Schemes</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>Serco_Web_Triage_CFM</assignedTo>
             <assignedToType>Queue</assignedToType>
             <formula>AND(((NOW() - CreatedDate) * 86400) &lt; 10, OR(ISPICKVAL(Status, &#39;New&#39;), ISPICKVAL(Status, &#39;Triage&#39;)), ISPICKVAL( Origin , &#39;Email - E2C&#39;), NOT( IsMinCorroCase__c ) )</formula>
@@ -355,6 +422,35 @@
                 <field>Case.Origin</field>
                 <operation>equals</operation>
                 <value>Email - HCF</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>TfNSW_Customer_Liaison_Team_CFM</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>STA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Modes__c</field>
+                <operation>equals</operation>
+                <value>Bus</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Moment__c</field>
+                <operation>equals</operation>
+                <value>Planning the Trip</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Transaction__c</field>
+                <operation>contains</operation>
+                <value>Timetable</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Symptom__c</field>
+                <operation>equals</operation>
+                <value>Timetable Request</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -927,6 +1023,20 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>RMS_MAR_Industry_and_Environment</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>RMS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Accountability__c</field>
+                <operation>equals</operation>
+                <value>Industry and Environment</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>RMS_CaRS_Program_Management</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -1239,104 +1349,6 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Transit_Systems_Burwood_Depot</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>equals</operation>
-                <value>Transit Systems West</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>equals</operation>
-                <value>Burwood</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Transit_Systems_Kingsgrove_Depot</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>equals</operation>
-                <value>Transit Systems West</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>equals</operation>
-                <value>Kingsgrove</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Transit_Systems_Tempe_Depot</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>equals</operation>
-                <value>Transit Systems West</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>equals</operation>
-                <value>Tempe</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Transit_Systems_Smithfield_Depot</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>equals</operation>
-                <value>Transit Systems</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>equals</operation>
-                <value>Smithfield</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Transit_Systems_Hoxton_Park_Depot</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>equals</operation>
-                <value>Transit Systems</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>equals</operation>
-                <value>Hoxton Park</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Transit_Systems_Leichhardt_Depot</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>equals</operation>
-                <value>Transit Systems West</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>equals</operation>
-                <value>Leichhardt</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Transit_Systems_Corporate</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>equals</operation>
-                <value>Transit Systems,Transit Systems West</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>equals</operation>
-                <value>Corporate</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
             <assignedTo>Serco_Web_Triage_CFM</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>(1 OR 2) AND 3 AND 4</booleanFilter>
@@ -1392,7 +1404,7 @@
             <criteriaItems>
                 <field>Case.Taxonomy_Transaction__c</field>
                 <operation>equals</operation>
-                <value>Opal Customer Care,Opal Fare Structure,Opal Functionality,Opal Retail Network,Opal Top-Up or Ticket Machines,Paper Tickets,Transport Customer Service Centre</value>
+                <value>On Demand Travel Credit,Opal Customer Care,Opal Fare Structure,Opal Functionality,Opal Retail Network,Opal Top-Up or Ticket Machines,Paper Tickets,Transport Customer Service Centre</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Taxonomy_Transaction__c</field>
@@ -1427,6 +1439,29 @@
                 <field>Case.Origin_Details__c</field>
                 <operation>equals</operation>
                 <value>Maritime,RMS Intranet,RMS Website</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>TfNSW_CBD_Coordination_Office_CFM</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Taxonomy_Symptom__c</field>
+                <operation>equals</operation>
+                <value>Train Line Closure</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>TfNSW_CBD_Coordination_Office_CFM</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>TfNSW</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Moment__c</field>
+                <operation>equals</operation>
+                <value>Metro Trackwork</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -1967,6 +2002,153 @@
             <template>Case_Created_Templates/Private_Operator_Portal_new_case_alert</template>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>Transit_Systems_On_Demand</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Taxonomy_Area__c</field>
+                <operation>equals</operation>
+                <value>Sydney Inner West</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location__c</field>
+                <operation>equals</operation>
+                <value>On Demand - Inner West</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Transit_Systems_Smithfield_Depot</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>PBO,Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location_Type__c</field>
+                <operation>equals</operation>
+                <value>Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Area__c</field>
+                <operation>equals</operation>
+                <value>Smithfield</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Transit_Systems_Hoxton_Park_Depot</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>PBO,Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location_Type__c</field>
+                <operation>equals</operation>
+                <value>Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Area__c</field>
+                <operation>equals</operation>
+                <value>Hoxton Park</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Transit_Systems_Corporate</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>PBO,Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location_Type__c</field>
+                <operation>equals</operation>
+                <value>Transit Systems,Transit Systems West</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Area__c</field>
+                <operation>equals</operation>
+                <value>Corporate</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Transit_Systems_Tempe_Depot</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>PBO,Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location_Type__c</field>
+                <operation>equals</operation>
+                <value>Transit Systems West</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Area__c</field>
+                <operation>equals</operation>
+                <value>Tempe</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Transit_Systems_Kingsgrove_Depot</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>PBO,Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location_Type__c</field>
+                <operation>equals</operation>
+                <value>Transit Systems West</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Area__c</field>
+                <operation>equals</operation>
+                <value>Kingsgrove</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Transit_Systems_Burwood_Depot</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>PBO,Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location_Type__c</field>
+                <operation>equals</operation>
+                <value>Transit Systems West</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Area__c</field>
+                <operation>equals</operation>
+                <value>Burwood</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Transit_Systems_Leichhardt_Depot</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>PBO,Transit Systems</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location_Type__c</field>
+                <operation>equals</operation>
+                <value>Transit Systems West</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Area__c</field>
+                <operation>equals</operation>
+                <value>Leichhardt</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>PBO_Punchbowl_Bus_Company</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -1978,46 +2160,6 @@
                 <field>Case.Taxonomy_Location_Type__c</field>
                 <operation>contains</operation>
                 <value>Punchbowl Bus</value>
-            </criteriaItems>
-            <template>Case_Created_Templates/Private_Operator_Portal_new_case_alert</template>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>PBO_Transit_Systems</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Agency__c</field>
-                <operation>equals</operation>
-                <value>PBO</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>contains</operation>
-                <value>Transit Systems</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>notContain</operation>
-                <value>Transit Systems West</value>
-            </criteriaItems>
-            <template>Case_Created_Templates/Private_Operator_Portal_new_case_alert</template>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>PBO_Transit_Systems_West</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Agency__c</field>
-                <operation>equals</operation>
-                <value>PBO</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>contains</operation>
-                <value>Transit Systems</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Area__c</field>
-                <operation>contains</operation>
-                <value>Transit Systems West</value>
             </criteriaItems>
             <template>Case_Created_Templates/Private_Operator_Portal_new_case_alert</template>
         </ruleEntry>
@@ -2652,21 +2794,6 @@
             <template>Case_Created_Templates/Private_Operator_Portal_new_case_alert</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>PO_CTCCL</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Agency__c</field>
-                <operation>equals</operation>
-                <value>PBO</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Location_Type__c</field>
-                <operation>equals</operation>
-                <value>Community Transport Central Coast</value>
-            </criteriaItems>
-            <template>Case_Created_Templates/Private_Operator_Portal_new_case_alert</template>
-        </ruleEntry>
-        <ruleEntry>
             <assignedTo>HCF_Customer_Relations_CFM</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -2684,6 +2811,21 @@
                 <operation>contains</operation>
                 <value>On Demand ferries</value>
             </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PO_CTCCL</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Agency__c</field>
+                <operation>equals</operation>
+                <value>PBO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Location_Type__c</field>
+                <operation>equals</operation>
+                <value>Community Transport Central Coast</value>
+            </criteriaItems>
+            <template>Case_Created_Templates/Private_Operator_Portal_new_case_alert</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>PBO_Transdev_On_Demand</assignedTo>

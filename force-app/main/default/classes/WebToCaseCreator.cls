@@ -69,13 +69,12 @@ public class WebToCaseCreator {
     History:
     ------------------------------------------------------------*/
     private void setCaseRecordType() {
-        // List<RecordType> rt = [ SELECT Id, Name 
-        //                         FROM RecordType 
-        //                         WHERE sObjectType = 'Case' 
-        //                             AND Name = :GlobalConstants.CASE_RECORD_TYPE_MULTI_ISSUE];
-        Id multiIssueRT = Schema.SObjectType.Case.getRecordTypeInfosByName().get(GlobalConstants.CASE_RECORD_TYPE_MULTI_ISSUE).getRecordTypeId();
-        if(multiIssueRT != null) {
-            caseRecord.recordtypeId = multiIssueRT;
+        List<RecordType> rt = [ SELECT Id, Name 
+                                FROM RecordType 
+                                WHERE sObjectType = 'Case' 
+                                    AND Name = :GlobalConstants.CASE_RECORD_TYPE_MULTI_ISSUE];
+        if(!rt.isEmpty()) {
+            caseRecord.recordtypeId = rt[0].Id;
         }       
     }
     

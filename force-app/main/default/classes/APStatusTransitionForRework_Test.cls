@@ -4,15 +4,13 @@ private class APStatusTransitionForRework_Test {
     private static Action_Plan__c actionPlan;
     private static final String RMS_CORRO_OFFICER_PERM = 'RMS_Corro_Officer';
     private static final String GIS_ADMIN_PERM = 'RMS_GIS_Admin';
-    private static final String AGENCY_RESPONSE = GlobalConstants.AGENCY_TFNSW;
+    private static final String AGENCY_RESPONSE = GlobalConstants.RMS_AGENCY;
     
     private static void setUpTestData(String type, String status, String agency) {
         actionPlan = new Action_Plan__c();
         actionPlan.Type__c = type;
         actionPlan.Status__c = status;
         actionPlan.Agency__c = agency;
-        actionPlan.Divisions__c = 'Office of the Secretary';
-        actionPlan.Branch__c = 'RMS Audit and Assurance';
         actionPlan.RecordTypeId = retrieveAgencyResponseRT();
         actionPlan.Approver_Name__c = 'Test User';
         actionPlan.Approval_Date__c = System.today();
@@ -184,7 +182,6 @@ private class APStatusTransitionForRework_Test {
         System.runAs(u) {
             setUpTestData(GlobalConstants.ACTION_PLAN_TYPE_ADVICE_REQUEST, GlobalConstants.ACTION_PLAN_CLOSED_STATUS, AGENCY_RESPONSE);
             actionPlan.AssignedSME__c = u.id;
-            actionPlan.Branch__c = 'RMS Audit and Assurance';
             update actionPlan;
         }
         System.Test.startTest();        

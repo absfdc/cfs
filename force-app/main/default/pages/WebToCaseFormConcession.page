@@ -1,0 +1,506 @@
+<apex:page id="sitePageId" expires="86400" cache="true" docType="html-5.0" standardController="Case" html-lang="en" extensions="WebToCaseConcession_CX" title="Concessions Application" showHeader="false" sidebar="false" standardStylesheets="false">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+    <link rel="dns-prefetch" href="//maps.googleapis.com" />
+    <link rel="dns-prefetch" href="//maps.gstatic.com" />
+    <apex:includeScript value="{!$Resource.combinedjs_1}"/>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.WebformStyles, 'tfnsw.css')}"/>
+    <apex:includeScript value="{!$Resource.combinedjs_1}"/>
+    
+    <!-- Salesforce GA tracking - Google Tag Manager START -->
+    <apex:includeScript html-async="" value="{!$Resource.GoogleTagManagerHeader}" />
+    <apex:outputPanel >
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZGSMR" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+    </apex:outputPanel>
+    <!-- Salesforce GA tracking - Google Tag Manager END -->
+
+    <apex:form id="caseFormId" onsubmit="b4submitFormValidationOnly(); return false;">
+        <apex:pageBlock id="pblockId">
+            <apex:outputPanel >
+                <!-- Place holder to capture category -->
+                <label name="category" style="display:none"  for="sitePageId:caseFormId:pblockId:category">Category</label><apex:inputField label="category" html-name="category" id="category" style="display:none"  value="{!caseRecord.Taxonomy_Transaction__c}"/>
+                <!-- Place holder to capture selected  sub category -->
+                <label name="subcategory" style="display:none"  for="sitePageId:caseFormId:pblockId:subcategory">Sub Category</label><apex:inputField label="subcategory" html-name="subcategory" id="subcategory" style="display:none"  value="{!caseRecord.Taxonomy_Symptom__c}"/>
+                <!-- Place holder to capture if the entered address is valid -->
+                <label name="isValidAddress" style="display:none"  for="sitePageId:caseFormId:pblockId:isValidAddress">Is Address Valid</label><apex:inputField label="isValidAddress" html-name="is-valid-address" id="isValidAddress" style="display:none"  value="{!caseRecord.Is_Web_Address_Valid__c}"/>
+                
+                <apex:actionFunction action="{!createCase}" name="createCase" />
+            
+                <div class="col-md-12">
+                    <span id="error-message" class="has-error errorMessage">{!errorMessage}</span>
+                </div>
+                <div id="mainForm" style="max-width:900px;margin:0 auto">
+                    <div class="col-md-12">
+                        <div id="errorMessage" tabindex="-1" style="display:none" class="col-md-12">
+                            <span id="error-message4"  class="has-error errorMessage"></span>
+                        </div>
+                        <div class="col-md-12 formLabel">
+                            <p class="fieldBottomMargin" role="heading" align="left">
+                                <apex:outputText >
+                                    Fields marked with an asterisk (<span class="mandatoryStar">*</span>) are mandatory.
+                                </apex:outputText>
+                            </p>
+                        </div>
+                        <!-- Type of application-->
+                        <div class="col-md-12 formLabel" style="display:block;margin-top:10px">
+                            <label class="fieldLabel" aria-label="Type of application" for="sitePageId:caseFormId:pblockId:type-of-application">Type of application <span class="mandatoryStar" >&nbsp;*</span></label>
+                            <div id="typeOfApplicationErrorMsg"  class="has-error errorMessage"></div>
+                            <apex:selectList id="type-of-application" size="1" value="{!caseRecord.Type_of_Application__c}" styleClass="formInput feedback"> 
+                                <apex:selectOptions value="{!typeOfApplicationOptions}"/>
+                            </apex:selectList>  
+                        </div> 
+                        
+                        <!-- Your application is for-->
+                        <div class="col-md-12 formLabel" style="display:block;margin-top:10px">
+                            <label class="fieldLabel" aria-label="Your application is for" for="your-application-is-for">Your application is for <span class="mandatoryStar" >&nbsp;*</span></label>
+                            <div id="applicationIsForErrorMsg"  class="has-error errorMessage"></div>
+                            <select name="your-application-is-for" onchange="populateSubCategory(this.value)" id="your-application-is-for" class="formInput feedback" ></select>    
+                        </div>
+
+                         <!-- Related to-->
+                         <div class="col-md-12 formLabel" style="display:block;margin-top:10px" id="relatedToDiv">
+                            <label class="fieldLabel" aria-label="Application is related to" for="related-to">Related To<span class="mandatoryStar" >&nbsp;*</span></label>
+                            <div id="relatedToErrorMsg"  class="has-error errorMessage"></div>
+                            <select name="related-to" id="related-to" class="formInput feedback" ></select>    
+                        </div>
+                        
+                        <!-- Comments supporting your application --> 
+                        <div class="col-md-12 formLabel">
+                            <label class="fieldLabel" aria-label="Comments supporting your application" for="sitePageId:caseFormId:pblockId:detailed-description" >Comments supporting your application</label>
+                            <div id="feedbackDescErrorMsg"  class="has-error errorMessage"></div>
+                            <apex:inputTextarea html-aria-describedby="feedbackDescErrorMsg" html-aria-required="true" html-placeholder="Comments supporting your application"  id="detailed-description"  html-data-error-message="Please write your comments supporting your application" html-maxlength="2000" html-data-errorid="0" styleClass="formInput js-required" style="height:100px; max-width:100%;" value="{!caseRecord.Description}" cols="100" rows="7"/>
+                        </div> 
+                        
+                        <c:WebformAddAttachment id="addAttachmentComponent" attachmentText="Ensure the success of your application by uploading the completed application and all supporting documents here" attachments="{!attachments}" allowedFileAttachments="{!allowedFileAttachments}"/>
+                        
+                        <c:WebformContact id="webformContact" caseRecord="{!caseRecord}" contactPerson="{!contactPerson}" rendered="true" selectedState="{!selectedState}" />                     
+                        
+                        <div class="col-md-12">&nbsp;</div>
+                        <div class="col-md-12">
+                            <input name="submitBtn" type="button" value="Send" style="text-decoration: none;" id="submitBtn" class="sendButton" onclick="b4submitForm();" />
+                            <input name="Submit" type="Submit" style="position: absolute; display: none !important; width: 1px; height: 1px;" tabindex="-1" value="Send" class="sendButton" onsubmit="" onclick="b4submitFormValidationOnly();"/>
+                        </div>
+                    </div>
+                    <div id="AnimatedImage" class="spinner" title="" style="display:none">
+                        <img style="margin-left:45px;" alt="Sending your request" src="/img/loading32.gif" width="32px" height="32px"/>
+                    </div>
+                    
+                </div> 
+            </apex:outputPanel>
+        </apex:pageBlock>    
+        <style>
+            .sprite {
+                background-image: url("{!URLFOR($Resource.icons, 'spritesheet.png')}");
+            }
+            .formInput {
+                outline-offset: -1px;
+            }
+        
+            .errorMsg {
+                color: #ef0000;
+            }
+        
+        </style>
+            
+    </apex:form>
+    
+        <script type="text/javascript">
+            var issueTaxonomies;
+            var isMandatoryDataFilled = true;
+            var concessionTaxonomy = [];
+            var autocompleteAddress;
+            var componentForm = {
+                street_number: "short_name",
+                route: "long_name",
+                locality: "long_name",
+                administrative_area_level_1: "short_name",
+                postal_code: "short_name",
+                country: "short_name"
+            }    
+            
+            function initiliazeAutoCompleteForAddress() {
+                autocompleteAddress = new google.maps.places.Autocomplete(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route"), {
+                    types: ["geocode"]
+                }), google.maps.event.addListener(autocompleteAddress, "place_changed", function() {
+                    fillInAddress()
+                })
+            }
+            
+            function fillInAddress() {
+                var e = autocompleteAddress.getPlace();
+            
+                var complete_addr =  document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value;
+                for (var t in componentForm) "street_number" != t && (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + t).value = "");
+                for (var o = 0; o < e.address_components.length; o++) {
+                    var n = e.address_components[o].types[0];
+                    if (componentForm[n]) {
+                        var a = e.address_components[o][componentForm[n]];
+                        if ("street_number" == n) document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value = (a + " " + document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value).trim();
+                        else if ("route" == n) document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + n).value = (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + n).value + " " + a).trim();
+                        else if ("country" == n) {
+                            for (var d = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:country"), r = !1, o = 0; o < d.length; o++) d[o].value == a && (r = !0);
+                            r || (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:country").options[d.length] = new Option(a, a)), document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:country").value = a, a.length > 0 && "au" != a.toLowerCase() && ($(".countryField").show(), setStateValue("Outside Australia"))
+                        } else "administrative_area_level_1" == n ? setStateValue(a) : (document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + n).value = a, $(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:" + n)).removeClass("placeholder"))
+                    }
+                }
+                /* SFCOE - 82 : RMS Contact Us form*/
+                if(document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:locality").value != null){
+                    var suburb = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:locality").value;
+                    suburb.length == 0?document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value = complete_addr:document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:route").value = complete_addr.substring(0,complete_addr.indexOf(suburb));
+                }
+            }
+            
+            $(document).ready(function () {
+                $("#AnimatedImage").dialog && $("#AnimatedImage").dialog({
+                    autoOpen: !1,
+                    modal: !0,
+                    draggable: !1,
+                    width: 0,
+                    minHeight: 0,
+                    closeText: "Sending...",
+                    closeOnEscape: !1
+                });
+                $(".ui-dialog-titlebar").hide(); 
+                
+                $(".preferredContactPhone").hide();
+                $(".preferredContactEmail").hide();
+                retrieveTaxonomy();
+                initiliazeAutoCompleteForAddress();
+                var postcodeElemWidth = document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:postal_code').offsetWidth;
+                console.log(postcodeElemWidth);
+                document.getElementById('sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1').style.width = postcodeElemWidth + 'px';
+            });
+            
+        function populateCategory(mode) {
+            var origin = '{!JSENCODE($CurrentPage.parameters.source)}';
+            retrieveIssueTaxonomy(origin, mode, '');
+        }
+        function populateSubCategory(category) {
+            if ((category != 'Please select')&&(category != '')) {
+                var mode = '{!JSENCODE($CurrentPage.parameters.about)}';
+                var origin = '{!JSENCODE($CurrentPage.parameters.source)}';
+                retrieveIssueTaxonomy(origin, mode, category);
+            }
+        }
+        
+                    
+        function addAttachments(attachmentCount) {
+            for (var t = 0; attachmentCount > t; t++) {
+                var o;
+                if (o = document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + t + ":filename") ? document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + t + ":filename") : document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent2:attachmentComponent:attachments:" + t + ":filename"), "" == o.value) {
+                    var n;
+                    return n = document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + t + ":file") ? document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + t + ":file") : document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent2:attachmentComponent:attachments:" + t + ":file"), void n.click()
+                }
+            }
+        }
+                    
+        function getFileName(e, t, o, n) {
+            var a = e.value;
+            if (a = a.substring(a.lastIndexOf("\\") + 1, a.length), document.getElementById("filename" + t).innerHTML = a + '<img class="sprite sprite-remove" style="float: initial;margin-left: 5px;" alt="Remove selected file" onclick="removeFile(\'' + t + '\')" src="' + n + '" width="8px" height="8px"/>', document.getElementById(e.id + "name").value = a, $("#attachmentRow" + t).show(), $("#addAttachmentBtn").css("margin-top", Number($("#addAttachmentBtn").css("margin-top").replace("px", "")) + 1 + "px"), a) {
+                var d = a.substring(a.lastIndexOf("."), a.length);
+                o.toLowerCase().search(d.toLowerCase()) < 0 && (alert("File attachments of type " + d + " are not supported."), removeFile(t))
+            }
+        }
+                    
+        function removeFile(e) {
+            document.getElementById("filename" + e).innerHTML = "", $("#attachmentRow" + e).css("display", "none"), document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + e + ":filename") ? document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent:attachmentComponent:attachments:" + e + ":filename").value = "" : document.getElementById("sitePageId:caseFormId:pblockId:addAttachmentComponent2:attachmentComponent:attachments:" + e + ":filename").value = "", $("#addAttachmentBtn").css("margin-top", Number($("#addAttachmentBtn").css("margin-top").replace("px", "")) - 1 + "px");
+            var t = $(".attachment" + e);
+            t.replaceWith(t.val("").clone(!0))
+        }
+            
+        function addAttachment() {
+            var totalAttachmentCount = '{!attachments.size}';
+            addAttachments(totalAttachmentCount);
+        }
+        
+        function b4submitFormValidationOnly(){
+            //Do nothing
+            return false;
+        }
+        function openLoadingDialog() {
+            $("#AnimatedImage").dialog("open")
+        }
+        
+        function closeLoadingDialog() {
+            $("#AnimatedImage").dialog("close")
+        }
+        
+        function b4submitForm() {
+            openLoadingDialog();            
+            console.log('Inside submitform');
+            var isValid = true;
+            //validate application type
+            if(!validateApplicationType()) isValid = false;
+            
+            //validate application for
+            if(!validateApplicationFor()) isValid = false;
+            
+            //validate related to
+            if(!validateRelatingTo()) isValid = false;
+            
+            //validate comments
+            //if(!validateDescription()) isValid = false;
+            
+            //validate contact details
+            if(!validateContactDetails()) isValid = false;
+            
+            console.log('is valid: ' + isValid);
+            if(isValid){
+                console.log('creating case');
+                createCase();
+            } else {
+                closeLoadingDialog();
+            }            
+        }
+        
+        function validateApplicationType(){
+            var applicationType = document.getElementById('sitePageId:caseFormId:pblockId:type-of-application').value;
+            console.log('Type of application: ' + applicationType);
+            if(!applicationType) {
+                document.getElementById('sitePageId:caseFormId:pblockId:type-of-application').style.outline = '1px solid #EF0000';
+                document.getElementById('typeOfApplicationErrorMsg').innerHTML = 'Error: "Type of Application" is not selected';
+                return false;
+            } else {
+                document.getElementById('typeOfApplicationErrorMsg').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:type-of-application').style.outline = '0';
+            }           
+            return true;                
+        }
+        
+        function validateApplicationFor(){
+            var applicationIsFor = document.getElementById('your-application-is-for').value;
+            console.log('Your application is for: ' + applicationIsFor);
+            if(!applicationIsFor) {
+                document.getElementById('your-application-is-for').style.outline = '1px solid #EF0000';
+                document.getElementById('applicationIsForErrorMsg').innerHTML = 'Error: "Your application is for" is not selected';
+                return false;
+            } else {
+                document.getElementById('sitePageId:caseFormId:pblockId:category').value = applicationIsFor;
+                document.getElementById('applicationIsForErrorMsg').innerHTML = '';
+                document.getElementById('your-application-is-for').style.outline = '0';
+            }           
+            return true;                
+        }
+        
+        function validateRelatingTo() {
+            var relatingTo = document.getElementById('related-to').value;
+            console.log('Related to: ' + relatingTo);
+            if(!relatingTo) {
+                document.getElementById('related-to').style.outline = '1px solid #EF0000';
+                document.getElementById('relatedToErrorMsg').innerHTML = 'Error: "Related to" is not selected';
+                return false;
+            } else {
+                document.getElementById('sitePageId:caseFormId:pblockId:subcategory').value = relatingTo;
+                document.getElementById('relatedToErrorMsg').innerHTML = '';
+                document.getElementById('related-to').style.outline = '0';
+            }           
+            return true;                
+        }
+        
+        function validateDescription() {
+            var description = document.getElementById('sitePageId:caseFormId:pblockId:detailed-description').value;
+            console.log('Description: ' + description);
+            if(!description) {
+                document.getElementById('sitePageId:caseFormId:pblockId:detailed-description').style.outline = '1px solid #EF0000';
+                document.getElementById('feedbackDescErrorMsg').innerHTML = 'Error: Please complete selected field';
+                return false;
+            } else {
+                document.getElementById('feedbackDescErrorMsg').innerHTML = '';
+                document.getElementById('sitePageId:caseFormId:pblockId:detailed-description').style.outline = '0';
+            }
+            return true;
+        }
+        
+        function retrieveTaxonomy() {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.WebToCaseConcession_CX.retrieveConcessionTaxonomy}',
+                function(result, event){
+                    if (event.status) {
+                        console.log('==Result===');
+                        console.log(result);
+                        concessionTaxonomy = []; 
+                        var applicationIsFor = document.getElementById('your-application-is-for');
+                        if(applicationIsFor){
+                            for(let i = applicationIsFor.length; i > 0 ; i--){
+                                applicationIsFor.remove(i-1);
+                            }
+                            var option = document.createElement("option");
+                            option.text = '--None--';
+                            option.value = '';
+                            applicationIsFor.add(option);
+                        }
+                        
+                        for(let i = 0; i < result.length; i++){
+                            concessionTaxonomy.push({category: result[i].category, subcategory: result[i].subCategory});
+                            var option = document.createElement("option");
+                            option.text = result[i].category;
+                            option.value = result[i].category;
+                            applicationIsFor.add(option);
+                        }
+                        console.log('Retrieved taxonomy as below:');
+                        console.log(JSON.stringify(concessionTaxonomy));
+                    } else if (event.type === 'exception') {
+                        document.getElementById("error-message").innerHTML = 
+                        event.message + "<br/>\n<pre>" + event.where + "</pre>";
+                    } else {
+                        document.getElementById("error-message").innerHTML = event.message;
+                    }                       
+                }, 
+                {escape: true}
+            );              
+        }
+        
+        function populateSubCategory(category) {
+            console.log('selected category: ' + category);
+            var relatedTo = document.getElementById('related-to');
+            if(relatedTo){
+                for(let i = relatedTo.length; i > 0; i--){
+                    relatedTo.remove(i - 1);
+                }
+                var option = document.createElement("option");
+                option.text = '--None--';
+                option.value = '';
+                relatedTo.add(option);
+            }
+            
+            for(let i = 0; i < concessionTaxonomy.length; i++){
+                if(concessionTaxonomy[i].category == category) {
+                    for(let j = 0; j < concessionTaxonomy[i].subcategory.length; j++){
+                        var option = document.createElement("option");
+                        option.text = concessionTaxonomy[i].subcategory[j];
+                        option.value = concessionTaxonomy[i].subcategory[j];
+                        relatedTo.add(option);
+                    }
+                }                   
+            }  
+        }
+        
+        function validateContactDetails() {
+            var isValid = true;
+            if(!validateName()) isValid = false;
+            console.log('name ' + isValid);
+            if(!validatePhone()) isValid = false;
+            console.log('phone ' + isValid);
+            if(!validateEmail()) isValid = false;
+            console.log('email ' + isValid);
+            if(isValid == true && !validateEmailConfirmation()) isValid = false;
+            return isValid;
+        }
+        
+        function validatePhone(){
+            var phone = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").value;
+            console.log('phone: ' + phone);
+            document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").style.outline = "0";
+            document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").setAttribute("aria-invalid", "false");
+            document.getElementById("phoneErrorMsg").innerHTML = "";
+            if(phone){
+                
+                var t = new RegExp("^[0-9+() ]*$").test(phone);
+                if(0 == t){
+                    document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").style.outline = "1px solid #EF0000";
+                    document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-phone-number").setAttribute("aria-invalid", "true");
+                    document.getElementById("phoneErrorMsg").innerHTML = "Error: Please enter a valid phone number, including only characters: <b><i>+, ( ), 0-9</i></b>";
+                    return false;
+                }                   
+            }
+            return true;
+        }
+        
+        function validateEmail(){
+            var email = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value;
+            console.log('email: ' + email);
+            document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "0";
+            document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "false");
+            document.getElementById("emailErrorMsg").innerHTML = "";
+            if(email){                  
+                var t = validateEmailFormat(email);
+                console.log('email check results : ' + t);
+                if(!t){
+                    document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "1px solid #EF0000";
+                    document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "true");
+                    document.getElementById("emailErrorMsg").innerHTML = "Error: Please enter a valid email address in the format - <b><i>example@address.com.au</i></b>";
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        function validateEmailConfirmation() {
+            console.log('checking email confirmation');
+            var email = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").value;
+            var emailConfirm = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").value;
+            
+            if(email != emailConfirm) {
+                document.getElementById("emailErrorMsg").innerHTML = "Error: Contact email and confirmation email do not match.";
+                document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "1px solid #EF0000";
+                
+                document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "1px solid #EF0000";
+                document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "true");
+                return false;
+            } else {
+                document.getElementById("emailErrorMsg").innerHTML = "";
+                document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").setAttribute("aria-invalid", "false");
+                document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address").style.outline = "0";
+                document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-email-address-confirm").style.outline = "0";
+            }
+            return true;
+        }
+        
+        
+        function validateName() {
+            var lnameElement = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-last-name");
+            var lnameErrorElement = document.getElementById("lastNameErrorMsg");
+            
+            var fnameElement = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:contact-detail-first-name");
+            var fnameErrorElement = document.getElementById("firstNameErrorMsg");
+            
+            var isValid = true;
+            if(!validateContactName(lnameElement, lnameErrorElement)) isValid = false;
+            if(!validateContactName(fnameElement, fnameErrorElement)) isValid = false;
+            
+            return isValid;
+        }
+        
+        function validateContactName(element, errorDiv) {
+            var contactname = element.value;
+            console.log(contactname);
+            element.style.outline = "0";
+            element.setAttribute("aria-invalid", "false");
+            errorDiv.innerHTML = "";
+            
+            if(contactname){
+                element.style.outline = "0";
+                errorDiv.innerHTML = "";
+                element.setAttribute("aria-invalid", "false");
+                var t = new RegExp("^[a-zA-Z' -]*$").test(contactname);
+                if(0 == t){
+                    element.style.outline = "1px solid #EF0000";
+                    element.setAttribute("aria-invalid", "true");
+                    errorDiv.innerHTML = "Error: Invalid contact name provided. Contact name can only contain alphabets, apostrophe, hyphen and blank space.";
+                    return false;
+                }
+                return true;
+            }
+            return true;   
+        }           
+        
+        function validateEmailFormat(e) {    
+            var t = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return e.match(t) ? !0 : !1
+        }
+        
+        
+        function setStateValue(e) {
+            for (var t = document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1"), o = !1, n = 0; n < t.length; n++) t[n].value == e && (o = !0);
+            if (o) document.getElementById("sitePageId:caseFormId:pblockId:webformContact:contactComponent:administrative_area_level_1").value = e, $(".countryField").hide();
+            else
+                for (var n = 0; n < t.length; n++) "Outside Australia" == t[n].text && (t[n].selected = !0)
+        }
+        
+        </script>
+        
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBJkgEAaLXfcCuEQLE_sLXjqVXkGlkpUAk&libraries=places&region=AU" />
+    
+</apex:page>

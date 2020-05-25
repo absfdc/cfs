@@ -2,11 +2,15 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <email>tfnsw@mailinator.com</email>
-    <name>PBO - Transit Systems West</name>
+    <name>PBO - Transit Systems West (DO NOT USE)</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>Transit_Systems_West</publicGroup>
         </publicGroups>
+        <users>
+            <user>kcorsham@transitsystems.com.au.cfs</user>
+            <user>syoung@transitsystems.com.au.cfs</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>

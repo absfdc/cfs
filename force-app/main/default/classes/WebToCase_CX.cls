@@ -40,6 +40,7 @@ global class WebToCase_CX {
         }}
     public transient List<SelectOption> options;
     public transient List<SelectOption> rmsOptions;
+    public transient List<SelectOption> routeOptions;
     public String selectedRmsOption {get; set;}
     public String location;
     public String line;
@@ -473,6 +474,17 @@ History:
         return rmsOptions;
     }
     
+    public void setRouteOptions(List<SelectOption> optionValues) {
+        routeOptions= optionValues;
+    }
+    
+    public List<SelectOption> getRouteOptions() {
+        routeOptions = new List<SelectOption>();        
+        routeOptions.add(new SelectOption('false', 'Regular'));
+        routeOptions.add(new SelectOption('true', 'School route'));
+        return routeOptions;
+    }
+    
     public void setDatasetId(String value) {}
     
     public String getDatasetId() {
@@ -567,9 +579,9 @@ History:
     
     
     @RemoteAction
-    global static List<WebToCase_CX.CaseCategorization> retrieveLocTaxonomy(String origin) {
+    global static List<WebToCase_CX.CaseCategorization> retrieveLocTaxonomy(String origin, String modes) {
         List<WebToCase_CX.CaseCategorization> locCat = new List<WebToCase_CX.CaseCategorization>();
-        Map<String, List<String>> fieldVsLocation = TaxonomyRetriever.retrieveLocationTaxonomy(origin);
+        Map<String, List<String>> fieldVsLocation = TaxonomyRetriever.retrieveLocationTaxonomy(origin,modes);
         for(String fieldName : fieldVsLocation.keySet()) {
             List<String> values = new List<String>();
             values.addAll(fieldVsLocation.get(fieldName));
@@ -577,5 +589,10 @@ History:
             locCat.add(location);
         }
         return locCat;
+    }
+
+    @RemoteAction
+    global static List<String> getMatchingLocTaxonomy(String pSearchKey, String modes, Boolean pSchoolRoute) {
+        return TaxonomyRetriever.retrieveMatchingLocTaxonomy(pSearchKey, modes, pSchoolRoute);
     }
 }

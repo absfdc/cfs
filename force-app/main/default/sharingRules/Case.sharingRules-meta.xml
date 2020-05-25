@@ -1832,6 +1832,46 @@
         </criteriaItems>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Share_with_Transdev_Ferry</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>SFCOE-3109</description>
+        <label>Share with Transdev Ferry</label>
+        <sharedTo>
+            <group>Transdev_Sydney_Ferries</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6)</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ferry</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Modes__c</field>
+            <operation>equals</operation>
+            <value>Ferry</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Agency__c</field>
+            <operation>equals</operation>
+            <value>HCF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>HCF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Sydney Ferry</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Taxonomy_Location_Type__c</field>
+            <operation>equals</operation>
+            <value>Sydney Ferries</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Share_with_Transdev_Light_Rail</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Share with Transdev Light Rail</label>
@@ -3073,25 +3113,13 @@
     <sharingOwnerRules>
         <fullName>Transit_Systems_Case_Manager_Sharing</fullName>
         <accessLevel>Edit</accessLevel>
-        <description>This rule will share all cases owned by anyone in Transit Systems &gt; Case Manager to everyone else in the role.</description>
+        <description>Sharing all cases owned by users in the &quot;Transit Systems&quot; role to Transit Systems Case Manager role</description>
         <label>Transit Systems Case Manager Sharing</label>
         <sharedTo>
-            <roleAndSubordinates>Transit_Systems_Case_Manager</roleAndSubordinates>
+            <roleAndSubordinatesInternal>Transit_Systems</roleAndSubordinatesInternal>
         </sharedTo>
         <sharedFrom>
-            <roleAndSubordinates>Transit_Systems_Case_Manager</roleAndSubordinates>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>Transit_Systems_Case_Sharing</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>Sharing all cases owned by users in the &quot;Transit Systems&quot; role to Transit Systems Case Manager role</description>
-        <label>Transit Systems Case Sharing</label>
-        <sharedTo>
-            <roleAndSubordinates>Transit_Systems_Case_Manager</roleAndSubordinates>
-        </sharedTo>
-        <sharedFrom>
-            <role>Transit_Systems</role>
+            <roleAndSubordinatesInternal>Transit_Systems</roleAndSubordinatesInternal>
         </sharedFrom>
     </sharingOwnerRules>
 </SharingRules>

@@ -259,9 +259,7 @@ public without sharing class ActionPlanAfterUpdateTriggerHandler extends Trigger
                 List <Messaging.SingleEmailMessage> emails = new list <Messaging.SingleEmailMessage>();
                 for(Action_Plan__c ap : (List<Action_Plan__c>) tp.newList) {
                     Action_plan__c oldAp = (Action_plan__c) tp.oldMap.get(ap.Id);
-                    // SFCOE-3412 send Email notifications when AP status updated to 'Action Plan in Review'
-                    // if(ap.Status__c == GlobalConstants.ACTION_PLAN_INCORRECT_ASSIGNMENT || ap.Status__c == GlobalConstants.ACTION_PLAN_NEW_APPROVED)
-                    if(ap.Status__c == GlobalConstants.ACTION_PLAN_INCORRECT_ASSIGNMENT)
+                    if(ap.Status__c == GlobalConstants.ACTION_PLAN_INCORRECT_ASSIGNMENT || ap.Status__c == GlobalConstants.ACTION_PLAN_NEW_APPROVED)
                         continue;
                     
                     if(oldAp.status__c != ap.Status__c && 

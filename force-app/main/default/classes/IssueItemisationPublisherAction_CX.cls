@@ -106,12 +106,12 @@ global with sharing class IssueItemisationPublisherAction_CX {
                     for (String aMode:configuredModes.split(',',0)){
                         accessibleModes.add(aMode);
                     }
-                    modes=[select Id,Parent_Id__c,Status_Staff_Facing__c, name, Parent_Id__r.Type__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_MODE_TYPE and Name in:accessibleModes];
+                    modes=[select Id,Parent_Id__c,Status_Staff_Facing__c, name, Parent_Id__r.Type__c,School_Route__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_MODE_TYPE and Name in:accessibleModes];
 
                 }
                 
             }else{
-                modes=[select Id,Parent_Id__c,Status_Staff_Facing__c, name, Parent_Id__r.Type__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_MODE_TYPE and Name !=:GlobalConstants.MIN_CORRO_MODE_NAME];
+                modes=[select Id,Parent_Id__c,Status_Staff_Facing__c, name, Parent_Id__r.Type__c,School_Route__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_MODE_TYPE and Name !=:GlobalConstants.MIN_CORRO_MODE_NAME];
             }
 
         }
@@ -135,7 +135,7 @@ global with sharing class IssueItemisationPublisherAction_CX {
         public String parent {get;set;}// will be used for placement within hierarchy
         public String text {get;set;}//what will be displayed on the UI
         public State state{get;set;}//selected etc
-
+        public a_attr a_attr{get;set;}//style etc
     }
 
     /*------------------------------------------------------------
@@ -149,6 +149,17 @@ global with sharing class IssueItemisationPublisherAction_CX {
     global class State{
         public Boolean selected {get;set;}
         public Boolean opened {get;set;}
+    }
+
+    /*------------------------------------------------------------
+    Author:       Abhi
+    Company:       
+    Description:   Inner bean class represents the a_attr of a Node
+
+    History
+    ------------------------------------------------------------*/
+    global class a_attr{
+        public String style {get;set;}
     }
 
     /*------------------------------------------------------------
@@ -340,52 +351,14 @@ global with sharing class IssueItemisationPublisherAction_CX {
 
         }
 
-        
-        List<Taxonomy_Metadata__c> locations=[select Id,name,Parent_Id__c,Status_Staff_Facing__c,Parent_Id__r.Type__c,Agency__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_TYPE_LOCATION 
-                                                and (Parent_Id__r.Parent_Id__r.Parent_Id__c=:modeId or
-                                                Parent_Id__r.Parent_Id__c=:modeId or Parent_Id__c=:modeId) Limit 10000];
+        List<Taxonomy_Metadata__c> locations = [select Id,name,Parent_Id__c,Status_Staff_Facing__c,Parent_Id__r.Type__c,Agency__c,School_Route__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_TYPE_LOCATION 
+                                                and ((Parent_Id__r.Parent_Id__r.Parent_Id__c=:modeId)
+                                                or Parent_Id__r.Parent_Id__c=:modeId or Parent_Id__c=:modeId) ORDER BY Length_of_name__c ASC Limit 50000];
         if (null==locations) return null;
+        
         return getNodes(locations,locater);
 
     }
-    
-    
-    /*  School Bus Routes - Partially completed code - Start
-//TBD: Same changes are needed on the webform
-    @RemoteAction
-    global static List<Node> getLocations(string caseId,String modeId, boolean isSchoolBusSelected) {
-        List<Taxonomy_Metadata__c> locations = new List<Taxonomy_Metadata__c>();
-
-        StateChecker locater;
-        modeId=String.escapeSingleQuotes(modeId);
-
-        system.debug('isSchoolBusSelected: ' + isSchoolBusSelected);
-        
-        if(null!=caseId && caseId.length()>=15){
-            caseId=String.escapeSingleQuotes(caseId);
-            Case thisCase=[select Id,Modes__c,Taxonomy_Location_Type__c,Taxonomy_Area__c,Taxonomy_Location__c, Taxonomy_Location_Id__c from Case where Id=:caseId];
-            locater= new LocationChecker(thisCase);
-
-        }
-		
-        if(isSchoolBusSelected!=null && isSchoolBusSelected)
-		locations=[select Id,name,Parent_Id__c,Status_Staff_Facing__c,Parent_Id__r.Type__c,Agency__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_TYPE_LOCATION 
-                                                  and (Parent_Id__r.Parent_Id__r.Parent_Id__c=:modeId or Parent_Id__r.Parent_Id__c=:modeId or Parent_Id__c=:modeId)
-                                                  and ROUTE_VARIANT_TYPE__C='School' Limit 10000];
-        
-        else locations=[select Id,name,Parent_Id__c,Status_Staff_Facing__c,Parent_Id__r.Type__c,Agency__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_TYPE_LOCATION 
-                                                and (Parent_Id__r.Parent_Id__r.Parent_Id__c=:modeId or Parent_Id__r.Parent_Id__c=:modeId or Parent_Id__c=:modeId)
-                        						and ROUTE_VARIANT_TYPE__C!='School' Limit 10000];
-        if (null==locations) return null;
-        return getNodes(locations,locater);
-
-    }
-
-School Bus Routes - Partially completed code - End
-
-
-*/
-
 
     /*------------------------------------------------------------
     Author:        Dipankar Barman
@@ -410,8 +383,13 @@ School Bus Routes - Partially completed code - End
             }
             aNode.id=aTaxonomy.Id;
             aNode.text=aTaxonomy.name;
-            if (aTaxonomy.Parent_Id__c==null || aTaxonomy.Parent_Id__r.Type__c==GlobalConstants.TAXONOMY_MODE_TYPE) {
+            if(aTaxonomy.School_Route__c){
+                a_attr attr = new a_attr();
+                attr.style = 'color:darkorange;font-weight:bold';
+                aNode.a_attr = attr;
+            }
                 
+            if (aTaxonomy.Parent_Id__c==null || aTaxonomy.Parent_Id__r.Type__c==GlobalConstants.TAXONOMY_MODE_TYPE) {
                 aNode.parent=ROOT_PARENT;
             }else{
                 aNode.parent=aTaxonomy.Parent_Id__c;
@@ -456,7 +434,7 @@ School Bus Routes - Partially completed code - End
             issueCheck= new IssueChecker(thisCase);
 
         }
-        List<Taxonomy_Metadata__c> issues=[select Id,name,Parent_Id__c,Status_Staff_Facing__c,Parent_Id__r.Type__c,Agency__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_TYPE_ISSUE and (Parent_Id__r.Parent_Id__r.Parent_Id__c=:modeId or
+        List<Taxonomy_Metadata__c> issues=[select Id,name,Parent_Id__c,Status_Staff_Facing__c,Parent_Id__r.Type__c,Agency__c,School_Route__c from  Taxonomy_Metadata__c where Status_Staff_Facing__c=:GlobalConstants.TAXONOMY_STAFF_FACING and Type__c=:GlobalConstants.TAXONOMY_TYPE_ISSUE and (Parent_Id__r.Parent_Id__r.Parent_Id__c=:modeId or
                                                 Parent_Id__r.Parent_Id__c=:modeId or Parent_Id__c=:modeId) Limit 10000];
         if (null==issues) return null;
         return getNodes(issues,issueCheck);
@@ -594,7 +572,7 @@ School Bus Routes - Partially completed code - End
             if(categories==null || categories.size()<1) return;
             Map<Id,CaseCategory>caseCategoriesForUpdate=new Map<Id,CaseCategory>();
             List<Case>caseForInsert= new List<Case>();
-            // RecordType multiType=[SELECT ID FROM RecordType WHERE sObjectType = 'Case' AND DeveloperName =:GlobalConstants.CASE_RECORD_TYPE_MULTI_ISSUE_DEV limit 1];
+            RecordType multiType=[SELECT ID FROM RecordType WHERE sObjectType = 'Case' AND DeveloperName =:GlobalConstants.CASE_RECORD_TYPE_MULTI_ISSUE_DEV limit 1];
             List<Id> taxomyIds= new List<Id>();
             Case parentCase;
             system.debug('---@Categorisation UpsertCategories---Parent Case Id-' + parentCaseId);
@@ -606,7 +584,7 @@ School Bus Routes - Partially completed code - End
                                   Subject,Priority,Description,IsEscalated,OwnerId,Taxonomy_Moment__c,Taxonomy_Location__c,Taxonomy_Transaction__c,
                                   Taxonomy_Symptom__c,Taxonomy_Location_Type__c,Taxonomy_Area__c,Secondary_Contact__c,Supplied_Address__c,
                                   Case_Reference_Number__c,Modes__c,User_have_raised_the_issue_previously__c,Taxonomy_Accountability__c,
-                                  Origin_Details__c,Referrer_URL__c,Users_Ip_address__c,RFS_Region__c,Product_Type__c,User_agent__c,
+                                  Origin_Details__c,Referrer_URL__c,User_agent__c,Users_Ip_address__c,RFS_Region__c,Product_Type__c,
                                   Signatory__c,Taxonomy_Symptom_Id__c,Taxonomy_Location_Id__c,Acknowledgement_Required__c,Use_Contact_Details__c,
                                   Case_Registered_By__c,Alternate_Email__c,Alternative_Postal_Address__c,PNR_Number__c, Date_Time_of_Incident__c, 
                                   Request_for_Action__c,Location_of_Incident__c,Direction_of_Travel__c,STA_Event_ID__c,STA_Employee_Number__c,

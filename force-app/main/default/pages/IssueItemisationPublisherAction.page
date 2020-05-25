@@ -56,8 +56,15 @@
 				<div id="LocationWidget" class="dropdown_widget col-xs-6" style="display:inline-block; padding-left: 0px;
 	    vertical-align:top;  " >
 					<label>Location</label>
+					<div class="btn-group" id="SchoolRouteText" style="display:none; left: 20px; height: 20px;color:darkorange;">
+						<div>(school routes highlighted orange)</div>
+					</div>
 
 					<input type="text" id="searchInputLocation" value="" class="input searchbox " placeholder="search location..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search location...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="5" />
+					<div id="searchContainer" style="padding-top:15px; display: none">
+                        <img src="/img/loading32.gif" width="25" height="25" />
+                        <apex:outputLabel value="Searching..."/>
+                    </div>
 					<div id="LocationContainer"  class="searchableDropdown col-xs-6 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"></div>
 
 				</div>
@@ -173,10 +180,22 @@
 			  		$('#LocationContainer').show();
 			  	}
 			    if(to) { clearTimeout(to); }
+				var v = $('#searchInputLocation').val();
+
+				if(v.length<1) {
+                    $('#searchContainer').hide();
+                    return;
+                }
+				$('#searchContainer').show();
 			    to = setTimeout(function () {
-			      var v = $('#searchInputLocation').val();
-			      $('#LocationContainer').jstree(true).search(v);
-			    }, 250);
+                  try{
+                    $('#LocationContainer').jstree('search',v);
+                  }catch{
+                    $('#searchContainer').hide();
+                    return;
+                  }
+                  $('#searchContainer').hide();
+                }, 1000);
 			  });
 
 
@@ -286,6 +305,12 @@
 						    grandLocation='';
 						    $('#searchInputLocation').popover('destroy');
 					    	$('#searchInputIssue').popover('destroy');
+
+							if(currentSelectedMode === 'Bus') {
+                                $('#SchoolRouteText').show();
+                            }else{
+                                $('#SchoolRouteText').hide();
+                            }
 
 						}else if (widget[0].id=='LocationWidget'){
 							console.log('Location selected');
@@ -480,6 +505,11 @@
 
 								$('#LocationContainer').jstree(true).refresh(true);
 								$('#IssueContainer').jstree(true).refresh(true);
+								if(currentSelectedMode === 'Bus') {
+									$('#SchoolRouteText').show();
+								}else{
+									$('#SchoolRouteText').hide();
+								}
 							}
 
 						});

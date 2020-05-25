@@ -297,7 +297,7 @@ History
                            //Calculate Taxonomy Symptom and Stamp on Case record 
                            System.debug('CaseBeforeInsertTriggerHandler:: syncPortalPBOFields:: Issue: ' + newCase.Issue_Level_3__c + newCase.Issue_Level_2__c + newCase.Issue_Level_1__c);
                            
-                           Id issueTaxonomyId = IssueTaxonomyMap.get(newCase.Issue_Level_3__c+newCase.Issue_Level_2__c+newCase.Issue_Level_1__c);
+                           Id issueTaxonomyId = IssueTaxonomyMap.get((newCase.Issue_Level_3__c+newCase.Issue_Level_2__c+newCase.Issue_Level_1__c).toLowerCase());
                            System.debug('CaseBeforeInsertTriggerHandler:: syncPortalPBOFields:: Issue: ' + newCase.Issue_Level_3__c + newCase.Issue_Level_2__c + newCase.Issue_Level_1__c);
                            
                            if(issueTaxonomyId!=null) {
@@ -312,7 +312,7 @@ History
                     System.debug('Location MAP Size: ' + locationTaxonomyMap.size());
                     
                     if(!String.isBlank(newCase.Taxonomy_Location__c) && !String.isBlank(newCase.Taxonomy_Area__c) && !String.isBlank(newCase.Taxonomy_Location_Type__c)) {
-                        Id locationTaxonomyId = locationTaxonomyMap.get(newCase.Taxonomy_Location__c+newCase.Taxonomy_Area__c+newCase.Taxonomy_Location_Type__c);
+                        Id locationTaxonomyId = locationTaxonomyMap.get((newCase.Taxonomy_Location__c+newCase.Taxonomy_Area__c+newCase.Taxonomy_Location_Type__c).toLowerCase());
                         System.debug('CaseBeforeInsertTriggerHandler:: locationTaxonomyId:: ' + locationTaxonomyId);
                         
                         if(locationTaxonomyId != null) {
@@ -371,7 +371,7 @@ History
                                                   AND Parent_Id__r.Parent_Id__r.Name in :lvl1];
             
             For (Taxonomy_Metadata__c tx : txList){
-                txMap.put( tx.Name + tx.Parent_Id__r.name + tx.Parent_Id__r.Parent_Id__r.Name , tx.Id);
+                txMap.put((tx.Name + tx.Parent_Id__r.name + tx.Parent_Id__r.Parent_Id__r.Name).toLowerCase() , tx.Id);
             }
             system.debug(txMap);            
         }catch(Exception e){
@@ -421,7 +421,7 @@ History
                                                   AND Parent_Id__r.Parent_Id__r.Name in :lvl1];
             
             For (Taxonomy_Metadata__c tx : txList){
-                txMap.put( tx.Name + tx.Parent_Id__r.name + tx.Parent_Id__r.Parent_Id__r.Name , tx.Id);
+                txMap.put( (tx.Name + tx.Parent_Id__r.name + tx.Parent_Id__r.Parent_Id__r.Name).toLowerCase() , tx.Id);
                 system.debug('prepareLocationTaxonomyList:: Added to Location Map: ' + tx.Name + tx.Parent_Id__r.name + tx.Parent_Id__r.Parent_Id__r.Name + ' id: ' + tx.Id);
             }
             system.debug('prepareLocationTaxonomyList:: Location Map: ' + txMap);            

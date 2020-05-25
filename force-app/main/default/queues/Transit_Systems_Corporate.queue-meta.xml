@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <email>kcorsham@transitsystems.com.au</email>
+    <email>tfnsw@mailinator.com</email>
     <name>Transit Systems - Corporate</name>
     <queueMembers>
-        <roleAndSubordinatesInternal>
-            <roleAndSubordinateInternal>Transit_Systems</roleAndSubordinateInternal>
-        </roleAndSubordinatesInternal>
+        <roleAndSubordinates>
+            <roleAndSubordinate>Transit_Systems</roleAndSubordinate>
+        </roleAndSubordinates>
     </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>

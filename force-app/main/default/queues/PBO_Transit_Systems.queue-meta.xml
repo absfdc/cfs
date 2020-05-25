@@ -2,9 +2,10 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <email>tfnsw@mailinator.com</email>
-    <name>PBO - Transit Systems</name>
+    <name>PBO - Transit Systems (DO NOT USE)</name>
     <queueMembers>
         <users>
+            <user>kcorsham@transitsystems.com.au.cfs</user>
             <user>syoung@transitsystems.com.au.cfs</user>
         </users>
     </queueMembers>

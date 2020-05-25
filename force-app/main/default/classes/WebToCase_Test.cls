@@ -178,7 +178,7 @@ private class WebToCase_Test {
         ApexPages.currentPage().getHeaders().put('X-Salesforce-SIP', ipAddress);
         ApexPages.StandardController stdController = new ApexPages.StandardController(caseRecord);
         WebToCase_CX controller = new WebToCase_CX(stdController);
-        List<WebToCase_CX.CaseCategorization> locCategorization = WebToCase_CX.retrieveLocTaxonomy('tfnsw');
+        List<WebToCase_CX.CaseCategorization> locCategorization = WebToCase_CX.retrieveLocTaxonomy('tfnsw',mode);
         System.assert(!locCategorization.isEmpty());
         List<WebToCase_CX.CaseCategorization> issueCategorization = WebToCase_CX.retrieveIssueTaxonomy('tfnsw');
         System.assert(!issueCategorization.isEmpty());

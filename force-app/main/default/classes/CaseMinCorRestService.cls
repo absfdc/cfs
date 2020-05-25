@@ -10,6 +10,8 @@ History
 30/12/2016      Arxxus                  Updated to use 100% matching rule
 15/06/2017      Ian Fitzgerald          Added list of original file names to parameters passed to WebToCaseAttachmentCreator to 
                                         keep track of file names > 80 chars
+** THIS SERVICE IS DEPRECATED **
+    - Starting 14/4/2020 CFS generic case creation API is being utilized by MinCorro
 ------------------------------------------------------------*/
 @RestResource(urlMapping='/mincor/v1/createCase/*')
 global class CaseMinCorRestService {

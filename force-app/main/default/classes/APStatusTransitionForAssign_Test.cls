@@ -7,14 +7,14 @@ private class APStatusTransitionForAssign_Test {
         actionPlan = new Action_Plan__c();
         actionPlan.Type__c = GlobalConstants.AP_TYPE_AGENCY_RESPONSE;
         actionPlan.Status__c = status;
-        actionPlan.Agency__c = GlobalConstants.AGENCY_TFNSW;
-        actionPlan.Divisions__c = 'Office of the Secretary';
+        actionPlan.Agency__c = GlobalConstants.RMS_AGENCY;
+        actionPlan.Divisions__c = 'Corporate';
         actionPlan.RecordTypeId = retrieveAgencyResponseRT();
         insert actionPlan;
     }
     
     private static Id retrieveAgencyResponseRT() {
-        List<RecordType> rts = [SELECT Id FROM RecordType WHERE SObjectType = 'Action_Plan__c' AND DeveloperName = 'CFM_Action_Plan'];
+        List<RecordType> rts = [SELECT Id FROM RecordType WHERE SObjectType = 'Action_Plan__c' AND DeveloperName = 'RMS_Action_Plan'];
         return rts.isEmpty()? null : rts[0].Id;
     }
     
@@ -68,7 +68,6 @@ private class APStatusTransitionForAssign_Test {
     private static testMethod void testForActionPlanOfAdviceRequest() {
         setUpTestData(GlobalConstants.ACTION_PLAN_STATUS_INPROGRESS);
         actionPlan.Type__c = GlobalConstants.ACTION_PLAN_TYPE_ADVICE_REQUEST;
-        actionPlan.Branch__c = 'RMS Audit and Assurance';
         update actionPlan;
         System.Test.startTest();
         try {           
@@ -108,7 +107,6 @@ private class APStatusTransitionForAssign_Test {
         System.Test.startTest();
         actionPlan.Type__c = GlobalConstants.ACTION_PLAN_TYPE_ADVICE_REQUEST;
         actionPlan.AssignedSME__c = u.id;
-        actionPlan.Branch__c = 'RMS Audit and Assurance';
         update actionPlan;
         try {           
             APStatusTransitionForAssign printingInstance = new APStatusTransitionForAssign(actionPlan.Id);
@@ -189,7 +187,6 @@ private class APStatusTransitionForAssign_Test {
         System.Test.startTest();
         ap.Type__c = GlobalConstants.ACTION_PLAN_TYPE_ADVICE_REQUEST;
         ap.AssignedSME__c = u.id;
-        ap.Branch__c = 'RMS Audit and Assurance';
         update ap;
         try {           
             APStatusTransitionForAssign printingInstance = new APStatusTransitionForAssign(childActionPlanId);
@@ -275,8 +272,7 @@ private class APStatusTransitionForAssign_Test {
         child.Type__c = type;
         child.Status__c = GlobalConstants.ACTION_PLAN_STATUS_AWAITING_SIG;
         child.Status__c = status;
-        child.Agency__c = GlobalConstants.AGENCY_TFNSW;
-        child.Branch__c = 'RMS Audit and Assurance';
+        child.Agency__c = GlobalConstants.RMS_AGENCY;
         child.recordTypeId = retrieveChildActionPlanRT();
         child.Parent_Action_Plan__c = actionPlan.Id;
         insert child;

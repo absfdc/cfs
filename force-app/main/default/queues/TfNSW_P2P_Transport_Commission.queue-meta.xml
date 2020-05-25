@@ -4,8 +4,10 @@
     <name>TfNSW P2P Transport Commission</name>
     <queueMembers>
         <users>
+            <user>ian.lambert@transport.nsw.gov.au.mc</user>
             <user>rachel.muscat@transport.nsw.gov.au.mc</user>
             <user>jo.denney@transport.nsw.gov.au.mc</user>
+            <user>kylie.lo@transport.nsw.gov.au.mc</user>
             <user>robert.marshall@transport.nsw.gov.au.mc</user>
         </users>
     </queueMembers>

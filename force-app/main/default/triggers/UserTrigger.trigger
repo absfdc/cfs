@@ -38,4 +38,5 @@ trigger UserTrigger on User (after update, before update, after insert) {
         }
     }    
 //JIRA# SFCOE-1837 Add User License Audit information - 26-05 End    
+    
 }

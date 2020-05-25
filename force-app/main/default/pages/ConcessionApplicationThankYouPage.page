@@ -1,0 +1,36 @@
+<apex:page id="thankyouPage" showHeader="false" sidebar="false" title="Your appliation has been submitted successfully">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+<apex:stylesheet value="{!URLFOR($Resource.WebformStyles, 'tfnsw.css')}"/>
+
+    <!-- SFCOE-2041 Salesforce GA tracking - Google Tag Manager START -->
+    <apex:includeScript html-async="" value="{!$Resource.GoogleTagManagerHeader}" />
+
+    <apex:outputPanel >
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZGSMR" height="0" width="0"  style="display:none;visibility:hidden"></iframe>
+        </noscript>
+    </apex:outputPanel>    
+    <!-- SFCOE-2041 Salesforce GA tracking - Google Tag Manager END -->
+          
+
+        <div id="ackMsg" class="tfnswMsgContainer" >          
+            <div class="col-md-12" >
+                <div class="col-md-12"  id="thankYouMessage" >
+                    <p>Transport NSW has received your application, Thank you.</p>
+                    <p>Your Case reference number is: {!$CurrentPage.parameters.caseNumber}.</p>                    
+                </div>
+            </div>
+        </div>
+    <script src="{!$Resource.IframeResizer}"/>
+    <script>window.parent.postMessage('scrollToAckMsg','*')</script>    
+    <style>
+    .tfnswMsgContainer{
+        background-color:#fff;
+        font-family:TransText;
+        border-left:0px;
+        border-right:0px;
+        max-width:900px;
+        margin:0 auto;
+    }
+    </style>
+</apex:page>

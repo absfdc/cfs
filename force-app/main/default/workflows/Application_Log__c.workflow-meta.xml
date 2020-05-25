@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
+        <fullName>Email_Alert_AppLog_Errors</fullName>
+        <description>Email Alert - AppLog Errors</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>system.admin@transport.nsw.gov.au.cfs</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Email_AppLog_Errors_Alert</template>
+    </alerts>
+    <alerts>
         <fullName>Send_email_to_support</fullName>
         <description>Send email to support</description>
         <protected>false</protected>
@@ -11,6 +22,21 @@
         <senderType>CurrentUser</senderType>
         <template>Case_Notification_Templates/Error_Notification</template>
     </alerts>
+    <rules>
+        <fullName>AppLog Alert for Errors</fullName>
+        <actions>
+            <name>Email_Alert_AppLog_Errors</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Application_Log__c.Debug_Level__c</field>
+            <operation>equals</operation>
+            <value>Error</value>
+        </criteriaItems>
+        <description>This is a alert when there&#39;s a critical error in the application log.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
     <rules>
         <fullName>Send email</fullName>
         <actions>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Update_External_Id_c</fullName>
+        <description>Update External_Id__c (Production Id Reference)</description>
+        <field>External_Id__c</field>
+        <formula>CASESAFEID(Id)</formula>
+        <name>Update External_Id__c</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>WFR Taxonomy Update ProdId Reference</fullName>
+        <actions>
+            <name>Update_External_Id_c</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow rule to update the Production Id Reference (External_Id__c) so it can be used when exporting Taxonomy to other instances</description>
+        <formula>/* Execute only if the External_Id__c is not the same as the production id, run in production only (note, 00D28000000HSVAEA4 = CFS Prod Org Id) */
+AND(
+CASESAFEID($Organization.Id) = &quot;00D28000000HSVAEA4&quot;
+, OR(ISBLANK( External_Id__c ), External_Id__c &lt;&gt; CASESAFEID(Id))
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

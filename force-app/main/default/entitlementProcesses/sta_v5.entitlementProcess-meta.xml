@@ -3,7 +3,7 @@
     <SObjectType>Case</SObjectType>
     <active>true</active>
     <description>STA 
-Business hours of 9:00am-7:00pm with 20 hour SLA (= 2 days) for contact made</description>
+Business hours of 9:00am-7:00pm with 24 hour SLA (= 2 days) for contact made</description>
     <entryStartDateField>Case.Date_Assigned_to_Agency__c</entryStartDateField>
     <exitCriteriaFilterItems>
         <field>Case.IsClosed</field>
@@ -31,8 +31,12 @@ Business hours of 9:00am-7:00pm with 20 hour SLA (= 2 days) for contact made</de
         <milestoneName>Contact Made</milestoneName>
         <minutesToComplete>1200</minutesToComplete>
         <timeTriggers>
-            <timeLength>48</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+            <actions>
+                <name>STA_milestone_violated</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
             <actions>
@@ -43,12 +47,8 @@ Business hours of 9:00am-7:00pm with 20 hour SLA (= 2 days) for contact made</de
             <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
-            <actions>
-                <name>STA_milestone_violated</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>1</timeLength>
-            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+            <timeLength>48</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
@@ -87,25 +87,17 @@ Business hours of 9:00am-7:00pm with 20 hour SLA (= 2 days) for contact made</de
     <milestones>
         <businessHours>STA</businessHours>
         <milestoneCriteriaFilterItems>
-            <field>Case.Type</field>
-            <operation>equals</operation>
-            <value>Complaint</value>
-        </milestoneCriteriaFilterItems>
-        <milestoneCriteriaFilterItems>
             <field>Case.OwnerAgency__c</field>
             <operation>equals</operation>
             <value>STA</value>
         </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Complaint</value>
+        </milestoneCriteriaFilterItems>
         <milestoneName>Case closed SLA 95%</milestoneName>
         <minutesToComplete>16500</minutesToComplete>
-        <timeTriggers>
-            <actions>
-                <name>STA_milestone_violated</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>1</timeLength>
-            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
-        </timeTriggers>
         <timeTriggers>
             <actions>
                 <name>STA_milestone_warning</name>
@@ -113,6 +105,14 @@ Business hours of 9:00am-7:00pm with 20 hour SLA (= 2 days) for contact made</de
             </actions>
             <timeLength>-22</timeLength>
             <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>STA_milestone_violated</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>

@@ -10,6 +10,7 @@
             <role>Transport_Services_SME</role>
         </roles>
         <users>
+            <user>craig.clarke@transport.nsw.gov.au</user>
             <user>kiranpreet.kaur@transport.nsw.gov.au</user>
         </users>
     </queueMembers>

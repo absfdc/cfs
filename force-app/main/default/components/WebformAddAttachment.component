@@ -1,6 +1,8 @@
 <apex:component id="attachmentComponent">
     <apex:attribute access="public" description="List of attachments to be added" id="attachmentList" name="attachments" required="true" type="Attachment[]"/>
     <apex:attribute access="public" description="JSON string representation of list of allowed files" id="allowedAttachments" name="allowedFileAttachments" required="true" type="String"/>
+    <apex:attribute access="public" description="" id="attachmentTextId" name="attachmentText" default="A photo or screenshot helps us to investigate your feedback" type="String"/>
+    
     <apex:variable var="rowCount" value="0"/>
     <div class="col-md-12 formLabel" style="margin-top:10px">
         <h1 style="display:none">&nbsp;</h1><h2  class="fieldBottomMargin heading" >Attachments</h2>
@@ -9,7 +11,7 @@
         <hr style="border-top: dotted 1px;margin-top:-2px;margin-bottom: 0px;" />
     </div>
     <div class="col-md-12">
-    <p role="heading" style="margin-bottom: 0px;text-align: justify;">A photo or screenshot helps us to investigate your feedback</p>
+    <p role="heading" style="margin-bottom: 0px;text-align: justify;">{!attachmentText}</p>
     </div>
     <div class="col-md-12" >
         <table class="table-responsive" style="border: 0px none !important;" >

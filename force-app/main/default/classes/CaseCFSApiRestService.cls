@@ -41,9 +41,8 @@ global class CaseCFSApiRestService {
        
             if (RestContext.request.requestBody!=null && RestContext.request.requestBody.toString().length()>0){
                 //Set any tokens that have empty strings as values to Null
-                System.debug('@@@ReceivedString Length: ' + RestContext.request.requestBody.toString().length());
-                receivedJson=setEmptyValuesToNull(RestContext.request.requestBody.toString());
-                
+                receivedJson=setEmptyValuesToNull(RestContext.request.requestBody.toString()); 
+            //    return receivedJson;
                 Savepoint sp = Database.setSavepoint();
                 try {
                     //Validate Case, contact and Attachment object names are correct
@@ -336,7 +335,10 @@ global class CaseCFSApiRestService {
         private String createCase (){
             String strResult = 'Success';
             
-            this.newCase.Status = 'Triage';
+            //SFCOE-3726 - Triage status override skipped for MO 'Pre-Registration'
+            if(this.newCase.Status != GlobalConstants.DEFAULT_MIN_CORRO_WEBTOCASE_STATUS){
+                this.newCase.Status = GlobalConstants.DEFAULT_WEBTOCASE_STATUS_TRIAGE;
+            }
             List<CFS_API_Default_Status_Map__mdt> defaultStatusList = [select Default_Status__c from CFS_API_Default_Status_Map__mdt
                                                                    where UserId__c = :UserInfo.getUserId()];
             if (defaultStatusList!=null && defaultStatusList.size()>0)   {
@@ -359,11 +361,12 @@ global class CaseCFSApiRestService {
 
             //SFCOE-3171- Start
             //Override Date Time of Incident if Date Time of Incident is provided in the request
-            if(this.newCase.Date_Time_of_Incident_gmt__c != null) {
+            if(this.newCase.Date_Time_of_Incident_gmt__c != null){
                 this.newCase.Date_Time_of_Incident__c = this.newCase.Date_Time_of_Incident_gmt__c;
             }
-            //SFCOE-3171 - End
 
+            //SFCOE-3171 - End
+            
             Database.DMLOptions dmlOpts = new Database.DMLOptions();
             List<AssignmentRule> rules = [select id from AssignmentRule where SobjectType = 'Case' and Active = true];
             if (rules!=null && rules.size()>0){

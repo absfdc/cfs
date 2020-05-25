@@ -97,7 +97,7 @@
         <description>Notify Corro User of Newcastle</description>
         <protected>false</protected>
         <recipients>
-            <recipient>tegan.hughes@keolisdowner.com.au</recipient>
+            <recipient>annabelle.moller@keolisdowner.com.au</recipient>
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
@@ -744,9 +744,7 @@ DATEVALUE(CreatedDate) + 1 + 5)
         <active>true</active>
         <description>Check Created by MAGS Officer when Action plan is created By MAGS Officer.
 Added - if also created by Office of Sec Admin.</description>
-        <formula>IF(OR( CreatedBy.UserRole.Name == &#39;MAGS Manager&#39;, CreatedBy.UserRole.Name == &#39;Senior MAGS Officer&#39;, CreatedBy.UserRole.Name == &#39;MAGS Officer&#39;,  CreatedBy.UserRole.Name == &#39;CRGS Admin&#39;, 
-CreatedBy.UserRole.Name == &#39;MAGS Editor&#39;,
-CreatedBy.UserRole.Name == &#39;Office of the Secretary Admin&#39;), true, false)</formula>
+        <formula>IF(OR( CreatedBy.UserRole.Name == &#39;MAGS Manager&#39;, CreatedBy.UserRole.Name == &#39;Senior MAGS Officer&#39;, CreatedBy.UserRole.Name == &#39;MAGS Officer&#39;,  CreatedBy.UserRole.Name == &#39;CRGS Admin&#39;,  CreatedBy.UserRole.Name == &#39;MAGS Editor&#39;, CreatedBy.UserRole.Name == &#39;Office of the Secretary Admin&#39;), true, false)</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>

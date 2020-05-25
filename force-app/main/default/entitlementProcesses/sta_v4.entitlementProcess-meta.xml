@@ -3,7 +3,7 @@
     <SObjectType>Case</SObjectType>
     <active>true</active>
     <description>STA 
-Business hours of 9:00am-7:00pm with 20 hour SLA (= 2 days) for contact made</description>
+Business hours of 9:00am-7:00pm with 24 hour SLA (= 2 days) for contact made</description>
     <entryStartDateField>Case.Date_Assigned_to_Agency__c</entryStartDateField>
     <exitCriteriaFilterItems>
         <field>Case.IsClosed</field>
@@ -31,11 +31,7 @@ Business hours of 9:00am-7:00pm with 20 hour SLA (= 2 days) for contact made</de
         <milestoneName>Contact Made</milestoneName>
         <minutesToComplete>1200</minutesToComplete>
         <timeTriggers>
-            <actions>
-                <name>STA_milestone_warning</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>-4</timeLength>
+            <timeLength>48</timeLength>
             <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
@@ -47,7 +43,11 @@ Business hours of 9:00am-7:00pm with 20 hour SLA (= 2 days) for contact made</de
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
-            <timeLength>48</timeLength>
+            <actions>
+                <name>STA_milestone_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-4</timeLength>
             <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>

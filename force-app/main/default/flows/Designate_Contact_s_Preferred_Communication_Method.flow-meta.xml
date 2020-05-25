@@ -227,7 +227,7 @@ NOT(ISBLANK(TEXT({!myVariable_old.Signatory_Person__c.Minister_Communication_Pre
         <object>Case</object>
     </recordUpdates>
     <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

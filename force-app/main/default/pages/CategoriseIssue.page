@@ -1,275 +1,291 @@
-<apex:page StandardController="Case" showHeader="false"  extensions="IssueItemisationPublisherAction_CX">
+<apex:page StandardController="Case" showHeader="false" extensions="IssueItemisationPublisherAction_CX">
     <html>
-        <apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/css/bootstrap.min.css')}"/>
-        <apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/themes/proton/style.css')}"/>
-        <apex:stylesheet value="{!URLFOR($Resource.DataTable, '/DataTables/media/css/jquery.dataTables.min.css')}"/>
-        <input id="theHiddenCaseId" value="{!thisCase.Id}" type="hidden" name="theHiddenCaseId" />
-        <input id="theHiddenCaseParentId" value="{!thisCase.ParentId}" type="hidden" name="theHiddenCaseParentId"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/css/bootstrap.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jstree, '/dist/themes/proton/style.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DataTable, '/DataTables/media/css/jquery.dataTables.min.css')}" />
+    <input id="theHiddenCaseId" value="{!thisCase.Id}" type="hidden" name="theHiddenCaseId" />
+    <input id="theHiddenCaseParentId" value="{!thisCase.ParentId}" type="hidden" name="theHiddenCaseParentId" />
+
+    <br/>
+    <div class="MainDiv container-fluid" style="overflow:auto;">
+        <div class="row" style="z-index: 200;">
+            <div>
+
+                <button type="button" id="cancelCategory" class="col-xs-offset-4 col-xs-2  btn-default " onclick="closeIssueItemiser()" aria-hidden="true" tabindex="1">
+                    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Cancel
+                </button>
+                <button type="button" id="updateCategory" class=" col-xs-2 btn-default  " onclick="updateCatagories()" aria-hidden="true" tabindex="2">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+                </button>
+            </div>
+        </div>
+        <div>
+            <table id="ChildIssueTable" class="table table-striped table-condensed table-responsive table-hover" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Mode</th>
+                        <th>Location</th>
+                        <th>Issue</th>
+                        <th>Issue Type</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
 
         <br/>
-        <div class="MainDiv container-fluid" style="overflow:auto;" >
-            <div  class="row"  style="z-index: 200;">
-                <div >
-                    
-                    <button type="button" id="cancelCategory" class="col-xs-offset-4 col-xs-2  btn-default " onclick="closeIssueItemiser()" aria-hidden="true"  tabindex="1" > 
-                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Cancel
-                    </button>
-                    <button type="button" id="updateCategory" class=" col-xs-2 btn-default  " onclick="updateCatagories()" aria-hidden="true"  tabindex="2" > 
-                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
-                    </button>
-                </div>
+        <br/>
+        <br/>
+        <div class="row" style="z-index: 200;">
+            <div>
+
+                <button type="button" id="clearCategory" class="col-xs-offset-4 col-xs-2  btn-default " onclick="clearCategorisation()" aria-hidden="true" tabindex="3">
+                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> clear
+                </button>
+                <button type="button" id="addCategory" class=" col-xs-2 btn-default  " onclick="addCategory()" aria-hidden="true" tabindex="4">
+                    <span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span> add
+                </button>
             </div>
-            <div >
-                <table id="ChildIssueTable" class="table table-striped table-condensed table-responsive table-hover" cellspacing="0" width="100%"  >
-                    <thead>
-                        <tr>
-                            <th>Subject</th>
-                            <th>Mode</th>
-                            <th>Location</th>
-                            <th>Issue</th>
-                            <th>Issue Type</th>
-                            <th></th>
-
-                        </tr>
-                    </thead>
-
-                </table>
-            </div>
-
-
-            <br/><br/><br/>
-            <div  class="row"  style="z-index: 200;">
-                <div >
-                    
-                    <button type="button" id="clearCategory" class="col-xs-offset-4 col-xs-2  btn-default " onclick="clearCategorisation()" aria-hidden="true"  tabindex="3" > 
-                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> clear
-                    </button>
-                    <button type="button" id="addCategory" class=" col-xs-2 btn-default  " onclick="addCategory()" aria-hidden="true"  tabindex="4" > 
-                        <span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span> add
-                    </button>
-                </div>
-            </div>
-            <div  class="row"  style="z-index: 200;">
-                <div class=" col-xs-6 ">
-                    <label >Subject</label>
-                    <textarea type="text" id="subject"  placeholder="enter subject" onfocus="this.placeholder = '';" onblur="this.placeholder = 'enter subject...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="5" >{!thisCase.subject}</textarea> 
-                </div>
-                <div id="ModeWidget" class="dropdown_widget col-xs-6 " style="display:inline-block; padding-left: 0px;
-        vertical-align:top;   ">
-                    <label>Mode</label>
-                    <div class="inner-addon right-addon">
-                        <i class="glyphicon glyphicon-chevron-down"></i>
-                        <input type="text" id="searchInputMode" value="" readonly="true" class="searchbox input " placeholder="select mode..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'select mode';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;" tabindex="6" />
-                    </div>
-
-                    <div id="ModeContainer"  class="searchableDropdown simpleDropdown col-xs-6 " style="background-color: rgb(252, 252, 255);z-index: 200;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"  ></div>
-
-                </div>
-            </div>
-            
-            
-            <div class="btn-group" data-toggle="buttons" id="SearchOrHierarchy" style="display:none">
-                <label class="btn btn-primary ">
-                <input type="radio" name="TaxonomySearch" value="search" id="TaxonomySearch" autocomplete="off" >Search</input>
-                </label>
-                <label class="btn btn-primary active">
-                    <input type="radio" name="TaxonomyPicklist" value="picklist" id="TaxonomyPicklist" autocomplete="off" >Picklist</input>
-                </label>
-            </div>
-            <div  class="row"  style="z-index: 100;">
-                
-                <div id="LocationWidget" class="dropdown_widget col-xs-4" style="display:inline-block;
-        vertical-align:top;  " >
-                    <label>Location</label>
-
-                    <input type="text" id="searchInputLocation" value="" class="input searchbox" placeholder="search location..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search location...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="7" />
-                    <div id="LocationContainer"  class="searchableDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;" ></div>
-
-                </div>
-                <div id="IssueWidget" class="dropdown_widget col-xs-4" style="display:inline-block;
-        vertical-align:top;  " >
-                    <label>Issue Category</label>
-
-                    <input type="text" id="searchInputIssue" value="" class="input searchbox" placeholder="search issue..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'search issue...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"  tabindex="8" />
-                    <div id="IssueContainer"  class="searchableDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"  ></div>
-
-                </div>
-                <div id="TypeWidget" class="dropdown_widget col-xs-4 " style="display:inline-block;
-        vertical-align:top;   ">
-                    <label>Issue Type</label>
-                    <div class="inner-addon right-addon">
-                        <i class="glyphicon glyphicon-chevron-down"></i>
-                        <input type="text" id="searchInputType" value="" readonly="true" class="searchbox input " placeholder="select issue type..." onfocus="this.placeholder = '';" onblur="this.placeholder = 'select issue type';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;" tabindex="9" />
-                    </div>
-
-                    <div id="TypeContainer"  class="searchableDropdown simpleDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"  ></div>
-
-                </div>
-            </div>
-            
         </div>
-        <script src="/soap/ajax/33.0/connection.js" type="text/javascript" /> 
+        <div class="row" style="z-index: 200;">
+            <div class=" col-xs-6 ">
+                <label>Subject</label>
+                <textarea type="text" id="subject" placeholder="enter subject" onfocus="this.placeholder = '';" onblur="this.placeholder = 'enter subject...';"
+                    style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;" tabindex="5">{!thisCase.subject}</textarea>
+            </div>
+            <div id="ModeWidget" class="dropdown_widget col-xs-6 " style="display:inline-block; padding-left: 0px; vertical-align:top;">
+                <label>Mode</label>
+                <div class="inner-addon right-addon">
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                    <input type="text" id="searchInputMode" value="" readonly="true" class="searchbox input " placeholder="select mode..." onfocus="this.placeholder = '';"
+                        onblur="this.placeholder = 'select mode';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"
+                        tabindex="6" />
+                </div>
 
-        <script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
-        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}"/>
-        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/js/bootstrap.min.js')}"/>
-        <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/jstree.min.js')}"/>
-        <apex:includeScript value="{!URLFOR($Resource.DataTable, '/DataTables/media/js/jquery.dataTables.min.js')}"/>
-        <apex:includeScript value="/support/console/33.0/integration.js"/>
+                <div id="ModeContainer" class="searchableDropdown simpleDropdown col-xs-6 " style="background-color: rgb(252, 252, 255);z-index: 200;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"></div>
 
-        <script>
-            var MULTI_ISSUE='Multi Issue';
-            var tabId;
-            var thisTabId;
-            var parent;//current selected categorisation's parent case
-            var currentSelectedType='';
-            var currentSelectedMode='';
-            var currentSelectedModeId='';
-            var currentSelectedLocation='';
-            var currentSelectedLocationId=null;
-            var currentSelectedIssue='';
-            var currentSelectedIssueId=null;
-            var showTree=true;
-            var childIssuesData=[];
-            var childIssueDataTable;
-            var currentSelectedCaseId='';
-            var currentSubject='';
-            var parentIssue='';
-            var parentIssueId=null;
-            var parentlocation='';
-            var parentlocationId=null;
-            var grandIssue='';
-            var grandlocation='';
-            var issueKpi ='';
-            var issueDriver ='';
-            var issueAccountability ='';
-            var selectedIndex=-1;
-            var issueAgency='';
-            var locationAgency='';
-            var cloned=false;
-            $(function() {
-                sforce.console.getEnclosingPrimaryTabId(storePrimaryTab);
-                sforce.console.getEnclosingTabId(storeThisTab);
-                
-                $('[tabindex="1"]').focus();
+            </div>
+        </div>
 
-                $(document).on('click', function(event) {
-                    if ($(event.target).hasClass('searchbox') || $(event.target).hasClass('glyphicon-chevron-down')){
-                        var simpleDropdownContainer=$(event.target).closest('.dropdown_widget').find('.simpleDropdown');
-                        if (!simpleDropdownContainer.is(":visible")) {
-                            simpleDropdownContainer.show();
-                        }else{
-                            simpleDropdownContainer.hide();
-                        }
-                    }else if (!$(event.target).closest('.simpleDropdown').length) {
-                        // Hide the menus.
-                        $('#ModeContainer').hide();
-                        $('#TypeContainer').hide();
-                    } 
-                });
+
+        <div class="btn-group" data-toggle="buttons" id="SearchOrHierarchy" style="display:none">
+            <label class="btn btn-primary ">
+                <input type="radio" name="TaxonomySearch" value="search" id="TaxonomySearch" autocomplete="off">Search</input>
+            </label>
+            <label class="btn btn-primary active">
+                <input type="radio" name="TaxonomyPicklist" value="picklist" id="TaxonomyPicklist" autocomplete="off">Picklist</input>
+            </label>
+        </div>
         
-                sforce.console.setTabTitle('Categorise Case');
-                childIssueDataTable=    $('#ChildIssueTable').DataTable( {
-                    "autoWidth": false,
-                    "paging":false,
-                    "info":false,
-                    "searching":false,
-                    "ordering": false,
-                    "columns": [
-                        { data: 'subject', width: '35%'},
-                        { data: 'mode' , width: '15%'},
-                        { data: 'location' , width: '15%'},
-                        { data: 'issue' , width: '15%'},
-                        { data: 'type' , width: '15%'},
-                        {   width: '5%',
-                            "targets": -1,
-                            "data": null,
-                            "defaultContent": '<button><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>'
-                        },
-                        
-                      ],
 
-                     "tableTools": {
-                            "sRowSelect": "single"
-                        },
-                     "initComplete": dataTableInitComplete,
-                     "rowCallback": function( row, data, index ) {
-                            if (data.caseId!=null && data.caseId.length>14 ) $(row).find('button').hide();
-                            if(data.caseId==$('#theHiddenCaseId').val() && data.mode==MULTI_ISSUE){
-                                $(row).addClass('hidden');
-                            }else{
-                                $(row).removeClass('hidden');
-                            }
+        <div class="row" style="z-index: 100;">
+            <div id="LocationWidget" class="dropdown_widget col-xs-4" style="display:inline-block;vertical-align:top;  ">
+                <label>Location</label>
+                <div class="btn-group" id="SchoolRouteText" style="display:none; left: 20px; height: 20px;color:darkorange;">
+                    <div>(school routes highlighted orange)</div>
+                </div>
+                <input type="text" id="searchInputLocation" value="" class="input searchbox" placeholder="search location..." onfocus="this.placeholder = '';"
+                    onblur="this.placeholder = 'search location...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"
+                    tabindex="7" />
+                <div id="searchContainer" style="padding-top:15px; display: none">
+                    <img src="/img/loading32.gif" width="25" height="25" />
+                    <apex:outputLabel value="Searching..." />
+                </div>
+                <div id="LocationContainer" class="searchableDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"></div>
 
-                          }
-                    
-                } );
+            </div>
+            <div id="IssueWidget" class="dropdown_widget col-xs-4" style="display:inline-block;vertical-align:top;  ">
+                <label>Issue Category</label>
 
-                $('#ChildIssueTable tbody').on( 'click', 'button', function (event) {
-                    var data = childIssueDataTable.row( $(this).parents('tr') ).data();
-                    if($(this).find('span').hasClass('glyphicon-minus-sign')){
-                        if(event) event.preventDefault();
-                        childIssueDataTable.$('tr.selected').removeClass('selected');
-                        $(this).parents('tr').addClass('selected');
-                        selectedIndex=childIssueDataTable.row( $(this).parents('tr') ).index();
-                        bootbox.dialog({ size: 'small',
-                                            message: 'You have chosen to delete this issue ',
-                                        closeButton: false,
-                                        buttons: {
-                                            agree: {
-                                              label: 'Delete',
-                                              callback:  deleteCategory.bind(this,selectedIndex)
-                                                
-                                            },
-                                            disagree: {
-                                              label: 'Cancel',
-                                              callback: function() {
-                                                console.log('cancelled');
-                                              }
-                                            }
-                                        }
-                                    }); 
-                       
+                <input type="text" id="searchInputIssue" value="" class="input searchbox" placeholder="search issue..." onfocus="this.placeholder = '';"
+                    onblur="this.placeholder = 'search issue...';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"
+                    tabindex="8" />
+                <div id="IssueContainer" class="searchableDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"></div>
 
+            </div>
+            <div id="TypeWidget" class="dropdown_widget col-xs-4 " style="display:inline-block;vertical-align:top;   ">
+                <label>Issue Type</label>
+                <div class="inner-addon right-addon">
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                    <input type="text" id="searchInputType" value="" readonly="true" class="searchbox input " placeholder="select issue type..."
+                        onfocus="this.placeholder = '';" onblur="this.placeholder = 'select issue type';" style="width:100%; display:block; padding:4px; border-radius:4px; border:1px solid silver;"
+                        tabindex="9" />
+                </div>
+
+                <div id="TypeContainer" class="searchableDropdown simpleDropdown col-xs-4 " style="background-color: rgb(252, 252, 255);z-index: 100;position:absolute;  width: 100%; padding-left: 0px;padding-bottom: 15px;"></div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="/soap/ajax/33.0/connection.js" type="text/javascript" />
+
+    <script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+    <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/jquery.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/libs/bootstrap/js/bootstrap.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jstree, '/dist/jstree.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.DataTable, '/DataTables/media/js/jquery.dataTables.min.js')}" />
+    <apex:includeScript value="/support/console/33.0/integration.js" />
+
+    <script>
+        var MULTI_ISSUE = 'Multi Issue';
+        var tabId;
+        var thisTabId;
+        var parent;//current selected categorisation's parent case
+        var currentSelectedType = '';
+        var currentSelectedMode = '';
+        var currentSelectedModeId = '';
+        var currentSelectedLocation = '';
+        var currentSelectedLocationId = null;
+        var currentSelectedIssue = '';
+        var currentSelectedIssueId = null;
+        var showTree = true;
+        var childIssuesData = [];
+        var childIssueDataTable;
+        var currentSelectedCaseId = '';
+        var currentSubject = '';
+        var parentIssue = '';
+        var parentIssueId = null;
+        var parentlocation = '';
+        var parentlocationId = null;
+        var grandIssue = '';
+        var grandlocation = '';
+        var issueKpi = '';
+        var issueDriver = '';
+        var issueAccountability = '';
+        var selectedIndex = -1;
+        var issueAgency = '';
+        var locationAgency = '';
+        var cloned = false;
+        $(function () {
+            sforce.console.getEnclosingPrimaryTabId(storePrimaryTab);
+            sforce.console.getEnclosingTabId(storeThisTab);
+
+            $('[tabindex="1"]').focus();
+
+            $(document).on('click', function (event) {
+                if ($(event.target).hasClass('searchbox') || $(event.target).hasClass('glyphicon-chevron-down')) {
+                    var simpleDropdownContainer = $(event.target).closest('.dropdown_widget').find('.simpleDropdown');
+                    if (!simpleDropdownContainer.is(":visible")) {
+                        simpleDropdownContainer.show();
+                    } else {
+                        simpleDropdownContainer.hide();
                     }
-                } );
-
-                $('#ChildIssueTable tbody').on( 'click', 'tr', function () {
-                    var your_div = document.getElementById('addCategory');
-                    var text_to_change = your_div.childNodes[2];
-                    if ( $(this).hasClass('selected') ) {
-                        $(this).removeClass('selected');
-                        clearCategorisation();
-                        text_to_change.nodeValue = 'add';
-
-                    }else {
-                        childIssueDataTable.$('tr.selected').removeClass('selected');
-                        $(this).addClass('selected');
-                        selectedIndex=childIssueDataTable.row( $(this) ).index();
-                        editCategory(selectedIndex);
-                        
-
-                        text_to_change.nodeValue = 'update';
-                        
-                    }
-                } );
-             
-             
-                if (!showTree){
-                    console.log('showtree -'+showTree);
-                    $('#LocationContainer').hide();
-                    $('#IssueContainer').hide();
-
-                }else{
-                    $('#LocationContainer').show();
-                    $('#IssueContainer').show();
+                } else if (!$(event.target).closest('.simpleDropdown').length) {
+                    // Hide the menus.
+                    $('#ModeContainer').hide();
+                    $('#TypeContainer').hide();
                 }
-                $('#ModeContainer').hide();
-                $('#TypeContainer').hide();
+            });
+
+            sforce.console.setTabTitle('Categorise Case');
+            childIssueDataTable = $('#ChildIssueTable').DataTable({
+                "autoWidth": false,
+                "paging": false,
+                "info": false,
+                "searching": false,
+                "ordering": false,
+                "columns": [
+                    { data: 'subject', width: '35%' },
+                    { data: 'mode', width: '15%' },
+                    { data: 'location', width: '15%' },
+                    { data: 'issue', width: '15%' },
+                    { data: 'type', width: '15%' },
+                    {
+                        width: '5%',
+                        "targets": -1,
+                        "data": null,
+                        "defaultContent": '<button><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>'
+                    },
+
+                ],
+
+                "tableTools": {
+                    "sRowSelect": "single"
+                },
+                "initComplete": dataTableInitComplete,
+                "rowCallback": function (row, data, index) {
+                    if (data.caseId != null && data.caseId.length > 14) $(row).find('button').hide();
+                    if (data.caseId == $('#theHiddenCaseId').val() && data.mode == MULTI_ISSUE) {
+                        $(row).addClass('hidden');
+                    } else {
+                        $(row).removeClass('hidden');
+                    }
+
+                }
+
+            });
+
+            $('#ChildIssueTable tbody').on('click', 'button', function (event) {
+                var data = childIssueDataTable.row($(this).parents('tr')).data();
+                if ($(this).find('span').hasClass('glyphicon-minus-sign')) {
+                    if (event) event.preventDefault();
+                    childIssueDataTable.$('tr.selected').removeClass('selected');
+                    $(this).parents('tr').addClass('selected');
+                    selectedIndex = childIssueDataTable.row($(this).parents('tr')).index();
+                    bootbox.dialog({
+                        size: 'small',
+                        message: 'You have chosen to delete this issue ',
+                        closeButton: false,
+                        buttons: {
+                            agree: {
+                                label: 'Delete',
+                                callback: deleteCategory.bind(this, selectedIndex)
+
+                            },
+                            disagree: {
+                                label: 'Cancel',
+                                callback: function () {
+                                    console.log('cancelled');
+                                }
+                            }
+                        }
+                    });
+
+
+                }
+            });
+
+            $('#ChildIssueTable tbody').on('click', 'tr', function () {
+                var your_div = document.getElementById('addCategory');
+                var text_to_change = your_div.childNodes[2];
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                    clearCategorisation();
+                    text_to_change.nodeValue = 'add';
+
+                } else {
+                    childIssueDataTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                    selectedIndex = childIssueDataTable.row($(this)).index();
+                    editCategory(selectedIndex);
+
+
+                    text_to_change.nodeValue = 'update';
+
+                }
+            });
+
+
+            if (!showTree) {
+                console.log('showtree -' + showTree);
+                $('#LocationContainer').hide();
+                $('#IssueContainer').hide();
+
+            } else {
+                $('#LocationContainer').show();
+                $('#IssueContainer').show();
+            }
+            $('#ModeContainer').hide();
+            $('#TypeContainer').hide();
 
 
 
-             
+
 
             // allow search results expanding
             (function ($, undefined) {
@@ -279,9 +295,9 @@
                         parent.bind.call(this);
                         this.element
                             .on('search.jstree before_open.jstree', function (e, data) {
-                                if(data.instance.settings.search && data.instance.settings.search.show_only_matches) {
+                                if (data.instance.settings.search && data.instance.settings.search.show_only_matches) {
                                     data.instance._data.search.dom.find('.jstree-node')
-                                        .show().filter('.jstree-last').filter(function() { return this.nextSibling; }).removeClass('jstree-last')
+                                        .show().filter('.jstree-last').filter(function () { return this.nextSibling; }).removeClass('jstree-last')
                                         .end().end().end().find(".jstree-children").each(function () { $(this).children(".jstree-node:visible").eq(-1).addClass("jstree-last"); });
                                 }
                             });
@@ -289,16 +305,16 @@
                 };
             })(jQuery);
 
-            initLocationAndIssueTree();  
-            
-             
+            initLocationAndIssueTree();
+
+
             //Search Or Hierarchy
-            $("#SearchOrHierarchy :input").change(function() {
-                showTree= 'search'==event.target.children[0].value ? false : true;
-                if (showTree){
+            $("#SearchOrHierarchy :input").change(function () {
+                showTree = 'search' == event.target.children[0].value ? false : true;
+                if (showTree) {
                     $('#LocationContainer').show();
                     $('#IssueContainer').show();
-                }else{
+                } else {
                     $('#LocationContainer').hide();
                     $('#IssueContainer').hide();
                 }
@@ -311,171 +327,187 @@
               
             });*/
 
-            $('.searchbox').keydown(function(event) {
-                
-                if (  event.which == 40 ) {
+            $('.searchbox').keydown(function (event) {
+
+                if (event.which == 40) {
                     //down
                     event.preventDefault();
                     event.target.blur();
                     $(event.target.closest('.dropdown_widget')).find('.searchableDropdown').show();
-                    var visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-clicked');
-                    if (!visibleNodes.length>0){
-                        visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-search');
+                    var visibleNodes = $(event.target.closest('.dropdown_widget')).find('.jstree-clicked');
+                    if (!visibleNodes.length > 0) {
+                        visibleNodes = $(event.target.closest('.dropdown_widget')).find('.jstree-search');
                     }
-                    if (!visibleNodes.length>0){
-                        visibleNodes=$(event.target.closest('.dropdown_widget')).find('.jstree-anchor');
+                    if (!visibleNodes.length > 0) {
+                        visibleNodes = $(event.target.closest('.dropdown_widget')).find('.jstree-anchor');
                     }
                     visibleNodes[0].focus();
-                }else if (event.which == 38){
+                } else if (event.which == 38) {
                     //up
                     event.preventDefault();
                 }
-              
-            });
-            
-        });//end $function
-        
-        
-        var initLocationAndIssueTree = function(){
-             //container Mode
-              $('#ModeContainer').jstree({
-                "plugins" : ["wholerow",   "massload", "sort"],
-                "core": {
-                    "multiple" : false,
-                    'themes': {
-                        'name': 'proton',
-                        'responsive': true
-                    },
-                    'data' : getModes
-                }
-              });
-            //container Location
-              $('#LocationContainer').jstree({
-                "plugins" : ["wholerow",   "massload", "search", "sort","show_matches_children"],
-                "core": {
-                    "multiple" : false,
-                    'themes': {
-                        'name': 'proton',
-                        'responsive': true
-                    },
-                    'data' : getLocations
-                },
-                'search' :  {
-                    "show_only_matches" : true,
-                    "show_only_matches_children" : true,
-                    "close_opened_onclear" : true
-                }
-              });
 
-              var to = false;
-              $('#searchInputLocation').keyup(function () {
-                if(!$('#LocationContainer').is(":visible")){
+            });
+
+        });//end $function
+
+
+        var initLocationAndIssueTree = function () {
+            //container Mode
+            $('#ModeContainer').jstree({
+                "plugins": ["wholerow", "massload", "sort"],
+                "core": {
+                    "multiple": false,
+                    'themes': {
+                        'name': 'proton',
+                        'responsive': true
+                    },
+                    'data': getModes
+                }
+            });
+            //container Location
+            $('#LocationContainer').jstree({
+                "plugins": ["wholerow", "massload", "search", "sort", "show_matches_children"],
+                "core": {
+                    "multiple": false,
+                    'themes': {
+                        'name': 'proton',
+                        'responsive': true
+                    },
+                    'data': getLocations
+                },
+                'search': {
+                    "show_only_matches": true,
+                    "show_only_matches_children": true,
+                    "close_opened_onclear": true
+                }
+            });
+
+            var to = false;
+            $('#searchInputLocation').keyup(function () {
+                if (!$('#LocationContainer').is(":visible")) {
                     $('#LocationContainer').show();
                 }
-                if(to) { clearTimeout(to); }
+                if (to) { clearTimeout(to); }
+                var v = $('#searchInputLocation').val();
+
+                if (v.length < 1) {
+                    $('#searchContainer').hide();
+                    return;
+                }
+                $('#searchContainer').show();
                 to = setTimeout(function () {
-                  var v = $('#searchInputLocation').val();
-                  $('#LocationContainer').jstree(true).search(v);
-                }, 250);
-              });
+                    try {
+                        $('#LocationContainer').jstree('search', v);
+                    } catch{
+                        $('#searchContainer').hide();
+                        return;
+                    }
+                    $('#searchContainer').hide();
+                }, 1000);
+            });
 
-
-              //container Issue
-              $('#IssueContainer').jstree({
-                "plugins" : ["wholerow",   "massload", "search", "sort","show_matches_children"],
+            //container Issue
+            $('#IssueContainer').jstree({
+                "plugins": ["wholerow", "massload", "search", "sort", "show_matches_children"],
                 "core": {
-                    "multiple" : false,
+                    "multiple": false,
                     'themes': {
                         'name': 'proton',
                         'responsive': true
                     },
-                    'data' : getIssues
+                    'data': getIssues
                 },
-                'search' :  {
-                    "show_only_matches" : true,
-                    "show_only_matches_children" : true,
-                    "close_opened_onclear" : true
+                'search': {
+                    "show_only_matches": true,
+                    "show_only_matches_children": true,
+                    "close_opened_onclear": true
                 }
-              });
+            });
 
-              var to = false;
-              $('#searchInputIssue').keyup(function () {
-                if(!$('#IssueContainer').is(":visible")){
+            var to = false;
+            $('#searchInputIssue').keyup(function () {
+                if (!$('#IssueContainer').is(":visible")) {
                     $('#IssueContainer').show();
                 }
-                if(to) { clearTimeout(to); }
+                if (to) { clearTimeout(to); }
                 to = setTimeout(function () {
-                  var v = $('#searchInputIssue').val();
-                  $('#IssueContainer').jstree(true).search(v);
+                    var v = $('#searchInputIssue').val();
+                    $('#IssueContainer').jstree(true).search(v);
 
-                }, 250);
-              });
+                }, 1000);
+            });
 
-               // listen for event node selected
-              $(".searchableDropdown").on('activate_node.jstree', function (event, data) {
-                if(data.instance.is_leaf(data.node)){
+            // listen for event node selected
+            $(".searchableDropdown").on('activate_node.jstree', function (event, data) {
+                if (data.instance.is_leaf(data.node)) {
                     var widget;
                     var searchInput;
                     var dropdownContainer;
-                    if(event){
-                        widget=$(event.currentTarget).closest('.dropdown_widget');
-                        searchInput=widget.find('.searchbox')[0];
-                        dropdownContainer=widget.find('.searchableDropdown');
-                        var thisNode=data.instance.get_node(data.node);
-                        if (widget[0].id=='ModeWidget'){
+                    if (event) {
+                        widget = $(event.currentTarget).closest('.dropdown_widget');
+                        searchInput = widget.find('.searchbox')[0];
+                        dropdownContainer = widget.find('.searchableDropdown');
+                        var thisNode = data.instance.get_node(data.node);
+                        if (widget[0].id == 'ModeWidget') {
                             $('.searchbox').popover('destroy');
                             console.log('Mode selected');
-                            currentSelectedMode=data.instance.get_node(data.node).text;
-                            currentSelectedModeId=data.instance.get_node(data.node).id;
+                            currentSelectedMode = data.instance.get_node(data.node).text;
+                            currentSelectedModeId = data.instance.get_node(data.node).id;
                             console.log('Load location and issue');
                             $('#LocationContainer').jstree(true).refresh(true);
                             $('#IssueContainer').jstree(true).refresh(true);
                             $('#searchInputLocation').val('');
-                            currentSelectedLocation='';
-                            currentSelectedLocationId='';
+                            currentSelectedLocation = '';
+                            currentSelectedLocationId = '';
                             $('#searchInputIssue').val('');
-                            currentSelectedIssue='';
-                            currentSelectedIssueId='';
-                            parentIssue='';
-                            parentIssueId='';
-                            parentlocation='';
-                            parentlocationId='';
-                            grandIssue='';
-                            grandlocation='';
-                            issueKpi ='';
-                            issueDriver ='';
-                            issueAccountability ='';
-                            issueAgency='';
-                            locationAgency='';
+                            currentSelectedIssue = '';
+                            currentSelectedIssueId = '';
+                            parentIssue = '';
+                            parentIssueId = '';
+                            parentlocation = '';
+                            parentlocationId = '';
+                            grandIssue = '';
+                            grandlocation = '';
+                            issueKpi = '';
+                            issueDriver = '';
+                            issueAccountability = '';
+                            issueAgency = '';
+                            locationAgency = '';
                             $('#searchInputLocation').popover('destroy');
                             $('#searchInputIssue').popover('destroy');
-                        }else if (widget[0].id=='LocationWidget'){
+                            if (currentSelectedMode === 'Bus') {
+                                $('#SchoolRouteText').show();
+                            } else {
+                                $('#SchoolRouteText').hide();
+                            }
+                        } else if (widget[0].id == 'LocationWidget') {
                             console.log('Location selected');
-                            currentSelectedLocation=data.instance.get_node(data.node).text;
-                            currentSelectedLocationId=data.instance.get_node(data.node).id;
-                            parentlocation=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
-                            parentlocationId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
-                            grandlocation=data.instance.get_node(data.instance.get_parent(parentlocationId)).text;
+                            currentSelectedLocation = data.instance.get_node(data.node).text;
+                            currentSelectedLocationId = data.instance.get_node(data.node).id;
+                            parentlocation = data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+                            parentlocationId = data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+                            grandlocation = data.instance.get_node(data.instance.get_parent(parentlocationId)).text;
                             $(searchInput).popover('destroy');
                             $(searchInput).popover({
-                                trigger:'hover',
-                                placement:'auto bottom',
-                                content: grandlocation +' / '+ parentlocation+' / '+currentSelectedLocation
+                                trigger: 'hover',
+                                placement: 'auto bottom',
+                                content: grandlocation + ' / ' + parentlocation + ' / ' + currentSelectedLocation
                             });
 
-                        }else if (widget[0].id=='IssueWidget'){
+                        } else if (widget[0].id == 'IssueWidget') {
                             console.log('Issue selected');
-                            currentSelectedIssue=data.instance.get_node(data.node).text;
-                            currentSelectedIssueId=data.instance.get_node(data.node).id;
-                            parentIssue=data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
-                            parentIssueId=data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
-                            grandIssue=data.instance.get_node(data.instance.get_parent(parentIssueId)).text;
+                            currentSelectedIssue = data.instance.get_node(data.node).text;
+                            currentSelectedIssueId = data.instance.get_node(data.node).id;
+                            parentIssue = data.instance.get_node(data.instance.get_parent(thisNode.id)).text;
+                            parentIssueId = data.instance.get_node(data.instance.get_parent(thisNode.id)).id;
+                            grandIssue = data.instance.get_node(data.instance.get_parent(parentIssueId)).text;
                             $(searchInput).popover('destroy');
 
                             $(searchInput).popover({
-                                trigger:'hover',
-                                placement:'auto bottom',
-                                content: grandIssue +' / '+ parentIssue+' / '+currentSelectedIssue
+                                trigger: 'hover',
+                                placement: 'auto bottom',
+                                content: grandIssue + ' / ' + parentIssue + ' / ' + currentSelectedIssue
                             });
 
                         }
@@ -483,26 +515,26 @@
                     }
 
 
-                    searchInput.value=data.instance.get_node(data.node).text;
-                }else{
+                    searchInput.value = data.instance.get_node(data.node).text;
+                } else {
                     $(event.target).jstree(true).deselect_node(data.node);
                     $(event.target).jstree(true).toggle_node(data.node);
                 }
 
-              })
+            })
 
             // listen for event node search
             $(".searchableDropdown").on('search.jstree', function (event, data) {
                 var widget;
                 var dropdownContainer;
-                if(event){
-                    widget=$(event.currentTarget).closest('.dropdown_widget');
-                    dropdownContainer=widget.find('.searchableDropdown')
+                if (event) {
+                    widget = $(event.currentTarget).closest('.dropdown_widget');
+                    dropdownContainer = widget.find('.searchableDropdown')
                 }
 
 
-                if(data.res.length<=0){
-                    if(!showTree) dropdownContainer.hide();
+                if (data.res.length <= 0) {
+                    if (!showTree) dropdownContainer.hide();
                 }
             })
             $('.searchableDropdown').on('keydown.jstree', '.jstree-anchor', function (e) {
@@ -515,163 +547,169 @@
                 }
             });
             //container Type
-              $('#TypeContainer').jstree({
-                "plugins" : ["wholerow",   "massload", "sort"],
+            $('#TypeContainer').jstree({
+                "plugins": ["wholerow", "massload", "sort"],
                 "core": {
-                    "multiple" : false,
+                    "multiple": false,
                     'themes': {
                         'name': 'proton',
                         'responsive': true
                     },
-                    'data' : getTypes
+                    'data': getTypes
                 }
-              });
-              
+            });
+
 
         }
 
-        var storePrimaryTab = function(result) {
+        var storePrimaryTab = function (result) {
             //Now that we have the primary tab ID, we can close it
             tabId = result.id;
         };
-        var storeThisTab = function(result) {
+        var storeThisTab = function (result) {
             //Now that we have the primary tab ID, we can close it
             thisTabId = result.id;
         };
-        var dataTableInitComplete=function(settings, json) {
+        var dataTableInitComplete = function (settings, json) {
             //get the data of the child issues
             Visualforce.remoting.Manager.invokeAction(
                 '{!$RemoteAction.IssueItemisationPublisherAction_CX.getChildCaseIssues}',
                 $('#theHiddenCaseId').val(),
-                function(result, event){
-                    if(event.status) {
-                        childIssueDataTable.rows.add( result).draw();
-                        
+                function (result, event) {
+                    if (event.status) {
+                        childIssueDataTable.rows.add(result).draw();
+
                     }
-                }, {escape: false}
+                }, { escape: false }
             );
 
         }
 
-        function CaseCategory ( modeId,mode, location, issue,  caseId, locationId, issueId,subject,parentIssue, parentIssueId, parentlocation, parentlocationId, grandIssue, grandlocation, issueKpi, issueDriver, issueAccountability,type,issueAgency,locationAgency) {
-            this.modeId=modeId ? modeId : '';
+        function CaseCategory(modeId, mode, location, issue, caseId, locationId, issueId, subject, parentIssue, parentIssueId, parentlocation, parentlocationId, grandIssue, grandlocation, issueKpi, issueDriver, issueAccountability, type, issueAgency, locationAgency) {
+            this.modeId = modeId ? modeId : '';
             this.mode = mode ? mode : '';
-            this.location = location ?location  : '';
+            this.location = location ? location : '';
             this.issue = issue ? issue : '';
             this.caseId = caseId ? caseId : '';
             this.locationId = locationId ? locationId : null;
             this.issueId = issueId ? issueId : null;
             this.subject = subject ? subject : '';
-            this.parentIssue= parentIssue ? parentIssue : '';
-            this.parentIssueId= parentIssueId ? parentIssueId : null;
-            this.parentlocation= parentlocation ? parentlocation : '';
-            this.parentlocationId= parentlocationId ? parentlocationId : null;
-            this.grandIssue= grandIssue ? grandIssue : '';
-            this.grandlocation= grandlocation ? grandlocation : '';
-            this.issueKpi =issueKpi ? issueKpi : '';
-            this.issueDriver =issueDriver ? issueDriver : '';
-            this.issueAccountability =issueAccountability ? issueAccountability : '';
-            this.type=type ? type : '';
-            this.issueAgency=issueAgency ? issueAgency : '';
-            this.locationAgency=locationAgency ? locationAgency : '';
-            this.subject='';
-            this.cloned=false;
+            this.parentIssue = parentIssue ? parentIssue : '';
+            this.parentIssueId = parentIssueId ? parentIssueId : null;
+            this.parentlocation = parentlocation ? parentlocation : '';
+            this.parentlocationId = parentlocationId ? parentlocationId : null;
+            this.grandIssue = grandIssue ? grandIssue : '';
+            this.grandlocation = grandlocation ? grandlocation : '';
+            this.issueKpi = issueKpi ? issueKpi : '';
+            this.issueDriver = issueDriver ? issueDriver : '';
+            this.issueAccountability = issueAccountability ? issueAccountability : '';
+            this.type = type ? type : '';
+            this.issueAgency = issueAgency ? issueAgency : '';
+            this.locationAgency = locationAgency ? locationAgency : '';
+            this.subject = '';
+            this.cloned = false;
         };
 
-        var addCategory=function(){
+        var addCategory = function () {
             if (
-                ($('#theHiddenCaseParentId').val() && $('#theHiddenCaseParentId').val().length>15)
+                ($('#theHiddenCaseParentId').val() && $('#theHiddenCaseParentId').val().length > 15)
                 &&
-                ($('#theHiddenCaseId').val()!=currentSelectedCaseId)
-                ){
-                bootbox.alert({ size: 'small',
-                                message: " Cannot add additional categorisation to a child case ",
-                                closeButton: false}); 
+                ($('#theHiddenCaseId').val() != currentSelectedCaseId)
+            ) {
+                bootbox.alert({
+                    size: 'small',
+                    message: " Cannot add additional categorisation to a child case ",
+                    closeButton: false                
+});
                 return;
             }
-            
-            currentSubject=$('#subject').val();
-            currentSelectedType=$('#searchInputType').val();
-            if (currentSelectedType==''){
-                bootbox.alert({ size: 'small',
-                                message: " Can not add categorisation as issue type not selected ",
-                                closeButton: false}); 
+
+            currentSubject = $('#subject').val();
+            currentSelectedType = $('#searchInputType').val();
+            if (currentSelectedType == '') {
+                bootbox.alert({
+                    size: 'small',
+                    message: " Can not add categorisation as issue type not selected ",
+                    closeButton: false                
+});
                 return;
             }
             var tableRows = childIssueDataTable.rows();
-            if(!currentSelectedLocationId || currentSelectedLocationId.length<15 || !currentSelectedIssueId || currentSelectedIssueId<15){
-                bootbox.alert({ size: 'small',
-                                            message: " No Issue or Location selected  ",
-                                        closeButton: false
-                                            
-                                        }); 
+            if (!currentSelectedLocationId || currentSelectedLocationId.length < 15 || !currentSelectedIssueId || currentSelectedIssueId < 15) {
+                bootbox.alert({
+                    size: 'small',
+                    message: " No Issue or Location selected  ",
+                    closeButton: false
+
+                });
             }
-            if(currentSelectedModeId=='' ||
-                currentSelectedMode=='' &&
-                currentSelectedLocation=='' &&
-                currentSelectedIssue=='' &&
-                currentSelectedCaseId=='' &&
-                (!currentSelectedLocationId || currentSelectedLocationId.length<15) &&
-                (!currentSelectedIssueId || currentSelectedIssueId.length<15) &&
-                currentSubject=='' &&
-                currentSelectedType=='' &&
-                locationAgency=='')  {
-                bootbox.alert({ size: 'small',
-                                            message: " Can not add or update without any mode or categorisation  ",
-                                        closeButton: false
-                                            
-                                        }); 
+            if (currentSelectedModeId == '' ||
+                currentSelectedMode == '' &&
+                currentSelectedLocation == '' &&
+                currentSelectedIssue == '' &&
+                currentSelectedCaseId == '' &&
+                (!currentSelectedLocationId || currentSelectedLocationId.length < 15) &&
+                (!currentSelectedIssueId || currentSelectedIssueId.length < 15) &&
+                currentSubject == '' &&
+                currentSelectedType == '' &&
+                locationAgency == '') {
+                bootbox.alert({
+                    size: 'small',
+                    message: " Can not add or update without any mode or categorisation  ",
+                    closeButton: false
+
+                });
                 return;
             }
-            var parentRows=childIssueDataTable.rows(
-                function ( idx, data, node ) {
-                    return data.caseId== $('#theHiddenCaseId').val()?
+            var parentRows = childIssueDataTable.rows(
+                function (idx, data, node) {
+                    return data.caseId == $('#theHiddenCaseId').val() ?
                         true : false;
-                } );
-            var parentIndex=parentRows.indexes()[0];
-            
-            var onlyOtherChildRow=childIssueDataTable.rows(
-                function ( idx, data, node ) {
-                    return (data.parent== $('#theHiddenCaseId').val() && idx!=selectedIndex)?
+                });
+            var parentIndex = parentRows.indexes()[0];
+
+            var onlyOtherChildRow = childIssueDataTable.rows(
+                function (idx, data, node) {
+                    return (data.parent == $('#theHiddenCaseId').val() && idx != selectedIndex) ?
                         true : false;
-                } );
+                });
             var parentClone;
             var parentData;
-            if((!currentSelectedCaseId || currentSelectedCaseId.length<15) && onlyOtherChildRow.data().length==0 && selectedIndex!=parentIndex && parentRows.data()[0].mode!=MULTI_ISSUE){//second categorisation create a child for parent
-                parentData=parentRows.data()[0];
+            if ((!currentSelectedCaseId || currentSelectedCaseId.length < 15) && onlyOtherChildRow.data().length == 0 && selectedIndex != parentIndex && parentRows.data()[0].mode != MULTI_ISSUE) {//second categorisation create a child for parent
+                parentData = parentRows.data()[0];
                 //prepare parent clone
-                parentClone = cloneCaseCategory(parentData,new CaseCategory());
-                parentClone.caseId=null;
-                parentClone.parent= $('#theHiddenCaseId').val()
-                parentClone.cloned=true;
+                parentClone = cloneCaseCategory(parentData, new CaseCategory());
+                parentClone.caseId = null;
+                parentClone.parent = $('#theHiddenCaseId').val()
+                parentClone.cloned = true;
                 //insert parent clone if child gets inserted
                 //remove parent categorisation later
-                parentClone.subject=parentData.subject;
-                parentData.mode=MULTI_ISSUE;
-                parentData.location='';
-                parentData.issue='';
-                parentData.locationId='';
-                parentData.issueId='';
-                parentData.parentIssue='';
-                parentData.parentIssueId='';
-                parentData.parentlocation='';
-                parentData.parentlocationId='';
-                parentData.grandIssue='';
-                parentData.grandlocation='';
-                parentData.issueKpi ='';
-                parentData.issueDriver ='';
-                parentData.issueAccountability='';
-                parentData.type='';
-                parentData.issueAgency='';
-                parentData.locationAgency ='';
-                parentData.modeID=null;
-                
+                parentClone.subject = parentData.subject;
+                parentData.mode = MULTI_ISSUE;
+                parentData.location = '';
+                parentData.issue = '';
+                parentData.locationId = '';
+                parentData.issueId = '';
+                parentData.parentIssue = '';
+                parentData.parentIssueId = '';
+                parentData.parentlocation = '';
+                parentData.parentlocationId = '';
+                parentData.grandIssue = '';
+                parentData.grandlocation = '';
+                parentData.issueKpi = '';
+                parentData.issueDriver = '';
+                parentData.issueAccountability = '';
+                parentData.type = '';
+                parentData.issueAgency = '';
+                parentData.locationAgency = '';
+                parentData.modeID = null;
+
             }
 
-            
 
-            var aCategory =new CaseCategory
-            (
+
+            var aCategory = new CaseCategory
+                (
                 currentSelectedModeId,
                 currentSelectedMode,
                 currentSelectedLocation,
@@ -687,110 +725,112 @@
                 grandIssue,
                 grandlocation,
 
-                issueKpi ,
-                issueDriver ,
+                issueKpi,
+                issueDriver,
                 issueAccountability,
                 currentSelectedType,
                 issueAgency,
-                locationAgency 
-            );
-            aCategory.cloned=cloned;
-            if (currentSelectedCaseId !=$('#theHiddenCaseId').val())  aCategory.parent=$('#theHiddenCaseId').val();
-            aCategory.subject=currentSubject;
-            if (selectedIndex<0 && (currentSelectedModeId.length>=15 ||currentSelectedLocation.length>0 ||
-                    currentSelectedIssue>0 ||currentSelectedType>0)){
+                locationAgency
+                );
+            aCategory.cloned = cloned;
+            if (currentSelectedCaseId != $('#theHiddenCaseId').val()) aCategory.parent = $('#theHiddenCaseId').val();
+            aCategory.subject = currentSubject;
+            if (selectedIndex < 0 && (currentSelectedModeId.length >= 15 || currentSelectedLocation.length > 0 ||
+                currentSelectedIssue > 0 || currentSelectedType > 0)) {
                 //insert parent clone child
-                if (parentClone) childIssueDataTable.row.add( parentClone).draw();
+                if (parentClone) childIssueDataTable.row.add(parentClone).draw();
                 //erase the categorisation of elevated parent
                 if (parentData) childIssueDataTable.row(parentIndex).data(parentData).draw();
                 //insert this child
-                childIssueDataTable.row.add( aCategory).draw();
-            }else if(selectedIndex>=0 && currentSelectedMode.length>1 &&
-                        (currentSelectedLocation.length>1 ||
-                            currentSelectedIssue.length>1 || currentSelectedType.length>1)
-                    ){
+                childIssueDataTable.row.add(aCategory).draw();
+            } else if (selectedIndex >= 0 && currentSelectedMode.length > 1 &&
+                (currentSelectedLocation.length > 1 ||
+                    currentSelectedIssue.length > 1 || currentSelectedType.length > 1)
+            ) {
                 childIssueDataTable.row(selectedIndex).data(aCategory).draw();
             }
             clearCategorisation();
         }
 
 
-        var editCategory=function(idx){
+        var editCategory = function (idx) {
             $('.searchbox').popover('destroy');
-            var selectedRow=childIssueDataTable.row(idx).data();
-            if (!selectedRow || selectedRow<0) return;
-            selectedIndex=idx;
-            currentSelectedModeId=selectedRow.modeId;
-            currentSelectedMode=selectedRow.mode;
-            currentSelectedLocation=selectedRow.location;
-            currentSelectedIssue=selectedRow.issue;
-            currentSelectedCaseId=selectedRow.caseId;
-            currentSelectedLocationId=selectedRow.locationId;
-            currentSelectedIssueId=selectedRow.issueId;
-            currentSubject=selectedRow.subject;
-            parentIssue=selectedRow.parentIssue;
-            parentIssueId=selectedRow.parentIssueId;
-            parentlocation=selectedRow.parentlocation;
-            parentlocationId=selectedRow.parentlocationId;
-            grandIssue=selectedRow.grandIssue;
-            grandlocation=selectedRow.grandlocation;
-            issueKpi=selectedRow.issueKpi;
-            issueDriver=selectedRow.issueDriver;
-            issueAccountability =selectedRow.issueAccountability;
-            selectedIndex=childIssueDataTable.row('.selected').index();
-            currentSelectedType=selectedRow.type;
-            issueAgency=selectedRow.issueAgency;
-            locationAgency=selectedRow.locationAgency;
-            parent=selectedRow.parent;
-            cloned=selectedRow.cloned;
+            var selectedRow = childIssueDataTable.row(idx).data();
+            if (!selectedRow || selectedRow < 0) return;
+            selectedIndex = idx;
+            currentSelectedModeId = selectedRow.modeId;
+            currentSelectedMode = selectedRow.mode;
+            currentSelectedLocation = selectedRow.location;
+            currentSelectedIssue = selectedRow.issue;
+            currentSelectedCaseId = selectedRow.caseId;
+            currentSelectedLocationId = selectedRow.locationId;
+            currentSelectedIssueId = selectedRow.issueId;
+            currentSubject = selectedRow.subject;
+            parentIssue = selectedRow.parentIssue;
+            parentIssueId = selectedRow.parentIssueId;
+            parentlocation = selectedRow.parentlocation;
+            parentlocationId = selectedRow.parentlocationId;
+            grandIssue = selectedRow.grandIssue;
+            grandlocation = selectedRow.grandlocation;
+            issueKpi = selectedRow.issueKpi;
+            issueDriver = selectedRow.issueDriver;
+            issueAccountability = selectedRow.issueAccountability;
+            selectedIndex = childIssueDataTable.row('.selected').index();
+            currentSelectedType = selectedRow.type;
+            issueAgency = selectedRow.issueAgency;
+            locationAgency = selectedRow.locationAgency;
+            parent = selectedRow.parent;
+            cloned = selectedRow.cloned;
             $('#searchInputLocation').popover({
-                trigger:'hover',
-                placement:'auto bottom',
-                content: grandlocation +' / '+ parentlocation+' / '+currentSelectedLocation
+                trigger: 'hover',
+                placement: 'auto bottom',
+                content: grandlocation + ' / ' + parentlocation + ' / ' + currentSelectedLocation
             });
             $('#searchInputIssue').popover({
-                trigger:'hover',
-                placement:'auto bottom',
-                content: grandIssue +' / '+ parentIssue+' / '+currentSelectedIssue
+                trigger: 'hover',
+                placement: 'auto bottom',
+                content: grandIssue + ' / ' + parentIssue + ' / ' + currentSelectedIssue
             });
 
-            $('#searchInputLocation').val(selectedRow.location=='null' ? '':selectedRow.location);
-            $('#searchInputIssue').val(selectedRow.issue=='null'?'':selectedRow.issue);
-            $('#searchInputMode').val(selectedRow.mode=='null'?'':selectedRow.mode);
-            $('#searchInputType').val(selectedRow.type=='null'?'':selectedRow.type);
+            $('#searchInputLocation').val(selectedRow.location == 'null' ? '' : selectedRow.location);
+            $('#searchInputIssue').val(selectedRow.issue == 'null' ? '' : selectedRow.issue);
+            $('#searchInputMode').val(selectedRow.mode == 'null' ? '' : selectedRow.mode);
+            $('#searchInputType').val(selectedRow.type == 'null' ? '' : selectedRow.type);
             $('#subject').val(selectedRow.subject);
             $('#ModeContainer').jstree(true).refresh(true);
             $('#LocationContainer').jstree(true).refresh(true);
             $('#IssueContainer').jstree(true).refresh(true);
             $('#TypeContainer').jstree(true).refresh(true);
 
-
+            if (currentSelectedMode === 'Bus') {
+                $('#SchoolRouteText').show();
+            }
         }
-        var clearCategorisation=function(){
+        var clearCategorisation = function () {
             $('.searchbox').popover('destroy');
             childIssueDataTable.$('tr.selected').removeClass('selected');
-            selectedIndex=-1;
-            currentSelectedModeId='';
-            currentSelectedMode='';
-            currentSelectedLocation='';
-            currentSelectedIssue='';
-            currentSelectedCaseId='';
-            currentSelectedLocationId=null;
-            currentSelectedIssueId=null;
-            currentSubject='';
-            parentIssue='';
-            parentIssueId=null;
-            parentlocation='';
-            parentlocationId=null;
-            grandIssue='';
-            grandlocation='';
-            issueKpi='';
-            issueDriver='';
-            issueAccountability ='';
-            currentSelectedType='';
-            issueAgency='';
-            locationAgency='';
-            cloned=false;
+            selectedIndex = -1;
+            currentSelectedModeId = '';
+            currentSelectedMode = '';
+            currentSelectedLocation = '';
+            currentSelectedIssue = '';
+            currentSelectedCaseId = '';
+            currentSelectedLocationId = null;
+            currentSelectedIssueId = null;
+            currentSubject = '';
+            parentIssue = '';
+            parentIssueId = null;
+            parentlocation = '';
+            parentlocationId = null;
+            grandIssue = '';
+            grandlocation = '';
+            issueKpi = '';
+            issueDriver = '';
+            issueAccountability = '';
+            currentSelectedType = '';
+            issueAgency = '';
+            locationAgency = '';
+            cloned = false;
             $('#searchInputLocation').val('');
             $('#searchInputIssue').val('');
             $('#searchInputMode').val('');
@@ -803,36 +843,37 @@
             $('#subject').val('');
             $('#searchInputType').val('');
 
-            
+
             $('#ModeContainer').hide();
             $('#TypeContainer').hide();
+            $('#SchoolRouteText').hide();
 
             var your_div = document.getElementById('addCategory');
             var text_to_change = your_div.childNodes[2];
-            text_to_change.nodeValue='add';
+            text_to_change.nodeValue = 'add';
             $('#LocationContainer').hide();
             $('#IssueContainer').hide();
         }
 
-        var mergeOnlyOtherChildToParent = function(deletedIndex){//two child
-            var parentRows=childIssueDataTable.rows(
-                function ( idx, data, node ) {
-                    return data.caseId== $('#theHiddenCaseId').val()?
+        var mergeOnlyOtherChildToParent = function (deletedIndex) {//two child
+            var parentRows = childIssueDataTable.rows(
+                function (idx, data, node) {
+                    return data.caseId == $('#theHiddenCaseId').val() ?
                         true : false;
-                } );
-            var parentIndex=parentRows.indexes()[0];
-            
-            var onlyOtherChildRow=childIssueDataTable.rows(
-                function ( idx, data, node ) {
-                    return (data.parent== $('#theHiddenCaseId').val() && idx!=deletedIndex)?
+                });
+            var parentIndex = parentRows.indexes()[0];
+
+            var onlyOtherChildRow = childIssueDataTable.rows(
+                function (idx, data, node) {
+                    return (data.parent == $('#theHiddenCaseId').val() && idx != deletedIndex) ?
                         true : false;
-                } );
-            var onlyOtherChild=onlyOtherChildRow.data()[0];
-            var onlyOtherChildIndex=onlyOtherChildRow.indexes()[0];
-            var array_values=null;
-            if ( onlyOtherChild && (!onlyOtherChild.caseId || onlyOtherChild.caseId.length<15)){
-                var parentRowData=cloneCaseCategory(onlyOtherChild,parentRows.data()[0]);
-                parentRowData.caseId=$('#theHiddenCaseId').val();
+                });
+            var onlyOtherChild = onlyOtherChildRow.data()[0];
+            var onlyOtherChildIndex = onlyOtherChildRow.indexes()[0];
+            var array_values = null;
+            if (onlyOtherChild && (!onlyOtherChild.caseId || onlyOtherChild.caseId.length < 15)) {
+                var parentRowData = cloneCaseCategory(onlyOtherChild, parentRows.data()[0]);
+                parentRowData.caseId = $('#theHiddenCaseId').val();
                 childIssueDataTable.row(parentIndex).data(parentRowData).draw();
                 //array_values=updateCatagoriesWithArray([parentRowData]);
                 childIssueDataTable.row(onlyOtherChildIndex).remove().draw();
@@ -840,307 +881,320 @@
             }
             return array_values;
         }
-        var deleteCategory=function(indx){
-            
-            var apiDt=childIssueDataTable.row(indx);
-            var deletedRow=apiDt.data();
+        var deleteCategory = function (indx) {
+
+            var apiDt = childIssueDataTable.row(indx);
+            var deletedRow = apiDt.data();
             //setting marker on the deleted row, and putting it back to model because index might change after merging only other child
-            deletedRow.type='deleted';
+            deletedRow.type = 'deleted';
             childIssueDataTable.row(indx).data(deletedRow);
             var children = childIssueDataTable.rows(
-                function ( idx, data, node ) {
-                    return data.parent== $('#theHiddenCaseId').val()?
+                function (idx, data, node) {
+                    return data.parent == $('#theHiddenCaseId').val() ?
                         true : false;
-                } );
-            if(deletedRow && !deletedRow.caseId && children && children.data().length==2 && deletedRow.parent==$('#theHiddenCaseId').val()){
-                 mergeOnlyOtherChildToParent(apiDt.index());
-                 var deletedRows=childIssueDataTable.rows(
-                    function ( idx, data, node ) {
-                        return  data.type== 'deleted'? true : false;
-                    } );
-                indx=deletedRows.indexes()[0];
-                apiDt=childIssueDataTable.row(indx);;
+                });
+            if (deletedRow && !deletedRow.caseId && children && children.data().length == 2 && deletedRow.parent == $('#theHiddenCaseId').val()) {
+                mergeOnlyOtherChildToParent(apiDt.index());
+                var deletedRows = childIssueDataTable.rows(
+                    function (idx, data, node) {
+                        return data.type == 'deleted' ? true : false;
+                    });
+                indx = deletedRows.indexes()[0];
+                apiDt = childIssueDataTable.row(indx);;
             }
-            if(deletedRow && deletedRow.caseId && deletedRow.caseId.length>0 && deletedRow.caseId!=$('#theHiddenCaseId').val()){
-                
-            
+            if (deletedRow && deletedRow.caseId && deletedRow.caseId.length > 0 && deletedRow.caseId != $('#theHiddenCaseId').val()) {
+
+
                 Visualforce.remoting.Manager.invokeAction(
                     '{!$RemoteAction.IssueItemisationPublisherAction_CX.deleteEx}',
                     deletedRow.caseId,
-                    
-                    function(result, event){
-                        if(event.status) {
+
+                    function (result, event) {
+                        if (event.status) {
                             apiDt.remove().draw();
-                                $('#updateCategory').button('delete');
-                            bootbox.alert({ size: 'small',
-                                            message: "   Deleted the child case with Categories   ",
-                                        closeButton: false
-                                            
-                                        }); 
+                            $('#updateCategory').button('delete');
+                            bootbox.alert({
+                                size: 'small',
+                                message: "   Deleted the child case with Categories   ",
+                                closeButton: false
+
+                            });
                         }
-                    }, {escape: true}
+                    }, { escape: true }
                 );
 
-            }else if(deletedRow && deletedRow.caseId==$('#theHiddenCaseId').val()){
-                bootbox.alert({ size: 'small',message: "  This case is parent, cannot delete it  ",
-                                        closeButton: false}); 
-            }else{
+            } else if (deletedRow && deletedRow.caseId == $('#theHiddenCaseId').val()) {
+                bootbox.alert({
+                    size: 'small', message: "  This case is parent, cannot delete it  ",
+                    closeButton: false                
+});
+            } else {
                 apiDt.remove().draw();
             }
-            selectedIndex=-1;
+            selectedIndex = -1;
         }
 
-        var closeIssueItemiser=function(){
+        var closeIssueItemiser = function () {
             sforce.console.refreshPrimaryTabById(tabId, true);
             openChildTabs('{!thisCase.Id}');
-             
+
             sforce.console.closeTab(thisTabId);
         }
         var openChildTabs = function (objectId) {
-            if ( objectId.substring(0,3)=='500' ){
-                var parentQuery = "SELECT Id, CaseNumber,Description,(SELECT Id, CaseNumber FROM Cases) FROM Case WHERE Id = '"+objectId+"'"; 
+            if (objectId.substring(0, 3) == '500') {
+                var parentQuery = "SELECT Id, CaseNumber,Description,(SELECT Id, CaseNumber FROM Cases) FROM Case WHERE Id = '" + objectId + "'";
                 sforce.connection.sessionId = '{!$Api.Session_ID}';
-                var parentResult = sforce.connection.query(parentQuery); 
-                children = parentResult.records.Cases; 
-                if(!children || children.length<1) return;
-                $.each(children.records,function(index,aChild){
-                        
-                    sforce.console.openSubtab(tabId , '/'+aChild.Id, false,
-                                                aChild.CaseNumber, null, openSuccess, 'salesforceSubtab');
-                    
+                var parentResult = sforce.connection.query(parentQuery);
+                children = parentResult.records.Cases;
+                if (!children || children.length < 1) return;
+                $.each(children.records, function (index, aChild) {
+
+                    sforce.console.openSubtab(tabId, '/' + aChild.Id, false,
+                        aChild.CaseNumber, null, openSuccess, 'salesforceSubtab');
+
                 });
-            
+
             }
         };
-        var openSuccess=function(result){console.log(result);}
-        
-        var cloneCaseCategory=function(src,dest){
-            dest.modeId=src.modeId;
-            dest.mode=src.mode;
-            dest.location=src.location;
-            dest.issue=src.issue;
-            dest.caseId=src.caseId;
-            dest.locationId=src.locationId;
-            dest.issueId=src.issueId;
-            dest.subject=src.subject;
-            dest.parentIssue=src.parentIssue;
-            dest.parentIssueId=src.parentIssueId;
-            dest.parentlocation=src.parentlocation;
-            dest.parentlocationId=src.parentlocationId;
-            dest.grandIssue=src.grandIssue;
-            dest.grandlocation=src.grandlocation;
-            dest.issueKpi=src.issueKpi ;
-            dest.issueDriver=src.issueDriver ;
-            dest.issueAccountability=src.issueAccountability;
-            dest.type=src.type;
-            dest.issueAgency=src.issueAgency;
-            dest.locationAgency=src.locationAgency;
-            dest.parent=src.parent;
+        var openSuccess = function (result) { console.log(result); }
+
+        var cloneCaseCategory = function (src, dest) {
+            dest.modeId = src.modeId;
+            dest.mode = src.mode;
+            dest.location = src.location;
+            dest.issue = src.issue;
+            dest.caseId = src.caseId;
+            dest.locationId = src.locationId;
+            dest.issueId = src.issueId;
+            dest.subject = src.subject;
+            dest.parentIssue = src.parentIssue;
+            dest.parentIssueId = src.parentIssueId;
+            dest.parentlocation = src.parentlocation;
+            dest.parentlocationId = src.parentlocationId;
+            dest.grandIssue = src.grandIssue;
+            dest.grandlocation = src.grandlocation;
+            dest.issueKpi = src.issueKpi;
+            dest.issueDriver = src.issueDriver;
+            dest.issueAccountability = src.issueAccountability;
+            dest.type = src.type;
+            dest.issueAgency = src.issueAgency;
+            dest.locationAgency = src.locationAgency;
+            dest.parent = src.parent;
 
             return dest;
         }
-        
+
 
         //update categories
-        var updateCatagories=function(){
+        var updateCatagories = function () {
             //check uncommitted data in form below
-            if ( currentSelectedModeId=='' && (currentSelectedIssueId=='' || currentSelectedLocationId=='' || currentSelectedType=='') )
-            {
+            if (currentSelectedModeId == '' && (currentSelectedIssueId == '' || currentSelectedLocationId == '' || currentSelectedType == '')) {
 
-            
+
                 var array_values;
-                if (childIssueDataTable.rows().data().length==2) mergeOnlyOtherChildToParent(-100);
-                array_values=updateCatagoriesWithArray(childIssueDataTable.rows().data());
-                
-                 
-                if (array_values.length>0) updateGivenCategories(array_values,closeIssueItemiser);
-            }else{
-                bootbox.alert({ size: 'small',
-                                message: ' You have unsaved categorisation. Either '+document.getElementById('addCategory').childNodes[2].nodeValue.trim()+' or clear the categorisation before saving ',
-                                closeButton: false}); 
+                if (childIssueDataTable.rows().data().length == 2) mergeOnlyOtherChildToParent(-100);
+                array_values = updateCatagoriesWithArray(childIssueDataTable.rows().data());
+
+
+                if (array_values.length > 0) updateGivenCategories(array_values, closeIssueItemiser);
+            } else {
+                bootbox.alert({
+                    size: 'small',
+                    message: ' You have unsaved categorisation. Either ' + document.getElementById('addCategory').childNodes[2].nodeValue.trim() + ' or clear the categorisation before saving ',
+                    closeButton: false                
+});
                 return null;
             }
         }
-        var updateCatagoriesWithArray=function(categories){
-            
+        var updateCatagoriesWithArray = function (categories) {
+
             var array_values = new Array();
             var errorMessage;
-            $.each(categories,function(index,node){
-                if (node.type=='' && node.parent==$('#theHiddenCaseId').val()){
-                    
-                    errorMessage=" Can not add categorisation as type not selected for all child issues";
+            $.each(categories, function (index, node) {
+                if (node.type == '' && node.parent == $('#theHiddenCaseId').val()) {
+
+                    errorMessage = " Can not add categorisation as type not selected for all child issues";
                 }
-                if( (node.parent==$('#theHiddenCaseId').val() || categories.length==1)
-                    && (!node.locationId || node.locationId<15 || !node.issueId || node.issueId<15)
-                    ){
-                    var updateButton=$('#updateCategory');
-                    errorMessage=" Can not Save categorisation, All Issues need Location and Issue categorisation except parent";
-                }else{
-                    if (!node.locationId || node.locationId.length<15) node.locationId=null;
-                    if (!node.parentlocationId || node.parentlocationId.length<15) node.parentlocationId=null;
-                    if (!node.issueId || node.issueId.length<15) node.issueId=null;
-                    if (!node.parentIssueId || node.parentIssueId.length<15) node.parentIssueId=null;
+                if ((node.parent == $('#theHiddenCaseId').val() || categories.length == 1)
+                    && (!node.locationId || node.locationId < 15 || !node.issueId || node.issueId < 15)
+                ) {
+                    var updateButton = $('#updateCategory');
+                    errorMessage = " Can not Save categorisation, All Issues need Location and Issue categorisation except parent";
+                } else {
+                    if (!node.locationId || node.locationId.length < 15) node.locationId = null;
+                    if (!node.parentlocationId || node.parentlocationId.length < 15) node.parentlocationId = null;
+                    if (!node.issueId || node.issueId.length < 15) node.issueId = null;
+                    if (!node.parentIssueId || node.parentIssueId.length < 15) node.parentIssueId = null;
 
                 }
 
-                if (node.caseId==$('#theHiddenCaseId' ).val() || node.parent==$('#theHiddenCaseId').val()){
+                if (node.caseId == $('#theHiddenCaseId').val() || node.parent == $('#theHiddenCaseId').val()) {
                     array_values.push(node);
                 }
             });
-            if (errorMessage){
-                bootbox.alert({ size: 'small',
-                                message: errorMessage,
-                                closeButton: false}); 
+            if (errorMessage) {
+                bootbox.alert({
+                    size: 'small',
+                    message: errorMessage,
+                    closeButton: false                
+});
                 return null;
             }
-                return array_values;
-            
+            return array_values;
+
 
         }
-        var updateGivenCategories=function(array_values,updateComplete){
-            var updateButton=$('#updateCategory');
+        var updateGivenCategories = function (array_values, updateComplete) {
+            var updateButton = $('#updateCategory');
             updateButton.button('loading');
             Visualforce.remoting.Manager.invokeAction(
                 '{!$RemoteAction.IssueItemisationPublisherAction_CX.upsertCategories}',
                 $('#theHiddenCaseId').val(),
                 array_values,
-                function(result, event){
-                    if(event.status) {
+                function (result, event) {
+                    if (event.status) {
                         updateButton.button('reset');
-                        
-                        bootbox.alert({ size: 'small',
-                                        message: "   Updated the Categories   ",
-                                        callback: updateComplete,
-                                        closeButton: false
-                                    }); 
-                    }else{
+
+                        bootbox.alert({
+                            size: 'small',
+                            message: "   Updated the Categories   ",
+                            callback: updateComplete,
+                            closeButton: false
+                        });
+                    } else {
                         var regexp = /(?:first error:)(.*)(?::)/;
-                        var firstMatch = regexp.exec(event.message)[1]; 
+                        var firstMatch = regexp.exec(event.message)[1];
                         updateButton.button('reset');
-                        
-                        bootbox.alert({ size: 'small',
-                                        message: firstMatch,
-                                        callback: updateComplete,
-                                        closeButton: false
-                                    }); 
+
+                        bootbox.alert({
+                            size: 'small',
+                            message: firstMatch,
+                            callback: updateComplete,
+                            closeButton: false
+                        });
                     }
-                }, {escape: true}
+                }, { escape: true }
             );
         }
 
         //get data function
-        var getModes=function(obj, cb) {
+        var getModes = function (obj, cb) {
             var caseId;
-            if (currentSelectedCaseId.length>15){
-                caseId=currentSelectedCaseId;
-            } else{
-                caseId=$('#theHiddenCaseId').val();
+            if (currentSelectedCaseId.length > 15) {
+                caseId = currentSelectedCaseId;
+            } else {
+                caseId = $('#theHiddenCaseId').val();
             }
             Visualforce.remoting.Manager.invokeAction(
                 '{!$RemoteAction.IssueItemisationPublisherAction_CX.getModes}',
                 caseId,
-                function(result, event){
-                    if(event.status) {
-                        if(currentSelectedCaseId.length>15){
-                            $.each(result,function(index,node){
-                                if(node.state && node.state.selected) {
+                function (result, event) {
+                    if (event.status) {
+                        if (currentSelectedCaseId.length > 15) {
+                            $.each(result, function (index, node) {
+                                if (node.state && node.state.selected) {
                                     $('#searchInputMode').val(node.text);
-                                    currentSelectedModeId=node.id;
-                                    currentSelectedMode=node.text;
+                                    currentSelectedModeId = node.id;
+                                    currentSelectedMode = node.text;
                                     $('#LocationContainer').jstree(true).refresh(true);
                                     $('#IssueContainer').jstree(true).refresh(true);
+                                    if (currentSelectedMode === 'Bus') {
+                                        $('#SchoolRouteText').show();
+                                    } else {
+                                        $('#SchoolRouteText').hide();
+                                    }
                                 }
 
                             });
                         }
-                        
-                        cb.call(this,result);
-                        if(currentSelectedModeId && currentSelectedModeId.length>=15) {
+
+                        cb.call(this, result);
+                        if (currentSelectedModeId && currentSelectedModeId.length >= 15) {
                             $('#ModeContainer').jstree(true).select_node(currentSelectedModeId);
                         }
 
                     }
-                }, {escape: false}
+                }, { escape: false }
             );
 
         }
 
         //get location
-        var getLocations=function(obj, cb) {
-            if (!currentSelectedModeId || currentSelectedModeId.length<15) {
-                cb.call(this,[]);
+        var getLocations = function (obj, cb) {
+            if (!currentSelectedModeId || currentSelectedModeId.length < 15) {
+                cb.call(this, []);
                 return;
             }
             Visualforce.remoting.Manager.invokeAction(
                 '{!$RemoteAction.IssueItemisationPublisherAction_CX.getLocations}',
                 currentSelectedCaseId,
                 currentSelectedModeId,
-                function(result, event){
-                    if(event.status) {
+                function (result, event) {
+                    if (event.status) {
                         defaultIfOnlyPossibility(result);
 
                         $('#LocationContainer').show();
-                        $.each(result,function(index,node){
-                            if(node.state ) {
-                                
-                                if(node.state.selected){
-                                    $('#searchInputLocation').val(node.text);
-                                    currentSelectedLocation=node.text;
-                                    currentSelectedLocationId=node.id;
+                        $.each(result, function (index, node) {
+                            if (node.state) {
 
-                                }else if (node.state.opened && node.parent!='#'){
-                                    parentlocation=node.text;
-                                    parentlocationId=node.id;
-                                }else if (node.state.opened && node.parent=='#'){
-                                    grandlocation=node.text;
+                                if (node.state.selected) {
+                                    $('#searchInputLocation').val(node.text);
+                                    currentSelectedLocation = node.text;
+                                    currentSelectedLocationId = node.id;
+
+                                } else if (node.state.opened && node.parent != '#') {
+                                    parentlocation = node.text;
+                                    parentlocationId = node.id;
+                                } else if (node.state.opened && node.parent == '#') {
+                                    grandlocation = node.text;
 
                                 }
-                                
+
                             }
 
                         });
-                        cb.call(this,result);
-                        if(currentSelectedLocationId && currentSelectedLocationId.length>=15) {
+                        cb.call(this, result);
+                        if (currentSelectedLocationId && currentSelectedLocationId.length >= 15) {
                             $('#LocationContainer').jstree(true).select_node(currentSelectedLocationId);
                         }
 
                     }
-                }, {escape: false}
+                }, { escape: false }
             );
 
-            
+
 
         }
 
-        var defaultIfOnlyPossibility=function(result){
-            if (result.length<=3 && result.length>=1){
-                var child = $.grep(result, function(e){ return e.parent == '#'; });
+        var defaultIfOnlyPossibility = function (result) {
+            if (result.length <= 3 && result.length >= 1) {
+                var child = $.grep(result, function (e) { return e.parent == '#'; });
                 var parent;
-                while(child.length>0) {
-                    var nextChild= $.grep(result, function(e){ return e.parent == child[0].id; });
-                    if (nextChild.length>0) {child=nextChild ;}else {break;}
+                while (child.length > 0) {
+                    var nextChild = $.grep(result, function (e) { return e.parent == child[0].id; });
+                    if (nextChild.length > 0) { child = nextChild; } else { break; }
                 }
 
-                if(child.length>0){
-                    child[0].state={
-                        'opened':true,
-                        'selected':true
+                if (child.length > 0) {
+                    child[0].state = {
+                        'opened': true,
+                        'selected': true
                     };
-                    parent= $.grep(result, function(e){ return e.id == child[0].parent; });
-                    parent[0].state={'opened':true};
-                    while (parent.length>0){
-                        parent[0].state={'opened':true};
-                        if (parent[0].parent!='#' ) {
-                            parent= $.grep(result, function(e){ return e.id == parent[0].parent; });
-                        }else {break;}
-                    } 
+                    parent = $.grep(result, function (e) { return e.id == child[0].parent; });
+                    parent[0].state = { 'opened': true };
+                    while (parent.length > 0) {
+                        parent[0].state = { 'opened': true };
+                        if (parent[0].parent != '#') {
+                            parent = $.grep(result, function (e) { return e.id == parent[0].parent; });
+                        } else { break; }
+                    }
                 }
             }
         }
         //get issues
-        var getIssues=function(obj, cb) {
-            if (!currentSelectedModeId || currentSelectedModeId.length<15) {
-                cb.call(this,[]);
+        var getIssues = function (obj, cb) {
+            if (!currentSelectedModeId || currentSelectedModeId.length < 15) {
+                cb.call(this, []);
 
                 return;
             }
@@ -1148,141 +1202,171 @@
                 '{!$RemoteAction.IssueItemisationPublisherAction_CX.getIssues}',
                 currentSelectedCaseId,
                 currentSelectedModeId,
-                function(result, event){
-                    if(event.status) {
+                function (result, event) {
+                    if (event.status) {
                         defaultIfOnlyPossibility(result);
                         $('#IssueContainer').show();
-                        $.each(result,function(index,node){
-                            if(node.state) {
-                                if(node.state.selected){
+                        $.each(result, function (index, node) {
+                            if (node.state) {
+                                if (node.state.selected) {
                                     $('#searchInputIssue').val(node.text);
-                                    currentSelectedIssue=node.text;
-                                    currentSelectedIssueId=node.id;
+                                    currentSelectedIssue = node.text;
+                                    currentSelectedIssueId = node.id;
 
-                                }else if (node.state.opened && node.parent!='#'){
-                                    parentIssue=node.text;
-                                    parentIssueId=node.id;
+                                } else if (node.state.opened && node.parent != '#') {
+                                    parentIssue = node.text;
+                                    parentIssueId = node.id;
 
-                                }else if (node.state.opened && node.parent=='#'){
-                                    grandIssue=node.text;
+                                } else if (node.state.opened && node.parent == '#') {
+                                    grandIssue = node.text;
 
                                 }
-                                
+
 
                             }
                         });
-                        cb.call(this,result);
-                        if(currentSelectedIssueId && currentSelectedIssueId.length>=15){
+                        cb.call(this, result);
+                        if (currentSelectedIssueId && currentSelectedIssueId.length >= 15) {
                             $('#IssueContainer').jstree(true).select_node(currentSelectedIssueId);
 
-                        } 
+                        }
 
                     }
 
-                }, {escape: false}
+                }, { escape: false }
             );
-            
+
         }
         //get data function
-        var getTypes=function(obj, cb) {
+        var getTypes = function (obj, cb) {
             Visualforce.remoting.Manager.invokeAction(
                 '{!$RemoteAction.IssueItemisationPublisherAction_CX.getTypes}',
                 currentSelectedCaseId,
-                function(result, event){
-                    if(event.status) {
-                        $.each(result,function(index,node){
-                            if(node.state && node.state.selected) {
+                function (result, event) {
+                    if (event.status) {
+                        $.each(result, function (index, node) {
+                            if (node.state && node.state.selected) {
                                 $('#searchInputType').val(node.text);
-                                currentSelectedType=node.text;
-                                
+                                currentSelectedType = node.text;
+
                             }
 
                         });
-                        cb.call(this,result);
-                        if(currentSelectedType && currentSelectedType.length>1) {
+                        cb.call(this, result);
+                        if (currentSelectedType && currentSelectedType.length > 1) {
                             $('#TypeContainer').jstree(true).select_node(currentSelectedType);
                         }
                     }
-                }, {escape: false}
+                }, { escape: false }
             );
 
         }
-        </script>
-        <style>
+    </script>
+    <style>
         /* enable absolute positioning */
-            .inner-addon { 
-                position: relative; 
-            }
 
-            /* style icon */
-            .inner-addon .glyphicon {
-              position: absolute;
-              padding: 10px;
-            }
+        .inner-addon {
+            position: relative;
+        }
 
-            /* align icon */
-            .left-addon .glyphicon  { left:  0px;}
-            .right-addon .glyphicon { right: 10px;}
+        /* style icon */
 
-            /* add padding  */
-            .left-addon input  { padding-left:  30px; }
-            .right-addon input { padding-right: 30px; }
-            .jstree li a i { display:none !important; }
-            .jstree-proton-responsive .jstree-container-ul{
-                overflow-x:auto !important;
-                display: block;
+        .inner-addon .glyphicon {
+            position: absolute;
+            padding: 10px;
+        }
 
-            }
-            .btn-primary:hover {
-              color: #000000
-            }
-            table.dataTable {
-                  width: 100%!important;
-            }
-            .MainDiv {
+        /* align icon */
 
-              border: grey;
-              padding: 1em;
-              margin: 1em;
-              border: 1px;
-              min-height: 800px;
-            }
-            table.dataTable tbody tr.selected td{
-                background-color: #3392e3;
-            }
-            tr.highlight {
-                font-weight: bold;
-                font-style: italic;
-            }
-            input[type=text], textarea {
-              -webkit-transition: all 0.30s ease-in-out;
-              -moz-transition: all 0.30s ease-in-out;
-              -ms-transition: all 0.30s ease-in-out;
-              -o-transition: all 0.30s ease-in-out;
-              outline: none;
-              padding: 3px 0px 3px 3px;
-              margin: 5px 1px 3px 0px;
-              border: 1px solid #DDDDDD;
-            }
-             
-            input[type=text]:focus, textarea:focus {
-              box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-              padding: 3px 0px 3px 3px;
-              margin: 5px 1px 3px 0px;
-              border: 1px solid rgba(81, 203, 238, 1);
-            }
+        .left-addon .glyphicon {
+            left: 0px;
+        }
 
-            body button, body .x-btn, body .btn, body .btnDisabled, body .btnCancel, body .menuButton .menuButtonButton
-            {
-                color: #333!important;
-            }
-            .jstree-anchor .jstree-hovered{
-                color: grey!important;
-            }
-        </style>
+        .right-addon .glyphicon {
+            right: 10px;
+        }
+
+        /* add padding  */
+
+        .left-addon input {
+            padding-left: 30px;
+        }
+
+        .right-addon input {
+            padding-right: 30px;
+        }
+
+        .jstree li a i {
+            display: none !important;
+        }
+
+        .jstree-proton-responsive .jstree-container-ul {
+            overflow-x: auto !important;
+            display: block;
+
+        }
+
+        .btn-primary:hover {
+            color: #000000
+        }
+
+        table.dataTable {
+            width: 100%!important;
+        }
+
+        .MainDiv {
+
+            border: grey;
+            padding: 1em;
+            margin: 1em;
+            border: 1px;
+            min-height: 800px;
+        }
+
+        table.dataTable tbody tr.selected td {
+            background-color: #3392e3;
+        }
+
+        tr.highlight {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        input[type=text],
+        textarea {
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;
+            outline: none;
+            padding: 3px 0px 3px 3px;
+            margin: 5px 1px 3px 0px;
+            border: 1px solid #DDDDDD;
+        }
+
+        input[type=text]:focus,
+        textarea:focus {
+            box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+            padding: 3px 0px 3px 3px;
+            margin: 5px 1px 3px 0px;
+            border: 1px solid rgba(81, 203, 238, 1);
+        }
+
+        body button,
+        body .x-btn,
+        body .btn,
+        body .btnDisabled,
+        body .btnCancel,
+        body .menuButton .menuButtonButton {
+            color: #333!important;
+        }
+
+        .jstree-anchor .jstree-hovered {
+            color: grey!important;
+        }
+    </style>
+
     </html>
-    <apex:includeScript value="{!$Resource.bootbox}"/>
-    
-
+    <apex:includeScript value="{!$Resource.bootbox}" />
 
 </apex:page>

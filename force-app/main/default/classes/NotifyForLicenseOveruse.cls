@@ -14,7 +14,7 @@ public class NotifyForLicenseOveruse Implements Schedulable{
                         + '<th>Actual License Usage</th>'
                         + '<th>Nature of License</th></tr>';
     
-    public void execute(SchedulableContext sc){	
+    public void execute(SchedulableContext sc){ 
         countUserLicenses();
     }
     

@@ -26,6 +26,18 @@
         <template>Case_Created_Templates/Generic_Case_Email_Alert</template>
     </alerts>
     <alerts>
+        <fullName>Concessions_application_acknowledgement</fullName>
+        <description>Concessions application acknowledgement</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>response@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Created_Templates/Concessions_application_email_response</template>
+    </alerts>
+    <alerts>
         <fullName>Email_Customer_CFM_API_to_Case_email_response</fullName>
         <description>Email Customer - CFM API-to-Case email response</description>
         <protected>false</protected>
@@ -243,6 +255,18 @@
         <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Case_Notification_Templates/Light_Rail_Private_Bus_Case_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Notification_Email_to_TDSF</fullName>
+        <description>Notification Email to TDSF</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PBLROperator_Email_Address__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>noreply_customerfeedback@transport.nsw.gov.au</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Notification_Templates/Portal_new_Ferry_case_alert</template>
     </alerts>
     <alerts>
         <fullName>Notify_Case_Assignment</fullName>
@@ -1352,15 +1376,6 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Update_Owner_Agency_to_SNSW</fullName>
-        <field>OwnerAgency__c</field>
-        <literalValue>SNSW</literalValue>
-        <name>Update Owner Agency to SNSW</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Update_RecordType_To_WestConnex_Minister</fullName>
         <description>Update Record Type To WestConnex Ministe</description>
         <field>RecordTypeId</field>
@@ -1425,15 +1440,6 @@
         <field>SNSW_referral_sent__c</field>
         <literalValue>1</literalValue>
         <name>Update SNSW referral sent flag to true</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Update_Shared_Flag</fullName>
-        <field>Shared__c</field>
-        <literalValue>1</literalValue>
-        <name>Update Shared Flag</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
@@ -1837,8 +1843,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <formula>ISCHANGED(Status) 
-&amp;&amp; (ISPICKVAL(PRIORVALUE (Status),&quot;Re-assigned&quot;))</formula>
+        <formula>ISCHANGED(Status)  &amp;&amp; (ISPICKVAL(PRIORVALUE (Status),&quot;Re-assigned&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -1873,7 +1878,7 @@
         <criteriaItems>
             <field>Case.Taxonomy_Location_Type__c</field>
             <operation>contains</operation>
-            <value>,QCity,Dions,Blue Mountains,Busabout,Busways Blacktown,Busways Central Coast,Hillsbus,Forest Coach,Hunter Valley,Interline Bus,Punchbowl Bus,Transdev,Coastal,Red,Port Stephens,Rover,Surfside,Ogdens,Forster,Cavanaghs,Ballina,Osborn,Tamworth,Transit Systems</value>
+            <value>,QCity,Dions,Blue Mountains,Busabout,Busways Blacktown,Busways Central Coast,Hillsbus,Forest Coach,Hunter Valley,Interline Bus,Punchbowl Bus,Transdev,Transit Systems,Coastal,Red,Port Stephens,Rover,Surfside,Ogdens,Forster,Cavanaghs,Ballina,Osborn,Tamworth</value>
         </criteriaItems>
         <criteriaItems>
             <field>Case.Agency__c</field>
@@ -2011,6 +2016,65 @@
         <active>true</active>
         <description>This workflow will close all the child cases created using Taxanomy UI</description>
         <formula>AND( ParentId &lt;&gt; null, ISPICKVAL(Parent.Modes__c, &quot;Multi Issue&quot;), IsMinCorroCase__c )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Concessions Application Created</fullName>
+        <actions>
+            <name>Concessions_application_acknowledgement</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 AND 9 AND 10</booleanFilter>
+        <criteriaItems>
+            <field>Case.Created_By_Email__c</field>
+            <operation>notContain</operation>
+            <value>@service.nsw.gov.au</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.SuppliedEmail</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Agency__c</field>
+            <operation>notEqual</operation>
+            <value>SNSW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin</field>
+            <operation>equals</operation>
+            <value>Web</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.ParentId</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>notEqual</operation>
+            <value>Roads Webform</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>notEqual</operation>
+            <value>Transport Webform</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Origin_Details__c</field>
+            <operation>notEqual</operation>
+            <value>WestConnex Webform</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.FirstName</field>
+            <operation>equals</operation>
+            <value>Concessions</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.LastName</field>
+            <operation>equals</operation>
+            <value>Site Guest User</value>
+        </criteriaItems>
+        <description>Sends an acknowledgement email when a case is created from the web</description>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
@@ -2169,6 +2233,25 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
             <value>Bus</value>
         </criteriaItems>
         <description>Email Notification of Vexatious Customer to Corporate Customer Relations</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification to TDSF</fullName>
+        <actions>
+            <name>Notification_Email_to_TDSF</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Set_isAssigned_as_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Unset_Case_Comment_Added</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>SFCOE-3109</description>
+        <formula>CONTAINS(Owner:Queue.QueueName,&quot;HCF&quot;)  &amp;&amp;   NOT(ISBLANK(PBLROperator_Email_Address__c))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -2634,10 +2717,7 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
         </actions>
         <active>true</active>
         <description>Update Responsible Party to SNSW as per Taxonomy configuration</description>
-        <formula>ISPICKVAL(Origin, &#39;CFM API&#39;) &amp;&amp;
-ISPICKVAL(Responsible_Party__c, &#39;&#39;) &amp;&amp;
-(Taxonomy_Symptom_Id__c != null &amp;&amp;
-(Taxonomy_Symptom_Id__r.Parent_Id__r.Auto_Share_With_SNSW__c || Taxonomy_Symptom_Id__r.Auto_Share_With_SNSW__c))</formula>
+        <formula>ISPICKVAL(Origin, &#39;CFM API&#39;) &amp;&amp; ISPICKVAL(Responsible_Party__c, &#39;&#39;) &amp;&amp; (Taxonomy_Symptom_Id__c != null &amp;&amp; (Taxonomy_Symptom_Id__r.Parent_Id__r.Auto_Share_With_SNSW__c || Taxonomy_Symptom_Id__r.Auto_Share_With_SNSW__c))</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
@@ -2648,14 +2728,7 @@ ISPICKVAL(Responsible_Party__c, &#39;&#39;) &amp;&amp;
         </actions>
         <active>true</active>
         <description>This workflow updates case status to Received when RMS creates case by CFM API</description>
-        <formula>AND( ISPICKVAL(Origin_Details__c,&#39;RMS Website&#39;),
-	ISPICKVAL(Origin,&#39;CFM API&#39;),
-	NOT(IsMinCorroCase__c), 
-	NOT(ISPICKVAL(Status, &#39;Received&#39;)),
-        Taxonomy_Symptom_Id__c != null ,
-Taxonomy_Symptom_Id__r.Parent_Id__r.Auto_Share_With_SNSW__c=false,
-Taxonomy_Symptom_Id__r.Auto_Share_With_SNSW__c=false
-	)</formula>
+        <formula>AND( ISPICKVAL(Origin_Details__c,&#39;RMS Website&#39;), 	ISPICKVAL(Origin,&#39;CFM API&#39;), 	NOT(IsMinCorroCase__c),  	NOT(ISPICKVAL(Status, &#39;Received&#39;)),         Taxonomy_Symptom_Id__c != null , Taxonomy_Symptom_Id__r.Parent_Id__r.Auto_Share_With_SNSW__c=false, Taxonomy_Symptom_Id__r.Auto_Share_With_SNSW__c=false 	)</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
@@ -3571,7 +3644,7 @@ This is to ensure that STA is able to &quot;Close with Customer&quot; for contra
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 AND 9 AND 10</booleanFilter>
         <criteriaItems>
             <field>Case.Created_By_Email__c</field>
             <operation>notContain</operation>
@@ -3609,6 +3682,16 @@ This is to ensure that STA is able to &quot;Close with Customer&quot; for contra
             <field>Case.Origin_Details__c</field>
             <operation>notEqual</operation>
             <value>WestConnex Webform</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.FirstName</field>
+            <operation>notEqual</operation>
+            <value>Concessions</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.LastName</field>
+            <operation>notEqual</operation>
+            <value>Site Guest User</value>
         </criteriaItems>
         <description>Sends an acknowledgement email when a case is created from the web</description>
         <triggerType>onCreateOnly</triggerType>

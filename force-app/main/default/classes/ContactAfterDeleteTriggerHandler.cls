@@ -41,8 +41,15 @@ public with sharing class ContactAfterDeleteTriggerHandler extends TriggerHandle
 			}
 			if (householdIdsToDelete.size()==0) return;
 
-		    List<Account> householdsToDelete =[select Id from Account where Id in:householdIdsToDelete and recordTypeId=:HOUSEHOLD.Id];
-		    if (householdsToDelete.size()>0 ) delete householdsToDelete;
+		    Map<Id, Account> householdsToDelete = new Map<Id, Account>([select Id from Account where Id in:householdIdsToDelete and recordTypeId=:HOUSEHOLD.Id]);
+			//Remove accounts from the deletion list which are associated with the cases
+			for(AggregateResult result: [SELECT Count(Id) caseCount, AccountId FROM Case WHERE AccountId IN :householdIdsToDelete group by AccountID]){
+				if(Integer.valueOf(result.get('caseCount')) > 0){
+					householdsToDelete.remove((Id)result.get('AccountId'));
+				}
+			}
+			
+			if (householdsToDelete.size()>0 ) delete householdsToDelete.values();
 			ApplicationLogUtility.logMessage(messages);
 			messages.clear();
 		}catch(Exception e){
@@ -62,7 +69,6 @@ public with sharing class ContactAfterDeleteTriggerHandler extends TriggerHandle
                 Throw(e);
             }
 		}
-
 	}
 
 }

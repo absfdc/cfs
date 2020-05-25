@@ -1,6 +1,7 @@
 <apex:page StandardController="Case" showHeader="false"  extensions="SmeSelectionPublisherAction_CX">
     <html>
-         <script src="/soap/ajax/46.0/connection.js" type="text/javascript" /> 
+        <!-- <script src="https://mobile1.t.salesforce.com/soap/ajax/30.0/connection.js" type="text/javascript" /> -->
+        <script src="/soap/ajax/46.0/connection.js" type="text/javascript" /> 
 
         <input id="theHiddenCaseId" value="{!thisCase.Id}" type="hidden" name="theHiddenCaseId" />
         <input id="theHiddenAgency" value="{!thisCase.agency__c}" type="hidden" name="theHiddenCaseId" />

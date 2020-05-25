@@ -36,6 +36,20 @@
         <value>https://tfnswscfs.force.com/operatorportal</value>
     </labels>
     <labels>
+        <fullName>DefaultCaseTypeForConcession</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DefaultCaseTypeForConcession</shortDescription>
+        <value>Enquiry</value>
+    </labels>
+    <labels>
+        <fullName>Display_Address_Component</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Display Address Component</shortDescription>
+        <value>no</value>
+    </labels>
+    <labels>
         <fullName>ERRMSG_ATTACHMENT_UPLOAD_FAILED</fullName>
         <language>en_US</language>
         <protected>false</protected>

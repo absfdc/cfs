@@ -246,8 +246,9 @@ public class TaxonomyRetriever {
                     where key of map is of the form mode:locaiton type (e.g. Train:Train Station).
     History:      
                     25/06/2018  Ian Fitzgerald  Added section for On Demand 
+                    03/06/2020 Abhi Indulkar    Performance tuning. Filter level1 taxonomies only for the required mode.
     ------------------------------------------------------------*/
-    public static Map<String,List<String>> retrieveLocationTaxonomy(String source) {
+    public static Map<String,List<String>> retrieveLocationTaxonomy(String source, String modes) {
         Map<String, Ferry_route_location_level1_values__c> ferryRouteLevel1 = Ferry_route_location_level1_values__c.getAll();
         Map<String, Ferry_wharf_location_level1_values__c> ferryWharfLevel1 = Ferry_wharf_location_level1_values__c.getAll();
         Map<String, Train_line_location_level1_values__c> trainLineLevel1 = Train_line_location_level1_values__c.getAll();
@@ -255,12 +256,26 @@ public class TaxonomyRetriever {
         
         Map<String,List<String>> catVsSubCat = new Map<String,List<String>>();
         Map<String, List<Taxonomy_Metadata__c>> level2VsLevel3 = new Map<String, List<Taxonomy_Metadata__c>>();
-        
-        List<Taxonomy_Metadata__c> rmsLocLevel0 = [ SELECT Id, (SELECT Id, Customer_Value__c 
+        List<Taxonomy_Metadata__c> locLevel0 = [SELECT Id 
+                                                    FROM Taxonomy_Metadata__c 
+                                                    WHERE Type__c = :GlobalConstants.TAXONOMY_MODE_TYPE 
+                                                    AND name = :modes];
+        List<Taxonomy_Metadata__c> rmsLocLevel0;
+        if(locLevel0.isEmpty()){
+            rmsLocLevel0 = [ SELECT Id, (SELECT Id, Customer_Value__c 
                                                                 FROM Child_Metadata__r 
                                                                 WHERE Type__c = :GlobalConstants.TAXONOMY_TYPE_LOCATION)
                                                     FROM Taxonomy_Metadata__c
                                                     WHERE Type__c = :GlobalConstants.TAXONOMY_MODE_TYPE];
+        }else{
+            rmsLocLevel0 = [ SELECT Id, (SELECT Id, Customer_Value__c 
+                                        FROM Child_Metadata__r 
+                                        WHERE Type__c = :GlobalConstants.TAXONOMY_TYPE_LOCATION)
+                            FROM Taxonomy_Metadata__c
+                            WHERE Type__c = :GlobalConstants.TAXONOMY_MODE_TYPE
+                            AND Id = :locLevel0[0].Id];
+        }
+        
         
         if(!rmsLocLevel0.isEmpty()) {
             System.debug('rmsLocLevel0 size: ' + rmsLocLevel0.size());
@@ -422,5 +437,41 @@ public class TaxonomyRetriever {
         
         
         return catVsSubCat;
+    }
+
+    /*------------------------------------------------------------
+    Author:         Abhi Indulkar
+    Company:        Transport for NSW   
+    Description:    Helper method for retrieving matching location taxonomy (level3)
+    Inputs:         
+    Returns:        List<String> - returns location (level3) taxonomy list
+    History:      
+    ------------------------------------------------------------*/
+    public static List<String> retrieveMatchingLocTaxonomy(String pSearchKey, String modes, Boolean pSchoolRoute) {
+        List<String> lMatchingLocations = new List<String>();
+        pSearchKey = '%' + String.escapeSingleQuotes(pSearchKey) + '%';
+        List<Taxonomy_Metadata__c> modeTaxonomy = [SELECT Id 
+                                                    FROM Taxonomy_Metadata__c 
+                                                    WHERE Type__c = :GlobalConstants.TAXONOMY_MODE_TYPE 
+                                                    AND name = :modes];
+        if(modeTaxonomy != null && !modeTaxonomy.isEmpty()){
+            List<Taxonomy_Metadata__c> locations = [SELECT Id,Customer_Value__c 
+                                                    FROM  Taxonomy_Metadata__c 
+                                                    WHERE   Type__c = :GlobalConstants.TAXONOMY_TYPE_LOCATION
+                                                            AND School_Route__c = :pSchoolRoute 
+                                                            AND (Status_Customer_Facing__c = :GlobalConstants.TAXONOMY_STATUS_ACTIVE 
+                                                                OR Status_NSWT_Customer_Facing__c = :GlobalConstants.TAXONOMY_STATUS_ACTIVE 
+                                                                OR Status_ST_Customer_Facing__c = :GlobalConstants.TAXONOMY_STATUS_ACTIVE)
+                                                            AND Level__c = 'Level 3'
+                                                            AND Parent_Id__r.Parent_Id__r.Parent_Id__c= :modeTaxonomy[0].Id
+                                                            AND Customer_Value__c like :pSearchKey 
+                                                            ORDER BY Length_of_name__c ASC, Customer_facing_sort_order__c ASC NULLS LAST,Customer_Value__c ASC NULLS LAST Limit 20];
+        
+            for(Taxonomy_Metadata__c taxonomy: locations){
+                lMatchingLocations.add(taxonomy.Customer_Value__c);
+            }
+        }
+                                                
+        return lMatchingLocations;
     }
 }

@@ -87,7 +87,7 @@ private class TaxonomyRetriever_Test {
         insert trainStation;
         
         System.Test.startTest();
-        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy(GlobalConstants.WEBTOCASE_SOURCE_SYDNEY_TRAINS);
+        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy(GlobalConstants.WEBTOCASE_SOURCE_SYDNEY_TRAINS,mode);
         System.Test.stopTest();
         System.assert(!taxonomyData.isEmpty());
         Set<String> subCat = new Set<String>();
@@ -107,7 +107,7 @@ private class TaxonomyRetriever_Test {
         insert trainLine;
         
         System.Test.startTest();
-        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy(GlobalConstants.WEBTOCASE_SOURCE_NSW_TRAINS);
+        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy(GlobalConstants.WEBTOCASE_SOURCE_NSW_TRAINS,mode);
         System.Test.stopTest();
         System.assert(!taxonomyData.isEmpty());
         Set<String> subCat = new Set<String>();
@@ -127,7 +127,7 @@ private class TaxonomyRetriever_Test {
         insert ferryRoute;
         
         System.Test.startTest();
-        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy('');
+        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy('',mode);
         System.Test.stopTest();
         System.assert(!taxonomyData.isEmpty());
         Set<String> subCat = new Set<String>();
@@ -147,7 +147,7 @@ private class TaxonomyRetriever_Test {
         insert ferryWharf;
         
         System.Test.startTest();
-        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy('');
+        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy('',mode);
         System.Test.stopTest();
         System.assert(!taxonomyData.isEmpty());
         Set<String> subCat = new Set<String>();
@@ -164,12 +164,15 @@ private class TaxonomyRetriever_Test {
         level3LocValue = '673';
         setUpTestData(false, false);
         System.Test.startTest();
-        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy('');
+        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy('',mode);
+        List<String> matchingBusTaxo = WebToCase_CX.getMatchingLocTaxonomy('6', mode, false);
         System.Test.stopTest();
         System.assert(!taxonomyData.isEmpty());
         Set<String> subCat = new Set<String>();
         subCat.addAll(taxonomyData.get(mode+ ':' + Label.Bus_Route));
         System.assert(subCat.contains(level3LocValue));
+        System.assert(matchingBusTaxo.contains(level3LocValue));
+        
     }
     
     private static testMethod void testForRetrievingLocationForLightRail() {
@@ -181,7 +184,7 @@ private class TaxonomyRetriever_Test {
         level3LocValue = 'Dulwich Hill Line';
         setUpTestData(false, false);
         System.Test.startTest();
-        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy('');
+        Map<String,List<String>> taxonomyData = TaxonomyRetriever.retrieveLocationTaxonomy('',mode);
         System.Test.stopTest();
         System.assert(!taxonomyData.isEmpty());
         Set<String> subCat = new Set<String>();

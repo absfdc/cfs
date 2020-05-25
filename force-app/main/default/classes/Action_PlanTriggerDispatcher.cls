@@ -25,10 +25,10 @@ public without sharing class Action_PlanTriggerDispatcher extends TriggerDispatc
     public static Boolean preventEmailResending = false;
     
     static {
-    	actionPlanRecordTypes = new map <String, Id>();
-    	for(RecordType rt: [Select Id, DeveloperName From RecordType Where SobjectType = 'Action_Plan__c']) {
-    		actionPlanRecordTypes.put(rt.DeveloperName, rt.Id);
-    	} 
+        actionPlanRecordTypes = new map <String, Id>();
+        for(RecordType rt: [Select Id, DeveloperName From RecordType Where SobjectType = 'Action_Plan__c']) {
+            actionPlanRecordTypes.put(rt.DeveloperName, rt.Id);
+        } 
         
         childAPStatusChangedEmailTemplate = [Select Id
                                              From EmailTemplate 
@@ -39,8 +39,8 @@ public without sharing class Action_PlanTriggerDispatcher extends TriggerDispatc
                                         Where DisplayName =: GlobalConstants.NOREPLY_ORGWIDE_EMAIL limit 1].Id;
         
         magsAndCrgsAdminRoles = new map<Id,UserRole>([Select Id 
-                          							  From UserRole 
-                          							  Where DeveloperName IN: GlobalConstants.AP_DUE_DATE_CALCULATION_ALLOWED_ROLE_NAMES]);
+                                                      From UserRole 
+                                                      Where DeveloperName IN: GlobalConstants.AP_DUE_DATE_CALCULATION_ALLOWED_ROLE_NAMES]);
     }
     
     /*------------------------------------------------------------

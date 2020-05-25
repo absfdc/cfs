@@ -741,7 +741,7 @@ History
         for(ReopenDuration__c r: ReopenDuration__c.getAll().values()) {
             agencyDuration.put(r.name, r.Duration__c);
         }
-        System.debug('caseIdVsOwnerQueueId' + caseIdVsOwnerQueueId);
+        
         for(Id aCaseId:tp.newMap.keySet()){
             Case oldCase = (Case)tp.oldMap.get(aCaseId);
             Case newCase = (Case) tp.newMap.get(aCaseId);

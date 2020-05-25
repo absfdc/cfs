@@ -11,50 +11,10 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
         <operation>equals</operation>
         <value>true</value>
     </exitCriteriaFilterItems>
-    <isVersionDefault>false</isVersionDefault>
+    <isVersionDefault>true</isVersionDefault>
     <milestones>
         <businessHours>Transit Systems</businessHours>
-        <milestoneCriteriaFilterItems>
-            <field>Case.Contract__c</field>
-            <operation>equals</operation>
-            <value>SMBSC006</value>
-        </milestoneCriteriaFilterItems>
-        <milestoneCriteriaFilterItems>
-            <field>Case.OwnerAgency__c</field>
-            <operation>equals</operation>
-            <value>Transit Systems</value>
-        </milestoneCriteriaFilterItems>
-        <milestoneCriteriaFilterItems>
-            <field>Case.Type</field>
-            <operation>equals</operation>
-            <value>Complaint</value>
-        </milestoneCriteriaFilterItems>
-        <milestoneName>Contact Made</milestoneName>
-        <minutesToComplete>10</minutesToComplete>
-        <timeTriggers>
-            <actions>
-                <name>Transit_Systems_milestone_warning</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>-2</timeLength>
-            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
-        </timeTriggers>
-        <timeTriggers>
-            <actions>
-                <name>Transit_Systems_milestone_violated</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>1</timeLength>
-            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
-        </timeTriggers>
-        <timeTriggers>
-            <timeLength>48</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
-        </timeTriggers>
-        <useCriteriaStartTime>false</useCriteriaStartTime>
-    </milestones>
-    <milestones>
-        <businessHours>Transit Systems</businessHours>
+        <criteriaBooleanFilter>1 AND 2 AND (3 OR 5) AND 4</criteriaBooleanFilter>
         <milestoneCriteriaFilterItems>
             <field>Case.Type</field>
             <operation>equals</operation>
@@ -75,15 +35,72 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <operation>equals</operation>
             <value>Yes</value>
         </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Contract__c</field>
+            <operation>equals</operation>
+            <value>SBSC006</value>
+        </milestoneCriteriaFilterItems>
         <milestoneName>Case Closed</milestoneName>
-        <minutesToComplete>5</minutesToComplete>
+        <minutesToComplete>1200</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>Transit_Systems_milestone_violated</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_warning</name>
                 <type>Alert</type>
             </actions>
-            <timeLength>-2</timeLength>
-            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+            <timeLength>-4</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <businessHours>Transit Systems</businessHours>
+        <criteriaBooleanFilter>1 AND 2 AND (3 OR 4) AND 5</criteriaBooleanFilter>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Type</field>
+            <operation>equals</operation>
+            <value>Feedback, Complaint</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.OwnerAgency__c</field>
+            <operation>equals</operation>
+            <value>Transit Systems</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Contract__c</field>
+            <operation>equals</operation>
+            <value>SMBSC006</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Contract__c</field>
+            <operation>equals</operation>
+            <value>SBSC006</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Response_Requested__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>Case closed SLA 95%</milestoneName>
+        <minutesToComplete>12000</minutesToComplete>
+        <timeTriggers>
+            <timeLength>48</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>Transit_Systems_milestone_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-4</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
             <actions>
@@ -113,14 +130,14 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <value>SMBSC003</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Contact Made</milestoneName>
-        <minutesToComplete>5</minutesToComplete>
+        <minutesToComplete>1200</minutesToComplete>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_warning</name>
                 <type>Alert</type>
             </actions>
-            <timeLength>-2</timeLength>
-            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+            <timeLength>-4</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
             <actions>
@@ -150,7 +167,7 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <value>SMBSC003</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Case Closed</milestoneName>
-        <minutesToComplete>5</minutesToComplete>
+        <minutesToComplete>1200</minutesToComplete>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_violated</name>
@@ -164,8 +181,8 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
                 <name>Transit_Systems_milestone_warning</name>
                 <type>Alert</type>
             </actions>
-            <timeLength>-2</timeLength>
-            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+            <timeLength>-4</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
@@ -187,21 +204,21 @@ Business hours of 8:00am-6:00pm with 20 hour SLA (= 2 days) for contact made</de
             <value>SMBSC003</value>
         </milestoneCriteriaFilterItems>
         <milestoneName>Case closed SLA 95%</milestoneName>
-        <minutesToComplete>10</minutesToComplete>
+        <minutesToComplete>18000</minutesToComplete>
+        <timeTriggers>
+            <actions>
+                <name>Transit_Systems_milestone_warning</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>-22</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </timeTriggers>
         <timeTriggers>
             <actions>
                 <name>Transit_Systems_milestone_violated</name>
                 <type>Alert</type>
             </actions>
             <timeLength>1</timeLength>
-            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
-        </timeTriggers>
-        <timeTriggers>
-            <actions>
-                <name>Transit_Systems_milestone_warning</name>
-                <type>Alert</type>
-            </actions>
-            <timeLength>-2</timeLength>
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
