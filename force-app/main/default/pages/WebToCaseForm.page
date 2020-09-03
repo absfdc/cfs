@@ -716,8 +716,14 @@
                     // prevent value inserted on focus
                     return false;
                 },
+                // open: function (event, ui) {
+                //     // super-hack
+                //     $($element).autocomplete("instance").menu.element.mouse().mouse("instance")._mouseInit();
+                // },
                 select: function (event, ui) {
                     selectedBusRoute = ui.item.value;
+                    document.getElementById("sitePageId:caseFormId:pblockId:location").value = ui.item.value;
+                    //alert(selectedBusRoute);
                     return true;
                 }
         });

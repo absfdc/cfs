@@ -1,0 +1,92 @@
+.saveButtonCss {
+    float: right;
+    margin-top: 10px;
+}
+
+.hideLabel{
+    margin-left: -10000px !important;
+    height:0px !important;
+}
+
+.closeButtonClass {
+    display: flex;
+    align-items: center;
+}
+
+.crossButtonClass {
+    cursor: pointer;
+    position: relative;
+    margin-left: -20px;
+}
+
+.flagClass {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: 9px;
+    margin-right: 11px
+}
+
+
+/* specifically hide the arrow on focus */
+
+input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.validatedAddressIconClass {
+    width: 15px;
+    height: 15px;
+    margin-left: 11px;
+}
+
+
+/*the container must be positioned relative:*/
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+
+/*when hovering an item:*/
+
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+
+/*when navigating through the items using the arrow keys:*/
+
+.autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
+input {
+    padding: 0 1rem 0 .75rem !important;
+}
+
+.addressOptions{
+    width:95%;
+    margin-left:-2.5%;
+}

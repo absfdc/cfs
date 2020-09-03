@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>State Fullname</label>
+    <protected>false</protected>
+    <values>
+        <field>ACT__c</field>
+        <value xsi:type="xsd:string">Australian Capital Territory</value>
+    </values>
+    <values>
+        <field>NSW__c</field>
+        <value xsi:type="xsd:string">New South Wales</value>
+    </values>
+    <values>
+        <field>NT__c</field>
+        <value xsi:type="xsd:string">Northern Territory</value>
+    </values>
+    <values>
+        <field>Other__c</field>
+        <value xsi:type="xsd:string">Outside Australia</value>
+    </values>
+    <values>
+        <field>QLD__c</field>
+        <value xsi:type="xsd:string">Queensland</value>
+    </values>
+    <values>
+        <field>SA__c</field>
+        <value xsi:type="xsd:string">South Australia</value>
+    </values>
+    <values>
+        <field>TAS__c</field>
+        <value xsi:type="xsd:string">Tasmania</value>
+    </values>
+    <values>
+        <field>VIC__c</field>
+        <value xsi:type="xsd:string">Victoria</value>
+    </values>
+    <values>
+        <field>WA__c</field>
+        <value xsi:type="xsd:string">Western Australia</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,10 @@
+.addressNotFoundClass {
+    margin-left: 20px;
+    color: rgb(0, 109, 204);
+    cursor: pointer;
+    font-size: small;
+}
+
+.titleClass {
+    margin-left: 20px;
+}

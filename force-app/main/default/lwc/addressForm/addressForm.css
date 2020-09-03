@@ -1,0 +1,24 @@
+.saveButtonClass {
+    margin-top: 10px
+}
+
+td {
+    height: 76px;
+    vertical-align: top;
+}
+
+input,select {
+    max-width: 226px;
+}
+
+.maxWidth {
+    max-width: 226px;
+}
+
+.marginRightClass {
+    margin-right: 10px;
+}
+.hideLabel{
+    margin-left: -10000px !important;
+    height:0px !important;
+}

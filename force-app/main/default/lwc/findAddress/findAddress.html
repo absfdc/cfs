@@ -1,0 +1,51 @@
+<template>
+
+    <div>
+        <div class="slds-form-element">
+                
+    <div class="slds-form-element__control">
+    <div class="slds-combobox_container">
+        <div class={txtclassname} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+            <label class="hideLabel" for="addressSearchInput" aria-label="Input address search string">Address Search String</label>
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                <input type="text" id="addressSearchInput" placeholder={placeHolderText.searchInputPlaceHolderText} required="" value={address} class={configRecord.Input_Style_Class__c} style="width:95%" onkeydown={onInputChangeHandler} />
+                <template if:true={configRecord.Show_Validation_Flag__c}>
+                            <template if:true={address}>
+                            <img class="flagClass" alt="Icon for unvalidated address" src={notValidatedIconPath} if:false={isValidAddress}>
+                            <img class="flagClass" alt="Icon for validated address" src={validatedIconPath} if:true={isValidAddress}>
+                            </template>
+    </template>
+    </div>
+    <div id="listbox-id-1" class="addressOptions slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+            <template for:each={values} for:item="addressData">
+                            <li role="presentation" onkeydown={handleKeyPressOnAddress} tabindex="-1" class="slds-listbox__item" key={addressData.key}>
+                                <div data-id={addressData.key} data-name={addressData.value} onclick={getAddressComponent} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                    <span class="slds-media__body">
+                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">{addressData.value}</span>
+                                    </span>
+                                </div>
+                            </li>
+                            </template>
+        </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div if:true={configRecord}>
+        <div if:true={configRecord.Display_Save_Button__c}>
+            <table style="margin-top:10px">
+                <tr>
+                    <td style="width:90%"></td>
+                    <td style="width:10%">
+                        <button class="slds-button slds-button_neutral" onclick={handleSave} disabled={isProcessing}>
+                    Save
+                    </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </template>

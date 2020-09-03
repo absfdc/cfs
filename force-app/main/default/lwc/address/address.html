@@ -1,0 +1,46 @@
+<template>
+  <lightning-card if:true={configRecord}>
+     <c-toast title="Hello NewsTechnologyStuff" message={toastMessage} variant={toastVariant} auto-close="true" auto-close-time={toastAutoCloseTime}></c-toast>
+     <div>
+        <div class="titleClass">
+           <!-- Can't Find Address-->
+           <div if:false={isAddressNotFound}>
+              <div class="slds-media__body">
+                 <h2 class="slds-card__header-title">
+                    <span class={configRecord.Field_Label_Style_Class__c}>{addressLabel}</span>
+                    <span class="addressNotFoundClass">
+                    <u onclick={clearText} >{linkLabel.clearLinkLabel}</u>
+                    </span>
+                    <span class="addressNotFoundClass">
+                    <u onclick={addressNotFoundHandler} >{linkLabel.addressNotFoundText}</u>
+                    </span>              
+                 </h2>
+              </div>
+           </div>
+           <!-- Find Address-->
+           <div if:true={isAddressNotFound}>
+              <div class="slds-media__body">
+                 <h2 class="slds-card__header-title">
+                    <span class={configRecord.Field_Label_Style_Class__c}>{addressLabel}</span>              
+                    <span class="addressNotFoundClass">
+                    <u onclick={clearFormTextFields}>{linkLabel.clearLinkLabel}</u></span>
+                    <span class="addressNotFoundClass">
+                    <u onclick={rerenderFindAddressComponentHandler}>{linkLabel.findAddressLinkLabel}</u>
+                    </span>
+                 </h2>
+              </div>
+           </div>
+        </div>
+     </div>
+     <div>
+        <div class="slds-card__body slds-card__body_inner">
+           <div if:false={isAddressNotFound}>
+              <c-find-address record-id={recordId} config-record={configRecord} config-record-name={configRecordName} oncustomtoastevent={showCustomToastMessage}></c-find-address>
+           </div>
+           <div if:true={isAddressNotFound}>
+              <c-address-form config-record={configRecord} config-record-name={configRecordName} record-id={recordId} oncustomtoastevent={showCustomToastMessage}></c-address-form>
+           </div>
+        </div>
+     </div>
+  </lightning-card>
+</template>

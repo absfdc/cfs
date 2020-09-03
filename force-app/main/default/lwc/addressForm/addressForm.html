@@ -1,0 +1,144 @@
+<template>
+    <template if:true={fieldVisiblityConfig}>
+       <p if:false={fieldVisiblityConfig.isVisible}>
+          You don't have access to address fields, Please contact system admin
+       </p>
+    </template>
+    <template if:true={fieldVisiblityConfig}>
+       <table if:true={fieldVisiblityConfig.isVisible}>
+          <tr>
+             <td>
+                <div class="slds-form-element marginRightClass">
+                   <label for="inputStreet" aria-label={configRecord.Street_Label__c} class={configRecord.Field_Label_Style_Class__c}>
+                   <abbr class="slds-required" title="required" if:true={configRecord.Is_Street_Required__c}>* </abbr> 
+                   {configRecord.Street_Label__c}
+                   </label>
+                   <div class="slds-form-element__control">
+                      <input type="text" id="inputStreet" onchange={handleInputChange} placeholder={configRecord.Placeholder_Text_Street__c} required={configRecord.Is_Street_Required__c} class={configRecord.Input_Style_Class__c} title={configRecord.Placeholder_Text_Street__c} value={selectedStreet} />
+                   </div>
+                   <div if:true={isFieldInValid.street}>
+                      <div class="slds-has-error">
+                         <div class="slds-form-element__help">
+                            {validationErrorMessage.street}
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </td>
+             <td>
+                <div class="slds-form-element">
+                   <label class={configRecord.Field_Label_Style_Class__c} for="inputCity" aria-label={configRecord.City_Label__c}>
+                   <abbr class="slds-required" title="required" if:true={configRecord.Is_City_Required__c}>*</abbr> 
+                   {configRecord.City_Label__c}
+                   </label>
+                   <div class="slds-form-element__control">
+                      <input type="text" id="inputCity" onchange={handleInputChange} placeholder={configRecord.Placeholder_Text_City__c} required={configRecord.Is_City_Required__c} class={configRecord.Input_Style_Class__c} title={configRecord.Placeholder_Text_City__c} value={selectedCity} />
+                   </div>
+                   <div if:true={isFieldInValid.city}>
+                      <div class="slds-has-error">
+                         <div class="slds-form-element__help">
+                            {validationErrorMessage.city}
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                <div class="slds-form-element marginRightClass">
+                   <label class={configRecord.Field_Label_Style_Class__c} for="inputState" aria-label={configRecord.State_Label__c}>
+                   <abbr if:true={configRecord.Is_State_Required__c} class="slds-required" title="required">*</abbr> 
+                   {configRecord.State_Label__c}
+                   </label>
+                   <div class="slds-form-element__control" if:true={stateOptions}>
+                      <div>
+                         <select class={configRecord.Input_Style_Class__c}  id="inputState" onchange={handleInputChange} aria-selected={selectedState}>
+                            <template if:false={selectedState}>
+                               <option key={configRecord.Placeholder_Text_State__c} disabled selected>{configRecord.Placeholder_Text_State__c}</option>
+                            </template>
+                            <template for:each={stateOptions} for:item="option">
+                               <option key={option.value}>{option.value}</option>
+                            </template>
+                         </select>
+                      </div>
+                   </div>
+                </div>
+                <div if:true={isFieldInValid.state}>
+                   <div class="slds-has-error">
+                      <div class="slds-form-element__help">
+                         {validationErrorMessage.state}
+                      </div>
+                   </div>
+                </div>
+             </td>
+             <td>
+                <div class="slds-form-element">
+                   <label class={configRecord.Field_Label_Style_Class__c} for="inputPostcode" aria-label={configRecord.Postcode_Label__c}>
+                   <abbr if:true={configRecord.Is_Postcode_Required__c} class="slds-required" title="required">*</abbr> 
+                   {configRecord.Postcode_Label__c}
+                   </label>
+                   <div class="slds-form-element__control">
+                      <input type="text" id="inputPostcode" onchange={handleInputChange} placeholder={configRecord.Placeholder_Text_Postcode__c} required={configRecord.Is_Postcode_Required__c} class={configRecord.Input_Style_Class__c} title={configRecord.Placeholder_Text_Postcode__c} value={selectedPostcode} />
+                   </div>
+                   <div if:true={isFieldInValid.postcode}>
+                      <div class="slds-has-error">
+                         <div class="slds-form-element__help">
+                            {validationErrorMessage.postcode}
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </td>
+          </tr>
+          <tr>
+             <td>
+                <div class="slds-form-element marginRightClass" if:false={hideCountry}>
+                   <label if:true={showInputCountry} class={configRecord.Field_Label_Style_Class__c} for="inputCountry" aria-label={configRecord.Country_Label__c}>{configRecord.Country_Label__c}</label>
+                   <label if:true={isCountryPicklistEnabled} class={configRecord.Field_Label_Style_Class__c} for="inputCountryPicklist" aria-label={configRecord.Country_Label__c}>{configRecord.Country_Label__c}</label>
+                   <div class="slds-form-element__control">
+                      <input if:true={showInputCountry} type="text" id="inputCountry" onchange={handleInputChange} placeholder={configRecord.Placeholder_Text_Country__c} class={configRecord.Input_Style_Class__c} title={configRecord.Placeholder_Text_Country__c} value={selectedCountry} />
+                      <select if:true={isCountryPicklistEnabled} onchange={handleInputChange} id="inputCountryPicklist" placeholder={configRecord.Placeholder_Text_Country__c} class={configRecord.Input_Style_Class__c}>
+                         <template for:each={countries} for:item="option">
+                            <option selected={option.selected} key={option.label}>{option.label}</option>
+                         </template>
+                      </select>
+                   </div>
+                </div>
+                <div if:true={isFieldInValid.country}>
+                   <div class="slds-has-error">
+                      <div class="slds-form-element__help">
+                         {validationErrorMessage.country}
+                      </div>
+                   </div>
+                </div>
+             </td>
+             <td>
+             </td>
+          </tr>
+          <tr  if:true={configRecord.Display_Save_Button__c}>
+             <td colspan="2">
+                <template if:true={configRecord}>
+                   <template if:true={configRecord.Display_Save_Button__c}>
+                      <table style="margin-top:10px">
+                         <tr>
+                            <td style="width:85%"></td>
+                            <td style="width:15%">
+                               <button class="slds-button slds-button_neutral" onclick={handleSave}>
+                               Save
+                               </button>
+                            </td>
+                         </tr>
+                      </table>
+                   </template>
+                </template>
+             </td>
+          </tr>
+       </table>
+    </template>
+    <!--Spinner-->
+    <div if:true={showLoader}>
+       <lightning-spinner variant="brand" size="large"></lightning-spinner>
+    </div>
+    <!-- Body End-->
+ </template>

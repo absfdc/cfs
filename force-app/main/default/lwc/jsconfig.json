@@ -2,7 +2,20 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "baseUrl": ".",
-        "paths": {}
+        "paths": {
+            "c/address": [
+                "address/address.js"
+            ],
+            "c/findAddress": [
+                "findAddress/findAddress.js"
+            ],
+            "c/addressForm": [
+                "addressForm/addressForm.js"
+            ],
+            "c/toast": [
+                "toast/toast.js"
+            ]
+        }
     },
     "include": [
         "**/*",
@@ -11,6 +24,11 @@
     "typeAcquisition": {
         "include": [
             "jest"
+        ]
+    },
+    "paths": {
+        "c/*": [
+            "*"
         ]
     }
 }

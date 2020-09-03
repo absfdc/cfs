@@ -1,0 +1,71 @@
+<apex:page html-lang="en" title="Address Edit Form" id="contactAddressPage" standardController="Contact" sidebar="false" showHeader="false" extensions="AddressPageController" lightningStylesheets="true">
+    <style type="text/css">
+        .basicClass {
+            margin-top: 15px;
+            margin-left: 10px;
+            margin-bottom: 15px;
+            margin-right: 15px;
+        }
+        .slds-card{
+            border: none !important;
+        }
+        .addressForm{
+            padding: 0 1rem;
+        }
+    </style>
+    <apex:includeLightning />
+    <apex:slds ></apex:slds>
+    <apex:form styleClass="slds addressForm" id="contactAddressForm">
+
+        <div class="slds-grid slds-gutters" style="margin-top: 15px;margin-bottom: 15px;margin-right: 15px;margin-left:1.5px;">
+            <div class="slds-col">
+                <span>
+                    <label class="slds-form-element__label" for="contactAddressPage:contactAddressForm:contactAddressOptions">
+                        <abbr class="slds-required" title="required">*
+                        </abbr>
+                        Select Address Type</label>
+                    <apex:selectList id="contactAddressOptions" size="1" value="{!selectedName}" styleClass="slds-select" onchange="show(100);">
+                        <apex:selectOptions value="{!addressNames}" />
+                    </apex:selectList>
+                </span>
+            </div>
+            <div class="slds-col">
+                <span>
+                    <apex:commandButton id="btn" value="" styleClass="commandButtonClass" style="display:none"></apex:commandButton>
+                </span>
+            </div>
+        </div>
+    </apex:form>
+    <div id="lightning" class="basicClass"></div>
+    <script type="text/javascript">   
+        function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) {
+                    return sParameterName[1];
+                }
+            }
+        }
+
+        function show(t) {
+            document.getElementById('contactAddressPage:contactAddressForm:btn').click();
+        }
+
+        $Lightning.use("c:AddressDependencyApp", function () {
+
+            $Lightning.createComponent("c:address", {
+                'recordId': getUrlParameter('id'),
+                'configRecordName': '{!JSENCODE(selectedName)}',
+                'objectApiName' : '{!JSENCODE(sObjectName)}'
+            },
+                "lightning",
+                function (cmp) {
+                    console.log("LWC component was created");
+                }
+            );
+        });        
+
+    </script>
+</apex:page>

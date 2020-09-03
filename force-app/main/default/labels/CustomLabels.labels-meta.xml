@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>Address_AddressNotFoundText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Address_AddressNotFoundText</shortDescription>
+        <value>Can&apos;t find address?</value>
+    </labels>
+    <labels>
+        <fullName>Address_ClearLinkLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Address_ClearLinkLabel</shortDescription>
+        <value>Clear</value>
+    </labels>
+    <labels>
+        <fullName>Address_FindAddressLinkLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Address_FindAddressLinkLabel</shortDescription>
+        <value>Find Address?</value>
+    </labels>
+    <labels>
+        <fullName>Address_SearchPlaceHolderText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Address Search Place Holder Text</shortDescription>
+        <value>Search Address..</value>
+    </labels>
+    <labels>
+        <fullName>Address_Validation_Probability_Match</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Address Validation Probability Match</shortDescription>
+        <value>100</value>
+    </labels>
+    <labels>
+        <fullName>Address_Validation_Service_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Address Validation Service Name</shortDescription>
+        <value>Address_Validation_Service</value>
+    </labels>
+    <labels>
         <fullName>AdviceRequestEmailTemplateId</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -226,11 +268,60 @@ Please check Notes &amp; Attachments in related list below.</value>
         <value>1</value>
     </labels>
     <labels>
+        <fullName>NSW_Point_AddressType_Config</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NSW Point AddressType Config</shortDescription>
+        <value>all</value>
+    </labels>
+    <labels>
+        <fullName>NSW_Point_DataSet_Config</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NSW Point DataSet Config</shortDescription>
+        <value>all</value>
+    </labels>
+    <labels>
+        <fullName>NSW_Point_MaxNumberOfResults_Config</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NSW Point MaxNumberOfResults Config</shortDescription>
+        <value>5</value>
+    </labels>
+    <labels>
+        <fullName>NSW_Point_Service_Call_Timeout</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NSW Point Service Call Timeout</shortDescription>
+        <value>20000</value>
+    </labels>
+    <labels>
+        <fullName>NSW_Point_StateTerritory_Config</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NSW Point StateTerritory Config</shortDescription>
+        <value>NSW</value>
+    </labels>
+    <labels>
         <fullName>On_Demand</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>On Demand</shortDescription>
         <value>On Demand</value>
+    </labels>
+    <labels>
+        <fullName>Predictive1_Service_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Predictive1 Service Name</shortDescription>
+        <value>Predictive1_Service</value>
+    </labels>
+    <labels>
+        <fullName>Predictive2_Service_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Predictive2 Service Name</shortDescription>
+        <value>Predictive2_Service</value>
     </labels>
     <labels>
         <fullName>RMS_CAD_Communications_Queue</fullName>

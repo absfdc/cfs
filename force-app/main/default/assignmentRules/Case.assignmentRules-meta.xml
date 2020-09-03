@@ -91,6 +91,26 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>Concession_Compliance</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.Modes__c</field>
+                <operation>equals</operation>
+                <value>Non-modal</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Moment__c</field>
+                <operation>equals</operation>
+                <value>Concessions and Schemes</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Taxonomy_Transaction__c</field>
+                <operation>equals</operation>
+                <value>Scheme compliance - concession audits / investigations</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>Concession_TTSS</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -112,7 +132,7 @@
         <ruleEntry>
             <assignedTo>Serco_Web_Triage_CFM</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(((NOW() - CreatedDate) * 86400) &lt; 10, OR(ISPICKVAL(Status, &#39;New&#39;), ISPICKVAL(Status, &#39;Triage&#39;)), ISPICKVAL( Origin , &#39;Email - E2C&#39;), NOT( IsMinCorroCase__c ) )</formula>
+            <formula>AND(((NOW() - CreatedDate) * 86400) &lt; 10, OR(ISPICKVAL(Status, &apos;New&apos;), ISPICKVAL(Status, &apos;Triage&apos;)), ISPICKVAL( Origin , &apos;Email - E2C&apos;), NOT( IsMinCorroCase__c ) )</formula>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Serco_Web_Triage_CFM</assignedTo>
@@ -145,25 +165,6 @@
                 <field>Case.Taxonomy_Moment__c</field>
                 <operation>equals</operation>
                 <value>Automated Vehicle Trials</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Concession_Compliance</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Modes__c</field>
-                <operation>equals</operation>
-                <value>Non-modal</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Moment__c</field>
-                <operation>equals</operation>
-                <value>Concessions and Schemes</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Taxonomy_Transaction__c</field>
-                <operation>equals</operation>
-                <value>Compliance</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>

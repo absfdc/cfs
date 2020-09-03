@@ -131,7 +131,7 @@ public without sharing class CaseBeforeUpdateHandlerForMO extends TriggerHandler
                 Case oldCase = (Case) tp.oldMap.get(tempCase.Id);
                 
                 //auto-populating the signatory based on the signatory role specified on the case
-                if(newCase.Signatory__c != NULL && tempCase.Signatory__c != '')
+                if((newCase.Signatory__c != NULL && tempCase.Signatory__c != '' && newCase.Signatory__c != oldCase.Signatory__c) || newCase.Signatory_Person__c == null)
                  tempCase.Signatory_Person__c = signatoryRoleVsSignatories.containsKey(tempCase.Signatory__c) ? signatoryRoleVsSignatories.get(tempCase.Signatory__c) : NULL;
 
                 //copying data from formula fields into normal checkbox fields so as to use them in sharing rules. Currently formula fields are not supported for use in sharing rules
