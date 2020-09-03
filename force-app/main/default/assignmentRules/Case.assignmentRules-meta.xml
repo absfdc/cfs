@@ -1637,6 +1637,44 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>Transport_and_Roads_DLO_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Transport &amp; Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Priority</field>
+                <operation>equals</operation>
+                <value>Individual - Standard</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Cover_Sheet_Details_Updated__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Regional_Transport_and_Roads_DLO_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Regional Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Priority</field>
+                <operation>equals</operation>
+                <value>Individual - Standard</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Cover_Sheet_Details_Updated__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>Road_DLO_Queue</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -1698,6 +1736,54 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>Transport_and_Roads_DLO_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Priority</field>
+                <operation>equals</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Cover_Sheet_Details_Updated__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin_Details__c</field>
+                <operation>equals</operation>
+                <value>Transport DLO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Regional_Transport_and_Roads_DLO_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Regional Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Priority</field>
+                <operation>equals</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Cover_Sheet_Details_Updated__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin_Details__c</field>
+                <operation>equals</operation>
+                <value>Transport DLO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>GIS_Admin_RMS_MC</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>(1 OR 2) AND 3 AND 4</booleanFilter>
@@ -1710,6 +1796,36 @@
                 <field>Case.RecordTypeId</field>
                 <operation>equals</operation>
                 <value>Transport Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Cover_Sheet_Details_Updated__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Signatory__c</field>
+                <operation>equals</operation>
+                <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>GIS_Admin_RMS_MC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 OR 2 OR 3) AND 4 AND 5</booleanFilter>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Roads &amp; Freight Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Regional Transport and Roads Ministerial Correspondence</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Cover_Sheet_Details_Updated__c</field>
@@ -1821,6 +1937,41 @@
             <criteriaItems>
                 <field>Case.Signatory__c</field>
                 <operation>notEqual</operation>
+                <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Senior_MAGS_Officer_Queue_MC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 OR 2 OR 3) AND 4 AND 5 AND 6</booleanFilter>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Roads &amp; Freight Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Regional Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Case_Category__c</field>
+                <operation>equals</operation>
+                <value>General</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Cover_Sheet_Details_Updated__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Signatory__c</field>
+                <operation>equals</operation>
                 <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
             </criteriaItems>
         </ruleEntry>
@@ -1941,12 +2092,67 @@
             <criteriaItems>
                 <field>Case.RecordTypeId</field>
                 <operation>equals</operation>
+                <value>Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Regional Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Case_Category__c</field>
+                <operation>equals</operation>
+                <value>Infrastructure</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Cover_Sheet_Details_Updated__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Senior_MAGS_Officer_Queue_MC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 OR 2) AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
                 <value>Roads &amp; Freight Ministerial Correspondence</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.RecordTypeId</field>
                 <operation>equals</operation>
                 <value>Transport Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Cover_Sheet_Details_Updated__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Signatory__c</field>
+                <operation>notEqual</operation>
+                <value>&quot;Chief Executive, Roads and Maritime Services&quot;</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Senior_MAGS_Officer_Queue_MC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 OR 2 OR 3) AND 4 AND 5</booleanFilter>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Roads &amp; Freight Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Transport and Roads Ministerial Correspondence</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Regional Transport and Roads Ministerial Correspondence</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Cover_Sheet_Details_Updated__c</field>

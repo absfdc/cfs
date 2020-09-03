@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <assignments>
-        <name>myVariable_waitStartTimeAssignment</name>
-        <label>myVariable_waitStartTimeAssignment</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>myDecision</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -89,50 +73,58 @@
                 <stringValue>TEXT([Case].Signatory_Person__c.Minister_Communication_Preference__c)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_9874711946</name>
+        <name>formula_2_myRule_1_A1_8747432462</name>
         <dataType>String</dataType>
-        <expression>TEXT({!myVariable_current.Signatory_Person__c.Minister_Communication_Preference__c})</expression>
+        <expression>TEXT({!myVariable_current.Signatory_Person__r.Minister_Communication_Preference__c})</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>([Case].Record_Type_Dev_Name__c = &#39;Roads_Freight_Ministerial_Correspondence&#39; || 
-[Case].Record_Type_Dev_Name__c  = &#39;WestConnex_Ministerial_Correspondence&#39; ||
-[Case].Record_Type_Dev_Name__c = &#39;Transport_Ministerial_Correspondence&#39; || 
-[Case].Record_Type_Dev_Name__c = &#39;General_Ministerial_Correspondence&#39; || [Case].Record_Type_Dev_Name__c = &#39;Office_of_the_Secretary_Ministerial_Correspondence&#39;) &amp;&amp; NOT(ISBLANK([Case].Signatory_Person__c )) &amp;&amp;
+                <stringValue>([Case].Record_Type_Dev_Name__c = &apos;Roads_Freight_Ministerial_Correspondence&apos; || 
+[Case].Record_Type_Dev_Name__c  = &apos;WestConnex_Ministerial_Correspondence&apos; ||
+[Case].Record_Type_Dev_Name__c = &apos;Transport_Ministerial_Correspondence&apos; ||
+[Case].Record_Type_Dev_Name__c = &apos;Transport &amp; Roads Ministerial Correspondence&apos; ||
+[Case].Record_Type_Dev_Name__c = &apos;Regional Transport &amp; Roads Ministerial Correspondence&apos; || 
+[Case].Record_Type_Dev_Name__c = &apos;General_Ministerial_Correspondence&apos; || [Case].Record_Type_Dev_Name__c = &apos;Office_of_the_Secretary_Ministerial_Correspondence&apos;) &amp;&amp; NOT(ISBLANK([Case].Signatory_Person__c )) &amp;&amp;
 NOT(ISBLANK(TEXT([Case].Signatory_Person__c.Minister_Communication_Preference__c) )) &amp;&amp; ISCHANGED([Case].Signatory_Person__c )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>({!myVariable_current.Record_Type_Dev_Name__c} = &#39;Roads_Freight_Ministerial_Correspondence&#39; || 
-{!myVariable_current.Record_Type_Dev_Name__c}  = &#39;WestConnex_Ministerial_Correspondence&#39; ||
-{!myVariable_current.Record_Type_Dev_Name__c} = &#39;Transport_Ministerial_Correspondence&#39; || 
-{!myVariable_current.Record_Type_Dev_Name__c} = &#39;General_Ministerial_Correspondence&#39; || {!myVariable_current.Record_Type_Dev_Name__c} = &#39;Office_of_the_Secretary_Ministerial_Correspondence&#39;) &amp;&amp; NOT(ISBLANK({!myVariable_current.Signatory_Person__c} )) &amp;&amp;
-NOT(ISBLANK(TEXT({!myVariable_current.Signatory_Person__c.Minister_Communication_Preference__c}) )) &amp;&amp; ISCHANGED({!myVariable_current.Signatory_Person__c} )</expression>
+        <expression>({!myVariable_current.Record_Type_Dev_Name__c} = &apos;Roads_Freight_Ministerial_Correspondence&apos; || 
+{!myVariable_current.Record_Type_Dev_Name__c}  = &apos;WestConnex_Ministerial_Correspondence&apos; ||
+{!myVariable_current.Record_Type_Dev_Name__c} = &apos;Transport_Ministerial_Correspondence&apos; ||
+{!myVariable_current.Record_Type_Dev_Name__c} = &apos;Transport &amp; Roads Ministerial Correspondence&apos; ||
+{!myVariable_current.Record_Type_Dev_Name__c} = &apos;Regional Transport &amp; Roads Ministerial Correspondence&apos; || 
+{!myVariable_current.Record_Type_Dev_Name__c} = &apos;General_Ministerial_Correspondence&apos; || {!myVariable_current.Record_Type_Dev_Name__c} = &apos;Office_of_the_Secretary_Ministerial_Correspondence&apos;) &amp;&amp; NOT(ISBLANK({!myVariable_current.Signatory_Person__c} )) &amp;&amp;
+NOT(ISBLANK(TEXT({!myVariable_current.Signatory_Person__r.Minister_Communication_Preference__c}) )) &amp;&amp; ISCHANGED({!myVariable_current.Signatory_Person__c} )</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>([Case].Record_Type_Dev_Name__c = &#39;Roads_Freight_Ministerial_Correspondence&#39; || 
-[Case].Record_Type_Dev_Name__c  = &#39;WestConnex_Ministerial_Correspondence&#39; ||
-[Case].Record_Type_Dev_Name__c = &#39;Transport_Ministerial_Correspondence&#39; || 
-[Case].Record_Type_Dev_Name__c = &#39;General_Ministerial_Correspondence&#39; || [Case].Record_Type_Dev_Name__c = &#39;Office_of_the_Secretary_Ministerial_Correspondence&#39;) &amp;&amp; NOT(ISBLANK([Case].Signatory_Person__c )) &amp;&amp;
+                <stringValue>([Case].Record_Type_Dev_Name__c = &apos;Roads_Freight_Ministerial_Correspondence&apos; || 
+[Case].Record_Type_Dev_Name__c  = &apos;WestConnex_Ministerial_Correspondence&apos; ||
+[Case].Record_Type_Dev_Name__c = &apos;Transport_Ministerial_Correspondence&apos; ||
+[Case].Record_Type_Dev_Name__c = &apos;Transport &amp; Roads Ministerial Correspondence&apos; ||
+[Case].Record_Type_Dev_Name__c = &apos;Regional Transport &amp; Roads Ministerial Correspondence&apos; || 
+[Case].Record_Type_Dev_Name__c = &apos;General_Ministerial_Correspondence&apos; || [Case].Record_Type_Dev_Name__c = &apos;Office_of_the_Secretary_Ministerial_Correspondence&apos;) &amp;&amp; NOT(ISBLANK([Case].Signatory_Person__c )) &amp;&amp;
 NOT(ISBLANK(TEXT([Case].Signatory_Person__c.Minister_Communication_Preference__c) )) &amp;&amp; ISCHANGED([Case].Signatory_Person__c )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1_pmetrule</name>
         <dataType>Boolean</dataType>
-        <expression>({!myVariable_old.Record_Type_Dev_Name__c} = &#39;Roads_Freight_Ministerial_Correspondence&#39; || 
-{!myVariable_old.Record_Type_Dev_Name__c}  = &#39;WestConnex_Ministerial_Correspondence&#39; ||
-{!myVariable_old.Record_Type_Dev_Name__c} = &#39;Transport_Ministerial_Correspondence&#39; || 
-{!myVariable_old.Record_Type_Dev_Name__c} = &#39;General_Ministerial_Correspondence&#39; || {!myVariable_old.Record_Type_Dev_Name__c} = &#39;Office_of_the_Secretary_Ministerial_Correspondence&#39;) &amp;&amp; NOT(ISBLANK({!myVariable_old.Signatory_Person__c} )) &amp;&amp;
-NOT(ISBLANK(TEXT({!myVariable_old.Signatory_Person__c.Minister_Communication_Preference__c}) )) &amp;&amp; ISCHANGED({!myVariable_old.Signatory_Person__c} )</expression>
+        <expression>({!myVariable_old.Record_Type_Dev_Name__c} = &apos;Roads_Freight_Ministerial_Correspondence&apos; || 
+{!myVariable_old.Record_Type_Dev_Name__c}  = &apos;WestConnex_Ministerial_Correspondence&apos; ||
+{!myVariable_old.Record_Type_Dev_Name__c} = &apos;Transport_Ministerial_Correspondence&apos; ||
+{!myVariable_old.Record_Type_Dev_Name__c} = &apos;Transport &amp; Roads Ministerial Correspondence&apos; ||
+{!myVariable_old.Record_Type_Dev_Name__c} = &apos;Regional Transport &amp; Roads Ministerial Correspondence&apos; || 
+{!myVariable_old.Record_Type_Dev_Name__c} = &apos;General_Ministerial_Correspondence&apos; || {!myVariable_old.Record_Type_Dev_Name__c} = &apos;Office_of_the_Secretary_Ministerial_Correspondence&apos;) &amp;&amp; NOT(ISBLANK({!myVariable_old.Signatory_Person__c} )) &amp;&amp;
+NOT(ISBLANK(TEXT({!myVariable_old.Signatory_Person__r.Minister_Communication_Preference__c}) )) &amp;&amp; ISCHANGED({!myVariable_old.Signatory_Person__c} )</expression>
     </formulas>
-    <interviewLabel>Designate_Contact_s_Preferred_Communication_Method-3_InterviewLabel</interviewLabel>
-    <label>Designate Contact&#39;s Preferred Communication Method v1.0</label>
+    <interviewLabel>Designate_Contact_s_Preferred_Communication_Method-4_InterviewLabel</interviewLabel>
+    <label>Designate Contact&apos;s Preferred Communication Method v1.0</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
@@ -166,6 +158,9 @@ NOT(ISBLANK(TEXT({!myVariable_old.Signatory_Person__c.Minister_Communication_Pre
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -176,6 +171,9 @@ NOT(ISBLANK(TEXT({!myVariable_old.Signatory_Person__c.Minister_Communication_Pre
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
         <label>Stamp Preferred Communication Method</label>
@@ -221,12 +219,12 @@ NOT(ISBLANK(TEXT({!myVariable_old.Signatory_Person__c.Minister_Communication_Pre
             </processMetadataValues>
             <field>Minister_Communication_Preference__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_9874711946</elementReference>
+                <elementReference>formula_2_myRule_1_A1_8747432462</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>
     </recordUpdates>
-    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <startElementReference>myDecision</startElementReference>
     <status>Active</status>
     <variables>
         <name>myVariable_current</name>
@@ -243,15 +241,5 @@ NOT(ISBLANK(TEXT({!myVariable_old.Signatory_Person__c.Minister_Communication_Pre
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>Case</objectType>
-    </variables>
-    <variables>
-        <name>myVariable_waitStartTimeVariable</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Flow.CurrentDateTime</elementReference>
-        </value>
     </variables>
 </Flow>

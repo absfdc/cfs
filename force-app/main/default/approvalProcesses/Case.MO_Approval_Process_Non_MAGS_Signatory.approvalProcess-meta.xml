@@ -6,6 +6,10 @@
         <type>owner</type>
     </allowedSubmitters>
     <allowedSubmitters>
+        <submitter>Chief_of_Staff_Regional_Transport_and_Roads</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
         <submitter>Chief_of_Staff_Road</submitter>
         <type>role</type>
     </allowedSubmitters>
@@ -14,11 +18,23 @@
         <type>role</type>
     </allowedSubmitters>
     <allowedSubmitters>
+        <submitter>Chief_of_Staff_Transport_and_Roads</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>DLO_Regional_Transport_and_Roads</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
         <submitter>DLO_Road</submitter>
         <type>role</type>
     </allowedSubmitters>
     <allowedSubmitters>
         <submitter>DLO_Transport</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>DLO_Transport_and_Roads</submitter>
         <type>role</type>
     </allowedSubmitters>
     <allowedSubmitters>
@@ -46,6 +62,10 @@
         <type>role</type>
     </allowedSubmitters>
     <allowedSubmitters>
+        <submitter>Minister_for_Transport_and_Roads</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
         <submitter>Minister_for_Western_Sydney_WestConnex_and_Sport</submitter>
         <type>role</type>
     </allowedSubmitters>
@@ -70,7 +90,15 @@
         <type>role</type>
     </allowedSubmitters>
     <allowedSubmitters>
+        <submitter>Parliamentary_Secretary_for_Transport_and_Roads</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
         <submitter>Parliamentary_Secretary_Regional_Roads_Rail</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Policy_Advisor_Regional_Transport_and_Roads</submitter>
         <type>role</type>
     </allowedSubmitters>
     <allowedSubmitters>
@@ -79,6 +107,10 @@
     </allowedSubmitters>
     <allowedSubmitters>
         <submitter>Policy_Advisor_Transport</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Policy_Advisor_Transport_and_Roads</submitter>
         <type>role</type>
     </allowedSubmitters>
     <allowedSubmitters>
@@ -131,7 +163,7 @@
         </assignedApprover>
         <description>Step when MAGS Manager sends the response to the MO User (either DLO or PA) for intermediate approval</description>
         <entryCriteria>
-            <formula>ISPICKVAL(Status, &#39;Awaiting MO Contact Approval&#39;) &amp;&amp; NOT(ISBLANK( MO_User__c ))</formula>
+            <formula>ISPICKVAL(Status, &apos;Awaiting MO Contact Approval&apos;) &amp;&amp; NOT(ISBLANK( MO_User__c ))</formula>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
         <label>DLO/PA Intermediate Approval</label>
@@ -160,11 +192,11 @@
         </assignedApprover>
         <description>Step when MO User (either DLO or PA) sends the response to non MAGS signatory for approval</description>
         <entryCriteria>
-            <formula>ISPICKVAL(Status, &#39;Awaiting Signature&#39;) &amp;&amp; 
+            <formula>ISPICKVAL(Status, &apos;Awaiting Signature&apos;) &amp;&amp; 
 NOT(ISBLANK( Signatory_Person__c )) &amp;&amp; 
-NOT(ISPICKVAL( Signatory__c, &#39;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&#39;)) &amp;&amp; 
-NOT(ISPICKVAL( Signatory__c, &#39;Principal Manager, Ministerial &amp; Government Services&#39;)) &amp;&amp; 
-NOT(ISPICKVAL( Signatory__c, &#39;Executive Director, Customer Relations &amp; Government Services&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&apos;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Principal Manager, Ministerial &amp; Government Services&apos;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Executive Director, Customer Relations &amp; Government Services&apos;)) &amp;&amp; 
 ISBLANK( Signatory_Person_OBO__c ) &amp;&amp; 
 NOT( Wet_Signature__c )</formula>
         </entryCriteria>
@@ -198,11 +230,11 @@ NOT( Wet_Signature__c )</formula>
         </assignedApprover>
         <description>Step when MO User (either DLO or PA) sends the response to non MAGS signatory for approval</description>
         <entryCriteria>
-            <formula>ISPICKVAL(Status, &#39;Awaiting Signature&#39;) &amp;&amp; 
+            <formula>ISPICKVAL(Status, &apos;Awaiting Signature&apos;) &amp;&amp; 
 NOT(ISBLANK( Signatory_Person_OBO__c )) &amp;&amp; 
-NOT(ISPICKVAL( Signatory__c, &#39;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&#39;)) &amp;&amp; 
-NOT(ISPICKVAL( Signatory__c, &#39;Principal Manager, Ministerial &amp; Government Services&#39;)) &amp;&amp; 
-NOT(ISPICKVAL( Signatory__c, &#39;Executive Director, Customer Relations &amp; Government Services&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&apos;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Principal Manager, Ministerial &amp; Government Services&apos;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Executive Director, Customer Relations &amp; Government Services&apos;)) &amp;&amp; 
 NOT( Wet_Signature__c )</formula>
         </entryCriteria>
         <label>Signatory Approval</label>
@@ -223,13 +255,13 @@ SFCOE-2089: Added actions to Stamp Date Awaiting MO Contact Approval upon submis
     <emailTemplate>Ministerial_Correspondence/MO_Approval_Notification</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
-        <formula>(TEXT(Status) = &#39;MAGS Approved&#39; || TEXT(Status) = &#39;Signatory Rejected&#39; || TEXT(Status) = &#39;Awaiting Signature&#39; || TEXT(Status) = &#39;MO Amend&#39;) &amp;&amp; 
+        <formula>(TEXT(Status) = &apos;MAGS Approved&apos; || TEXT(Status) = &apos;Signatory Rejected&apos; || TEXT(Status) = &apos;Awaiting Signature&apos; || TEXT(Status) = &apos;MO Amend&apos;) &amp;&amp; 
 NOT(ISBLANK(MO_User__c)) &amp;&amp;  
-NOT(ISPICKVAL( Signatory__c, &#39;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&#39;)) &amp;&amp; 
-NOT(ISPICKVAL( Signatory__c, &#39;Principal Manager, Ministerial &amp; Government Services&#39;)) &amp;&amp; 
-NOT(ISPICKVAL( Signatory__c, &#39;Executive Director, Customer Relations &amp; Government Services&#39;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Manager, Ministerial &amp; Government Services - Roads, Maritime and Freight&apos;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Principal Manager, Ministerial &amp; Government Services&apos;)) &amp;&amp; 
+NOT(ISPICKVAL( Signatory__c, &apos;Executive Director, Customer Relations &amp; Government Services&apos;)) &amp;&amp; 
 NOT(ISBLANK( Signatory_Person__c )) &amp;&amp; 
-NOT(ISPICKVAL( Response_Type__c, &#39;Referred to other portfolio&#39;))</formula>
+NOT(ISPICKVAL( Response_Type__c, &apos;Referred to other portfolio&apos;))</formula>
     </entryCriteria>
     <finalApprovalActions>
         <action>

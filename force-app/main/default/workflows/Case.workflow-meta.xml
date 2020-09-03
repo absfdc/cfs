@@ -2333,7 +2333,7 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
             <name>Update_record_type_Transport_Min_Corro</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <field>Case.Portfolio__c</field>
@@ -2433,7 +2433,7 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <booleanFilter>(1 OR 2 OR 3) AND 4 AND (5 OR 6) and 7</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3 OR 8 OR 9) AND 4 AND (5 OR 6) and 7</booleanFilter>
         <criteriaItems>
             <field>Case.RecordTypeId</field>
             <operation>equals</operation>
@@ -2468,6 +2468,16 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
             <operation>equals</operation>
             <value>MAGS Approved</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Transport and Roads Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Regional Transport and Roads Ministerial Correspondence</value>
+        </criteriaItems>
         <description>For Partial Referral, there needs to be way to close cases were partial referrals are completed versus those worked. It was requested once response type = Partial Referral and all Referees referred, that case status is updated to Referral Completed</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
@@ -2477,8 +2487,8 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
             <name>Update_Case_status_Referral_Pending</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
-        <booleanFilter>(1 OR 2 OR 3 OR 8) AND 4 AND 5 AND 6 AND 7</booleanFilter>
+        <active>false</active>
+        <booleanFilter>(1 OR 2 OR 3 OR 8 OR 9 OR 10) AND 4 AND 5 AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <field>Case.RecordTypeId</field>
             <operation>equals</operation>
@@ -2517,6 +2527,16 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
             <field>Case.RecordTypeId</field>
             <operation>equals</operation>
             <value>WestConnex Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Transport and Roads Ministerial Correspondence</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Regional Transport and Roads Ministerial Correspondence</value>
         </criteriaItems>
         <description>For Partial Referral, there needs to be way to track cases were partial referrals are worked versus those completed. It was requested once response type = Partial Referral and case is MO approved that case status is updated to Referral Pending</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -2796,7 +2816,8 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
         </actions>
         <active>true</active>
         <description>When response Type is No response required (NRR) and not a CE Case.</description>
-        <formula>ISPICKVAL(  Status  ,&quot;Closed - NRR&quot;) &amp;&amp; IsMinCorroCase__c &amp;&amp; RecordTypeName__c &lt;&gt; &quot;RMS CE Signatory&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Office of the Secretary Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Roads &amp; Freight Ministerial Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Transport Ministerial Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;General Ministerial Correspondence&quot;</formula>
+        <formula>ISPICKVAL(  Status  ,&quot;Closed - NRR&quot;) &amp;&amp; IsMinCorroCase__c &amp;&amp; RecordTypeName__c &lt;&gt; &quot;RMS CE Signatory&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Office of the Secretary Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Roads &amp; Freight Ministerial Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Transport Ministerial Correspondence&quot; &amp;&amp; RecordTypeName__c &lt;&gt; &quot;Transport and Roads Ministerial Correspondence&quot; &amp;&amp; 
+RecordTypeName__c &lt;&gt; &quot;Regional Transport and Roads Ministerial Correspondence&quot; &amp;&amp;  RecordTypeName__c &lt;&gt; &quot;General Ministerial Correspondence&quot;</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -2892,9 +2913,11 @@ DEACTIVATE THIS WORKFLOW WHILE BULK UPLOAD OF THE CASES</description>
             <name>Update_Signature_Review_Completed</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <description>Set &apos;Signature Authorisation Failure&apos; to checked and &apos;Signature Review Completed&apos; to unchecked.</description>
-        <formula>AND( IsClosed  = false,  IsMinCorroCase__c = true,  OR(RecordType.DeveloperName = &apos;General_Ministerial_Correspondence&apos;,  RecordType.DeveloperName = &apos;Office_of_the_Secretary_Ministerial_Correspondence&apos;,  RecordType.DeveloperName = &apos;Roads_Freight_Ministerial_Correspondence&apos;,  RecordType.DeveloperName = &apos;Transport_Ministerial_Correspondence&apos;) )</formula>
+        <formula>AND( IsClosed  = false,  IsMinCorroCase__c = true,  OR(RecordType.DeveloperName = &apos;General_Ministerial_Correspondence&apos;,  RecordType.DeveloperName = &apos;Office_of_the_Secretary_Ministerial_Correspondence&apos;,  RecordType.DeveloperName = &apos;Roads_Freight_Ministerial_Correspondence&apos;,  RecordType.DeveloperName = &apos;Transport_Ministerial_Correspondence&apos;,
+RecordType.DeveloperName = &apos;Transport and Roads Ministerial Correspondence&apos;,
+RecordType.DeveloperName = &apos;Regional Transport and Roads Ministerial Correspondence&apos; ) )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
